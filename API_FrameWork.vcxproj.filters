@@ -234,6 +234,9 @@
     <ClInclude Include="imageManager.h">
       <Filter>Manager\Image</Filter>
     </ClInclude>
+    <ClInclude Include="MiJung.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -349,6 +352,9 @@
     </ClCompile>
     <ClCompile Include="imageManager.cpp">
       <Filter>Manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="MiJung.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

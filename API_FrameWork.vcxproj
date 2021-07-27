@@ -166,6 +166,7 @@
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="mapTool.h" />
+    <ClInclude Include="MiJung.h" />
     <ClInclude Include="minimap.h" />
     <ClInclude Include="minion.h" />
     <ClInclude Include="pixelCollision.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="mapTool.cpp" />
+    <ClCompile Include="MiJung.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="minion.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
