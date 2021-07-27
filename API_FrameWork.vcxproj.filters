@@ -85,6 +85,9 @@
     <Filter Include="에이슷하">
       <UniqueIdentifier>{d6da94a8-d55e-4cc4-b47c-98bc84efa10d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="enemy">
+      <UniqueIdentifier>{1f012d4b-0aca-4d4d-b6a6-6efa54b6f88b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -222,6 +225,9 @@
     <ClInclude Include="Astar.h">
       <Filter>에이슷하</Filter>
     </ClInclude>
+    <ClInclude Include="enemy11.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -337,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="Astar.cpp">
       <Filter>에이슷하</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy11.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
