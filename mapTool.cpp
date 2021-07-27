@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "mapTool.h"
+
 //mapTool::mapTool()
 //{
 //}
