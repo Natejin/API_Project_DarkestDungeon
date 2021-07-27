@@ -67,9 +67,6 @@
     <Filter Include="애니메이션">
       <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="애니메이션테스트">
-      <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="이펙트">
       <UniqueIdentifier>{799f9037-ac59-46a7-8c21-272e269886bb}</UniqueIdentifier>
     </Filter>
@@ -85,8 +82,20 @@
     <Filter Include="에이슷하">
       <UniqueIdentifier>{d6da94a8-d55e-4cc4-b47c-98bc84efa10d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="enemy">
-      <UniqueIdentifier>{1f012d4b-0aca-4d4d-b6a6-6efa54b6f88b}</UniqueIdentifier>
+    <Filter Include="애니메이션\애니메이션테스트">
+      <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Animation">
+      <UniqueIdentifier>{afa18fed-08f6-4e31-afca-ab1ca225c5db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Effect">
+      <UniqueIdentifier>{a231348a-48cb-47df-9671-bc7066f69f36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Input">
+      <UniqueIdentifier>{02e58386-2271-43ef-ae1d-712efa59482d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Image">
+      <UniqueIdentifier>{20dfef1d-f812-401f-9b20-da56847c2bbd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -114,9 +123,6 @@
     <ClInclude Include="mainGame.h">
       <Filter>mainGame</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
     <ClInclude Include="randomFunction.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -128,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="airHockey.h">
       <Filter>mainGame\airHockey</Filter>
-    </ClInclude>
-    <ClInclude Include="imageManager.h">
-      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="minimap.h">
       <Filter>mainGame\미니맵</Filter>
@@ -190,22 +193,16 @@
       <Filter>애니메이션</Filter>
     </ClInclude>
     <ClInclude Include="animationTest.h">
-      <Filter>애니메이션테스트</Filter>
+      <Filter>애니메이션\애니메이션테스트</Filter>
     </ClInclude>
     <ClInclude Include="camel.h">
-      <Filter>애니메이션테스트</Filter>
-    </ClInclude>
-    <ClInclude Include="animationManager.h">
-      <Filter>Manager</Filter>
+      <Filter>애니메이션\애니메이션테스트</Filter>
     </ClInclude>
     <ClInclude Include="effect.h">
       <Filter>이펙트</Filter>
     </ClInclude>
     <ClInclude Include="effectTest.h">
       <Filter>이펙트\이펙트테스트</Filter>
-    </ClInclude>
-    <ClInclude Include="effectManager.h">
-      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="mapTool.h">
       <Filter>맵툴</Filter>
@@ -225,8 +222,17 @@
     <ClInclude Include="Astar.h">
       <Filter>에이슷하</Filter>
     </ClInclude>
-    <ClInclude Include="enemy11.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="animationManager.h">
+      <Filter>Manager\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="effectManager.h">
+      <Filter>Manager\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Manager\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="imageManager.h">
+      <Filter>Manager\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +245,6 @@
     <ClCompile Include="mainGame.cpp">
       <Filter>mainGame</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
     <ClCompile Include="utils.cpp">
       <Filter>UTIL</Filter>
     </ClCompile>
@@ -250,9 +253,6 @@
     </ClCompile>
     <ClCompile Include="airHockey.cpp">
       <Filter>mainGame\airHockey</Filter>
-    </ClCompile>
-    <ClCompile Include="imageManager.cpp">
-      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="minimap.cpp">
       <Filter>mainGame\미니맵</Filter>
@@ -312,22 +312,16 @@
       <Filter>애니메이션</Filter>
     </ClCompile>
     <ClCompile Include="animationTest.cpp">
-      <Filter>애니메이션테스트</Filter>
+      <Filter>애니메이션\애니메이션테스트</Filter>
     </ClCompile>
     <ClCompile Include="camel.cpp">
-      <Filter>애니메이션테스트</Filter>
-    </ClCompile>
-    <ClCompile Include="animationManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>애니메이션\애니메이션테스트</Filter>
     </ClCompile>
     <ClCompile Include="effect.cpp">
       <Filter>이펙트</Filter>
     </ClCompile>
     <ClCompile Include="effectTest.cpp">
       <Filter>이펙트\이펙트테스트</Filter>
-    </ClCompile>
-    <ClCompile Include="effectManager.cpp">
-      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="mapTool.cpp">
       <Filter>맵툴</Filter>
@@ -344,8 +338,17 @@
     <ClCompile Include="Astar.cpp">
       <Filter>에이슷하</Filter>
     </ClCompile>
-    <ClCompile Include="enemy11.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="animationManager.cpp">
+      <Filter>Manager\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="effectManager.cpp">
+      <Filter>Manager\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Manager\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="imageManager.cpp">
+      <Filter>Manager\Image</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
