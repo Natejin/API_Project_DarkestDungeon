@@ -67,13 +67,13 @@ void gameNode::release()
 		TIME->releaseSingleton();
 		RND->releaseSingleton();
 		TXT->releaseSingleton();
-		SCENE->releaseSingleton();
+		MG_SCENE->releaseSingleton();
 		SOUND->releaseSingleton();
 		ANIMATION->releaseSingleton();
 		EFFECT->releaseSingleton();
 
 
-		SCENE->release();
+		MG_SCENE->release();
 		IMAGE->release();
 		TIME->release();
 		SOUND->release();

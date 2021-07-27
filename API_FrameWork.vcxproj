@@ -150,14 +150,17 @@
     <ClInclude Include="Astar.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="camel.h" />
+    <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemyManager.h" />
+    <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gameNode.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="globalTank.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
@@ -166,9 +169,9 @@
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
     <ClInclude Include="mapTool.h" />
-    <ClInclude Include="MiJung.h" />
     <ClInclude Include="minimap.h" />
     <ClInclude Include="minion.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="pixelCollision.h" />
     <ClInclude Include="progressBar.h" />
     <ClInclude Include="randomFunction.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="timer.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="airHockey.cpp" />
@@ -200,12 +204,14 @@
     <ClCompile Include="Astar.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camel.cpp" />
+    <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="enemyManager.cpp" />
     <ClCompile Include="gameNode.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -213,9 +219,9 @@
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />
     <ClCompile Include="mapTool.cpp" />
-    <ClCompile Include="MiJung.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="minion.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="progressBar.cpp" />
     <ClCompile Include="rocket.cpp" />
@@ -231,6 +237,7 @@
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="API_FrameWork.rc" />

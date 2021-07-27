@@ -10,8 +10,8 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 
-	_astar = new Astar;
-	_astar->init();
+	//_astar = new Astar;
+	//_astar->init();
 
 	return S_OK;
 }
@@ -20,27 +20,31 @@ void mainGame::release()
 {
 	gameNode::release();
 	//SCENE->release();
-	SAFE_DELETE(_astar);
+	//SAFE_DELETE(_astar);
 }
 
 void mainGame::update()
 {
 
 	gameNode::update();
+	TIME->update(60.0f);
+	MG_SCENE->update();
+	MG_GMOBJ->Update(TIME->getElapsedTime(), TIME->getWorldTime());
+	MG_GMOBJ->LateUpdate();
 	//SCENE->update();
 	//ANIMATION->update();
 	//EFFECT->update();
-	_astar->update();
+	//_astar->update();
 }
 
 void mainGame::render(/*HDC hdc*/)
 {
 	PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	//==============================================
-	//IMAGE->render("배경화면", getMemDC());
-	
-	//SCENE->render();
-	//EFFECT->render();
+	MG_SCENE->render();
+	MG_GMOBJ->BackRender(getMemDC());
+	MG_GMOBJ->Render(getMemDC());
+	MG_GMOBJ->FrontRender(getMemDC());
 	//==============================================
 	_astar->render();
 	TIME->render(getMemDC());

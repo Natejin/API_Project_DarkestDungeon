@@ -97,6 +97,12 @@
     <Filter Include="Manager\Image">
       <UniqueIdentifier>{20dfef1d-f812-401f-9b20-da56847c2bbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{b9d236da-086c-4479-aee7-a1acbeb7dd14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Struct">
+      <UniqueIdentifier>{11ba7997-29cd-4377-9f11-5991315c57cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -234,7 +240,19 @@
     <ClInclude Include="imageManager.h">
       <Filter>Manager\Image</Filter>
     </ClInclude>
-    <ClInclude Include="MiJung.h">
+    <ClInclude Include="CObjectManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -353,8 +371,17 @@
     <ClCompile Include="imageManager.cpp">
       <Filter>Manager\Image</Filter>
     </ClCompile>
-    <ClCompile Include="MiJung.cpp">
+    <ClCompile Include="CObjectManager.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Struct</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

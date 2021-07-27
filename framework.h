@@ -21,6 +21,9 @@
 #include<vector>
 #include<map>
 #include<string>
+#include<unordered_map>
+
+
 
 //==========================================
 //				 내가만든 헤더파일
@@ -34,8 +37,12 @@
 #include"animationManager.h"
 #include"effectManager.h"
 #include"randomFunction.h"
+#include "CObjectManager.h"
 #include"utils.h"
 #include"txtData.h"
+#include "Vector2.h"
+#include "Enum.h"
+
 
 //======================================
 //##			매니저들			  ##
@@ -45,10 +52,11 @@
 #define IMAGE			imageManager::getSingleton()
 #define TIME			timeManager::getSingleton()
 #define TXT				txtData::getSingleton()
-#define SCENE			SceneManager::getSingleton()
+#define MG_SCENE			SceneManager::getSingleton()
 #define SOUND			soundManager::getSingleton()
 #define ANIMATION		animationManager::getSingleton()
 #define EFFECT			effectManager::getSingleton()
+#define MG_GMOBJ			CObjectManager::getSingleton()
 //==========================================
 //				 매크로 설정
 //==========================================

@@ -30,7 +30,7 @@ void loadiingTest::update()
 
 	if (_loading->loadingDone())
 	{
-		SCENE->changeScene("scene2");
+		MG_SCENE->changeScene("scene2");
 	}
 }
 
