@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+*.opendb
+*.db-wal
+*.db-shm
+*.db
+/.vs/API_FrameWork/v16
+/Debug
+/x64/Debug
