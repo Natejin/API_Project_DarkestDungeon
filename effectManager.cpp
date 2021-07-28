@@ -95,13 +95,13 @@ void effectManager::addEffect(string effectKey, char* imageName, int imageW, int
 	vEffect vEffectBuffer;
 	mEffect mArrEffect;
 
-	if (IMAGE->findImage(imageName))
+	if (MG_IMAGE->findImage(imageName))
 	{
-		img = IMAGE->findImage(imageName);
+		img = MG_IMAGE->findImage(imageName);
 	}
 	else
 	{
-		img = IMAGE->addImage(effectKey, imageName, imageW, imageH, true, RGB(255, 0, 255));
+		img = MG_IMAGE->addImage(effectKey, imageName, imageW, imageH, true, RGB(255, 0, 255));
 	}
 
 	//버퍼 크기만큼 이펙트를 할당후 초기화 해서 벡터로만든다.

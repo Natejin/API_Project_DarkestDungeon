@@ -1,20 +1,14 @@
 #pragma once
-#include "Object.h"
-#include "Transform.h"
+#include "Unit.h"
 
-class GameObject : public Object
+class CPlayer : public Unit
 {
-
+protected:
+	JOB job;
+	int stress;
 public:
-	//Vector2 m_pos;
-	//Vector2 m_scale;
-	//Vector2 m_pivot;
-	Transform* m_transform;
-	class image* m_image;
-
-public:
-	GameObject();
-	~GameObject();
+	CPlayer();
+	~CPlayer();
 
 	HRESULT Init();
 
@@ -27,4 +21,3 @@ public:
 
 	virtual void Release();
 };
-

@@ -35,10 +35,11 @@ HRESULT gameNode::init(bool managerInit)
 	{
 		SetTimer(m_hWnd, 1, 10, NULL);
 		//매니저 초기화
-		InputManager->init();
-		IMAGE->init();
-		TIME->init();
-		SOUND->init();
+		MG_INPUT->init();
+		MG_IMAGE->init();
+		MG_TIME->init();
+		MG_SOUND->init();
+
 	}
 
 
@@ -62,23 +63,23 @@ void gameNode::release()
 		//해제를 안하면 종료를 해도 메모리가 줄줄줄~
 		KillTimer(m_hWnd, 1);
 		//매니저 해제
-		InputManager->releaseSingleton();
-		IMAGE->releaseSingleton();
-		TIME->releaseSingleton();
-		RND->releaseSingleton();
-		TXT->releaseSingleton();
+		MG_INPUT->releaseSingleton();
+		MG_IMAGE->releaseSingleton();
+		MG_TIME->releaseSingleton();
+		MG_RND->releaseSingleton();
+		MG_TXT->releaseSingleton();
 		MG_SCENE->releaseSingleton();
-		SOUND->releaseSingleton();
-		ANIMATION->releaseSingleton();
-		EFFECT->releaseSingleton();
+		MG_SOUND->releaseSingleton();
+		MG_ANIMATION->releaseSingleton();
+		MG_EFFECT->releaseSingleton();
 
 
 		MG_SCENE->release();
-		IMAGE->release();
-		TIME->release();
-		SOUND->release();
-		ANIMATION->release();
-		EFFECT->release();
+		MG_IMAGE->release();
+		MG_TIME->release();
+		MG_SOUND->release();
+		MG_ANIMATION->release();
+		MG_EFFECT->release();
 	}
 
 	ReleaseDC(m_hWnd, _hdc);

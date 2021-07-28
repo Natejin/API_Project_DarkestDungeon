@@ -12,7 +12,7 @@ rocket::~rocket()
 HRESULT rocket::init()
 {
 
-	_player = IMAGE->addImage("rocket", "images/rocket.bmp", WINSIZEX / 2, WINSIZEY - 200, 52, 64, true, RGB(255, 0, 255));
+	_player = MG_IMAGE->addImage("rocket", "images/rocket.bmp", WINSIZEX / 2, WINSIZEY - 200, 52, 64, true, RGB(255, 0, 255));
 
 	rc = RectMakeCenter(WINSIZEX / 2, WINSIZEY / 2, _player->getWidth(), _player->getHeight());
 
@@ -58,30 +58,30 @@ void rocket::update()
 	}*/
 
 
-	if (InputManager->isStayKeyDown(VK_LEFT) && _player->getX() > 0)
+	if (MG_INPUT->isStayKeyDown(VK_LEFT) && _player->getX() > 0)
 	{
 		_player->setX(_player->getX() - 5);
 	}
-	if (InputManager->isStayKeyDown(VK_RIGHT) && _player->getX()+_player->getWidth()<WINSIZEX)
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT) && _player->getX()+_player->getWidth()<WINSIZEX)
 	{
 		_player->setX(_player->getX() + 5);
 	}
-	if (InputManager->isStayKeyDown(VK_UP) && _player->getY() > 0)
+	if (MG_INPUT->isStayKeyDown(VK_UP) && _player->getY() > 0)
 	{
 		_player->setY(_player->getY() - 5);
 	}
-	if (InputManager->isStayKeyDown(VK_DOWN) && _player->getY() + _player->getHeight()<WINSIZEY)
+	if (MG_INPUT->isStayKeyDown(VK_DOWN) && _player->getY() + _player->getHeight()<WINSIZEY)
 	{
 		_player->setY(_player->getY() +5);
 	}
 
 
-	if (InputManager->isOnceKeyDown(VK_SPACE))
+	if (MG_INPUT->isOnceKeyDown(VK_SPACE))
 	{
 		//_missile->fire(rc.right - (rc.right - rc.left) / 2, rc.top - 50);
 		_missile->fire(_player->getX() + _player->getWidth() / 2, _player->getY() - 50);
 	}
-	if (InputManager->isOnceKeyDown('Z'))
+	if (MG_INPUT->isOnceKeyDown('Z'))
 	{
 		//_nuclear->fire(rc.right - (rc.right - rc.left) / 2, rc.top - 50);
 		_nuclear->fire(_player->getX() + _player->getWidth() / 2, _player->getY() - 50);
@@ -98,7 +98,7 @@ void rocket::update()
 	_hpBar->update();
 
 
-	if (InputManager->isOnceKeyDown('S'))
+	if (MG_INPUT->isOnceKeyDown('S'))
 	{
 		char  temp[64];
 		vector<string>vStr;
@@ -108,12 +108,12 @@ void rocket::update()
 		vStr.push_back(_itoa(_player->getX(), temp, 10));
 		vStr.push_back(_itoa(_player->getY(), temp, 10));
 
-		TXT->txtSave("save/rocketData.txt", vStr);
+		MG_TXT->txtSave("save/rocketData.txt", vStr);
 
 	}
-	if (InputManager->isOnceKeyDown('L'))
+	if (MG_INPUT->isOnceKeyDown('L'))
 	{
-		vector<string> vStr(TXT->txtLoad("save/rocketData.txt"));
+		vector<string> vStr(MG_TXT->txtLoad("save/rocketData.txt"));
 
 		_currentHp = stoi(vStr[0]);
 		_maxHp = stoi(vStr[1]);

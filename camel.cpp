@@ -36,19 +36,19 @@ HRESULT camel::init()
 
 
 	//매니저로
-	_camel = IMAGE->addFrameImage("camel", "images/camel.bmp", 300, 267,4,3, true, RGB(255, 0, 255));
+	_camel = MG_IMAGE->addFrameImage("camel", "images/camel.bmp", 300, 267,4,3, true, RGB(255, 0, 255));
 
-	ANIMATION->addDefAnimation("ani1", "camel", 10, false, true);
+	MG_ANIMATION->addDefAnimation("ani1", "camel", 10, false, true);
 
 
 	int arrLen[] = { 1,2,3,7,8 };
-	ANIMATION->addAnimation("ani2", "camel", arrLen, 5, 5, true);
+	MG_ANIMATION->addAnimation("ani2", "camel", arrLen, 5, 5, true);
 
-	ANIMATION->addAnimation("ani3", "camel", 0,5,10,false, true);
+	MG_ANIMATION->addAnimation("ani3", "camel", 0,5,10,false, true);
 
 
 	//시작  애니메이션 설정
-	_ani = ANIMATION->findAnimation("ani1");
+	_ani = MG_ANIMATION->findAnimation("ani1");
 
 
 	return S_OK;
@@ -63,26 +63,26 @@ void camel::release()
 
 void camel::update()
 {
-	if (InputManager->isOnceKeyDown('1'))
+	if (MG_INPUT->isOnceKeyDown('1'))
 	{
 
 
-		_ani = ANIMATION->findAnimation("ani1");
-		ANIMATION->start("ani1");
+		_ani = MG_ANIMATION->findAnimation("ani1");
+		MG_ANIMATION->start("ani1");
 		//_ani1->start();
 	}
-	if (InputManager->isOnceKeyDown('2'))
+	if (MG_INPUT->isOnceKeyDown('2'))
 	{
 		//_ani2->start();
 
-		_ani = ANIMATION->findAnimation("ani2");
-		ANIMATION->start("ani2");
+		_ani = MG_ANIMATION->findAnimation("ani2");
+		MG_ANIMATION->start("ani2");
 	}
-	if (InputManager->isOnceKeyDown('3'))
+	if (MG_INPUT->isOnceKeyDown('3'))
 	{
 		//_ani3->start();
-		_ani = ANIMATION->findAnimation("ani3");
-		ANIMATION->start("ani3");
+		_ani = MG_ANIMATION->findAnimation("ani3");
+		MG_ANIMATION->start("ani3");
 	}
 
 	/*_ani1->frameUpdate(0.4f);

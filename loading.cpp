@@ -110,7 +110,7 @@ loading::~loading()
 HRESULT loading::init()
 {
 
-	_background = IMAGE->addImage("사나", "images/사나.bmp", WINSIZEX, WINSIZEY, true, RGB(255, 0, 255));
+	_background = MG_IMAGE->addImage("사나", "images/사나.bmp", WINSIZEX, WINSIZEY, true, RGB(255, 0, 255));
 
 
 	_loadingBar = new progressBar;
@@ -187,19 +187,19 @@ BOOL loading::loadingDone()
 	switch (item->getLoadKind())
 	{
 	case LOAD_KIND::LOAD_KIND_IMAGE_0:
-		IMAGE->addImage(img.keyName, img.width, img.height);
+		MG_IMAGE->addImage(img.keyName, img.width, img.height);
 		break;
 	case LOAD_KIND::LOAD_KIND_IMAGE_1:
-		IMAGE->addImage(img.keyName, img.fileName, img.width, img.height, img.trans, img.transColor);
+		MG_IMAGE->addImage(img.keyName, img.fileName, img.width, img.height, img.trans, img.transColor);
 		break;
 	case LOAD_KIND::LOAD_KIND_IMAGE_2:
-		IMAGE->addImage(img.keyName, img.fileName, img.x, img.y, img.width, img.height, img.trans, img.transColor);
+		MG_IMAGE->addImage(img.keyName, img.fileName, img.x, img.y, img.width, img.height, img.trans, img.transColor);
 		break;
 	case LOAD_KIND::LOAD_KIND_FRAMEIMAGE_0:
-		IMAGE->addFrameImage(img.keyName, img.fileName, img.width, img.height, img.frameX, img.frameY, img.trans, img.transColor);
+		MG_IMAGE->addFrameImage(img.keyName, img.fileName, img.width, img.height, img.frameX, img.frameY, img.trans, img.transColor);
 		break;
 	case LOAD_KIND::LOAD_KIND_FRAMEIMAGE_1:
-		IMAGE->addFrameImage(img.keyName, img.fileName, img.x, img.y, img.width, img.height, img.frameX, img.frameY, img.trans, img.transColor);
+		MG_IMAGE->addFrameImage(img.keyName, img.fileName, img.x, img.y, img.width, img.height, img.frameX, img.frameY, img.trans, img.transColor);
 		break;
 	case LOAD_KIND::LOAD_KIND_SOUND:
 		break;

@@ -37,6 +37,7 @@
 #include"animationManager.h"
 #include"effectManager.h"
 #include"randomFunction.h"
+#include "CCameraManager.h"
 #include "CObjectManager.h"
 #include"utils.h"
 #include"txtData.h"
@@ -47,16 +48,17 @@
 //======================================
 //##			매니저들			  ##
 //======================================
-#define InputManager	Input::getSingleton()
-#define RND				RandomFunction::getSingleton()
-#define IMAGE			imageManager::getSingleton()
-#define TIME			timeManager::getSingleton()
-#define TXT				txtData::getSingleton()
-#define MG_SCENE			SceneManager::getSingleton()
-#define SOUND			soundManager::getSingleton()
-#define ANIMATION		animationManager::getSingleton()
-#define EFFECT			effectManager::getSingleton()
-#define MG_GMOBJ			CObjectManager::getSingleton()
+#define MG_INPUT	Input::getSingleton()
+#define MG_RND				RandomFunction::getSingleton()
+#define MG_IMAGE			imageManager::getSingleton()
+#define MG_TIME			timeManager::getSingleton()
+#define MG_TXT				txtData::getSingleton()
+#define MG_SCENE		SceneManager::getSingleton()
+#define MG_SOUND			soundManager::getSingleton()
+#define MG_ANIMATION		animationManager::getSingleton()
+#define MG_EFFECT			effectManager::getSingleton()
+#define MG_GMOBJ		CObjectManager::getSingleton()
+#define MG_CAMERA		CCameraManager::getSingleton()
 //==========================================
 //				 매크로 설정
 //==========================================
@@ -65,6 +67,8 @@
 #define WINSTARTY		100
 #define WINSIZEX		1024
 #define WINSIZEY		768
+#define WORLDSIZEX		3000
+#define WORLDSIZEY		3000
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU
 
 

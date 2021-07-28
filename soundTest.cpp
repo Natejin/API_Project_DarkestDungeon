@@ -12,7 +12,7 @@ soundTest::~soundTest()
 HRESULT soundTest::init()
 {
 
-    SOUND->addSound("카드", "sound/체리.mp3", true, true);
+    MG_SOUND->addSound("카드", "sound/체리.mp3", true, true);
     return S_OK;
 }
 
@@ -22,20 +22,20 @@ void soundTest::release()
 
 void soundTest::update()
 {
-    if (InputManager->isOnceKeyDown('Q'))
+    if (MG_INPUT->isOnceKeyDown('Q'))
     {
-        SOUND->play("카드",1.0f);
+        MG_SOUND->play("카드",1.0f);
     }
-    if (InputManager->isOnceKeyDown('S'))
+    if (MG_INPUT->isOnceKeyDown('S'))
     {
-        SOUND->stop("카드");
+        MG_SOUND->stop("카드");
     }
-    if (InputManager->isOnceKeyDown('T'))
+    if (MG_INPUT->isOnceKeyDown('T'))
     {
-        SOUND->resume("카드");
+        MG_SOUND->resume("카드");
     }
-    if (InputManager->isOnceKeyDown('P'))
+    if (MG_INPUT->isOnceKeyDown('P'))
     {
-        SOUND->pause("카드");
+        MG_SOUND->pause("카드");
     }
 }

@@ -11,7 +11,7 @@ tankMap::~tankMap()
 
 HRESULT tankMap::init()
 {
-    IMAGE->addFrameImage("mapTiles", "images/mapTiles.bmp", 0, 0, 640, 288, 20, 9, true, RGB(255, 0, 255));
+    MG_IMAGE->addFrameImage("mapTiles", "images/mapTiles.bmp", 0, 0, 640, 288, 20, 9, true, RGB(255, 0, 255));
 
     load();
     return S_OK;
@@ -30,7 +30,7 @@ void tankMap::render()
     //ÁöÇü
     for (size_t i = 0; i < TILEX * TILEY; i++)
     {
-        IMAGE->frameRender("mapTiles", getMemDC(),
+        MG_IMAGE->frameRender("mapTiles", getMemDC(),
             _map[i].rcTile.left, _map[i].rcTile.top,
             _map[i].terrainFrameX, _map[i].terrainFrameY);
     }
@@ -40,7 +40,7 @@ void tankMap::render()
 
         if (_map[i].obj == OBJECT::OBJ_NONE)continue;
 
-        IMAGE->frameRender("mapTiles", getMemDC(),
+        MG_IMAGE->frameRender("mapTiles", getMemDC(),
             _map[i].rcTile.left, _map[i].rcTile.top,
             _map[i].objFrameX, _map[i].objFrameY);
     }

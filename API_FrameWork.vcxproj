@@ -148,8 +148,10 @@
     <ClInclude Include="animationTest.h" />
     <ClInclude Include="API_FrameWork.h" />
     <ClInclude Include="Astar.h" />
+    <ClInclude Include="CBackground.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="camel.h" />
+    <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="effect.h" />
@@ -173,10 +175,12 @@
     <ClInclude Include="minion.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="pixelCollision.h" />
+    <ClInclude Include="CPlayer.h" />
     <ClInclude Include="progressBar.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="rocket.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="scene1.h" />
     <ClInclude Include="scene2.h" />
     <ClInclude Include="sceneManager.h" />
@@ -187,9 +191,12 @@
     <ClInclude Include="tankGameScene.h" />
     <ClInclude Include="tankMap.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TestScene.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="txtData.h" />
+    <ClInclude Include="Unit.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
@@ -202,8 +209,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Astar.cpp" />
+    <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camel.cpp" />
+    <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
@@ -223,8 +232,10 @@
     <ClCompile Include="minion.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
+    <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="progressBar.cpp" />
     <ClCompile Include="rocket.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene1.cpp" />
     <ClCompile Include="scene2.cpp" />
     <ClCompile Include="sceneManager.cpp" />
@@ -233,9 +244,12 @@
     <ClCompile Include="tank.cpp" />
     <ClCompile Include="tankGameScene.cpp" />
     <ClCompile Include="tankMap.cpp" />
+    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="txtData.cpp" />
+    <ClCompile Include="Unit.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>

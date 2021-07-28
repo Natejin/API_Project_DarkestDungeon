@@ -5,10 +5,12 @@
 
 CObjectManager::CObjectManager()
 {
+
 }
 
 CObjectManager::~CObjectManager()
 {
+
 }
 
 

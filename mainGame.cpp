@@ -10,9 +10,9 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 
-	//_astar = new Astar;
-	//_astar->init();
-
+	MG_CAMERA->Init();
+	MG_SCENE->init();
+	MG_GMOBJ->init();
 	return S_OK;
 }
 
@@ -27,10 +27,13 @@ void mainGame::update()
 {
 
 	gameNode::update();
-	TIME->update(60.0f);
+	MG_TIME->update(60.0f);
 	MG_SCENE->update();
-	MG_GMOBJ->Update(TIME->getElapsedTime(), TIME->getWorldTime());
+	MG_GMOBJ->Update(MG_TIME->getElapsedTime(), MG_TIME->getWorldTime());
 	MG_GMOBJ->LateUpdate();
+
+
+	MG_CAMERA->Update(MG_TIME->getElapsedTime(), MG_TIME->getWorldTime());
 	//SCENE->update();
 	//ANIMATION->update();
 	//EFFECT->update();
@@ -41,13 +44,15 @@ void mainGame::render(/*HDC hdc*/)
 {
 	PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	//==============================================
-	MG_SCENE->render();
+	MG_SCENE->Render(getMemDC());
 	MG_GMOBJ->BackRender(getMemDC());
 	MG_GMOBJ->Render(getMemDC());
 	MG_GMOBJ->FrontRender(getMemDC());
 	//==============================================
-	_astar->render();
-	TIME->render(getMemDC());
+
+	MG_TIME->render(getMemDC());
+
+	MG_CAMERA->Render(getMemDC());
 
 
 	//백버퍼의 내용을 HDC그린다.(건드리지 말것.)

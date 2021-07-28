@@ -12,11 +12,9 @@ minimap::~minimap()
 HRESULT minimap::init()
 {
 
-	IMAGE->addImage("배경화면", "images/배경.bmp", WINSIZEX * 2, WINSIZEY,true, RGB(255,0,255));
-	IMAGE->addImage("카메라", "images/카메라.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
-	IMAGE->addImage("미니맵", "images/배경.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
 
-	m_rockman = IMAGE->addFrameImage("록맨", "images/록맨.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
+
+	m_rockman = MG_IMAGE->findImage("록맨");
 	m_rockman->setX(WINSIZEX / 2);
 	m_rockman->setY(WINSIZEY / 2);
 	mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
@@ -33,7 +31,7 @@ void minimap::release()
 
 void minimap::update()
 {
-	if (InputManager->isStayKeyDown(VK_LEFT) && m_rockman->getX() > 0)
+	if (MG_INPUT->isStayKeyDown(VK_LEFT) && m_rockman->getX() > 0)
 	{
 		isLeft = true;
 
@@ -49,7 +47,7 @@ void minimap::update()
 			m_rockman->setX(m_rockman->getX() - PLAYERSPEED);
 		}
 	}
-	if (InputManager->isStayKeyDown(VK_RIGHT) && m_rockman->getX() + 80 < WINSIZEX)
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT) && m_rockman->getX() + 80 < WINSIZEX)
 	{
 		isLeft = false;
 
@@ -101,13 +99,13 @@ void minimap::update()
 
 void minimap::render()
 {
-	IMAGE->render("배경화면", getMemDC(), m_camera, 0);
-	IMAGE->render("미니맵", getMemDC(), 100, 50);
-	IMAGE->frameRender("록맨", getMemDC(), m_rockman->getX(), m_rockman->getY(), m_rockman->getFrameX(), m_rockman->getFrameY());
+	MG_IMAGE->render("배경화면", getMemDC(), m_camera, 0);
+	MG_IMAGE->render("미니맵", getMemDC(), 100, 50);
+	MG_IMAGE->frameRender("록맨", getMemDC(), m_rockman->getX(), m_rockman->getY(), m_rockman->getFrameX(), m_rockman->getFrameY());
 
 	Rectangle(getMemDC(), mini_rc.left, mini_rc.top, mini_rc.right, mini_rc.bottom);
 
-	IMAGE->render("카메라", getMemDC(), 100 - m_camera / 10, 50);
+	MG_IMAGE->render("카메라", getMemDC(), 100 - m_camera / 10, 50);
 
 
 

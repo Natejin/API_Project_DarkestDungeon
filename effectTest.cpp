@@ -12,7 +12,7 @@ effectTest::~effectTest()
 HRESULT effectTest::init()
 {
 
-	IMAGE->addImage("¹è°æ", "images/»ç³ª.bmp", WINSIZEX, WINSIZEY, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("¹è°æ", "images/»ç³ª.bmp", WINSIZEX, WINSIZEY, true, RGB(255, 0, 255));
 
 	////Æø¹ßÀÌÆåÆ® ÀÌ¹ÌÁö
 	//IMAGE->addImage("Æø¹ß", "images/explosion.bmp", 832, 62, true, RGB(255, 0, 255));
@@ -27,8 +27,8 @@ HRESULT effectTest::init()
 	//_effect1->init(IMAGE->findImage("Æø¹ß1"), 335, 135, 1, 0.4f);
 
 	count = 0;
-	EFFECT->addEffect("Æø¹ß", "images/explosion.bmp", 832, 62, 32, 62, 1, 0.5f, 100);
-	EFFECT->addEffect("Æø¹ß1", "images/explosion1.bmp", 4355, 135, 335, 135, 1, 0.3f, 100);
+	MG_EFFECT->addEffect("Æø¹ß", "images/explosion.bmp", 832, 62, 32, 62, 1, 0.5f, 100);
+	MG_EFFECT->addEffect("Æø¹ß1", "images/explosion1.bmp", 4355, 135, 335, 135, 1, 0.3f, 100);
 	return S_OK;
 }
 
@@ -40,15 +40,15 @@ void effectTest::release()
 
 void effectTest::update()
 {
-	if (InputManager->isOnceKeyDown(VK_LBUTTON))
+	if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 	{
 		//_effect->startEffect(m_ptMouse.x, m_ptMouse.y);
-		EFFECT->play("Æø¹ß", m_ptMouse.x, m_ptMouse.y);
+		MG_EFFECT->play("Æø¹ß", m_ptMouse.x, m_ptMouse.y);
 	}
-	if (InputManager->isOnceKeyDown(VK_RBUTTON))
+	if (MG_INPUT->isOnceKeyDown(VK_RBUTTON))
 	{
 		//_effect1->startEffect(m_ptMouse.x, m_ptMouse.y);
-		EFFECT->play("Æø¹ß1", m_ptMouse.x, m_ptMouse.y);
+		MG_EFFECT->play("Æø¹ß1", m_ptMouse.x, m_ptMouse.y);
 	}
 
 
@@ -56,7 +56,7 @@ void effectTest::update()
 
 	if (count % 10 == 0)
 	{
-		EFFECT->play("Æø¹ß", RND->getFromIntTo(100, 300), RND->getFromIntTo(100, 300));
+		MG_EFFECT->play("Æø¹ß", MG_RND->getFromIntTo(100, 300), MG_RND->getFromIntTo(100, 300));
 	}
 
 

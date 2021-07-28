@@ -14,7 +14,7 @@ HRESULT tank::init(const char* imageName)
 
 	_direction = TANKDIRECTION::TANKDIRECTION_UP;
 
-	_image = IMAGE->findImage(imageName);
+	_image = MG_IMAGE->findImage(imageName);
 
 	_speed = 100.0f;
 
@@ -31,28 +31,28 @@ void tank::release()
 
 void tank::update()
 {
-	if (InputManager->isStayKeyDown(VK_LEFT))
+	if (MG_INPUT->isStayKeyDown(VK_LEFT))
 	{
 		 tankMove();
 		_direction = TANKDIRECTION::TANKDIRECTION_LEFT;
 	}
-	if (InputManager->isStayKeyDown(VK_RIGHT))
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT))
 	{
 		tankMove();
 		_direction = TANKDIRECTION::TANKDIRECTION_RIGHT;
 	}
-	if (InputManager->isStayKeyDown(VK_UP))
+	if (MG_INPUT->isStayKeyDown(VK_UP))
 	{
 		tankMove();
 		_direction = TANKDIRECTION::TANKDIRECTION_UP;
 	}
-	if (InputManager->isStayKeyDown(VK_DOWN))
+	if (MG_INPUT->isStayKeyDown(VK_DOWN))
 	{
 		tankMove();
 		_direction = TANKDIRECTION::TANKDIRECTION_DOWN;
 	}
 
-	if (InputManager->isOnceKeyDown(VK_SPACE))
+	if (MG_INPUT->isOnceKeyDown(VK_SPACE))
 	{
 		fire();
 	}
@@ -87,7 +87,7 @@ void tank::tankMove()
 	rcCollision = _rc;
 
 
-	float elpasedTime = TIME->getElapsedTime();
+	float elpasedTime = MG_TIME->getElapsedTime();
 	float moveSpeed = elpasedTime * _speed;
 
 
@@ -215,10 +215,10 @@ void tank::bulletCollision()
 
 	for (size_t i = 0; i < _bullet->getVBullet().size(); i++)
 	{
-		if (_bullet->getVBullet()[i].rc.left + IMAGE->findImage("bullet")->getWidth() / 2 < 0
-			|| _bullet->getVBullet()[i].rc.left + IMAGE->findImage("bullet")->getWidth() / 2 > WINSIZEX
-			|| _bullet->getVBullet()[i].rc.top + IMAGE->findImage("bullet")->getHeight() / 2 < 0
-			|| _bullet->getVBullet()[i].rc.top + IMAGE->findImage("bullet")->getHeight() / 2 > WINSIZEY)
+		if (_bullet->getVBullet()[i].rc.left + MG_IMAGE->findImage("bullet")->getWidth() / 2 < 0
+			|| _bullet->getVBullet()[i].rc.left + MG_IMAGE->findImage("bullet")->getWidth() / 2 > WINSIZEX
+			|| _bullet->getVBullet()[i].rc.top + MG_IMAGE->findImage("bullet")->getHeight() / 2 < 0
+			|| _bullet->getVBullet()[i].rc.top + MG_IMAGE->findImage("bullet")->getHeight() / 2 > WINSIZEY)
 		{
 			_bullet->removeMissile(i);
 			return;
@@ -228,26 +228,26 @@ void tank::bulletCollision()
 
 		if (_bullet->getVBullet()[i].angle == PI)
 		{
-			tileX = (_bullet->getVBullet()[i].rc.left + IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
-			tileY = (_bullet->getVBullet()[i].rc.top + IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
+			tileX = (_bullet->getVBullet()[i].rc.left + MG_IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
+			tileY = (_bullet->getVBullet()[i].rc.top + MG_IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
 			tileIndex = tileX + tileY * TILEX;
 		}
 		else if (_bullet->getVBullet()[i].angle == 0)
 		{
-			tileX = (_bullet->getVBullet()[i].rc.left + IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
-			tileY = (_bullet->getVBullet()[i].rc.top + IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
+			tileX = (_bullet->getVBullet()[i].rc.left + MG_IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
+			tileY = (_bullet->getVBullet()[i].rc.top + MG_IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
 			tileIndex = tileX + tileY * TILEX;
 		}
 		else if (_bullet->getVBullet()[i].angle == PI/2)
 		{
-			tileX = (_bullet->getVBullet()[i].rc.left + IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
-			tileY = (_bullet->getVBullet()[i].rc.top + IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
+			tileX = (_bullet->getVBullet()[i].rc.left + MG_IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
+			tileY = (_bullet->getVBullet()[i].rc.top + MG_IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
 			tileIndex = tileX + tileY * TILEX;
 		}
 		else if (_bullet->getVBullet()[i].angle == PI / 2*3)
 		{
-			tileX = (_bullet->getVBullet()[i].rc.left + IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
-			tileY = (_bullet->getVBullet()[i].rc.top + IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
+			tileX = (_bullet->getVBullet()[i].rc.left + MG_IMAGE->findImage("bullet")->getWidth() / 2) / TILESIZE;
+			tileY = (_bullet->getVBullet()[i].rc.top + MG_IMAGE->findImage("bullet")->getHeight() / 2) / TILESIZE;
 			tileIndex = tileX + tileY * TILEX;
 		}
 		if (_tankMap->getMap()[tileIndex].obj == OBJECT::OBJ_BLOCK

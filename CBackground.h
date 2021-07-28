@@ -1,20 +1,11 @@
 #pragma once
-#include "Object.h"
-#include "Transform.h"
+#include "GameObject.h"
 
-class GameObject : public Object
+class CBackground : public GameObject
 {
-
 public:
-	//Vector2 m_pos;
-	//Vector2 m_scale;
-	//Vector2 m_pivot;
-	Transform* m_transform;
-	class image* m_image;
-
-public:
-	GameObject();
-	~GameObject();
+	CBackground();
+	~CBackground();
 
 	HRESULT Init();
 
@@ -27,4 +18,3 @@ public:
 
 	virtual void Release();
 };
-

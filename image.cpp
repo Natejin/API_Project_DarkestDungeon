@@ -1,5 +1,6 @@
 #include"framework.h"
 #include "image.h"
+#include "Transform.h"
 //알파블렌드를 사용하기 위해
 #pragma comment(lib,"msimg32.lib")
 image::image() : _imageInfo(NULL),
@@ -373,6 +374,36 @@ void image::render(HDC hdc, const int destX, const int destY)
 
 }
 
+void image::render(HDC hdc, const Transform* transform)
+{
+	Vector2 pos = transform->m_pos;
+	pos -= transform->m_scale * transform->m_pivot;
+	pos -= MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,						//복삳될 장소의 DC
+			pos.x,							//복사될 좌표의 시작점X
+			pos.y,							//복사될 좌표의 시작점Y
+			_imageInfo->width,			//복사될 이미지 가로크기
+			_imageInfo->height,			//복사될 이미지 세로크기
+			_imageInfo->hMemDC,			//복사될 대상DC
+			0,							//복사시작 지점 X
+			0,							//복사시작 지점 Y
+			_imageInfo->width,			//복사영역 가로크기
+			_imageInfo->height,			//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc, 
+			pos.x, 
+			pos.y, _imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, SRCCOPY);
+	}
+}
+
 void image::render(HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourheight)
 {
 	if (_isTrans)
@@ -400,6 +431,8 @@ void image::render(HDC hdc, const int destX, const int destY, const int sourX, c
 
 void image::frameRender(HDC hdc, const int destX, const int destY)
 {
+	
+
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -421,6 +454,38 @@ void image::frameRender(HDC hdc, const int destX, const int destY)
 		BitBlt(hdc, destX, destY, _imageInfo->frameWidth, _imageInfo->frameHeight,
 			_imageInfo->hMemDC, 
 			_imageInfo->currentFrameX * _imageInfo->frameWidth, 
+			_imageInfo->currentFrameY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void image::frameRender(HDC hdc, const Transform* transform)
+{
+	Vector2 pos = transform->m_pos;
+	pos -= transform->m_scale * transform->m_pivot;
+	pos -= MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,		//복사시작 지점 X
+			_imageInfo->currentFrameY * _imageInfo->frameHeight,	//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc, 
+			pos.x, 
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,
 			_imageInfo->currentFrameY * _imageInfo->frameHeight, SRCCOPY);
 	}
 }

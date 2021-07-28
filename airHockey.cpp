@@ -45,16 +45,16 @@ void airHockey::release()
 
 void airHockey::update()
 {
-	if (InputManager->isStayKeyDown(VK_RIGHT))_racket[0].x += RACKET_SPEED;
-	if (InputManager->isStayKeyDown(VK_LEFT))_racket[0].x -= RACKET_SPEED;
-	if (InputManager->isStayKeyDown(VK_UP))_racket[0].y -= RACKET_SPEED;
-	if (InputManager->isStayKeyDown(VK_DOWN))_racket[0].y+= RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT))_racket[0].x += RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown(VK_LEFT))_racket[0].x -= RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown(VK_UP))_racket[0].y -= RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown(VK_DOWN))_racket[0].y+= RACKET_SPEED;
 
 
-	if (InputManager->isStayKeyDown('D'))_racket[1].x += RACKET_SPEED;
-	if (InputManager->isStayKeyDown('A'))_racket[1].x -= RACKET_SPEED;
-	if (InputManager->isStayKeyDown('W'))_racket[1].y -= RACKET_SPEED;
-	if (InputManager->isStayKeyDown('S'))_racket[1].y += RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown('D'))_racket[1].x += RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown('A'))_racket[1].x -= RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown('W'))_racket[1].y -= RACKET_SPEED;
+	if (MG_INPUT->isStayKeyDown('S'))_racket[1].y += RACKET_SPEED;
 
 
 

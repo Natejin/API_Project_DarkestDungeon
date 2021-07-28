@@ -23,9 +23,9 @@ HRESULT enemy::init(const char* imageName, POINT position)
 
 
     _fireCount = 0;
-    _rndfireCount =  RND->getFromIntTo(1,1000);
+    _rndfireCount =  MG_RND->getFromIntTo(1,1000);
 
-    _image = IMAGE->findImage(imageName);
+    _image = MG_IMAGE->findImage(imageName);
     _rc = RectMakeCenter(position.x, position.y, _image->getFrameWidth(), _image->getFrameHeight());
 
     return S_OK;
@@ -71,7 +71,7 @@ bool enemy::bulletCountFire()
     _fireCount++;
     if (_fireCount % _rndfireCount == 0)
     {
-        _rndfireCount = RND->getFromIntTo(1, 1000);
+        _rndfireCount = MG_RND->getFromIntTo(1, 1000);
         _fireCount = 0;
         return true;
     }

@@ -1,5 +1,7 @@
 #pragma once
 #include"animation.h"
+
+
 class image
 {
 public:
@@ -88,12 +90,16 @@ public:
 	//∑ª¥ı
 	void render(HDC hdc);
 	void render(HDC hdc, const int  destX, const int destY);
+	void render(HDC hdc, const class Transform* transform);
 	void render(HDC hdc, const int  destX, const int destY,const int sourX, const int sourY, const int sourWidth, const int sourheight);
 
 
 	//«¡∑π¿” ∑ª¥ı
 	void frameRender(HDC hdc, const int destX, const int destY);
+	void frameRender(HDC hdc, const class Transform* transform);
+	//void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
+	//void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 
 
 	//∑Á«¡∑ª¥ı

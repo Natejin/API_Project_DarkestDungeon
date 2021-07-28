@@ -52,11 +52,11 @@ void Astar::update()
 	{
 		tileComposition();
 	}
-	if(InputManager->isOnceKeyDown(VK_SPACE)&&_startPointSet&&_endPointSet&&_astarState== ASTAR_STATE::ASTAR_STATE_END)
+	if(MG_INPUT->isOnceKeyDown(VK_SPACE)&&_startPointSet&&_endPointSet&&_astarState== ASTAR_STATE::ASTAR_STATE_END)
 	{
 		tileInitializing();
 	}
-	if (InputManager->isOnceKeyDown('5'))
+	if (MG_INPUT->isOnceKeyDown('5'))
 	{
 		_openList.clear();
 		_closeList.clear();
@@ -157,14 +157,14 @@ void Astar::render()
 
 void Astar::tileComposition()
 {
-	if (InputManager->isOnceKeyDown('1'))_selectType = TILE_TYPE::TILE_TYPE_EMPTY;
-	else if (InputManager->isOnceKeyDown('2'))_selectType = TILE_TYPE::TILE_TYPE_START;
-	else if (InputManager->isOnceKeyDown('3'))_selectType = TILE_TYPE::TILE_TYPE_END;
-	else if (InputManager->isOnceKeyDown('4'))_selectType = TILE_TYPE::TILE_TYPE_WALL;
+	if (MG_INPUT->isOnceKeyDown('1'))_selectType = TILE_TYPE::TILE_TYPE_EMPTY;
+	else if (MG_INPUT->isOnceKeyDown('2'))_selectType = TILE_TYPE::TILE_TYPE_START;
+	else if (MG_INPUT->isOnceKeyDown('3'))_selectType = TILE_TYPE::TILE_TYPE_END;
+	else if (MG_INPUT->isOnceKeyDown('4'))_selectType = TILE_TYPE::TILE_TYPE_WALL;
 	typeColor(_selectType);
 
 
-	if (InputManager->isStayKeyDown(VK_LBUTTON))
+	if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
 	{
 		for (size_t i = 0; i < TILE_Y; i++)
 		{

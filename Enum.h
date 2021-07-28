@@ -14,3 +14,11 @@ enum class LAYER
 	UI = 512
 
 };
+
+enum class JOB
+{
+	Crusader,
+	Vestal,
+	PlagueDoctor,
+	Highwayman
+};

@@ -1,6 +1,9 @@
 #include "framework.h"
 #include "sceneManager.h"
-#include"gameNode.h"
+#include "gameNode.h"
+#include "Astar.h"
+#include "TestScene.h"
+
 SceneManager::SceneManager()
 {
 }
@@ -10,51 +13,64 @@ SceneManager::~SceneManager()
 }
 
 //현재씬을  널값으로  초기화하자
-gameNode* SceneManager::_currentScene = nullptr;
+Scene* SceneManager::_currentScene = nullptr;
 
 HRESULT SceneManager::init()
 {
+	//_astar = new Astar;
+	//_astar->init();
+
+	m_testScene = new TestScene;
+	m_testScene->Init();
+	_currentScene = m_testScene;
 	return S_OK;
 }
 
 void SceneManager::release()
 {
-	isceneList iter = _sceneList.begin();
-	for (iter; iter!= _sceneList.end();)
-	{
-		//삭제
-		if (iter->second != NULL)
-		{
-			if (iter->second == _currentScene)iter->second->release();
-			SAFE_DELETE(iter->second);
-			iter = _sceneList.erase(iter);
-		}
-		else
-		{
-			iter++;
-		}
-	}
-	_sceneList.clear();
+	//isceneList iter = m_sceneList.begin();
+	//for (iter; iter!= m_sceneList.end();)
+	//{
+	//	//삭제
+	//	if (iter->second != NULL)
+	//	{
+	//		if (iter->second == _currentScene)iter->second->release();
+	//		SAFE_DELETE(iter->second);
+	//		iter = m_sceneList.erase(iter);
+	//	}
+	//	else
+	//	{
+	//		iter++;
+	//	}
+	//}
+	//m_sceneList.clear();
+
+
+
+	//m_testScene->Release();
+	//delete m_testScene;
+	//m_testScene = nullptr;
+	//_currentScene = nullptr;
 }
 
 void SceneManager::update()
 {
 	if (_currentScene)
 	{
-		_currentScene->update();
+		_currentScene->Update();
 	}
 }
 
-void SceneManager::render()
+void SceneManager::Render(HDC _hdc)
 {
-	if (_currentScene)_currentScene->render();
+	if (_currentScene)_currentScene->Render(_hdc);
 }
 
-gameNode* SceneManager::addScene(string sceneName, gameNode* scene)
+Scene* SceneManager::addScene(string sceneName, Scene* scene)
 {
 	if (!scene)return nullptr;
 
-	_sceneList.insert(make_pair(sceneName, scene));
+	m_sceneList.insert(make_pair(sceneName, scene));
 
 	return nullptr;
 }
@@ -62,18 +78,18 @@ gameNode* SceneManager::addScene(string sceneName, gameNode* scene)
 HRESULT SceneManager::changeScene(string sceneName)
 {
 
-	isceneList find = _sceneList.find(sceneName);
+	isceneList find = m_sceneList.find(sceneName);
 
 	//못찾으면E_FAIL
-	if(find==_sceneList.end())return E_FAIL;
+	if(find==m_sceneList.end())return E_FAIL;
 	//바꾸려는 씬이현재씬이랑같아도  E_FAIL
 	if (find->second == _currentScene)return E_FAIL;
 
 	//여기까지 왔다면 문제가 없다 즉 씬을 초기화 하고  변경하자.
-	if (SUCCEEDED(find->second->init()))
+	if (SUCCEEDED(find->second->Init()))
 	{
 		//혹시 기존에 씬이 있다면 릴리즈
-		if (_currentScene)_currentScene->release();
+		if (_currentScene)_currentScene->Release();
 
 		_currentScene = find->second;
 		return  S_OK;
