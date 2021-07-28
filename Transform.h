@@ -1,4 +1,5 @@
 #pragma once
+
 class Transform
 {
 public:
@@ -9,4 +10,3 @@ public:
 	Vector2 m_scale;
 	Vector2 m_pivot;
 };
-

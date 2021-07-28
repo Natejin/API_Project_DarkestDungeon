@@ -2,13 +2,9 @@
 #include "TestScene.h"
 #include "CPlayer.h"
 #include "CBackground.h"
-TestScene::TestScene()
-{
-}
 
-TestScene::~TestScene()
-{
-}
+TestScene::TestScene() {}
+TestScene::~TestScene() {}
 
 HRESULT TestScene::Init()
 {

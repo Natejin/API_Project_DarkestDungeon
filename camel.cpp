@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "camel.h"
 
-camel::camel()
-{
-}
-
-camel::~camel()
-{
-}
+camel::camel() {}
+camel::~camel() {}
 
 HRESULT camel::init()
 {
@@ -26,31 +21,22 @@ HRESULT camel::init()
 	//_ani2->setPlayFrame(arrAni, 10, true);
 	//_ani2->setFPS(1);
 
-
 	//_ani3 = new animation;
 	//_ani3->init(_camel->getWidth(), _camel->getHeight(), 75, 89);
 	//_ani3->setPlayFrame(1, 10, false, true);
 	//_ani3->setFPS(1);
 
-
-
-
 	//매니저로
 	_camel = MG_IMAGE->addFrameImage("camel", "images/camel.bmp", 300, 267,4,3, true, RGB(255, 0, 255));
-
 	MG_ANIMATION->addDefAnimation("ani1", "camel", 10, false, true);
 
 
 	int arrLen[] = { 1,2,3,7,8 };
 	MG_ANIMATION->addAnimation("ani2", "camel", arrLen, 5, 5, true);
-
 	MG_ANIMATION->addAnimation("ani3", "camel", 0,5,10,false, true);
-
 
 	//시작  애니메이션 설정
 	_ani = MG_ANIMATION->findAnimation("ani1");
-
-
 	return S_OK;
 }
 
@@ -65,8 +51,6 @@ void camel::update()
 {
 	if (MG_INPUT->isOnceKeyDown('1'))
 	{
-
-
 		_ani = MG_ANIMATION->findAnimation("ani1");
 		MG_ANIMATION->start("ani1");
 		//_ani1->start();
@@ -96,9 +80,6 @@ void camel::render()
 	/*_camel->aniRender(getMemDC(), WINSIZEX / 2 - 200, WINSIZEY / 2, _ani1);
 	_camel->aniRender(getMemDC(), WINSIZEX / 2, WINSIZEY / 2, _ani2);
 	_camel->aniRender(getMemDC(), WINSIZEX / 2 + 200, WINSIZEY / 2, _ani3);*/
-	
-	
-	
 	
 	_camel->aniRender(getMemDC(), WINSIZEX / 2, WINSIZEY / 2, _ani);
 }

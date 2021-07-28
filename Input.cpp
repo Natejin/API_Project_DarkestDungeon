@@ -1,14 +1,8 @@
-
 #include"framework.h"
 #include "Input.h"
 
-Input::Input()
-{
-}
-
-Input::~Input()
-{
-}
+Input::Input() {}
+Input::~Input() {}
 
 HRESULT Input::init()
 {
@@ -24,6 +18,7 @@ HRESULT Input::init()
 
 void Input::release()
 {
+
 }
 
 bool Input::isOnceKeyDown(int key)

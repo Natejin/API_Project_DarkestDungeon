@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "image.h"
 
-
 GameObject::GameObject()
 {
 	m_image = nullptr;
@@ -11,10 +10,7 @@ GameObject::GameObject()
 	m_transform->m_scale = Vector2(0, 0);
 	m_transform->m_pivot = Vector2(0.5, 0.5);
 }
-
-GameObject::~GameObject()
-{
-}
+GameObject::~GameObject() {}
 
 HRESULT GameObject::Init()
 {

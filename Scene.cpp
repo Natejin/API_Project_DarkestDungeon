@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "Scene.h"
 
-Scene::Scene()
-{
-}
-
-Scene::~Scene()
-{
-}
+Scene::Scene() {}
+Scene::~Scene() {}
 
 HRESULT Scene::Init()
 {

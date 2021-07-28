@@ -1,14 +1,10 @@
 #include "framework.h"
 #include "animation.h"
 
-animation::animation():_frameNum(0), _frameWidth(0), _frameHeight(0), _loop(false),
-_elapseSec(0), _nowPlayIndex(0), _play(false)
-{
-}
-
-animation::~animation()
-{
-}
+animation::animation():
+	_frameNum(0), _frameWidth(0), _frameHeight(0), _loop(false),
+	_elapseSec(0), _nowPlayIndex(0), _play(false) {}
+animation::~animation() {}
 
 HRESULT animation::init(int totalW, int totalH, int frameW, int frameH)
 {
@@ -83,7 +79,6 @@ void animation::setDefPlayFrame(bool reverse, bool loop)
 			_playList.push_back(i);
 		}
 	}
-
 }
 
 void animation::setPlayFrame(int* playArr, int arrLen, bool loop)
@@ -112,7 +107,6 @@ void animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 	
 	else if (start > end)
 	{
-		
 		if (reverse)
 		{
 			if (_loop)
@@ -131,7 +125,6 @@ void animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 			
 			else
 			{
-			
 				for (int i = start; i >= end; i--)
 				{
 					_playList.push_back(i);
@@ -143,6 +136,7 @@ void animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 				}
 			}
 		}
+
 		else
 		{
 			for (int i = start; i <= end; i--)
@@ -167,22 +161,22 @@ void animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 					_playList.push_back(i);
 				}
 			}
+
 			else
 			{	
 				for (int i = start; i <= end; i++)
 				{
 					_playList.push_back(i);
 				}
-				
 				for (int i = end - 1; i <= start; i--)
 				{
 					_playList.push_back(i);
 				}
 			}
 		}
+
 		else
 		{
-		
 			for (int i = start; i <= end; i++)
 			{
 				_playList.push_back(i);

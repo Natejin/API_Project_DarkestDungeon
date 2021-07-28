@@ -1,17 +1,11 @@
 #include "framework.h"
 #include "animationTest.h"
 
-animationTest::animationTest()
-{
-}
-
-animationTest::~animationTest()
-{
-}
+animationTest::animationTest() {}
+animationTest::~animationTest() {}
 
 HRESULT animationTest::init()
 {
-
 	_camel = new camel;
 	_camel->init();
 	return S_OK;
@@ -20,7 +14,6 @@ HRESULT animationTest::init()
 void animationTest::release()
 {
 	SAFE_DELETE(_camel);
-
 }
 
 void animationTest::update()

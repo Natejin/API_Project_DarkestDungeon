@@ -1,17 +1,11 @@
 #include "framework.h"
 #include "animationManager.h"
 
-animationManager::animationManager()
-{
-}
-
-animationManager::~animationManager()
-{
-}
+animationManager::animationManager() {}
+animationManager::~animationManager() {}
 
 HRESULT animationManager::init()
 {
-    
     return S_OK;
 }
 
@@ -30,8 +24,10 @@ void animationManager::update()
         iter->second->frameUpdate(MG_TIME->getElapsedTime() * 1.0f);
     }
 }
+
 void animationManager::render()
 {
+
 }
 
 void animationManager::addDefAnimation(string animationKeyName, char* imageKeyName, int fps, bool reverse, bool loop)
@@ -46,6 +42,7 @@ void animationManager::addDefAnimation(string animationKeyName, char* imageKeyNa
     //이미지와 애니메이션을 초기화 한후  맵에 추가한다.
     _animation.insert(make_pair(animationKeyName, ani));
 }
+
 void animationManager::addAnimation(string animationKeyName, char* imageKeyName, int* playArr, int arrLen, int fps, bool loop)
 {
     //이미지 및 애니메이션  초기화
@@ -98,7 +95,6 @@ void animationManager::resume(string animationKeyName)
 
 animation* animationManager::findAnimation(string animationKeyName)
 {
-
     iterArrAnimation iter = _animation.find(animationKeyName);
 
     if (iter != _animation.end())

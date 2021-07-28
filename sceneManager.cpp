@@ -4,13 +4,8 @@
 #include "Astar.h"
 #include "TestScene.h"
 
-SceneManager::SceneManager()
-{
-}
-
-SceneManager::~SceneManager()
-{
-}
+SceneManager::SceneManager() {}
+SceneManager::~SceneManager() {}
 
 //현재씬을  널값으로  초기화하자
 Scene* SceneManager::_currentScene = nullptr;

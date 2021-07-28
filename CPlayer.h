@@ -6,6 +6,7 @@ class CPlayer : public Unit
 protected:
 	JOB job;
 	int stress;
+
 public:
 	CPlayer();
 	~CPlayer();

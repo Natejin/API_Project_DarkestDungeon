@@ -1,10 +1,8 @@
 #pragma once
-
 #include"singleton.h"
 
 class RandomFunction :public Singleton<RandomFunction>
 {
-
 public:
 	RandomFunction() { srand(GetTickCount()); };
 	~RandomFunction() {};

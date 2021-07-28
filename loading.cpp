@@ -1,17 +1,12 @@
 #include"framework.h"
 #include "loading.h"
-loadItem::loadItem()
-{
-}
 
-loadItem::~loadItem()
-{
-}
+loadItem::loadItem() {}
+loadItem::~loadItem() {}
 
 HRESULT loadItem::initForImage(string keyName, int width, int height)
 {
 	_kind = LOAD_KIND::LOAD_KIND_IMAGE_0;
-
 
 	memset(&_imageResource, 0, sizeof(tagImageResource));
 	_imageResource.keyName = keyName;
@@ -23,8 +18,6 @@ HRESULT loadItem::initForImage(string keyName, int width, int height)
 
 HRESULT loadItem::initForImage(string keyName, const char* fileName, int width, int height, BOOL isTrans, COLORREF transColor)
 {
-
-
 	_kind = LOAD_KIND::LOAD_KIND_IMAGE_1;
 
 

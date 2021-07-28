@@ -3,7 +3,6 @@
 //
 
 #pragma once
-
 #include "targetver.h"
 #define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
 // Windows 헤더 파일
@@ -22,7 +21,6 @@
 #include<map>
 #include<string>
 #include<unordered_map>
-
 
 
 //==========================================
@@ -48,17 +46,19 @@
 //======================================
 //##			매니저들			  ##
 //======================================
-#define MG_INPUT	Input::getSingleton()
-#define MG_RND				RandomFunction::getSingleton()
-#define MG_IMAGE			imageManager::getSingleton()
+#define MG_INPUT		Input::getSingleton()
+#define MG_RND			RandomFunction::getSingleton()
+#define MG_IMAGE		imageManager::getSingleton()
 #define MG_TIME			timeManager::getSingleton()
-#define MG_TXT				txtData::getSingleton()
+#define MG_TXT			txtData::getSingleton()
 #define MG_SCENE		SceneManager::getSingleton()
-#define MG_SOUND			soundManager::getSingleton()
-#define MG_ANIMATION		animationManager::getSingleton()
-#define MG_EFFECT			effectManager::getSingleton()
+#define MG_SOUND		soundManager::getSingleton()
+#define MG_ANIMATION	animationManager::getSingleton()
+#define MG_EFFECT		effectManager::getSingleton()
 #define MG_GMOBJ		CObjectManager::getSingleton()
 #define MG_CAMERA		CCameraManager::getSingleton()
+
+
 //==========================================
 //				 매크로 설정
 //==========================================
@@ -75,9 +75,7 @@
 //==========================================
 //			메인게임 릴리즈에서 사용
 //==========================================
-
 #define SAFE_DELETE(p) {if(p) {delete(p);(p) = nullptr;}}
-
 
 
 //========================================================
@@ -87,4 +85,3 @@
 extern HINSTANCE m_hInstance;
 extern HWND m_hWnd;
 extern POINT m_ptMouse;
-

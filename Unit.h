@@ -22,4 +22,3 @@ public:
 
 	virtual void Release();
 };
-

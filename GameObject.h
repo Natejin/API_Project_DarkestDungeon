@@ -4,7 +4,6 @@
 
 class GameObject : public Object
 {
-
 public:
 	//Vector2 m_pos;
 	//Vector2 m_scale;
@@ -27,4 +26,3 @@ public:
 
 	virtual void Release();
 };
-

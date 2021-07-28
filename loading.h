@@ -13,6 +13,7 @@ enum class LOAD_KIND
 	LOAD_KIND_SOUND,
 	LOAD_KIND_END
 };
+
 struct tagImageResource
 {
 	string keyName;		 //Å°°ª
@@ -30,27 +31,23 @@ class loadItem
 private:
 	LOAD_KIND _kind;
 	tagImageResource _imageResource;
+
 public:
 	loadItem();
 	~loadItem();
 
-	//
 	HRESULT initForImage(string keyName, int width, int height);
 	
-
 	HRESULT initForImage(string keyName, const char* fileName,int width, int height, BOOL isTrans = FALSE, COLORREF transColor = RGB(255,0,255));
 	HRESULT initForImage(string keyName, const char* fileName,float x, float y,int width, int height, BOOL isTrans = FALSE, COLORREF transColor = RGB(255,0,255));
 
 	HRESULT initForFrameImage(string keyName, const char* fileName, int width, int height,int frameX, int frameY, BOOL isTrans = FALSE, COLORREF transColor = RGB(255, 0, 255));
 	HRESULT initForFrameImage(string keyName, const char* fileName, float x, float y, int width, int height, int frameX, int frameY, BOOL isTrans = FALSE, COLORREF transColor = RGB(255, 0, 255));
 
-
 	LOAD_KIND getLoadKind()const { return	(LOAD_KIND)_kind; }
 	tagImageResource getImageResource()const { return  _imageResource; }
 
 };
-
-
 
 class loading  :public gameNode
 {
@@ -61,7 +58,6 @@ private:
 
 	image* _background;
 	progressBar* _loadingBar;
-
 
 	int _currentGauge;
 
@@ -74,9 +70,6 @@ public:
 	void update();
 	void render();
 
-
-
-
 	void loadImage(string keyName, int width, int height);
 
 	void loadImage(string keyName, const char* fileName, int width, int height, BOOL isTrans = FALSE, COLORREF transColor = RGB(255, 0, 255));
@@ -85,12 +78,8 @@ public:
 	void loadForFrameImage(string keyName, const char* fileName, int width, int height, int frameX, int frameY, BOOL isTrans = FALSE, COLORREF transColor = RGB(255, 0, 255));
 	void loadForFrameImage(string keyName, const char* fileName, float x, float y, int width, int height, int frameX, int frameY, BOOL isTrans = FALSE, COLORREF transColor = RGB(255, 0, 255));
 
-
 	BOOL  loadingDone();
 
 	vector<loadItem*>getLoadItem()const { return _vLoadItem; }
 
-
-
 };
-

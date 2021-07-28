@@ -1,5 +1,6 @@
 #pragma once
 #include"singleton.h"
+
 class txtData : public Singleton<txtData>
 {
 public:
@@ -18,12 +19,4 @@ public:
 	//데이터들의  리스트
 	vector<string> charArraySeperation(char charArray[]);
 
-
-
-
-
-
-
-
 };
-

@@ -1,10 +1,12 @@
 #pragma once
 #include"singleton.h"
 #include"timer.h"
+
 class timeManager : public Singleton<timeManager>
 {
 private:
 	timer* _timer;
+
 public:
 	timeManager();
 	~timeManager();
@@ -19,4 +21,3 @@ public:
 	 
 
 };
-

@@ -1,17 +1,11 @@
 #include "framework.h"
 #include "timeManager.h"
 
-timeManager::timeManager()
-{
-}
-
-timeManager::~timeManager()
-{
-}
+timeManager::timeManager() {}
+timeManager::~timeManager() {}
 
 HRESULT timeManager::init()
 {
-
     _timer = new timer;
     _timer->init();
     return S_OK;
@@ -36,12 +30,12 @@ void timeManager::update(float lock)
 void timeManager::render(HDC hdc)
 {
     char str[256];
-
     string strFrame;
 
     SetBkMode(hdc, TRANSPARENT);
 
     SetTextColor(hdc, RGB(0, 0, 255));
+
     //디버그 모드라면
 #ifdef _DEBUG
 
@@ -67,9 +61,6 @@ void timeManager::render(HDC hdc)
             sprintf_s(str, "FPS : %d", _timer->getFrameRate());
             TextOut(hdc, 0, 0, str, strlen(str));
         }
-
-    
-
 
 #endif // DEBUG
 

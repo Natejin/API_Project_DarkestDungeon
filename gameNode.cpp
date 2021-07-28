@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "gameNode.h"
-gameNode::gameNode()
-{
-}
 
-
-gameNode::~gameNode()
-{
-}
+gameNode::gameNode() {}
+gameNode::~gameNode() {}
 
 HRESULT gameNode::init()
 {
@@ -19,7 +14,6 @@ HRESULT gameNode::init()
 	//NULL이면 WM_TIMER가 실행
 	
 	//setBackBuffer();
-
 
 	_hdc = GetDC(m_hWnd);
 	_managerInit = false;
@@ -41,9 +35,6 @@ HRESULT gameNode::init(bool managerInit)
 		MG_SOUND->init();
 
 	}
-
-
-
 	return E_NOTIMPL;
 }
 
@@ -55,8 +46,6 @@ HRESULT gameNode::init(bool managerInit)
 
 void gameNode::release()
 {	//타이머 해제
-
-
 
 	if (_managerInit)
 	{
@@ -73,7 +62,6 @@ void gameNode::release()
 		MG_ANIMATION->releaseSingleton();
 		MG_EFFECT->releaseSingleton();
 
-
 		MG_SCENE->release();
 		MG_IMAGE->release();
 		MG_TIME->release();
@@ -84,7 +72,6 @@ void gameNode::release()
 
 	ReleaseDC(m_hWnd, _hdc);
 	
-
 	//SAFE_DELETE(_backBuffer);
 
 }
@@ -94,8 +81,10 @@ void gameNode::update()
 	//더블버퍼 이후 사용하지 않는다 true->false
 	InvalidateRect(m_hWnd, NULL, false);
 }
+
 void gameNode::render(/*HDC hdc*/)
 {
+
 }
 
 LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)

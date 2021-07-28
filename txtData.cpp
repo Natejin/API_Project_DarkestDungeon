@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "txtData.h"
 
-txtData::txtData()
-{
-}
-
-txtData::~txtData()
-{
-}
+txtData::txtData() {}
+txtData::~txtData() {}
 
 HRESULT txtData::init()
 {
@@ -20,7 +15,6 @@ void txtData::txtSave(char* saveFileName, vector<string> vStr)
 	char str[128];
 	DWORD write;
 
-
 	strncpy_s(str, 128, vectorArrayCombine(vStr), 128);
 
 	file = CreateFile(
@@ -31,7 +25,6 @@ void txtData::txtSave(char* saveFileName, vector<string> vStr)
 		CREATE_ALWAYS,
 		FILE_ATTRIBUTE_NORMAL,
 		NULL);
-
 
 	WriteFile(file, str, 128, &write, NULL);
 	CloseHandle(file);
@@ -51,6 +44,7 @@ char* txtData::vectorArrayCombine(vector<string> vArray)
 			strcat(str, ",");
 		}
 	}
+
 	return str;
 }
 
@@ -70,7 +64,6 @@ vector<string> txtData::txtLoad(char* loadFileName)
 		OPEN_EXISTING,
 		FILE_ATTRIBUTE_NORMAL,
 		NULL);
-
 
 	ReadFile(file, str, 128, &read, NULL);
 	CloseHandle(file);
@@ -92,7 +85,6 @@ vector<string> txtData::charArraySeperation(char charArray[])
 	{
 		vArray.push_back(token);
 	}
-
 
 	return vArray;
 }

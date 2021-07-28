@@ -16,53 +16,11 @@
     <Filter Include="gameNode">
       <UniqueIdentifier>{2a0be0e6-62fd-43de-a606-55b511847593}</UniqueIdentifier>
     </Filter>
-    <Filter Include="singleton">
-      <UniqueIdentifier>{87bf2d5b-3654-459b-adb0-5178817b9f2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Manager">
       <UniqueIdentifier>{77fc1430-c839-4247-ae8d-f85644be1aa7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UTIL">
-      <UniqueIdentifier>{693a5e0e-cac8-4d85-bbd8-7c6f50294b06}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="image">
-      <UniqueIdentifier>{f246c95e-8530-4564-a361-9e48ca56eb83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="타이머">
-      <UniqueIdentifier>{153e0e81-aff6-49db-8d0b-f53ec02a7782}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="프로그래스바">
-      <UniqueIdentifier>{5a2a6f49-9af9-45ce-a35f-aa13aa88d69e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="텍스트데이터">
-      <UniqueIdentifier>{96973ece-e8a2-422b-a9b8-1f58af1713f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="loading">
-      <UniqueIdentifier>{4340957f-7eb6-4d06-a697-1d8d3df4894d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="애니메이션">
-      <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="이펙트">
-      <UniqueIdentifier>{799f9037-ac59-46a7-8c21-272e269886bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="이펙트\이펙트테스트">
-      <UniqueIdentifier>{cf39b8fe-e5ca-446a-93ca-6095e60ccfba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="맵툴">
-      <UniqueIdentifier>{df97f2cb-c56a-4c60-a425-efb3ced4b31e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="에이슷하">
-      <UniqueIdentifier>{d6da94a8-d55e-4cc4-b47c-98bc84efa10d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="애니메이션\애니메이션테스트">
-      <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{b9d236da-086c-4479-aee7-a1acbeb7dd14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Struct">
-      <UniqueIdentifier>{11ba7997-29cd-4377-9f11-5991315c57cd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{c009a410-e4a6-412b-bf6f-ffb28291d3df}</UniqueIdentifier>
@@ -103,6 +61,48 @@
     <Filter Include="Object\Component">
       <UniqueIdentifier>{73f8c52f-b98d-433e-b6c3-957e7fea7af1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Reference\프로그래스바">
+      <UniqueIdentifier>{5a2a6f49-9af9-45ce-a35f-aa13aa88d69e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\loading">
+      <UniqueIdentifier>{4340957f-7eb6-4d06-a697-1d8d3df4894d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\에이슷하">
+      <UniqueIdentifier>{d6da94a8-d55e-4cc4-b47c-98bc84efa10d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\UTIL">
+      <UniqueIdentifier>{693a5e0e-cac8-4d85-bbd8-7c6f50294b06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Struct">
+      <UniqueIdentifier>{11ba7997-29cd-4377-9f11-5991315c57cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\맵툴">
+      <UniqueIdentifier>{df97f2cb-c56a-4c60-a425-efb3ced4b31e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept">
+      <UniqueIdentifier>{cb2dd22d-41b1-4c2d-8e7c-b0944fe2b254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\image">
+      <UniqueIdentifier>{f246c95e-8530-4564-a361-9e48ca56eb83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\애니메이션">
+      <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\이펙트">
+      <UniqueIdentifier>{799f9037-ac59-46a7-8c21-272e269886bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\타이머">
+      <UniqueIdentifier>{153e0e81-aff6-49db-8d0b-f53ec02a7782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\input">
+      <UniqueIdentifier>{1ffec04e-035b-46a1-88e3-b3de8b639c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\이펙트테스트">
+      <UniqueIdentifier>{cf39b8fe-e5ca-446a-93ca-6095e60ccfba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\애니메이션테스트">
+      <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -120,9 +120,6 @@
     <ClInclude Include="commonMacroFunction.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="singleton.h">
-      <Filter>singleton</Filter>
-    </ClInclude>
     <ClInclude Include="gameNode.h">
       <Filter>gameNode</Filter>
     </ClInclude>
@@ -130,10 +127,10 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="utils.h">
-      <Filter>UTIL</Filter>
+      <Filter>헤더 파일\UTIL</Filter>
     </ClInclude>
     <ClInclude Include="image.h">
-      <Filter>image</Filter>
+      <Filter>Concept\image</Filter>
     </ClInclude>
     <ClInclude Include="airHockey.h">
       <Filter>Reference\airHockey</Filter>
@@ -157,16 +154,13 @@
       <Filter>Reference\에너미</Filter>
     </ClInclude>
     <ClInclude Include="timer.h">
-      <Filter>타이머</Filter>
+      <Filter>Concept\타이머</Filter>
     </ClInclude>
     <ClInclude Include="timeManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="progressBar.h">
-      <Filter>프로그래스바</Filter>
-    </ClInclude>
-    <ClInclude Include="txtData.h">
-      <Filter>텍스트데이터</Filter>
+      <Filter>Reference\프로그래스바</Filter>
     </ClInclude>
     <ClInclude Include="sceneManager.h">
       <Filter>Manager</Filter>
@@ -184,7 +178,7 @@
       <Filter>Reference\testScene</Filter>
     </ClInclude>
     <ClInclude Include="loading.h">
-      <Filter>loading</Filter>
+      <Filter>Reference\loading</Filter>
     </ClInclude>
     <ClInclude Include="loadiingTest.h">
       <Filter>Reference\testScene</Filter>
@@ -193,22 +187,22 @@
       <Filter>Reference\testScene</Filter>
     </ClInclude>
     <ClInclude Include="animation.h">
-      <Filter>애니메이션</Filter>
+      <Filter>Concept\애니메이션</Filter>
     </ClInclude>
     <ClInclude Include="animationTest.h">
-      <Filter>애니메이션\애니메이션테스트</Filter>
+      <Filter>Reference\애니메이션테스트</Filter>
     </ClInclude>
     <ClInclude Include="camel.h">
-      <Filter>애니메이션\애니메이션테스트</Filter>
+      <Filter>Reference\애니메이션테스트</Filter>
     </ClInclude>
     <ClInclude Include="effect.h">
-      <Filter>이펙트</Filter>
+      <Filter>Concept\이펙트</Filter>
     </ClInclude>
     <ClInclude Include="effectTest.h">
-      <Filter>이펙트\이펙트테스트</Filter>
+      <Filter>Reference\이펙트테스트</Filter>
     </ClInclude>
     <ClInclude Include="mapTool.h">
-      <Filter>맵툴</Filter>
+      <Filter>Reference\맵툴</Filter>
     </ClInclude>
     <ClInclude Include="globalTank.h">
       <Filter>Reference\tank</Filter>
@@ -223,10 +217,10 @@
       <Filter>Reference\tank</Filter>
     </ClInclude>
     <ClInclude Include="Astar.h">
-      <Filter>에이슷하</Filter>
+      <Filter>Reference\에이슷하</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
-      <Filter>Struct</Filter>
+      <Filter>헤더 파일\Struct</Filter>
     </ClInclude>
     <ClInclude Include="Enum.h">
       <Filter>헤더 파일</Filter>
@@ -238,9 +232,6 @@
       <Filter>gameNode</Filter>
     </ClInclude>
     <ClInclude Include="imageManager.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="effectManager.h">
@@ -267,14 +258,23 @@
     <ClInclude Include="CPlayer.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="CCameraManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="CBackground.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CCameraManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="txtData.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Concept\input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,10 +285,10 @@
       <Filter>gameNode</Filter>
     </ClCompile>
     <ClCompile Include="utils.cpp">
-      <Filter>UTIL</Filter>
+      <Filter>헤더 파일\UTIL</Filter>
     </ClCompile>
     <ClCompile Include="image.cpp">
-      <Filter>image</Filter>
+      <Filter>Concept\image</Filter>
     </ClCompile>
     <ClCompile Include="airHockey.cpp">
       <Filter>Reference\airHockey</Filter>
@@ -312,16 +312,13 @@
       <Filter>Reference\에너미</Filter>
     </ClCompile>
     <ClCompile Include="timer.cpp">
-      <Filter>타이머</Filter>
+      <Filter>Concept\타이머</Filter>
     </ClCompile>
     <ClCompile Include="timeManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="progressBar.cpp">
-      <Filter>프로그래스바</Filter>
-    </ClCompile>
-    <ClCompile Include="txtData.cpp">
-      <Filter>텍스트데이터</Filter>
+      <Filter>Reference\프로그래스바</Filter>
     </ClCompile>
     <ClCompile Include="sceneManager.cpp">
       <Filter>Manager</Filter>
@@ -339,7 +336,7 @@
       <Filter>Reference\testScene</Filter>
     </ClCompile>
     <ClCompile Include="loading.cpp">
-      <Filter>loading</Filter>
+      <Filter>Reference\loading</Filter>
     </ClCompile>
     <ClCompile Include="loadiingTest.cpp">
       <Filter>Reference\testScene</Filter>
@@ -348,22 +345,22 @@
       <Filter>Reference\testScene</Filter>
     </ClCompile>
     <ClCompile Include="animation.cpp">
-      <Filter>애니메이션</Filter>
+      <Filter>Concept\애니메이션</Filter>
     </ClCompile>
     <ClCompile Include="animationTest.cpp">
-      <Filter>애니메이션\애니메이션테스트</Filter>
+      <Filter>Reference\애니메이션테스트</Filter>
     </ClCompile>
     <ClCompile Include="camel.cpp">
-      <Filter>애니메이션\애니메이션테스트</Filter>
+      <Filter>Reference\애니메이션테스트</Filter>
     </ClCompile>
     <ClCompile Include="effect.cpp">
-      <Filter>이펙트</Filter>
+      <Filter>Concept\이펙트</Filter>
     </ClCompile>
     <ClCompile Include="effectTest.cpp">
-      <Filter>이펙트\이펙트테스트</Filter>
+      <Filter>Reference\이펙트테스트</Filter>
     </ClCompile>
     <ClCompile Include="mapTool.cpp">
-      <Filter>맵툴</Filter>
+      <Filter>Reference\맵툴</Filter>
     </ClCompile>
     <ClCompile Include="tank.cpp">
       <Filter>Reference\tank</Filter>
@@ -375,10 +372,10 @@
       <Filter>Reference\tank</Filter>
     </ClCompile>
     <ClCompile Include="Astar.cpp">
-      <Filter>에이슷하</Filter>
+      <Filter>Reference\에이슷하</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
-      <Filter>Struct</Filter>
+      <Filter>헤더 파일\Struct</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>Scene</Filter>
@@ -387,9 +384,6 @@
       <Filter>gameNode</Filter>
     </ClCompile>
     <ClCompile Include="imageManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="effectManager.cpp">
@@ -416,14 +410,20 @@
     <ClCompile Include="CPlayer.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="CCameraManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CCameraManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="txtData.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Concept\input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,13 @@
 #pragma once
 #include"singleton.h"
 #include"image.h"
+
 class imageManager : public Singleton<imageManager>
 {
 private:
 	//맵으로 만든 이미지 목록
 	typedef map<string, image*> mapImageList;
 	typedef map<string, image*>::iterator mapImageListIter;
-
 
 	mapImageList _mImageList;
 
@@ -22,7 +22,6 @@ public:
 	image* addImage(string strKey, const int width, const int height);
 	image* addImage(string strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor);
 	image* addImage(string strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor);
-
 
 	//키값으로 프레임 이미지 초기화
 	image* addFrameImage(string strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor);
@@ -50,4 +49,3 @@ public:
 	void loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY, BYTE alpha);
 
 };
-

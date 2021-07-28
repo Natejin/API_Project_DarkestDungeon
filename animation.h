@@ -1,32 +1,24 @@
 #pragma once
+
 class animation
 {
 private:
-
 	typedef vector<POINT> _vFrameList;
 	typedef vector<int> _vPlayList;
 
-	_vFrameList  _frameList;//프레임  위치 목록
-	_vPlayList	_playList;//플레이목록
+	_vFrameList  _frameList; //프레임  위치 목록
+	_vPlayList	_playList; //플레이목록
 
-	int _frameNum;		//프레임 갯수
+	int _frameNum; //프레임 갯수
 	int  _frameWidth;
 	int _frameHeight;
 
 	bool _loop;
 	bool _play;
 
-
 	float _frameUpdateSec;
 	float _elapseSec;
 	DWORD _nowPlayIndex;
-
-
-
-
-
-
-
 
 public:
 	animation();
@@ -47,7 +39,6 @@ public:
 	//프레임 업데이트 타임
 	void frameUpdate(float elapsedTime);
 
-
 	void start();
 	void stop();
 	void pause();
@@ -58,11 +49,4 @@ public:
 	inline int getFrameWidth()const { return _frameWidth; }
 	inline int getFrameHeight()const { return _frameHeight; }
 
-
-
-
-
-
-
 };
-

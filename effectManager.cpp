@@ -1,13 +1,9 @@
 #include "framework.h"
 #include "effectManager.h"
 #include"effect.h"
-effectManager::effectManager()
-{
-}
 
-effectManager::~effectManager()
-{
-}
+effectManager::effectManager() {}
+effectManager::~effectManager() {}
 
 HRESULT effectManager::init()
 {
@@ -18,7 +14,6 @@ void effectManager::release()
 {
 	viTotalEffect vIter;//¸ğµç ÀÌÆåÆ® °ü¸®ÇÒ º¤ÅÍ
 	miEffect mIter;		//ÀÌÆåÆ®Å¬·¡½º ´ã°ÜÀÖ´Â ³à¼®
-
 
 	for (vIter =m_vTotalEffect.begin(); vIter!=m_vTotalEffect.end();++vIter)
 	{
@@ -38,6 +33,7 @@ void effectManager::release()
 					vArriter = mIter->second.erase(vArriter);
 				}
 			}
+
 			else
 			{
 				++mIter;
@@ -65,7 +61,6 @@ void effectManager::update()
 		}
 
 	}
-
 }
 
 void effectManager::render()
@@ -78,14 +73,11 @@ void effectManager::render()
 		for (mIter = vIter->begin(); mIter != vIter->end(); ++mIter)
 		{
 			viEffect vArriter;
-
 			for (vArriter = mIter->second.begin(); vArriter != mIter->second.end(); ++vArriter)
 			{
 				(*vArriter)->render();
-
 			}
 		}
-
 	}
 }
 
@@ -113,20 +105,16 @@ void effectManager::addEffect(string effectKey, char* imageName, int imageW, int
 
 	mArrEffect.insert(make_pair(effectKey, vEffectBuffer));
 	m_vTotalEffect.push_back(mArrEffect);
-
 }
 
 void effectManager::play(string effectKey, int x, int y)
 {
-
 	viTotalEffect vIter;
 	miEffect mIter;
 	for (vIter = m_vTotalEffect.begin(); vIter != m_vTotalEffect.end(); ++vIter)
 	{
 		for (mIter = vIter->begin(); mIter != vIter->end(); ++mIter)
 		{
-
-
 			if (!(mIter->first == effectKey))break;
 
 			viEffect vArriter;
@@ -137,7 +125,6 @@ void effectManager::play(string effectKey, int x, int y)
 				if ((*vArriter)->getIsRunning())continue;
 				(*vArriter)->startEffect(x, y);
 				return;
-
 			}
 		}
 	}

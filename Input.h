@@ -3,10 +3,10 @@
 #include<bitset>
 using namespace std;
 #define KEYMAX 256
+
 class Input : public Singleton<Input>
 {
 private:
-
 	bitset<KEYMAX> _keyUp;
 	bitset<KEYMAX> _keyDown;
 
@@ -27,4 +27,3 @@ public:
 	//토글키냐
 	bool isToggleKey(int key);
 };
-

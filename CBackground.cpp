@@ -1,17 +1,11 @@
 #include "framework.h"
 #include "CBackground.h"
 
-CBackground::CBackground()
-{
-}
-
-CBackground::~CBackground()
-{
-}
+CBackground::CBackground() {}
+CBackground::~CBackground() {}
 
 HRESULT CBackground::Init()
 {
-
     return S_OK;
 }
 
@@ -30,7 +24,6 @@ void CBackground::BackRender(HDC _hdc)
 
 void CBackground::Render(HDC _hdc)
 {
-
 }
 
 void CBackground::FrontRender(HDC _hdc)

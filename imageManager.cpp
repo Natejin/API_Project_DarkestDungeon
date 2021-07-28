@@ -1,21 +1,15 @@
 #include"framework.h"
 #include "imageManager.h"
 
-imageManager::imageManager()
-{
-}
-
-imageManager::~imageManager()
-{
-}
+imageManager::imageManager() {}
+imageManager::~imageManager() {}
 
 HRESULT imageManager::init()
 {
+	//여기에 모든 이미지를 넣어두고 사용
 	MG_IMAGE->addImage("배경화면", "images/배경.bmp", WORLDSIZEX, WORLDSIZEY, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("카메라", "images/카메라.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("미니맵", "images/배경.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
-
-
 
 	MG_IMAGE->addFrameImage("록맨", "images/록맨.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
 	return S_OK;

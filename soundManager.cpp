@@ -1,29 +1,20 @@
 #include "framework.h"
 #include "soundManager.h"
 
-soundManager::soundManager() : m_system(nullptr),m_channel(nullptr), m_sound(nullptr)
-{
-}
-
-soundManager::~soundManager()
-{
-}
+soundManager::soundManager() : m_system(nullptr),m_channel(nullptr), m_sound(nullptr) {}
+soundManager::~soundManager() {}
 
 HRESULT soundManager::init()
 {
-
 	FMOD::System_Create(&m_system);
 
 	m_system->init(TOTALSOUNDBUFFER, FMOD_INIT_NORMAL, 0);
 
-
 	m_sound = new FMOD::Sound * [TOTALSOUNDBUFFER];
 	m_channel =  new FMOD::Channel* [TOTALSOUNDBUFFER];
 
-
 	memset(m_sound, 0, sizeof(FMOD::Sound*) * (TOTALSOUNDBUFFER));
 	memset(m_channel, 0, sizeof(FMOD::Channel*) * (TOTALSOUNDBUFFER));
-
 
 	return S_OK;
 }
@@ -47,13 +38,11 @@ void soundManager::release()
 	SAFE_DELETE(m_channel);
 	SAFE_DELETE(m_sound);
 
-
 	//½Ã½ºÅÛ ´ÝÀÚ
 	if (m_system != nullptr)
 	{
 		m_system->release();
 		m_system->close();
-
 	}
 }
 
@@ -64,6 +53,7 @@ void soundManager::update()
 
 void soundManager::render()
 {
+
 }
 
 void soundManager::addSound(string keyName, string soundName, bool bgm, bool loop)

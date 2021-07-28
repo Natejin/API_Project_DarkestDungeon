@@ -5,9 +5,6 @@ class mainGame : public gameNode
 {
 private:
 	
-
-
-
 public:
 	mainGame();
 	~mainGame();
@@ -17,8 +14,4 @@ public:
 	virtual void update();
 	virtual void render(/*HDC hdc*/);
 
-
-	
-	
 };
-

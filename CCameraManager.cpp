@@ -2,15 +2,9 @@
 #include "CCameraManager.h"
 #include "GameObject.h"
 #include "Transform.h"
-CCameraManager::~CCameraManager()
-{
-}
 
-CCameraManager::CCameraManager()
-{
-	m_pTarget = nullptr;
-	
-}
+CCameraManager::~CCameraManager() {}
+CCameraManager::CCameraManager() { m_pTarget = nullptr; }
 
 HRESULT CCameraManager::Init()
 {
@@ -43,28 +37,32 @@ void CCameraManager::Update(float deltaTime, float worldTime)
 		{
 			pos.x = 0.f;
 		}
+
 		//플레이어가 오른쪽에 붙었을때 카메라는 오른쪽 끝에서 이동시키지 않음
-		else if (fpos.x >= worldSize.x - rightArea) {
+		else if (fpos.x >= worldSize.x - rightArea) 
+		{
 			this->pos.x = worldSize.x - screenSize.x;
 		}
 
 		//플레이어가 월드맵에서 오른쪽이나 왼쪽에 붙어있지않을때
 		//카메라를 플레이어위치에 맞게 이동시킴
-		else {
+		else 
+		{
 			pos.x = fpos.x - screenSize.x * targetPivot.x;
 		}
 
-		//플레이어가 왼쪽에 붙었을때 카메라는 왼쪽 끝에서 이동시키지 않음
+		//플레이어가 위에 붙었을때 카메라는 왼쪽 끝에서 이동시키지 않음
 		if (fpos.y < topArea)
 		{
 			pos.y = 0.f;
 		}
-		//플레이어가 오른쪽에 붙었을때 카메라는 오른쪽 끝에서 이동시키지 않음
-		else if (fpos.y >= worldSize.y - bottomArea) {
+		//플레이어가 아래에 붙었을때 카메라는 오른쪽 끝에서 이동시키지 않음
+		else if (fpos.y >= worldSize.y - bottomArea) 
+		{
 			this->pos.y = worldSize.y - screenSize.y;
 		}
 
-		//플레이어가 월드맵에서 오른쪽이나 왼쪽에 붙어있지않을때
+		//플레이어가 월드맵에서 위 혹은 아래에 붙어있지않을때
 		//카메라를 플레이어위치에 맞게 이동시킴
 		else {
 			pos.y = fpos.y - screenSize.y * targetPivot.y;
@@ -82,25 +80,17 @@ void CCameraManager::Render(HDC _hdc)
 	if (m_pTarget != nullptr)
 	{
 		char str[256];
-
 		string strFrame;
 
 		SetBkMode(_hdc, TRANSPARENT);
 
 		SetTextColor(_hdc, RGB(0, 0, 255));
 		//디버그 모드라면
+
 #ifdef _DEBUG
 
-		//FPS
 		sprintf_s(str, "CameraPos : %f, %f", pos.x, pos.y);
 		TextOut(_hdc, 0, 500, str, strlen(str));
-
-		////전체 경과시간
-		//sprintf_s(str, "worldTime : %f", _timer->getWorldTime());
-		//TextOut(_hdc, 0, 20, str, strlen(str));
-		////한프레임당 경과시간
-		//sprintf_s(str, "ElapsedTime : %f", _timer->getElapsedTime());
-		//TextOut(_hdc, 0, 40, str, strlen(str));
 
 #else
 
@@ -111,14 +101,12 @@ void CCameraManager::Render(HDC _hdc)
 		//	TextOut(hdc, 0, 0, str, strlen(str));
 		//}
 
-
-
-
 #endif // DEBUG
+
 	}
 }
 
-
-void CCameraManager::Release() {
+void CCameraManager::Release() 
+{
 
 }

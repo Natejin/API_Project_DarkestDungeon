@@ -1,23 +1,12 @@
-
 #include "framework.h"
 #include "CObjectManager.h"
 #include "GameObject.h"
 
-CObjectManager::CObjectManager()
-{
-
-}
-
-CObjectManager::~CObjectManager()
-{
-
-}
-
-
+CObjectManager::CObjectManager() {}
+CObjectManager::~CObjectManager() {}
 
 HRESULT CObjectManager::init()
 {
-
 	return S_OK;
 }
 
@@ -27,17 +16,14 @@ void CObjectManager::Update(float deltaTime, float worldTime)
 	{
 		g->Update(deltaTime, worldTime);
 	}
-	
 }
 
 void CObjectManager::LateUpdate()
 {
-
 	for (auto g : objectMap)
 	{
 		g->LateUpdate();
 	}
-
 
 	for (size_t i = 0; i < objsToErase.size(); i++)
 	{
@@ -55,14 +41,10 @@ void CObjectManager::LateUpdate()
 		}
 	}
 
-
-
 	for (auto g : objsToRegister)
 	{
 		objectMap.push_back(g);
 	}
-
-
 }
 
 void CObjectManager::BackRender(HDC _hdc)
@@ -95,7 +77,6 @@ void CObjectManager::Release()
 	{
 		g->Release();
 	}
-
 }
 
 void CObjectManager::RegisterObj(string name, GameObject* gameObj)

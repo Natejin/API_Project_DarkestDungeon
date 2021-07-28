@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "CPlayer.h"
 
-CPlayer::CPlayer()
-{
-}
-
-CPlayer::~CPlayer()
-{
-}
+CPlayer::CPlayer() {}
+CPlayer::~CPlayer() {}
 
 HRESULT CPlayer::Init()
 {
@@ -57,5 +52,5 @@ void CPlayer::FrontRender(HDC _hdc)
 
 void CPlayer::Release()
 {
-	Unit::Release();
+	Unit::Release(); 
 }

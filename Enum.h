@@ -2,7 +2,6 @@
 
 enum class LAYER
 {
-
 	BackGround = 0,
 	EffectBackground = 2,
 	Player = 4,

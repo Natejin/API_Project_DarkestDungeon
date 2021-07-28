@@ -1,13 +1,14 @@
 #pragma once
 #include"singleton.h"
+
 class animationManager : public  Singleton<animationManager>
 {
 private:
-
 	typedef map<string, animation*> arrAnimation;
 	typedef map<string, animation*>::iterator iterArrAnimation;
 
 	arrAnimation _animation;
+
 public:
 
 	animationManager();
@@ -22,10 +23,7 @@ public:
 	void addDefAnimation(string animationKeyName, char* imageKeyName, int fps, bool reverse = false, bool loop = false);
 
 	void addAnimation(string animationKeyName, char* imageKeyName, int* playArr, int arrLen, int fps, bool loop = false);
-	
 	void addAnimation(string animationKeyName, char* imageKeyName,int start, int end, int fps, bool reverse = false, bool loop = false);
-
-
 
 
 	void start(string animationKeyName);
@@ -39,4 +37,3 @@ public:
 	void deleteAll();
 
 };
-

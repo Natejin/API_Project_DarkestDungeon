@@ -1,27 +1,15 @@
 #pragma once
-
-
-#pragma once
 #include"singleton.h"
+
 class CObjectManager : public Singleton<CObjectManager>
 {
 private:
 	 //map<int,class GameObject*> objectMap;
 	vector<class GameObject*> objectMap;
-
-
-
 	vector<class GameObject*> objsToRegister;
-
 	vector<int> objsToErase;
 
-
 	int _instance_id;
-
-
-private:
-
-
 
 public:
 	CObjectManager();
@@ -38,10 +26,6 @@ public:
 
 	virtual void Release();
 
-
 	void RegisterObj(string name, GameObject* gameObj);
 	void RemoveObj(int id);
 };
-
-
-
