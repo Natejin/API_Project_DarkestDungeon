@@ -10,7 +10,7 @@ HRESULT mainGame::init()
 
 	MG_CAMERA->Init();
 	MG_SCENE->init();
-	MG_GMOBJ->init();
+	MG_GMOBJ->Init();
 	return S_OK;
 }
 
@@ -26,6 +26,7 @@ void mainGame::update()
 	gameNode::update();
 	MG_TIME->update(60.0f);
 	MG_SCENE->update();
+
 	MG_GMOBJ->Update(MG_TIME->getElapsedTime(), MG_TIME->getWorldTime());
 	MG_GMOBJ->LateUpdate();
 
@@ -40,12 +41,13 @@ void mainGame::render(/*HDC hdc*/)
 {
 	PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	//==============================================
+
 	MG_SCENE->Render(getMemDC());
 	MG_GMOBJ->BackRender(getMemDC());
 	MG_GMOBJ->Render(getMemDC());
 	MG_GMOBJ->FrontRender(getMemDC());
-	//==============================================
 
+	//==============================================
 	MG_TIME->render(getMemDC());
 	MG_CAMERA->Render(getMemDC());
 

@@ -94,9 +94,6 @@
     <Filter Include="Concept\타이머">
       <UniqueIdentifier>{153e0e81-aff6-49db-8d0b-f53ec02a7782}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Concept\input">
-      <UniqueIdentifier>{1ffec04e-035b-46a1-88e3-b3de8b639c9f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Reference\이펙트테스트">
       <UniqueIdentifier>{cf39b8fe-e5ca-446a-93ca-6095e60ccfba}</UniqueIdentifier>
     </Filter>
@@ -274,7 +271,7 @@
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
-      <Filter>Concept\input</Filter>
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -423,7 +420,7 @@
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
-      <Filter>Concept\input</Filter>
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

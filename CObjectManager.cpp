@@ -5,7 +5,7 @@
 CObjectManager::CObjectManager() {}
 CObjectManager::~CObjectManager() {}
 
-HRESULT CObjectManager::init()
+HRESULT CObjectManager::Init()
 {
 	return S_OK;
 }

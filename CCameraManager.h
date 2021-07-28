@@ -7,7 +7,6 @@ class CCameraManager : public Singleton<CCameraManager>
 private:
 	Vector2 worldSize; //실제 맵크기
 	Vector2 screenSize; //카메라 크기
-
 	Vector2 pos; //카메라좌표
 	Vector2 targetPivot; //타깃의 화면상 위치
 

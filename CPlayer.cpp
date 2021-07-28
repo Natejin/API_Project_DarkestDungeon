@@ -17,19 +17,19 @@ void CPlayer::Update(float deltaTime, float worldTime)
 {
 	if (MG_INPUT->isStayKeyDown(VK_LEFT))
 	{
-		m_transform->m_pos.x -= 5;
+		if (m_transform->m_pos.x > 0) m_transform->m_pos.x -= 5;
 	}
 	if (MG_INPUT->isStayKeyDown(VK_RIGHT))
 	{
-		m_transform->m_pos.x += 5;
+		if (m_transform->m_pos.x < WORLDSIZEX - 100) m_transform->m_pos.x += 5;
 	}
 	if (MG_INPUT->isStayKeyDown(VK_UP))
 	{
-		m_transform->m_pos.y -= 5;
+		if (m_transform->m_pos.y > 0 ) m_transform->m_pos.y -= 5;
 	}
 	if (MG_INPUT->isStayKeyDown(VK_DOWN))
 	{
-		m_transform->m_pos.y += 5;
+		if (m_transform->m_pos.y < WORLDSIZEY - 200) m_transform->m_pos.y += 5;
 	}
 }
 

@@ -44,8 +44,8 @@ void CCameraManager::Update(float deltaTime, float worldTime)
 			this->pos.x = worldSize.x - screenSize.x;
 		}
 
-		//플레이어가 월드맵에서 오른쪽이나 왼쪽에 붙어있지않을때
-		//카메라를 플레이어위치에 맞게 이동시킴
+		//플레이어가 월드맵에서 오른쪽이나 왼쪽에 붙어있지 않을 때
+		//카메라를 플레이어의 위치에 맞게 이동시킴
 		else 
 		{
 			pos.x = fpos.x - screenSize.x * targetPivot.x;
@@ -81,9 +81,7 @@ void CCameraManager::Render(HDC _hdc)
 	{
 		char str[256];
 		string strFrame;
-
 		SetBkMode(_hdc, TRANSPARENT);
-
 		SetTextColor(_hdc, RGB(0, 0, 255));
 		//디버그 모드라면
 

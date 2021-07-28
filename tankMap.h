@@ -1,9 +1,9 @@
 #pragma once
 #include"gameNode.h"
+
 class tankMap : public gameNode
 {
 private:
-
 	tagCurrentTile _currentTile;
 	tagTile _map[TILEX * TILEY];
 	tagOBJAttribute _OBJattribute[TILEX * TILEY];
@@ -23,7 +23,6 @@ public:
 
 	void load();
 
-
 	DWORD* getAttribute() { return _attribute; }
 	tagTile* getMap() { return _map; }
 	int getPosFirst() { return _pos[0]; }
@@ -31,4 +30,3 @@ public:
 
 	void attackBlock(int tileN);
 };
-

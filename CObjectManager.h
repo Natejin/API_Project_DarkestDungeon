@@ -15,7 +15,7 @@ public:
 	CObjectManager();
 	~CObjectManager();
 
-	HRESULT init();
+	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();

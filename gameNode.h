@@ -6,7 +6,6 @@ static image* _backBuffer = MG_IMAGE->addImage("backBuffer", WINSIZEX, WINSIZEY)
 class gameNode
 {
 private:
-
 	//image* _backBuffer;	//백버퍼
 	//void setBackBuffer();//백버퍼 셋팅
 	HDC _hdc;
