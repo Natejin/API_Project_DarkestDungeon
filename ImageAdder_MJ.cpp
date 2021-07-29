@@ -57,5 +57,5 @@ HRESULT ImageAdder_MJ::Init()
 	//배경
 	MG_IMAGE->addFrameImage("bg", "images/임시/임시 배경.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 
-	return E_NOTIMPL;
+	return S_OK;
 }

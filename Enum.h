@@ -27,7 +27,6 @@ enum class IMAGE
 	Vestal_Idle,
 	Vestal_Walk,
 	Vestal_Combat
-
 };
 
 enum class RACE 
@@ -88,5 +87,4 @@ enum class DUNGEONMAPSTATE
 	Room_Enemy,
 	Room_Trasure,
 	Room_Boss
-
 };

@@ -1,7 +1,4 @@
-﻿// API_FrameWork.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
-#include "framework.h"
+﻿#include "framework.h"
 #include "API_FrameWork.h"
 #include"mainGame.h"
 HINSTANCE m_hInstance;
@@ -11,7 +8,6 @@ POINT m_ptMouse = { 0,0 };
 
 //메인게임
 mainGame mg;
-
 
 
 LPTSTR m_lpszClass = TEXT("지옥으로 떠나는 여행");
@@ -25,24 +21,17 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	WNDCLASS wndClass;
 
-
 	wndClass.cbClsExtra = 0;
 	wndClass.cbWndExtra = 0;
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-
-
 	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-
 	wndClass.hInstance = hInstance;
 	wndClass.lpfnWndProc = (WNDPROC)WndProc;
 	wndClass.lpszClassName = m_lpszClass;
 	wndClass.lpszMenuName = NULL;
-
 	wndClass.style = CS_HREDRAW | CS_VREDRAW;
-
 	RegisterClass(&wndClass);
-
 
 	m_hWnd = CreateWindow(
 		WINNAME,		
@@ -58,7 +47,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		NULL);
 
 
-
 	setWindowSize(WINSTARTX, WINSTARTY, WINSIZEX, WINSIZEY);
 	ShowWindow(m_hWnd, nCmdShow);
 
@@ -68,20 +56,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		return 0;
 	}
 
-
-
-
 	MSG message;
-
-
-
 
 	//게임용 루프
 	while (true)
 	{
 		if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
 		{
-
 			if (message.message == WM_QUIT)break;
 			TranslateMessage(&message);
 			DispatchMessage(&message);

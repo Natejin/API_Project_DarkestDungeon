@@ -1,7 +1,10 @@
 #pragma once
+#include "image.h"
+#include "Enum_WT.h"
+
 class ImageAdder_WT
 {
 public:
-	void Init();
-};
+	HRESULT Init();
 
+};
