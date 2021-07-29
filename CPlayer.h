@@ -38,6 +38,7 @@ protected:
 		Cure_disease,
 		Cure_Death_Door,
 		Cure_Hp
+
 	};
 
 public:
