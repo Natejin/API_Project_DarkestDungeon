@@ -1,5 +1,6 @@
 #include"framework.h"
 #include "mainGame.h"
+#include "ImageAdder_MJ.h"
 
 mainGame::mainGame() {}
 mainGame::~mainGame() {}
@@ -11,6 +12,12 @@ HRESULT mainGame::init()
 	MG_CAMERA->Init();
 	MG_SCENE->init();
 	MG_GMOBJ->Init();
+
+	ImageAdder_MJ imgAdd_Mj;
+	imgAdd_Mj.Init();
+
+
+
 	return S_OK;
 }
 
