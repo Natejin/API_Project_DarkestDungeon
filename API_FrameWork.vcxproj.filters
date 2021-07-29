@@ -297,6 +297,9 @@
     <ClInclude Include="ImageAdder_WT.h">
       <Filter>Enum\MJ</Filter>
     </ClInclude>
+    <ClInclude Include="DungeonScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -454,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="ImageAdder_WT.cpp">
       <Filter>Enum\MJ</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -70,3 +70,20 @@ enum class BATTLETURN
 	PlayerTurn
 
 };
+
+enum class DUNGEONSTATE {
+	ROOM,
+	ROAD
+};
+
+enum class DUNGEONMAPSTATE {
+	Road_Empty,
+	Road_Enemy,
+	Road_Trasure,
+	Road_Trap,
+	Room_Empty,
+	Room_Enemy,
+	Room_Trasure,
+	Room_Boss
+
+};
