@@ -1,5 +1,7 @@
 #include "framework.h"
 #include "animationManager.h"
+#include "image.h"
+
 
 animationManager::animationManager() {}
 animationManager::~animationManager() {}
@@ -120,4 +122,78 @@ void animationManager::deleteAll()
             ++iter;
         }
     }
+}
+
+void animationManager::addDefAnimation(IMAGE animationKeyName, char* imageKeyName, int fps, bool reverse, bool loop)
+{
+    //이미지 및 애니메이션  초기화
+    image* img = MG_IMAGE->findImage(imageKeyName);
+    animation* ani = new animation;
+    ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
+    ani->setDefPlayFrame(reverse, loop);
+    ani->setFPS(fps);
+
+    //이미지와 애니메이션을 초기화 한후  맵에 추가한다.
+    m_anime.insert(make_pair(animationKeyName, ani));
+}
+
+void animationManager::addAnimation(IMAGE animationKeyName, char* imageKeyName, int* playArr, int arrLen, int fps, bool loop)
+{
+    //이미지 및 애니메이션  초기화
+    image* img = MG_IMAGE->findImage(imageKeyName);
+    animation* ani = new animation;
+    ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
+    ani->setPlayFrame(playArr, arrLen, loop);
+    ani->setFPS(fps);
+
+    //이미지와 애니메이션을 초기화 한후  맵에 추가한다.
+    m_anime.insert(make_pair(animationKeyName, ani));
+}
+
+void animationManager::addAnimation(IMAGE animationKeyName, char* imageKeyName, int start, int end, int fps, bool reverse, bool loop)
+{
+    //이미지 및 애니메이션  초기화
+    image* img = MG_IMAGE->findImage(imageKeyName);
+    animation* ani = new animation;
+    ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
+    ani->setPlayFrame(start, end, reverse, loop);
+    ani->setFPS(fps);
+
+    //이미지와 애니메이션을 초기화 한후  맵에 추가한다.
+    m_anime.insert(make_pair(animationKeyName, ani));
+}
+
+void animationManager::start(IMAGE animationKeyName)
+{
+    animeMapiter iter = m_anime.find(animationKeyName);
+    iter->second->start();
+}
+
+void animationManager::stop(IMAGE animationKeyName)
+{
+    animeMapiter iter = m_anime.find(animationKeyName);
+    iter->second->stop();
+}
+
+void animationManager::pause(IMAGE animationKeyName)
+{
+    animeMapiter iter = m_anime.find(animationKeyName);
+    iter->second->pause();
+}
+
+void animationManager::resume(IMAGE animationKeyName)
+{
+    animeMapiter iter = m_anime.find(animationKeyName);
+    iter->second->resume();
+}
+
+animation* animationManager::findAnimation(IMAGE animationKeyName)
+{
+    animeMapiter iter = m_anime.find(animationKeyName);
+
+    if (iter != m_anime.end())
+    {
+        return iter->second;
+    }
+    return nullptr;
 }

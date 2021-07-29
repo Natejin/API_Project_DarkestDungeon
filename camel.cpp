@@ -53,6 +53,7 @@ void camel::update()
 	{
 		_ani = MG_ANIMATION->findAnimation("ani1");
 		MG_ANIMATION->start("ani1");
+		
 		//_ani1->start();
 	}
 	if (MG_INPUT->isOnceKeyDown('2'))

@@ -1,5 +1,7 @@
 #pragma once
 #include"singleton.h"
+#include "animation.h"
+#include "Enum.h"
 
 class animationManager : public  Singleton<animationManager>
 {
@@ -9,6 +11,10 @@ private:
 
 	arrAnimation _animation;
 
+	typedef map<IMAGE, animation*> animeMap;
+	typedef map<IMAGE, animation*>::iterator animeMapiter;
+
+	animeMap m_anime;
 public:
 
 	animationManager();
@@ -36,4 +42,18 @@ public:
 
 	void deleteAll();
 
+
+	void addDefAnimation(IMAGE animationKeyName, char* imageKeyName, int fps, bool reverse = false, bool loop = false);
+
+	void addAnimation(IMAGE animationKeyName, char* imageKeyName, int* playArr, int arrLen, int fps, bool loop = false);
+	void addAnimation(IMAGE animationKeyName, char* imageKeyName, int start, int end, int fps, bool reverse = false, bool loop = false);
+
+
+	void start(IMAGE animationKeyName);
+	void stop(IMAGE animationKeyName);
+	void pause(IMAGE animationKeyName);
+	void resume(IMAGE animationKeyName);
+
+	//Ã£¾Æ¶ó
+	animation* findAnimation(IMAGE animationKeyName);
 };

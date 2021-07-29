@@ -2,6 +2,7 @@
 
 enum class LAYER
 {
+	Unknown = -1,
 	BackGround = 0,
 	EffectBackground = 2,
 	Player = 4,
@@ -10,8 +11,7 @@ enum class LAYER
 	EnemyProjectile = 32,
 	EffectFrontword = 64,
 	Item = 128,
-	UI = 512
-
+	UI = 256
 };
 
 enum class JOB
@@ -20,4 +20,19 @@ enum class JOB
 	Vestal,
 	PlagueDoctor,
 	Highwayman
+};
+
+enum class IMAGE
+{
+	Vestal_Idle,
+	Vestal_Walk,
+	Vestal_Combat
+
+};
+
+enum class RACE {
+	Human,
+	Undying,
+	Worm
+
 };

@@ -1,6 +1,7 @@
-#include"framework.h"
+#include "framework.h"
 #include "image.h"
 #include "Transform.h"
+#include "animation.h"
 //알파블렌드를 사용하기 위해
 #pragma comment(lib,"msimg32.lib")
 image::image() : _imageInfo(NULL),

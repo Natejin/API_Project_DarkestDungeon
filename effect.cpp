@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "effect.h"
+#include "animation.h"
 
 effect::effect():
 _effectImage(nullptr)

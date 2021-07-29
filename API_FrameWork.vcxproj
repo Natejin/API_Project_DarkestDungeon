@@ -24,6 +24,7 @@
     <ProjectGuid>{f8f43d66-2944-4448-95c4-4a048d3261bf}</ProjectGuid>
     <RootNamespace>APIFrameWork</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>DarkestDungeon</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -152,6 +153,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="camel.h" />
     <ClInclude Include="CCameraManager.h" />
+    <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="effect.h" />
@@ -213,6 +215,7 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camel.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
+    <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />

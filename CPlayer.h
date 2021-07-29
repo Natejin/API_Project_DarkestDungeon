@@ -7,6 +7,13 @@ protected:
 	JOB job;
 	int stress;
 
+
+
+
+
+
+
+
 public:
 	CPlayer();
 	~CPlayer();

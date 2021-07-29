@@ -5,9 +5,16 @@ class CObjectManager : public Singleton<CObjectManager>
 {
 private:
 	 //map<int,class GameObject*> objectMap;
-	vector<class GameObject*> objectMap;
+	vector<class GameObject*> objectVec;
+
 	vector<class GameObject*> objsToRegister;
 	vector<int> objsToErase;
+
+
+
+	vector<LAYER> renderOrder;
+
+	map<LAYER, vector<class GameObject*>> objectRender;
 
 	int _instance_id;
 

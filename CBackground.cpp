@@ -6,6 +6,7 @@ CBackground::~CBackground() {}
 
 HRESULT CBackground::Init()
 {
+    m_layer = LAYER::BackGround;
     return S_OK;
 }
 

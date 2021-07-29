@@ -1,5 +1,5 @@
 #pragma once
-#include"animation.h"
+
 
 
 class image
@@ -112,7 +112,7 @@ public:
 	void alphaRender(HDC hdc,const int destX, const int destY,const int sourX, const int sourY, const int sourWidth, const int sourHeight, BYTE alpha);
 
 
-	void aniRender(HDC hdc, const int destX, const int destY, animation* ani);
+	void aniRender(HDC hdc, const int destX, const int destY, class animation* ani);
 
 
 	//DC를 가져와라

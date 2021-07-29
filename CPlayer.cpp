@@ -6,9 +6,9 @@ CPlayer::~CPlayer() {}
 
 HRESULT CPlayer::Init()
 {
-	m_image = MG_IMAGE->findImage("·Ï¸Ç");
-	m_image->setX(WINSIZEX / 2);
-	m_image->setY(WINSIZEY / 2);
+	m_image = MG_IMAGE->findImage(IMAGE::Vestal_Idle);
+	m_layer = LAYER::Player;
+
 	//mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
 	return S_OK;
 }

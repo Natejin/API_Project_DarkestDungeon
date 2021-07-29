@@ -11,6 +11,8 @@ public:
 	Transform* m_transform;
 	class image* m_image;
 
+	LAYER m_layer;
+
 public:
 	GameObject();
 	~GameObject();
