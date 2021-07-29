@@ -11,9 +11,6 @@ minimap::~minimap()
 
 HRESULT minimap::init()
 {
-
-
-
 	m_rockman = MG_IMAGE->findImage("·Ï¸Ç");
 	m_rockman->setX(WINSIZEX / 2);
 	m_rockman->setY(WINSIZEY / 2);

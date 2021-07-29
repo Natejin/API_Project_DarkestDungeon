@@ -30,11 +30,11 @@ enum class IMAGE
 
 };
 
-enum class RACE {
+enum class RACE 
+{
 	Human,
 	Undying,
 	Worm
-
 };
 
 enum class Resistance
@@ -52,8 +52,10 @@ enum class Combat_Skill
 {
 
 };
+
 enum class Camping_Skill
-{	//야습방지
+{	
+	//야습방지
 	Night_Attack_Prevention,
 	//정찰 강화
 	Reconnaissance,
@@ -61,22 +63,23 @@ enum class Camping_Skill
 	Cure_disease,
 	Cure_Death_Door,
 	Cure_Hp
-
 };
 
 enum class BATTLETURN
-{	//야습방지
+{	
+	//야습방지
 	EnemyTurn,
 	PlayerTurn
-
 };
 
-enum class DUNGEONSTATE {
+enum class DUNGEONSTATE 
+{
 	ROOM,
 	ROAD
 };
 
-enum class DUNGEONMAPSTATE {
+enum class DUNGEONMAPSTATE 
+{
 	Road_Empty,
 	Road_Enemy,
 	Road_Trasure,
