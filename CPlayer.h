@@ -25,6 +25,8 @@ protected:
 		Move,
 		Death_Door
 	};
+
+
 	enum class Combat_Skill
 	{
 
