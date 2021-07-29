@@ -36,3 +36,37 @@ enum class RACE {
 	Worm
 
 };
+
+enum class Resistance
+{
+	Stun,
+	Blight,
+	Bleed,
+	Debuff,
+	Move,
+	Death_Door
+};
+
+
+enum class Combat_Skill
+{
+
+};
+enum class Camping_Skill
+{	//야습방지
+	Night_Attack_Prevention,
+	//정찰 강화
+	Reconnaissance,
+	Stress_Down,
+	Cure_disease,
+	Cure_Death_Door,
+	Cure_Hp
+
+};
+
+enum class BATTLETURN
+{	//야습방지
+	EnemyTurn,
+	PlayerTurn
+
+};

@@ -100,6 +100,15 @@
     <Filter Include="Reference\애니메이션테스트">
       <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enum">
+      <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enum\MJ">
+      <UniqueIdentifier>{0ebbc7be-ae57-45c6-9635-f1b0c8ee6673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enum\WT">
+      <UniqueIdentifier>{0d76a86e-9073-4263-bae8-fe745f4582f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -219,9 +228,6 @@
     <ClInclude Include="Vector2.h">
       <Filter>헤더 파일\Struct</Filter>
     </ClInclude>
-    <ClInclude Include="Enum.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TestScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -275,6 +281,21 @@
     </ClInclude>
     <ClInclude Include="CEnemy.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum_WT.h">
+      <Filter>Enum\WT</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum_MJ.h">
+      <Filter>Enum\MJ</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageAdder_MJ.h">
+      <Filter>Enum\MJ</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageAdder_WT.h">
+      <Filter>Enum\MJ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +448,12 @@
     </ClCompile>
     <ClCompile Include="CEnemy.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageAdder_MJ.cpp">
+      <Filter>Enum\MJ</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageAdder_WT.cpp">
+      <Filter>Enum\MJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

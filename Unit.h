@@ -3,9 +3,18 @@
 
 class Unit :public GameObject
 {
-public:
+protected:
 	int HP;
-	int evasion;
+	int SPD;
+	int pos; //(파티에서의 위치)
+	int Skill[4]; //1, 2, 3, 4
+
+	//저항
+	int resist[5]; //stun, blight, bleed, debuff, move
+
+	//상태
+	bool attribute[8]; //stun, blight, bleed, debuff, buff, move, marked, death
+
 
 public:
 	Unit();

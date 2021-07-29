@@ -41,6 +41,8 @@
 #include"txtData.h"
 #include "Vector2.h"
 #include "Enum.h"
+#include "Enum_MJ.h"
+#include "Enum_WT.h"
 
 
 //======================================

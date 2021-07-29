@@ -162,11 +162,15 @@
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemyManager.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="Enum_MJ.h" />
+    <ClInclude Include="Enum_WT.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="globalTank.h" />
     <ClInclude Include="image.h" />
+    <ClInclude Include="ImageAdder_MJ.h" />
+    <ClInclude Include="ImageAdder_WT.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="loadiingTest.h" />
@@ -225,6 +229,8 @@
     <ClCompile Include="gameNode.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="ImageAdder_MJ.cpp" />
+    <ClCompile Include="ImageAdder_WT.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
