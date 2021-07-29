@@ -294,6 +294,9 @@
     <ClInclude Include="ImageAdder_MJ.h">
       <Filter>Enum\MJ</Filter>
     </ClInclude>
+    <ClInclude Include="DungeonScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
     <ClInclude Include="ImageAdder_WT.h">
       <Filter>Enum\WT</Filter>
     </ClInclude>
@@ -451,6 +454,9 @@
     </ClCompile>
     <ClCompile Include="ImageAdder_MJ.cpp">
       <Filter>Enum\MJ</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="ImageAdder_WT.cpp">
       <Filter>Enum\WT</Filter>

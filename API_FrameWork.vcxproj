@@ -156,6 +156,7 @@
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="commonMacroFunction.h" />
+    <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
+    <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />
