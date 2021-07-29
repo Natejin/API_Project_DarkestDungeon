@@ -25,6 +25,8 @@ protected:
 		Move,
 		Death_Door
 	};
+
+
 	enum class Combat_Skill
 	{
 
@@ -38,6 +40,7 @@ protected:
 		Cure_disease,
 		Cure_Death_Door,
 		Cure_Hp
+
 	};
 
 public:
