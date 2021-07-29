@@ -295,7 +295,7 @@
       <Filter>Enum\MJ</Filter>
     </ClInclude>
     <ClInclude Include="ImageAdder_WT.h">
-      <Filter>Enum\MJ</Filter>
+      <Filter>Enum\WT</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -453,7 +453,7 @@
       <Filter>Enum\MJ</Filter>
     </ClCompile>
     <ClCompile Include="ImageAdder_WT.cpp">
-      <Filter>Enum\MJ</Filter>
+      <Filter>Enum\WT</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

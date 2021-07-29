@@ -9,14 +9,12 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 
-	MG_CAMERA->Init();
-	MG_SCENE->init();
-	MG_GMOBJ->Init();
-
 	ImageAdder_MJ imgAdd_Mj;
 	imgAdd_Mj.Init();
 
-
+	MG_CAMERA->Init();
+	MG_SCENE->init();
+	MG_GMOBJ->Init();
 
 	return S_OK;
 }

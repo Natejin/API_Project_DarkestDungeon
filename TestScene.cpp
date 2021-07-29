@@ -9,6 +9,7 @@ TestScene::~TestScene() {}
 
 HRESULT TestScene::Init()
 {
+	//이부분
 	CBackground* bg = new CBackground();
 	bg->Init();
 	bg->m_image = MG_IMAGE->findImage("배경화면");
