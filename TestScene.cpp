@@ -25,11 +25,20 @@ HRESULT TestScene::Init()
 	enemy->Init();
 	enemy->m_transform->m_pos = Vector2(WINSIZEX, WINSIZEY);
 	MG_GMOBJ->RegisterObj("enemy1", enemy);
+
+	MG_SCENE->changeScene(SCENETYPE::Dungeon);
+
 	return S_OK;
 }
 
 HRESULT TestScene::Init(bool managerInit)
 {
+
+
+
+
+
+
 	return S_OK;
 }
 

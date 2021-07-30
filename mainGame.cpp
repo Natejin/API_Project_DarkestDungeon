@@ -3,7 +3,15 @@
 #include "ImageAdder_MJ.h"
 #include "ImageAdder_WT.h"
 
-mainGame::mainGame() {}
+mainGame::mainGame() {
+#ifdef _DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //TODO 디버깅 하는곳
+	AllocConsole();
+	//_CrtSetBreakAlloc(3210); 	//디버그용 메모리 누수 체크
+#endif // _DEBUG
+
+
+}
 mainGame::~mainGame() {}
 
 HRESULT mainGame::init()

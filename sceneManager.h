@@ -9,8 +9,13 @@ private:
 	typedef map<string, Scene*> sceneList;
 	typedef map<string, Scene*>::iterator isceneList;
 
+	typedef map<SCENETYPE, Scene*> sceneMap;
+	typedef map<SCENETYPE, Scene*>::iterator SceneMapiter;
+
 	static Scene* _currentScene;
 	sceneList m_sceneList;
+
+	sceneMap m_sceneMap;
 
 	class Astar* m_astar;
 	class TestScene* m_testScene;
@@ -26,4 +31,7 @@ public:
 
 	Scene* addScene(string sceneName, Scene* scene);
 	HRESULT changeScene(string sceneName);
+
+	Scene* addScene(SCENETYPE sceneName, Scene* scene);
+	HRESULT changeScene(SCENETYPE sceneName);
 };
