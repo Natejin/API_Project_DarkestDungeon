@@ -37,21 +37,6 @@
     <Filter Include="Reference\airHockey">
       <UniqueIdentifier>{78d63421-0823-4e1d-b5a9-cbfabcb65627}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Reference\미니맵">
-      <UniqueIdentifier>{41007116-0069-4fd8-8d25-70bb59f2a234}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\슈팅">
-      <UniqueIdentifier>{b96e36bf-0caf-4859-9656-5bb01cbe94fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\슈팅\bullet">
-      <UniqueIdentifier>{bcf0b271-44c7-464f-a65b-5fdaa784051e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\슈팅\로켓">
-      <UniqueIdentifier>{05ca8b35-d29c-4d6c-8a75-7858525d98a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\에너미">
-      <UniqueIdentifier>{7ed9668d-9d7e-4b01-a39f-842e7acae077}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Reference\testScene">
       <UniqueIdentifier>{ba7c4a1c-6a9f-4ff1-a710-828a70500f19}</UniqueIdentifier>
     </Filter>
@@ -61,14 +46,8 @@
     <Filter Include="Object\Component">
       <UniqueIdentifier>{73f8c52f-b98d-433e-b6c3-957e7fea7af1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Reference\프로그래스바">
-      <UniqueIdentifier>{5a2a6f49-9af9-45ce-a35f-aa13aa88d69e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Reference\loading">
       <UniqueIdentifier>{4340957f-7eb6-4d06-a697-1d8d3df4894d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\에이슷하">
-      <UniqueIdentifier>{d6da94a8-d55e-4cc4-b47c-98bc84efa10d}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\UTIL">
       <UniqueIdentifier>{693a5e0e-cac8-4d85-bbd8-7c6f50294b06}</UniqueIdentifier>
@@ -76,29 +55,11 @@
     <Filter Include="헤더 파일\Struct">
       <UniqueIdentifier>{11ba7997-29cd-4377-9f11-5991315c57cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Reference\맵툴">
-      <UniqueIdentifier>{df97f2cb-c56a-4c60-a425-efb3ced4b31e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Concept">
       <UniqueIdentifier>{cb2dd22d-41b1-4c2d-8e7c-b0944fe2b254}</UniqueIdentifier>
     </Filter>
     <Filter Include="Concept\image">
       <UniqueIdentifier>{f246c95e-8530-4564-a361-9e48ca56eb83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Concept\애니메이션">
-      <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Concept\이펙트">
-      <UniqueIdentifier>{799f9037-ac59-46a7-8c21-272e269886bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Concept\타이머">
-      <UniqueIdentifier>{153e0e81-aff6-49db-8d0b-f53ec02a7782}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\이펙트테스트">
-      <UniqueIdentifier>{cf39b8fe-e5ca-446a-93ca-6095e60ccfba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Reference\애니메이션테스트">
-      <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Enum">
       <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
@@ -108,6 +69,69 @@
     </Filter>
     <Filter Include="Enum\WT">
       <UniqueIdentifier>{0d76a86e-9073-4263-bae8-fe745f4582f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\animation">
+      <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\effect">
+      <UniqueIdentifier>{799f9037-ac59-46a7-8c21-272e269886bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Concept\timer">
+      <UniqueIdentifier>{153e0e81-aff6-49db-8d0b-f53ec02a7782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Animation_M">
+      <UniqueIdentifier>{0ef76b0c-dfa5-49d9-b9ae-139323476691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Effect_M">
+      <UniqueIdentifier>{0f9f4697-a229-4889-9d75-51379cbbfa9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Sound_M">
+      <UniqueIdentifier>{00c9edf7-d146-41fd-9753-33088564d08f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Input_M">
+      <UniqueIdentifier>{375916ee-f020-4016-9fda-15168fd3f3dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Time_M">
+      <UniqueIdentifier>{85727489-aef9-4224-8a5a-a08cf56470cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\txtData_M">
+      <UniqueIdentifier>{92f693a0-550f-41a8-a65a-6d81b123b502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Image_M">
+      <UniqueIdentifier>{1152c167-f5d9-454b-b3c1-4d807f26f46a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Scene_M">
+      <UniqueIdentifier>{0e12064d-ac55-4e92-8997-300defd5f957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\mapTool">
+      <UniqueIdentifier>{df97f2cb-c56a-4c60-a425-efb3ced4b31e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\miniMap">
+      <UniqueIdentifier>{41007116-0069-4fd8-8d25-70bb59f2a234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\shooting">
+      <UniqueIdentifier>{b96e36bf-0caf-4859-9656-5bb01cbe94fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\shooting\bullet">
+      <UniqueIdentifier>{bcf0b271-44c7-464f-a65b-5fdaa784051e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\shooting\로켓">
+      <UniqueIdentifier>{05ca8b35-d29c-4d6c-8a75-7858525d98a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\TestAnimation">
+      <UniqueIdentifier>{4981e6ed-1387-496d-a98e-f3caa30435d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\Enemy">
+      <UniqueIdentifier>{7ed9668d-9d7e-4b01-a39f-842e7acae077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\A%2a">
+      <UniqueIdentifier>{d6da94a8-d55e-4cc4-b47c-98bc84efa10d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\TestEffect">
+      <UniqueIdentifier>{cf39b8fe-e5ca-446a-93ca-6095e60ccfba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reference\progressBar">
+      <UniqueIdentifier>{5a2a6f49-9af9-45ce-a35f-aa13aa88d69e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,43 +166,34 @@
       <Filter>Reference\airHockey</Filter>
     </ClInclude>
     <ClInclude Include="minimap.h">
-      <Filter>Reference\미니맵</Filter>
+      <Filter>Reference\miniMap</Filter>
     </ClInclude>
     <ClInclude Include="bullet.h">
-      <Filter>Reference\슈팅\bullet</Filter>
+      <Filter>Reference\shooting\bullet</Filter>
     </ClInclude>
     <ClInclude Include="rocket.h">
-      <Filter>Reference\슈팅\로켓</Filter>
+      <Filter>Reference\shooting\로켓</Filter>
     </ClInclude>
     <ClInclude Include="enemy.h">
-      <Filter>Reference\에너미</Filter>
+      <Filter>Reference\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="enemyManager.h">
-      <Filter>Reference\에너미</Filter>
+      <Filter>Reference\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="minion.h">
-      <Filter>Reference\에너미</Filter>
+      <Filter>Reference\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="timer.h">
-      <Filter>Concept\타이머</Filter>
-    </ClInclude>
-    <ClInclude Include="timeManager.h">
-      <Filter>Manager</Filter>
+      <Filter>Concept\timer</Filter>
     </ClInclude>
     <ClInclude Include="progressBar.h">
-      <Filter>Reference\프로그래스바</Filter>
-    </ClInclude>
-    <ClInclude Include="sceneManager.h">
-      <Filter>Manager</Filter>
+      <Filter>Reference\progressBar</Filter>
     </ClInclude>
     <ClInclude Include="scene2.h">
       <Filter>Reference\testScene</Filter>
     </ClInclude>
     <ClInclude Include="scene1.h">
       <Filter>Reference\testScene</Filter>
-    </ClInclude>
-    <ClInclude Include="soundManager.h">
-      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="soundTest.h">
       <Filter>Reference\testScene</Filter>
@@ -193,22 +208,22 @@
       <Filter>Reference\testScene</Filter>
     </ClInclude>
     <ClInclude Include="animation.h">
-      <Filter>Concept\애니메이션</Filter>
+      <Filter>Concept\animation</Filter>
     </ClInclude>
     <ClInclude Include="animationTest.h">
-      <Filter>Reference\애니메이션테스트</Filter>
+      <Filter>Reference\TestAnimation</Filter>
     </ClInclude>
     <ClInclude Include="camel.h">
-      <Filter>Reference\애니메이션테스트</Filter>
+      <Filter>Reference\TestAnimation</Filter>
     </ClInclude>
     <ClInclude Include="effect.h">
-      <Filter>Concept\이펙트</Filter>
+      <Filter>Concept\effect</Filter>
     </ClInclude>
     <ClInclude Include="effectTest.h">
-      <Filter>Reference\이펙트테스트</Filter>
+      <Filter>Reference\TestEffect</Filter>
     </ClInclude>
     <ClInclude Include="mapTool.h">
-      <Filter>Reference\맵툴</Filter>
+      <Filter>Reference\mapTool</Filter>
     </ClInclude>
     <ClInclude Include="globalTank.h">
       <Filter>Reference\tank</Filter>
@@ -223,7 +238,7 @@
       <Filter>Reference\tank</Filter>
     </ClInclude>
     <ClInclude Include="Astar.h">
-      <Filter>Reference\에이슷하</Filter>
+      <Filter>Reference\A%2a</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>헤더 파일\Struct</Filter>
@@ -233,15 +248,6 @@
     </ClInclude>
     <ClInclude Include="mainGame.h">
       <Filter>gameNode</Filter>
-    </ClInclude>
-    <ClInclude Include="imageManager.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="effectManager.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="animationManager.h">
-      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Object\Prototype</Filter>
@@ -273,12 +279,6 @@
     <ClInclude Include="CCameraManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="txtData.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
     <ClInclude Include="CEnemy.h">
       <Filter>Object</Filter>
     </ClInclude>
@@ -300,6 +300,30 @@
     <ClInclude Include="ImageAdder_WT.h">
       <Filter>Enum\WT</Filter>
     </ClInclude>
+    <ClInclude Include="animationManager.h">
+      <Filter>Manager\Animation_M</Filter>
+    </ClInclude>
+    <ClInclude Include="effectManager.h">
+      <Filter>Manager\Effect_M</Filter>
+    </ClInclude>
+    <ClInclude Include="soundManager.h">
+      <Filter>Manager\Sound_M</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Manager\Input_M</Filter>
+    </ClInclude>
+    <ClInclude Include="timeManager.h">
+      <Filter>Manager\Time_M</Filter>
+    </ClInclude>
+    <ClInclude Include="txtData.h">
+      <Filter>Manager\txtData_M</Filter>
+    </ClInclude>
+    <ClInclude Include="imageManager.h">
+      <Filter>Manager\Image_M</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneManager.h">
+      <Filter>Manager\Scene_M</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -318,43 +342,34 @@
       <Filter>Reference\airHockey</Filter>
     </ClCompile>
     <ClCompile Include="minimap.cpp">
-      <Filter>Reference\미니맵</Filter>
+      <Filter>Reference\miniMap</Filter>
     </ClCompile>
     <ClCompile Include="bullet.cpp">
-      <Filter>Reference\슈팅\bullet</Filter>
+      <Filter>Reference\shooting\bullet</Filter>
     </ClCompile>
     <ClCompile Include="rocket.cpp">
-      <Filter>Reference\슈팅\로켓</Filter>
+      <Filter>Reference\shooting\로켓</Filter>
     </ClCompile>
     <ClCompile Include="minion.cpp">
-      <Filter>Reference\에너미</Filter>
+      <Filter>Reference\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="enemyManager.cpp">
-      <Filter>Reference\에너미</Filter>
+      <Filter>Reference\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="enemy.cpp">
-      <Filter>Reference\에너미</Filter>
+      <Filter>Reference\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="timer.cpp">
-      <Filter>Concept\타이머</Filter>
-    </ClCompile>
-    <ClCompile Include="timeManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>Concept\timer</Filter>
     </ClCompile>
     <ClCompile Include="progressBar.cpp">
-      <Filter>Reference\프로그래스바</Filter>
-    </ClCompile>
-    <ClCompile Include="sceneManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>Reference\progressBar</Filter>
     </ClCompile>
     <ClCompile Include="scene1.cpp">
       <Filter>Reference\testScene</Filter>
     </ClCompile>
     <ClCompile Include="scene2.cpp">
       <Filter>Reference\testScene</Filter>
-    </ClCompile>
-    <ClCompile Include="soundManager.cpp">
-      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="soundTest.cpp">
       <Filter>Reference\testScene</Filter>
@@ -369,22 +384,22 @@
       <Filter>Reference\testScene</Filter>
     </ClCompile>
     <ClCompile Include="animation.cpp">
-      <Filter>Concept\애니메이션</Filter>
+      <Filter>Concept\animation</Filter>
     </ClCompile>
     <ClCompile Include="animationTest.cpp">
-      <Filter>Reference\애니메이션테스트</Filter>
+      <Filter>Reference\TestAnimation</Filter>
     </ClCompile>
     <ClCompile Include="camel.cpp">
-      <Filter>Reference\애니메이션테스트</Filter>
+      <Filter>Reference\TestAnimation</Filter>
     </ClCompile>
     <ClCompile Include="effect.cpp">
-      <Filter>Concept\이펙트</Filter>
+      <Filter>Concept\effect</Filter>
     </ClCompile>
     <ClCompile Include="effectTest.cpp">
-      <Filter>Reference\이펙트테스트</Filter>
+      <Filter>Reference\TestEffect</Filter>
     </ClCompile>
     <ClCompile Include="mapTool.cpp">
-      <Filter>Reference\맵툴</Filter>
+      <Filter>Reference\mapTool</Filter>
     </ClCompile>
     <ClCompile Include="tank.cpp">
       <Filter>Reference\tank</Filter>
@@ -396,7 +411,7 @@
       <Filter>Reference\tank</Filter>
     </ClCompile>
     <ClCompile Include="Astar.cpp">
-      <Filter>Reference\에이슷하</Filter>
+      <Filter>Reference\A%2a</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>헤더 파일\Struct</Filter>
@@ -406,15 +421,6 @@
     </ClCompile>
     <ClCompile Include="mainGame.cpp">
       <Filter>gameNode</Filter>
-    </ClCompile>
-    <ClCompile Include="imageManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="effectManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="animationManager.cpp">
-      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Object\Prototype</Filter>
@@ -443,12 +449,6 @@
     <ClCompile Include="CCameraManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="txtData.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
     <ClCompile Include="CEnemy.cpp">
       <Filter>Object</Filter>
     </ClCompile>
@@ -460,6 +460,30 @@
     </ClCompile>
     <ClCompile Include="ImageAdder_WT.cpp">
       <Filter>Enum\WT</Filter>
+    </ClCompile>
+    <ClCompile Include="animationManager.cpp">
+      <Filter>Manager\Animation_M</Filter>
+    </ClCompile>
+    <ClCompile Include="effectManager.cpp">
+      <Filter>Manager\Effect_M</Filter>
+    </ClCompile>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>Manager\Sound_M</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Manager\Input_M</Filter>
+    </ClCompile>
+    <ClCompile Include="timeManager.cpp">
+      <Filter>Manager\Time_M</Filter>
+    </ClCompile>
+    <ClCompile Include="txtData.cpp">
+      <Filter>Manager\txtData_M</Filter>
+    </ClCompile>
+    <ClCompile Include="imageManager.cpp">
+      <Filter>Manager\Image_M</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneManager.cpp">
+      <Filter>Manager\Scene_M</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

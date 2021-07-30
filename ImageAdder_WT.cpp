@@ -22,7 +22,7 @@ HRESULT ImageAdder_WT::Init()
 	MG_IMAGE->addImage("hero", "images/panel/panel_hero.bmp", 720, 224, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("inventory", "images/panel/panel_inventory.bmp", 720, 360, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("map", "images/panel/panel_map.bmp", 720, 360, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("monster", "images/panel/panel_map.bmp", 702, 368, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("monster", "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("scouting", "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 
 	//Icon_Map
