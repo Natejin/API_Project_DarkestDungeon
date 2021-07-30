@@ -13,6 +13,13 @@
 #include <memory.h>
 #include <tchar.h>
 
+//#include <Windows.h>
+#include <iostream>
+#include <crtdbg.h>
+#include <cassert>
+#include <string>
+#include <functional>
+#include <conio.h>
 
 //==========================================
 //					STL
@@ -69,8 +76,8 @@
 #define WINNAME			(LPTSTR)(TEXT("지옥으로 떠나는 여행"))
 #define WINSTARTX		100
 #define WINSTARTY		100
-#define WINSIZEX		1024
-#define WINSIZEY		768
+#define WINSIZEX		1280
+#define WINSIZEY		720
 #define WORLDSIZEX		3000
 #define WORLDSIZEY		3000
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU

@@ -26,7 +26,42 @@ enum class IMAGE
 {
 	Vestal_Idle,
 	Vestal_Walk,
-	Vestal_Combat
+	Vestal_Combat,
+
+	//IMG_DUNGEON
+	ruins_bg,
+
+	ruins_wall0,
+	ruins_wall2,
+	ruins_wall3,
+	ruins_wall6,
+	ruins_wall_basic,
+
+	ruins_wall1,
+	ruins_wall4,
+	ruins_wall5,
+
+	ruins_room1,
+	ruins_room2,
+	ruins_room3,
+	ruins_room4,
+	ruins_room5,
+	ruins_room6,
+	ruins_room7,
+	ruins_room8,
+	ruins_room9,
+
+	ruins_endhall,
+	ruins_mid,
+
+	ruins_bottom,
+	ruins_top,
+
+	//IMG_PLAYABLECHARACTER
+	crusader,
+	highwayman,
+	plague_doctor,
+	vestal
 };
 
 enum class RACE 
@@ -73,12 +108,14 @@ enum class BATTLETURN
 
 enum class DUNGEONSTATE 
 {
+	NONE,
 	ROOM,
 	ROAD
 };
 
 enum class DUNGEONMAPSTATE 
 {
+	NONE,
 	Road_Empty,
 	Road_Enemy,
 	Road_Trasure,
@@ -86,5 +123,11 @@ enum class DUNGEONMAPSTATE
 	Room_Empty,
 	Room_Enemy,
 	Room_Trasure,
-	Room_Boss
+	Room_Boss,
+};
+
+enum class SCENETYPE
+{
+	Test,
+	Dungeon
 };

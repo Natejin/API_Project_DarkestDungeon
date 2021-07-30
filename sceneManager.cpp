@@ -3,6 +3,7 @@
 #include "gameNode.h"
 #include "Astar.h"
 #include "TestScene.h"
+#include "DungeonScene.h"
 
 SceneManager::SceneManager() {}
 SceneManager::~SceneManager() {}
@@ -17,6 +18,11 @@ HRESULT SceneManager::init()
 
 	m_testScene = new TestScene;
 	m_testScene->Init();
+
+	DungeonScene* dungeon = new DungeonScene;
+	dungeon->Init();
+	addScene(SCENETYPE::Dungeon, dungeon);
+
 	_currentScene = m_testScene;
 	return S_OK;
 }
@@ -72,11 +78,41 @@ Scene* SceneManager::addScene(string sceneName, Scene* scene)
 
 HRESULT SceneManager::changeScene(string sceneName)
 {
-
 	isceneList find = m_sceneList.find(sceneName);
 
 	//못찾으면E_FAIL
 	if(find==m_sceneList.end())return E_FAIL;
+	//바꾸려는 씬이현재씬이랑같아도  E_FAIL
+	if (find->second == _currentScene)return E_FAIL;
+
+	//여기까지 왔다면 문제가 없다 즉 씬을 초기화 하고  변경하자.
+	if (SUCCEEDED(find->second->Init()))
+	{
+		//혹시 기존에 씬이 있다면 릴리즈
+		if (_currentScene)_currentScene->Release();
+
+		_currentScene = find->second;
+		return  S_OK;
+	}
+
+	return E_FAIL;
+}
+
+Scene* SceneManager::addScene(SCENETYPE sceneName, Scene* scene)
+{
+	if (!scene)return nullptr;
+
+	m_sceneMap.insert(make_pair(sceneName, scene));
+
+	return nullptr;
+}
+
+HRESULT SceneManager::changeScene(SCENETYPE sceneName)
+{
+	SceneMapiter find = m_sceneMap.find(sceneName);
+
+	//못찾으면E_FAIL
+	if (find == m_sceneMap.end())return E_FAIL;
 	//바꾸려는 씬이현재씬이랑같아도  E_FAIL
 	if (find->second == _currentScene)return E_FAIL;
 
