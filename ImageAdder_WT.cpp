@@ -24,6 +24,12 @@ HRESULT ImageAdder_WT::Init()
 	MG_IMAGE->addImage("map", "images/panel/panel_map.bmp", 720, 360, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("monster", "images/panel/panel_map.bmp", 702, 368, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("scouting", "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("characterpanerl_bg", "images/panel/characterpanerl_bg.bmp", 240, 101, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("char_edit_focusframe", "images/panel/char_edit_focusframe.bmp", 240, 101, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("characterpanel_frame", "images/panel/characterpanel_frame.bmp", 1395, 776, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("characterpanel_focusframe", "images/panel/characterpanel_focusframe.bmp", 561, 43, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("next_hero", "images/panel/next_hero.bmp", 80, 49, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("previous_hero", "images/panel/previous_hero.bmp", 80, 49, true, RGB(255, 0, 255));
 
 	//Icon_Map
 	MG_IMAGE->addImage("hall_clear", "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
@@ -52,6 +58,18 @@ HRESULT ImageAdder_WT::Init()
 	MG_IMAGE->addImage("room_entrance", "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("room_treasure", "images/icons_map/room_treasure.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("room_unknown", "images/icons_map/room_unknown.bmp", 64, 64, true, RGB(255, 0, 255));
+
+	//character ui
+	MG_IMAGE->addImage("icon_dismiss", "images/character/icon_dismiss.bmp", 32, 32, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("icon_recolor", "images/character/icon_recolor.bmp", 32, 32, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("icon_rename", "images/character/icon_rename.bmp", 32, 32, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("lockedskill", "images/character/lockedskill.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("lockquirk", "images/character/lockquirk.bmp", 32, 32, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("quirkreplaced", "images/character/quirkreplaced.bmp", 26, 26, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("selected_ability", "images/character/selected_ability.bmp", 90, 90, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("seriousquirk", "images/character/seriousquirk.bmp", 32, 32, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("singleton_quirk_negative", "images/character/singleton_quirk_negative.bmp", 32, 32, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("singleton_quirk_positive", "images/character/singleton_quirk_positive.bmp", 32, 32, true, RGB(255, 0, 255));
 
 	return S_OK;
 }
