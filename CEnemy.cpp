@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "CEnemy.h"
 
-
 CEnemy::CEnemy() {}
 CEnemy::~CEnemy() {}
 

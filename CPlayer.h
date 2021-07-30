@@ -7,7 +7,6 @@ protected:
 	JOB job;
 	int stress;
 
-
 	int DMG;
 	int DEF;
 
@@ -18,8 +17,6 @@ protected:
 	int LVL;
 	int EXP;
 	//장비나 장신구는 어떻게?
-
-
 
 public:
 	CPlayer();
