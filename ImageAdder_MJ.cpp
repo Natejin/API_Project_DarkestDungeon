@@ -8,6 +8,7 @@ HRESULT ImageAdder_MJ::Init()
 	//제일 뒷 배경
 	MG_IMAGE->addImage("ruins_bg", "images/ruins/crypts_corridor_bg.bmp", 1920, 720, false, RGB(255, 0, 255));
 
+
 	//통로 벽
 	MG_IMAGE->addImage("ruins_wall0", "images/ruins/crypts_corridor_door_basic.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall2", "images/ruins/crypts_corridor_wall_00.bmp", 720, 720, false, RGB(255, 0, 255));

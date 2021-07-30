@@ -3,6 +3,7 @@
 
 HRESULT ImageAdder_WT::Init()
 {
+
 	//resistance
 	MG_IMAGE->addImage("bleed", "images/resistance/skill_attribute_bleed.bmp", 24, 24, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("buff", "images/resistance/skill_attribute_buff.bmp", 24, 24, true, RGB(255, 0, 255));
