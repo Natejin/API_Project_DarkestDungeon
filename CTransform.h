@@ -1,5 +1,6 @@
 #pragma once
 #include "CComponent.h"
+
 class Transform : public CComponent
 {
 public:

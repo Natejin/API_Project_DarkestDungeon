@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "CBG_Road.h"
 
-CBG_Road::CBG_Road()
-{
-}
-
-CBG_Road::~CBG_Road()
-{
-}
+CBG_Road::CBG_Road() {}
+CBG_Road::~CBG_Road() {}
 
 HRESULT CBG_Road::Init()
 {
@@ -25,7 +20,6 @@ HRESULT CBG_Road::Init()
 //void CBG_Road::LateUpdate()
 //{
 //}
-
 
 void CBG_Road::SetIMG()
 {
@@ -52,7 +46,6 @@ void CBG_Road::SetIMG()
 		mostFG_Top[i].m_trans.m_scale = Vector2(720, 720);
 		mostFG_Top[i].m_trans.m_pos = Vector2(720 * (i - 2), -100);
 	}
-
 
 	for (int i = 0; i < roadCount; i++)
 	{

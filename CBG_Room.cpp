@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "CBG_Room.h"
 
-CBG_Room::CBG_Room()
-{
-}
-
-CBG_Room::~CBG_Room()
-{
-}
+CBG_Room::CBG_Room() {}
+CBG_Room::~CBG_Room() {}
 
 HRESULT CBG_Room::Init()
 {
@@ -25,7 +20,6 @@ HRESULT CBG_Room::Init()
 //void CBG_Road::LateUpdate()
 //{
 //}
-
 
 void CBG_Room::SetIMG()
 {

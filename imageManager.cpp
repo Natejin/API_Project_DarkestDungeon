@@ -11,8 +11,6 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("카메라", "images/카메라.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("미니맵", "images/배경.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
 
-
-
 	//Darkest dungeon
 	MG_IMAGE->addFrameImage("록맨", "images/록맨.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/Vestal_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
@@ -67,7 +65,8 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("room_treasure", "images/icons_map/room_treasure.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("room_unknown", "images/icons_map/room_unknown.bmp", 64, 64, true, RGB(255, 0, 255));
 
-	//나중에 imageMap 형식으로 업데이트
+
+	//========================================================
 	//ruins-map
 	//제일 뒷 배경
 	MG_IMAGE->addImage("ruins_bg", "images/ruins/crypts_corridor_bg.bmp", WINSIZEY, WINSIZEY, false, RGB(255, 0, 255));
@@ -104,7 +103,6 @@ HRESULT imageManager::init()
 
 
 	//========================================================
-
 	//임시 이미지
 	//캐릭터
 	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/임시/임시이미지(플레이어).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));

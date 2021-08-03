@@ -9,8 +9,6 @@ TestScene::~TestScene() {}
 
 HRESULT TestScene::Init()
 {
-
-
 	//CParty* player = new CParty();
 	//player->Init();
 	//player->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);
@@ -29,12 +27,6 @@ HRESULT TestScene::Init()
 
 HRESULT TestScene::Init(bool managerInit)
 {
-
-
-
-
-
-
 	return S_OK;
 }
 

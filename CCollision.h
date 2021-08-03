@@ -1,6 +1,6 @@
 #pragma once
-
 #include "CComponent.h"
+
 class Collision : public CComponent
 {
 public:
@@ -8,7 +8,4 @@ public:
 	Vector2 pos;
 
 	//forBox
-
-
 };
-

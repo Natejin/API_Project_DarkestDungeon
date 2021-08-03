@@ -6,7 +6,6 @@
 class DungeonScene : public Scene
 {
 public:
-
 	struct DungeonData {
 		DUNGEONMAPSTATE dungeonMapState = DUNGEONMAPSTATE::NONE;
 		bool dirMap[4] = { false };
@@ -14,7 +13,6 @@ public:
 		int posY = 0;
 	};
 
-	
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -26,19 +24,18 @@ public:
 	int roadCount;
 	int remainRoom;
 
-	
-	//Room
+//==================================
+//Room
 public:
 	class CBackground* m_roomBG;
 
 
-
-	//Road
+//==================================
+//Road
 public:
 	class CBackground* m_roadBG;
 	Rect door1;
 	Rect door2;
-
 
 	bool isDoorClick;
 	int m_movedDistance;
@@ -51,7 +48,21 @@ public:
 	//뒤로 이동할때 최대 간격
 	int m_WB_btwHeroes = 100;
 
-	//배틀시스템
+	//int getDistance()const { return m_movedDistance; } //이동거리
+	//int getRoadCount()const { return m_roadNum; } //좌표인덱스
+	//void setDistance(CHero* player);
+	//void setRoadNum(CHero* player);
+
+	//void setRoadKind();
+	//void setRoadKind(int firstArea, int secondArea, int thirdArea);
+
+	void FormationMove();
+	void CheckDoor();
+
+	void ShowDungeonInfo(HDC _hdc);
+
+//==================================
+//배틀시스템
 public:
 	int curBattleTurnCount;
 	BATTLETURN curBattleTurn;
@@ -73,24 +84,6 @@ public:
 	void CreateDoor();
 
 public:
-	//int getDistance()const { return m_movedDistance; } //이동거리
-	//int getRoadCount()const { return m_roadNum; } //좌표인덱스
-	//void setDistance(CHero* player);
-	//void setRoadNum(CHero* player);
-
-
-	//void setRoadKind();
-	//void setRoadKind(int firstArea, int secondArea, int thirdArea);
-
-	void FormationMove();
-	void CheckDoor();
-
-
-	void ShowDungeonInfo(HDC _hdc);
-public:
-
-
-
 	virtual HRESULT Init();
 	virtual HRESULT Init(bool managerInit);
 	virtual void Release();

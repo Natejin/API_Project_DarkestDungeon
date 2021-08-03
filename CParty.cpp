@@ -29,7 +29,6 @@ HRESULT CParty::Init(int food, int bandage, int torch)
 
 void CParty::Update(float deltaTime, float worldTime)
 {
-
 }
 
 void CParty::LateUpdate()
@@ -38,12 +37,10 @@ void CParty::LateUpdate()
 
 void CParty::BackRender(HDC _hdc)
 {
-
 }
 
 void CParty::Render(HDC _hdc)
 {
-
 }
 
 void CParty::FrontRender(HDC _hdc)
@@ -71,12 +68,12 @@ void CParty::SetHero(CHero* member)
 	}
 }
 
-void CParty::SetCamera() {
+void CParty::SetCamera() 
+{
 	if (m_member.size() > 0)
 	{
 		MG_CAMERA->SetTarget(m_member[0]);
 	}
-
 }
 
 void CParty::SetParty(vector<CHero*> party)
@@ -147,23 +144,7 @@ CHero* CParty::GetHero(int index)
 
 void CParty::SetFormation()
 {
-	//해당 함수의 의도
-	//pos 1과 pos 4인 멤버의 위치가 바뀌었을 경우
-	//pos 1이었던 멤버를 벡터에서 pos값으로 호출할 수 있게끔??
-
-	//카메라가 포커스를 맞추는 멤버를 pos 1인 멤버로 설정하고 싶어서
-
-	//멤버의 위치가 변했을 경우 벡터의 순서도 마찬가지로 만드는 것이 타당할 것 같아서
-
-	//근데 시도할수록 이게 과연 필요한게 맞는가에 대해 생각하게 됨
-
-	//m_imember = m_member.begin();
-	for (int i = 0; i < m_member.size(); i++)
-	{
-		//pos값과 vector에 들어가 있는 순서가 다를 경우
-		//가르키는 값을 바꿔버리는 것 VS 값 자체를 스왑하는 것
-		//pos가 4일 경우 m_member[0]이어야 함
-	}
+	//필요 없음.
 }
 
 void CParty::getFormation(string name)
@@ -337,9 +318,6 @@ void CParty::showMemberInfo(HDC _hdc)
 		sprintf_s(str, "POS: %d", m_member[i]->getPos());
 		TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
 	}
-
-
-
 }
 
 void CParty::showItem(HDC _hdc)

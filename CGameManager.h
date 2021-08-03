@@ -1,5 +1,6 @@
 #pragma once
 #include"singleton.h"
+
 class CHero;
 class CGameManager : public Singleton<CGameManager>
 {
@@ -23,10 +24,12 @@ public:
 
 	virtual void Release();
 
+	//==================================
+
 	void RegisterHero(CHero* hero);
 	void RemoveHero(int id);
 	vector<CHero*> GetHeroes();
 
 	class Vestal* CreateVestal(string name);
-};
 
+};

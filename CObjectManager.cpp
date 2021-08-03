@@ -7,12 +7,10 @@ CObjectManager::~CObjectManager() {}
 
 HRESULT CObjectManager::Init()
 {
-
 	renderOrder.push_back(LAYER::BackGround);
 	renderOrder.push_back(LAYER::Enemy);
 	renderOrder.push_back(LAYER::Player);
 	renderOrder.push_back(LAYER::UI);
-
 
 	for (size_t i = 0; i < renderOrder.size(); i++)
 	{
@@ -45,6 +43,7 @@ void CObjectManager::LateUpdate()
 	for (size_t i = 0; i < objsToErase.size(); i++)
 	{
 		int eraseID = objsToErase[i];
+
 		for (size_t j = 0; j < objectVec.size(); ++j)
 		{
 			if (objectVec[j]->GetId() == eraseID) {
@@ -58,20 +57,15 @@ void CObjectManager::LateUpdate()
 						objectRender[layer].erase(objectRender[layer].begin() + k);
 						break;
 					}
-					
 				}
 				
-
 				objectVec[j]->Release();
 				delete 	objectVec[j];
 				objectVec.erase(objectVec.begin() + j);
 
-			
 				break;
 			}
 		}
-
-
 	}
 
 	for (auto g : objsToRegister)
@@ -82,7 +76,6 @@ void CObjectManager::LateUpdate()
 
 void CObjectManager::BackRender(HDC _hdc)
 {
-
 	for (LAYER layer : renderOrder)
 	{
 		for (GameObject* go : objectRender[layer])

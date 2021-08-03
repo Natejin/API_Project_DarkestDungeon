@@ -89,7 +89,6 @@ enum class Resistance
 	Death_Door
 };
 
-
 enum class Combat_Skill
 {
 

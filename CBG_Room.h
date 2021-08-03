@@ -1,7 +1,6 @@
 #pragma once
 #include "CBackground.h"
 
-
 class CBG_Room : public CBackground
 {
 public:

@@ -3,14 +3,10 @@
 
 Vestal::Vestal()
 {
-
+	//이부분 내용은 createvestal로 옮김
 
 }
 Vestal::~Vestal(){}
-
-
-
-
 
 void Vestal::useSkill(int SkillNum, int enemyPos, int memberPos)
 {

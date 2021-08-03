@@ -57,8 +57,8 @@ public:
 	void loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY, BYTE alpha);
 
 
-
-
+	//==================================
+	//enum을 매개변수로 받아 사용
 
 	image* addImage(IMAGE strKey, const int width, const int height);
 	image* addImage(IMAGE strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor);

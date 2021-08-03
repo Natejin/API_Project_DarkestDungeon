@@ -3,13 +3,8 @@
 #include "CHero.h"
 #include "CVestal.h"
 
-CGameManager::CGameManager()
-{
-}
-
-CGameManager::~CGameManager()
-{
-}
+CGameManager::CGameManager() {}
+CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
@@ -53,7 +48,6 @@ void CGameManager::Release()
 		SAFE_DELETE(m_ownHeroes[i]);
 	}
 	m_ownHeroes.clear();
-	
 }
 
 void CGameManager::RegisterHero(CHero* hero)
@@ -94,7 +88,7 @@ Vestal* CGameManager::CreateVestal(string name)
 	//pos는 임의로 1에 배치, 공격력은 4-9의 중간값으로.
 
 	//member1->m_transform->m_pos = Vector2(210, 360);
-
 	//실질적으로 좌표상 존재하는 위치
+
 	return vestal;
 }

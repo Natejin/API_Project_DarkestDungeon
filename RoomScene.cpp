@@ -37,7 +37,6 @@ HRESULT RoomScene::Init()
 
 HRESULT RoomScene::Init(bool managerInit)
 {
-
 	return S_OK;
 }
 
@@ -74,7 +73,6 @@ void RoomScene::Update()
 	//전투 시작하면 속도를 비교해서 재정렬 시킴.
 	Battle();
 	CheckButton(); //턴수가 올라가는지 확인용.
-
 }
 
 void RoomScene::Render(HDC _hdc)
@@ -123,7 +121,8 @@ void RoomScene::Create_Enermy_Party()
 }
 
 void RoomScene::Compare_P_E_Speed_ReArray()
-{	/*
+{	
+	/*
 	//int형이 아닌 class를 배열로 넣어서 만들어라.?
 	현재 문제점-> 배열안에 넣었을때 int형 배열인 경우 객체를 정수형으로 인식을 하게 되고
 	int형으로 인식을 한채로 재배열을 시키고 나면 값의 재정렬은 되지만 숫자만으로 재정렬이 되기때문에 이게 누구의 속도인지
@@ -169,16 +168,12 @@ void RoomScene::Compare_P_E_Speed_ReArray()
 void RoomScene::Battle()
 {
 	Battle_Start();
-
 	Battle_Finish();
 }
 
 void RoomScene::Battle_Start()
 {
-
 	Compare_P_E_Speed_ReArray(); //속도 재배열.
-
-
 }
 
 void RoomScene::Battle_Finish()

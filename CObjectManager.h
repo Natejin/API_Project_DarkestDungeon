@@ -4,16 +4,12 @@
 class CObjectManager : public Singleton<CObjectManager>
 {
 private:
-	 //map<int,class GameObject*> objectMap;
+	//map<int,class GameObject*> objectMap;
 	vector<class GameObject*> objectVec;
-
 	vector<class GameObject*> objsToRegister;
 	vector<int> objsToErase;
 
-
-
 	vector<LAYER> renderOrder;
-
 	map<LAYER, vector<class GameObject*>> objectRender;
 
 	int _instance_id;
@@ -32,6 +28,8 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	//==================================
 
 	void RegisterObj(string name, GameObject* gameObj);
 	void RemoveObj(int id);

@@ -10,9 +10,6 @@ public:
 	Vestal();
 	~Vestal();
 
-
-
-
 	void useSkill(int SkillNum, int enemyPos, int memberPos);
 	void skill_MaceBash(int enemyPos); //근거리 공격
 	void skill_Judgement(int enemyPos); //원거리 공격

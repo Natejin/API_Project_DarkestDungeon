@@ -8,6 +8,7 @@ mainGame::mainGame() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //TODO 디버깅 하는곳
 	AllocConsole();
 	//_CrtSetBreakAlloc(3210); 	//디버그용 메모리 누수 체크
+
 #endif // _DEBUG
 
 
@@ -57,7 +58,6 @@ void mainGame::render(/*HDC hdc*/)
 {
 	PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	//==============================================
-
 
 	MG_GMOBJ->BackRender(getMemDC());
 	MG_GMOBJ->Render(getMemDC());

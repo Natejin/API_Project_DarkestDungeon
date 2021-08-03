@@ -91,7 +91,6 @@ void CCameraManager::Render(HDC _hdc)
 		TextOut(_hdc, 0, 500, str, strlen(str));
 
 #else
-
 		//if (_timer != nullptr)
 		//{
 		//	//FPS

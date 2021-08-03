@@ -12,14 +12,7 @@ DungeonScene::DungeonScene()
 	remainRoom = 2;
 	isDoorClick = false;
 }
-
-DungeonScene::~DungeonScene()
-{
-
-}
-
-
-
+DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
@@ -36,7 +29,6 @@ HRESULT DungeonScene::Init()
 
 HRESULT DungeonScene::Init(bool managerInit)
 {
-
 	return S_OK;
 }
 
@@ -57,7 +49,8 @@ void DungeonScene::Update()
 	{
 
 	}
-	else {
+	else 
+	{
 	
 	}
 }
@@ -72,7 +65,8 @@ void DungeonScene::Render(HDC _hdc)
 	{
 		ShowDungeonInfo(_hdc);
 	}
-	else {
+	else 
+	{
 
 	}
 }
@@ -81,7 +75,7 @@ void DungeonScene::Render(HDC _hdc)
 #pragma region InitDungeon
 void DungeonScene::CreateDungeon()
 {
-	//맵을 생성
+	//맵 생성
 	for (int i = 0; i < MAPSIZE; i++)
 	{
 		for (int j = 0; j < MAPSIZE; j++)
@@ -101,7 +95,6 @@ void DungeonScene::CreateDungeon()
 
 void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 {
-
 	if (_lastDir != Vector2Int(0, 0))
 	{
 		if (remainRoom < 0) //생성할 방개수가 0개인경우
@@ -126,6 +119,7 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 	//	}
 	//	_cprintf("\n");
 	//}
+
 #endif // _DEBUG
 
 	if (count > 0)
@@ -137,22 +131,24 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		else if (!(bool)MG_RND->getInt(10)) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trasure;
 		}
-
 		else if (!(bool)MG_RND->getInt(10)) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trap;
 		}
 		else {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Empty;
 		}
+		
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
+
 	//방일때
 	else {
 		if (_lastDir == Vector2Int(0, 0))
 		{
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
 		}
-		else {
+		else 
+		{
 			if (!(bool)MG_RND->getInt(4)) {
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Enemy;
 			}
@@ -166,7 +162,6 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		}
 
 		remainRoom--;
-
 
 		Vector2Int lastDir;
 		bool noneDir = true;
@@ -257,8 +252,8 @@ void DungeonScene::CreateRoom()
 
 void DungeonScene::CreateDoor()
 {
-	door1.SetRect(180, 0, 220, WINSIZEY);
-	door1.SetRect(WORLDSIZEX - 535, 0, WORLDSIZEX - 495, WINSIZEY);
+	door1.SetRect(145, 0, 365, WINSIZEY);
+	door2.SetRect(WORLDSIZEX - 675, 0, WORLDSIZEX - 355, WINSIZEY);
 }
 
 void DungeonScene::CreateRoad()
@@ -273,28 +268,25 @@ void DungeonScene::CreateRoad()
 #pragma endregion
 
 
-
-
 #pragma region Road
 void DungeonScene::CheckDoor()
 {
-	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->getPos())||
-		door2.CheckCollisionWithPoint(m_party->GetHero(0)->getPos()))
+	//문에 닿았다는 메세지가 뜨긴 뜨는데 
+	//door2의 매우 좁은 영역에서 뜸
+	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos)||
+		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
 	{
 		isDoorClick = true;
 	}
-	else {
+	else 
+	{
 		isDoorClick = false;
 	}
-
 }
-
-
 #pragma endregion
 
 
 #pragma region DebugLog
-
 void DungeonScene::ShowDungeonInfo(HDC _hdc)
 {
 	char str[256];
@@ -334,6 +326,4 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 		TextOut(_hdc, 0, 140, str, strlen(str));
 	}
 }
-
-
 #pragma endregion
