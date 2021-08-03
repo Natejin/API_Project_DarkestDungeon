@@ -10,12 +10,13 @@ GameObject::GameObject()
 	m_transform->m_scale = Vector2(0, 0);
 	m_transform->m_pivot = Vector2(0.5, 0.5);
 	m_layer = LAYER::Unknown;
+	isActive = true;
 }
 GameObject::~GameObject() {}
 
 HRESULT GameObject::Init()
 {
-
+	
 	return S_OK;
 }
 

@@ -22,7 +22,7 @@ HRESULT mainGame::init()
 	imgAdd_Mj.Init();
 	ImageAdder_WT imgAdd_Wt;
 	imgAdd_Wt.Init();
-
+	MG_GAME->Init();
 	MG_CAMERA->Init();
 	MG_SCENE->init();
 	MG_GMOBJ->Init();
@@ -58,13 +58,14 @@ void mainGame::render(/*HDC hdc*/)
 	PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	//==============================================
 
-	MG_SCENE->Render(getMemDC());
+
 	MG_GMOBJ->BackRender(getMemDC());
 	MG_GMOBJ->Render(getMemDC());
 	MG_GMOBJ->FrontRender(getMemDC());
 
 	//==============================================
 	MG_TIME->render(getMemDC());
+	MG_SCENE->Render(getMemDC());
 	MG_CAMERA->Render(getMemDC());
 
 	//백버퍼의 내용을 HDC그린다.(건드리지 말것.)

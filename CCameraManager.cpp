@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "CCameraManager.h"
 #include "GameObject.h"
-#include "Transform.h"
+#include "CTransform.h"
 
 CCameraManager::~CCameraManager() {}
 CCameraManager::CCameraManager() { m_pTarget = nullptr; }

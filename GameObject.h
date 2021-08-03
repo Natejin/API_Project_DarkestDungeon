@@ -1,6 +1,6 @@
 #pragma once
 #include "Object.h"
-#include "Transform.h"
+#include "CTransform.h"
 
 class GameObject : public Object
 {
@@ -12,6 +12,7 @@ public:
 	class image* m_image;
 
 	LAYER m_layer;
+	bool isActive;
 
 public:
 	GameObject();

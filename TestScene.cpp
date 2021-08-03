@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "TestScene.h"
-#include "CPlayer.h"
+#include "CParty.h"
 #include "CEnemy.h"
 #include "CBackground.h"
 
@@ -9,22 +9,18 @@ TestScene::~TestScene() {}
 
 HRESULT TestScene::Init()
 {
-	//ÀÌºÎºÐ
-	CBackground* bg = new CBackground();
-	bg->Init();
-	bg->m_image = MG_IMAGE->findImage("bg");
-	MG_GMOBJ->RegisterObj("Background", bg);
 
-	CPlayer* player = new CPlayer();
-	player->Init();
-	player->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);
-	MG_GMOBJ->RegisterObj("Player1", player);
-	MG_CAMERA->SetTarget(player);
 
-	CEnemy* enemy = new CEnemy();
-	enemy->Init();
-	enemy->m_transform->m_pos = Vector2(WINSIZEX, WINSIZEY);
-	MG_GMOBJ->RegisterObj("enemy1", enemy);
+	//CParty* player = new CParty();
+	//player->Init();
+	//player->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);
+	//MG_GMOBJ->RegisterObj("Player1", player);
+	//MG_CAMERA->SetTarget(player);
+
+	//CEnemy* enemy = new CEnemy();
+	//enemy->Init();
+	//enemy->m_transform->m_pos = Vector2(WINSIZEX, WINSIZEY);
+	//MG_GMOBJ->RegisterObj("enemy1", enemy);
 
 	MG_SCENE->changeScene(SCENETYPE::Dungeon);
 
@@ -49,7 +45,7 @@ void TestScene::Release()
 
 void TestScene::Update()
 {
-
+	MG_SCENE->changeScene(SCENETYPE::Dungeon);
 }
 
 void TestScene::Render(HDC _hdc)

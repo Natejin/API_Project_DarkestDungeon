@@ -25,7 +25,10 @@ void CObjectManager::Update(float deltaTime, float worldTime)
 {
 	for (auto g : objectVec)
 	{
-		g->Update(deltaTime, worldTime);
+		if (g->isActive)
+		{
+			g->Update(deltaTime, worldTime);
+		}
 	}
 }
 
@@ -33,7 +36,10 @@ void CObjectManager::LateUpdate()
 {
 	for (auto g : objectVec)
 	{
-		g->LateUpdate();
+		if (g->isActive)
+		{
+			g->LateUpdate();
+		}
 	}
 
 	for (size_t i = 0; i < objsToErase.size(); i++)
@@ -81,7 +87,11 @@ void CObjectManager::BackRender(HDC _hdc)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
-			go->BackRender(_hdc);
+			if (go->isActive)
+			{
+				go->BackRender(_hdc);
+			}
+		
 		}
 	}
 }
@@ -92,7 +102,10 @@ void CObjectManager::Render(HDC _hdc)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
-			go->Render(_hdc);
+			if (go->isActive)
+			{
+				go->Render(_hdc);
+			}
 		}
 	}
 }
@@ -103,7 +116,10 @@ void CObjectManager::FrontRender(HDC _hdc)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
-			go->FrontRender(_hdc);
+			if (go->isActive)
+			{
+				go->FrontRender(_hdc);
+			}
 		}
 	}
 }

@@ -1,8 +1,27 @@
 #pragma once
 #include "GameObject.h"
-
+class Transform;
 class CBackground : public GameObject
 {
+protected:
+	
+	vector<ImageData> road;
+	vector<ImageData> mostBG;
+	vector<ImageData> mostFG_Top;
+	vector<ImageData> mostFG_Bottom;
+
+	//이미지는 9개, 배치좌표는 6개
+	//image* road[9];
+	//Transform ts_road[6];
+
+	int bgCount;
+	int roadCount;
+
+	//구역의 특성
+	DUNGEONMAPSTATE m_kindOfRoad;
+	image* tresure;
+	image* trap;
+	Transform ts_event[3];
 public:
 	CBackground();
 	~CBackground();
@@ -17,4 +36,7 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+
+	virtual void SetRoadIMG();
 };

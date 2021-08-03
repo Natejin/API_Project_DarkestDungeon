@@ -133,6 +133,21 @@
     <Filter Include="Reference\progressBar">
       <UniqueIdentifier>{5a2a6f49-9af9-45ce-a35f-aa13aa88d69e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UI">
+      <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Prototype">
+      <UniqueIdentifier>{4f399900-ea7a-4f18-a91e-f96155febca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{59958f3c-d674-4f33-b11b-24eabe0563cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Hero">
+      <UniqueIdentifier>{5dba11e2-5aac-44d8-9bbc-e98811163c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Background">
+      <UniqueIdentifier>{d14af8a6-be29-4065-8d24-89a466631b83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -264,13 +279,10 @@
     <ClInclude Include="Unit.h">
       <Filter>Object\Prototype</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayer.h">
+    <ClInclude Include="CHero.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="CBackground.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="CTransform.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="singleton.h">
@@ -323,6 +335,45 @@
     </ClInclude>
     <ClInclude Include="sceneManager.h">
       <Filter>Manager\Scene_M</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollision.h">
+      <Filter>Object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>Object\Component\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>헤더 파일\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CParty.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CBattleSystem.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="CVestal.h">
+      <Filter>Object\Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="CBG_Road.h">
+      <Filter>Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="CBG_Room.h">
+      <Filter>Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackground.h">
+      <Filter>Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageData.h">
+      <Filter>헤더 파일\Struct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -437,13 +488,10 @@
     <ClCompile Include="Unit.cpp">
       <Filter>Object\Prototype</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayer.cpp">
+    <ClCompile Include="CHero.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="CBackground.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
+    <ClCompile Include="CTransform.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
     <ClCompile Include="CCameraManager.cpp">
@@ -484,6 +532,45 @@
     </ClCompile>
     <ClCompile Include="sceneManager.cpp">
       <Filter>Manager\Scene_M</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollision.cpp">
+      <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>Object\Component\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>헤더 파일\Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CParty.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CBattleSystem.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="CVestal.cpp">
+      <Filter>Object\Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="CBG_Road.cpp">
+      <Filter>Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CBG_Room.cpp">
+      <Filter>Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackground.cpp">
+      <Filter>Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageData.cpp">
+      <Filter>헤더 파일\Struct</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,14 @@ enum class JOB
 	Highwayman
 };
 
+enum class DIR {
+	Left,
+	Up,
+	Right,
+	Down
+
+};
+
 enum class IMAGE
 {
 	Vestal_Idle,
@@ -111,6 +119,20 @@ enum class DUNGEONSTATE
 	NONE,
 	ROOM,
 	ROAD
+};
+
+enum class DUNGEONMODE
+{
+	NONE,
+	BATTLE,
+	WALK
+};
+
+enum class COLLISIONTYPE {
+	Box,
+	CIRCLE,
+	PIXEL
+
 };
 
 enum class DUNGEONMAPSTATE 

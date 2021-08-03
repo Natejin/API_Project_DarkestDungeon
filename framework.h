@@ -33,20 +33,27 @@
 //==========================================
 //				 내가만든 헤더파일
 //==========================================
-#include"commonMacroFunction.h"
-#include"Input.h"
-#include"imageManager.h"
-#include"timeManager.h"
-#include"sceneManager.h"
-#include"soundManager.h"
-#include"animationManager.h"
-#include"effectManager.h"
-#include"randomFunction.h"
+#include "commonMacroFunction.h"
+#include "Input.h"
+#include "imageManager.h"
+#include "timeManager.h"
+#include "sceneManager.h"
+#include "soundManager.h"
+#include "animationManager.h"
+#include "effectManager.h"
+#include "randomFunction.h"
 #include "CCameraManager.h"
 #include "CObjectManager.h"
-#include"utils.h"
-#include"txtData.h"
+#include "CGameManager.h"
+#include "utils.h"
+#include "txtData.h"
+
+//struct
 #include "Vector2.h"
+#include "ImageData.h"
+#include "Rect.h"
+
+
 #include "Enum.h"
 #include "Enum_MJ.h"
 #include "Enum_WT.h"
@@ -68,6 +75,7 @@
 #define MG_EFFECT		effectManager::getSingleton()
 #define MG_GMOBJ		CObjectManager::getSingleton()
 #define MG_CAMERA		CCameraManager::getSingleton()
+#define MG_GAME			CGameManager::getSingleton()
 
 
 //==========================================
@@ -78,8 +86,8 @@
 #define WINSTARTY		100
 #define WINSIZEX		1280
 #define WINSIZEY		720
-#define WORLDSIZEX		3000
-#define WORLDSIZEY		3000
+#define WORLDSIZEX		4320
+#define WORLDSIZEY		720
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU
 
 

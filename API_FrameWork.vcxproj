@@ -149,13 +149,22 @@
     <ClInclude Include="animationTest.h" />
     <ClInclude Include="API_FrameWork.h" />
     <ClInclude Include="Astar.h" />
+    <ClInclude Include="CBattleSystem.h" />
     <ClInclude Include="CBackground.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="camel.h" />
+    <ClInclude Include="CBG_Road.h" />
+    <ClInclude Include="CBG_Room.h" />
+    <ClInclude Include="CButton.h" />
     <ClInclude Include="CCameraManager.h" />
+    <ClInclude Include="CComponent.h" />
     <ClInclude Include="CEnemy.h" />
+    <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CObjectManager.h" />
+    <ClInclude Include="CCollision.h" />
     <ClInclude Include="commonMacroFunction.h" />
+    <ClInclude Include="CParty.h" />
+    <ClInclude Include="CVestal.h" />
     <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
@@ -172,6 +181,7 @@
     <ClInclude Include="image.h" />
     <ClInclude Include="ImageAdder_MJ.h" />
     <ClInclude Include="ImageAdder_WT.h" />
+    <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="loadiingTest.h" />
@@ -182,11 +192,13 @@
     <ClInclude Include="minion.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="pixelCollision.h" />
-    <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CHero.h" />
     <ClInclude Include="progressBar.h" />
     <ClInclude Include="randomFunction.h" />
+    <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="rocket.h" />
+    <ClInclude Include="RoomScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scene1.h" />
     <ClInclude Include="scene2.h" />
@@ -201,7 +213,7 @@
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
-    <ClInclude Include="Transform.h" />
+    <ClInclude Include="CTransform.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="utils.h" />
@@ -216,12 +228,21 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Astar.cpp" />
+    <ClCompile Include="CBattleSystem.cpp" />
     <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="camel.cpp" />
+    <ClCompile Include="CBG_Road.cpp" />
+    <ClCompile Include="CBG_Room.cpp" />
+    <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
+    <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CEnemy.cpp" />
+    <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
+    <ClCompile Include="CCollision.cpp" />
+    <ClCompile Include="CParty.cpp" />
+    <ClCompile Include="CVestal.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
@@ -233,6 +254,7 @@
     <ClCompile Include="image.cpp" />
     <ClCompile Include="ImageAdder_MJ.cpp" />
     <ClCompile Include="ImageAdder_WT.cpp" />
+    <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
@@ -243,9 +265,11 @@
     <ClCompile Include="minion.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
-    <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CHero.cpp" />
     <ClCompile Include="progressBar.cpp" />
+    <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rocket.cpp" />
+    <ClCompile Include="RoomScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene1.cpp" />
     <ClCompile Include="scene2.cpp" />
@@ -258,7 +282,7 @@
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
-    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="CTransform.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="utils.cpp" />
