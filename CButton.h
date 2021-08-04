@@ -6,10 +6,12 @@ class CButton : public GameObject
 {
 	function<void()> m_triggerWhenClick;
 	int countNum;
+
+
 	//function<void()> m_triggerWhenClick1;
 public:
 	Rect m_rect;
-
+	Vector2 textPos;
 	CButton();
 	~CButton();
 

@@ -46,16 +46,14 @@ HRESULT DungeonScene::Init()
 	//m_testButton->SetTriggerWhenClick(fptr);
 
 
+
+
 	CButton* m_testButton1 = new CButton();
 	m_testButton1->m_transform->m_pos = Vector2(300, 300);
 	m_testButton1->SetButtonSize(300, 100);
 	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton1);
-
-
-
-
-
+	m_testButton1->textPos = Vector2(100, 200);
 	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
 
 	CButton* m_testButton3 = new CButton();
@@ -63,15 +61,16 @@ HRESULT DungeonScene::Init()
 	m_testButton3->SetButtonSize(300, 100);
 	m_testButton3->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton3->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-
+	m_testButton1->textPos = Vector2(100, 300);
 	MG_GMOBJ->RegisterObj("TestUiButton2", m_testButton3);
+
 
 	CButton* m_testButton = new CButton();
 	m_testButton->m_transform->m_pos = Vector2(500, 500);
 	m_testButton->SetButtonSize(300, 100);
 	m_testButton->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-
+	m_testButton->textPos = Vector2(100, 400);
 	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);
 
 

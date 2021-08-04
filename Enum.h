@@ -134,6 +134,13 @@ enum class COLLIDERTYPE {
 
 };
 
+enum class UNITTYPE {
+	NONE,
+	Enemy,
+	Hero
+
+};
+
 enum class DUNGEONMAPSTATE 
 {
 	NONE,

@@ -6,6 +6,10 @@ CButton::CButton()
 {
 	m_layer = LAYER::UI;
 	countNum = 0;
+	m_rect.l = 0;
+	m_rect.t = 0;
+	m_rect.r = 0;
+	m_rect.b = 0;
 }
 
 CButton::~CButton()
@@ -20,9 +24,13 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
+<<<<<<< Updated upstream
 	/*if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+=======
+	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+>>>>>>> Stashed changes
 	{
-		if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 		{
 			m_triggerWhenClick();
 		}
@@ -61,6 +69,15 @@ void CButton::FrontRender(HDC _hdc)
 	//m_image->renderUI(_hdc, m_transform);
 
 	//Rectangle(_hdc, m_rect.l, m_rect.t, m_rect.r, m_rect.b);
+<<<<<<< Updated upstream
+=======
+
+	//char str[256];
+	//string strFrame;
+	//sprintf_s(str, "ButtonTest : %f, %f,%f,%f", m_rect.l, m_rect.t, m_rect.r, m_rect.b);
+	//TextOut(_hdc, textPos.x, textPos.y, str, strlen(str));
+
+>>>>>>> Stashed changes
 }
 
 void CButton::Release()
