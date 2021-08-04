@@ -168,8 +168,10 @@
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="CParty.h" />
+    <ClInclude Include="CRoadObject.h" />
     <ClInclude Include="CVestal.h" />
     <ClInclude Include="DungeonScene.h" />
+    <ClInclude Include="Dungeon_Inventory.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
@@ -251,8 +253,10 @@
     <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CParty.cpp" />
+    <ClCompile Include="CRoadObject.cpp" />
     <ClCompile Include="CVestal.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
+    <ClCompile Include="Dungeon_Inventory.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />

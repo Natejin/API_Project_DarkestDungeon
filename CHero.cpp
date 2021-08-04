@@ -110,8 +110,8 @@ void CHero::Move()
 		{
 			if (m_transform->m_pos.x < WORLDSIZEX - 200)
 			{
-				m_transform->m_pos.x += 5;
-				m_DIST += 5;
+				m_transform->m_pos.x += 4;
+				m_DIST += 4;
 			}
 		}
 	}

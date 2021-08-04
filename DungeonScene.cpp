@@ -39,41 +39,13 @@ HRESULT DungeonScene::Init()
 	CreateParty();
 	CreateDoor();
 	m_roadBG->isActive = true;
-	//void(DungeonScene::*p)() = &TestButton;
 
-	//void (*fptr)() = DungeonScene::TestButton;
-	//function<const int& ()> F([] { return 42; });
-	//function<void()>& dest = bind(DungeonScene::TestButton, this);
-	//function<void(*)> f1 = &TestButton;
-	//m_testButton->SetTriggerWhenClick(fptr);
-
-
-
-
-	/*CButton* m_testButton1 = new CButton();
+	CButton* m_testButton1 = new CButton();
 	m_testButton1->m_transform->m_pos = Vector2(300, 300);
 	m_testButton1->SetButtonSize(300, 100);
 	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
-	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton1);
-	m_testButton1->textPos = Vector2(100, 200);
+	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton);
 	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
-
-	CButton* m_testButton3 = new CButton();
-	m_testButton3->m_transform->m_pos = Vector2(100, 100);
-	m_testButton3->SetButtonSize(300, 100);
-	m_testButton3->m_image = MG_IMAGE->findImage("scouting");
-	m_testButton3->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-	m_testButton1->textPos = Vector2(100, 300);
-	MG_GMOBJ->RegisterObj("TestUiButton2", m_testButton3);
-
-
-	CButton* m_testButton = new CButton();
-	m_testButton->m_transform->m_pos = Vector2(100, 100);
-	m_testButton->SetButtonSize(250, 100);
-	m_testButton->m_image = MG_IMAGE->findImage("scouting");
-	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-	m_testButton->textPos = Vector2(100, 400);
-	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);*/
 
 	return S_OK;
 }
@@ -101,9 +73,11 @@ void DungeonScene::Update()
 	if (dungeonMode == DUNGEONMODE::WALK)
 	{
 		m_party->FormationMove();
+		m_party->getStress_movement();
 		m_party->decreaseBright_movement();
-		m_party->SetFormation();
 		CheckDoor();
+		setRoadNum();
+		TorchLightBarDecrease();
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
@@ -128,6 +102,8 @@ void DungeonScene::Render(HDC _hdc)
 	{
 		ShowDungeonInfo(_hdc);
 		ShowMapOrInven(_hdc);
+
+		Rectangle(_hdc, 600, 500, 700, 600);
 	}
 
 	else 
@@ -140,7 +116,6 @@ void DungeonScene::Render(HDC _hdc)
 #pragma region InitDungeon
 void DungeonScene::CreateDungeon()
 {
-	//�� ����
 	for (int i = 0; i < MAPSIZE; i++)
 	{
 		for (int j = 0; j < MAPSIZE; j++)
@@ -150,7 +125,6 @@ void DungeonScene::CreateDungeon()
 		}
 	}
 
-	//������ġ(������ġ)�� ���� �߾ӿ� ��ġ
 	curPos = Vector2Int(MAPSIZE / 2, MAPSIZE / 2);
 	dungeonMap[curPos.x][curPos.y].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
 
@@ -334,10 +308,78 @@ void DungeonScene::CreateRoad()
 
 
 #pragma region Road
+void DungeonScene::setRoadNum()
+{
+	for (size_t i = 0; i < 6; i++)
+	{
+		if (i * 720 < m_party->GetHero(0)->m_transform->m_pos.x)
+		{
+			m_roadNum = i + 1;
+		}
+	}
+}
+
+void DungeonScene::setRoadKind()
+{
+	//switch (curDunheonMap.dungeonMapState)
+	//{
+	//case DUNGEONMAPSTATE::Road_Empty:
+	//	break;
+
+	//case DUNGEONMAPSTATE::Road_Enemy:
+	//	break;
+
+	//case DUNGEONMAPSTATE::Road_Trap:
+	//	break;
+
+	//case DUNGEONMAPSTATE::Road_Trasure:
+	//	
+	// break;
+	//}
+}
+
+void DungeonScene::setRoadObject()
+{
+
+}
+
+void DungeonScene::setTorchUI()
+{
+	Image* Torch;
+	Torch = MG_IMAGE->findImage("torchBackBar"); //decrese according to distance
+	panel.push_back(Torch); //[6] torchBackBar
+	Torch = MG_IMAGE->findImage("torchBackBar2");
+	panel.push_back(Torch);
+	Torch = MG_IMAGE->findImage("torchBackBar3");
+	panel.push_back(Torch);
+	Torch = MG_IMAGE->findImage("torchFrontBar");
+	panel.push_back(Torch);
+
+	CTransform ts;
+	ts.m_pos = Vector2(524, 100);
+	ts_panel.push_back(ts); //6
+	ts.m_pos = Vector2(510, 100);
+	ts_panel.push_back(ts);
+	ts.m_pos = Vector2(988, 100);
+	ts_panel.push_back(ts);
+	ts.m_pos = Vector2(520, 19);
+	ts_panel.push_back(ts);
+}
+
+void DungeonScene::TorchLightBarDecrease()
+{
+	panel[7]->setWidth(20);
+	panel[8]->setWidth2(20);
+	ts_panel[8].m_pos.x = 1400;
+
+	panel[7]->setWidth(20 + (422 / 100) * (100 - m_party->getBrightness()) );
+	panel[8]->setWidth2(20 + (422 / 100) * (100 - m_party->getBrightness()) );
+	ts_panel[8].m_pos.x = 1400 -((422 / 100) * (100 - m_party->getBrightness()));
+	
+}
+
 void DungeonScene::CheckDoor()
 {
-	//���� ��Ҵٴ� �޼����� �߱� �ߴµ� 
-	//door2�� �ſ� ���� �������� ��
 	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos)||
 		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
 	{
@@ -400,24 +442,34 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 #pragma region UI
 void DungeonScene::setUIIMG()
 {
-	Image* pannelImg;
-	pannelImg = MG_IMAGE->findImage("banner");
-	pannel.push_back(pannelImg);
-	pannelImg = MG_IMAGE->findImage("hero");
-	pannel.push_back(pannelImg);
-	pannelImg = MG_IMAGE->findImage("inventory");
-	pannel.push_back(pannelImg);
-	pannelImg = MG_IMAGE->findImage("map");
-	pannel.push_back(pannelImg);
+	Image* panelImg;
+	panelImg = MG_IMAGE->findImage("panel_bg2");
+	panel.push_back(panelImg);
+	panel.push_back(panelImg);
+	panelImg = MG_IMAGE->findImage("banner");
+	panel.push_back(panelImg);
+	panelImg = MG_IMAGE->findImage("hero");
+	panel.push_back(panelImg);
+	panelImg = MG_IMAGE->findImage("inventory");
+	panel.push_back(panelImg);
+	panelImg = MG_IMAGE->findImage("map");
+	panel.push_back(panelImg);
+
 
 	CTransform ts;
+	ts.m_pos = Vector2(0, 690);
+	ts_panel.push_back(ts);
+	ts.m_pos = Vector2(1580, 690);
+	ts_panel.push_back(ts);
 	ts.m_pos = Vector2(300, 690);
-	ts_pannel.push_back(ts);
+	ts_panel.push_back(ts);
 	ts.m_pos = Vector2(330, 810);
-	ts_pannel.push_back(ts);
+	ts_panel.push_back(ts);
 	ts.m_pos = Vector2(965, 690);
-	ts_pannel.push_back(ts);
-	ts_pannel.push_back(ts);
+	ts_panel.push_back(ts);
+	ts_panel.push_back(ts);
+
+	setTorchUI();
 
 	rc_inven.SetRect(1550, WINSIZEY - 236, 1600, WINSIZEY - 165);
 	rc_map.SetRect(1550, WINSIZEY - 160, 1600, WINSIZEY - 95);
@@ -432,18 +484,18 @@ void DungeonScene::ShowMapOrInven(HDC _hdc)
 {
 	if (showMap == false)
 	{
-		for (int i = 0; i < pannel.size(); i++)
+		for (int i = 0; i < panel.size(); i++)
 		{
-			pannel[i]->renderUI(_hdc, &ts_pannel[i]);
+			panel[i]->renderUI(_hdc, &ts_panel[i]);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < pannel.size(); i++)
+		for (int i = 0; i < panel.size(); i++)
 		{
-			pannel[i]->renderUI(_hdc, &ts_pannel[i]);
+			panel[i]->renderUI(_hdc, &ts_panel[i]);
 		}
-		pannel[2]->renderUI(_hdc, &ts_pannel[2]);
+		panel[4]->renderUI(_hdc, &ts_panel[4]);
 	}
 
 	if (rc_inven.CheckCollisionWithPoint(m_ptMouse))

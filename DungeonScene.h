@@ -37,6 +37,7 @@ public:
 	Rect door1;
 	Rect door2;
 
+	DUNGEONMAPSTATE m_kindOfRoad;
 	bool isDoorClick;
 	int m_movedDistance;
 	int m_roadNum;
@@ -48,17 +49,15 @@ public:
 	//뒤로 이동할때 최대 간격
 	int m_WB_btwHeroes = 100;
 
-	//int getDistance()const { return m_movedDistance; } //이동거리
-	//int getRoadCount()const { return m_roadNum; } //좌표인덱스
-	//void setDistance(CHero* player);
-	//void setRoadNum(CHero* player);
+	int getRoadCount()const { return m_roadNum; } //좌표인덱스
+	void setRoadNum();
+	void setRoadKind();
+	void setRoadObject();
 
-	//void setRoadKind();
-	//void setRoadKind(int firstArea, int secondArea, int thirdArea);
+	void setTorchUI();
+	void TorchLightBarDecrease();
 
-	void FormationMove();
 	void CheckDoor();
-
 	void ShowDungeonInfo(HDC _hdc);
 
 //==================================
@@ -72,8 +71,8 @@ public:
 //==================================
 //UI
 public:
-	vector<Image*> pannel;
-	vector<CTransform> ts_pannel;
+	vector<Image*> panel;
+	vector<CTransform> ts_panel;
 	Rect rc_map;
 	Rect rc_inven;
 	bool showMap;
@@ -106,9 +105,6 @@ public:
 	virtual void Release();
 	virtual void Update();
 	virtual void Render(HDC _hdc);
-
-
-
 
 	void DungeonScene::bindFunction(function<void()>& dest)
 	{

@@ -8,6 +8,7 @@ CParty::~CParty() {}
 
 HRESULT CParty::Init()
 {
+
 	return S_OK;
 }
 
@@ -285,15 +286,40 @@ void CParty::setBrightness(int brightness)
 
 void CParty::decreaseBright_movement()
 {
-	//추후 횃불의 밝기에 따라 빈도수를 조정하도록 수정
-	if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 300 == 0)
+	//앞뒤 속도차이로 인해 가끔씩 distance이동 적용이 잘 되지 않음
+	
+	if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 100 == 0)
 	{
-		//10분의 1확률로 스트레스를 받음
-		if (MG_RND->getInt(9) == 1)
+		limit += 1;
+	}
+
+	if (limit % 2 == 0)
+	{
+		if (MG_INPUT->isStayKeyDown(VK_RIGHT) || MG_INPUT->isStayKeyDown(VK_LEFT))
 		{
-			m_member[MG_RND->getInt(3)]->setStress(3);
+			if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 100 == 0)
+			{
+				setBrightness(getBrightness() - 1);
+			}
 		}
 	}
+}
+
+void CParty::getStress_movement()
+{
+	//TODO 추후 횃불의 밝기에 따라 빈도수를 조정하도록 수정
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT))
+	{
+		if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 300 == 0 )
+		{
+			//10분의 1확률로 스트레스를 받음
+			if (MG_RND->getInt(9) == 0)
+			{
+				m_member[MG_RND->getInt(3)]->setStress(3);
+			}
+		}
+	}
+
 }
 
 
@@ -329,6 +355,8 @@ void CParty::showItem(HDC _hdc)
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 255, 255));
 
+	sprintf_s(str, "Brightness : %d", m_brightness);
+	TextOut(_hdc, WINSIZEX - 200, 180, str, strlen(str));
 	sprintf_s(str, "Torch : %d", m_Item_Torch);
 	TextOut(_hdc, WINSIZEX - 200, 200, str, strlen(str));
 	sprintf_s(str, "Food : %d", m_Item_food);

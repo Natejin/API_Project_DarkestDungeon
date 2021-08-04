@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 class Image
 {
 public:
@@ -138,6 +136,14 @@ public:
 	//가로세로 크기 얻기
 	inline int getWidth()const { return _imageInfo->width; }
 	inline int getHeight()const { return _imageInfo->height; }
+
+	inline int setWidth(const float width) { return _imageInfo->width = width; }
+	inline int setWidth2(const float width) 
+	{ 
+		_imageInfo->x += width;
+		return _imageInfo->width = width; 
+	}
+	inline int setHeight(const float height) { return _imageInfo->height = height; }
 
 	//바운딩 박스(충돌용)
 	inline RECT getBoundingBox()

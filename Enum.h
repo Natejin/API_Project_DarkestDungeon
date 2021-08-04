@@ -127,11 +127,11 @@ enum class DUNGEONMODE
 	WALK
 };
 
-enum class COLLIDERTYPE {
+enum class COLLIDERTYPE 
+{
 	BOX,
 	CIRCLE,
 	PIXEL
-
 };
 
 

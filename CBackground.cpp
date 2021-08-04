@@ -25,7 +25,7 @@ void CBackground::BackRender(HDC _hdc)
 	for (size_t i = 0; i < mostBG.size(); i++)
 	{
 		//mostFrontBg오류를 해결한 뒤에 이동처리
-		//mostBG[i].Render(_hdc);
+		mostBG[i].Render(_hdc);
 	}
 }
 

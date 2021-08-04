@@ -24,6 +24,8 @@ private:
 	//wlakBack
 	int WB_btwHeroes = 100;
 
+	int limit = 0;
+
 public:
 	CParty();
 	~CParty();
@@ -65,6 +67,7 @@ public:
 	int getBrightness() { return m_brightness; }
 
 	void decreaseBright_movement();
+	void getStress_movement();
 
 
 

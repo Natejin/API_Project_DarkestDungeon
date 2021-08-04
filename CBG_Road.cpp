@@ -13,14 +13,6 @@ HRESULT CBG_Road::Init()
     return S_OK;
 }
 
-//void CBG_Road::Update(float deltaTime, float worldTime)
-//{
-//}
-//
-//void CBG_Road::LateUpdate()
-//{
-//}
-
 void CBG_Road::SetIMG()
 {
 	for (int i = 0; i < bgCount; i++)
