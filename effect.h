@@ -4,7 +4,7 @@ class effect  : public gameNode
 {
 private:
 
-	image* _effectImage;	//이펙트 이미지
+	Image* _effectImage;	//이펙트 이미지
 	animation* _effectAni;	//이펙트 애니메이션
 
 	int _x, _y;				//이펙트 터트릴 좌표
@@ -19,7 +19,7 @@ public:
 	~effect();
 
 
-	HRESULT init(image* effectImage, int  frameW, int frameH, int FPS, float elapsedTime);
+	HRESULT init(Image* effectImage, int  frameW, int frameH, int FPS, float elapsedTime);
 	void release();
 	void update();
 	void render();

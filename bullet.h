@@ -3,7 +3,7 @@
 
 struct tagBullet
 {
-	image* bulletImage;
+	Image* bulletImage;
 	RECT rc;
 	float x, y;
 	float fireX, fireY;

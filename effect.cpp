@@ -14,7 +14,7 @@ effect::~effect()
 {
 }
 
-HRESULT effect::init(image* effectImage, int frameW, int frameH, int FPS, float elapsedTime)
+HRESULT effect::init(Image* effectImage, int frameW, int frameH, int FPS, float elapsedTime)
 {
 	//이펙트 이미지가 없을때리턴
 	if (!effectImage)return  E_FAIL;

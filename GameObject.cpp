@@ -1,14 +1,17 @@
 #include "framework.h"
 #include "GameObject.h"
+#include "CTransform.h"
+#include "CCollider.h"
 #include "image.h"
 
 GameObject::GameObject()
 {
 	m_image = nullptr;
-	m_transform = new Transform;
+	m_transform = new CTransform;
 	m_transform->m_pos = Vector2(0, 0);
 	m_transform->m_scale = Vector2(0, 0);
 	m_transform->m_pivot = Vector2(0.5, 0.5);
+
 	m_layer = LAYER::Unknown;
 	isActive = true;
 }
@@ -47,6 +50,21 @@ void GameObject::FrontRender(HDC _hdc)
 
 void GameObject::Release()
 {
-	SAFE_DELETE(m_transform)
+	SAFE_DELETE(m_transform);
 	SAFE_DELETE(m_image);
+	SAFE_DELETE(m_collider);
+}
+
+void GameObject::AddColliderBox(Vector2 pos, 
+	float l,
+	float t, 
+	float r, 
+	float b)
+{
+	m_collider->m_pos = pos;
+	m_collider->rect.l = l;
+	m_collider->rect.t = t;
+	m_collider->rect.r = r;
+	m_collider->rect.b = b;
+	m_collider->m_colliderType = COLLIDERTYPE::BOX;
 }

@@ -5,7 +5,7 @@ class pixelCollision : public gameNode
 private:
 
 
-	image* _ball;
+	Image* _ball;
 	RECT _rc;
 	float _x, _y;
 	int _probeY;

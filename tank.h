@@ -26,7 +26,7 @@ public:
 	TANKDIRECTION _direction;
 	tankMap* _tankMap;
 	bullet* _bullet;
-	image* _image;
+	Image* _image;
 	RECT _rc;
 
 

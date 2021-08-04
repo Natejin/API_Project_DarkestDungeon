@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
-class Transform;
+class CTransform;
 class CBackground : public GameObject
 {
 protected:
@@ -15,9 +15,9 @@ protected:
 
 	//구역의 특성
 	DUNGEONMAPSTATE m_kindOfRoad;
-	image* tresure;
-	image* trap;
-	Transform ts_event[3];
+	Image* tresure;
+	Image* trap;
+	CTransform ts_event[3];
 
 public:
 	CBackground();

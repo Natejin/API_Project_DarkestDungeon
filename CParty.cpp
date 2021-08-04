@@ -52,12 +52,14 @@ void CParty::FrontRender(HDC _hdc)
 
 void CParty::Release()
 {
+	//TODO 추후 영웅들 데이터 저장 추가 예정
 	for (size_t i = 0; i < m_member.size(); i++)
 	{
 		MG_GMOBJ->RemoveObj(m_member[i]->GetId());
 		SAFE_DELETE(m_member[i]);
 	}
 	m_member.clear();
+	GameObject::Release();
 }
 
 void CParty::SetHero(CHero* member)

@@ -23,5 +23,16 @@ struct Rect
 		}
 		return false;
 	}
+
+	bool CheckCollisionWithPoint(POINT pos) {
+		if (l < pos.x &&
+			r > pos.x &&
+			t < pos.y &&
+			b > pos.y)
+		{
+			return true;
+		}
+		return false;
+	}
 };
 

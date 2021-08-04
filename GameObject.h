@@ -1,6 +1,6 @@
 #pragma once
 #include "Object.h"
-#include "CTransform.h"
+
 
 class GameObject : public Object
 {
@@ -8,8 +8,9 @@ public:
 	//Vector2 m_pos;
 	//Vector2 m_scale;
 	//Vector2 m_pivot;
-	Transform* m_transform;
-	class image* m_image;
+	class CTransform* m_transform;
+	class CCollider* m_collider;
+	class Image* m_image;
 
 	LAYER m_layer;
 	bool isActive;
@@ -28,4 +29,11 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+
+	virtual void AddColliderBox(Vector2 pos,
+		float l,
+		float t,
+		float r,
+		float b);
 };

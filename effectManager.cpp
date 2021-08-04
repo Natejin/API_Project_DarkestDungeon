@@ -83,7 +83,7 @@ void effectManager::render()
 
 void effectManager::addEffect(string effectKey, char* imageName, int imageW, int imageH, int frameW, int frameH, int fps, float elapsedTime, int buffer)
 {
-	image* img;
+	Image* img;
 	vEffect vEffectBuffer;
 	mEffect mArrEffect;
 

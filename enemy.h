@@ -4,7 +4,7 @@ class enemy : public gameNode
 {
 private:
 
-	image* _image;
+	Image* _image;
 	RECT _rc;
 	
 	
@@ -39,4 +39,3 @@ public:
 
 
 };
-

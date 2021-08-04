@@ -4,15 +4,15 @@
 #include "animation.h"
 //알파블렌드를 사용하기 위해
 #pragma comment(lib,"msimg32.lib")
-image::image() : _imageInfo(NULL),
+Image::Image() : _imageInfo(NULL),
 				 _fileName(NULL),
 				 _isTrans(false),
 				 _transColor(RGB(0, 0, 0))
 {				 
 }				
-image::~image(){}
+Image::~Image(){}
 
-HRESULT image::init(const int width, const int height)
+HRESULT Image::init(const int width, const int height)
 {
 
 	//이미지 정보가 있으면 해제해라
@@ -69,7 +69,7 @@ HRESULT image::init(const int width, const int height)
 	return S_OK;
 }
 
-HRESULT image::init(const char* fileName, const int width, const int height, bool isTrans, COLORREF transColor)
+HRESULT Image::init(const char* fileName, const int width, const int height, bool isTrans, COLORREF transColor)
 {
 
 	if (fileName == NULL)return E_FAIL;
@@ -133,7 +133,7 @@ HRESULT image::init(const char* fileName, const int width, const int height, boo
 	return S_OK;
 }
 
-HRESULT image::init(const char* fileName, const float x, const float y, const int width, const int height, bool isTrans, COLORREF transColor)
+HRESULT Image::init(const char* fileName, const float x, const float y, const int width, const int height, bool isTrans, COLORREF transColor)
 {
 	if (fileName == NULL) return E_FAIL;
 
@@ -190,7 +190,7 @@ HRESULT image::init(const char* fileName, const float x, const float y, const in
 	ReleaseDC(m_hWnd, hdc);
 }
 
-HRESULT image::init(const char* fileName, const int width, const int height, const int frameX, const int frameY, bool isTrans, COLORREF transColor)
+HRESULT Image::init(const char* fileName, const int width, const int height, const int frameX, const int frameY, bool isTrans, COLORREF transColor)
 {
 	if (fileName == NULL)return E_FAIL;
 	if (_imageInfo != NULL)release();
@@ -253,7 +253,7 @@ HRESULT image::init(const char* fileName, const int width, const int height, con
 	return S_OK;
 }
 
-HRESULT image::init(const char* fileName, const int x, const int y, const int width, const int height, const int frameX, const int frameY, bool isTrans, COLORREF transColor)
+HRESULT Image::init(const char* fileName, const int x, const int y, const int width, const int height, const int frameX, const int frameY, bool isTrans, COLORREF transColor)
 {
 
 	if (fileName == NULL)return E_FAIL;
@@ -301,13 +301,13 @@ HRESULT image::init(const char* fileName, const int x, const int y, const int wi
 	return S_OK;
 }
 
-void image::setTransColor(bool isTrans, COLORREF transColor)
+void Image::setTransColor(bool isTrans, COLORREF transColor)
 {
 	_isTrans = isTrans;
 	_transColor = transColor;
 }
 
-void image::release()
+void Image::release()
 {
 	if (_imageInfo)
 	{
@@ -324,7 +324,7 @@ void image::release()
 	}
 }
 
-void image::render(HDC hdc)
+void Image::render(HDC hdc)
 {
 	if (_isTrans)
 	{
@@ -349,7 +349,7 @@ void image::render(HDC hdc)
 	}
 }
 
-void image::render(HDC hdc, const int destX, const int destY)
+void Image::render(HDC hdc, const int destX, const int destY)
 {
 	if (_isTrans)
 	{
@@ -375,7 +375,7 @@ void image::render(HDC hdc, const int destX, const int destY)
 
 }
 
-void image::render(HDC hdc, const Transform* transform)
+void Image::render(HDC hdc, const CTransform* transform)
 {
 	Vector2 pos = transform->m_pos;
 	pos -= transform->m_scale * transform->m_pivot;
@@ -405,7 +405,36 @@ void image::render(HDC hdc, const Transform* transform)
 	}
 }
 
-void image::render(HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourheight)
+void Image::renderUI(HDC hdc, const CTransform* transform)
+{
+	Vector2 pos = transform->m_pos;
+	pos -= transform->m_scale * transform->m_pivot;
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,						//복삳될 장소의 DC
+			pos.x,							//복사될 좌표의 시작점X
+			pos.y,							//복사될 좌표의 시작점Y
+			_imageInfo->width,			//복사될 이미지 가로크기
+			_imageInfo->height,			//복사될 이미지 세로크기
+			_imageInfo->hMemDC,			//복사될 대상DC
+			0,							//복사시작 지점 X
+			0,							//복사시작 지점 Y
+			_imageInfo->width,			//복사영역 가로크기
+			_imageInfo->height,			//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, SRCCOPY);
+	}
+}
+
+void Image::render(HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourheight)
 {
 	if (_isTrans)
 	{
@@ -430,7 +459,7 @@ void image::render(HDC hdc, const int destX, const int destY, const int sourX, c
 	}
 }
 
-void image::frameRender(HDC hdc, const int destX, const int destY)
+void Image::frameRender(HDC hdc, const int destX, const int destY)
 {
 	
 
@@ -459,7 +488,7 @@ void image::frameRender(HDC hdc, const int destX, const int destY)
 	}
 }
 
-void image::frameRender(HDC hdc, const Transform* transform)
+void Image::frameRender(HDC hdc, const CTransform* transform)
 {
 	Vector2 pos = transform->m_pos;
 	pos -= transform->m_scale * transform->m_pivot;
@@ -491,7 +520,7 @@ void image::frameRender(HDC hdc, const Transform* transform)
 	}
 }
 
-void image::frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY)
+void Image::frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY)
 {
 
 	_imageInfo->currentFrameX = currentFrameX;
@@ -522,7 +551,7 @@ void image::frameRender(HDC hdc, const int destX, const int destY, const int cur
 	}
 }
 
-void image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
+void Image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 {
 	//보정하기
 	if (offsetX < 0)offsetX = _imageInfo->width + (offsetX % _imageInfo->width);
@@ -589,7 +618,7 @@ void image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 	}
 }
 
-void image::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha)
+void Image::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha)
 {
 	//보정하기
 	if (offsetX < 0)offsetX = _imageInfo->width + (offsetX % _imageInfo->width);
@@ -656,7 +685,7 @@ void image::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int off
 	}
 }
 
-void image::alphaRender(HDC hdc, BYTE alpha)
+void Image::alphaRender(HDC hdc, BYTE alpha)
 {
 	//알파값 초기화
 	_blendFunc.SourceConstantAlpha = alpha;
@@ -681,7 +710,7 @@ void image::alphaRender(HDC hdc, BYTE alpha)
 
 }
 
-void image::alphaRender(HDC hdc, const int destX, const int destY, BYTE alpha)
+void Image::alphaRender(HDC hdc, const int destX, const int destY, BYTE alpha)
 {
 
 	//알파값 초기화
@@ -706,7 +735,7 @@ void image::alphaRender(HDC hdc, const int destX, const int destY, BYTE alpha)
 	}
 }
 
-void image::alphaRender(HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourHeight, BYTE alpha)
+void Image::alphaRender(HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourHeight, BYTE alpha)
 {
 
 	//알파값 초기화
@@ -729,7 +758,7 @@ void image::alphaRender(HDC hdc, const int destX, const int destY, const int sou
 	}
 }
 
-void image::aniRender(HDC hdc, const int destX, const int destY, animation* ani)
+void Image::aniRender(HDC hdc, const int destX, const int destY, animation* ani)
 {
 	render(hdc, destX, destY, ani->getFramePos().x, ani->getFramePos().y, ani->getFrameWidth(), ani->getFrameHeight());
 }

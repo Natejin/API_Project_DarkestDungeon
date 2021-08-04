@@ -56,7 +56,7 @@ private:
 
 	arrLoadItem _vLoadItem;
 
-	image* _background;
+	Image* _background;
 	progressBar* _loadingBar;
 
 	int _currentGauge;

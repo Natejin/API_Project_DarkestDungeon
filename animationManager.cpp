@@ -35,7 +35,7 @@ void animationManager::render()
 void animationManager::addDefAnimation(string animationKeyName, char* imageKeyName, int fps, bool reverse, bool loop)
 {
     //이미지 및 애니메이션  초기화
-    image* img = MG_IMAGE->findImage(imageKeyName);
+    Image* img = MG_IMAGE->findImage(imageKeyName);
     animation* ani = new animation;
     ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
     ani->setDefPlayFrame(reverse, loop);
@@ -48,7 +48,7 @@ void animationManager::addDefAnimation(string animationKeyName, char* imageKeyNa
 void animationManager::addAnimation(string animationKeyName, char* imageKeyName, int* playArr, int arrLen, int fps, bool loop)
 {
     //이미지 및 애니메이션  초기화
-    image* img = MG_IMAGE->findImage(imageKeyName);
+    Image* img = MG_IMAGE->findImage(imageKeyName);
     animation* ani = new animation;
     ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
     ani->setPlayFrame(playArr, arrLen,loop);
@@ -61,7 +61,7 @@ void animationManager::addAnimation(string animationKeyName, char* imageKeyName,
 void animationManager::addAnimation(string animationKeyName, char* imageKeyName, int start, int end, int fps, bool reverse, bool loop)
 {
     //이미지 및 애니메이션  초기화
-    image* img = MG_IMAGE->findImage(imageKeyName);
+    Image* img = MG_IMAGE->findImage(imageKeyName);
     animation* ani = new animation;
     ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
     ani->setPlayFrame(start,end,reverse, loop);
@@ -127,7 +127,7 @@ void animationManager::deleteAll()
 void animationManager::addDefAnimation(IMAGE animationKeyName, char* imageKeyName, int fps, bool reverse, bool loop)
 {
     //이미지 및 애니메이션  초기화
-    image* img = MG_IMAGE->findImage(imageKeyName);
+    Image* img = MG_IMAGE->findImage(imageKeyName);
     animation* ani = new animation;
     ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
     ani->setDefPlayFrame(reverse, loop);
@@ -140,7 +140,7 @@ void animationManager::addDefAnimation(IMAGE animationKeyName, char* imageKeyNam
 void animationManager::addAnimation(IMAGE animationKeyName, char* imageKeyName, int* playArr, int arrLen, int fps, bool loop)
 {
     //이미지 및 애니메이션  초기화
-    image* img = MG_IMAGE->findImage(imageKeyName);
+    Image* img = MG_IMAGE->findImage(imageKeyName);
     animation* ani = new animation;
     ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
     ani->setPlayFrame(playArr, arrLen, loop);
@@ -153,7 +153,7 @@ void animationManager::addAnimation(IMAGE animationKeyName, char* imageKeyName, 
 void animationManager::addAnimation(IMAGE animationKeyName, char* imageKeyName, int start, int end, int fps, bool reverse, bool loop)
 {
     //이미지 및 애니메이션  초기화
-    image* img = MG_IMAGE->findImage(imageKeyName);
+    Image* img = MG_IMAGE->findImage(imageKeyName);
     animation* ani = new animation;
     ani->init(img->getWidth(), img->getHeight(), img->getFrameWidth(), img->getFrameHeight());
     ani->setPlayFrame(start, end, reverse, loop);

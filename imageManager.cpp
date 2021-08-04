@@ -126,14 +126,14 @@ void imageManager::release()
 	deleteAll();
 }
 
-image* imageManager::addImage(string strKey, const int width, const int height)
+Image* imageManager::addImage(string strKey, const int width, const int height)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(width, height)))
@@ -148,14 +148,14 @@ image* imageManager::addImage(string strKey, const int width, const int height)
 	return img;
 }
 
-image* imageManager::addImage(string strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
+Image* imageManager::addImage(string strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
@@ -170,14 +170,14 @@ image* imageManager::addImage(string strKey, const char* fileName, const int wid
 	return img;
 }
 
-image* imageManager::addImage(string strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor)
+Image* imageManager::addImage(string strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, x, y, width, height, trans, transColor)))
@@ -192,14 +192,14 @@ image* imageManager::addImage(string strKey, const char* fileName, const float x
 	return img;
 }
 
-image* imageManager::addFrameImage(string strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
+Image* imageManager::addFrameImage(string strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, width, height, frameX, frameY, trans, transColor)))
@@ -214,14 +214,14 @@ image* imageManager::addFrameImage(string strKey, const char* fileName, const in
 	return img;
 }
 
-image* imageManager::addFrameImage(string strKey, const char* fileName, const float x, const float y, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
+Image* imageManager::addFrameImage(string strKey, const char* fileName, const float x, const float y, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, x, y, width, height, frameX, frameY, trans, transColor)))
@@ -236,7 +236,7 @@ image* imageManager::addFrameImage(string strKey, const char* fileName, const fl
 	return img;
 }
 
-image* imageManager::findImage(string strKey)
+Image* imageManager::findImage(string strKey)
 {
 	//해당키 검색
 	mapImageListIter key = _mImageList.find(strKey);
@@ -288,43 +288,43 @@ bool imageManager::deleteAll()
 void imageManager::render(string strKey, HDC hdc)
 {
 	//이미지를 찾은 후 렌더
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->render(hdc);
 }
 
 void imageManager::render(string strKey, HDC hdc, const int destX, const int destY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->render(hdc, destX, destY);
 }
 
 void imageManager::render(string strKey, HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourHeight)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->render(hdc, destX, destY, sourX, sourY, sourWidth, sourHeight);
 }
 
 void imageManager::frameRender(string strKey, HDC hdc, const int destX, const int destY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->frameRender(hdc, destX, destY);
 }
 
 void imageManager::frameRender(string strKey, HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->frameRender(hdc, destX, destY, currentFrameX, currentFrameY);
 }
 
 void imageManager::loopRender(string strKey, HDC hdc, const LPRECT drawArea,int offSetX, int offSetY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->loopRender(hdc, drawArea, offSetX, offSetY);
 }
 
 void imageManager::loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY, BYTE alpha)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->loopAlphaRender(hdc, drawArea, offSetX, offSetY, alpha);
 }
 
@@ -335,14 +335,14 @@ void imageManager::loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea
 
 //
 //
-image* imageManager::addImage(IMAGE strKey, const int width, const int height)
+Image* imageManager::addImage(IMAGE strKey, const int width, const int height)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(width, height)))
@@ -357,14 +357,14 @@ image* imageManager::addImage(IMAGE strKey, const int width, const int height)
 	return img;
 }
 
-image* imageManager::addImage(IMAGE strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
+Image* imageManager::addImage(IMAGE strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
@@ -379,14 +379,14 @@ image* imageManager::addImage(IMAGE strKey, const char* fileName, const int widt
 	return img;
 }
 
-image* imageManager::addImage(IMAGE strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor)
+Image* imageManager::addImage(IMAGE strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, x, y, width, height, trans, transColor)))
@@ -401,14 +401,14 @@ image* imageManager::addImage(IMAGE strKey, const char* fileName, const float x,
 	return img;
 }
 
-image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
+Image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, width, height, frameX, frameY, trans, transColor)))
@@ -423,14 +423,14 @@ image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const int
 	return img;
 }
 
-image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const float x, const float y, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
+Image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const float x, const float y, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
 	//추가하려는 키값으로 이미지 존재하는지 확인
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	//추가하려는 이미지가 이미 있으면 리턴
 	if (img)return img;
 
-	img = new image;
+	img = new Image;
 
 	//이미지가 초기화되지 않으면
 	if (FAILED(img->init(fileName, x, y, width, height, frameX, frameY, trans, transColor)))
@@ -445,7 +445,7 @@ image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const flo
 	return img;
 }
 
-image* imageManager::findImage(IMAGE strKey)
+Image* imageManager::findImage(IMAGE strKey)
 {
 	//해당키 검색
 	mapImageIter key = m_ImageMap.find(strKey);
@@ -477,42 +477,42 @@ bool imageManager::deleteImage(IMAGE strKey)
 void imageManager::render(IMAGE strKey, HDC hdc)
 {
 	//이미지를 찾은 후 렌더
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->render(hdc);
 }
 
 void imageManager::render(IMAGE strKey, HDC hdc, const int destX, const int destY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->render(hdc, destX, destY);
 }
 
 void imageManager::render(IMAGE strKey, HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourHeight)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->render(hdc, destX, destY, sourX, sourY, sourWidth, sourHeight);
 }
 
 void imageManager::frameRender(IMAGE strKey, HDC hdc, const int destX, const int destY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->frameRender(hdc, destX, destY);
 }
 
 void imageManager::frameRender(IMAGE strKey, HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->frameRender(hdc, destX, destY, currentFrameX, currentFrameY);
 }
 
 void imageManager::loopRender(IMAGE strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->loopRender(hdc, drawArea, offSetX, offSetY);
 }
 
 void imageManager::loopAlphaRender(IMAGE strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY, BYTE alpha)
 {
-	image* img = findImage(strKey);
+	Image* img = findImage(strKey);
 	if (img) img->loopAlphaRender(hdc, drawArea, offSetX, offSetY, alpha);
 }

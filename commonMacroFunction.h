@@ -39,6 +39,8 @@ inline void RectangleMake(HDC hdc,RECT rect)
 {
 	Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
 }
+
+
 inline void RectangleMakeCenter(HDC hdc, int x, int y, int width, int height)
 {
 	Rectangle(hdc, x - (width / 2), y - (height / 2), x + (width / 2), y + (height / 2));

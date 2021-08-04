@@ -4,15 +4,17 @@
 using namespace std;
 #define KEYMAX 256
 
-class Input : public Singleton<Input>
+class CInputManager : public Singleton<CInputManager>
 {
 private:
 	bitset<KEYMAX> _keyUp;
 	bitset<KEYMAX> _keyDown;
+	bitset<KEYMAX> _keyDownFrame;
+	bitset<KEYMAX> _keyUpFrame;
 
 public:
-	Input();
-	~Input();
+	CInputManager();
+	~CInputManager();
 
 	HRESULT init();
 
@@ -26,4 +28,10 @@ public:
 	bool isStayKeyDown(int key);
 	//토글키냐
 	bool isToggleKey(int key);
+
+
+	//Frame 전용
+	bool IsOnceKeyDownInFrame(int key);
+	bool IsOnceKeyUpInFrame(int key);
+	void ResetFrame();
 };

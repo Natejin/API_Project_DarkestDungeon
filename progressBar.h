@@ -9,8 +9,8 @@ private:
 	int _x, _y;
 	int _width;
 
-	image* _progressBarFront;
-	image* _progressBarBack;
+	Image* _progressBarFront;
+	Image* _progressBarBack;
 
 
 public:

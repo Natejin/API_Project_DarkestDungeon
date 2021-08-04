@@ -1,10 +1,10 @@
 #include"framework.h"
 #include "Input.h"
 
-Input::Input() {}
-Input::~Input() {}
+CInputManager::CInputManager() {}
+CInputManager::~CInputManager() {}
 
-HRESULT Input::init()
+HRESULT CInputManager::init()
 {
 	//키가 전부 눌려있지 않은 상태로 초기화하자
 	for (int i = 0; i < KEYMAX; i++)
@@ -16,12 +16,12 @@ HRESULT Input::init()
 	return S_OK;
 }
 
-void Input::release()
+void CInputManager::release()
 {
 
 }
 
-bool Input::isOnceKeyDown(int key)
+bool CInputManager::isOnceKeyDown(int key)
 {
 	//GetAsyncKeyState현재 키의 상태를 알아오는 녀석
 	//키가 눌려졌을때나 떨어졌을때 호출
@@ -41,11 +41,56 @@ bool Input::isOnceKeyDown(int key)
 	return false;
 }
 
-bool Input::isOnceKeyUp(int key)
+bool CInputManager::IsOnceKeyDownInFrame(int key) {
+	if (GetAsyncKeyState(key) & 0x8000)
+	{
+		if (!_keyDownFrame[key])
+		{
+			_keyDownFrame.set(key, true);
+			return true;
+		}
+	}
+	else
+	{
+		_keyDown.set(key, false);
+	}
+	return false;
+}
+
+bool CInputManager::IsOnceKeyUpInFrame(int key)
+{
+	if (_keyUpFrame[key])
+	{
+		return true;
+	}
+
+	if (GetAsyncKeyState(key) & 0x8000)
+	{
+		if (!_keyUpFrame[key])
+		{
+			_keyUpFrame.set(key, true);
+			return true;
+		}
+	}
+	else
+	{
+		_keyUpFrame.set(key, false);
+	}
+	return false;
+}
+
+void CInputManager::ResetFrame()
+{
+	_keyDownFrame.none();
+	_keyUpFrame.none();
+}
+
+bool CInputManager::isOnceKeyUp(int key)
 {
 	if (GetAsyncKeyState(key) & 0x8000)
 	{
 		_keyUp.set(key, true);
+		_keyDown.set(key, false);
 	}
 	else
 	{
@@ -59,13 +104,13 @@ bool Input::isOnceKeyUp(int key)
 	return false;
 }
 
-bool Input::isStayKeyDown(int key)
+bool CInputManager::isStayKeyDown(int key)
 {
 	if (GetAsyncKeyState(key) & 0x8000)return true;
 	return false;
 }
 
-bool Input::isToggleKey(int key)
+bool CInputManager::isToggleKey(int key)
 {
 	//GetKeyState :현재 키의 토글상태
 		//0x0001이전에 누른적이 있고 호출시점에서 안눌린 상태

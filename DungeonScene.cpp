@@ -4,15 +4,28 @@
 #include "CBG_Road.h"
 #include "CBG_Room.h"
 #include "CParty.h"
+#include "CButton.h"
 
 DungeonScene::DungeonScene()
 {
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 2;
+	m_buttonTest = 0;
 	isDoorClick = false;
+
+	m_party = nullptr;
+	m_roomBG = nullptr;
+	m_roadBG = nullptr;
 }
 DungeonScene::~DungeonScene() {}
+
+void print_num()
+{
+    std::cout << 3 << '\n';
+}
+
+
 
 HRESULT DungeonScene::Init()
 {
@@ -24,6 +37,44 @@ HRESULT DungeonScene::Init()
 	CreateParty();
 	CreateDoor();
 	m_roadBG->isActive = true;
+	//void(DungeonScene::*p)() = &TestButton;
+
+	//void (*fptr)() = DungeonScene::TestButton;
+	//function<const int& ()> F([] { return 42; });
+	//function<void()>& dest = bind(DungeonScene::TestButton, this);
+	//function<void(*)> f1 = &TestButton;
+	//m_testButton->SetTriggerWhenClick(fptr);
+
+
+	CButton* m_testButton1 = new CButton();
+	m_testButton1->m_transform->m_pos = Vector2(300, 300);
+	m_testButton1->SetButtonSize(300, 100);
+	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
+	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton1);
+
+
+
+
+
+	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
+
+	CButton* m_testButton3 = new CButton();
+	m_testButton3->m_transform->m_pos = Vector2(100, 100);
+	m_testButton3->SetButtonSize(300, 100);
+	m_testButton3->m_image = MG_IMAGE->findImage("scouting");
+	m_testButton3->SetTriggerWhenClick(this, &DungeonScene::TestButton);
+
+	MG_GMOBJ->RegisterObj("TestUiButton2", m_testButton3);
+
+	CButton* m_testButton = new CButton();
+	m_testButton->m_transform->m_pos = Vector2(500, 500);
+	m_testButton->SetButtonSize(300, 100);
+	m_testButton->m_image = MG_IMAGE->findImage("scouting");
+	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
+
+	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);
+
+
 	return S_OK;
 }
 
@@ -34,6 +85,15 @@ HRESULT DungeonScene::Init(bool managerInit)
 
 void DungeonScene::Release()
 {
+	m_party = nullptr;
+	m_roomBG = nullptr;
+	m_roadBG = nullptr;
+
+	for (size_t i = 0; i < enemyGroup.size(); i++)
+	{
+		enemyGroup[i] = nullptr;
+	}
+	enemyGroup.clear();
 }
 
 void DungeonScene::Update()
@@ -300,6 +360,11 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "roadNum : %d", m_roadNum);
 	TextOut(_hdc, 0, 100, str, strlen(str));
 
+	sprintf_s(str, "ButtonTest : %d", m_buttonTest);
+	TextOut(_hdc, 0, 150, str, strlen(str));
+
+	sprintf_s(str, "ButtonTest : %d", m_buttonTest1);
+	TextOut(_hdc, 0, 200, str, strlen(str));
 	switch (curDunheonMap.dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Road_Empty:
@@ -326,4 +391,16 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 		TextOut(_hdc, 0, 140, str, strlen(str));
 	}
 }
+#pragma endregion
+
+
+#pragma region UI
+void DungeonScene::TestButton() {
+	m_buttonTest++;
+}
+void DungeonScene::TestButton1() {
+	m_buttonTest1++;
+}
+
+
 #pragma endregion

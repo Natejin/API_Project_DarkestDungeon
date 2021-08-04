@@ -68,6 +68,14 @@ public:
 	BATTLETURN curBattleTurn;
 	vector<class CEnemy*> enemyGroup;
 
+
+	//UI
+public:
+	void TestButton();
+	void TestButton1();
+	//class CButton* m_testButton;
+	int m_buttonTest;
+	int m_buttonTest1;
 public:
 	DungeonScene();
 	virtual~DungeonScene();
@@ -90,4 +98,11 @@ public:
 	virtual void Update();
 	virtual void Render(HDC _hdc);
 
+
+
+
+	void DungeonScene::bindFunction(function<void()>& dest)
+	{
+		dest = bind(&DungeonScene::TestButton, this);
+	}
 };

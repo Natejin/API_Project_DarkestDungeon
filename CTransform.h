@@ -1,11 +1,11 @@
 #pragma once
 #include "CComponent.h"
 
-class Transform : public CComponent
+class CTransform : public CComponent
 {
 public:
-	Transform() {};
-	~Transform() {};
+	CTransform() {};
+	~CTransform() {};
 
 	Vector2 m_pos;
 	Vector2 m_scale;

@@ -2,7 +2,7 @@
 
 
 
-class image
+class Image
 {
 public:
 
@@ -52,8 +52,8 @@ public:
 		}
 	} IMAGE_INFO, *LPIMAGE_INFO;
 
-	image();
-	~image();
+	Image();
+	~Image();
 
 private:
 	LPIMAGE_INFO	_imageInfo;			//이미지 정보
@@ -90,13 +90,14 @@ public:
 	//렌더
 	void render(HDC hdc);
 	void render(HDC hdc, const int  destX, const int destY);
-	void render(HDC hdc, const class Transform* transform);
+	void render(HDC hdc, const class CTransform* transform);
+	void renderUI(HDC hdc, const class CTransform* transform);
 	void render(HDC hdc, const int  destX, const int destY,const int sourX, const int sourY, const int sourWidth, const int sourheight);
 
 
 	//프레임 렌더
 	void frameRender(HDC hdc, const int destX, const int destY);
-	void frameRender(HDC hdc, const class Transform* transform);
+	void frameRender(HDC hdc, const class CTransform* transform);
 	//void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 	//void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);

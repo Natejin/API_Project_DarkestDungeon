@@ -64,7 +64,7 @@
 //======================================
 //##			매니저들			  ##
 //======================================
-#define MG_INPUT		Input::getSingleton()
+#define MG_INPUT		CInputManager::getSingleton()
 #define MG_RND			RandomFunction::getSingleton()
 #define MG_IMAGE		imageManager::getSingleton()
 #define MG_TIME			timeManager::getSingleton()

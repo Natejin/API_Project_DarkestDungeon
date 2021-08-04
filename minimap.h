@@ -7,7 +7,7 @@ class minimap:public gameNode
 
 private:
 
-	image* m_rockman;
+	Image* m_rockman;
 	int m_index;
 	int m_count;
 	int m_camera;

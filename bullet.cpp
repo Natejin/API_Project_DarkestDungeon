@@ -37,7 +37,7 @@ void bullet::fire(float x, float y, float angle, float speed)
 {
 	tagBullet bullet;
 	ZeroMemory(&bullet, sizeof(tagBullet));
-	bullet.bulletImage = new  image;
+	bullet.bulletImage = new  Image;
 	bullet.bulletImage = MG_IMAGE->findImage(_imageName);
 	bullet.angle = angle;
 	bullet.speed = speed;
@@ -89,7 +89,7 @@ HRESULT missile::init(int bulletMax, float range)
 	{
 		tagBullet bullet;
 		ZeroMemory(&bullet, sizeof(tagBullet));
-		bullet.bulletImage = new image;
+		bullet.bulletImage = new Image;
 		bullet.bulletImage->init("images/missile.bmp", 26, 124, true, RGB(255, 0, 255));
 		bullet.speed = 5.0f;
 		bullet.fire = false;
@@ -206,7 +206,7 @@ void nuclear::fire(float x, float y)
 
 	tagBullet bullet;
 	ZeroMemory(&bullet, sizeof(tagBullet));
-	bullet.bulletImage = new  image;
+	bullet.bulletImage = new  Image;
 	bullet.bulletImage->init("images/missile1.bmp", 0, 0, 416, 64, 13, 1, true, RGB(255, 0, 255));
 	bullet.speed = 6.0f;
 	bullet.x = bullet.fireX = x;

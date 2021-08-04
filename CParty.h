@@ -7,7 +7,6 @@ class CParty : public GameObject
 {
 private:
 	vector<CHero*> m_member;
-	//vector<CHero*>::iterator m_imember;
 
 	bool memberCount0;
 	int maxPartyMember;

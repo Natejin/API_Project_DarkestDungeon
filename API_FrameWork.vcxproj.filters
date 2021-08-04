@@ -148,6 +148,9 @@
     <Filter Include="Object\Background">
       <UniqueIdentifier>{d14af8a6-be29-4065-8d24-89a466631b83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Enemy">
+      <UniqueIdentifier>{a315dc60-5671-474a-9008-a3168df19626}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -336,7 +339,7 @@
     <ClInclude Include="sceneManager.h">
       <Filter>Manager\Scene_M</Filter>
     </ClInclude>
-    <ClInclude Include="CCollision.h">
+    <ClInclude Include="CCollider.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="CComponent.h">
@@ -374,6 +377,18 @@
     </ClInclude>
     <ClInclude Include="ImageData.h">
       <Filter>헤더 파일\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoneArbalest.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoneCourtier.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoneDefender.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoneSoldier.h">
+      <Filter>Object\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -533,7 +548,7 @@
     <ClCompile Include="sceneManager.cpp">
       <Filter>Manager\Scene_M</Filter>
     </ClCompile>
-    <ClCompile Include="CCollision.cpp">
+    <ClCompile Include="CCollider.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
     <ClCompile Include="CComponent.cpp">
@@ -571,6 +586,18 @@
     </ClCompile>
     <ClCompile Include="ImageData.cpp">
       <Filter>헤더 파일\Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoneArbalest.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoneCourtier.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoneDefender.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoneSoldier.cpp">
+      <Filter>Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

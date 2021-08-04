@@ -48,10 +48,8 @@ void mainGame::update()
 	MG_GMOBJ->LateUpdate();
 
 	MG_CAMERA->Update(MG_TIME->getElapsedTime(), MG_TIME->getWorldTime());
-	//SCENE->update();
-	//ANIMATION->update();
-	//EFFECT->update();
-	//_astar->update();
+
+
 }
 
 void mainGame::render(/*HDC hdc*/)
@@ -70,4 +68,6 @@ void mainGame::render(/*HDC hdc*/)
 
 	//백버퍼의 내용을 HDC그린다.(건드리지 말것.)
 	this->getBackBuffer()->render(getHDC(), 0, 0);
+
+	MG_INPUT->ResetFrame();
 }

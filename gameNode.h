@@ -2,7 +2,7 @@
 #include"image.h"
 #include"globalTank.h"
 
-static image* _backBuffer = MG_IMAGE->addImage("backBuffer", WINSIZEX, WINSIZEY);
+static Image* _backBuffer = MG_IMAGE->addImage("backBuffer", WINSIZEX, WINSIZEY);
 class gameNode
 {
 private:
@@ -22,7 +22,7 @@ public:
 	virtual void render(/*HDC hdc*/);
 
 
-	image* getBackBuffer()const { return _backBuffer; }
+	Image* getBackBuffer()const { return _backBuffer; }
 	HDC getHDC()const { return _hdc; }
 	HDC getMemDC()const { return _backBuffer->getMemDC(); }
 
