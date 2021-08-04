@@ -39,13 +39,41 @@ HRESULT DungeonScene::Init()
 	CreateParty();
 	CreateDoor();
 	m_roadBG->isActive = true;
+	//void(DungeonScene::*p)() = &TestButton;
+
+	//void (*fptr)() = DungeonScene::TestButton;
+	//function<const int& ()> F([] { return 42; });
+	//function<void()>& dest = bind(DungeonScene::TestButton, this);
+	//function<void(*)> f1 = &TestButton;
+	//m_testButton->SetTriggerWhenClick(fptr);
+
+
+
+
+	/*CButton* m_testButton1 = new CButton();
+	m_testButton1->m_transform->m_pos = Vector2(300, 300);
+	m_testButton1->SetButtonSize(300, 100);
+	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
+	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton1);
+	m_testButton1->textPos = Vector2(100, 200);
+	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
+
+	CButton* m_testButton3 = new CButton();
+	m_testButton3->m_transform->m_pos = Vector2(100, 100);
+	m_testButton3->SetButtonSize(300, 100);
+	m_testButton3->m_image = MG_IMAGE->findImage("scouting");
+	m_testButton3->SetTriggerWhenClick(this, &DungeonScene::TestButton);
+	m_testButton1->textPos = Vector2(100, 300);
+	MG_GMOBJ->RegisterObj("TestUiButton2", m_testButton3);
+
 
 	CButton* m_testButton = new CButton();
 	m_testButton->m_transform->m_pos = Vector2(100, 100);
 	m_testButton->SetButtonSize(250, 100);
 	m_testButton->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);
+	m_testButton->textPos = Vector2(100, 400);
+	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);*/
 
 	return S_OK;
 }
@@ -112,7 +140,7 @@ void DungeonScene::Render(HDC _hdc)
 #pragma region InitDungeon
 void DungeonScene::CreateDungeon()
 {
-	//¸Ê »ý¼º
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < MAPSIZE; i++)
 	{
 		for (int j = 0; j < MAPSIZE; j++)
@@ -122,7 +150,7 @@ void DungeonScene::CreateDungeon()
 		}
 	}
 
-	//ÇöÀçÀ§Ä¡(½ÃÀÛÀ§Ä¡)¸¦ ¸ÊÀÇ Áß¾Ó¿¡ À§Ä¡
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½Ä¡
 	curPos = Vector2Int(MAPSIZE / 2, MAPSIZE / 2);
 	dungeonMap[curPos.x][curPos.y].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
 
@@ -134,15 +162,15 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 {
 	if (_lastDir != Vector2Int(0, 0))
 	{
-		if (remainRoom < 0) //»ý¼ºÇÒ ¹æ°³¼ö°¡ 0°³ÀÎ°æ¿ì
+		if (remainRoom < 0) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æ°³ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½Î°ï¿½ï¿½
 		{
 			return;
 		}
-		if (i < 0 || // xÃà¹æÀÌ 0º¸´Ù ÀÛÀ½
-			i > MAPSIZE || // xÃà¹æÀÌ ÃÖ´ëÄ¡º¸´Ù Å­
-			j < 0 || // yÃà¹æÀÌ 0º¸´Ù ÀÛÀ½
-			j > MAPSIZE || // yÃà¹æÀÌ ÃÖ´ëÄ¡º¸´Ù Å­
-			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // ÇØ´ç¹æÀÌ Á¸ÀçÇÔ
+		if (i < 0 || // xï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			i > MAPSIZE || // xï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ Å­
+			j < 0 || // yï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			j > MAPSIZE || // yï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ Å­
+			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			return;
 	}
 
@@ -178,7 +206,7 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
 
-	//¹æÀÏ¶§
+
 	else {
 		if (_lastDir == Vector2Int(0, 0))
 		{
@@ -295,7 +323,7 @@ void DungeonScene::CreateDoor()
 
 void DungeonScene::CreateRoad()
 {
-	//ÀÌºÎºÐ
+	//ï¿½ÌºÎºï¿½
 	auto road = new CBG_Road();
 	road->Init();
 	road->isActive = false;
@@ -308,8 +336,8 @@ void DungeonScene::CreateRoad()
 #pragma region Road
 void DungeonScene::CheckDoor()
 {
-	//¹®¿¡ ´ê¾Ò´Ù´Â ¸Þ¼¼Áö°¡ ¶ß±ä ¶ß´Âµ¥ 
-	//door2ÀÇ ¸Å¿ì Á¼Àº ¿µ¿ª¿¡¼­ ¶ä
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò´Ù´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß±ï¿½ ï¿½ß´Âµï¿½ 
+	//door2ï¿½ï¿½ ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos)||
 		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
 	{
@@ -362,7 +390,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 	if (isDoorClick)
 	{
-		sprintf_s(str, "¹®¿¡ ÇÃ·¹ÀÌ¾î°¡ ´êÀ½");
+		sprintf_s(str, "near Door");
 		TextOut(_hdc, 0, 140, str, strlen(str));
 	}
 }

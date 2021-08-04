@@ -76,7 +76,7 @@ void CObjectManager::LateUpdate()
 
 void CObjectManager::BackRender(HDC _hdc)
 {
-	/*for (LAYER layer : renderOrder)
+	for (LAYER layer : renderOrder)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
@@ -86,12 +86,12 @@ void CObjectManager::BackRender(HDC _hdc)
 			}
 		
 		}
-	}*/
+	}
 }
 
 void CObjectManager::Render(HDC _hdc)
 {
-	/*for (LAYER layer : renderOrder)
+	for (LAYER layer : renderOrder)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
@@ -100,12 +100,12 @@ void CObjectManager::Render(HDC _hdc)
 				go->Render(_hdc);
 			}
 		}
-	}*/
+	}
 }
 
 void CObjectManager::FrontRender(HDC _hdc)
 {
-	/*for (LAYER layer : renderOrder)
+	for (LAYER layer : renderOrder)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
@@ -114,7 +114,7 @@ void CObjectManager::FrontRender(HDC _hdc)
 				go->FrontRender(_hdc);
 			}
 		}
-	}*/
+	}
 }
 
 void CObjectManager::Release()

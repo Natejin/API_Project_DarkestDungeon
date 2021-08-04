@@ -134,6 +134,7 @@ enum class COLLIDERTYPE {
 
 };
 
+
 enum class DUNGEONMAPSTATE 
 {
 	NONE,
@@ -152,4 +153,11 @@ enum class SCENETYPE
 	Test,
 	Dungeon,
 	Town
+};
+
+enum class UNITTYPE {
+	NONE,
+	Hero,
+	Enemy
+
 };

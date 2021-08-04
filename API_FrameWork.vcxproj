@@ -218,6 +218,7 @@
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="CTransform.h" />
+    <ClInclude Include="TownScene.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="utils.h" />
@@ -291,6 +292,7 @@
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="CTransform.cpp" />
+    <ClCompile Include="TownScene.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="utils.cpp" />

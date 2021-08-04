@@ -4,6 +4,7 @@
 #include "Astar.h"
 #include "TestScene.h"
 #include "DungeonScene.h"
+#include "TownScene.h"
 
 SceneManager::SceneManager() {}
 SceneManager::~SceneManager() {}
@@ -20,8 +21,10 @@ HRESULT SceneManager::init()
 	m_testScene->Init();
 
 	DungeonScene* dungeon = new DungeonScene;
-	dungeon->Init();
 	addScene(SCENETYPE::Dungeon, dungeon);
+
+	TownScene* town = new TownScene;
+	addScene(SCENETYPE::Town, town);
 
 	_currentScene = m_testScene;
 	return S_OK;
@@ -92,6 +95,7 @@ HRESULT SceneManager::changeScene(string sceneName)
 		if (_currentScene)_currentScene->Release();
 
 		_currentScene = find->second;
+		_currentScene->Init();
 		return  S_OK;
 	}
 

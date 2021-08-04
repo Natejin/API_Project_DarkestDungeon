@@ -1,11 +1,14 @@
 #include "framework.h"
 #include "Unit.h"
 
-Unit::Unit() {}
+Unit::Unit() {
+    unitType = UNITTYPE::NONE;
+}
 Unit::~Unit() {}
 
 HRESULT Unit::Init()
 {
+
     return S_OK;
 }
 

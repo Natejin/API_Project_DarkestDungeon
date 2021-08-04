@@ -151,6 +151,9 @@
     <Filter Include="Object\Enemy">
       <UniqueIdentifier>{a315dc60-5671-474a-9008-a3168df19626}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Enemy\ProtoType">
+      <UniqueIdentifier>{8fa8a767-767c-488b-bb65-a5f79da69501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -294,9 +297,6 @@
     <ClInclude Include="CCameraManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="CEnemy.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Enum.h">
       <Filter>Enum</Filter>
     </ClInclude>
@@ -354,9 +354,6 @@
     <ClInclude Include="CParty.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="RoomScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CBattleSystem.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -389,6 +386,15 @@
     </ClInclude>
     <ClInclude Include="CBoneSoldier.h">
       <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemy.h">
+      <Filter>Object\Enemy\ProtoType</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomScene.h">
+      <Filter>Scene\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="TownScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -512,9 +518,6 @@
     <ClCompile Include="CCameraManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="CEnemy.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="ImageAdder_MJ.cpp">
       <Filter>Enum\MJ</Filter>
     </ClCompile>
@@ -563,9 +566,6 @@
     <ClCompile Include="CParty.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="RoomScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="CBattleSystem.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -598,6 +598,15 @@
     </ClCompile>
     <ClCompile Include="CBoneSoldier.cpp">
       <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemy.cpp">
+      <Filter>Object\Enemy\ProtoType</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomScene.cpp">
+      <Filter>Scene\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="TownScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

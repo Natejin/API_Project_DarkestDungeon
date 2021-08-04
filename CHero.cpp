@@ -3,13 +3,15 @@
 
 #include "CParty.h"
 
-CHero::CHero() {}
+CHero::CHero() {
+	unitType = UNITTYPE::Hero;
+}
 CHero::~CHero() {}
 
 HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
 {
 	m_layer = LAYER::Player;
-
+	
 	this->job = job;
 	m_HP = HP;
 	m_SPD = SPD;

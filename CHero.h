@@ -50,8 +50,8 @@ public:
 	int getStress()const { return m_STRS; }
 	void setStress(int strs) { m_STRS += strs; }
 
-	int getPos()const { return m_POS; }
-	void setPos(int pos) { m_POS = pos; }
+	//int getPos()const { return m_POS; }
+	//void setPos(int pos) { m_POS = pos; }
 
 	void Move();
 
