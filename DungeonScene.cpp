@@ -50,7 +50,7 @@ HRESULT DungeonScene::Init()
 
 
 
-	CButton* m_testButton1 = new CButton();
+	/*CButton* m_testButton1 = new CButton();
 	m_testButton1->m_transform->m_pos = Vector2(300, 300);
 	m_testButton1->SetButtonSize(300, 100);
 	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
@@ -73,7 +73,7 @@ HRESULT DungeonScene::Init()
 	m_testButton->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
 	m_testButton->textPos = Vector2(100, 400);
-	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);
+	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);*/
 
 	return S_OK;
 }
@@ -206,7 +206,7 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
 
-	//���϶�
+
 	else {
 		if (_lastDir == Vector2Int(0, 0))
 		{
@@ -390,7 +390,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 	if (isDoorClick)
 	{
-		sprintf_s(str, "���� �÷��̾ ����");
+		sprintf_s(str, "near Door");
 		TextOut(_hdc, 0, 140, str, strlen(str));
 	}
 }

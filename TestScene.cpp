@@ -22,7 +22,7 @@ HRESULT TestScene::Init()
 
 	//MG_SCENE->changeScene(SCENETYPE::Dungeon);
 
-	MG_SCENE->changeScene(SCENETYPE::Town);
+	//MG_SCENE->changeScene(SCENETYPE::Town);
 
 	return S_OK;
 }
@@ -39,8 +39,8 @@ void TestScene::Release()
 
 void TestScene::Update()
 {
-	//MG_SCENE->changeScene(SCENETYPE::Dungeon);
-	MG_SCENE->changeScene(SCENETYPE::Town);
+	//MG_SCENE->changeScene(SCENETYPE::Town);
+	MG_SCENE->changeScene(SCENETYPE::Dungeon);
 }
 
 void TestScene::Render(HDC _hdc)

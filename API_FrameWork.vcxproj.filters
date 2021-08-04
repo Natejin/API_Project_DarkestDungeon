@@ -354,9 +354,6 @@
     <ClInclude Include="CParty.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="RoomScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CBattleSystem.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -392,6 +389,12 @@
     </ClInclude>
     <ClInclude Include="CEnemy.h">
       <Filter>Object\Enemy\ProtoType</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomScene.h">
+      <Filter>Scene\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="TownScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -563,9 +566,6 @@
     <ClCompile Include="CParty.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="RoomScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="CBattleSystem.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -601,6 +601,12 @@
     </ClCompile>
     <ClCompile Include="CEnemy.cpp">
       <Filter>Object\Enemy\ProtoType</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomScene.cpp">
+      <Filter>Scene\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="TownScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
