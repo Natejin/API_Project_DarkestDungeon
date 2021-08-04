@@ -37,7 +37,7 @@ void CBG_Road::SetIMG()
 		mostFG_Bottom[i].m_img = MG_IMAGE->findImage("ruins_bottom");
 		mostFG_Bottom[i].m_trans.m_pivot = 0;
 		mostFG_Bottom[i].m_trans.m_scale = Vector2(720, 720);
-		mostFG_Bottom[i].m_trans.m_pos = Vector2(720 * (i - 2), WINSIZEY - 101);
+		mostFG_Bottom[i].m_trans.m_pos = Vector2(720 * (i - 2), 720 - 101);
 
 		ImageData temp3;
 		mostFG_Top.push_back(temp3);

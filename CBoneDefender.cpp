@@ -7,7 +7,7 @@ CBoneDefender::CBoneDefender()
 	int resist[5] = {25, 10, 200, 15, 50};
 	
 	//DEF 25%
-	boneDF->Init("mon1", resist, 15, 0, 1, 25, 0);
+	//boneDF->Init("mon1", resist, 15, 0, 1, 25, 0);
 }
 
 CBoneDefender::~CBoneDefender()

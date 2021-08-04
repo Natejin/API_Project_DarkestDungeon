@@ -17,6 +17,8 @@ DungeonScene::DungeonScene()
 	m_party = nullptr;
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
+
+	showMap = true;
 }
 DungeonScene::~DungeonScene() {}
 
@@ -25,10 +27,10 @@ void print_num()
     std::cout << 3 << '\n';
 }
 
-
-
 HRESULT DungeonScene::Init()
 {
+	setUIIMG();
+
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
 	CreateDungeon();
@@ -37,43 +39,13 @@ HRESULT DungeonScene::Init()
 	CreateParty();
 	CreateDoor();
 	m_roadBG->isActive = true;
-	//void(DungeonScene::*p)() = &TestButton;
-
-	//void (*fptr)() = DungeonScene::TestButton;
-	//function<const int& ()> F([] { return 42; });
-	//function<void()>& dest = bind(DungeonScene::TestButton, this);
-	//function<void(*)> f1 = &TestButton;
-	//m_testButton->SetTriggerWhenClick(fptr);
-
-
-	CButton* m_testButton1 = new CButton();
-	m_testButton1->m_transform->m_pos = Vector2(300, 300);
-	m_testButton1->SetButtonSize(300, 100);
-	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
-	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton1);
-
-
-
-
-
-	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
-
-	CButton* m_testButton3 = new CButton();
-	m_testButton3->m_transform->m_pos = Vector2(100, 100);
-	m_testButton3->SetButtonSize(300, 100);
-	m_testButton3->m_image = MG_IMAGE->findImage("scouting");
-	m_testButton3->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-
-	MG_GMOBJ->RegisterObj("TestUiButton2", m_testButton3);
 
 	CButton* m_testButton = new CButton();
-	m_testButton->m_transform->m_pos = Vector2(500, 500);
-	m_testButton->SetButtonSize(300, 100);
+	m_testButton->m_transform->m_pos = Vector2(100, 100);
+	m_testButton->SetButtonSize(250, 100);
 	m_testButton->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-
 	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);
-
 
 	return S_OK;
 }
@@ -105,10 +77,12 @@ void DungeonScene::Update()
 		m_party->SetFormation();
 		CheckDoor();
 	}
+
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
 	{
 
 	}
+
 	else 
 	{
 	
@@ -121,10 +95,13 @@ void DungeonScene::Render(HDC _hdc)
 	{
 
 	}
+
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 		ShowDungeonInfo(_hdc);
+		ShowMapOrInven(_hdc);
 	}
+
 	else 
 	{
 
@@ -360,11 +337,9 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "roadNum : %d", m_roadNum);
 	TextOut(_hdc, 0, 100, str, strlen(str));
 
-	sprintf_s(str, "ButtonTest : %d", m_buttonTest);
-	TextOut(_hdc, 0, 150, str, strlen(str));
+	sprintf_s(str, "ButtonTest1 : %d", m_buttonTest);
+	TextOut(_hdc, 0, 180, str, strlen(str));
 
-	sprintf_s(str, "ButtonTest : %d", m_buttonTest1);
-	TextOut(_hdc, 0, 200, str, strlen(str));
 	switch (curDunheonMap.dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Road_Empty:
@@ -395,12 +370,67 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 
 #pragma region UI
-void DungeonScene::TestButton() {
+void DungeonScene::setUIIMG()
+{
+	Image* pannelImg;
+	pannelImg = MG_IMAGE->findImage("banner");
+	pannel.push_back(pannelImg);
+	pannelImg = MG_IMAGE->findImage("hero");
+	pannel.push_back(pannelImg);
+	pannelImg = MG_IMAGE->findImage("inventory");
+	pannel.push_back(pannelImg);
+	pannelImg = MG_IMAGE->findImage("map");
+	pannel.push_back(pannelImg);
+
+	CTransform ts;
+	ts.m_pos = Vector2(300, 690);
+	ts_pannel.push_back(ts);
+	ts.m_pos = Vector2(330, 810);
+	ts_pannel.push_back(ts);
+	ts.m_pos = Vector2(965, 690);
+	ts_pannel.push_back(ts);
+	ts_pannel.push_back(ts);
+
+	rc_inven.SetRect(1550, WINSIZEY - 236, 1600, WINSIZEY - 165);
+	rc_map.SetRect(1550, WINSIZEY - 160, 1600, WINSIZEY - 95);
+}
+
+void DungeonScene::TestButton() 
+{
 	m_buttonTest++;
 }
-void DungeonScene::TestButton1() {
-	m_buttonTest1++;
+
+void DungeonScene::ShowMapOrInven(HDC _hdc)
+{
+	if (showMap == false)
+	{
+		for (int i = 0; i < pannel.size(); i++)
+		{
+			pannel[i]->renderUI(_hdc, &ts_pannel[i]);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < pannel.size(); i++)
+		{
+			pannel[i]->renderUI(_hdc, &ts_pannel[i]);
+		}
+		pannel[2]->renderUI(_hdc, &ts_pannel[2]);
+	}
+
+	if (rc_inven.CheckCollisionWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			showMap = false;
+		}
+	}
+	if (rc_map.CheckCollisionWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			showMap = true;
+		}
+	}
 }
-
-
 #pragma endregion

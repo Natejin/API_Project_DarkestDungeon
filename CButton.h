@@ -1,12 +1,13 @@
 #pragma once
 #include "GameObject.h"
-
+#include <functional>
 
 class CButton : public GameObject
 {
+private:
 	function<void()> m_triggerWhenClick;
 	int countNum;
-	//function<void()> m_triggerWhenClick1;
+
 public:
 	Rect m_rect;
 
@@ -24,9 +25,9 @@ public:
 
 	virtual void Release();
 
+	//===================================
+
 	void SetButtonSize(float width, float height);
-
-
 
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)())
@@ -34,9 +35,4 @@ public:
 		m_triggerWhenClick = bind(func, pObj);
 	}
 
-	//template <typename T>
-	//void SetTriggerWhenClick1(T* pObj, void(T::* func)())
-	//{
-	//	m_triggerWhenClick1 = bind(func, pObj);
-	//}
 };

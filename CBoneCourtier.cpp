@@ -7,7 +7,7 @@ CBoneCourtier::CBoneCourtier()
 	int resist[5] = {10, 10, 200, 15, 10};
 
 	//DODGE 12.5%
-	boneCT->Init("mon3", resist, 10, 8, 2, 0, 12);
+	//boneCT->Init("mon3", resist, 10, 8, 2, 0, 12);
 }
 CBoneCourtier::~CBoneCourtier() {}
 

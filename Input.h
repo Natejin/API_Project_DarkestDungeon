@@ -28,10 +28,4 @@ public:
 	bool isStayKeyDown(int key);
 	//토글키냐
 	bool isToggleKey(int key);
-
-
-	//Frame 전용
-	bool IsOnceKeyDownInFrame(int key);
-	bool IsOnceKeyUpInFrame(int key);
-	void ResetFrame();
 };
