@@ -153,3 +153,10 @@ enum class SCENETYPE
 	Dungeon,
 	Town
 };
+
+enum class UNITTYPE {
+	NONE,
+	Hero,
+	Enemy
+
+};

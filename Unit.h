@@ -14,6 +14,8 @@ protected:
 	//ป๓ลย
 	bool attribute[8]; //stun, blight, bleed, debuff, buff, move, marked, death
 
+	UNITTYPE unitType;
+	int m_partyIndex = -1;
 public:
 	Unit();
 	~Unit();
@@ -28,4 +30,14 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	UNITTYPE GetUnitType() { return unitType; }
+	int GetSpeed() { return m_SPD; }
+
+	void SetPartyIndex(int index) { m_partyIndex = index; }
+	int GetPartyIndex() { return m_partyIndex; }
+
+	void SetPosition(int pos) { m_POS = pos; }
+	int GetPosition() { return m_POS; }
+	
 };

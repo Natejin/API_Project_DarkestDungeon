@@ -20,7 +20,7 @@ HRESULT TestScene::Init()
 	//enemy->m_transform->m_pos = Vector2(WINSIZEX, WINSIZEY);
 	//MG_GMOBJ->RegisterObj("enemy1", enemy);
 
-	MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	//MG_SCENE->changeScene(SCENETYPE::Dungeon);
 
 	MG_SCENE->changeScene(SCENETYPE::Town);
 
