@@ -83,10 +83,10 @@
 //				 매크로 설정
 //==========================================
 #define WINNAME			(LPTSTR)(TEXT("지옥으로 떠나는 여행"))
-#define WINSTARTX		100
-#define WINSTARTY		100
-#define WINSIZEX		1280
-#define WINSIZEY		720
+#define WINSTARTX		0
+#define WINSTARTY		0
+#define WINSIZEX		1920
+#define WINSIZEY		1080
 #define WORLDSIZEX		4320
 #define WORLDSIZEY		720
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU

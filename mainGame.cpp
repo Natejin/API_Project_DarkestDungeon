@@ -68,6 +68,4 @@ void mainGame::render(/*HDC hdc*/)
 
 	//백버퍼의 내용을 HDC그린다.(건드리지 말것.)
 	this->getBackBuffer()->render(getHDC(), 0, 0);
-
-	MG_INPUT->ResetFrame();
 }

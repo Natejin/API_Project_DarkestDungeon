@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "CCollider.h"
 
-
 CCollider::CCollider()
 {
 	rect.l = 0;

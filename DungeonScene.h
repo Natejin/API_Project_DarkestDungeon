@@ -69,13 +69,22 @@ public:
 	vector<class CEnemy*> enemyGroup;
 
 
-	//UI
+//==================================
+//UI
 public:
+	vector<Image*> pannel;
+	vector<CTransform> ts_pannel;
+	Rect rc_map;
+	Rect rc_inven;
+	bool showMap;
+
+	void setUIIMG();
+	void ShowMapOrInven(HDC _hdc);
+
 	void TestButton();
-	void TestButton1();
-	//class CButton* m_testButton;
 	int m_buttonTest;
-	int m_buttonTest1;
+
+//==================================
 public:
 	DungeonScene();
 	virtual~DungeonScene();

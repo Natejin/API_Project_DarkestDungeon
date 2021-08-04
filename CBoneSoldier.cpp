@@ -7,7 +7,7 @@ CBoneSoldier::CBoneSoldier()
 	int resist[5] = { 25, 10, 200, 15, 20 };
 
 	//DEF 15%
-	/*boneSD->Init("mon2", resist, 10, 2, 3, 15, 0);*/
+	//boneSD->Init("mon2", resist, 10, 2, 3, 15, 0);
 }
 CBoneSoldier::~CBoneSoldier() {}
 

@@ -12,20 +12,17 @@ HRESULT CInputManager::init()
 		_keyUp.set(i, false);
 		_keyDown.set(i, false);
 	}
-
 	return S_OK;
 }
 
-void CInputManager::release()
-{
-
-}
+void CInputManager::release() {}
 
 bool CInputManager::isOnceKeyDown(int key)
 {
-	//GetAsyncKeyState현재 키의 상태를 알아오는 녀석
-	//키가 눌려졌을때나 떨어졌을때 호출
-	//0x8000 이전에는 누른적이 없고 호출시점에서 눌린상태
+	//GetAsyncKeyState
+	//현재키의 상태를 확인하는 함수
+	//키가 눌렸을 때 혹은 떨어졌을 떄 호출
+	// 0x8000 이전에는 누른적이 없고 호출시점에 눌린상태
 	if (GetAsyncKeyState(key) & 0x8000)
 	{
 		if (!_keyDown[key])
@@ -41,56 +38,11 @@ bool CInputManager::isOnceKeyDown(int key)
 	return false;
 }
 
-bool CInputManager::IsOnceKeyDownInFrame(int key) {
-	if (GetAsyncKeyState(key) & 0x8000)
-	{
-		if (!_keyDownFrame[key])
-		{
-			_keyDownFrame.set(key, true);
-			return true;
-		}
-	}
-	else
-	{
-		_keyDown.set(key, false);
-	}
-	return false;
-}
-
-bool CInputManager::IsOnceKeyUpInFrame(int key)
-{
-	if (_keyUpFrame[key])
-	{
-		return true;
-	}
-
-	if (GetAsyncKeyState(key) & 0x8000)
-	{
-		if (!_keyUpFrame[key])
-		{
-			_keyUpFrame.set(key, true);
-			return true;
-		}
-	}
-	else
-	{
-		_keyUpFrame.set(key, false);
-	}
-	return false;
-}
-
-void CInputManager::ResetFrame()
-{
-	_keyDownFrame.none();
-	_keyUpFrame.none();
-}
-
 bool CInputManager::isOnceKeyUp(int key)
 {
 	if (GetAsyncKeyState(key) & 0x8000)
 	{
 		_keyUp.set(key, true);
-		_keyDown.set(key, false);
 	}
 	else
 	{
@@ -100,21 +52,19 @@ bool CInputManager::isOnceKeyUp(int key)
 			return true;
 		}
 	}
-
 	return false;
 }
 
 bool CInputManager::isStayKeyDown(int key)
 {
-	if (GetAsyncKeyState(key) & 0x8000)return true;
+	if (GetAsyncKeyState(key) & 0x8000) return true;
 	return false;
 }
 
 bool CInputManager::isToggleKey(int key)
 {
 	//GetKeyState :현재 키의 토글상태
-		//0x0001이전에 누른적이 있고 호출시점에서 안눌린 상태
-
-	if (GetKeyState(key) & 0x0001)return true;
+	//0x0001 이전에 누른적이 있고 호출시점에서 안눌린 상태
+	if (GetKeyState(key) & 0x0001) return true;
 	return false;
 }

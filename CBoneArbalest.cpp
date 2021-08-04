@@ -7,7 +7,7 @@ CBoneArbalest::CBoneArbalest()
 	int resist[5] = { 10, 10, 200, 15, 25 };
 
 	//DEF 5%
-	/*boneAB->Init("mon4", resist, 16, 5, 4, 0, 5);*/
+	//boneAB->Init("mon4", resist, 16, 5, 4, 0, 5);
 }
 CBoneArbalest::~CBoneArbalest() {}
 

@@ -5,11 +5,9 @@ class CCollider : public CComponent
 {
 private:
 	class CTransform* trans;
+
 public:
-
-
 	COLLIDERTYPE m_colliderType;
-	
 	Vector2 m_pos;
 	Rect rect;
 

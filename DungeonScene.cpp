@@ -17,6 +17,8 @@ DungeonScene::DungeonScene()
 	m_party = nullptr;
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
+
+	showMap = true;
 }
 DungeonScene::~DungeonScene() {}
 
@@ -25,10 +27,10 @@ void print_num()
     std::cout << 3 << '\n';
 }
 
-
-
 HRESULT DungeonScene::Init()
 {
+	setUIIMG();
+
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
 	CreateDungeon();
@@ -66,13 +68,12 @@ HRESULT DungeonScene::Init()
 
 
 	CButton* m_testButton = new CButton();
-	m_testButton->m_transform->m_pos = Vector2(500, 500);
-	m_testButton->SetButtonSize(300, 100);
+	m_testButton->m_transform->m_pos = Vector2(100, 100);
+	m_testButton->SetButtonSize(250, 100);
 	m_testButton->m_image = MG_IMAGE->findImage("scouting");
 	m_testButton->SetTriggerWhenClick(this, &DungeonScene::TestButton);
 	m_testButton->textPos = Vector2(100, 400);
 	MG_GMOBJ->RegisterObj("TestUiButton", m_testButton);
-
 
 	return S_OK;
 }
@@ -104,10 +105,12 @@ void DungeonScene::Update()
 		m_party->SetFormation();
 		CheckDoor();
 	}
+
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
 	{
 
 	}
+
 	else 
 	{
 	
@@ -120,10 +123,13 @@ void DungeonScene::Render(HDC _hdc)
 	{
 
 	}
+
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 		ShowDungeonInfo(_hdc);
+		ShowMapOrInven(_hdc);
 	}
+
 	else 
 	{
 
@@ -134,7 +140,7 @@ void DungeonScene::Render(HDC _hdc)
 #pragma region InitDungeon
 void DungeonScene::CreateDungeon()
 {
-	//¸Ê »ý¼º
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < MAPSIZE; i++)
 	{
 		for (int j = 0; j < MAPSIZE; j++)
@@ -144,7 +150,7 @@ void DungeonScene::CreateDungeon()
 		}
 	}
 
-	//ÇöÀçÀ§Ä¡(½ÃÀÛÀ§Ä¡)¸¦ ¸ÊÀÇ Áß¾Ó¿¡ À§Ä¡
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½Ä¡
 	curPos = Vector2Int(MAPSIZE / 2, MAPSIZE / 2);
 	dungeonMap[curPos.x][curPos.y].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
 
@@ -156,15 +162,15 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 {
 	if (_lastDir != Vector2Int(0, 0))
 	{
-		if (remainRoom < 0) //»ý¼ºÇÒ ¹æ°³¼ö°¡ 0°³ÀÎ°æ¿ì
+		if (remainRoom < 0) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æ°³ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½Î°ï¿½ï¿½
 		{
 			return;
 		}
-		if (i < 0 || // xÃà¹æÀÌ 0º¸´Ù ÀÛÀ½
-			i > MAPSIZE || // xÃà¹æÀÌ ÃÖ´ëÄ¡º¸´Ù Å­
-			j < 0 || // yÃà¹æÀÌ 0º¸´Ù ÀÛÀ½
-			j > MAPSIZE || // yÃà¹æÀÌ ÃÖ´ëÄ¡º¸´Ù Å­
-			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // ÇØ´ç¹æÀÌ Á¸ÀçÇÔ
+		if (i < 0 || // xï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			i > MAPSIZE || // xï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ Å­
+			j < 0 || // yï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			j > MAPSIZE || // yï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ Å­
+			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			return;
 	}
 
@@ -200,7 +206,7 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
 
-	//¹æÀÏ¶§
+	//ï¿½ï¿½ï¿½Ï¶ï¿½
 	else {
 		if (_lastDir == Vector2Int(0, 0))
 		{
@@ -317,7 +323,7 @@ void DungeonScene::CreateDoor()
 
 void DungeonScene::CreateRoad()
 {
-	//ÀÌºÎºÐ
+	//ï¿½ÌºÎºï¿½
 	auto road = new CBG_Road();
 	road->Init();
 	road->isActive = false;
@@ -330,8 +336,8 @@ void DungeonScene::CreateRoad()
 #pragma region Road
 void DungeonScene::CheckDoor()
 {
-	//¹®¿¡ ´ê¾Ò´Ù´Â ¸Þ¼¼Áö°¡ ¶ß±ä ¶ß´Âµ¥ 
-	//door2ÀÇ ¸Å¿ì Á¼Àº ¿µ¿ª¿¡¼­ ¶ä
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò´Ù´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß±ï¿½ ï¿½ß´Âµï¿½ 
+	//door2ï¿½ï¿½ ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos)||
 		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
 	{
@@ -359,11 +365,9 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "roadNum : %d", m_roadNum);
 	TextOut(_hdc, 0, 100, str, strlen(str));
 
-	sprintf_s(str, "ButtonTest : %d", m_buttonTest);
-	TextOut(_hdc, 0, 150, str, strlen(str));
+	sprintf_s(str, "ButtonTest1 : %d", m_buttonTest);
+	TextOut(_hdc, 0, 180, str, strlen(str));
 
-	sprintf_s(str, "ButtonTest : %d", m_buttonTest1);
-	TextOut(_hdc, 0, 200, str, strlen(str));
 	switch (curDunheonMap.dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Road_Empty:
@@ -386,7 +390,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 	if (isDoorClick)
 	{
-		sprintf_s(str, "¹®¿¡ ÇÃ·¹ÀÌ¾î°¡ ´êÀ½");
+		sprintf_s(str, "ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½");
 		TextOut(_hdc, 0, 140, str, strlen(str));
 	}
 }
@@ -394,12 +398,67 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 
 #pragma region UI
-void DungeonScene::TestButton() {
+void DungeonScene::setUIIMG()
+{
+	Image* pannelImg;
+	pannelImg = MG_IMAGE->findImage("banner");
+	pannel.push_back(pannelImg);
+	pannelImg = MG_IMAGE->findImage("hero");
+	pannel.push_back(pannelImg);
+	pannelImg = MG_IMAGE->findImage("inventory");
+	pannel.push_back(pannelImg);
+	pannelImg = MG_IMAGE->findImage("map");
+	pannel.push_back(pannelImg);
+
+	CTransform ts;
+	ts.m_pos = Vector2(300, 690);
+	ts_pannel.push_back(ts);
+	ts.m_pos = Vector2(330, 810);
+	ts_pannel.push_back(ts);
+	ts.m_pos = Vector2(965, 690);
+	ts_pannel.push_back(ts);
+	ts_pannel.push_back(ts);
+
+	rc_inven.SetRect(1550, WINSIZEY - 236, 1600, WINSIZEY - 165);
+	rc_map.SetRect(1550, WINSIZEY - 160, 1600, WINSIZEY - 95);
+}
+
+void DungeonScene::TestButton() 
+{
 	m_buttonTest++;
 }
-void DungeonScene::TestButton1() {
-	m_buttonTest1++;
+
+void DungeonScene::ShowMapOrInven(HDC _hdc)
+{
+	if (showMap == false)
+	{
+		for (int i = 0; i < pannel.size(); i++)
+		{
+			pannel[i]->renderUI(_hdc, &ts_pannel[i]);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < pannel.size(); i++)
+		{
+			pannel[i]->renderUI(_hdc, &ts_pannel[i]);
+		}
+		pannel[2]->renderUI(_hdc, &ts_pannel[2]);
+	}
+
+	if (rc_inven.CheckCollisionWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			showMap = false;
+		}
+	}
+	if (rc_map.CheckCollisionWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			showMap = true;
+		}
+	}
 }
-
-
 #pragma endregion
