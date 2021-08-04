@@ -150,5 +150,6 @@ enum class DUNGEONMAPSTATE
 enum class SCENETYPE
 {
 	Test,
-	Dungeon
+	Dungeon,
+	Town
 };

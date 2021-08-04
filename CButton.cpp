@@ -20,13 +20,23 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
-	if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+	/*if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 	{
 		if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 		{
 			m_triggerWhenClick();
 		}
+	}*/
+
+	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+
+	{
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			m_triggerWhenClick();
+		}
 	}
+
 }
 
 
@@ -47,10 +57,10 @@ void CButton::Render(HDC _hdc)
 
 void CButton::FrontRender(HDC _hdc)
 {
-	assert(m_image != nullptr);
-	m_image->renderUI(_hdc, m_transform);
+	//assert(m_image != nullptr);
+	//m_image->renderUI(_hdc, m_transform);
 
-	Rectangle(_hdc, m_rect.l, m_rect.t, m_rect.r, m_rect.b);
+	//Rectangle(_hdc, m_rect.l, m_rect.t, m_rect.r, m_rect.b);
 }
 
 void CButton::Release()
