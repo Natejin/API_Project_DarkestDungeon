@@ -89,6 +89,7 @@ public:
 	void render(HDC hdc);
 	void render(HDC hdc, const int  destX, const int destY);
 	void render(HDC hdc, const class CTransform* transform);
+	void render(HDC hdc, const CTransform* transform, Vector2 scale);
 	void renderUI(HDC hdc, const class CTransform* transform);
 	void render(HDC hdc, const int  destX, const int destY,const int sourX, const int sourY, const int sourWidth, const int sourheight);
 
