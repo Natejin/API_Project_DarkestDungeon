@@ -29,7 +29,7 @@ void print_num()
 
 HRESULT DungeonScene::Init()
 {
-	setUIIMG();
+	SetUIIMG();
 
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
@@ -78,6 +78,7 @@ void DungeonScene::Update()
 		CheckDoor();
 		setRoadNum();
 		TorchLightBarDecrease();
+
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
@@ -179,8 +180,6 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
-
-
 	else {
 		if (_lastDir == Vector2Int(0, 0))
 		{
@@ -380,15 +379,26 @@ void DungeonScene::TorchLightBarDecrease()
 
 void DungeonScene::CheckDoor()
 {
-	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos)||
-		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
+	if (true)
 	{
-		isDoorClick = true;
+		if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos) ||
+			door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
+		{
+			isDoorClick = true;
+			if (MG_INPUT->isOnceKeyDown(VK_UP))
+			{
+				isDoorClick = false;
+				m_roadBG->isActive = false;
+				m_roomBG->isActive = true;
+
+			}
+		}
+		else
+		{
+			isDoorClick = false;
+		}
 	}
-	else 
-	{
-		isDoorClick = false;
-	}
+	
 }
 #pragma endregion
 
@@ -440,7 +450,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 
 #pragma region UI
-void DungeonScene::setUIIMG()
+void DungeonScene::SetUIIMG()
 {
 	Image* panelImg;
 	panelImg = MG_IMAGE->findImage("panel_bg2");

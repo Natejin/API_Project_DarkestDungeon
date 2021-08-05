@@ -77,7 +77,7 @@ public:
 	Rect rc_inven;
 	bool showMap;
 
-	void setUIIMG();
+	void SetUIIMG();
 	void ShowMapOrInven(HDC _hdc);
 
 	void TestButton();
