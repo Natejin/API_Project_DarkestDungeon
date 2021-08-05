@@ -1,16 +1,9 @@
 #pragma once
 #include "Scene.h"
-
+#include"CButton.h"
 class TownScene : public Scene
 {
 public:
-	
-
-	class CBackground* m_townBG;
-
-	void Show_AllTownScene(HDC _hdc);
-
-	void Show_Estate(HDC _hdc);
 	
 	Rect abbey_rc;
 	Rect blacksmith_rc;
@@ -34,6 +27,7 @@ public:
 	void Show_sanitarium(HDC _hdc); //요양원
 	void Show_tavern(HDC _hdc); //여관
 
+	void Set_EST_UI();
 
 	vector<Image*> vtown;
 	vector<CTransform> ts_vtown;

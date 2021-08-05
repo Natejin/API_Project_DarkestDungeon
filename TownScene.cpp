@@ -5,7 +5,7 @@
 
 TownScene::TownScene()
 {
-	m_townBG = nullptr;
+	
 }
 
 TownScene::~TownScene()
@@ -21,6 +21,7 @@ HRESULT TownScene::Init()
 	m_town->m_image = MG_IMAGE->findImage("district");
 
 	MG_GMOBJ->RegisterObj("Town", m_town);
+	Set_EST_UI();
 	return S_OK;
 }
 
@@ -35,8 +36,6 @@ void TownScene::Release()
 
 void TownScene::Update()
 {
-
-
 }
 
 void TownScene::Update(HDC _hdc)
@@ -88,115 +87,104 @@ void TownScene::Update(HDC _hdc)
 
 void TownScene::Render(HDC _hdc)
 {
-	Show_AllTownScene(_hdc);
-
-}
-void TownScene::Show_AllTownScene(HDC _hdc)
-{
-	
-
-
-
-}
-
-void TownScene::Show_Estate(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("town_abbey", "images/Town/estate/town_abbey_1.bmp", 800, 986, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_blacksmith", "images/Town/estate/town_blacksmith_1.bmp", 719, 795, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_camping_trainer", "images/Town/estate/town_camping_trainer_1.bmp", 281, 424, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_graveyard", "images/Town/estate/town_graveyard_1.bmp", 578, 293, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_guild", "images/Town/estate/town_guild_1.bmp", 707, 697, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_nomad_wagon", "images/Town/estate/town_nomad_wagon_1.bmp", 514, 392, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_sanitarium", "images/Town/estate/town_sanitarium_1.bmp", 764, 963, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_stage_coach", "images/Town/estate/town_stage_coach_1.bmp", 509, 362, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_statue", "images/Town/estate/town_statue_1.bmp", 449, 498, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_tavern", "images/Town/estate/town_tavern_1.bmp", 824, 814, true, RGB(255, 0, 255));
-	*/
-
 
 }
 
 void TownScene::Show_abbey(HDC _hdc)
 {
-	/*
-	MG_IMAGE->addImage("abbey.character", "images/Town/abbey/abbey.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("abbey.character.bg", "images/Town/abbey/abbey.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
-
+	CButton* m_abbey = new CButton();
+	m_abbey->m_transform->m_pos = Vector2(0, 0);
+	m_abbey->SetButtonSize(200, 200);
+	m_abbey->m_image = MG_IMAGE->findImage("abbey.character");
+	MG_GMOBJ->RegisterObj("Abbey", m_abbey);
 }
 
 void TownScene::Show_blacksmith(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("blacksmith.character", "images/Town/blacksmith/blacksmith.character.bmp", 865, 760, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("blacksmith.character.bg", "images/Town/blacksmith/blacksmith.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("blacksmith.frame", "images/Town/blacksmith/blacksmith.frame.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_blacksmith = new CButton();
+	m_blacksmith->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);
+	m_blacksmith->SetButtonSize(500, 500);
+	m_blacksmith->m_image = MG_IMAGE->findImage("blacksmith.character");
+	MG_GMOBJ->RegisterObj("Blacksmith", m_blacksmith);
 }
 
 void TownScene::Show_campingTrainer(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("camping_trainer.character", "images/Town/camping_trainer/camping_trainer.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("camping_trainer.character.bg", "images/Town/camping_trainer/camping_trainer.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_campingTrainer = new CButton();
+	m_campingTrainer->m_transform->m_pos = Vector2(0, 0);
+	m_campingTrainer->SetButtonSize(200, 200);
+	m_campingTrainer->m_image = MG_IMAGE->findImage("camping_trainer.character");
+	MG_GMOBJ->RegisterObj("CampingTrainer", m_campingTrainer);
 }
 
 void TownScene::Show_graveyard(HDC _hdc)
 {
-	/*
-	MG_IMAGE->addImage("graveyard.character", "images/Town/graveyard/graveyard.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("graveyard.character", "images/Town/graveyard/graveyard.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+	CButton* m_graveyard = new CButton();
+	m_graveyard->m_transform->m_pos = Vector2(0, 0);
+	m_graveyard->SetButtonSize(200, 200);
+	m_graveyard->m_image = MG_IMAGE->findImage("graveyard.character");
+	MG_GMOBJ->RegisterObj("Graveyard", m_graveyard);
 }
 
 void TownScene::Show_guild(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("guild.character", "images/Town/guild/guild.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("guild.character.bg", "images/Town/guild/guild.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_guild = new CButton();
+	m_guild->m_transform->m_pos = Vector2(0, 0);
+	m_guild->SetButtonSize(200, 200);
+	m_guild->m_image = MG_IMAGE->findImage("guild.character");
+	MG_GMOBJ->RegisterObj("Guild", m_guild);
 }
 
 void TownScene::Show_nomad_wagon(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("nomad_wagon.character", "images/Town/nomad_wagon/nomad_wagon.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("nomad_wagon.character.bg", "images/Town/nomad_wagon/nomad_wagon.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("inventory_grid_bg", "images/Town/nomad_wagon/inventory_grid_backgroud.bmp", 684, 360, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_nomad_wagon = new CButton();
+	m_nomad_wagon->m_transform->m_pos = Vector2(0, 0);
+	m_nomad_wagon->SetButtonSize(200, 200);
+	m_nomad_wagon->m_image = MG_IMAGE->findImage("nomad_wagon.character");
+	MG_GMOBJ->RegisterObj("Nomad_wagon", m_nomad_wagon);
 }
 
 void TownScene::Show_stage_coach(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("sanitarium.character", "images/Town/sanitarium/sanitarium.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("sanitarium.character.bg", "images/Town/sanitarium/sanitarium.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_stage_coach = new CButton();
+	m_stage_coach->m_transform->m_pos = Vector2(0, 0);
+	m_stage_coach->SetButtonSize(200, 200);
+	m_stage_coach->m_image = MG_IMAGE->findImage("stage_coach.character");
+	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
 }
 
 void TownScene::Show_town_statue(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("stage_coach.character", "images/Town/stage_coach/stage_coach.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("stage_coach.character.bg", "images/Town/stage_coach/stage_coach.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_statue = new CButton();
+	m_statue->m_transform->m_pos = Vector2(0, 0);
+	m_statue->SetButtonSize(200, 200);
+	m_statue->m_image = MG_IMAGE->findImage("statue.character");
+	MG_GMOBJ->RegisterObj("Statue", m_statue);
 }
 
 void TownScene::Show_sanitarium(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("statue.character", "images/Town/statue/statue.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("statue.character.bg", "images/Town/statue/statue.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
-
+{
+	CButton* m_sanitarium = new CButton();
+	m_sanitarium->m_transform->m_pos = Vector2(0, 0);
+	m_sanitarium->SetButtonSize(200, 200);
+	m_sanitarium->m_image = MG_IMAGE->findImage("sanitarium.character");
+	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
 }
 
 void TownScene::Show_tavern(HDC _hdc)
-{	/*
-	MG_IMAGE->addImage("tavern.character", "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("tavern.character.bg", "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	*/
+{
+	CButton* m_tavern = new CButton();
+	m_tavern->m_transform->m_pos = Vector2(0, 0);
+	m_tavern->SetButtonSize(200, 200);
+	m_tavern->m_image = MG_IMAGE->findImage("tavern.character");
+	MG_GMOBJ->RegisterObj("Tavern", m_tavern);
+}
 
+void TownScene::Set_EST_UI()
+{
+	CButton* m_abbey = new CButton();
+	m_abbey->m_transform->m_pos = Vector2(0, 0);
+	m_abbey->SetButtonSize(200, 200);
+	m_abbey->m_image = MG_IMAGE->findImage("abbey.character");
+	MG_GMOBJ->RegisterObj("Abbey", m_abbey);
 }
