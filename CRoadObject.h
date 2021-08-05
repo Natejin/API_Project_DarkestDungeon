@@ -1,11 +1,17 @@
 #pragma once
 #include "GameObject.h"
+#include "CBackground.h"
 
 class CParty;
+class CHero;
 class CRoadObject : public GameObject
 {
 private:
+	vector<CTransform> DividedArea;
 	vector<ImageData> roadObj;
+	vector<Rect> roadObj_rc;
+
+	CParty* party;
 
 public:
 	CRoadObject();
@@ -28,9 +34,13 @@ public:
 	void setRoadObjIMG();
 	void getMapInfo(int a1, int a2, int a3); //get what should be in this area
 	void setRoadObj(); //set Obj according to MapInfo
+	void setRoadObj(CBackground* bg);
 
-	void Interaction_treassure(CHero* member);
-	void Interaction_trap(CHero* member);
-	void Interaction_battle(CParty* party); //not sure
+	void reach_InteractionArea(CParty* _party);
+	void Interaction_treassure();
+	void Interaction_trap();
+	void Interaction_battle(); //not sure
+
+	void showDividedArea(HDC _hdc);
 
 };

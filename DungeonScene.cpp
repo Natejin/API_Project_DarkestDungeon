@@ -5,6 +5,7 @@
 #include "CBG_Room.h"
 #include "CParty.h"
 #include "CButton.h"
+#include "CRoadObject.h"
 
 DungeonScene::DungeonScene()
 {
@@ -17,6 +18,7 @@ DungeonScene::DungeonScene()
 	m_party = nullptr;
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
+	m_roadObj = nullptr;
 
 	showMap = true;
 }
@@ -75,6 +77,7 @@ void DungeonScene::Update()
 		m_party->FormationMove();
 		m_party->getStress_movement();
 		m_party->decreaseBright_movement();
+
 		CheckDoor();
 		setRoadNum();
 		TorchLightBarDecrease();
@@ -103,6 +106,8 @@ void DungeonScene::Render(HDC _hdc)
 	{
 		ShowDungeonInfo(_hdc);
 		ShowMapOrInven(_hdc);
+
+		m_roadObj->Render(_hdc);
 	}
 
 	else 
@@ -300,6 +305,12 @@ void DungeonScene::CreateRoad()
 	road->isActive = false;
 	MG_GMOBJ->RegisterObj("RoadBG", road);
 	m_roadBG = road;
+
+	auto roadOBJ = new CRoadObject();
+	roadOBJ->Init();
+	roadOBJ->isActive = false;
+	MG_GMOBJ->RegisterObj("RoadOBJ", roadOBJ);
+	m_roadObj = roadOBJ;
 }
 #pragma endregion
 

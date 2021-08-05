@@ -57,4 +57,6 @@ void CBG_Road::SetIMG()
 	//road[6].m_img = MG_IMAGE->findImage("ruins_wall5");
 	//road[7].m_img = MG_IMAGE->findImage("ruins_wall6");
 	//road[8].m_img = MG_IMAGE->findImage("ruins_wall7");
+
+	//obj img만 여기에서 렌더링, roadObj에서 충돌체크 및 상호작용 구현
 }

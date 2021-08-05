@@ -15,9 +15,6 @@ protected:
 	int bgCount;
 	int roadCount;
 
-	//구역의 특성
-	DUNGEONMAPSTATE m_kindOfRoad;
-	vector<ImageData> road_event;
 
 public:
 	CBackground();
@@ -37,6 +34,7 @@ public:
 	//==================================
 
 	virtual void SetRoadIMG();
+	
 	int getSceneSize()const;
 
 };

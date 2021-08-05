@@ -6,7 +6,17 @@ struct ImageData
 	Image* m_img;
 	CTransform m_trans;
 
-	void Render(HDC hdc) {
+	void Render(HDC hdc) 
+	{
 		m_img->render(hdc, &m_trans);
+	}
+
+	bool Collision(float x)
+	{
+		if (m_img->getX() < x < m_img->getX() + m_img->getWidth())
+		{
+			return true;
+		}
+		else return false;
 	}
 };
