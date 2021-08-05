@@ -322,7 +322,6 @@ void CParty::getStress_movement()
 
 }
 
-
 void CParty::showMemberInfo(HDC _hdc)
 {
 	//나중에 스테이더스를 확인하는 용도로 사용할 것

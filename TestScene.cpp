@@ -40,12 +40,10 @@ void TestScene::Release()
 void TestScene::Update()
 {
 	//MG_SCENE->changeScene(SCENETYPE::Town);
-	MG_SCENE->changeScene(SCENETYPE::Town);
+	MG_SCENE->changeScene(SCENETYPE::Dungeon);
 }
 
 void TestScene::Render(HDC _hdc)
 {
-	//RectangleMakeCenter(_hdc, 500, 500, 100, 100); 
-
 
 }

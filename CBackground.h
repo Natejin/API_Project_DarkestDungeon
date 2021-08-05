@@ -15,9 +15,7 @@ protected:
 
 	//구역의 특성
 	DUNGEONMAPSTATE m_kindOfRoad;
-	Image* tresure;
-	Image* trap;
-	CTransform ts_event[3];
+	vector<ImageData> road_event;
 
 public:
 	CBackground();
