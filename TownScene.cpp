@@ -1,9 +1,11 @@
 #include "framework.h"
 #include "TownScene.h"
+#include"CBG_Town.h"
 #include "CButton.h"
+
 TownScene::TownScene()
 {
-
+	m_townBG = nullptr;
 }
 
 TownScene::~TownScene()
@@ -12,25 +14,13 @@ TownScene::~TownScene()
 
 HRESULT TownScene::Init()
 {
-	Image* Town_Img;
-	Town_Img = MG_IMAGE->findImage("district");
-	vtown.push_back(Town_Img);
-	Town_Img = MG_IMAGE->findImage("district_midground");
-	vtown.push_back(Town_Img);
-	Town_Img = MG_IMAGE->findImage("ruins");
-	vtown.push_back(Town_Img);
-	Town_Img = MG_IMAGE->findImage("town_ground");
-	vtown.push_back(Town_Img);
+	CBG_Town* m_town = new CBG_Town();
+	m_town->Init();
+	m_town->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);
+	m_town->SetImageSize(WINSIZEX, WINSIZEY);
+	m_town->m_image = MG_IMAGE->findImage("district");
 
-	CTransform ts;
-	ts.m_pos = Vector2(300, 690);
-	ts_vtown.push_back(ts);
-	ts.m_pos = Vector2(330, 810);
-	ts_vtown.push_back(ts);
-	ts.m_pos = Vector2(965, 690);
-	ts_vtown.push_back(ts);
-	ts_vtown.push_back(ts);
-
+	MG_GMOBJ->RegisterObj("Town_sky", m_town);
 	return S_OK;
 }
 
@@ -111,10 +101,7 @@ void TownScene::Show_AllTownScene(HDC _hdc)
 	*/
 
 
-	for (int i = 0; i < vtown.size(); i++)
-	{
-		vtown[i]->render(_hdc, &ts_vtown[i]);
-	}
+
 
 }
 

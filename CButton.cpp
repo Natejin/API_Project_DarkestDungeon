@@ -62,4 +62,5 @@ void CButton::SetButtonSize(float width, float height)
 	m_rect.t = m_transform->m_pos.y;
 	m_rect.r = m_transform->m_pos.x + width;
 	m_rect.b = m_transform->m_pos.y + height;
+
 }

@@ -4,6 +4,9 @@
 class CBG_Town : public CBackground
 {
 public:
+	Rect m_rect;
+	void SetImageSize(float width, float height);
+
 	CBG_Town();
 	~CBG_Town();
 
@@ -12,11 +15,12 @@ public:
 	//virtual void Update(float deltaTime, float worldTime);
 	//virtual void LateUpdate();
 
-	//virtual void BackRender(HDC _hdc);
-	//virtual void Render(HDC _hdc);
-	//virtual void FrontRender(HDC _hdc);
+	/*virtual void BackRender(HDC _hdc);
+	virtual void Render(HDC _hdc);
+	virtual void FrontRender(HDC _hdc);*/
 
 	//virtual void Release();
 
 	virtual void SetIMG();
+	void SetIMG_Est();
 };
