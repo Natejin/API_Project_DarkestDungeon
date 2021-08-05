@@ -71,8 +71,7 @@ public:
 //==================================
 //UI
 public:
-	vector<Image*> panel;
-	vector<CTransform> ts_panel;
+	vector<ImageData> vUI;
 	Rect rc_map;
 	Rect rc_inven;
 	bool showMap;

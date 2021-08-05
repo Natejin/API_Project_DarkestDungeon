@@ -8,6 +8,8 @@ private:
 	vector<Image*> img_object;
 	vector<CTransform> ts_area;
 
+	vector<ImageData> roadObj;
+
 public:
 	CRoadObject();
 	~CRoadObject();

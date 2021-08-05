@@ -69,8 +69,6 @@ public:
 	void decreaseBright_movement();
 	void getStress_movement();
 
-
-
 	void showMemberInfo(HDC _hdc);
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
