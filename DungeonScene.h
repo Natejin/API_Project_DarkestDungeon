@@ -75,9 +75,11 @@ public:
 	Rect rc_map;
 	Rect rc_inven;
 	bool showMap;
+	int m_sceneSize;
 
 	void SetUIIMG();
 	void ShowMapOrInven(HDC _hdc);
+	void SetSceneSize();
 
 	void TestButton();
 	int m_buttonTest;
