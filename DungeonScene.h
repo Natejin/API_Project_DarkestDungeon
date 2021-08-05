@@ -44,6 +44,8 @@ public:
 	int imageCount;
 	int torchLight;
 
+	class CRoadObject* m_roadObj;
+
 	//앞으로 이동할때 최대 간격
 	int m_WF_btwHeroes = 150;
 	//뒤로 이동할때 최대 간격
