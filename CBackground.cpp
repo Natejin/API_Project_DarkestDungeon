@@ -67,3 +67,9 @@ void CBackground::SetRoadIMG()
 {
 	
 }
+
+int CBackground::getSceneSize() const
+{
+	int i = road.size() - 1;
+	return road[i].m_trans.m_scale.x * road.size();
+}

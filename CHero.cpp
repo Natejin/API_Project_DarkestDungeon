@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "CHero.h"
-
 #include "CParty.h"
+#include "DungeonScene.h"
 
 CHero::CHero() {
 	unitType = UNITTYPE::Hero;
@@ -114,5 +114,16 @@ void CHero::Move()
 				m_DIST += 4;
 			}
 		}
+
+		
 	}
+}
+
+bool CHero::PreventGetOutBg(int startX, int endX)
+{
+	
+	if (m_transform->m_pos.x < endX - 200 && 0 < m_transform->m_pos.x) 
+		return true;
+	else 
+		return false;
 }

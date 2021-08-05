@@ -26,6 +26,8 @@ private:
 
 	int limit = 0;
 
+	DUNGEONSTATE nowScene;
+
 public:
 	CParty();
 	~CParty();
@@ -49,9 +51,6 @@ public:
 	void SetCamera();
 	int GetPartySize() { return m_member.size(); }
 	CHero* GetHero(int index);
-
-	void SetFormation();
-	void getFormation(string name);
 
 	void FormationMove();
 

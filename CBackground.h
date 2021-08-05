@@ -35,5 +35,6 @@ public:
 	//==================================
 
 	virtual void SetRoadIMG();
+	int getSceneSize()const;
 
 };

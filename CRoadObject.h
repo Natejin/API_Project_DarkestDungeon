@@ -5,9 +5,6 @@ class CParty;
 class CRoadObject : public GameObject
 {
 private:
-	vector<Image*> img_object;
-	vector<CTransform> ts_area;
-
 	vector<ImageData> roadObj;
 
 public:
@@ -32,7 +29,7 @@ public:
 	void getMapInfo(int a1, int a2, int a3); //get what should be in this area
 	void setRoadObj(); //set Obj according to MapInfo
 
-	void Interaction_tressure(CHero* member);
+	void Interaction_treassure(CHero* member);
 	void Interaction_trap(CHero* member);
 	void Interaction_battle(CParty* party); //not sure
 

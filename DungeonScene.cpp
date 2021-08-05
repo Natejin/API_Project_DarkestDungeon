@@ -78,7 +78,7 @@ void DungeonScene::Update()
 		CheckDoor();
 		setRoadNum();
 		TorchLightBarDecrease();
-
+		SetSceneSize();
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
@@ -412,6 +412,12 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "roadNum : %d", m_roadNum);
 	TextOut(_hdc, 0, 100, str, strlen(str));
 
+	//sprintf_s(str, "sceneSize : %d", m_sceneSize);
+	//TextOut(_hdc, 0, 140, str, strlen(str));
+
+	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
+	TextOut(_hdc, 0, 140, str, strlen(str));
+
 	sprintf_s(str, "ButtonTest1 : %d", m_buttonTest);
 	TextOut(_hdc, 0, 180, str, strlen(str));
 
@@ -438,7 +444,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	if (isDoorClick)
 	{
 		sprintf_s(str, "near Door");
-		TextOut(_hdc, 0, 140, str, strlen(str));
+		TextOut(_hdc, 0, 160, str, strlen(str));
 	}
 }
 #pragma endregion
@@ -450,25 +456,25 @@ void DungeonScene::SetUIIMG()
 	ImageData UIimg;
 
 	UIimg.m_img = MG_IMAGE->findImage("panel_bg2");
-	UIimg.m_trans.m_pos = Vector2(0, 690);
+	UIimg.m_trans.m_pos = Vector2(0, 700);
 	vUI.push_back(UIimg);
-	UIimg.m_trans.m_pos = Vector2(1580, 690);
+	UIimg.m_trans.m_pos = Vector2(1580, 700);
 	vUI.push_back(UIimg);
 
 	UIimg.m_img = MG_IMAGE->findImage("banner");
-	UIimg.m_trans.m_pos = Vector2(300, 690);
+	UIimg.m_trans.m_pos = Vector2(300, 700);
 	vUI.push_back(UIimg);
 
 	UIimg.m_img = MG_IMAGE->findImage("hero");
-	UIimg.m_trans.m_pos = Vector2(330, 810);
+	UIimg.m_trans.m_pos = Vector2(330, 820);
 	vUI.push_back(UIimg);
 
 	UIimg.m_img = MG_IMAGE->findImage("inventory");
-	UIimg.m_trans.m_pos = Vector2(965, 690);
+	UIimg.m_trans.m_pos = Vector2(965, 700);
 	vUI.push_back(UIimg);
 
 	UIimg.m_img = MG_IMAGE->findImage("map");
-	UIimg.m_trans.m_pos = Vector2(965, 690);
+	UIimg.m_trans.m_pos = Vector2(965, 700);
 	vUI.push_back(UIimg);
 
 	setTorchUI();
@@ -515,4 +521,10 @@ void DungeonScene::ShowMapOrInven(HDC _hdc)
 		}
 	}
 }
+
+void DungeonScene::SetSceneSize()
+{
+	m_sceneSize = m_roadBG->getSceneSize();
+}
+
 #pragma endregion

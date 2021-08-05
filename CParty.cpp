@@ -145,15 +145,6 @@ CHero* CParty::GetHero(int index)
 //
 //}
 
-void CParty::SetFormation()
-{
-	//필요 없음.
-}
-
-void CParty::getFormation(string name)
-{
-
-}
 //
 ////이부분 질문하기
 //void CParty::createVestal(string name, Vector2 pos)
@@ -240,6 +231,9 @@ void CParty::FormationMove()
 	substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
 	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
 	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
+
+
+
 
 	m_member[0]->Move();
 	for (size_t i = 0; i < 3; i++)

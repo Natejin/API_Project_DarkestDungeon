@@ -2,6 +2,7 @@
 #include "Unit.h"
 
 class Cplayer;
+class DungeonScene;
 class CHero : public Unit
 {
 protected:
@@ -54,5 +55,6 @@ public:
 	//void setPos(int pos) { m_POS = pos; }
 
 	void Move();
+	bool PreventGetOutBg(int startX, int endX);
 
 };
