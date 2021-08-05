@@ -20,7 +20,7 @@ HRESULT TownScene::Init()
 	m_town->SetImageSize(WINSIZEX, WINSIZEY);
 	m_town->m_image = MG_IMAGE->findImage("district");
 
-	MG_GMOBJ->RegisterObj("Town_sky", m_town);
+	MG_GMOBJ->RegisterObj("Town", m_town);
 	return S_OK;
 }
 
@@ -93,13 +93,7 @@ void TownScene::Render(HDC _hdc)
 }
 void TownScene::Show_AllTownScene(HDC _hdc)
 {
-	/*
-	뒤에 나타나는 배경들 먼저 그리고
-	나머지 estate를 마지막에 그리자.
-	townbg->sky->ruins->ground->town_backdrop->tree
-	->각종시설.
-	*/
-
+	
 
 
 

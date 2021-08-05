@@ -31,10 +31,16 @@ enum class DIR {
 };
 
 enum class IMAGE
-{
+{	
+	//Hero
 	Vestal_Idle,
 	Vestal_Walk,
 	Vestal_Combat,
+	Crusader_Idle,
+	Crusader_Walk,
+	Crusader_Combat,
+	//Enemy
+	Skeleton_Defender,
 
 	//IMG_DUNGEON
 	ruins_bg,

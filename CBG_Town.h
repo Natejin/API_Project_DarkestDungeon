@@ -23,4 +23,5 @@ public:
 
 	virtual void SetIMG();
 	void SetIMG_Est();
+	void SetIMG_UI();
 };
