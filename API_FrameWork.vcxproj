@@ -155,6 +155,7 @@
     <ClInclude Include="camel.h" />
     <ClInclude Include="CBG_Road.h" />
     <ClInclude Include="CBG_Room.h" />
+    <ClInclude Include="CBG_Town.h" />
     <ClInclude Include="CBoneArbalest.h" />
     <ClInclude Include="CBoneCourtier.h" />
     <ClInclude Include="CBoneDefender.h" />
@@ -241,6 +242,7 @@
     <ClCompile Include="camel.cpp" />
     <ClCompile Include="CBG_Road.cpp" />
     <ClCompile Include="CBG_Room.cpp" />
+    <ClCompile Include="CBG_Town.cpp" />
     <ClCompile Include="CBoneArbalest.cpp" />
     <ClCompile Include="CBoneCourtier.cpp" />
     <ClCompile Include="CBoneDefender.cpp" />
