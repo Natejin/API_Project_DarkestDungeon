@@ -50,6 +50,12 @@ void CBackground::FrontRender(HDC _hdc)
 		mostFG_Bottom[i].Render(_hdc);
 		mostFG_Top[i].Render(_hdc);
 	}
+
+	for (size_t i = 0; i < most_EST_UI.size(); i++)
+	{
+		most_EST_UI[i].Render(_hdc);
+	}
+
 }
 
 void CBackground::Release()
