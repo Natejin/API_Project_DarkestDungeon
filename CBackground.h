@@ -9,6 +9,8 @@ protected:
 	vector<ImageData> mostBG;
 	vector<ImageData> mostFG_Top;
 	vector<ImageData> mostFG_Bottom;
+	vector<ImageData> most_EST; //건물
+	vector<ImageData> most_EST_UI; //건물ui
 
 	int bgCount;
 	int roadCount;

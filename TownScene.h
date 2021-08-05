@@ -4,13 +4,14 @@
 class TownScene : public Scene
 {
 public:
+	
 
 	class CBackground* m_townBG;
 
 	void Show_AllTownScene(HDC _hdc);
 
 	void Show_Estate(HDC _hdc);
-
+	
 	Rect abbey_rc;
 	Rect blacksmith_rc;
 	Rect campingTrainer_rc;
@@ -33,12 +34,12 @@ public:
 	void Show_sanitarium(HDC _hdc); //요양원
 	void Show_tavern(HDC _hdc); //여관
 
+
 	vector<Image*> vtown;
 	vector<CTransform> ts_vtown;
 public:
 	TownScene();
 	virtual~TownScene();
-
 
 
 public:
