@@ -2,6 +2,7 @@
 #include "CHero.h"
 #include "CParty.h"
 #include "DungeonScene.h"
+#include "CAnimator.h"
 
 CHero::CHero() {
 	unitType = UNITTYPE::Hero;
@@ -39,9 +40,16 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 	}
 
 	m_DIST = 0;
+	isActive = false;
 
+	//m_image = MG_IMAGE->findImage(img);
 
-	m_image = MG_IMAGE->findImage(img);
+	m_animator = new CAnimator();
+	m_animator->SetTrans(m_transform);
+	m_animator->AddImageFrame(img);
+	m_animator->SetAnimeSpeed(10);
+
+	
 	//job에 따른 스킬을 넣을 변수, 혹은 함수가 필요함
 	//스킬을 enum class에 직업별로 추가할 것
 
@@ -62,7 +70,8 @@ void CHero::BackRender(HDC _hdc)
 
 void CHero::Render(HDC _hdc)
 {
-	m_image->frameRender(_hdc, m_transform);
+	//m_image->frameRender(_hdc, m_transform);
+	m_animator->FrameRender(_hdc);
 }
 
 void CHero::FrontRender(HDC _hdc)

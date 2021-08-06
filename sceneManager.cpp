@@ -4,6 +4,7 @@
 #include "Astar.h"
 #include "TestScene.h"
 #include "DungeonScene.h"
+#include "DungeonScene2.h"
 #include "TownScene.h"
 
 SceneManager::SceneManager() {}
@@ -14,19 +15,19 @@ Scene* SceneManager::_currentScene = nullptr;
 
 HRESULT SceneManager::init()
 {
-	//_astar = new Astar;
-	//_astar->init();
-
-	m_testScene = new TestScene;
-	m_testScene->Init();
-
 	DungeonScene* dungeon = new DungeonScene;
 	addScene(SCENETYPE::Dungeon, dungeon);
+
+	DungeonScene2* dungeon2 = new DungeonScene2;
+	addScene(SCENETYPE::Dungeon2, dungeon2);
 
 	TownScene* town = new TownScene;
 	addScene(SCENETYPE::Town, town);
 
-	_currentScene = m_testScene;
+	TestScene* test = new TestScene;
+	addScene(SCENETYPE::Test, test);
+
+	changeScene(SCENETYPE::Test);
 	return S_OK;
 }
 

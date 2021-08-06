@@ -24,10 +24,7 @@ DungeonScene::DungeonScene()
 }
 DungeonScene::~DungeonScene() {}
 
-void print_num()
-{
-    std::cout << 3 << '\n';
-}
+
 
 HRESULT DungeonScene::Init()
 {
@@ -84,7 +81,6 @@ void DungeonScene::Update()
 		SetSceneSize();
 
 		m_roadObj->reach_InteractionArea(m_party);
-		
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
@@ -278,6 +274,7 @@ void DungeonScene::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
+
 		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
 	}
 	m_party->SetParty(party);

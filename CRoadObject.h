@@ -9,11 +9,11 @@ class CHero;
 class CRoadObject : public GameObject
 {
 private:
-	vector<CTransform> DividedArea;
-	vector<ImageData> roadObj;
-	vector<Rect> roadObj_rc;
+	vector <ImageData> m_roadObj;
+	vector <CTransform> m_SettingArea;
+	bool isTreasureOpen;
 
-	CParty* party;
+	CParty* party; //정보를 받아 저장하기 위함
 
 public:
 	CRoadObject();
