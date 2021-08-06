@@ -5,7 +5,7 @@ class Cplayer;
 class DungeonScene;
 class CHero : public Unit
 {
-protected:
+public:
 	JOB job;
 
 	//unit: HP, SPD, POS, SKILL, resist, attribute

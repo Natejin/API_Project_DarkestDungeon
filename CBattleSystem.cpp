@@ -11,6 +11,7 @@ void CBattleSystem::BattleSystemInitiate()
 	CreateHeroesParty();
 	CreateEnemyParty();
 	Compare_P_E_Speed_ReArray();
+	curTurn = 1;
 	isActive = true;
 }
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
@@ -67,10 +68,12 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 
 CBattleSystem::CBattleSystem()
 {
+	m_layer = LAYER::UI;
 }
 
 CBattleSystem::~CBattleSystem()
 {
+	
 }
 
 HRESULT CBattleSystem::Init()
@@ -80,6 +83,7 @@ HRESULT CBattleSystem::Init()
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
+
 }
 
 void CBattleSystem::LateUpdate()
@@ -102,14 +106,20 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 255, 255));
+	SetTextColor(_hdc, RGB(0, 0, 0));
 
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
-		//string temp = speedVec[i].second->GetName();
-		//temp += " : " + to_string(speedVec[i].first) + "," + to_string(speedVec[i].second->GetPartyIndex());
-		sprintf_s(str,   " : %d, %d", speedVec[i].first, speedVec[i].second->GetPartyIndex());
-		TextOut(_hdc, 0, 100, str, strlen(str));
+		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
+		{
+			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first );
+			TextOut(_hdc, 0, 100 + 20 * i, str, strlen(str));
+		}
+		else {
+			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
+			TextOut(_hdc, 0, 100 + 20 * i, str, strlen(str));
+		}
+
 	}
 }
 

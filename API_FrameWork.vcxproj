@@ -176,6 +176,7 @@
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="CParty.h" />
     <ClInclude Include="CRoadObject.h" />
+    <ClInclude Include="CSpriteRenderer.h" />
     <ClInclude Include="CVestal.h" />
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
@@ -276,6 +277,7 @@
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CParty.cpp" />
     <ClCompile Include="CRoadObject.cpp" />
+    <ClCompile Include="CSpriteRenderer.cpp" />
     <ClCompile Include="CVestal.cpp" />
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />

@@ -30,6 +30,36 @@ HRESULT CParty::Init(int food, int bandage, int torch)
 
 void CParty::Update(float deltaTime, float worldTime)
 {
+	if (MG_INPUT->isStayKeyDown(VK_NUMPAD2))
+	{
+		for (size_t i = 0; i < m_member.size(); i++)
+		{
+			m_member[i]->m_transform->m_scale -= Vector2(0.01);
+		}
+	}
+	if (MG_INPUT->isStayKeyDown(VK_NUMPAD8))
+	{
+		for (size_t i = 0; i < m_member.size(); i++)
+		{
+			m_member[i]->m_transform->m_scale += Vector2(0.01);
+		}
+	}
+
+	if (MG_INPUT->isStayKeyDown(VK_NUMPAD6))
+	{
+		for (size_t i = 0; i < m_member.size(); i++)
+		{
+			m_member[i]->m_transform->angle += 0.1;
+		}
+	}
+
+	if (MG_INPUT->isStayKeyDown(VK_NUMPAD4))
+	{
+		for (size_t i = 0; i < m_member.size(); i++)
+		{
+			m_member[i]->m_transform->angle -= 0.1;
+		}
+	}
 }
 
 void CParty::LateUpdate()

@@ -37,7 +37,8 @@ void CAnimator::FrameRender(HDC _hdc)
 			m_curAnimeFrame = 1;
 		}
 		m_curAnimeFrame++;
-		m_imageVec[curImageIndex]->frameRender(_hdc, trans, curFrameX, curFrameY);
+		//m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
+		m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
 	}
 
 }
@@ -46,10 +47,12 @@ void CAnimator::AddImageFrame(string imageName)
 {
 	m_imageVec.push_back(MG_IMAGE->findImage(imageName));
 	maxFrameX.push_back( MG_IMAGE->findImage(imageName)->getMaxFrameX());
+	m_imageSize.push_back( Vector2(MG_IMAGE->findImage(imageName)->getFrameWidth(), MG_IMAGE->findImage(imageName)->getFrameHeight()));
 }
 
 void CAnimator::AddImageFrame(IMAGE imageName)
 {
 	m_imageVec.push_back(MG_IMAGE->findImage(imageName));
 	maxFrameX.push_back(MG_IMAGE->findImage(imageName)->getMaxFrameX());
+	m_imageSize.push_back(Vector2(MG_IMAGE->findImage(imageName)->getFrameWidth(), MG_IMAGE->findImage(imageName)->getFrameHeight()));
 }

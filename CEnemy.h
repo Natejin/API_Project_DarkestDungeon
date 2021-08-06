@@ -3,10 +3,10 @@
 
 class CEnemy : public Unit
 {
-protected:
+public:
 	RACE m_race;
 
-protected:
+public:
 	int m_DEF;
 	int m_DODGE;
 	//½ºÅ³

@@ -13,7 +13,7 @@ DungeonScene2::DungeonScene2()
 {
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
-	remainRoom = 10;
+	remainRoom = 2;
 	m_buttonTest = 0;
 	isDoorClick = false;
 
@@ -97,6 +97,7 @@ void DungeonScene2::Update()
 
 void DungeonScene2::Render(HDC _hdc)
 {
+	ShowMapOrInven(_hdc);
 	if (m_dungeonState == DUNGEONSTATE::ROOM)
 	{
 
@@ -105,7 +106,7 @@ void DungeonScene2::Render(HDC _hdc)
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 		ShowDungeonInfo(_hdc);
-		ShowMapOrInven(_hdc);
+	
 
 		m_roadObj->Render(_hdc);
 	}
@@ -275,7 +276,7 @@ void DungeonScene2::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
+		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 480);
 	}
 	m_party->SetParty(party);
 	MG_GMOBJ->RegisterObj("Party", m_party);
@@ -301,7 +302,7 @@ void DungeonScene2::CreateBattleSystem()
 {
 	m_pBattleSystem = new CBattleSystem();
 	m_pBattleSystem->isActive = false;
-	MG_GMOBJ->RegisterObj("RoomBG", m_pBattleSystem);
+	MG_GMOBJ->RegisterObj("battleSystem", m_pBattleSystem);
 }
 
 void DungeonScene2::CreateRoad()
@@ -405,6 +406,8 @@ void DungeonScene2::CheckDoor()
 			m_roadBG->isActive = false;
 			m_roomBG->isActive = true;
 
+
+			m_dungeonState = DUNGEONSTATE::ROOM;
 			dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
 			m_pBattleSystem->BattleSystemInitiate();
 		}
@@ -477,6 +480,7 @@ void DungeonScene2::SetUIIMG()
 	UIimg.m_img = MG_IMAGE->findImage("panel_bg2");
 	UIimg.m_trans.m_pos = Vector2(0, 700);
 	vUI.push_back(UIimg);
+
 	UIimg.m_trans.m_pos = Vector2(1580, 700);
 	vUI.push_back(UIimg);
 
