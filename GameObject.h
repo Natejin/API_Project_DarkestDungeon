@@ -13,7 +13,7 @@ public:
 	class CAnimator* m_animator;
 	class CSpriteRenderer* m_spriteRenderer;
 
-	class Image* m_image;
+	//class Image* m_image;
 
 
 	LAYER m_layer;

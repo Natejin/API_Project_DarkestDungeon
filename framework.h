@@ -49,12 +49,19 @@
 #include "utils.h"
 #include "txtData.h"
 
+
+
 //struct
 #include "Vector2.h"
 #include "ImageData.h"
 #include "Rect.h"
 #include "DungeonData.h"
 
+//Component
+#include "CTransform.h"
+#include "CAnimator.h"
+#include "CCollider.h"
+#include "CSpriteRenderer.h"
 
 #include "Enum.h"
 #include "Enum_MJ.h"

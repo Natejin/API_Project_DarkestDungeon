@@ -41,8 +41,9 @@ void CEst_UI::Render(HDC _hdc)
 
 void CEst_UI::FrontRender(HDC _hdc)
 {
-	assert(m_image != nullptr);
-	m_image->renderUI(_hdc, m_transform);
+	//assert(m_image != nullptr);
+	//m_image->renderUI(_hdc, m_transform);
+	m_spriteRenderer->RenderUI(_hdc);
 }
 
 void CEst_UI::Release()

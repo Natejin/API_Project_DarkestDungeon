@@ -98,9 +98,10 @@ void CRoadObject::reach_InteractionArea(CParty* _party)
 {
     //update에 넣어서 자동으로 돌릴 수 없는 부분이 흠
     party = _party;
-    
+    float poxX = party->GetHero(0)->m_transform->m_pos.x;
+    float width = party->GetHero(0)->m_spriteRenderer->GetImage()->getFrameWidth();
     //해당 반경에 진입하여 클릭시 상호작용
-    if (roadObj[0].Collision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_image->getFrameWidth() + 40))
+    if (roadObj[0].Collision(poxX + width + 40))
     {
         if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
         {
@@ -109,7 +110,7 @@ void CRoadObject::reach_InteractionArea(CParty* _party)
     }
 
     //캐릭터와 충돌해야만 상호작용 발생
-    if (roadObj[1].Collision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_image->getFrameWidth() + 40))
+    if (roadObj[1].Collision(poxX + width + 40))
     {
         //둘중 어떤 상황이 발생할지는 추후 맵과 연결하면서 상세하게 세팅
         Interaction_trap();
@@ -152,7 +153,8 @@ void CRoadObject::Interaction_trap()
     }
     //해체하지않고 반경내로 충돌한 경우
     //출혈, 독, 스트레스와 체력감소
-    else if (roadObj[1].Collision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_image->getFrameWidth() - 40))
+
+    else if (roadObj[1].Collision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_spriteRenderer->GetImage()->getFrameWidth() - 40))
     {
         if (MG_RND->getInt(5) > 0)
         {  

@@ -42,7 +42,7 @@ HRESULT DungeonScene::Init()
 	CButton* m_testButton1 = new CButton();
 	m_testButton1->m_transform->m_pos = Vector2(300, 300);
 	m_testButton1->SetButtonSize(300, 100);
-	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
+	m_testButton1->AddSpriteRenderer("scouting");
 	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton);
 	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
 

@@ -456,7 +456,7 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale)
 
 void Image::renderUI(HDC hdc, const CTransform* transform)
 {
-	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale;
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -720,8 +720,8 @@ void Image::RotateFrameRender(HDC hdc, const CTransform* transform, Vector2 scal
 		rPoint[i].x = (_rotateImage->frameWidth / 2 + cosf(baseAngle[i] + transform->angle) * dist);
 		rPoint[i].y = (_rotateImage->frameHeight / 2 + -sinf(baseAngle[i] + transform->angle) * dist);
 	}
-
-	Vector2 pos = transform->m_pos - scale * transform->m_pivot - MG_CAMERA->GetPos();
+	Vector2 pos = transform->m_pos - scale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+	//Vector2 pos = transform->m_pos - scale * transform->m_pivot - MG_CAMERA->GetPos();
 	if (_isTrans)
 	{
 		BitBlt(_rotateImage->hMemDC, 

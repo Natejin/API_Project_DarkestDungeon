@@ -45,9 +45,9 @@ void CButton::Render(HDC _hdc)
 
 void CButton::FrontRender(HDC _hdc)
 {
-	assert(m_image != nullptr);
-	m_image->renderUI(_hdc, m_transform);
-
+	//assert(m_image != nullptr);
+	//m_image->renderUI(_hdc, m_transform);
+	m_spriteRenderer->RenderUI(_hdc);
 	//Rectangle(_hdc, m_rect.l, m_rect.t, m_rect.r, m_rect.b);
 }
 

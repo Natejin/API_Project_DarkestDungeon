@@ -8,12 +8,16 @@
 
 GameObject::GameObject()
 {
-	m_image = nullptr;
+	//m_image = nullptr;
 	m_transform = new CTransform;
 	m_transform->m_pos = Vector2(0, 0);
 	m_transform->m_scale = Vector2(1, 1);
 	m_transform->m_pivot = Vector2(0.5, 0.5);
 	m_transform->angle = 0;
+
+	m_collider = nullptr;
+	m_animator = nullptr;
+	m_spriteRenderer = nullptr;
 
 	m_layer = LAYER::Unknown;
 	isActive = true;
@@ -54,8 +58,10 @@ void GameObject::FrontRender(HDC _hdc)
 void GameObject::Release()
 {
 	SAFE_DELETE(m_transform);
-	SAFE_DELETE(m_image);
+	//SAFE_DELETE(m_image);
 	SAFE_DELETE(m_collider);
+	SAFE_DELETE(m_animator);
+	SAFE_DELETE(m_spriteRenderer);
 }
 
 void GameObject::AddColliderBox(Vector2 pos, 
@@ -64,6 +70,7 @@ void GameObject::AddColliderBox(Vector2 pos,
 	float r, 
 	float b)
 {
+	m_collider = new CCollider();
 	m_collider->m_pos = pos;
 	m_collider->rect.l = l;
 	m_collider->rect.t = t;

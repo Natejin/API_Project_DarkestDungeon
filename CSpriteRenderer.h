@@ -16,9 +16,13 @@ public:
 	CSpriteRenderer();
 	~CSpriteRenderer();
 	void SetTrans(class CTransform* _trans) { m_trans = _trans; }
+
 	void SetImage(string imageName);
 	void SetImage(IMAGE imageName);
 
+	class Image* GetImage();
+
 	void Render(HDC _hdc);
+	void RenderUI(HDC _hdc);
 };
 
