@@ -24,10 +24,7 @@ DungeonScene::DungeonScene()
 }
 DungeonScene::~DungeonScene() {}
 
-void print_num()
-{
-    std::cout << 3 << '\n';
-}
+
 
 HRESULT DungeonScene::Init()
 {
@@ -277,7 +274,7 @@ void DungeonScene::CreateParty()
 	{
 		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
 	}
-	m_party->SetParty(party);
+	//m_party->SetParty(party);
 	MG_GMOBJ->RegisterObj("Party", m_party);
 	MG_CAMERA->SetTarget(m_party->GetHero(0));
 }

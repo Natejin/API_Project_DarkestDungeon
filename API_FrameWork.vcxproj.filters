@@ -157,6 +157,12 @@
     <Filter Include="Scene\UI">
       <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Test">
+      <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Struct\NewFilter1">
+      <UniqueIdentifier>{1ad2d0a1-248c-4acd-a1df-8c44f047a010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -402,11 +408,20 @@
     <ClInclude Include="CRoadObject.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
-    <ClInclude Include="Dungeon_Inventory.h">
-      <Filter>Scene</Filter>
+    <ClInclude Include="CInventorySystem.h">
+      <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="CBG_Town.h">
       <Filter>Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonScene2.h">
+      <Filter>Scene\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonData.h">
+      <Filter>헤더 파일\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Object\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -623,11 +638,20 @@
     <ClCompile Include="CRoadObject.cpp">
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
-    <ClCompile Include="Dungeon_Inventory.cpp">
-      <Filter>Scene</Filter>
+    <ClCompile Include="CInventorySystem.cpp">
+      <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="CBG_Town.cpp">
       <Filter>Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonScene2.cpp">
+      <Filter>Scene\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonData.cpp">
+      <Filter>헤더 파일\Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Object\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
