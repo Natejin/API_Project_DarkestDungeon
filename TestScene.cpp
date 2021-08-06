@@ -40,7 +40,7 @@ void TestScene::Release()
 void TestScene::Update()
 {
 	//MG_SCENE->changeScene(SCENETYPE::Town);
-	MG_SCENE->changeScene(SCENETYPE::Town);
+	MG_SCENE->changeScene(SCENETYPE::Dungeon);
 }
 
 void TestScene::Render(HDC _hdc)

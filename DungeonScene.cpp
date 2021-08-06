@@ -82,6 +82,9 @@ void DungeonScene::Update()
 		setRoadNum();
 		TorchLightBarDecrease();
 		SetSceneSize();
+
+		m_roadObj->reach_InteractionArea(m_party);
+		
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
