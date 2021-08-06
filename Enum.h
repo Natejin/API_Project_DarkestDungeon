@@ -141,6 +141,16 @@ enum class COLLIDERTYPE
 };
 
 
+enum class ANIMATIONTYPE
+{
+	Stop,
+	Play,
+	Pause
+
+};
+
+
+
 enum class DUNGEONMAPSTATE 
 {
 	NONE,
@@ -158,6 +168,7 @@ enum class SCENETYPE
 {
 	Test,
 	Dungeon,
+	Dungeon2,
 	Town
 };
 

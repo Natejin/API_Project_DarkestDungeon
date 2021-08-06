@@ -56,8 +56,9 @@ void CParty::Release()
 	//TODO 추후 영웅들 데이터 저장 추가 예정
 	for (size_t i = 0; i < m_member.size(); i++)
 	{
-		MG_GMOBJ->RemoveObj(m_member[i]->GetId());
-		SAFE_DELETE(m_member[i]);
+		//MG_GMOBJ->RemoveObj(m_member[i]->GetId());
+		//SAFE_DELETE(m_member[i]);
+		m_member[i] = nullptr;
 	}
 	m_member.clear();
 	GameObject::Release();
@@ -84,7 +85,8 @@ void CParty::SetParty(vector<CHero*> party)
 	m_member = party;
 	for (size_t i = 0; i < m_member.size(); i++)
 	{
-		MG_GMOBJ->RegisterObj(m_member[i]->GetName(), m_member[i]);
+		m_member[i]->isActive = true;
+		//MG_GMOBJ->RegisterObj(m_member[i]->GetName(), m_member[i]);
 	}
 }
 
