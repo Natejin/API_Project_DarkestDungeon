@@ -29,10 +29,7 @@ public:
 	void RegisterHero(CHero* hero);
 	void RemoveHero(int id);
 	vector<CHero*> GetHeroes();
-	CHero* GetHero(int index);
 
 	class Vestal* CreateVestal(string name);
-
-	int GetHeroPartySize() {  return m_partyOrigin.size();}
 
 };

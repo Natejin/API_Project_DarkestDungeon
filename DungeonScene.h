@@ -1,9 +1,17 @@
 #pragma once
 #include "Scene.h"
+//#define MAPX 100;
+#define MAPSIZE 25
 
 class DungeonScene : public Scene
 {
 public:
+	struct DungeonData {
+		DUNGEONMAPSTATE dungeonMapState = DUNGEONMAPSTATE::NONE;
+		bool dirMap[4] = { false };
+		int posX = 0;
+		int posY = 0;
+	};
 
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;

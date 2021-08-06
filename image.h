@@ -78,7 +78,7 @@ public:
 	//프레임 이미지 초기화
 	HRESULT init(const char* fileName, const int width, const int height, const int frameX, const int frameY, bool isTrans = false, COLORREF transColor = RGB(255, 0, 255));
 	HRESULT init(const char* fileName, const int x,const int y,const int width, const int height, const int frameX, const int frameY, bool isTrans = false, COLORREF transColor = RGB(255, 0, 255));
-	HRESULT initForRotate();
+
 
 
 	//투명값 셋팅
@@ -98,14 +98,10 @@ public:
 	//프레임 렌더
 	void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const class CTransform* transform);
-	void frameRender(HDC hdc, const class CTransform* transform, const int destX, const int destY);
 	//void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 	//void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 
-
-	//렌더 회전
-	//void rotateRender(HDC hdc, float centerX, float centerY, float angle);
 
 	//루프렌더
 	void loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);

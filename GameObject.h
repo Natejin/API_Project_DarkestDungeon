@@ -11,7 +11,6 @@ public:
 	class CTransform* m_transform;
 	class CCollider* m_collider;
 	class Image* m_image;
-	class CAnimator* m_animator;
 
 	LAYER m_layer;
 	bool isActive;
@@ -30,15 +29,11 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-	
 
-	void AddColliderBox(Vector2 pos,
+
+	virtual void AddColliderBox(Vector2 pos,
 		float l,
 		float t,
 		float r,
 		float b);
-
-	void AddAnimator(string imageName);
-	void AddAnimator(IMAGE imageName);
-
 };

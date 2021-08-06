@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "CEnemy.h"
-#include "CAnimator.h"
+
 CEnemy::CEnemy() {
 	unitType = UNITTYPE::Enemy;
 	m_layer = LAYER::Enemy;
@@ -9,9 +9,8 @@ CEnemy::~CEnemy() {}
 
 HRESULT CEnemy::Init()
 {
-	m_animator = new CAnimator();
-	m_animator->SetTrans(m_transform);
-	m_animator->SetAnimeSpeed(5);
+	m_image = MG_IMAGE->findImage("·Ï¸Ç");
+	m_layer = LAYER::Enemy;
 	//mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
 	return S_OK;
 }
@@ -33,11 +32,8 @@ HRESULT CEnemy::Init(string img, int resist[], int HP, int SPD, int POS, int DEF
 	{
 		attribute[i] = false;
 	}
-	m_animator = new CAnimator();
-	m_animator->SetTrans(m_transform);
-	m_animator->SetAnimeSpeed(5);
-	m_animator->AddImageFrame(img);
-	//m_image = MG_IMAGE->findImage(img);
+
+	m_image = MG_IMAGE->findImage(img);
 
 	return S_OK;
 }
@@ -57,8 +53,7 @@ void CEnemy::BackRender(HDC _hdc)
 
 void CEnemy::Render(HDC _hdc)
 {
-	//m_image->frameRender(_hdc, m_transform);
-	m_animator->FrameRender(_hdc);
+	m_image->frameRender(_hdc, m_transform);
 }
 
 void CEnemy::FrontRender(HDC _hdc)

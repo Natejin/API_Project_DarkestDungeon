@@ -149,7 +149,6 @@
     <ClInclude Include="animationTest.h" />
     <ClInclude Include="API_FrameWork.h" />
     <ClInclude Include="Astar.h" />
-    <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CBattleSystem.h" />
     <ClInclude Include="CBackground.h" />
     <ClInclude Include="bullet.h" />
@@ -166,16 +165,14 @@
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CGameManager.h" />
-    <ClInclude Include="CInventorySystem.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="CParty.h" />
     <ClInclude Include="CRoadObject.h" />
     <ClInclude Include="CVestal.h" />
-    <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
-    <ClInclude Include="DungeonScene2.h" />
+    <ClInclude Include="Dungeon_Inventory.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
@@ -239,7 +236,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Astar.cpp" />
-    <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CBattleSystem.cpp" />
     <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -256,15 +252,13 @@
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CGameManager.cpp" />
-    <ClCompile Include="CInventorySystem.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CParty.cpp" />
     <ClCompile Include="CRoadObject.cpp" />
     <ClCompile Include="CVestal.cpp" />
-    <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
-    <ClCompile Include="DungeonScene2.cpp" />
+    <ClCompile Include="Dungeon_Inventory.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />

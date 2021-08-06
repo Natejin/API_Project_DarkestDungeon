@@ -1,11 +1,10 @@
 #include "framework.h"
 #include "CBoneDefender.h"
-#include "CAnimator.h"
 
 CBoneDefender::CBoneDefender()
 {
-	//CBoneDefender* boneDF = new CBoneDefender;
-	//int resist[5] = {25, 10, 200, 15, 50};
+	CBoneDefender* boneDF = new CBoneDefender;
+	int resist[5] = {25, 10, 200, 15, 50};
 	
 	//DEF 25%
 	//boneDF->Init("mon1", resist, 15, 0, 1, 25, 0);
@@ -13,17 +12,6 @@ CBoneDefender::CBoneDefender()
 
 CBoneDefender::~CBoneDefender()
 {
-}
-
-HRESULT CBoneDefender::Init()
-{
-	CEnemy::Init();
-	//m_image = MG_IMAGE->findImage(IMAGE::Skeleton_Defender);
-
-
-	m_animator->AddImageFrame(IMAGE::Skeleton_Defender);
-
-	return S_OK;
 }
 
 void CBoneDefender::useSkill(int SkillNum, int enemyPos, int heroPos)

@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "CTransform.h"
 #include "CCollider.h"
-#include "CAnimator.h"
 #include "image.h"
 
 GameObject::GameObject()
@@ -69,18 +68,3 @@ void GameObject::AddColliderBox(Vector2 pos,
 	m_collider->rect.b = b;
 	m_collider->m_colliderType = COLLIDERTYPE::BOX;
 }
-
-void GameObject::AddAnimator(string imageName)
-{
-	m_animator = new CAnimator();
-	m_animator->SetTrans(m_transform);
-	m_animator->AddImageFrame(imageName);
-}
-
-void GameObject::AddAnimator(IMAGE imageName)
-{
-	m_animator = new CAnimator();
-	m_animator->SetTrans(m_transform);
-	m_animator->AddImageFrame(imageName);
-}
-

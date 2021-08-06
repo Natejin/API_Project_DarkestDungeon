@@ -55,8 +55,6 @@ void CGameManager::RegisterHero(CHero* hero)
 	if (m_partyOrigin.size() < 4)
 	{
 		m_partyOrigin.push_back(hero);
-
-		MG_GMOBJ->RegisterObj(hero->GetName(), hero);
 	}
 }
 
@@ -68,11 +66,6 @@ void CGameManager::RemoveHero(int id)
 vector<CHero*> CGameManager::GetHeroes()
 {
 	return m_partyOrigin;
-}
-
-CHero* CGameManager::GetHero(int index)
-{
-	return index < m_partyOrigin.size() ? m_partyOrigin[index] : nullptr;
 }
 
 Vestal* CGameManager::CreateVestal(string name)
