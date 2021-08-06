@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CBG_Town.h"
 #include"CBackground.h"
+
 CBG_Town::CBG_Town()
 {
 }
@@ -59,24 +60,31 @@ void CBG_Town::SetIMG()
 
 	ImageData temp1;
 	mostBG.push_back(temp1);
-	mostBG[1].m_img = MG_IMAGE->findImage("town_ruins");
+	mostBG[1].m_img = MG_IMAGE->findImage("district_midground");
 	mostBG[1].m_trans.m_pivot = 0;
 	mostBG[1].m_trans.m_scale = Vector2(720, 720);
-	mostBG[1].m_trans.m_pos = Vector2(720 * 0, 0);
+	mostBG[1].m_trans.m_pos = Vector2(720 * 0, 0 + 150);
 
 	ImageData temp2;
 	mostBG.push_back(temp2);
-	mostBG[2].m_img = MG_IMAGE->findImage("district_midground");
+	mostBG[2].m_img = MG_IMAGE->findImage("town_ruins");
 	mostBG[2].m_trans.m_pivot = 0;
 	mostBG[2].m_trans.m_scale = Vector2(720, 720);
-	mostBG[2].m_trans.m_pos = Vector2(720 * 0, 0 + 150);
+	mostBG[2].m_trans.m_pos = Vector2(720 * 0, 0);
 
+	
 	ImageData temp3;
 	mostBG.push_back(temp3);
 	mostBG[3].m_img = MG_IMAGE->findImage("town_ground");
 	mostBG[3].m_trans.m_pivot = 0;
 	mostBG[3].m_trans.m_scale = Vector2(720, 720);
 	mostBG[3].m_trans.m_pos = Vector2(720 * 0, 0);
+
+}
+
+void CBG_Town::SetEST_UI()
+{	
+	
 
 }
 

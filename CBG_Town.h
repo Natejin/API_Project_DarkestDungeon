@@ -22,4 +22,8 @@ public:
 	//virtual void Release();
 
 	virtual void SetIMG();
+	void SetEST_UI();
+
+
+
 };

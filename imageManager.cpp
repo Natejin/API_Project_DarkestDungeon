@@ -22,6 +22,8 @@ HRESULT imageManager::init()
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
+	//quick
+	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
 
 	//resistance
 	MG_IMAGE->addImage("bleed", "images/resistance/skill_attribute_bleed.bmp", 24, 24, true, RGB(255, 0, 255));
@@ -128,22 +130,22 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage("bg", "images/юс╫ц/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 	
 	//Town
-	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395 -100, 776+100, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("district_midground", "images/Town/district_midground.bmp", 1000 + 280, 300, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+300 , 776+100, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("district_midground", "images/Town/district_midground.bmp", 1000 + 580, 300, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("town_ruins", "images/Town/ruins.bmp", 1418-120, 438, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_ground", "images/Town/town_ground.bmp", 3844 / 3 -100, 1672 / 2+100, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_ground", "images/Town/town_ground.bmp", 3844 / 3 +300, 1672 / 2+100, true, RGB(255, 0, 255));
 
 	// Town_estate
-	MG_IMAGE->addImage("town_abbey", "images/Town/estate/town_abbey_1.bmp", 800 / 2 - 100, 986 / 2 - 100, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_blacksmith", "images/Town/estate/town_blacksmith_1.bmp", 719 / 2, 795 / 2 - 100, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_camping_trainer", "images/Town/estate/town_camping_trainer_1.bmp", 281/2, 424/3, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_abbey", "images/Town/estate/town_abbey_1.bmp", 800 / 2 , 986 / 2 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_blacksmith", "images/Town/estate/town_blacksmith_1.bmp", 719 / 2, 795 / 2 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_camping_trainer", "images/Town/estate/town_camping_trainer_1.bmp", 281, 424/2, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("town_graveyard", "images/Town/estate/town_graveyard_1.bmp", 578/2, 293/2, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("town_guild", "images/Town/estate/town_guild_1.bmp", 707 / 2, 697 / 2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_nomad_wagon", "images/Town/estate/town_nomad_wagon_1.bmp", 514 / 2 - 50, 392 / 2 - 50, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_sanitarium", "images/Town/estate/town_sanitarium_1.bmp", 764 / 2 - 100, 963 / 3, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_stage_coach", "images/Town/estate/town_stage_coach_1.bmp", 509/3+50, 362/3+50, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_nomad_wagon", "images/Town/estate/town_nomad_wagon_1.bmp", 514 / 2-50 , 392 / 2-50 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_sanitarium", "images/Town/estate/town_sanitarium_1.bmp", 764 / 2 , 963 / 2, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_stage_coach", "images/Town/estate/town_stage_coach_1.bmp", 509/2, 362/2, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("town_statue", "images/Town/estate/town_statue_1.bmp", 449/2, 498/2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_tavern", "images/Town/estate/town_tavern_1.bmp", 824 / 3, 814 / 3, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_tavern", "images/Town/estate/town_tavern_1.bmp", 824 /2, 814 /2, true, RGB(255, 0, 255));
 	//Abbey
 	MG_IMAGE->addImage("abbey.character", "images/Town/abbey/abbey.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("abbey.character.bg", "images/Town/abbey/abbey.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
@@ -156,7 +158,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("camping_trainer.character.bg", "images/Town/camping_trainer/camping_trainer.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	//Graveyard
 	MG_IMAGE->addImage("graveyard.character", "images/Town/graveyard/graveyard.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("graveyard.character", "images/Town/graveyard/graveyard.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("graveyard.character.bg", "images/Town/graveyard/graveyard.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	//Gulid
 	MG_IMAGE->addImage("guild.character", "images/Town/guild/guild.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("guild.character.bg", "images/Town/guild/guild.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
@@ -176,11 +178,6 @@ HRESULT imageManager::init()
 	//Tavern
 	MG_IMAGE->addImage("tavern.character", "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("tavern.character.bg", "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-
-
-
-
-	
 	return S_OK;
 }
 
