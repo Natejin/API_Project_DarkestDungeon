@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "CBackground.h"
 
+#define ROADSIZEX 4320 
+
 class CParty;
 class CHero;
 class CRoadObject : public GameObject
@@ -34,7 +36,6 @@ public:
 	void setRoadObjIMG();
 	void getMapInfo(int a1, int a2, int a3); //get what should be in this area
 	void setRoadObj(); //set Obj according to MapInfo
-	void setRoadObj(CBackground* bg);
 
 	void reach_InteractionArea(CParty* _party);
 	void Interaction_treassure();

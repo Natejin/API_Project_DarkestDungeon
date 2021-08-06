@@ -13,7 +13,7 @@ struct ImageData
 
 	bool Collision(float x)
 	{
-		if (m_img->getX() < x < m_img->getX() + m_img->getWidth())
+		if (m_trans.m_pos.x < x && x < m_trans.m_pos.x + m_img->getFrameWidth())
 		{
 			return true;
 		}
