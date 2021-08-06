@@ -3,6 +3,7 @@
 #include "CTransform.h"
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CSpriteRenderer.h"
 #include "image.h"
 
 GameObject::GameObject()
@@ -10,8 +11,9 @@ GameObject::GameObject()
 	m_image = nullptr;
 	m_transform = new CTransform;
 	m_transform->m_pos = Vector2(0, 0);
-	m_transform->m_scale = Vector2(0, 0);
+	m_transform->m_scale = Vector2(1, 1);
 	m_transform->m_pivot = Vector2(0.5, 0.5);
+	m_transform->angle = 0;
 
 	m_layer = LAYER::Unknown;
 	isActive = true;
@@ -82,5 +84,19 @@ void GameObject::AddAnimator(IMAGE imageName)
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->AddImageFrame(imageName);
+}
+
+void GameObject::AddSpriteRenderer(IMAGE imageName)
+{
+	m_spriteRenderer = new CSpriteRenderer();
+	m_spriteRenderer->SetTrans(m_transform);
+	m_spriteRenderer->SetImage(imageName);
+}
+
+void GameObject::AddSpriteRenderer(string imageName)
+{
+	m_spriteRenderer = new CSpriteRenderer();
+	m_spriteRenderer->SetTrans(m_transform);
+	m_spriteRenderer->SetImage(imageName);
 }
 

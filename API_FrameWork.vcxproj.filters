@@ -423,6 +423,9 @@
     <ClInclude Include="CAnimator.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
+    <ClInclude Include="CSpriteRenderer.h">
+      <Filter>Object\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -651,6 +654,9 @@
       <Filter>헤더 파일\Struct</Filter>
     </ClCompile>
     <ClCompile Include="CAnimator.cpp">
+      <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpriteRenderer.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
   </ItemGroup>
