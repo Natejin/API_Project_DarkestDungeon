@@ -6,6 +6,7 @@
 #include "CParty.h"
 #include "CButton.h"
 #include "CRoadObject.h"
+#include "dungeonUI.h"
 
 DungeonScene::DungeonScene()
 {
@@ -19,17 +20,11 @@ DungeonScene::DungeonScene()
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
 	m_roadObj = nullptr;
-
-	showMap = true;
 }
 DungeonScene::~DungeonScene() {}
 
-
-
 HRESULT DungeonScene::Init()
 {
-	SetUIIMG();
-
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
 	CreateDungeon();
@@ -37,14 +32,13 @@ HRESULT DungeonScene::Init()
 	CreateRoad();
 	CreateParty();
 	CreateDoor();
-	m_roadBG->isActive = true;
 
-	CButton* m_testButton1 = new CButton();
-	m_testButton1->m_transform->m_pos = Vector2(300, 300);
-	m_testButton1->SetButtonSize(300, 100);
-	m_testButton1->m_image = MG_IMAGE->findImage("scouting");
-	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
+	m_dungeonUI = new dungeonUI;
+	m_dungeonUI->Init();
+	m_dungeonUI->getDungeonSceneParty(m_party);
+	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
+	
+	m_roadBG->isActive = true;
 
 	return S_OK;
 }
@@ -75,12 +69,13 @@ void DungeonScene::Update()
 		m_party->getStress_movement();
 		m_party->decreaseBright_movement();
 
+		m_dungeonUI->getDungeonSceneParty(m_party);
+
 		CheckDoor();
 		setRoadNum();
-		TorchLightBarDecrease();
-		SetSceneSize();
 
 		m_roadObj->reach_InteractionArea(m_party);
+
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
@@ -104,8 +99,6 @@ void DungeonScene::Render(HDC _hdc)
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 		ShowDungeonInfo(_hdc);
-		ShowMapOrInven(_hdc);
-
 		m_roadObj->Render(_hdc);
 	}
 
@@ -139,14 +132,14 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 {
 	if (_lastDir != Vector2Int(0, 0))
 	{
-		if (remainRoom < 0) //������ �氳���� 0���ΰ��
+		if (remainRoom < 0) 
 		{
 			return;
 		}
-		if (i < 0 || // x����� 0���� ����
-			i > MAPSIZE || // x����� �ִ�ġ���� ŭ
-			j < 0 || // y����� 0���� ����
-			j > MAPSIZE || // y����� �ִ�ġ���� ŭ
+		if (i < 0 ||
+			i > MAPSIZE || 
+			j < 0 ||
+			j > MAPSIZE || 
 			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // �ش���� ������
 			return;
 	}
@@ -274,7 +267,6 @@ void DungeonScene::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-
 		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
 	}
 	m_party->SetParty(party);
@@ -299,7 +291,6 @@ void DungeonScene::CreateDoor()
 
 void DungeonScene::CreateRoad()
 {
-	//�̺κ�
 	auto road = new CBG_Road();
 	road->Init();
 	road->isActive = false;
@@ -344,44 +335,6 @@ void DungeonScene::setRoadKind()
 	//	
 	// break;
 	//}
-}
-
-void DungeonScene::setRoadObject()
-{
-	//call the CRoadObj memberfunction
-}
-
-void DungeonScene::setTorchUI()
-{
-	ImageData UIimg;
-
-	UIimg.m_img = MG_IMAGE->findImage("torchBackBar");
-	UIimg.m_trans.m_pos = Vector2(524, 100); //decrese according to distance
-	vUI.push_back(UIimg); //[6] torchBackBar
-	
-	UIimg.m_img = MG_IMAGE->findImage("torchBackBar2");
-	UIimg.m_trans.m_pos = Vector2(510, 100);
-	vUI.push_back(UIimg);
-	
-	UIimg.m_img = MG_IMAGE->findImage("torchBackBar3");
-	UIimg.m_trans.m_pos = Vector2(988, 100);
-	vUI.push_back(UIimg);
-	
-	UIimg.m_img = MG_IMAGE->findImage("torchFrontBar");
-	UIimg.m_trans.m_pos = Vector2(520, 19);
-	vUI.push_back(UIimg);
-}
-
-void DungeonScene::TorchLightBarDecrease()
-{
-	vUI[7].m_img->setWidth(20);
-	vUI[8].m_img->setWidth2(20);
-	vUI[8].m_trans.m_pos.x = 1400;
-
-	vUI[7].m_img->setWidth(20 + (422 / 100) * (100 - m_party->getBrightness()) );
-	vUI[8].m_img->setWidth2(20 + (422 / 100) * (100 - m_party->getBrightness()) );
-	vUI[8].m_trans.m_pos.x = 1400 -((422 / 100) * (100 - m_party->getBrightness()));
-	
 }
 
 void DungeonScene::CheckDoor()
@@ -462,80 +415,10 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 
 #pragma region UI
-void DungeonScene::SetUIIMG()
-{
-	ImageData UIimg;
-
-	UIimg.m_img = MG_IMAGE->findImage("panel_bg2");
-	UIimg.m_trans.m_pos = Vector2(0, 700);
-	vUI.push_back(UIimg);
-	UIimg.m_trans.m_pos = Vector2(1580, 700);
-	vUI.push_back(UIimg);
-
-	UIimg.m_img = MG_IMAGE->findImage("banner");
-	UIimg.m_trans.m_pos = Vector2(300, 700);
-	vUI.push_back(UIimg);
-
-	UIimg.m_img = MG_IMAGE->findImage("hero");
-	UIimg.m_trans.m_pos = Vector2(330, 820);
-	vUI.push_back(UIimg);
-
-	UIimg.m_img = MG_IMAGE->findImage("inventory");
-	UIimg.m_trans.m_pos = Vector2(965, 700);
-	vUI.push_back(UIimg);
-
-	UIimg.m_img = MG_IMAGE->findImage("map");
-	UIimg.m_trans.m_pos = Vector2(965, 700);
-	vUI.push_back(UIimg);
-
-	setTorchUI();
-
-	rc_inven.SetRect(1550, 1080 - 236, 1600, 1080 - 165);
-	rc_map.SetRect(1550, 1080 - 160, 1600, 1080 - 95);
-}
 
 void DungeonScene::TestButton() 
 {
 	m_buttonTest++;
-}
-
-void DungeonScene::ShowMapOrInven(HDC _hdc)
-{
-	if (showMap == false)
-	{
-		for (int i = 0; i < vUI.size(); i++)
-		{
-			vUI[i].m_img->renderUI(_hdc, &vUI[i].m_trans);
-		}
-	}
-	else
-	{
-		for (int i = 0; i < vUI.size(); i++)
-		{
-			vUI[i].m_img->renderUI(_hdc, &vUI[i].m_trans);
-		}
-		vUI[4].m_img->renderUI(_hdc, &vUI[4].m_trans);
-	}
-
-	if (rc_inven.CheckCollisionWithPoint(m_ptMouse))
-	{
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-		{
-			showMap = false;
-		}
-	}
-	if (rc_map.CheckCollisionWithPoint(m_ptMouse))
-	{
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-		{
-			showMap = true;
-		}
-	}
-}
-
-void DungeonScene::SetSceneSize()
-{
-	m_sceneSize = m_roadBG->getSceneSize();
 }
 
 #pragma endregion

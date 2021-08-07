@@ -1,10 +1,10 @@
 #pragma once
 #include "Scene.h"
 
+class dungeonUI;
 class DungeonScene : public Scene
 {
 public:
-
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -15,6 +15,7 @@ public:
 	Vector2Int curPos;
 	int roadCount;
 	int remainRoom;
+
 
 //==================================
 //Room
@@ -46,13 +47,10 @@ public:
 	int getRoadCount()const { return m_roadNum; } //¡¬«•¿Œµ¶Ω∫
 	void setRoadNum();
 	void setRoadKind();
-	void setRoadObject();
-
-	void setTorchUI();
-	void TorchLightBarDecrease();
 
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
+
 
 //==================================
 //πË∆≤Ω√Ω∫≈€
@@ -65,18 +63,11 @@ public:
 //==================================
 //UI
 public:
-	vector<ImageData> vUI;
-	Rect rc_map;
-	Rect rc_inven;
-	bool showMap;
-	int m_sceneSize;
-
-	void SetUIIMG();
-	void ShowMapOrInven(HDC _hdc);
-	void SetSceneSize();
-
 	void TestButton();
 	int m_buttonTest;
+
+	dungeonUI* m_dungeonUI;
+
 
 //==================================
 public:

@@ -24,7 +24,7 @@ private:
 	//wlakBack
 	int WB_btwHeroes = 100;
 
-	int limit = 0;
+	int limit;
 
 	DUNGEONSTATE nowScene;
 

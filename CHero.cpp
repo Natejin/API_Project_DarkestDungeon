@@ -30,6 +30,8 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 	m_STRS = 0;
 	m_STRSLVL = 0;
 
+	limit = 0;
+
 	for (size_t i = 0; i < 5; i++)
 	{
 		this->resist[i] = resist[i];
@@ -103,15 +105,14 @@ void CHero::Move()
 				m_transform->m_pos.x -= 2;
 				m_DIST += 2;
 				m_DIST_retreat += 2;
-
-				//4분의 1 확률로 스트레스를 받음
-				ran = MG_RND->getInt(3);
-				if (ran == 1)
+				
+				if (m_DIST_retreat > limit && m_DIST_retreat > 300)
 				{
-					if ((m_DIST_retreat % 200 == 0) && !(m_DIST_retreat == 0))
+					if (MG_RND->getInt(4) > 2)
 					{
 						addStress(5);
 					}
+					limit += 300;
 				}
 			}
 		}
@@ -123,14 +124,11 @@ void CHero::Move()
 				m_DIST += 4;
 			}
 		}
-
-		
 	}
 }
 
 bool CHero::PreventGetOutBg(int startX, int endX)
 {
-	
 	if (m_transform->m_pos.x < endX - 200 && 0 < m_transform->m_pos.x) 
 		return true;
 	else 

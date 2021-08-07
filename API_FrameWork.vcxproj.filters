@@ -163,6 +163,9 @@
     <Filter Include="헤더 파일\Struct\NewFilter1">
       <UniqueIdentifier>{1ad2d0a1-248c-4acd-a1df-8c44f047a010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UI">
+      <UniqueIdentifier>{9e22f1e7-e08b-4393-bf9c-a39101b68825}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -423,6 +426,9 @@
     <ClInclude Include="CAnimator.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
+    <ClInclude Include="dungeonUI.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -652,6 +658,9 @@
     </ClCompile>
     <ClCompile Include="CAnimator.cpp">
       <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="dungeonUI.cpp">
+      <Filter>Object\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

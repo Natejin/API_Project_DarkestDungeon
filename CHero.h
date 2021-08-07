@@ -24,6 +24,8 @@ protected:
 	int m_DIST; //이동한 거리
 	int m_DIST_retreat; //후퇴한 거리
 
+	int limit;
+
 public:
 	CHero();
 	~CHero();
