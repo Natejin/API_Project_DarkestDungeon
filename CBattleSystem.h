@@ -19,6 +19,8 @@ class CBattleSystem : public GameObject
 
 	int randomDice6 = 6;
 
+	int curTurn;
+
 public:
 	CBattleSystem();
 	~CBattleSystem();

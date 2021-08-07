@@ -9,6 +9,7 @@ private:
 
 	vector<class Image*> m_imageVec;
 	vector<int> maxFrameX;
+	vector<Vector2> m_imageSize;
  
 
 
@@ -46,4 +47,7 @@ public:
 	void SetFrameY(int frame) { curFrameY = frame; }
 	void AddImageFrame(string imageName);
 	void AddImageFrame(IMAGE imageName);
+
+	class Image* GetCurImage();
+
 };

@@ -16,7 +16,7 @@ HRESULT TownScene::Init()
 	m_town->Init();
 	m_town->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);
 	m_town->SetImageSize(WINSIZEX, WINSIZEY);
-	m_town->m_image = MG_IMAGE->findImage("district");
+	m_town->AddSpriteRenderer("district");
 	MG_GMOBJ->RegisterObj("Town", m_town);
 
 	SetIMG_Est(); //건물 버튼.
@@ -187,70 +187,70 @@ void TownScene::SetIMG_Est() //건물 버튼.
 	CButton* m_abbey = new CButton();
 	m_abbey->m_transform->m_pos = Vector2(WINSIZEX / 2 - 350, WINSIZEY / 2 - 500);
 	m_abbey->SetButtonSize(200, 200);
-	m_abbey->m_image = MG_IMAGE->findImage("town_abbey");
+	m_abbey->AddSpriteRenderer("town_abbey");
 	m_abbey->SetTriggerWhenClick(this, &TownScene::Show_abeey);
 	MG_GMOBJ->RegisterObj("Abbey", m_abbey);
 
 	CButton* m_graveyard = new CButton();
 	m_graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 - 150);
 	m_graveyard->SetButtonSize(200, 200);
-	m_graveyard->m_image = MG_IMAGE->findImage("town_graveyard");
+	m_graveyard->AddSpriteRenderer("town_graveyard");
 	m_graveyard->SetTriggerWhenClick(this, &TownScene::Show_graveyard);
 	MG_GMOBJ->RegisterObj("Graveyard", m_graveyard);
 
 	CButton* m_guild = new CButton();
 	m_guild->m_transform->m_pos = Vector2(WINSIZEX / 2 - 50, WINSIZEY / 2 - 250);
 	m_guild->SetButtonSize(200, 200);
-	m_guild->m_image = MG_IMAGE->findImage("town_guild");
+	m_guild->AddSpriteRenderer("town_guild");
 	m_guild->SetTriggerWhenClick(this, &TownScene::Show_guild);
 	MG_GMOBJ->RegisterObj("Guild", m_guild);
 
 	CButton* m_blacksmith = new CButton();
 	m_blacksmith->m_transform->m_pos = Vector2(WINSIZEX / 2 + 80, WINSIZEY / 2 - 150);
 	m_blacksmith->SetButtonSize(200, 200);
-	m_blacksmith->m_image = MG_IMAGE->findImage("town_blacksmith");
+	m_blacksmith->AddSpriteRenderer("town_blacksmith");
 	m_blacksmith->SetTriggerWhenClick(this, &TownScene::Show_blacksmith);
 	MG_GMOBJ->RegisterObj("Blacksmith", m_blacksmith);
 
 	CButton* m_sanitarium = new CButton();
 	m_sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 580, WINSIZEY / 2 - 380);
 	m_sanitarium->SetButtonSize(200, 200);
-	m_sanitarium->m_image = MG_IMAGE->findImage("town_sanitarium");
+	m_sanitarium->AddSpriteRenderer("town_sanitarium");
 	m_sanitarium->SetTriggerWhenClick(this, &TownScene::Show_sanitarium);
 	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
 
 	CButton* m_tavern = new CButton();
 	m_tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
 	m_tavern->SetButtonSize(200, 200);
-	m_tavern->m_image = MG_IMAGE->findImage("town_tavern");
+	m_tavern->AddSpriteRenderer("town_tavern");
 	m_tavern->SetTriggerWhenClick(this, &TownScene::Show_tavern);
 	MG_GMOBJ->RegisterObj("Tavern", m_tavern);
 
 	CButton* m_statue = new CButton();
 	m_statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 200, WINSIZEY / 2 - 80);
 	m_statue->SetButtonSize(200, 200);
-	m_statue->m_image = MG_IMAGE->findImage("town_statue");
+	m_statue->AddSpriteRenderer("town_statue");
 	m_statue->SetTriggerWhenClick(this, &TownScene::Show_town_statue);
 	MG_GMOBJ->RegisterObj("Statue", m_statue);
 
 	CButton* m_nomad_wagon = new CButton();
 	m_nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 - 100, WINSIZEY / 2 + 80);
 	m_nomad_wagon->SetButtonSize(200, 200);
-	m_nomad_wagon->m_image = MG_IMAGE->findImage("town_nomad_wagon");
+	m_nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
 	m_nomad_wagon->SetTriggerWhenClick(this, &TownScene::Show_nomad_wagon);
 	MG_GMOBJ->RegisterObj("Nomad_wagon", m_nomad_wagon);
 
 	CButton* m_stage_coach = new CButton();
 	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 880, WINSIZEY / 2 - 50);
 	m_stage_coach->SetButtonSize(200, 200);
-	m_stage_coach->m_image = MG_IMAGE->findImage("town_stage_coach");
+	m_stage_coach->AddSpriteRenderer("town_stage_coach");
 	m_stage_coach->SetTriggerWhenClick(this, &TownScene::Show_stage_coach);
 	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
 
 	CButton* m_campingTrainer = new CButton();
 	m_campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 920, WINSIZEY / 2 - 400);
 	m_campingTrainer->SetButtonSize(200, 200);
-	m_campingTrainer->m_image = MG_IMAGE->findImage("town_camping_trainer");
+	m_campingTrainer->AddSpriteRenderer("town_camping_trainer");
 	m_campingTrainer->SetTriggerWhenClick(this, &TownScene::Show_campingTrainer);
 	MG_GMOBJ->RegisterObj("CampingTrainer", m_campingTrainer);
 }
@@ -302,6 +302,6 @@ void TownScene::Set_quick()
 	CButton* m_quick = new CButton();
 	m_quick->m_transform->m_pos = Vector2(WINSIZEX-800 , 100);
 	m_quick->SetButtonSize(200, 200);
-	m_quick->m_image = MG_IMAGE->findImage("quick");
+	m_quick->AddSpriteRenderer("quick");
 	MG_GMOBJ->RegisterObj("Abbey", m_quick);
 }

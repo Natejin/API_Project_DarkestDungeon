@@ -301,24 +301,26 @@ HRESULT Image::init(const char* fileName, const int x, const int y, const int wi
 	return S_OK;
 }
 
-//HRESULT Image::initForRotate()
-//{
-//	HDC hdc = GetDC(m_hWnd);
-//
-//	int size;
-//	(_imageInfo->width > _imageInfo->height ? size = _imageInfo->width : size = _imageInfo->height);
-//	_rotateImage = new IMAGE_INFO;
-//	_imageInfo->loadType = static_cast<BYTE>(IMAGE_LOAD_KIND::LOAD_FILE);
-//	_imageInfo->resID = 0;
-//	_rotateImage->hMemDC = CreateCompatibleDC(hdc);
-//	_rotateImage->hBit = (HBITMAP)CreateCompatibleBitmap(hdc, size, size);
-//	_rotateImage->hOBit = (HBITMAP)SelectObject(_rotateImage->hMemDC, _rotateImage->hBit);
-//	_rotateImage->width = size;
-//	_rotateImage->height = size;
-//
-//	ReleaseDC(m_hWnd, hdc);
-//	return S_OK;
-//}
+HRESULT Image::initForRotate()
+{
+	HDC hdc = GetDC(m_hWnd);
+
+	int size;
+	(_imageInfo->width > _imageInfo->height ? size = _imageInfo->width : size = _imageInfo->height);
+	_rotateImage = new IMAGE_INFO;
+	_imageInfo->loadType = static_cast<BYTE>(IMAGE_LOAD_KIND::LOAD_FILE);
+	_imageInfo->resID = 0;
+	_rotateImage->hMemDC = CreateCompatibleDC(hdc);
+	_rotateImage->hBit = (HBITMAP)CreateCompatibleBitmap(hdc, size, size);
+	_rotateImage->hOBit = (HBITMAP)SelectObject(_rotateImage->hMemDC, _rotateImage->hBit);
+	_rotateImage->width = size;
+	_rotateImage->height = size;
+	_rotateImage->frameWidth = _imageInfo->frameWidth;
+	_rotateImage->frameHeight = _imageInfo->frameHeight;
+
+	ReleaseDC(m_hWnd, hdc);
+	return S_OK;
+}
 
 void Image::setTransColor(bool isTrans, COLORREF transColor)
 {
@@ -396,9 +398,7 @@ void Image::render(HDC hdc, const int destX, const int destY)
 
 void Image::render(HDC hdc, const CTransform* transform)
 {
-	Vector2 pos = transform->m_pos;
-	pos -= transform->m_scale * transform->m_pivot;
-	pos -= MG_CAMERA->GetPos();
+	Vector2 pos = transform->m_pos - transform->m_scale * transform->m_pivot - MG_CAMERA->GetPos();
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -424,11 +424,9 @@ void Image::render(HDC hdc, const CTransform* transform)
 	}
 }
 
-void Image::render(HDC hdc, const CTransform* transform, Vector2 scale)
+void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale)
 {
-	Vector2 pos = transform->m_pos;
-	pos -= transform->m_scale * transform->m_pivot;
-	pos -= MG_CAMERA->GetPos();
+	Vector2 pos = transform->m_pos - _imageScale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -436,8 +434,8 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 scale)
 			hdc,						//복삳될 장소의 DC
 			pos.x,						//복사될 좌표의 시작점X
 			pos.y,						//복사될 좌표의 시작점Y
-			_imageInfo->width * scale.x,			//복사될 이미지 가로크기
-			_imageInfo->height * scale.y,			//복사될 이미지 세로크기
+			_imageInfo->width * transform->m_scale.x,			//복사될 이미지 가로크기
+			_imageInfo->height * transform->m_scale.y,			//복사될 이미지 세로크기
 			_imageInfo->hMemDC,			//복사될 대상DC
 			0,							//복사시작 지점 X
 			0,							//복사시작 지점 Y
@@ -454,10 +452,11 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 scale)
 	}
 }
 
+
+
 void Image::renderUI(HDC hdc, const CTransform* transform)
 {
-	Vector2 pos = transform->m_pos;
-	pos -= transform->m_scale * transform->m_pivot;
+	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale;
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -539,9 +538,7 @@ void Image::frameRender(HDC hdc, const int destX, const int destY)
 
 void Image::frameRender(HDC hdc, const CTransform* transform)
 {
-	Vector2 pos = transform->m_pos;
-	pos -= transform->m_scale * transform->m_pivot;
-	pos -= MG_CAMERA->GetPos();
+	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -571,7 +568,7 @@ void Image::frameRender(HDC hdc, const CTransform* transform)
 
 void Image::frameRender(HDC hdc, const CTransform* transform, const int destX, const int destY)
 {
-	Vector2 pos = transform->m_pos - transform->m_scale * transform->m_pivot - MG_CAMERA->GetPos();
+	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
@@ -581,6 +578,36 @@ void Image::frameRender(HDC hdc, const CTransform* transform, const int destX, c
 			pos.y,													//복사될 좌표의 시작점Y
 			_imageInfo->frameWidth,									//복사될 이미지 가로크기
 			_imageInfo->frameHeight,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			destX * _imageInfo->frameWidth,
+			destY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void Image::frameRender(HDC hdc, const CTransform* transform, Vector2 scale, const int destX, const int destY)
+{
+	Vector2 pos = transform->m_pos - scale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth * transform->m_scale.x,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight * transform->m_scale.y,								//복사될 이미지 세로크기
 			_imageInfo->hMemDC,										//복사될 대상DC
 			destX * _imageInfo->frameWidth,							//복사시작 지점 X
 			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
@@ -630,51 +657,114 @@ void Image::frameRender(HDC hdc, const int destX, const int destY, const int cur
 	}
 }
 
-//void Image::rotateRender(HDC hdc, float centerX, float centerY, float angle)
-//{
-//	if (!_rotateImage) this->initForRotate();
-//	POINT rPoint[3];
-//	int dist = sqrt((_imageInfo->width / 2) * (_imageInfo->width / 2) + (_imageInfo->height / 2) * (_imageInfo->height / 2));
-//	float baseAngle[3];
-//	baseAngle[0] = PI - atanf(((float)_imageInfo->height / 2) / ((float)_imageInfo->width / 2));
-//	baseAngle[1] = atanf(((float)_imageInfo->height / 2) / ((float)_imageInfo->width / 2));
-//	baseAngle[2] = PI + atanf(((float)_imageInfo->height / 2) / ((float)_imageInfo->width / 2));
-//
-//	for (int i = 0; i < 3; i++)
-//	{
-//		rPoint[i].x = (_rotateImage->width / 2 + cosf(baseAngle[i] + angle) * dist);
-//		rPoint[i].y = (_rotateImage->height / 2 + -sinf(baseAngle[i] + angle) * dist);
-//	}
-//
-//	if (_isTrans)
-//	{
-//		BitBlt(_rotateImage->hMemDC, 0, 0, _rotateImage->width, _rotateImage->height, hdc, 0, 0, BLACKNESS);
-//		HBRUSH hBrush = CreateSolidBrush(_transColor);
-//		HBRUSH oBrush = (HBRUSH)SelectObject(_rotateImage->hMemDC, hBrush);
-//		ExtFloodFill(_rotateImage->hMemDC, 1, 1, RGB(0, 0, 0), FLOODFILLSURFACE);
-//		DeleteObject(hBrush);
-//
-//		PlgBlt(_rotateImage->hMemDC, rPoint, _imageInfo->hMemDC,
-//			0, 0,
-//			_imageInfo->width,
-//			_imageInfo->height,
-//			NULL, 0, 0);
-//		GdiTransparentBlt(hdc,
-//			centerX - _rotateImage->width / 2,
-//			centerY - _rotateImage->height / 2,
-//			_rotateImage->width,
-//			_rotateImage->height,
-//			_rotateImage->hMemDC,
-//			0, 0,
-//			_rotateImage->width,
-//			_rotateImage->height,
-//			_transColor);
-//	}
-//	else
-//	{
-//		PlgBlt(hdc, rPoint, _imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, NULL, 0, 0);
-//	}
-//}
+
+void Image::RotateRender(HDC hdc, const CTransform* transform, Vector2 scale)
+{
+	if (!_rotateImage) this->initForRotate();
+	POINT rPoint[3];
+	int dist = sqrt((_imageInfo->width / 2) * (_imageInfo->width / 2) + (_imageInfo->height / 2) * (_imageInfo->height / 2));
+	float baseAngle[3];
+	baseAngle[0] = PI - atanf(((float)_imageInfo->height / 2) / ((float)_imageInfo->width / 2));
+	baseAngle[1] = atanf(((float)_imageInfo->height / 2) / ((float)_imageInfo->width / 2));
+	baseAngle[2] = PI + atanf(((float)_imageInfo->height / 2) / ((float)_imageInfo->width / 2));
+
+	for (int i = 0; i < 3; i++)
+	{
+		rPoint[i].x = (_rotateImage->width / 2 + cosf(baseAngle[i] + transform->angle) * dist);
+		rPoint[i].y = (_rotateImage->height / 2 + -sinf(baseAngle[i] + transform->angle) * dist);
+	}
+
+	Vector2 pos = transform->m_pos - scale * transform->m_pivot - MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		BitBlt(_rotateImage->hMemDC, 0, 0, _rotateImage->width, _rotateImage->height, hdc, 0, 0, BLACKNESS);
+		HBRUSH hBrush = CreateSolidBrush(_transColor);
+		HBRUSH oBrush = (HBRUSH)SelectObject(_rotateImage->hMemDC, hBrush);
+		ExtFloodFill(_rotateImage->hMemDC, 1, 1, RGB(0, 0, 0), FLOODFILLSURFACE);
+		DeleteObject(hBrush);
+
+		PlgBlt(_rotateImage->hMemDC, rPoint, _imageInfo->hMemDC,
+			0, 0,
+			_imageInfo->width,
+			_imageInfo->height,
+			NULL, 0, 0);
+		GdiTransparentBlt(hdc,
+			pos.x - _rotateImage->width / 2,
+			pos.y - _rotateImage->height / 2,
+			_rotateImage->width * transform->m_scale.x,
+			_rotateImage->height * transform->m_scale.y,
+			_rotateImage->hMemDC,
+			0, 0,
+			_rotateImage->width,
+			_rotateImage->height,
+			_transColor);
+	}
+	else
+	{
+		PlgBlt(hdc, rPoint, _imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, NULL, 0, 0);
+	}
+}
+
+void Image::RotateFrameRender(HDC hdc, const CTransform* transform, Vector2 scale, const int destX, const int destY)
+{
+	if (!_rotateImage) this->initForRotate();
+	POINT rPoint[3];
+	int dist = sqrt((_imageInfo->frameWidth / 2) * (_imageInfo->frameWidth / 2) + (_imageInfo->frameHeight / 2) * (_imageInfo->frameHeight / 2));
+	float baseAngle[3];
+	baseAngle[0] = PI - atanf(((float)_imageInfo->frameHeight / 2) / ((float)_imageInfo->frameWidth / 2));
+	baseAngle[1] = atanf(((float)_imageInfo->frameHeight / 2) / ((float)_imageInfo->frameWidth / 2));
+	baseAngle[2] = PI + atanf(((float)_imageInfo->frameHeight / 2) / ((float)_imageInfo->frameWidth / 2));
+
+	for (int i = 0; i < 3; i++)
+	{
+		rPoint[i].x = (_rotateImage->frameWidth / 2 + cosf(baseAngle[i] + transform->angle) * dist);
+		rPoint[i].y = (_rotateImage->frameHeight / 2 + -sinf(baseAngle[i] + transform->angle) * dist);
+	}
+	Vector2 pos = transform->m_pos - scale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+	//Vector2 pos = transform->m_pos - scale * transform->m_pivot - MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		BitBlt(_rotateImage->hMemDC, 
+			0, 
+			0, 
+			_rotateImage->frameWidth, 
+			_rotateImage->frameHeight, 
+			hdc, 
+			destX* _rotateImage->frameWidth,							//복사시작 지점 X
+			destY* _rotateImage->frameHeight,						//복사시작 지점 Y
+			BLACKNESS);
+		HBRUSH hBrush = CreateSolidBrush(_transColor);
+		HBRUSH oBrush = (HBRUSH)SelectObject(_rotateImage->hMemDC, hBrush);
+		ExtFloodFill(_rotateImage->hMemDC, 1, 1, RGB(0, 0, 0), FLOODFILLSURFACE);
+		DeleteObject(hBrush);
+
+		PlgBlt(_rotateImage->hMemDC, rPoint, _imageInfo->hMemDC,
+			0, 0,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			NULL, 0, 0);
+		GdiTransparentBlt(hdc,
+			pos.x - _rotateImage->frameWidth / 2,
+			pos.y - _rotateImage->frameHeight / 2,
+			_rotateImage->frameWidth * transform->m_scale.x,
+			_rotateImage->frameHeight * transform->m_scale.y,
+			_rotateImage->hMemDC,
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
+			_rotateImage->frameWidth,
+			_rotateImage->frameHeight,
+			_transColor);
+	
+	}
+	else
+	{
+		PlgBlt(hdc, rPoint, _imageInfo->hMemDC, 
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y	
+			_imageInfo->width, _imageInfo->height, NULL, 0, 0);
+	}
+}
+
 
 void Image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 {

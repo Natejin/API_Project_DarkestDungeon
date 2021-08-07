@@ -163,39 +163,6 @@
     <Filter Include="헤더 파일\Struct\NewFilter1">
       <UniqueIdentifier>{1ad2d0a1-248c-4acd-a1df-8c44f047a010}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\UI\Est_UI">
-      <UniqueIdentifier>{94337325-b51a-438d-b75d-2393ebbf9da4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\Abbey">
-      <UniqueIdentifier>{dac94f69-52ff-46f0-9644-9e9545023407}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\BlackSmith">
-      <UniqueIdentifier>{b8e1adff-e359-422e-8ba1-0572bb221523}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\CampingTrainer">
-      <UniqueIdentifier>{a18958b5-bd38-4dca-bfc7-fdc8613b8381}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\GraveYard">
-      <UniqueIdentifier>{b132d47c-e67b-4b3f-9573-20587e95b2b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\Guild">
-      <UniqueIdentifier>{ad7ec0d7-b8b3-4ec1-8c60-610800dbcd15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\NomadWagon">
-      <UniqueIdentifier>{aa2ee4cc-58a7-4610-8916-0c430d6e8e89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\StageCoach">
-      <UniqueIdentifier>{8988302f-4098-498b-bf99-7cd6b562f7c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\Statue">
-      <UniqueIdentifier>{5ad33afa-8dc0-4eae-b575-8dd0e9404662}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\Sanitarium">
-      <UniqueIdentifier>{e1c94312-e542-480e-bb58-7bc348624ff0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\UI\Est_UI\Tavern">
-      <UniqueIdentifier>{16014a24-d57c-4c22-9d10-78fbd90a2ecb}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -456,38 +423,8 @@
     <ClInclude Include="CAnimator.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
-    <ClInclude Include="CEst_UI.h">
-      <Filter>Scene\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Abbey.h">
-      <Filter>Scene\UI\Est_UI\Abbey</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackSmith.h">
-      <Filter>Scene\UI\Est_UI\BlackSmith</Filter>
-    </ClInclude>
-    <ClInclude Include="CampingTrainer.h">
-      <Filter>Scene\UI\Est_UI\CampingTrainer</Filter>
-    </ClInclude>
-    <ClInclude Include="GraveYard.h">
-      <Filter>Scene\UI\Est_UI\GraveYard</Filter>
-    </ClInclude>
-    <ClInclude Include="Guild.h">
-      <Filter>Scene\UI\Est_UI\Guild</Filter>
-    </ClInclude>
-    <ClInclude Include="NomadWagon.h">
-      <Filter>Scene\UI\Est_UI\NomadWagon</Filter>
-    </ClInclude>
-    <ClInclude Include="StageCoach.h">
-      <Filter>Scene\UI\Est_UI\StageCoach</Filter>
-    </ClInclude>
-    <ClInclude Include="Statue.h">
-      <Filter>Scene\UI\Est_UI\Statue</Filter>
-    </ClInclude>
-    <ClInclude Include="Sanitarium.h">
-      <Filter>Scene\UI\Est_UI\Sanitarium</Filter>
-    </ClInclude>
-    <ClInclude Include="Tavern.h">
-      <Filter>Scene\UI\Est_UI\Tavern</Filter>
+    <ClInclude Include="CSpriteRenderer.h">
+      <Filter>Object\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -719,38 +656,8 @@
     <ClCompile Include="CAnimator.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
-    <ClCompile Include="CEst_UI.cpp">
-      <Filter>Scene\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Abbey.cpp">
-      <Filter>Scene\UI\Est_UI\Abbey</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackSmith.cpp">
-      <Filter>Scene\UI\Est_UI\BlackSmith</Filter>
-    </ClCompile>
-    <ClCompile Include="CampingTrainer.cpp">
-      <Filter>Scene\UI\Est_UI\CampingTrainer</Filter>
-    </ClCompile>
-    <ClCompile Include="GraveYard.cpp">
-      <Filter>Scene\UI\Est_UI\GraveYard</Filter>
-    </ClCompile>
-    <ClCompile Include="Guild.cpp">
-      <Filter>Scene\UI\Est_UI\Guild</Filter>
-    </ClCompile>
-    <ClCompile Include="NomadWagon.cpp">
-      <Filter>Scene\UI\Est_UI\NomadWagon</Filter>
-    </ClCompile>
-    <ClCompile Include="StageCoach.cpp">
-      <Filter>Scene\UI\Est_UI\StageCoach</Filter>
-    </ClCompile>
-    <ClCompile Include="Statue.cpp">
-      <Filter>Scene\UI\Est_UI\Statue</Filter>
-    </ClCompile>
-    <ClCompile Include="Sanitarium.cpp">
-      <Filter>Scene\UI\Est_UI\Sanitarium</Filter>
-    </ClCompile>
-    <ClCompile Include="Tavern.cpp">
-      <Filter>Scene\UI\Est_UI\Tavern</Filter>
+    <ClCompile Include="CSpriteRenderer.cpp">
+      <Filter>Object\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

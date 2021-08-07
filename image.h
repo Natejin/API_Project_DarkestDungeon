@@ -65,7 +65,7 @@ private:
 	//알파용
 	BLENDFUNCTION	_blendFunc;			//알파블렌드를 위한 정보
 	LPIMAGE_INFO	_blendImage;		//알파블렌드를 사용하기 위한 이미지 정보
-
+	LPIMAGE_INFO   _rotateImage;        //회전이미지
 
 
 public:
@@ -99,13 +99,15 @@ public:
 	void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const class CTransform* transform);
 	void frameRender(HDC hdc, const class CTransform* transform, const int destX, const int destY);
+	void frameRender(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY);
 	//void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 	//void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 
 
 	//렌더 회전
-	//void rotateRender(HDC hdc, float centerX, float centerY, float angle);
+	void RotateRender(HDC hdc, const class CTransform* transform, Vector2 scale);
+	void RotateFrameRender(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY);
 
 	//루프렌더
 	void loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);

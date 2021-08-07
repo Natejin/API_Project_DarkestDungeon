@@ -15,11 +15,6 @@ Scene* SceneManager::_currentScene = nullptr;
 
 HRESULT SceneManager::init()
 {
-	//_astar = new Astar;
-	//_astar->init();
-
-
-
 	DungeonScene* dungeon = new DungeonScene;
 	addScene(SCENETYPE::Dungeon, dungeon);
 
