@@ -8,7 +8,6 @@ CParty::~CParty() {}
 
 HRESULT CParty::Init()
 {
-
 	return S_OK;
 }
 

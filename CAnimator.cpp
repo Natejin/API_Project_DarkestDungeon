@@ -56,3 +56,8 @@ void CAnimator::AddImageFrame(IMAGE imageName)
 	maxFrameX.push_back(MG_IMAGE->findImage(imageName)->getMaxFrameX());
 	m_imageSize.push_back(Vector2(MG_IMAGE->findImage(imageName)->getFrameWidth(), MG_IMAGE->findImage(imageName)->getFrameHeight()));
 }
+
+Image* CAnimator::GetCurImage()
+{
+	return m_imageVec[curImageIndex];
+}

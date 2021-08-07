@@ -4,7 +4,6 @@
 class DungeonScene : public Scene
 {
 public:
-
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -46,13 +45,13 @@ public:
 	int getRoadCount()const { return m_roadNum; } //¡¬«•¿Œµ¶Ω∫
 	void setRoadNum();
 	void setRoadKind();
-	void setRoadObject();
 
 	void setTorchUI();
 	void TorchLightBarDecrease();
 
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
+
 
 //==================================
 //πË∆≤Ω√Ω∫≈€
@@ -77,6 +76,7 @@ public:
 
 	void TestButton();
 	int m_buttonTest;
+
 
 //==================================
 public:

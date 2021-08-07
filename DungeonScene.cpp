@@ -39,12 +39,12 @@ HRESULT DungeonScene::Init()
 	CreateDoor();
 	m_roadBG->isActive = true;
 
-	CButton* m_testButton1 = new CButton();
-	m_testButton1->m_transform->m_pos = Vector2(300, 300);
-	m_testButton1->SetButtonSize(300, 100);
-	m_testButton1->AddSpriteRenderer("scouting");
-	m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton);
-	MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
+	//CButton* m_testButton1 = new CButton();
+	//m_testButton1->m_transform->m_pos = Vector2(300, 300);
+	//m_testButton1->SetButtonSize(300, 100);
+	//m_testButton1->AddSpriteRenderer("scouting");
+	//m_testButton1->SetTriggerWhenClick(this, &DungeonScene::TestButton);
+	//MG_GMOBJ->RegisterObj("TestUiButton1", m_testButton1);
 
 	return S_OK;
 }
@@ -140,15 +140,15 @@ void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 {
 	if (_lastDir != Vector2Int(0, 0))
 	{
-		if (remainRoom < 0) //������ �氳���� 0���ΰ��
+		if (remainRoom < 0) 
 		{
 			return;
 		}
-		if (i < 0 || // x����� 0���� ����
-			i > MAPSIZE || // x����� �ִ�ġ���� ŭ
-			j < 0 || // y����� 0���� ����
-			j > MAPSIZE || // y����� �ִ�ġ���� ŭ
-			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // �ش���� ������
+		if (i < 0 || 
+			i > MAPSIZE ||
+			j < 0 || 
+			j > MAPSIZE ||
+			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) 
 			return;
 	}
 
@@ -275,9 +275,9 @@ void DungeonScene::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
+		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 480);
 	}
-	//m_party->SetParty(party);
+	m_party->SetParty(party);
 	MG_GMOBJ->RegisterObj("Party", m_party);
 	MG_CAMERA->SetTarget(m_party->GetHero(0));
 }
@@ -344,11 +344,6 @@ void DungeonScene::setRoadKind()
 	//	
 	// break;
 	//}
-}
-
-void DungeonScene::setRoadObject()
-{
-	//call the CRoadObj memberfunction
 }
 
 void DungeonScene::setTorchUI()

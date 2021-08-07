@@ -9,9 +9,10 @@ class CHero;
 class CRoadObject : public GameObject
 {
 private:
-	vector<CTransform> DividedArea;
-	vector<ImageData> roadObj;
-	vector<Rect> roadObj_rc;
+	vector<ImageData> m_roadObj;
+	vector<CTransform> m_SettingArea;
+	
+	bool isTreasureOpen;
 
 	CParty* party;
 
@@ -43,5 +44,7 @@ public:
 	void Interaction_battle(); //not sure
 
 	void showDividedArea(HDC _hdc);
+
+	CParty* afterObjTouch() { return party; }
 
 };
