@@ -311,7 +311,7 @@ void CParty::getStress_movement()
 			//10분의 1확률로 스트레스를 받음
 			if (MG_RND->getInt(9) == 0)
 			{
-				m_member[MG_RND->getInt(3)]->setStress(3);
+				m_member[MG_RND->getInt(3)]->addStress(3);
 			}
 		}
 	}

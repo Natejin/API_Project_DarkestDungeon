@@ -14,7 +14,9 @@ public:
 	CCollider();
 	~CCollider();
 
-	void SetTrans(class CTransform* _trans) { trans = _trans; }
+	void SetRectAndTrans(CTransform* _trans, int width, int height);
+
+	bool CheckXCollision(int x);
 
 	bool CheckColliderBoxWithPoint(Vector2 pos);
 	bool CheckColliderBoxWithPoint(POINT pos);

@@ -44,4 +44,6 @@ public:
 
 	void showDividedArea(HDC _hdc);
 
+	CParty* afterObjTouch() { return party; }
+
 };

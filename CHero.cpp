@@ -110,7 +110,7 @@ void CHero::Move()
 				{
 					if ((m_DIST_retreat % 200 == 0) && !(m_DIST_retreat == 0))
 					{
-						setStress(5);
+						addStress(5);
 					}
 				}
 			}

@@ -16,26 +16,40 @@ CCollider::~CCollider()
 	
 }
 
-bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos) {
-	Vector2 tempPos = trans->m_pos + m_pos;
-	if (rect.l + tempPos.x < _pos.x &&
-		rect.r + tempPos.x > _pos.x &&
-		rect.t + tempPos.y < _pos.y &&
-		rect.b + tempPos.y > _pos.y)
+void CCollider::SetRectAndTrans(CTransform* _trans, int width, int height)
+{
+	trans = _trans;
+	rect.SetRect(_trans->m_pos.x, _trans->m_pos.y, _trans->m_pos.x + width, _trans->m_pos.y + height);
+}
+
+bool CCollider::CheckXCollision(int x)
+{
+	if (rect.l < x && rect.r > x)
 	{
 		return true;
 	}
-	return false;
+	else return false;
+}
+
+bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos) 
+{
+	if (rect.l < _pos.x &&
+		rect.r > _pos.x &&
+		rect.t < _pos.y &&
+		rect.b > _pos.y)
+	{
+		return true;
+	}
+	else return false;
 }
 
 bool CCollider::CheckColliderBoxWithPoint(POINT _pos) {
-	Vector2 tempPos = trans->m_pos + m_pos;
-	if (rect.l + tempPos.x < _pos.x &&
-		rect.r + tempPos.x > _pos.x &&
-		rect.t + tempPos.y < _pos.y &&
-		rect.b + tempPos.y > _pos.y)
+	if (rect.l < _pos.x &&
+		rect.r > _pos.x &&
+		rect.t < _pos.y &&
+		rect.b > _pos.y)
 	{
 		return true;
 	}
-	return false;
+	else return false;
 }

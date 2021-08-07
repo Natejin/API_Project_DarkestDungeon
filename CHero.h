@@ -49,7 +49,8 @@ public:
 	int getMoveDis_reteat()const { return m_DIST_retreat; }
 
 	int getStress()const { return m_STRS; }
-	void setStress(int strs) { m_STRS += strs; }
+	void setStress(int strs) { m_STRS = strs; }
+	void addStress(int strs) { m_STRS += strs; }
 
 	//int getPos()const { return m_POS; }
 	//void setPos(int pos) { m_POS = pos; }
