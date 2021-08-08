@@ -84,7 +84,6 @@ void CObjectManager::BackRender(HDC _hdc)
 			{
 				go->BackRender(_hdc);
 			}
-		
 		}
 	}
 }

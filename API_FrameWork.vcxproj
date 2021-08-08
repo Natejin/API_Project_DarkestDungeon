@@ -196,7 +196,6 @@
     <ClInclude Include="ImageAdder_WT.h" />
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
-    <ClInclude Include="CHeroInfoManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
@@ -284,7 +283,6 @@
     <ClCompile Include="ImageAdder_WT.cpp" />
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
-    <ClCompile Include="CHeroInfoManager.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />

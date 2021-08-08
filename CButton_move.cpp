@@ -26,33 +26,6 @@ void CButton_move::Update(float deltaTime, float worldTime)
 	}
 }
 
-//void CButton_move::Update(float deltaTime, float worldTime)
-//{
-//	Vector2 pointToVector;
-//	pointToVector.x = m_ptMouse.x;
-//	pointToVector.y = m_ptMouse.y;
-//
-//	if (m_rect.CheckCollisionWithPoint(pointToVector))
-//	{
-//		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-//		{
-//			m_triggerWhenClick();
-//		}
-//	}
-//}
-
-//void CButton_move::Update(Vector2 m_ptMouseToVec)
-//{
-//
-//	if (m_rect.CheckCollisionWithPoint(m_ptMouseToVec))
-//	{
-//		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-//		{
-//			m_triggerWhenClick();
-//		}
-//	}
-//}
-
 void CButton_move::LateUpdate()
 {
 }
