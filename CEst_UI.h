@@ -1,10 +1,11 @@
 #pragma once
 #include "GameObject.h"
-#include <functional>
+
 class CEst_UI :public GameObject
 {
-private:
-	function<void()> m_triggerWhenClick;
+protected:
+	 class CSpriteRenderer* m_windowPanelBG;
+	 class CSpriteRenderer* m_windowPanelChar;
 
 public:
 	Rect m_rect;
@@ -22,15 +23,4 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-
-public:
-	
-	//===================================
-	template <typename T>
-	void SetUI(T* pObj, void(T::* func)())
-	{
-		m_triggerWhenClick = bind(func, pObj);
-	}
-	
-
 };

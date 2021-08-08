@@ -1,9 +1,11 @@
 #include "framework.h"
+#include "CButton.h"
 #include "BlackSmith.h"
 
 BlackSmith::BlackSmith()
 {
     m_layer = LAYER::UI;
+    m_quick2 = new CButton();
 }
 
 BlackSmith::~BlackSmith()

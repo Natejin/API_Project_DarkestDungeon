@@ -31,10 +31,13 @@
 #include<unordered_map>
 
 
+
+
+
 //==========================================
 //				 내가만든 헤더파일
 //==========================================
-#include "commonMacroFunction.h"
+
 #include "Input.h"
 #include "imageManager.h"
 #include "timeManager.h"
@@ -49,8 +52,6 @@
 #include "utils.h"
 #include "txtData.h"
 
-
-
 //struct
 #include "Vector2.h"
 #include "ImageData.h"
@@ -62,6 +63,9 @@
 #include "CAnimator.h"
 #include "CCollider.h"
 #include "CSpriteRenderer.h"
+
+#include "commonMacroFunction.h"
+
 
 #include "Enum.h"
 #include "Enum_MJ.h"

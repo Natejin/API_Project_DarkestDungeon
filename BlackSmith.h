@@ -1,14 +1,13 @@
 #pragma once
 #include "CEst_UI.h"
-#include <functional>
-#include "CButton.h"
+
 
 class BlackSmith :public CEst_UI
 {
 
 private:
 	function<void()> m_triggerWhenClick;
-	CButton* m_quick2 = new CButton();
+	class CButton* m_quick2;
 
 public:
 	Rect m_rect;

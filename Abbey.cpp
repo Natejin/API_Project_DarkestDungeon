@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "Abbey.h"
-
+#include "CBuilding.h"
+#include "CButton.h"
 Abbey::Abbey()
 {
 	m_layer = LAYER::UI;
@@ -13,13 +14,15 @@ Abbey::~Abbey()
 HRESULT Abbey::Init()
 {
 	isUi = false;
-	
+	m_quick = new CButton();
 	m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
 	m_quick->SetButtonSize(200, 200);
 	m_quick->AddSpriteRenderer("quick");
 	MG_GMOBJ->RegisterObj("quick", m_quick);
 	m_quick->isActive = false;
 
+	m_windowPanelBG = new CSpriteRenderer(IMAGE::abbey_bg, m_transform);
+	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
 	return S_OK;
 }
 
@@ -44,17 +47,18 @@ void Abbey::BackRender(HDC _hdc)
 
 void Abbey::Render(HDC _hdc)
 {
+	if (isUI == true)
+	{
+		m_windowPanelBG->Render(_hdc);
+		m_windowPanelChar->Render(_hdc);
+		m_quick->isActive = true;
+	}
 }
 
 void Abbey::FrontRender(HDC _hdc)
 {
 	//m_spriteRenderer->RenderUI(_hdc);
-	if (isUI == true)
-	{
-		MG_IMAGE->findImage("abbey.character.bg")->render(_hdc);
-		MG_IMAGE->findImage("abbey.character")->render(_hdc);
-		m_quick->isActive = true;
-	}
+	
 }
 
 void Abbey::Release()

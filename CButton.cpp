@@ -4,7 +4,7 @@
 
 CButton::CButton()
 {
-	m_layer = LAYER::UI;
+	m_layer = LAYER::UIButton;
 	countNum = 0;
 }
 
@@ -45,22 +45,13 @@ void CButton::Render(HDC _hdc)
 
 void CButton::FrontRender(HDC _hdc)
 {
-	//assert(m_image != nullptr);
-	//m_image->renderUI(_hdc, m_transform);
 	m_spriteRenderer->RenderUI(_hdc);
-	//Rectangle(_hdc, m_rect.l, m_rect.t, m_rect.r, m_rect.b);
-}
-
-void CButton::Release()
-{
-	GameObject::Release();
 }
 
 void CButton::SetButtonSize(float width, float height)
 {
-	m_rect.l = m_transform->m_pos.x;
-	m_rect.t = m_transform->m_pos.y;
-	m_rect.r = m_transform->m_pos.x + width;
-	m_rect.b = m_transform->m_pos.y + height;
-
+	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
+	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
+	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
+	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
 }

@@ -1,34 +1,21 @@
 #pragma once
 #include "Scene.h"
-#include"CButton.h"
-#include"CBG_Town.h"
-#include"Abbey.h"
-#include"BlackSmith.h"
-#include"CampingTrainer.h"
-#include"GraveYard.h"
-#include"Guild.h"
-#include"Sanitarium.h"
-#include"Statue.h"
-#include"StageCoach.h"
-#include"NomadWagon.h"
-#include"Tavern.h"
-
 class TownScene : public Scene
 {
 protected:
-	Abbey* m_abbey = new Abbey();
-	BlackSmith* m_blacksmith = new BlackSmith();
-	CampingTrainer* m_campingTrainer = new CampingTrainer();
-	GraveYard* m_graveyard = new GraveYard();
-	Guild* m_guild = new Guild();
-	Sanitarium* m_sanitarium = new Sanitarium();
-	StageCoach* m_stage_coach = new StageCoach();
-	Statue* m_statue = new Statue();
-	NomadWagon* m_nomad_wagon = new NomadWagon();
-	Tavern* m_tavern = new Tavern();
+	class Abbey* m_abbey;
+	class BlackSmith* m_blacksmith ;
+	class CampingTrainer* m_campingTrainer;
+	class GraveYard* m_graveyard;
+	class Guild* m_guild;
+	class Sanitarium* m_sanitarium ;
+	class StageCoach* m_stage_coach ;
+	class Statue* m_statue ;
+	class NomadWagon* m_nomad_wagon;
+	class Tavern* m_tavern;
 
 public:
-	CEst_UI* m_estui;
+	class CEst_UI* m_estui;
 
 public:
 	//껏켯을 할수있게하는 버튼 bool값

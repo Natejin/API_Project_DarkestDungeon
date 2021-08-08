@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "CEnemy.h"
-#include "CAnimator.h"
+
 CEnemy::CEnemy() {
 	unitType = UNITTYPE::Enemy;
 	m_layer = LAYER::Enemy;
