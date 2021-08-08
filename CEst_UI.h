@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include <functional>
 class CEst_UI :public GameObject
 {
 private:
@@ -33,4 +34,3 @@ public:
 	
 
 };
-
