@@ -38,4 +38,7 @@
 /.vs/API_FrameWork/v16
 /Debug
 /x64/Debug
-/v16
+/ipch
+/.vs
+*.ipch
+.vs/DarkestDungeon/v16/ipch/197aeb4a5d5b0a6e.ipch
