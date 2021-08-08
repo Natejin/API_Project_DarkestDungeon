@@ -13,6 +13,19 @@ HRESULT CButton_move::Init()
     return S_OK;
 }
 
+void CButton_move::Update(float deltaTime, float worldTime)
+{
+	Vector2 PointToVector = Vector2(m_ptMouse) + MG_CAMERA->getCameraPos();
+
+	if (m_rect.CheckCollisionWithPoint(PointToVector))
+	{
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			m_triggerWhenClick();
+		}
+	}
+}
+
 //void CButton_move::Update(float deltaTime, float worldTime)
 //{
 //	Vector2 pointToVector;
@@ -28,16 +41,17 @@ HRESULT CButton_move::Init()
 //	}
 //}
 
-void CButton_move::Update(Vector2 m_ptMouseToVec)
-{
-	if (m_rect.CheckCollisionWithPoint(m_ptMouseToVec))
-	{
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-		{
-			m_triggerWhenClick();
-		}
-	}
-}
+//void CButton_move::Update(Vector2 m_ptMouseToVec)
+//{
+//
+//	if (m_rect.CheckCollisionWithPoint(m_ptMouseToVec))
+//	{
+//		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+//		{
+//			m_triggerWhenClick();
+//		}
+//	}
+//}
 
 void CButton_move::LateUpdate()
 {

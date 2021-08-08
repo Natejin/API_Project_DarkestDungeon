@@ -25,11 +25,10 @@ HRESULT CRoadObject::Init()
 
 void CRoadObject::Update(float deltaTime, float worldTime)
 {
-    Vector2 PointToVector;
-    PointToVector.x = m_ptMouse.x - MG_CAMERA->getTargerPivot().x + MG_CAMERA->getCameraPos().x;
-    PointToVector.y = m_ptMouse.y - MG_CAMERA->getTargerPivot().y + MG_CAMERA->getCameraPos().y;
-    
-    bt_treasure->Update(PointToVector);
+    //Vector2 PointToVector;
+    //PointToVector.x = m_ptMouse.x - MG_CAMERA->getTargerPivot().x + MG_CAMERA->getCameraPos().x;
+    //PointToVector.y = m_ptMouse.y - MG_CAMERA->getTargerPivot().y + MG_CAMERA->getCameraPos().y;
+
 }
 
 void CRoadObject::LateUpdate()

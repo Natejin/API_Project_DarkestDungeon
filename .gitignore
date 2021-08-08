@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+*.ipch
+
 
 # Compiled Object files
 *.slo
