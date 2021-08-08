@@ -62,7 +62,4 @@ Image* CAnimator::GetCurImage()
 	return m_imageVec[curImageIndex];
 }
 
-Image* CAnimator::GetCurImage()
-{
-	return m_imageVec[curImageIndex];
-}
+

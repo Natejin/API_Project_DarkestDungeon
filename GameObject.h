@@ -45,6 +45,6 @@ public:
 	void AddAnimator(IMAGE imageName);
 
 	void AddSpriteRenderer(IMAGE imageName);
-		void AddSpriteRenderer(string imageName);
+	void AddSpriteRenderer(string imageName);
 
 };

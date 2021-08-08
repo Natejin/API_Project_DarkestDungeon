@@ -43,17 +43,7 @@ bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos)
 	else return false;
 }
 
-bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos) 
-{
-	if (rect.l < _pos.x &&
-		rect.r > _pos.x &&
-		rect.t < _pos.y &&
-		rect.b > _pos.y)
-	{
-		return true;
-	}
-	else return false;
-}
+
 
 bool CCollider::CheckColliderBoxWithPoint(POINT _pos) 
 {

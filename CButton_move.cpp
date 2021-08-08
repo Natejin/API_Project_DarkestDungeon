@@ -63,8 +63,9 @@ void CButton_move::BackRender(HDC _hdc)
 
 void CButton_move::Render(HDC _hdc)
 {
-	assert(m_image != nullptr);
-	m_image->render(_hdc);
+	//assert(m_image != nullptr);
+	//m_image->render(_hdc);
+	m_spriteRenderer->Render(_hdc);
 }
 
 void CButton_move::FrontRender(HDC _hdc)
