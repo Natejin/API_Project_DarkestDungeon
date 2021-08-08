@@ -33,7 +33,6 @@ public:
 
 	void SetTarget(class GameObject* target) { m_pTarget = target; }
 
-	Vector2 getTargerPivot()const { return targetPivot; }
 	Vector2 getCameraPos()const { return pos; }
 
 };
