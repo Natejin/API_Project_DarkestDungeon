@@ -437,8 +437,11 @@
     </ClInclude>
     <ClInclude Include="CHeroInfoManager.h">
       <Filter>Manager</Filter>
+<<<<<<< HEAD
     <ClInclude Include="CSpriteRenderer.h">
       <Filter>Object\Component</Filter>
+=======
+>>>>>>> parent of 1f452e2 (210808_MJ_deleteSomeUnnecessary)
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -681,8 +684,11 @@
     </ClCompile>
     <ClCompile Include="CHeroInfoManager.cpp">
       <Filter>Manager</Filter>
+<<<<<<< HEAD
     <ClCompile Include="CSpriteRenderer.cpp">
       <Filter>Object\Component</Filter>
+=======
+>>>>>>> parent of 1f452e2 (210808_MJ_deleteSomeUnnecessary)
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
