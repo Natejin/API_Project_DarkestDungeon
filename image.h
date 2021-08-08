@@ -99,13 +99,15 @@ public:
 	void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const class CTransform* transform);
 	void frameRender(HDC hdc, const class CTransform* transform, const int destX, const int destY);
+	void frameRender(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY);
 	//void frameRender(HDC hdc, const int destX, const int destY);
 	void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 	//void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 
 
 	//·»´õ È¸Àü
-	void rotateRender(HDC hdc, float centerX, float centerY, float angle);
+	void RotateRender(HDC hdc, const class CTransform* transform, Vector2 scale);
+	void RotateFrameRender(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY);
 
 	//·çÇÁ·»´õ
 	void loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);

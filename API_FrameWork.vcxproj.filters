@@ -437,6 +437,8 @@
     </ClInclude>
     <ClInclude Include="CHeroInfoManager.h">
       <Filter>Manager</Filter>
+    <ClInclude Include="CSpriteRenderer.h">
+      <Filter>Object\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -679,6 +681,8 @@
     </ClCompile>
     <ClCompile Include="CHeroInfoManager.cpp">
       <Filter>Manager</Filter>
+    <ClCompile Include="CSpriteRenderer.cpp">
+      <Filter>Object\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

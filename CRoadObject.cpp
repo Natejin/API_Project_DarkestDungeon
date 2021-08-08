@@ -100,7 +100,7 @@ void CRoadObject::setRoadObjIMG()
 
 void CRoadObject::getMapInfo(int a1, int a2, int a3)
 {
-    //·£´ý¸ÊÀ¸·Î »ý¼ºµÈ Á¤º¸¸¦ ¹Þ¾Æ¿Í¾ß ÇÔ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Í¾ï¿½ ï¿½ï¿½
 }
 
 void CRoadObject::setRoadObj()
@@ -124,17 +124,19 @@ void CRoadObject::setRoadObj()
     for (int i = 0; i < m_roadObj.size(); i++)
     {
         m_roadObj[i].m_trans.m_pos.x = MG_RND->getFromIntTo(m_SettingArea[i].m_pos.x, m_SettingArea[i + 1].m_pos.x);
-        //³Ê¹« °¡±î¿î °æ¿ì¸¦ ¹æÁöÇÏ±â À§ÇÔ
+        //ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
         //if (i != 0 && m_roadObj[i - 1].m_trans.m_pos.x > m_roadObj[i].m_trans.m_pos.x - 150)
         //{
         //    m_roadObj[i].m_trans.m_pos.x -= 100;
         //}
     }
+
+    _party = party;
 }
 
 void CRoadObject::Interaction_treassure()
 {
-    //¾î¶² ÀÌÀ¯¿¡¼­ÀÎÁö °¡²û ¹öÆ° Àû¿ëÀÌ µÇÁö ¾ÊÀ½
+    //ï¿½î¶² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //if (bt_treasure->m_rect.CheckCollisionWithPoint(party->GetHero(0)->m_transform->m_pos.x + 300))
     //{
         colliderCheck = true;
@@ -142,7 +144,7 @@ void CRoadObject::Interaction_treassure()
 		{
 			if (MG_RND->getInt(10) > 0)
 			{
-				//º¸¹°»óÀÚ¸¦ ¿­¾ú´Ù´Â ¾à½ÄÀûÀÎ ±¸Çö¸¸ ¿Ï¼º
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
 				m_roadObj[0].m_img = MG_IMAGE->findImage("mon1");
 				m_roadObj[0].m_img->setWidth(100);
 				m_roadObj[0].m_img->setHeight(100);
@@ -167,14 +169,14 @@ void CRoadObject::Interaction_treassure()
 
 void CRoadObject::Interaction_trap_success()
 {
-    //ÇØÃ¼¼º°ø
+    //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
     m_roadObj[1].m_img = MG_IMAGE->findImage("nothing");
 }
 
 void CRoadObject::Interaction_trap_fail()
 {
-    //ÇØÃ¼ÇÏÁö¾Ê°í ¹Ý°æ³»·Î Ãæµ¹ÇÑ °æ¿ì
-    //ÃâÇ÷, µ¶, ½ºÆ®·¹½º¿Í Ã¼·Â°¨¼Ò
+    //ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê°ï¿½ ï¿½Ý°æ³»ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½, ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½Â°ï¿½ï¿½ï¿½
 
     CCollider* _collider = new CCollider;
     (*_collider).SetRectAndTrans(&m_roadObj[1].m_trans, 100, 100);
@@ -190,12 +192,12 @@ void CRoadObject::Interaction_trap_fail()
 
 void CRoadObject::Interaction_battle()
 {
-    //¹èÆ²½Ã½ºÅÛ ±¸Çö ÈÄ Ãß°¡
-    m_roadObj[2].m_img = MG_IMAGE->findImage("·Ï¸Ç");
+    //ï¿½ï¿½Æ²ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½
+    m_roadObj[2].m_img = MG_IMAGE->findImage("ï¿½Ï¸ï¿½");
     m_roadObj[2].m_img->setWidth(100);
     m_roadObj[2].m_img->setHeight(100);
 
-    //¹Ù·Î ¹èÆ²¾À ÁøÀÔ
+    //ï¿½Ù·ï¿½ ï¿½ï¿½Æ²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 }
 
 

@@ -10,8 +10,11 @@ public:
 	//Vector2 m_pivot;
 	class CTransform* m_transform;
 	class CCollider* m_collider;
-	class Image* m_image;
 	class CAnimator* m_animator;
+	class CSpriteRenderer* m_spriteRenderer;
+
+	//class Image* m_image;
+
 
 	LAYER m_layer;
 	bool isActive;
@@ -40,5 +43,8 @@ public:
 
 	void AddAnimator(string imageName);
 	void AddAnimator(IMAGE imageName);
+
+	void AddSpriteRenderer(IMAGE imageName);
+		void AddSpriteRenderer(string imageName);
 
 };

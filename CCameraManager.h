@@ -5,10 +5,10 @@
 class CCameraManager : public Singleton<CCameraManager>
 {
 private:
-	Vector2 worldSize; //½ÇÁ¦ ¸ÊÅ©±â
-	Vector2 screenSize; //Ä«¸Þ¶ó Å©±â
-	Vector2 pos; //Ä«¸Þ¶óÁÂÇ¥
-	Vector2 targetPivot; //Å¸±êÀÇ È­¸é»ó À§Ä¡
+	Vector2 worldSize; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½
+	Vector2 screenSize; //Ä«ï¿½Þ¶ï¿½ Å©ï¿½ï¿½
+	Vector2 pos; //Ä«ï¿½Þ¶ï¿½ï¿½ï¿½Ç¥
+	Vector2 targetPivot; //Å¸ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
 	class GameObject* m_pTarget;
 	Vector2 cameraSize;
@@ -35,5 +35,7 @@ public:
 
 	Vector2 getTargerPivot()const { return targetPivot; }
 	Vector2 getCameraPos()const { return pos; }
+	void SetWorldSize(Vector2 size);
+	Vector2 GetWorldSize();
 
 };

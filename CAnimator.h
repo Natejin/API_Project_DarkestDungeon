@@ -9,6 +9,7 @@ private:
 
 	vector<class Image*> m_imageVec;
 	vector<int> maxFrameX;
+	vector<Vector2> m_imageSize;
  
 
 

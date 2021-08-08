@@ -51,22 +51,22 @@ void CCameraManager::Update(float deltaTime, float worldTime)
 			pos.x = fpos.x - screenSize.x * targetPivot.x;
 		}
 
-		//플레이어가 위에 붙었을때 카메라는 왼쪽 끝에서 이동시키지 않음
-		if (fpos.y < topArea)
-		{
-			pos.y = 0.f;
-		}
-		//플레이어가 아래에 붙었을때 카메라는 오른쪽 끝에서 이동시키지 않음
-		else if (fpos.y >= worldSize.y - bottomArea) 
-		{
-			this->pos.y = worldSize.y - screenSize.y;
-		}
+		////플레이어가 위에 붙었을때 카메라는 왼쪽 끝에서 이동시키지 않음
+		//if (fpos.y < topArea)
+		//{
+		//	pos.y = 0.f;
+		//}
+		////플레이어가 아래에 붙었을때 카메라는 오른쪽 끝에서 이동시키지 않음
+		//else if (fpos.y >= worldSize.y - bottomArea) 
+		//{
+		//	this->pos.y = worldSize.y - screenSize.y;
+		//}
 
-		//플레이어가 월드맵에서 위 혹은 아래에 붙어있지않을때
-		//카메라를 플레이어위치에 맞게 이동시킴
-		else {
-			pos.y = fpos.y - screenSize.y * targetPivot.y;
-		}
+		////플레이어가 월드맵에서 위 혹은 아래에 붙어있지않을때
+		////카메라를 플레이어위치에 맞게 이동시킴
+		//else {
+		//	pos.y = fpos.y - screenSize.y * targetPivot.y;
+		//}
 	}
 }
 
@@ -106,4 +106,14 @@ void CCameraManager::Render(HDC _hdc)
 void CCameraManager::Release() 
 {
 
+}
+
+void CCameraManager::SetWorldSize(Vector2 size)
+{
+	worldSize = size;
+}
+
+Vector2 CCameraManager::GetWorldSize()
+{
+	return worldSize;
 }

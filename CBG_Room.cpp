@@ -42,11 +42,11 @@ void CBG_Room::SetIMG()
 	//}
 
 
-	//for (int i = 0; i < roadCount; i++)
-	//{
-	//	road[i].m_img = MG_IMAGE->findImage("ruins_wall7");
-	//	road[i].m_trans.m_pivot = 0;
-	//	road[i].m_trans.m_scale = Vector2(720, 720);
-	//	road[i].m_trans.m_pos = Vector2(720 * i, 0);
-	//}
+	/*for (int i = 0; i < roadCount; i++)
+	{
+		road[i].m_img = MG_IMAGE->findImage("ruins_wall7");
+		road[i].m_trans.m_pivot = 0;
+		road[i].m_trans.m_scale = Vector2(720, 720);
+		road[i].m_trans.m_pos = Vector2(720 * i, 0);
+	}*/
 }

@@ -45,10 +45,10 @@ void CBG_Town::FrontRender(HDC _hdc)
 
 void CBG_Town::SetIMG()
 {	/*
-	µÚ¿¡ ³ªÅ¸³ª´Â ¹è°æµé ¸ÕÀú ±×¸®°í
-	³ª¸ÓÁö estate¸¦ ¸¶Áö¸·¿¡ ±×¸®ÀÚ.
+	ï¿½Ú¿ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ estateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½.
 	townbg->sky->ruins->ground->town_backdrop->tree
-	->°¢Á¾½Ã¼³.
+	->ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½.
 	*/
 
 	ImageData temp0;
@@ -60,18 +60,19 @@ void CBG_Town::SetIMG()
 
 	ImageData temp1;
 	mostBG.push_back(temp1);
-	mostBG[1].m_img = MG_IMAGE->findImage("town_ruins");
+	mostBG[1].m_img = MG_IMAGE->findImage("district_midground");
 	mostBG[1].m_trans.m_pivot = 0;
 	mostBG[1].m_trans.m_scale = Vector2(720, 720);
-	mostBG[1].m_trans.m_pos = Vector2(720 * 0, 0);
+	mostBG[1].m_trans.m_pos = Vector2(720 * 0, 0 + 150);
 
 	ImageData temp2;
 	mostBG.push_back(temp2);
-	mostBG[2].m_img = MG_IMAGE->findImage("district_midground");
+	mostBG[2].m_img = MG_IMAGE->findImage("town_ruins");
 	mostBG[2].m_trans.m_pivot = 0;
 	mostBG[2].m_trans.m_scale = Vector2(720, 720);
-	mostBG[2].m_trans.m_pos = Vector2(720 * 0, 0 + 150);
+	mostBG[2].m_trans.m_pos = Vector2(720 * 0, 0);
 
+	
 	ImageData temp3;
 	mostBG.push_back(temp3);
 	mostBG[3].m_img = MG_IMAGE->findImage("town_ground");

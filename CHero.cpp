@@ -49,11 +49,11 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->AddImageFrame(img);
-	m_animator->SetAnimeSpeed(10);
+	m_animator->SetAnimeSpeed(5);
 
 	
-	//job¿¡ µû¸¥ ½ºÅ³À» ³ÖÀ» º¯¼ö, È¤Àº ÇÔ¼ö°¡ ÇÊ¿äÇÔ
-	//½ºÅ³À» enum class¿¡ Á÷¾÷º°·Î Ãß°¡ÇÒ °Í
+	//jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, È¤ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
+	//ï¿½ï¿½Å³ï¿½ï¿½ enum classï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½
 
 	return S_OK;
 }
@@ -88,17 +88,22 @@ void CHero::Release()
 void CHero::Move()
 {
 	int ran;
-	//ÀÎÇ²¿¡ µû¸¥ ÀÌµ¿ ÇÔ¼ö
-	//¾ÕµÚ ÀÌµ¿½Ã ¼ÓµµÀÇ Â÷ÀÌ
-
-	if (MG_INPUT->isStayKeyDown(VK_LEFT) || (MG_INPUT->isStayKeyDown(VK_RIGHT)))
+	//ï¿½ï¿½Ç²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ô¼ï¿½
+	//ï¿½Õµï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
+	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+	if (left | right)
 	{
-		if (MG_INPUT->isStayKeyDown(VK_LEFT) && (MG_INPUT->isStayKeyDown(VK_RIGHT)))
+		if (right)
 		{
-			//µ¿½Ã¿¡ ´­·¶À» °æ¿ì ¿òÁ÷ÀÌÁö ¾ÊÀ½
+			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)
+			{
+				m_transform->m_pos.x += 4;
+				m_DIST += 4;
+			}
 		}
 
-		else if (MG_INPUT->isStayKeyDown(VK_LEFT))
+		else if (left)
 		{
 			if (m_transform->m_pos.x > 0)
 			{
@@ -114,14 +119,6 @@ void CHero::Move()
 					}
 					limit += 300;
 				}
-			}
-		}
-		else if (MG_INPUT->isStayKeyDown(VK_RIGHT))
-		{
-			if (m_transform->m_pos.x < WORLDSIZEX - 200)
-			{
-				m_transform->m_pos.x += 4;
-				m_DIST += 4;
 			}
 		}
 	}
