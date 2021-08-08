@@ -263,9 +263,6 @@ void CParty::FormationMove()
 	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
 	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
 
-
-
-
 	m_member[0]->Move();
 	for (size_t i = 0; i < 3; i++)
 	{

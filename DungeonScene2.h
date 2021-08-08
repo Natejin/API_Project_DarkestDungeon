@@ -7,13 +7,18 @@
 
 class DungeonScene2 : public Scene
 {
-public:
-
-
+	vector<IMAGE> roomRandom;
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
 	DungeonData curDunheonMap;
+
+public:
+
+
+
+
+
 
 	class CParty* m_party;
 
@@ -112,4 +117,7 @@ public:
 	{
 		dest = bind(&DungeonScene2::TestButton, this);
 	}
+
+	void ActivateRoom();
+	void ActivateRoad();
 };

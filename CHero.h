@@ -8,8 +8,6 @@ class CHero : public Unit
 public:
 	JOB job;
 
-	//unit: HP, SPD, POS, SKILL, resist, attribute
-	//hero만 갖는 값들
 	int m_DMG; //skill에서 값 넣어주기
 	int m_ACRY; //명중률
 	int m_CRI;
@@ -50,9 +48,6 @@ public:
 
 	int getStress()const { return m_STRS; }
 	void setStress(int strs) { m_STRS += strs; }
-
-	//int getPos()const { return m_POS; }
-	//void setPos(int pos) { m_POS = pos; }
 
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);

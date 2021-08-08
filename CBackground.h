@@ -17,6 +17,7 @@ protected:
 	int roadCount;
 
 
+
 public:
 	CBackground();
 	~CBackground();

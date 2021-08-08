@@ -93,15 +93,15 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("ruins_wall6", "images/ruins/transperant/crypts_corridor_wall_05.bmp", 720, 720, true, RGB(255, 0, 255));
 
 	//¹æ
-	MG_IMAGE->addImage("ruins_room1", "images/ruins/crypts_room_wall_empty.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room2", "images/ruins/crypts_room_wall_library.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room3", "images/ruins/crypts_room_wall_entrance.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room4", "images/ruins/crypts_room_wall_drain.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room5", "images/ruins/crypts_room_wall_barrels.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room6", "images/ruins/crypts_room_wall_arch.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room7", "images/ruins/crypts_room_wall_altar.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room8", "images/ruins/crypts_entrance_room_wall.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room9", "images/ruins/crypts_room_wall_torture.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room1, "images/ruins/crypts_room_wall_empty.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room2, "images/ruins/crypts_room_wall_library.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room3, "images/ruins/crypts_room_wall_entrance.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room4, "images/ruins/crypts_room_wall_drain.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room5, "images/ruins/crypts_room_wall_barrels.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room6, "images/ruins/crypts_room_wall_arch.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room7, "images/ruins/crypts_room_wall_altar.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room8, "images/ruins/crypts_entrance_room_wall.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room9, "images/ruins/crypts_room_wall_torture.bmp", 1920, 720, false, RGB(255, 0, 255));
 
 	//±âÅ¸
 	MG_IMAGE->addImage("ruins_endhall", "images/ruins/transperant/crypts_endhall_01.bmp", 720, 720, true, RGB(255, 0, 255));

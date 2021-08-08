@@ -33,4 +33,7 @@ public:
 
 	void SetTarget(class GameObject* target) { m_pTarget = target; }
 
+	void SetWorldSize(Vector2 size);
+	Vector2 GetWorldSize();
+
 };

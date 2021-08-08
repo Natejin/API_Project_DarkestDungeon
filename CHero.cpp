@@ -47,7 +47,7 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->AddImageFrame(img);
-	m_animator->SetAnimeSpeed(10);
+	m_animator->SetAnimeSpeed(5);
 
 	
 	//job에 따른 스킬을 넣을 변수, 혹은 함수가 필요함
@@ -88,15 +88,20 @@ void CHero::Move()
 	int ran;
 	//인풋에 따른 이동 함수
 	//앞뒤 이동시 속도의 차이
-
-	if (MG_INPUT->isStayKeyDown(VK_LEFT) || (MG_INPUT->isStayKeyDown(VK_RIGHT)))
+	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
+	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+	if (left | right)
 	{
-		if (MG_INPUT->isStayKeyDown(VK_LEFT) && (MG_INPUT->isStayKeyDown(VK_RIGHT)))
+		if (right)
 		{
-			//동시에 눌렀을 경우 움직이지 않음
+			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)
+			{
+				m_transform->m_pos.x += 4;
+				m_DIST += 4;
+			}
 		}
 
-		else if (MG_INPUT->isStayKeyDown(VK_LEFT))
+		else if (left)
 		{
 			if (m_transform->m_pos.x > 0)
 			{
@@ -115,16 +120,6 @@ void CHero::Move()
 				}
 			}
 		}
-		else if (MG_INPUT->isStayKeyDown(VK_RIGHT))
-		{
-			if (m_transform->m_pos.x < WORLDSIZEX - 200)
-			{
-				m_transform->m_pos.x += 4;
-				m_DIST += 4;
-			}
-		}
-
-		
 	}
 }
 
