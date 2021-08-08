@@ -8,6 +8,7 @@ class BlackSmith :public CEst_UI
 
 private:
 	function<void()> m_triggerWhenClick;
+	CButton* m_quick2 = new CButton();
 
 public:
 	Rect m_rect;

@@ -20,20 +20,31 @@ HRESULT TownScene::Init()
 
 	m_abbey->Init();
 	MG_GMOBJ->RegisterObj("AbbeyUI", m_abbey);
+
 	m_blacksmith->Init();
 	MG_GMOBJ->RegisterObj("BlackSmithUI", m_blacksmith);
+
 	m_campingTrainer->Init();
 	MG_GMOBJ->RegisterObj("CampingTrainerUI", m_campingTrainer);
+
 	m_graveyard->Init();
 	MG_GMOBJ->RegisterObj("GraveYardUI", m_graveyard);
+
 	m_guild->Init();
 	MG_GMOBJ->RegisterObj("GuildUI", m_guild);
+
+	m_sanitarium->Init();
+	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
+
 	m_stage_coach->Init();
 	MG_GMOBJ->RegisterObj("StageCoachUI", m_stage_coach);
+
 	m_statue->Init();
 	MG_GMOBJ->RegisterObj("StatueUI", m_statue);
+
 	m_nomad_wagon->Init();
 	MG_GMOBJ->RegisterObj("NomadWagonUI", m_nomad_wagon);
+
 	m_tavern->Init();
 	MG_GMOBJ->RegisterObj("TavernUI", m_tavern);
 
@@ -98,29 +109,55 @@ void TownScene::Update()
 	}
 	if (campingTrainer_ui == true)
 	{
-		
+		m_campingTrainer->isUI = true;
+		campingTrainer_b = false;
+		campingTrainer_ui = false;
+
 	}
 	if (graveyard_ui == true)
 	{
-		
+		m_graveyard->isUI = true;
+		graveyard_b = false;
+		graveyard_ui = false;
 	}
 	if (guild_ui == true)
 	{
+		m_guild->isUI = true;
+		guild_ui = false;
+		guild_b = false;
 	}
 	if (sanitarium_ui == true)
 	{
+		m_sanitarium->isUI = true;
+		sanitarium_b = false;
+		sanitarium_ui = false;
 	}
 	if (stage_coach_ui == true)
 	{
+		m_stage_coach->isUI = true;
+		stage_coach_b = false;
+		stage_coach_ui = false;
+
 	}
 	if (town_statue_ui == true)
 	{
+		m_statue->isUI = true;
+		town_statue_b = false;
+		town_statue_ui = false;
+
 	}
 	if (nomad_wagon_ui == true)
 	{
+		m_nomad_wagon->isUI = true;
+		nomad_wagon_b = false;
+		nomad_wagon_ui = false;
+
 	}
 	if (tavern_ui == true)
 	{
+		m_tavern->isUI = true;
+		tavern_b = false;
+		tavern_ui = false;
 	}
 }
 
@@ -217,13 +254,6 @@ void TownScene::SetIMG_Est() //건물 버튼.
 	m_sanitarium->SetTriggerWhenClick(this, &TownScene::Show_sanitarium);
 	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
 
-	CButton* m_stage_coach = new CButton();
-	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 880, WINSIZEY / 2 - 50);
-	m_stage_coach->SetButtonSize(200, 200);
-	m_stage_coach->AddSpriteRenderer("town_stage_coach");
-	m_stage_coach->SetTriggerWhenClick(this, &TownScene::Show_stage_coach);
-	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
-
 	CButton* m_statue = new CButton();
 	m_statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 200, WINSIZEY / 2 - 80);
 	m_statue->SetButtonSize(200, 200);
@@ -244,6 +274,13 @@ void TownScene::SetIMG_Est() //건물 버튼.
 	m_tavern->AddSpriteRenderer("town_tavern");
 	m_tavern->SetTriggerWhenClick(this, &TownScene::Show_tavern);
 	MG_GMOBJ->RegisterObj("Tavern", m_tavern);
+
+	CButton* m_stage_coach = new CButton();
+	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 880, WINSIZEY / 2 - 50);
+	m_stage_coach->SetButtonSize(200, 200);
+	m_stage_coach->AddSpriteRenderer("town_stage_coach");
+	m_stage_coach->SetTriggerWhenClick(this, &TownScene::Show_stage_coach);
+	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
 
 	
 }

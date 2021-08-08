@@ -7,6 +7,7 @@ class Abbey :public CEst_UI
 
 private:
 	function<void()> m_triggerWhenClick;
+	CButton* m_quick = new CButton();
 
 public:
 	Rect m_rect;
@@ -27,6 +28,7 @@ public:
 
 	bool isUi;
 	bool isUI;
+	
 	void Setquick();
 	void FinishUI();
 	//===================================

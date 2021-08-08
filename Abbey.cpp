@@ -13,7 +13,12 @@ Abbey::~Abbey()
 HRESULT Abbey::Init()
 {
 	isUi = false;
-	Setquick();
+	
+	m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
+	m_quick->SetButtonSize(200, 200);
+	m_quick->AddSpriteRenderer("quick");
+	MG_GMOBJ->RegisterObj("quick", m_quick);
+	m_quick->isActive = false;
 
 	return S_OK;
 }
@@ -26,24 +31,19 @@ void Abbey::Update(float deltaTime, float worldTime)
 		isUI = true;
 		
 	}
-	
+	Setquick();
 }
 
 void Abbey::LateUpdate()
 {
-	
-
 }
 
 void Abbey::BackRender(HDC _hdc)
 {
-	
 }
 
 void Abbey::Render(HDC _hdc)
 {
-
-	
 }
 
 void Abbey::FrontRender(HDC _hdc)
@@ -53,6 +53,7 @@ void Abbey::FrontRender(HDC _hdc)
 	{
 		MG_IMAGE->findImage("abbey.character.bg")->render(_hdc);
 		MG_IMAGE->findImage("abbey.character")->render(_hdc);
+		m_quick->isActive = true;
 	}
 }
 
@@ -63,17 +64,15 @@ void Abbey::Release()
 
 void Abbey::Setquick()
 {
-	//나가기버튼
-	CButton* m_quick = new CButton();
-	m_quick->m_transform->m_pos = Vector2(WINSIZEX -500, 100);
-	m_quick->SetButtonSize(200, 200);
-	m_quick->AddSpriteRenderer("quick");
+	//나가기버튼	
+	
 	m_quick->SetTriggerWhenClick(this, &Abbey::FinishUI);
-	MG_GMOBJ->RegisterObj("quick", m_quick);
+
 }
 
 void Abbey::FinishUI()
 {
 	isUi = false;
 	isUI = false;
+	m_quick->isActive = false;
 }

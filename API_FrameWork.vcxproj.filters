@@ -178,9 +178,6 @@
     <Filter Include="Scene\UI\EST_UI\GraveYard">
       <UniqueIdentifier>{eba194aa-45d7-40a1-be2f-8623270b6cb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\UI\EST_UI\Guild">
-      <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\UI\EST_UI\Sanitarium">
       <UniqueIdentifier>{67e1d9bd-c95c-4b96-8cf3-7f086b58672a}</UniqueIdentifier>
     </Filter>
@@ -195,6 +192,9 @@
     </Filter>
     <Filter Include="Scene\UI\EST_UI\Tavern">
       <UniqueIdentifier>{769545c5-0e71-4e96-b6b8-ab7396a34d3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\UI\EST_UI\Guild">
+      <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

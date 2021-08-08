@@ -6,6 +6,7 @@ class StageCoach : public CEst_UI
 {
 private:
 	function<void()> m_triggerWhenClick;
+	CButton* m_quick = new CButton();
 
 public:
 	Rect m_rect;
