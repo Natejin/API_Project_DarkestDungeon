@@ -16,7 +16,6 @@ HRESULT dungeonUI::Init()
 
 void dungeonUI::Update(float deltaTime, float worldTime)
 {
-	//ShowMapOrInven();
 	TorchLightBarDecrease();
 }
 
@@ -137,7 +136,7 @@ void dungeonUI::ShowUI(HDC _hdc)
 	}
 }
 
-void dungeonUI::getDungeonSceneParty(CParty* party)
+void dungeonUI::setNowSceneParty(CParty* party)
 {
 	m_party = party;
 }

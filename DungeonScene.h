@@ -2,6 +2,7 @@
 #include "Scene.h"
 
 class dungeonUI;
+class dungeonUI_info;
 class DungeonScene : public Scene
 {
 public:
@@ -63,11 +64,9 @@ public:
 //==================================
 //UI
 public:
-	void TestButton();
-	int m_buttonTest;
-
 	dungeonUI* m_dungeonUI;
-
+	dungeonUI_info* m_dungeonUIinfo;
+	
 
 //==================================
 public:
@@ -91,9 +90,4 @@ public:
 	virtual void Release();
 	virtual void Update();
 	virtual void Render(HDC _hdc);
-
-	void DungeonScene::bindFunction(function<void()>& dest)
-	{
-		dest = bind(&DungeonScene::TestButton, this);
-	}
 };

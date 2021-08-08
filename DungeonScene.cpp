@@ -7,13 +7,13 @@
 #include "CButton.h"
 #include "CRoadObject.h"
 #include "dungeonUI.h"
+#include "dungeonUI_info.h"
 
 DungeonScene::DungeonScene()
 {
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 2;
-	m_buttonTest = 0;
 	isDoorClick = false;
 
 	m_party = nullptr;
@@ -35,9 +35,14 @@ HRESULT DungeonScene::Init()
 
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->Init();
-	m_dungeonUI->getDungeonSceneParty(m_party);
+	m_dungeonUI->setNowSceneParty(m_party);
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 	
+	m_dungeonUIinfo = new dungeonUI_info;
+	m_dungeonUIinfo->Init();
+	m_dungeonUIinfo->setNowSceneParty(m_party);
+	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
+
 	m_roadBG->isActive = true;
 
 	return S_OK;
@@ -69,12 +74,13 @@ void DungeonScene::Update()
 		m_party->getStress_movement();
 		m_party->decreaseBright_movement();
 
-		m_dungeonUI->getDungeonSceneParty(m_party);
+		m_dungeonUI->setNowSceneParty(m_party);
+		m_dungeonUIinfo->setNowSceneParty(m_party);
 
 		CheckDoor();
 		setRoadNum();
 
-		m_roadObj->reach_InteractionArea(m_party);
+		m_roadObj->setNowSceneParty(m_party);
 
 	}
 
@@ -382,9 +388,6 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
 
-	sprintf_s(str, "ButtonTest1 : %d", m_buttonTest);
-	TextOut(_hdc, 0, 180, str, strlen(str));
-
 	switch (curDunheonMap.dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Road_Empty:
@@ -415,10 +418,5 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 
 #pragma region UI
-
-void DungeonScene::TestButton() 
-{
-	m_buttonTest++;
-}
 
 #pragma endregion

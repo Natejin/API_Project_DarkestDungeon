@@ -13,5 +13,12 @@ HRESULT ImageAdder_MJ::Init()
 	
 	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 422, 30, true, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("treasure", "images/임시/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("trap", "images/임시/trap.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("enemy", "images/임시/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("nothing", "images/임시/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
+
+	//히어로 아이콘 추가할 것
+
 	return S_OK;
 }

@@ -39,6 +39,6 @@ public:
 
 	void ShowUI(HDC _hdc);
 
-	void getDungeonSceneParty(CParty* party);
+	void setNowSceneParty(CParty* party);
 
 };

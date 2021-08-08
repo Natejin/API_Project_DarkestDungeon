@@ -429,6 +429,15 @@
     <ClInclude Include="dungeonUI.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="dungeonUI_info.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_move.h">
+      <Filter>Scene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroInfoManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -661,6 +670,15 @@
     </ClCompile>
     <ClCompile Include="dungeonUI.cpp">
       <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="dungeonUI_info.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_move.cpp">
+      <Filter>Scene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroInfoManager.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
