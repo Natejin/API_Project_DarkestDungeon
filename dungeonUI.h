@@ -12,8 +12,6 @@ public:
 	CButton* bt_inven;
 	CButton* bt_map;
 
-	CParty* m_party;
-
 	//==================================
 
 	HRESULT Init();
@@ -38,7 +36,5 @@ public:
 	void ShowMap() { showMap = true; }
 
 	void ShowUI(HDC _hdc);
-
-	void setNowSceneParty(CParty* party);
 
 };

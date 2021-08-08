@@ -29,8 +29,7 @@ public:
 	virtual void Release();
 
 	//==================================
-	//씬에 속한 파티를 받아오기
-	void setNowSceneParty(CParty* party);
+
 	void setHeroJob(); //파티에 속한 영웅들의 정보를 세팅
 
 	void setInfoImage(); //모든 job의 이미지 세팅

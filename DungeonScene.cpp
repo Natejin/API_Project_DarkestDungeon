@@ -35,12 +35,10 @@ HRESULT DungeonScene::Init()
 
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->Init();
-	m_dungeonUI->setNowSceneParty(m_party);
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 	
 	m_dungeonUIinfo = new dungeonUI_info;
 	m_dungeonUIinfo->Init();
-	m_dungeonUIinfo->setNowSceneParty(m_party);
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 
 	m_roadBG->isActive = true;
@@ -74,13 +72,8 @@ void DungeonScene::Update()
 		m_party->getStress_movement();
 		m_party->decreaseBright_movement();
 
-		m_dungeonUI->setNowSceneParty(m_party);
-		m_dungeonUIinfo->setNowSceneParty(m_party);
-
 		CheckDoor();
 		setRoadNum();
-
-		m_roadObj->setNowSceneParty(m_party);
 
 	}
 
@@ -267,15 +260,27 @@ Vector2Int DungeonScene::GetDirFromInt(int dir) {
 
 void DungeonScene::CreateParty()
 {
-	m_party = new CParty;
-	m_party->Init(1,1,1);
-	
+	//이부분을 게임 매니저로 옮겨도 된다면 GetParty도 만들 수 있을듯함
+	//m_party = new CParty;
+	//m_party->Init(1,1,1);
+	//
+	//auto party = MG_GAME->GetHeroes();
+	//for (int i = 0; i < party.size(); i++)
+	//{
+	//	party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
+	//}
+	//m_party->SetParty(party);
+
+	MG_GAME->setParty();
+	m_party = MG_GAME->GetParty();
+
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
+		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 500);
 	}
 	m_party->SetParty(party);
+
 	MG_GMOBJ->RegisterObj("Party", m_party);
 	MG_CAMERA->SetTarget(m_party->GetHero(0));
 }
@@ -382,9 +387,6 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "roadNum : %d", m_roadNum);
 	TextOut(_hdc, 0, 100, str, strlen(str));
 
-	//sprintf_s(str, "sceneSize : %d", m_sceneSize);
-	//TextOut(_hdc, 0, 140, str, strlen(str));
-
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
 
@@ -414,9 +416,4 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 		TextOut(_hdc, 0, 160, str, strlen(str));
 	}
 }
-#pragma endregion
-
-
-#pragma region UI
-
 #pragma endregion

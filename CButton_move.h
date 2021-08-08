@@ -17,7 +17,6 @@ public:
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);
-	//virtual void Update(Vector2 m_ptMouseToVec);
 	virtual void LateUpdate();
 
 	virtual void BackRender(HDC _hdc);

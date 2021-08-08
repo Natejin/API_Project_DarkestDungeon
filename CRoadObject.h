@@ -13,15 +13,11 @@ private:
 	vector <ImageData> m_roadObj;
 	vector <CTransform> m_SettingArea;
 	bool isTreasureOpen;
-	bool clearCrap;
+	bool clearTrap;
 
 	CButton_move* bt_treasure;
 	CButton_move* bt_trap;
 	CButton_move* bt_battle;
-
-	bool colliderCheck;
-
-	CParty* party; 
 
 public:
 	CRoadObject();
@@ -47,14 +43,11 @@ public:
 	void setRoadObjIMG();
 	void setRoadObj(); //set Obj according to MapInfo
 
+	void Interaction_collision();
 	void Interaction_treassure();
-	void Interaction_trap_success();
+	void Interaction_trap();
 	void Interaction_trap_fail();
+	void Interaction_trap_success();
 	void Interaction_battle(); //not sure
-
-	void showDividedArea(HDC _hdc);
-
-	CParty* afterObjTouch() { return party; }
-	void setNowSceneParty(CParty* _party) { party = _party; }
 
 };

@@ -118,9 +118,9 @@ void dungeonUI::TorchLightBarDecrease()
 	vUI[8].m_img->setWidth2(20);
 	vUI[8].m_trans.m_pos.x = 1400;
 
-	vUI[7].m_img->setWidth(20 + (422 / 100) * (100 - m_party->getBrightness()));
-	vUI[8].m_img->setWidth2(20 + (422 / 100) * (100 - m_party->getBrightness()));
-	vUI[8].m_trans.m_pos.x = 1400 - ((422 / 100) * (100 - m_party->getBrightness()));
+	vUI[7].m_img->setWidth(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
+	vUI[8].m_img->setWidth2(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
+	vUI[8].m_trans.m_pos.x = 1400 - ((422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
 }
 
 void dungeonUI::ShowUI(HDC _hdc)
@@ -134,9 +134,4 @@ void dungeonUI::ShowUI(HDC _hdc)
 			vUI[4].m_img->renderUI(_hdc, &vUI[4].m_trans);
 		}
 	}
-}
-
-void dungeonUI::setNowSceneParty(CParty* party)
-{
-	m_party = party;
 }

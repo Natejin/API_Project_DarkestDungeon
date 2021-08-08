@@ -117,7 +117,6 @@ void CParty::SetParty(vector<CHero*> party)
 	for (size_t i = 0; i < m_member.size(); i++)
 	{
 		m_member[i]->isActive = true;
-		//MG_GMOBJ->RegisterObj(m_member[i]->GetName(), m_member[i]);
 	}
 }
 
@@ -125,6 +124,8 @@ CHero* CParty::GetHero(int index)
 {
 	return index < m_member.size() ? m_member[index] : nullptr;
 }
+
+#pragma region Annotating
 //
 //void CParty::createParty()
 //{
@@ -257,6 +258,7 @@ CHero* CParty::GetHero(int index)
 //	MG_GMOBJ->RegisterObj(name, hero);
 //	m_member.push_back(hero);
 //}
+#pragma endregion
 
 void CParty::FormationMove()
 {
@@ -286,7 +288,6 @@ void CParty::FormationMove()
 	}
 }
 
-
 void CParty::setTorch(int torch)
 {
 	m_Item_Torch = torch;
@@ -310,7 +311,6 @@ void CParty::setBrightness(int brightness)
 
 void CParty::decreaseBright_movement()
 {
-	//앞뒤 속도차이로 인해 가끔씩 distance이동 적용이 잘 되지 않음
 	if (MG_INPUT->isStayKeyDown(VK_RIGHT) || MG_INPUT->isStayKeyDown(VK_LEFT))
 	{
 		if (m_member[0]->getMoveDis() > limit && m_member[0]->getMoveDis() > 200)
@@ -340,7 +340,6 @@ void CParty::getStress_movement()
 void CParty::showMemberInfo(HDC _hdc)
 {
 	//나중에 스테이더스를 확인하는 용도로 사용할 것
-
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);

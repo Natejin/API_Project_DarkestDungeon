@@ -43,13 +43,6 @@ void dungeonUI_info::Release()
 //==================================
 
 
-void dungeonUI_info::setNowSceneParty(CParty* party)
-{
-    pos1Hero = party->GetHero(0);
-    pos2Hero = party->GetHero(1);
-    pos3Hero = party->GetHero(2);
-    pos4Hero = party->GetHero(3);
-}
 
 void dungeonUI_info::setHeroJob()
 {
