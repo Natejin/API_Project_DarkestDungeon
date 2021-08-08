@@ -1,13 +1,23 @@
 #include "framework.h"
-#include "CSpriteRenderer.h"
+//#include "CSpriteRenderer.h"
 
 CSpriteRenderer::CSpriteRenderer()
 {
+
+}
+
+CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
+{
+	m_trans = _trans;
+	m_image = MG_IMAGE->findImage(imageName);
+	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
 }
 
 CSpriteRenderer::~CSpriteRenderer()
 {
 }
+
+
 
 void CSpriteRenderer::SetImage(string imageName)
 {

@@ -94,10 +94,10 @@ void enemyManager::collision()
     {
         RECT rc;
 
-        if (IntersectRect(&rc, &_bullet->getVBullet()[i].rc, &_rocket->getRocketImage()->getBoundingBox()))
-        {
-            _bullet->removeMissile(i);
-            _rocket->hitDamage(10);
-        }
+        //if (IntersectRect(&rc, &_bullet->getVBullet()[i].rc, &_rocket->getRocketImage()->getBoundingBox()))
+        //{
+        //    _bullet->removeMissile(i);
+        //    _rocket->hitDamage(10);
+        //}
     }
 }

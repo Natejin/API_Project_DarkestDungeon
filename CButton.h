@@ -1,10 +1,9 @@
 #pragma once
 #include "GameObject.h"
-#include <functional>
 
 class CButton : public GameObject
 {
-private:
+protected:
 	function<void()> m_triggerWhenClick;
 	int countNum;
 
@@ -22,8 +21,6 @@ public:
 	virtual void BackRender(HDC _hdc);
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
-
-	virtual void Release();
 
 	//===================================
 
