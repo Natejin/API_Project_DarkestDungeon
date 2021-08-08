@@ -456,7 +456,8 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale)
 
 void Image::renderUI(HDC hdc, const CTransform* transform)
 {
-	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale;
+	Vector2 _imageScale = Vector2(_imageInfo->width, _imageInfo->height);
+	Vector2 pos = transform->m_pos - _imageScale * transform->m_pivot * transform->m_scale;
 	if (_isTrans)
 	{
 		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수

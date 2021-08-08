@@ -2,8 +2,6 @@
 #include "CRoadObject.h"
 #include "CParty.h"
 #include "CHero.h"
-#include "CAnimator.h"
-#include "CCollider.h"
 #include "ImageData.h"
 
 #include "CButton.h"

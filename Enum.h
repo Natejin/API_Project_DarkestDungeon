@@ -4,14 +4,15 @@ enum class LAYER
 {
 	Unknown = -1,
 	BackGround = 0,
-	EffectBackground = 2,
+	Building = 2,
 	Player = 4,
 	Enemy = 8,
 	AllinceProjectile = 16,
 	EnemyProjectile = 32,
 	EffectFrontword = 64,
 	Item = 128,
-	UI = 256
+	UI = 256,
+	UIButton = 512
 };
 
 enum class JOB
@@ -64,6 +65,9 @@ enum class IMAGE
 	ruins_room7,
 	ruins_room8,
 	ruins_room9,
+
+	abbey_bg,
+	abbey_char,
 
 	ruins_endhall,
 	ruins_mid,
