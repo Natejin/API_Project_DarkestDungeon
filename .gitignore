@@ -1,6 +1,5 @@
 # Prerequisites
 *.d
-*.ipch
 
 # Compiled Object files
 *.slo
@@ -8,6 +7,8 @@
 *.o
 *.obj
 *.suo
+*.ipch
+
 
 # Precompiled Headers
 *.gch
