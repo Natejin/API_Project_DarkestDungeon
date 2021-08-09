@@ -222,7 +222,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("plagueDoctor_skill6", "images/icons_heroes/plague_doctor.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("vestal_portrait", "images/icons_heroes/vestal_portrait_roster.bmp", 85, 85, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_portrait", "images/icons_heroes/vestal_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("vestal_skill1", "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("vestal_skill2", "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("vestal_skill3", "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -232,9 +232,27 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("vestal_skill7", "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("vestal_armor", "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("vestal_weapon", "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	
+	//UIovelay
+	MG_IMAGE->addImage("selected1", "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("selected2", "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target1", "images/dungeonUI/target_2.bmp", 246, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target2", "images/dungeonUI/target_3.bmp", 328, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target3", "images/dungeonUI/target_4.bmp", 436, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target_h_1", "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target_h_2", "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 8, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 8, 12, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
+
+
 	return S_OK;
 }
 

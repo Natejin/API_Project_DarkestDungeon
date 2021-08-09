@@ -43,6 +43,10 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 	m_DIST = 0;
 	isActive = false;
 
+	isSelected = false; //dungeonUIinfo¿¡¼­ Á¤º¸¸¦ ¹Þ¾Æ ¼öÁ¤
+	isBattle = false;
+
+
 	//m_image = MG_IMAGE->findImage(img);
 
 	m_animator = new CAnimator();
@@ -50,15 +54,15 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 	m_animator->AddImageFrame(img);
 	m_animator->SetAnimeSpeed(5);
 
-	
-	//jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, È¤ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
-	//ï¿½ï¿½Å³ï¿½ï¿½ enum classï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½
+	setMemberOverlay();
 
 	return S_OK;
 }
 
 void CHero::Update(float deltaTime, float worldTime)
 {
+	selectedMem.m_trans.m_pos = Vector2(m_transform->m_pos.x - 90, m_transform->m_pos.y + 60);
+	//targetedMem.m_trans.m_pos = Vector2(m_transform->m_pos.x + 400, m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight());
 }
 
 void CHero::LateUpdate()
@@ -73,10 +77,12 @@ void CHero::Render(HDC _hdc)
 {
 	//m_image->frameRender(_hdc, m_transform);
 	m_animator->FrameRender(_hdc);
+
 }
 
 void CHero::FrontRender(HDC _hdc)
 {
+	showOverlay(_hdc);
 }
 
 void CHero::Release()
@@ -87,8 +93,6 @@ void CHero::Release()
 void CHero::Move()
 {
 	int ran;
-	//ï¿½ï¿½Ç²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ô¼ï¿½
-	//ï¿½Õµï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
 	if (left | right)
@@ -129,4 +133,57 @@ bool CHero::PreventGetOutBg(int startX, int endX)
 		return true;
 	else 
 		return false;
+}
+
+void CHero::setMemberOverlay()
+{
+	selectedMem.m_img = MG_IMAGE->findImage("selected1");
+	targetedMem.m_img = MG_IMAGE->findImage("target1");
+}
+
+void CHero::showOverlay(HDC _hdc)
+{
+	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
+	targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
+}
+
+void CHero::useSkill1()
+{
+	//bind&func, buttonÀ» »ç¿ëÇÏ¿© selectedMember¿¡ µû¸¥ ÇÔ¼öº¯°æ
+}
+
+void CHero::useSkill2()
+{
+}
+
+void CHero::useSkill3()
+{
+}
+
+void CHero::useSkill4()
+{
+}
+
+void CHero::useMoveSkill()
+{
+}
+
+void CHero::usePassTrun()
+{
+}
+
+void CHero::setHpBar()
+{
+}
+
+void CHero::setSTRSbar()
+{
+}
+
+void CHero::setSelectedMem()
+{
+}
+
+void CHero::setTargetedMem()
+{
 }

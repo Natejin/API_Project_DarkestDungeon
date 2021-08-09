@@ -9,6 +9,8 @@ private:
 	vector<ImageData> m_heroInfoImage; //장비, 히어로 아이콘, 스킬 이미지
 	vector<ImageData> m_invenOrMapImage; 
 
+	int selectedHeroIndex;
+
 public:
 	dungeonUI_info();
 	~dungeonUI_info();
@@ -26,11 +28,11 @@ public:
 
 	//==================================
 
-	void setHeroJob(); //파티에 속한 영웅들의 정보를 세팅
-
 	void setInfoImage(); //모든 job의 이미지 세팅
 	void setSkillIcon(); //버튼과 스킬함수를 연결
 
 	void showWhichHero(CHero* _hero); //보여줄 히어로를 선택
-
+	void showHeroState(HDC _hdc);
+	void showHeroSkill(HDC _hdc);
+	void showHeroEquip(HDC _hdc);
 };
