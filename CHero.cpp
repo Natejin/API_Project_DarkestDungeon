@@ -2,7 +2,6 @@
 #include "CHero.h"
 #include "CParty.h"
 #include "DungeonScene.h"
-#include "CAnimator.h"
 
 CHero::CHero() {
 	unitType = UNITTYPE::Hero;

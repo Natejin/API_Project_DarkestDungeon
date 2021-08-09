@@ -3,6 +3,7 @@
 //commonMacroFunction(필요한 부분은 직접만들어써라)
 //===============================================
 
+
 //포인트
 inline POINT PointMake(int x, int y)
 {
@@ -40,6 +41,10 @@ inline void RectangleMake(HDC hdc,RECT rect)
 	Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
 }
 
+inline void RectangleMake(HDC hdc, Rect rect)
+{
+	Rectangle(hdc, rect.l, rect.t, rect.r, rect.b);
+}
 
 inline void RectangleMakeCenter(HDC hdc, int x, int y, int width, int height)
 {

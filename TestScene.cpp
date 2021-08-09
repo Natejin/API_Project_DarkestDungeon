@@ -25,8 +25,13 @@ void TestScene::Release()
 void TestScene::Update()
 {
 	//MG_SCENE->changeScene(SCENETYPE::Dungeon);
+<<<<<<< HEAD
 	MG_SCENE->changeScene(SCENETYPE::Dungeon2);
 	//MG_SCENE->changeScene(SCENETYPE::Town);
+=======
+	//MG_SCENE->changeScene(SCENETYPE::Dungeon2);
+	MG_SCENE->changeScene(SCENETYPE::Town);
+>>>>>>> main
 }
 
 void TestScene::Render(HDC _hdc)

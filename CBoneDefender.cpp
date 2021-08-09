@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "CBoneDefender.h"
-#include "CAnimator.h"
+
 
 CBoneDefender::CBoneDefender()
 {
