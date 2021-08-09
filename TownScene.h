@@ -13,7 +13,10 @@ protected:
 	class Statue* m_statue ;
 	class NomadWagon* m_nomad_wagon;
 	class Tavern* m_tavern;
+private:
 
+	class CHero* m_hero;
+	
 public:
 	class CEst_UI* m_estui;
 
@@ -45,9 +48,7 @@ public:
 public:
 	//버튼.
 	void SetIMG_Est();
-	//나가기버튼
-	void Set_quick();
-
+	void SetUI();
 
 public:
 	//버튼의 역활을 하는 bool값을 바꾸는 함수.
@@ -62,6 +63,11 @@ public:
 	void Show_sanitarium(); //요양원
 	void Show_tavern(); //여관
 	
+public:
+
+	void Show_Activity_log();
+	void SetHerolist();
+
 public:
 	TownScene();
 	virtual~TownScene();

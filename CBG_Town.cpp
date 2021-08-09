@@ -20,20 +20,20 @@ HRESULT CBG_Town::Init()
 	return S_OK;
 }
 
-/*void CBG_Town::BackRender(HDC _hdc)
-{
-}
-
-void CBG_Town::Render(HDC _hdc)
-{
-}
-
-void CBG_Town::FrontRender(HDC _hdc)
-{
-	
-
-
-}*/
+//void CBG_Town::BackRender(HDC _hdc)
+//{
+//}
+//
+//void CBG_Town::Render(HDC _hdc)
+//{
+//	
+//	
+//}
+//
+//void CBG_Town::FrontRender(HDC _hdc)
+//{
+//
+//}
 
 //void CBG_Road::Update(float deltaTime, float worldTime)
 //{
@@ -72,13 +72,20 @@ void CBG_Town::SetIMG()
 	mostBG[2].m_trans.m_scale = Vector2(720, 720);
 	mostBG[2].m_trans.m_pos = Vector2(720 * 0, 0);
 
-	
 	ImageData temp3;
 	mostBG.push_back(temp3);
 	mostBG[3].m_img = MG_IMAGE->findImage("town_ground");
 	mostBG[3].m_trans.m_pivot = 0;
 	mostBG[3].m_trans.m_scale = Vector2(720, 720);
 	mostBG[3].m_trans.m_pos = Vector2(720 * 0, 0);
+
+	/*ImageData temp4;
+	mostBG.push_back(temp4);
+	mostBG[4].m_img = MG_IMAGE->findImage("roster_topframe");
+	mostBG[4].m_trans.m_pivot = 0;
+	mostBG[4].m_trans.m_scale = Vector2(720, 720);
+	mostBG[4].m_trans.m_pos = Vector2(720 * 0, 0);*/
+
 
 }
 

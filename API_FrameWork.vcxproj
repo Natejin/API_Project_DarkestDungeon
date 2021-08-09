@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Abbey.h" />
+    <ClInclude Include="Activity_log.h" />
     <ClInclude Include="airHockey.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="animationManager.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="CButton.h" />
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CComponent.h" />
+    <ClInclude Include="CDragButtion.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEst_UI.h" />
     <ClInclude Include="CGameManager.h" />
@@ -245,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Abbey.cpp" />
+    <ClCompile Include="Activity_log.cpp" />
     <ClCompile Include="airHockey.cpp" />
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animationManager.cpp" />
@@ -271,6 +274,7 @@
     <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CComponent.cpp" />
+    <ClCompile Include="CDragButtion.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEst_UI.cpp" />
     <ClCompile Include="CGameManager.cpp" />

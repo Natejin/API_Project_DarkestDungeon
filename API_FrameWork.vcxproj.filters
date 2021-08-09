@@ -196,6 +196,9 @@
     <Filter Include="Object\UI\EST_UI\Guild">
       <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UI\EST_UI\Activity_log">
+      <UniqueIdentifier>{941196f1-fe45-4f41-bdc7-b32411c346ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -495,6 +498,12 @@
     <ClInclude Include="CBuilding.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Activity_log.h">
+      <Filter>Object\UI\EST_UI\Activity_log</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtion.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -762,6 +771,12 @@
       <Filter>Object\UI\EST_UI\Tavern</Filter>
     </ClCompile>
     <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Activity_log.cpp">
+      <Filter>Object\UI\EST_UI\Activity_log</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtion.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
   </ItemGroup>

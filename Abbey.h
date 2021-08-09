@@ -1,7 +1,5 @@
 #pragma once
 #include "CEst_UI.h"
-
-
 class Abbey :public CEst_UI
 {
 

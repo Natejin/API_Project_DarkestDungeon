@@ -46,6 +46,14 @@ void CButton::Render(HDC _hdc)
 void CButton::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
+
+#ifdef _DEBUG
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, m_rect);
+	}
+
+#endif // _DEBUG
 }
 
 void CButton::SetButtonSize(float width, float height)

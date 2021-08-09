@@ -14,15 +14,9 @@
 #include"NomadWagon.h"
 #include"Tavern.h"
 
-TownScene::TownScene()
-{
-
-}
-
-TownScene::~TownScene()
-{
-}
-
+#include"CHero.h"
+TownScene::TownScene(){}
+TownScene::~TownScene(){}
 HRESULT TownScene::Init()
 {
 	CBG_Town* m_town = new CBG_Town();
@@ -30,7 +24,10 @@ HRESULT TownScene::Init()
 	
 	MG_GMOBJ->RegisterObj("Town", m_town);
 
+	m_hero = new CHero();
+
 	SetIMG_Est(); //건물 버튼.
+	SetUI(); //UI버튼
 
 	m_abbey = new Abbey();
 	m_abbey->Init();
@@ -75,6 +72,8 @@ HRESULT TownScene::Init()
 	MG_GMOBJ->RegisterObj("TavernUI", m_tavern);
 
 	m_estui = new CEst_UI;
+
+
 	return S_OK;
 }
 
@@ -193,10 +192,14 @@ void TownScene::Render()
 }
 
 void TownScene::Render(HDC _hdc)
-{	
+{
+	
+
 	if (abbey_b)
 	{
 		TextOut(_hdc, 50, 100, "수도원", lstrlen("수도원"));
+		
+
 	}
 	if (blacksmith_b)
 	{
@@ -239,28 +242,52 @@ void TownScene::Render(HDC _hdc)
 void TownScene::SetIMG_Est() //건물 버튼.
 {	
 	CBuilding* m_abbey = new CBuilding();
+<<<<<<< Updated upstream
 	m_abbey->m_transform->m_pos = Vector2(WINSIZEX / 2 - 350, WINSIZEY / 2 - 500);
+=======
+	m_abbey->m_transform->m_pos = Vector2(WINSIZEX / 2 +30, WINSIZEY / 2 - 200);
+>>>>>>> Stashed changes
 	m_abbey->AddSpriteRenderer("town_abbey");
 	m_abbey->SetButtonSize(200, 200);
 	m_abbey->SetTriggerWhenClick(this, &TownScene::Show_abeey);
 	MG_GMOBJ->RegisterObj("Abbey", m_abbey);
 
+<<<<<<< Updated upstream
 	CBuilding* m_blacksmith = new CBuilding();
 	m_blacksmith->m_transform->m_pos = Vector2(WINSIZEX / 2 + 80, WINSIZEY / 2 - 150);
+=======
+	CBuilding* m_guild = new CBuilding();
+	m_guild->m_transform->m_pos = Vector2(WINSIZEX / 2 + 300, WINSIZEY / 2 +50);
+	m_guild->SetButtonSize(200, 200);
+	m_guild->AddSpriteRenderer("town_guild");
+	m_guild->SetTriggerWhenClick(this, &TownScene::Show_guild);
+	MG_GMOBJ->RegisterObj("Guild", m_guild);
+
+	CBuilding* m_blacksmith = new CBuilding();
+	m_blacksmith->m_transform->m_pos = Vector2(WINSIZEX -500 , WINSIZEY / 2+100);
+>>>>>>> Stashed changes
 	m_blacksmith->SetButtonSize(200, 200);
 	m_blacksmith->AddSpriteRenderer("town_blacksmith");
 	m_blacksmith->SetTriggerWhenClick(this, &TownScene::Show_blacksmith);
 	MG_GMOBJ->RegisterObj("Blacksmith", m_blacksmith);
 
 	CBuilding* m_campingTrainer = new CBuilding();
+<<<<<<< Updated upstream
 	m_campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 920, WINSIZEY / 2 - 400);
+=======
+	m_campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
+>>>>>>> Stashed changes
 	m_campingTrainer->SetButtonSize(200, 200);
 	m_campingTrainer->AddSpriteRenderer("town_camping_trainer");
 	m_campingTrainer->SetTriggerWhenClick(this, &TownScene::Show_campingTrainer);
 	MG_GMOBJ->RegisterObj("CampingTrainer", m_campingTrainer);
 
 	CBuilding* m_graveyard = new CBuilding();
+<<<<<<< Updated upstream
 	m_graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 - 150);
+=======
+	m_graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2 - 0);
+>>>>>>> Stashed changes
 	m_graveyard->SetButtonSize(200, 200);
 	m_graveyard->AddSpriteRenderer("town_graveyard");
 	m_graveyard->SetTriggerWhenClick(this, &TownScene::Show_graveyard);
@@ -274,40 +301,167 @@ void TownScene::SetIMG_Est() //건물 버튼.
 	MG_GMOBJ->RegisterObj("Guild", m_guild);
 
 	CBuilding* m_sanitarium = new CBuilding();
+<<<<<<< Updated upstream
 	m_sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 580, WINSIZEY / 2 - 380);
+=======
+	m_sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 220, WINSIZEY / 2 - 80);
+>>>>>>> Stashed changes
 	m_sanitarium->SetButtonSize(200, 200);
 	m_sanitarium->AddSpriteRenderer("town_sanitarium");
 	m_sanitarium->SetTriggerWhenClick(this, &TownScene::Show_sanitarium);
 	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
 
 	CBuilding* m_statue = new CBuilding();
+<<<<<<< Updated upstream
 	m_statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 200, WINSIZEY / 2 - 80);
+=======
+	m_statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2 +150);
+>>>>>>> Stashed changes
 	m_statue->SetButtonSize(200, 200);
 	m_statue->AddSpriteRenderer("town_statue");
 	m_statue->SetTriggerWhenClick(this, &TownScene::Show_town_statue);
 	MG_GMOBJ->RegisterObj("Statue", m_statue);
 
 	CBuilding* m_nomad_wagon = new CBuilding();
+<<<<<<< Updated upstream
 	m_nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 - 100, WINSIZEY / 2 + 80);
+=======
+	m_nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 +100, WINSIZEY / 2 + 250);
+>>>>>>> Stashed changes
 	m_nomad_wagon->SetButtonSize(200, 200);
 	m_nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
 	m_nomad_wagon->SetTriggerWhenClick(this, &TownScene::Show_nomad_wagon);
 	MG_GMOBJ->RegisterObj("Nomad_wagon", m_nomad_wagon);
 
 	CBuilding* m_tavern = new CBuilding();
+<<<<<<< Updated upstream
 	m_tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
+=======
+	m_tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 +100);
+>>>>>>> Stashed changes
 	m_tavern->SetButtonSize(200, 200);
 	m_tavern->AddSpriteRenderer("town_tavern");
 	m_tavern->SetTriggerWhenClick(this, &TownScene::Show_tavern);
 	MG_GMOBJ->RegisterObj("Tavern", m_tavern);
 
 	CBuilding* m_stage_coach = new CBuilding();
+<<<<<<< Updated upstream
 	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 880, WINSIZEY / 2 - 50);
+=======
+	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 650, WINSIZEY / 2 +150);
+>>>>>>> Stashed changes
 	m_stage_coach->SetButtonSize(200, 200);
 	m_stage_coach->AddSpriteRenderer("town_stage_coach");
 	m_stage_coach->SetTriggerWhenClick(this, &TownScene::Show_stage_coach);
 	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
 
+}
+void TownScene::SetUI()
+{	
+	CButton* m_activity_log = new CButton();
+	m_activity_log->m_transform->m_pos = Vector2(WINSIZEX / 2+100, WINSIZEY / 2 +400);
+	m_activity_log->SetButtonSize(200, 200);
+	m_activity_log->AddSpriteRenderer(IMAGE::estate_activity_log);
+	MG_GMOBJ->RegisterObj("log", m_activity_log);
+
+	CButton* m_rostertop = new CButton();
+	m_rostertop->m_transform->m_pos = Vector2(WINSIZEX / 2+700, WINSIZEY / 2-400);
+	m_rostertop->SetButtonSize(0, 0);
+	m_rostertop->AddSpriteRenderer(IMAGE::roster_topframe);
+	MG_GMOBJ->RegisterObj("rostertop", m_rostertop);
+	
+	CButton* m_rosterbg = new CButton();
+	m_rosterbg->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY-650);
+	m_rosterbg->SetButtonSize(0, 0);
+	m_rosterbg->AddSpriteRenderer(IMAGE::roster_bggrad);
+	MG_GMOBJ->RegisterObj("rosterPanel", m_rosterbg);
+	
+
+	CButton* m_rosterdown = new CButton();
+	m_rosterdown->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 350);
+	m_rosterdown->SetButtonSize(50, 50);
+	m_rosterdown->AddSpriteRenderer(IMAGE::roster_downframe);
+	MG_GMOBJ->RegisterObj("rosterdown", m_rosterdown);
+	
+	CButton* m_nameplate = new CButton();
+	m_nameplate->m_transform->m_pos = Vector2(WINSIZEX / 2-500 , 130);
+	m_nameplate->SetButtonSize(0, 0);
+	m_nameplate->AddSpriteRenderer(IMAGE::estate_nameplate);
+	MG_GMOBJ->RegisterObj("rosterdown", m_nameplate);
+
+	CButton* m_rosterelement = new CButton();
+	m_rosterelement->m_transform->m_pos = Vector2(WINSIZEX / 2 +700, WINSIZEY - 880);
+	m_rosterelement->SetButtonSize(0, 0);
+	m_rosterelement->AddSpriteRenderer(IMAGE::rosterelement_res);
+	MG_GMOBJ->RegisterObj("rosterdown", m_rosterelement);
+
+	CButton* m_hero_slot_bg = new CButton();
+	m_hero_slot_bg->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880);
+	m_hero_slot_bg->SetButtonSize(50, 50);
+	m_hero_slot_bg->AddSpriteRenderer(IMAGE::hero_slot_bg);
+	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg);
+
+
+	CButton* m_rosterelement2 = new CButton();
+	m_rosterelement2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 780);
+	m_rosterelement2->SetButtonSize(0, 0);
+	m_rosterelement2->AddSpriteRenderer(IMAGE::rosterelement_res);
+	MG_GMOBJ->RegisterObj("rosterdown", m_rosterelement2);
+
+	CButton* m_hero_slot_bg2 = new CButton();
+	m_hero_slot_bg2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 780);
+	m_hero_slot_bg2->SetButtonSize(50, 50);
+	m_hero_slot_bg2->AddSpriteRenderer(IMAGE::hero_slot_bg);
+	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg2);
+
+	CButton* m_rosterelement3 = new CButton();
+	m_rosterelement3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 680);
+	m_rosterelement3->SetButtonSize(0, 0);
+	m_rosterelement3->AddSpriteRenderer(IMAGE::rosterelement_res);
+	MG_GMOBJ->RegisterObj("rosterdown", m_rosterelement3);
+
+	CButton* m_hero_slot_bg3 = new CButton();
+	m_hero_slot_bg3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 680);
+	m_hero_slot_bg3->SetButtonSize(50, 50);
+	m_hero_slot_bg3->AddSpriteRenderer(IMAGE::hero_slot_bg);
+	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg3);
+
+
+	CButton* m_rosterelement4 = new CButton();
+	m_rosterelement4->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 580);
+	m_rosterelement4->SetButtonSize(0, 0);
+	m_rosterelement4->AddSpriteRenderer(IMAGE::rosterelement_res);
+	MG_GMOBJ->RegisterObj("rosterdown", m_rosterelement4);
+
+	CButton* m_hero_slot_bg4 = new CButton();
+	m_hero_slot_bg4->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 580);
+	m_hero_slot_bg4->SetButtonSize(50, 50);
+	m_hero_slot_bg4->AddSpriteRenderer(IMAGE::hero_slot_bg);
+	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg4);
+
+	CButton* m_rosterelement5 = new CButton();
+	m_rosterelement5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 480);
+	m_rosterelement5->SetButtonSize(0, 0);
+	m_rosterelement5->AddSpriteRenderer(IMAGE::rosterelement_res);
+	MG_GMOBJ->RegisterObj("rosterdown", m_rosterelement5);
+
+	CButton* m_hero_slot_bg5 = new CButton();
+	m_hero_slot_bg5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 480);
+	m_hero_slot_bg5->SetButtonSize(50, 50);
+	m_hero_slot_bg5->AddSpriteRenderer(IMAGE::hero_slot_bg);
+	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg5);
+
+	
+	CButton* m_sort_rarity = new CButton();
+	m_sort_rarity->m_transform->m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 950);
+	m_sort_rarity->SetButtonSize(50, 50);
+	m_sort_rarity->AddSpriteRenderer(IMAGE::sort_rarity);
+	MG_GMOBJ->RegisterObj("rosterdown", m_sort_rarity);
+
+
+	//MG_IMAGE->addImage(IMAGE::sort_rarity, "images/Town_UI/realm_inventory_sort_rarity.bmp", 32, 32, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::unequip_trinkets, "images/Town_UI/realm_inventory_unequip_trinkets.bmp", 32, 32, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::sort_stress, "images/Town_UI/roster_sort_stress.bmp", 32, 32, true, RGB(255, 0, 255));
 	
 }
 void TownScene::Show_abeey()
@@ -356,5 +510,24 @@ void TownScene::Show_sanitarium()
 void TownScene::Show_tavern()
 {
 	tavern_b = true;
+
+}
+
+void TownScene::Show_Activity_log()
+{
+
+}
+
+void TownScene::SetHerolist()
+{	
+	//히어로의 어떤 정보를 가지고 와야 하는가
+	//히어로의 직업을 가져오면 ->현재 우리 파티의 히어로의 직업을 가져올수있나.?
+	//아니면 파티의 직업을 가지고 와야 하나.
+
+	//버튼도 구현을 해야 한다,
+	//버튼은 드래그도 되야 하고 
+	//누르고 있는동안은 잡혀있다가 손을 떼면 그위치에 두는걸로,
+	
+	//그럼 버튼을 먼저 만들어 보자.
 
 }

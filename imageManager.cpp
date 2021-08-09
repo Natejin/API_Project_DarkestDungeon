@@ -130,10 +130,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage("bg", "images/юс╫ц/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 	
 	//Town
-	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+300 , 776+100, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("district_midground", "images/Town/district_midground.bmp", 1000 + 580, 300, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_ruins", "images/Town/ruins.bmp", 1418-120, 438, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_ground", "images/Town/town_ground.bmp", 3844 / 3 +300, 1672 / 2+100, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+550 , 776+100+200, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("district_midground", "images/Town/district_midground.bmp", 1000 + 920, 300+400, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_ruins", "images/Town/ruins.bmp", 1418+502, 438+500, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_ground", "images/Town/town_ground.bmp", 3844 / 3 +700, 1672 / 2+100+100, true, RGB(255, 0, 255));
 
 	// Town_estate
 	MG_IMAGE->addImage("town_abbey", "images/Town/estate/town_abbey_1.bmp", 800 / 2 , 986 / 2 , true, RGB(255, 0, 255));
@@ -179,8 +179,29 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("statue.character", "images/Town/statue/statue.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("statue.character.bg", "images/Town/statue/statue.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	//Tavern
+<<<<<<< Updated upstream
 	MG_IMAGE->addImage("tavern.character", "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("tavern.character.bg", "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
+=======
+	MG_IMAGE->addImage(IMAGE::tavern_char, "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::tavern_bg, "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
+	
+	//TownUI
+	MG_IMAGE->addImage(IMAGE::estate_activity_log, "images/Town_UI/estate_activity_log_button.bmp",103,103 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::estate_nameplate, "images/Town_UI/estate_nameplate.bmp",893,281 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::hero_slot_bg, "images/Town_UI/hero_slot_bg.bmp",85,85 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::downarrow, "images/Town_UI/realm_inventory_downarrow.bmp",62,49 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::uparrow, "images/Town_UI/realm_inventory_uparrow.bmp",62,49 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::sort_rarity, "images/Town_UI/realm_inventory_sort_rarity.bmp",32,32 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::unequip_trinkets, "images/Town_UI/realm_inventory_unequip_trinkets.bmp",32,32 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::sort_stress, "images/Town_UI/roster_sort_stress.bmp",32,32 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::roster_topframe, "images/Town_UI/roster_topframe.bmp",383,60 , true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::roster_downframe, "images/Town_UI/roster_bottomframe.bmp", 383, 60, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::rosterelement_res, "images/Town_UI/rosterelement_res1.bmp", 395-20, 104, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::roster_bggrad, "images/Town_UI/roster_bggrad.bmp", 373, 1080/2, true, RGB(255, 0, 255));
+
+
+>>>>>>> Stashed changes
 	return S_OK;
 }
 
