@@ -190,7 +190,8 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("torchBackBar2", "images/dungeonUI/torch_lightBar2.bmp", 422, 30, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("torchBackBar3", "images/dungeonUI/torch_lightBar2.bmp", 422, 30, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 422, 30, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("treasure", "images/임시/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("trap", "images/임시/trap.bmp", 100, 100, false, RGB(255, 0, 255));
@@ -198,6 +199,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("nothing", "images/임시/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	//히어로 아이콘
+	MG_IMAGE->addImage("crusader_portrait", "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("crusader_skill1", "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("crusader_skill2", "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("crusader_skill3", "images/icons_heroes/crusader.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -206,6 +208,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("crusader_skill6", "images/icons_heroes/crusader.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("crusader_skill7", "images/icons_heroes/crusader.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("highwayman_portrait", "images/icons_heroes/highwayman_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("highwayman_skill1", "images/icons_heroes/highwayman.ability.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("highwayman_skill2", "images/icons_heroes/highwayman.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("highwayman_skill3", "images/icons_heroes/highwayman.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -213,7 +216,8 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("highwayman_skill5", "images/icons_heroes/highwayman.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("highwayman_skill6", "images/icons_heroes/highwayman.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("highwayman_skill7", "images/icons_heroes/highwayman.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
+	
+	MG_IMAGE->addImage("plague_doctor_portrait", "images/icons_heroes/plague_doctor_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("plagueDoctor_skill1", "images/icons_heroes/plague_doctor.ability.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("plagueDoctor_skill2", "images/icons_heroes/plague_doctor.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("plagueDoctor_skill3", "images/icons_heroes/plague_doctor.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -246,10 +250,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("target_h_1", "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("target_h_2", "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 8, 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 100, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 100, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 8, 12, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("memberRect", "images/임시/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));

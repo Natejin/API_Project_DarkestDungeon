@@ -10,6 +10,16 @@ private:
 	vector<ImageData> m_heroInfoImage; //장비, 히어로 아이콘, 스킬 이미지
 	vector<ImageData> m_invenOrMapImage; 
 
+	ImageData portrait;
+	ImageData skill1;
+	ImageData skill2;
+	ImageData skill3;
+	ImageData skill4;
+
+	ImageData armor;
+	ImageData weapon;
+
+
 	int selectedHeroIndex;
 
 public:

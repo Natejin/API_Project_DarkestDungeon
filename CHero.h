@@ -27,12 +27,13 @@ public:
 	bool isSelected;
 	bool isBattle;
 
-	ImageData HPbar;
-	ImageData STRSbar;
-	ImageData selectedMem;
-	ImageData targetedMem;
+	//always
+	ImageData HPbar_front;
+	ImageData HPbar_back;
+	vector<ImageData> STRSbar;
+	ImageData selectedMem; 
 
-
+	ImageData targeted_h_Mem; //appear when some member using healSkill
 
 
 public:
@@ -67,7 +68,8 @@ public:
 	bool PreventGetOutBg(int startX, int endX);
 
 	void setMemberOverlay();
-	void showOverlay(HDC _hdc);
+	void showSelMember(HDC _hdc);
+	void showHpStrsBar(HDC _hdc);
 
 	void useSkill1();
 	void useSkill2();

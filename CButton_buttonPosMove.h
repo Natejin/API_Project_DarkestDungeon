@@ -7,6 +7,7 @@ class CButton_buttonPosMove : public GameObject
 private:
 	function<void()> m_triggerWhenClick;
 	int countNum;
+	GameObject* go;
 
 public:
 	Rect m_rect;
@@ -37,5 +38,6 @@ public:
 	}
 
 	void setRect();
+	void setBtTarget(GameObject* _go);
 
 };
