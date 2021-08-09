@@ -1,14 +1,10 @@
 #pragma once
 #include "CEst_UI.h"
-#include <functional>
-#include"CButton.h"
 class CampingTrainer : public CEst_UI
 {
 
 private:
-	function<void()> m_triggerWhenClick;
-	CButton* m_quick = new CButton();
-
+	class CButton* m_quick;
 public:
 	Rect m_rect;
 
@@ -29,13 +25,6 @@ public:
 	bool isUI;
 	void Setquick();
 	void FinishUI();
-	//===================================
-
-	template <typename T>
-	void SetTriggerWhenClick(T* pObj, void(T::* func)())
-	{
-		m_triggerWhenClick = bind(func, pObj);
-	}
-
+	
 };
 
