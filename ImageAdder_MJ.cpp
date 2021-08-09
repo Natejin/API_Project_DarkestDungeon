@@ -19,37 +19,44 @@ HRESULT ImageAdder_MJ::Init()
 	MG_IMAGE->addImage("nothing", "images/임시/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	//히어로 아이콘
-	MG_IMAGE->addImage("crusader_skill1", "images/Heroes_skill_icon/crusader.ability.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("crusader_skill2", "images/Heroes_skill_icon/crusader.ability.two.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("crusader_skill3", "images/Heroes_skill_icon/crusader.ability.three.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("crusader_skill4", "images/Heroes_skill_icon/crusader.ability.four.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("crusader_skill5", "images/Heroes_skill_icon/crusader.ability.five.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("crusader_skill6", "images/Heroes_skill_icon/crusader.ability.six.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("crusader_skill7", "images/Heroes_skill_icon/crusader.ability.seven.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill1", "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill2", "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill3", "images/icons_heroes/crusader.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill4", "images/icons_heroes/crusader.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill5", "images/icons_heroes/crusader.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill6", "images/icons_heroes/crusader.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill7", "images/icons_heroes/crusader.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("highwayman_skill1", "images/Heroes_skill_icon/highwayman.ability.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill2", "images/Heroes_skill_icon/highwayman.ability.two.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill3", "images/Heroes_skill_icon/highwayman.ability.three.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill4", "images/Heroes_skill_icon/highwayman.ability.four.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill5", "images/Heroes_skill_icon/highwayman.ability.five.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill6", "images/Heroes_skill_icon/highwayman.ability.six.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill7", "images/Heroes_skill_icon/highwayman.ability.seven.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill1", "images/icons_heroes/highwayman.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill2", "images/icons_heroes/highwayman.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill3", "images/icons_heroes/highwayman.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill4", "images/icons_heroes/highwayman.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill5", "images/icons_heroes/highwayman.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill6", "images/icons_heroes/highwayman.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill7", "images/icons_heroes/highwayman.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("plagueDoctor_skill1", "images/Heroes_skill_icon/plague_doctor.ability.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill2", "images/Heroes_skill_icon/plague_doctor.ability.two.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill3", "images/Heroes_skill_icon/plague_doctor.ability.three.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill4", "images/Heroes_skill_icon/plague_doctor.ability.four.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill5", "images/Heroes_skill_icon/plague_doctor.ability.five.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill6", "images/Heroes_skill_icon/plague_doctor.ability.six.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill7", "images/Heroes_skill_icon/plague_doctor.ability.seven.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill1", "images/icons_heroes/plague_doctor.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill2", "images/icons_heroes/plague_doctor.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill3", "images/icons_heroes/plague_doctor.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill4", "images/icons_heroes/plague_doctor.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill5", "images/icons_heroes/plague_doctor.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill6", "images/icons_heroes/plague_doctor.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("vestal_skill1", "images/Heroes_skill_icon/vestal.ability.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_skill2", "images/Heroes_skill_icon/vestal.ability.two.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_skill3", "images/Heroes_skill_icon/vestal.ability.three.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_skill4", "images/Heroes_skill_icon/vestal.ability.four.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_skill5", "images/Heroes_skill_icon/vestal.ability.five.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_skill6", "images/Heroes_skill_icon/vestal.ability.six.five.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_skill7", "images/Heroes_skill_icon/vestal.ability.seven.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_portrait", "images/icons_heroes/vestal_portrait_roster.bmp", 85, 85, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill1", "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill2", "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill3", "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill4", "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill5", "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill6", "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill7", "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("vestal_armor", "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_weapon", "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+
 
 	return S_OK;
 }

@@ -6,12 +6,8 @@ class CParty;
 class dungeonUI_info : public GameObject
 {
 private:
-	vector<ImageData> HeroInfoImage; //장비, 히어로 아이콘, 스킬 이미지
-	
-	CHero* pos1Hero;
-	CHero* pos2Hero;
-	CHero* pos3Hero;
-	CHero* pos4Hero;
+	vector<ImageData> m_heroInfoImage; //장비, 히어로 아이콘, 스킬 이미지
+	vector<ImageData> m_invenOrMapImage; 
 
 public:
 	dungeonUI_info();
