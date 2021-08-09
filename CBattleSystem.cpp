@@ -29,7 +29,7 @@ void CBattleSystem::CreateEnemyParty()
 		enemyParty.push_back(enemy);
 		enemyParty[i]->SetPosition(i);
 		enemyParty[i]->SetPartyIndex(i);
-		enemyParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 360);
+		enemyParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
 	}
 }
 
@@ -42,7 +42,7 @@ void CBattleSystem::CreateHeroesParty()
 		heroParty.push_back(MG_GAME->GetHero(i));
 		heroParty[i]->SetPosition(i);
 		heroParty[i]->SetPartyIndex(i);
-		heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, 360);
+		heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, 560);
 		heroParty[i]->m_animator->SetIndex(2);
 	}
 }
