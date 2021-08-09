@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CGameManager.h"
 #include "CHero.h"
+#include "CParty.h"
 #include "CVestal.h"
 
 CGameManager::CGameManager() {}
@@ -12,6 +13,7 @@ HRESULT CGameManager::Init()
 	RegisterHero(CreateVestal("member2"));
 	RegisterHero(CreateVestal("member3"));
 	RegisterHero(CreateVestal("member4"));
+
 	return S_OK;
 }
 
@@ -74,6 +76,17 @@ vector<CHero*> CGameManager::GetHeroes()
 CHero* CGameManager::GetHero(int index)
 {
 	return index < m_partyOrigin.size() ? m_partyOrigin[index] : nullptr;
+}
+
+void CGameManager::setParty()
+{
+	m_party = new CParty;
+	m_party->Init(1, 1, 1);
+}
+
+CParty* CGameManager::GetParty()
+{
+	return m_party;
 }
 
 Vestal* CGameManager::CreateVestal(string name)

@@ -12,13 +12,16 @@ CRoadObject::~CRoadObject() {}
 HRESULT CRoadObject::Init()
 {
     m_layer = LAYER::BackGround;
+
     setRoadObjIMG();
+    setButton();
+
     return S_OK;
 }
 
 void CRoadObject::Update(float deltaTime, float worldTime)
 {
-
+    Interaction_collision(); //error
 }
 
 void CRoadObject::LateUpdate()
@@ -27,7 +30,6 @@ void CRoadObject::LateUpdate()
 
 void CRoadObject::BackRender(HDC _hdc)
 {
-
 }
 
 void CRoadObject::Render(HDC _hdc)
@@ -40,7 +42,6 @@ void CRoadObject::Render(HDC _hdc)
 
 void CRoadObject::FrontRender(HDC _hdc)
 {
-
 }
 
 void CRoadObject::Release()
@@ -55,20 +56,39 @@ void CRoadObject::Release()
 //==================================
 
 
+void CRoadObject::setButton()
+{
+    bt_treasure = new CButton_move();
+    bt_treasure->m_transform->m_pos = m_roadObj[0].m_trans.m_pos;
+    bt_treasure->SetButtonSize(100, 100);
+    bt_treasure->AddSpriteRenderer ("button");
+    bt_treasure->SetTriggerWhenClick(this, &CRoadObject::Interaction_treassure);
+    MG_GMOBJ->RegisterObj("RoadObj_treasure", bt_treasure);
+
+    bt_trap = new CButton_move();
+    bt_trap->m_transform->m_pos = m_roadObj[1].m_trans.m_pos;
+    bt_trap->SetButtonSize(100, 100);
+    bt_trap->AddSpriteRenderer ("button");
+    bt_trap->SetTriggerWhenClick(this, &CRoadObject::Interaction_trap);
+    MG_GMOBJ->RegisterObj("RoadObj_trap", bt_trap);
+}
+
 void CRoadObject::setRoadObjIMG()
 {
     ImageData temp;
-    temp.m_img = MG_IMAGE->findImage("crusader");
-
-    temp.m_img->setHeight(100);
-    temp.m_img->setWidth(100);
+    temp.m_img = MG_IMAGE->findImage("treasure");
     temp.m_trans.m_pos.y = 600;
-
     m_roadObj.push_back(temp);
+
+    temp.m_img = MG_IMAGE->findImage("trap");
+    temp.m_trans.m_pos.y = 600;
+    m_roadObj.push_back(temp);
+
+    temp.m_img = MG_IMAGE->findImage("enemy");
+    temp.m_trans.m_pos.y = 600;
     m_roadObj.push_back(temp);
 
     setRoadObj();
-
 }
 
 void CRoadObject::getMapInfo(int a1, int a2, int a3)
@@ -89,76 +109,76 @@ void CRoadObject::setRoadObj()
     temp.m_pos.x += ROADSIZEX / 6;
     m_SettingArea.push_back(temp);
 
+    temp.m_pos.x += ROADSIZEX / 6;
+    m_SettingArea.push_back(temp);
+
     isTreasureOpen = false;
+    clearTrap = false;
 
     for (int i = 0; i < m_roadObj.size(); i++)
     {
         m_roadObj[i].m_trans.m_pos.x = MG_RND->getFromIntTo(m_SettingArea[i].m_pos.x, m_SettingArea[i + 1].m_pos.x);
+        //if (i != 0 && m_roadObj[i - 1].m_trans.m_pos.x > m_roadObj[i].m_trans.m_pos.x - 150)
+        //{
+        //    m_roadObj[i].m_trans.m_pos.x -= 100;
+        //}
     }
-
 }
 
-//TODO all Hero Check, randomGetStress
-void CRoadObject::reach_InteractionArea(CParty* _party)
+void CRoadObject::Interaction_collision()
 {
-    party = _party;
     CCollider* _collider = new CCollider;
-    CButton* event = new CButton;
-
-    event->SetButtonSize(m_roadObj[0].m_img->getWidth(), m_roadObj[0].m_img->getHeight());
-
-    //해당 반경에 진입하여 클릭시 상호작용
-    _collider->SetRectAndTrans(&m_roadObj[0].m_trans, m_roadObj[0].m_img->getWidth(), m_roadObj[0].m_img->getHeight());
-    if (_collider->CheckXCollision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_animator->GetCurImage()->getFrameWidth() + 40))
+    
+    //collision with trap
+    (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
+    if (clearTrap == false)
     {
-        if (_collider->CheckColliderBoxWithPoint(m_ptMouse))
+        if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
         {
-            if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-            {
-                Interaction_treassure();
-            }
+            Interaction_trap_fail();
+            clearTrap == true;
         }
     }
 
-    //캐릭터와 충돌해야만 상호작용 발생
-    _collider->SetRectAndTrans(&m_roadObj[1].m_trans, m_roadObj[1].m_img->getWidth(), m_roadObj[1].m_img->getHeight());
-    if (_collider->CheckXCollision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_animator->GetCurImage()->getFrameWidth() + 70))
+    //collision with enemyPoint
+    (*_collider).SetRect(m_roadObj[2].m_trans.m_pos.x, m_roadObj[2].m_trans.m_pos.y, m_roadObj[2].m_trans.m_pos.x + 100, m_roadObj[2].m_trans.m_pos.y - 100);
+    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
     {
-        //둘중 어떤 상황이 발생할지는 추후 맵과 연결하면서 상세하게 세팅
-        //Interaction_battle();
-        Interaction_trap();
+        Interaction_battle();
     }
-
-    _party = party;
 }
 
 void CRoadObject::Interaction_treassure()
 {
-    if (isTreasureOpen == false)
+    CCollider* _collider = new CCollider;
+    (*_collider).SetRect(m_roadObj[0].m_trans.m_pos.x - 100, m_roadObj[0].m_trans.m_pos.y, m_roadObj[0].m_trans.m_pos.x + 200, m_roadObj[0].m_trans.m_pos.y - 100);
+
+    //treasure
+    //touchable when it's collision with Hero(0)
+    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
     {
-        if (MG_RND->getInt(9) > 0)
+        if (isTreasureOpen == false)
         {
-            //보물상자를 열었다는 약식적인 구현만 완성
-            m_roadObj[0].m_img = MG_IMAGE->findImage("mon1");
-            m_roadObj[0].m_img->setWidth(100);
-            m_roadObj[0].m_img->setHeight(100);
+            if (MG_RND->getInt(10) > 0)
+            {
+                m_roadObj[0].m_img = MG_IMAGE->findImage("mon1");
+                m_roadObj[0].m_img->setWidth(100);
+                m_roadObj[0].m_img->setHeight(100);
 
-            int torch = MG_RND->getInt(2);
-            int food = MG_RND->getInt(2);
-            int band = MG_RND->getInt(2);
+                int torch = MG_RND->getInt(2);
+                int food = MG_RND->getInt(2);
+                int band = MG_RND->getInt(2);
 
-            party->setBandage(party->getBandage() + band);
-            party->setFood(party->getFood() + food);
-            party->setTorch(party->getTorch() + torch);
-            isTreasureOpen = true;
-        }
-        else
-        {
-            m_roadObj[0].m_img = MG_IMAGE->findImage("배경화면");
-            m_roadObj[0].m_img->setWidth(100);
-            m_roadObj[0].m_img->setHeight(100);
-            //상자가 비었다는 애니메이션 발생
-            isTreasureOpen = true;
+                MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + band);
+                MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + food);
+                MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + torch);
+                isTreasureOpen = true;
+            }
+            else
+            {
+                m_roadObj[0].m_img = MG_IMAGE->findImage("nothing");
+                isTreasureOpen = true;
+            }
         }
     }
 }
@@ -166,45 +186,43 @@ void CRoadObject::Interaction_treassure()
 void CRoadObject::Interaction_trap()
 {
     CCollider* _collider = new CCollider;
-    _collider->SetRectAndTrans(&m_roadObj[1].m_trans, m_roadObj[1].m_img->getWidth(), m_roadObj[1].m_img->getHeight());
+    (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x - 100, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 200, m_roadObj[1].m_trans.m_pos.y - 100);
 
-    //해체를 시도한 경우 (성공)	
-    if (_collider->CheckColliderBoxWithPoint(m_ptMouse))
+    if (clearTrap == false)
     {
-        if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+        if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 200))
         {
-            m_roadObj[1].m_img = MG_IMAGE->findImage("배경화면");
-            m_roadObj[1].m_img->setWidth(100);
-            m_roadObj[1].m_img->setHeight(100);
+            if (MG_RND->getInt(4) > 0)
+            {
+                Interaction_trap_success();
+            }
+            else
+            {
+                //tryed but fail
+                Interaction_trap_fail();
+            }
+            clearTrap = true;
         }
     }
+}
 
-    //해체하지않고 반경내로 충돌한 경우
-    //출혈, 독, 스트레스와 체력감소
-    if (_collider->CheckXCollision(party->GetHero(0)->m_transform->m_pos.x + party->GetHero(0)->m_animator->GetCurImage()->getWidth() - 40))
-    {
-        if (MG_RND->getInt(5) > 0)
-        {
-            //병합 후 Hero 상태에 바로 접근할 수 있는 함수를 만들 것 
-            //party->GetHero(0)->;
-            m_roadObj[1].m_img = MG_IMAGE->findImage("ruins_room1");
-            m_roadObj[1].m_img->setWidth(100);
-            m_roadObj[1].m_img->setHeight(100);
-            party->GetHero(0)->setStress(party->GetHero(0)->getStress() + 10);
-        }
-    }
+void CRoadObject::Interaction_trap_fail()
+{
+	m_roadObj[1].m_img = MG_IMAGE->findImage("mon1");
+	m_roadObj[1].m_img->setWidth(100);
+	m_roadObj[1].m_img->setHeight(100);
+    MG_GAME->GetParty()->GetHero(0)->setStress(MG_GAME->GetParty()->GetHero(0)->getStress() + 10);
+}
+
+void CRoadObject::Interaction_trap_success()
+{
+    //try to clearTrap and succeed
+    m_roadObj[1].m_img = MG_IMAGE->findImage("nothing");
 }
 
 void CRoadObject::Interaction_battle()
 {
-    //배틀시스템 구현 후 추가
-
-    m_roadObj[1].m_img = MG_IMAGE->findImage("록맨");
-    m_roadObj[1].m_img->setWidth(100);
-    m_roadObj[1].m_img->setHeight(100);
-}
-
-void CRoadObject::showDividedArea(HDC _hdc)
-{
-
+	m_roadObj[2].m_img = MG_IMAGE->findImage("占싹몌옙");
+	m_roadObj[2].m_img->setWidth(100);
+	m_roadObj[2].m_img->setHeight(100);
 }

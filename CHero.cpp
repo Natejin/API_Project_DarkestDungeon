@@ -29,6 +29,8 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	m_STRS = 0;
 	m_STRSLVL = 0;
 
+	limit = 0;
+
 	for (size_t i = 0; i < 5; i++)
 	{
 		this->resist[i] = resist[i];
@@ -44,14 +46,21 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	//m_image = MG_IMAGE->findImage(img);
 
 	
-	//job¿¡ µû¸¥ ½ºÅ³À» ³ÖÀ» º¯¼ö, È¤Àº ÇÔ¼ö°¡ ÇÊ¿äÇÔ
-	//½ºÅ³À» enum class¿¡ Á÷¾÷º°·Î Ãß°¡ÇÒ °Í
+	//jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, È¤ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
+	//ï¿½ï¿½Å³ï¿½ï¿½ enum classï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½
+
+	isSelected = false; //dungeonUIinfoï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+	isBattle = false;
+	
+	setMemberOverlay();
 
 	return S_OK;
 }
 
 void CHero::Update(float deltaTime, float worldTime)
 {
+	selectedMem.m_trans.m_pos = Vector2(m_transform->m_pos.x - 90, m_transform->m_pos.y + 60);
+	//targetedMem.m_trans.m_pos = Vector2(m_transform->m_pos.x + 400, m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight());
 }
 
 void CHero::LateUpdate()
@@ -66,10 +75,12 @@ void CHero::Render(HDC _hdc)
 {
 	//m_image->frameRender(_hdc, m_transform);
 	m_animator->FrameRender(_hdc);
+
 }
 
 void CHero::FrontRender(HDC _hdc)
 {
+	showOverlay(_hdc);
 }
 
 void CHero::Release()
@@ -80,8 +91,6 @@ void CHero::Release()
 void CHero::Move()
 {
 	int ran;
-	//ÀÎÇ²¿¡ µû¸¥ ÀÌµ¿ ÇÔ¼ö
-	//¾ÕµÚ ÀÌµ¿½Ã ¼ÓµµÀÇ Â÷ÀÌ
 	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
 	if (left | right)
@@ -102,15 +111,14 @@ void CHero::Move()
 				m_transform->m_pos.x -= 2;
 				m_DIST += 2;
 				m_DIST_retreat += 2;
-
-				//4ºÐÀÇ 1 È®·ü·Î ½ºÆ®·¹½º¸¦ ¹ÞÀ½
-				ran = MG_RND->getInt(3);
-				if (ran == 1)
+				
+				if (m_DIST_retreat > limit && m_DIST_retreat > 300)
 				{
-					if ((m_DIST_retreat % 200 == 0) && !(m_DIST_retreat == 0))
+					if (MG_RND->getInt(4) > 2)
 					{
-						setStress(5);
+						addStress(5);
 					}
+					limit += 300;
 				}
 			}
 		}
@@ -124,9 +132,61 @@ void CHero::Move()
 
 bool CHero::PreventGetOutBg(int startX, int endX)
 {
-	
 	if (m_transform->m_pos.x < endX - 200 && 0 < m_transform->m_pos.x) 
 		return true;
 	else 
 		return false;
+}
+
+void CHero::setMemberOverlay()
+{
+	selectedMem.m_img = MG_IMAGE->findImage("selected1");
+	targetedMem.m_img = MG_IMAGE->findImage("target1");
+}
+
+void CHero::showOverlay(HDC _hdc)
+{
+	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
+	targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
+}
+
+void CHero::useSkill1()
+{
+	//bind&func, buttonï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ selectedMemberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+}
+
+void CHero::useSkill2()
+{
+}
+
+void CHero::useSkill3()
+{
+}
+
+void CHero::useSkill4()
+{
+}
+
+void CHero::useMoveSkill()
+{
+}
+
+void CHero::usePassTrun()
+{
+}
+
+void CHero::setHpBar()
+{
+}
+
+void CHero::setSTRSbar()
+{
+}
+
+void CHero::setSelectedMem()
+{
+}
+
+void CHero::setTargetedMem()
+{
 }

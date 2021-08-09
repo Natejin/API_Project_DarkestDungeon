@@ -22,6 +22,17 @@ public:
 	int m_DIST; //이동한 거리
 	int m_DIST_retreat; //후퇴한 거리
 
+	int limit;
+
+	bool isSelected;
+	bool isBattle;
+
+	ImageData HPbar;
+	ImageData STRSbar;
+	ImageData selectedMem;
+	ImageData targetedMem;
+
+
 public:
 	CHero();
 	~CHero();
@@ -47,9 +58,28 @@ public:
 	int getMoveDis_reteat()const { return m_DIST_retreat; }
 
 	int getStress()const { return m_STRS; }
-	void setStress(int strs) { m_STRS += strs; }
+	void setStress(int strs) { m_STRS = strs; }
+	void addStress(int strs) { m_STRS += strs; }
 
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);
 
+	void setMemberOverlay();
+	void showOverlay(HDC _hdc);
+
+	void useSkill1();
+	void useSkill2();
+	void useSkill3();
+	void useSkill4();
+	void useMoveSkill();
+	void usePassTrun();
+
+	void setHpBar();
+	void setSTRSbar();
+	void setSelectedMem();
+	void setTargetedMem();
+
+	//얘를 CVestal에서 오버라이드??하라는 말씀이신가요
+	//아아
+	//네네 bind& func
 };

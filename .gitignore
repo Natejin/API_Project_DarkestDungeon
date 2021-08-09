@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+*.ipch
+
 
 # Compiled Object files
 *.slo
@@ -7,8 +9,6 @@
 *.o
 *.obj
 *.suo
-*.ipch
-
 
 # Precompiled Headers
 *.gch
@@ -41,4 +41,5 @@
 /ipch
 /.vs
 *.ipch
-.vs/DarkestDungeon/v16/ipch/197aeb4a5d5b0a6e.ipch
+/v16
+

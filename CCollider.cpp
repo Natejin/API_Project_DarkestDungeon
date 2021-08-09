@@ -16,10 +16,9 @@ CCollider::~CCollider()
 	
 }
 
-void CCollider::SetRectAndTrans(CTransform* _trans, int width, int height)
+void CCollider::SetRect(float l, float t, float r, float b)
 {
-	trans = _trans;
-	rect.SetRect(_trans->m_pos.x, _trans->m_pos.y, _trans->m_pos.x + width, _trans->m_pos.y + height);
+	rect.SetRect(l, t, r, b);
 }
 
 bool CCollider::CheckXCollision(int x)
@@ -42,6 +41,8 @@ bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos)
 	}
 	else return false;
 }
+
+
 
 bool CCollider::CheckColliderBoxWithPoint(POINT _pos) 
 {

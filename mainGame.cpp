@@ -1,7 +1,5 @@
 #include"framework.h"
 #include "mainGame.h"
-#include "ImageAdder_MJ.h"
-#include "ImageAdder_WT.h"
 
 mainGame::mainGame() {
 #ifdef _DEBUG
@@ -18,11 +16,6 @@ mainGame::~mainGame() {}
 HRESULT mainGame::init()
 {
 	gameNode::init(true);
-
-	ImageAdder_MJ imgAdd_Mj;
-	imgAdd_Mj.Init();
-	ImageAdder_WT imgAdd_Wt;
-	imgAdd_Wt.Init();
 	MG_GAME->Init();
 	MG_CAMERA->Init();
 	MG_SCENE->init();
