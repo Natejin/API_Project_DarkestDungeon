@@ -1,12 +1,9 @@
 #pragma once
 #include "CEst_UI.h"
-
-
 class BlackSmith :public CEst_UI
 {
 
 private:
-	function<void()> m_triggerWhenClick;
 	class CButton* m_quick2;
 
 public:
@@ -30,13 +27,6 @@ public:
 	bool isUI;
 	void Setquick();
 	void FinishUI();
-	//===================================
-
-	template <typename T>
-	void SetTriggerWhenClick(T* pObj, void(T::* func)())
-	{
-		m_triggerWhenClick = bind(func, pObj);
-	}
 
 };
 

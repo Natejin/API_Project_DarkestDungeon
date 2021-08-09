@@ -4,7 +4,6 @@ class Abbey :public CEst_UI
 {
 
 private:
-
 	class CButton* m_quick;
 
 public:

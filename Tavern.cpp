@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Tavern.h"
+#include"CButton.h"
 
 Tavern::Tavern()
 {
@@ -13,24 +14,17 @@ HRESULT Tavern::Init()
 {
     isUi = false;
     //나가기버튼
-<<<<<<< Updated upstream
-    m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
-=======
     m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
->>>>>>> Stashed changes
     m_quick->SetButtonSize(200, 200);
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
     m_quick->isActive = false;
 
-<<<<<<< Updated upstream
-=======
     m_windowPanelBG = new CSpriteRenderer(IMAGE::tavern_bg, m_transform);
     m_windowPanelChar = new CSpriteRenderer(IMAGE::tavern_char, m_transform);
     m_transform->m_pivot = Vector2(0, 0);
 
->>>>>>> Stashed changes
     return S_OK;
 }
 
@@ -59,8 +53,8 @@ void Tavern::FrontRender(HDC _hdc)
 {
     if (isUI)
     {
-        MG_IMAGE->findImage("tavern.character.bg")->render(_hdc);
-        MG_IMAGE->findImage("tavern.character")->render(_hdc);
+        m_windowPanelBG->Render(_hdc);
+        m_windowPanelChar->Render(_hdc);
         m_quick->isActive = true;
 
     }

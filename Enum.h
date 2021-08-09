@@ -69,8 +69,6 @@ enum class IMAGE
 	abbey_bg,
 	abbey_char,
 
-<<<<<<< Updated upstream
-=======
 	blacksmith_bg,
 	blacksmith_char,
 
@@ -111,7 +109,6 @@ enum class IMAGE
 	rosterelement_res,
 	roster_bggrad,
 
->>>>>>> Stashed changes
 	ruins_endhall,
 	ruins_mid,
 
