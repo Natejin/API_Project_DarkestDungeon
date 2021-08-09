@@ -9,10 +9,10 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
-	RegisterHero(CreateVestal("member1"));
-	RegisterHero(CreateVestal("member2"));
-	RegisterHero(CreateVestal("member3"));
-	RegisterHero(CreateVestal("member4"));
+	RegisterHero(CreateHero("member1", JOB::Crusader));
+	RegisterHero(CreateHero("member2", JOB::Vestal));
+	RegisterHero(CreateHero("member3", JOB::Crusader));
+	RegisterHero(CreateHero("member4", JOB::Vestal));
 
 	return S_OK;
 }
@@ -31,6 +31,7 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
+
 }
 
 void CGameManager::FrontRender(HDC _hdc)
@@ -88,7 +89,7 @@ CParty* CGameManager::GetParty()
 	return m_party;
 }
 
-Vestal* CGameManager::CreateVestal(string name)
+CHero* CGameManager::CreateHero(string name, JOB job)
 {
 	//member1 = new CHero();
 	//int resist[5] = { 30, 30, 30, 30, 30 };
@@ -99,12 +100,35 @@ Vestal* CGameManager::CreateVestal(string name)
 
 	//================================================
 
-	Vestal* vestal = new Vestal();
+	CHero* vestal = new CHero();
 
 	int resist[5] = { 30, 30, 30, 30, 30 };
 	//stun, blight, bleed, debuff, move
 
-	vestal->Init(JOB::Vestal, IMAGE::Vestal_Idle, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+	switch (job)
+	{
+	case JOB::Crusader:
+		vestal->Init(JOB::Crusader, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		vestal->AddAnimator(IMAGE::Crusader_Idle);
+		vestal->m_animator->SetAnimeSpeed(5);
+		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
+		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
+		break;
+	case JOB::Vestal:
+		vestal->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		vestal->AddAnimator(IMAGE::Vestal_Idle);
+		vestal->m_animator->SetAnimeSpeed(5);
+		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
+		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
+		break;
+	case JOB::PlagueDoctor:
+		break;
+	case JOB::Highwayman:
+		break;
+	default:
+		break;
+	}
+
 	//pos는 임의로 1에 배치, 공격력은 4-9의 중간값으로.
 
 	//member1->m_transform->m_pos = Vector2(210, 360);

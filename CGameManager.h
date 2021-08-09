@@ -37,7 +37,7 @@ public:
 	void setParty();
 	CParty* GetParty();
 
-	class Vestal* CreateVestal(string name);
+	class CHero* CreateHero(string name, JOB job);
 
 	int GetHeroPartySize() {  return m_partyOrigin.size();}
 

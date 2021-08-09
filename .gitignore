@@ -38,5 +38,8 @@
 /.vs/API_FrameWork/v16
 /Debug
 /x64/Debug
+/ipch
+/.vs
+*.ipch
 /v16
-*.filters
+

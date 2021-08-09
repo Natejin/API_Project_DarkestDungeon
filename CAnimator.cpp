@@ -43,6 +43,11 @@ void CAnimator::FrameRender(HDC _hdc)
 
 }
 
+void CAnimator::ResetAnimation() {
+	curFrameX = 0;
+	m_curAnimeFrame = 0;
+}
+
 void CAnimator::AddImageFrame(string imageName)
 {
 	m_imageVec.push_back(MG_IMAGE->findImage(imageName));
@@ -62,4 +67,11 @@ Image* CAnimator::GetCurImage()
 	return m_imageVec[curImageIndex];
 }
 
+void CAnimator::SetIndex(int index) {
+	curImageIndex = index;
+}
 
+Vector2 CAnimator::GetFrameSize()
+{
+	return m_imageSize[curImageIndex];
+}

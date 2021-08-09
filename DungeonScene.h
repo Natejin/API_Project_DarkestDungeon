@@ -6,6 +6,7 @@ class dungeonUI_info;
 class DungeonScene : public Scene
 {
 public:
+	vector<IMAGE> roomRandom;
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -59,7 +60,7 @@ public:
 	int curBattleTurnCount;
 	BATTLETURN curBattleTurn;
 	vector<class CEnemy*> enemyGroup;
-
+	class CBattleSystem* m_pBattleSystem;
 
 //==================================
 //UI
@@ -84,10 +85,15 @@ public:
 	void CreateRoad();
 	void CreateDoor();
 
+	void CreateBattleSystem();
+
 public:
 	virtual HRESULT Init();
 	virtual HRESULT Init(bool managerInit);
 	virtual void Release();
 	virtual void Update();
 	virtual void Render(HDC _hdc);
+
+	void ActivateRoom();
+	void ActivateRoad();
 };

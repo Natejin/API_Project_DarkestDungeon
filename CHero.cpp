@@ -8,7 +8,7 @@ CHero::CHero() {
 }
 CHero::~CHero() {}
 
-HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
+HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
 {
 	m_layer = LAYER::Player;
 	
@@ -42,18 +42,16 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 
 	m_DIST = 0;
 	isActive = false;
-
-	isSelected = false; //dungeonUIinfo¿¡¼­ Á¤º¸¸¦ ¹Þ¾Æ ¼öÁ¤
-	isBattle = false;
-
-
+	m_transform->m_pivot = Vector2(0.5, 1);
 	//m_image = MG_IMAGE->findImage(img);
 
-	m_animator = new CAnimator();
-	m_animator->SetTrans(m_transform);
-	m_animator->AddImageFrame(img);
-	m_animator->SetAnimeSpeed(5);
+	
+	//jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, È¤ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
+	//ï¿½ï¿½Å³ï¿½ï¿½ enum classï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½
 
+	isSelected = false; //dungeonUIinfoï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+	isBattle = false;
+	
 	setMemberOverlay();
 
 	return S_OK;
@@ -136,6 +134,11 @@ void CHero::Move()
 				}
 			}
 		}
+
+		m_animator->SetIndex(1);
+	}
+	else {
+		m_animator->SetIndex(0);
 	}
 }
 
@@ -170,7 +173,7 @@ void CHero::showOverlay(HDC _hdc)
 
 void CHero::useSkill1()
 {
-	//bind&func, buttonÀ» »ç¿ëÇÏ¿© selectedMember¿¡ µû¸¥ ÇÔ¼öº¯°æ
+	//bind&func, buttonï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ selectedMemberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 void CHero::useSkill2()

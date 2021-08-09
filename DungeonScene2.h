@@ -113,11 +113,6 @@ public:
 	virtual void Update();
 	virtual void Render(HDC _hdc);
 
-	void DungeonScene2::bindFunction(function<void()>& dest)
-	{
-		dest = bind(&DungeonScene2::TestButton, this);
-	}
-
 	void ActivateRoom();
 	void ActivateRoad();
 };

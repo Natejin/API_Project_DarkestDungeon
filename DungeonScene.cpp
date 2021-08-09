@@ -8,6 +8,7 @@
 #include "CRoadObject.h"
 #include "dungeonUI.h"
 #include "dungeonUI_info.h"
+#include "CBattleSystem.h"
 
 DungeonScene::DungeonScene()
 {
@@ -25,6 +26,19 @@ DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
+	//SetUIIMG();
+	CreateBattleSystem();
+
+	roomRandom.push_back(IMAGE::Ruins_room1);
+	roomRandom.push_back(IMAGE::Ruins_room2);
+	roomRandom.push_back(IMAGE::Ruins_room3);
+	roomRandom.push_back(IMAGE::Ruins_room4);
+	roomRandom.push_back(IMAGE::Ruins_room5);
+	roomRandom.push_back(IMAGE::Ruins_room6);
+	roomRandom.push_back(IMAGE::Ruins_room7);
+	roomRandom.push_back(IMAGE::Ruins_room8);
+	roomRandom.push_back(IMAGE::Ruins_room9);
+
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
 	CreateDungeon();
@@ -41,8 +55,7 @@ HRESULT DungeonScene::Init()
 	m_dungeonUIinfo->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 
-	m_roadBG->isActive = true;
-
+	ActivateRoad();
 	return S_OK;
 }
 
@@ -260,17 +273,6 @@ Vector2Int DungeonScene::GetDirFromInt(int dir) {
 
 void DungeonScene::CreateParty()
 {
-	//이부분을 게임 매니저로 옮겨도 된다면 GetParty도 만들 수 있을듯함
-	//m_party = new CParty;
-	//m_party->Init(1,1,1);
-	//
-	//auto party = MG_GAME->GetHeroes();
-	//for (int i = 0; i < party.size(); i++)
-	//{
-	//	party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 360);
-	//}
-	//m_party->SetParty(party);
-
 	MG_GAME->setParty();
 	m_party = MG_GAME->GetParty();
 
@@ -291,6 +293,7 @@ void DungeonScene::CreateRoom()
 	auto room = new CBG_Room();
 	room->Init();
 	room->isActive = false;
+	room->AddSpriteRenderer(IMAGE::Ruins_room1);
 	MG_GMOBJ->RegisterObj("RoomBG", room);
 	m_roomBG = room;
 }
@@ -314,6 +317,13 @@ void DungeonScene::CreateRoad()
 	roadOBJ->isActive = false;
 	MG_GMOBJ->RegisterObj("RoadOBJ", roadOBJ);
 	m_roadObj = roadOBJ;
+}
+
+void DungeonScene::CreateBattleSystem()
+{
+	m_pBattleSystem = new CBattleSystem();
+	m_pBattleSystem->isActive = false;
+	MG_GMOBJ->RegisterObj("battleSystem", m_pBattleSystem);
 }
 #pragma endregion
 
@@ -349,29 +359,52 @@ void DungeonScene::setRoadKind()
 	//}
 }
 
+
+
+void DungeonScene::ActivateRoad()
+{
+	m_roomBG->isActive = false;
+	m_roadBG->isActive = true;
+	m_dungeonState = DUNGEONSTATE::ROAD;
+	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
+}
+
 void DungeonScene::CheckDoor()
 {
-	if (true)
+	if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos) ||
+		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
 	{
-		if (door1.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos) ||
-			door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
-		{
-			isDoorClick = true;
-			if (MG_INPUT->isOnceKeyDown(VK_UP))
-			{
-				isDoorClick = false;
-				m_roadBG->isActive = false;
-				m_roomBG->isActive = true;
-			}
-		}
-		else
+		isDoorClick = true;
+		if (MG_INPUT->isOnceKeyDown(VK_UP))
 		{
 			isDoorClick = false;
+			ActivateRoom();
 		}
 	}
-	
+	else
+	{
+		isDoorClick = false;
+	}
 }
 #pragma endregion
+
+
+#pragma region Room
+void DungeonScene::ActivateRoom()
+{
+	m_roadBG->isActive = false;
+	m_roomBG->isActive = true;
+	m_dungeonState = DUNGEONSTATE::ROOM;
+	m_roomBG->m_spriteRenderer->SetImage(roomRandom[MG_RND->getInt(roomRandom.size())]);
+	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));
+
+	dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
+	m_pBattleSystem->BattleSystemInitiate();
+
+}
+
+#pragma endregion
+
 
 
 #pragma region DebugLog
@@ -418,3 +451,4 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	}
 }
 #pragma endregion
+

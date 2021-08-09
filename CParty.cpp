@@ -270,23 +270,35 @@ void CParty::FormationMove()
 	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
 
 	m_member[0]->Move();
+	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
+	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
 	for (size_t i = 0; i < 3; i++)
 	{
-		if (MG_INPUT->isStayKeyDown(VK_LEFT))
+		
+		if (vk_Right | vk_Left)
 		{
-			if (WB_btwHeroes > substraction[i])
+			if (vk_Left)
 			{
-				m_member[i + 1]->Move();
-				continue;
+				if (WB_btwHeroes > substraction[i])
+				{
+					m_member[i + 1]->Move();
+					continue;
+				}
+			}
+
+			if (vk_Right)
+			{
+				if (substraction[i] > WF_btwHeroes)
+				{
+					m_member[i + 1]->Move();
+				}
 			}
 		}
-		if (MG_INPUT->isStayKeyDown(VK_RIGHT))
-		{
-			if (substraction[i] > WF_btwHeroes)
-			{
-				m_member[i + 1]->Move();
-			}
+		else {
+			m_member[i + 1]->Move();
 		}
+	
+
 	}
 }
 

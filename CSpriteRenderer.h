@@ -10,7 +10,6 @@ class CSpriteRenderer : public CComponent
 	class Image* m_image;
 
 	Vector2 m_imageSize;
-
 	int imageWidth;
 	int imageHeight;
 
@@ -31,5 +30,7 @@ public:
 
 	void Render(HDC _hdc);
 	void RenderUI(HDC _hdc);
+
+	Vector2 GetImageSize();
 };
 
