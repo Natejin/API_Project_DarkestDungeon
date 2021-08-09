@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "CButton_buttonPosMove.h"
 
 class CHero;
 class CParty;
@@ -31,8 +32,15 @@ public:
 	void setInfoImage(); //모든 job의 이미지 세팅
 	void setSkillIcon(); //버튼과 스킬함수를 연결
 
-	void showWhichHero(CHero* _hero); //보여줄 히어로를 선택
+	void setButton(); 
 	void showHeroState(HDC _hdc);
 	void showHeroSkill(HDC _hdc);
 	void showHeroEquip(HDC _hdc);
+
+	void selHero1();
+	void selHero2();
+	void selHero3();
+	void selHero4();
+
+
 };

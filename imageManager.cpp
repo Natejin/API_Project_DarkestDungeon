@@ -252,6 +252,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 8, 12, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("memberRect", "images/юс╫ц/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));
 
 	return S_OK;
 }

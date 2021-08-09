@@ -177,6 +177,7 @@
     <ClInclude Include="CBoneSoldier.h" />
     <ClInclude Include="CBuilding.h" />
     <ClInclude Include="CButton.h" />
+    <ClInclude Include="CButton_buttonPosMove.h" />
     <ClInclude Include="CButton_move.h" />
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CComponent.h" />
@@ -279,6 +280,7 @@
     <ClCompile Include="CBoneSoldier.cpp" />
     <ClCompile Include="CBuilding.cpp" />
     <ClCompile Include="CButton.cpp" />
+    <ClCompile Include="CButton_buttonPosMove.cpp" />
     <ClCompile Include="CButton_move.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CComponent.cpp" />

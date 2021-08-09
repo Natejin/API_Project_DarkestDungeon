@@ -61,8 +61,7 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 
 void CHero::Update(float deltaTime, float worldTime)
 {
-	selectedMem.m_trans.m_pos = Vector2(m_transform->m_pos.x - 90, m_transform->m_pos.y + 60);
-	//targetedMem.m_trans.m_pos = Vector2(m_transform->m_pos.x + 400, m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight());
+	
 }
 
 void CHero::LateUpdate()
@@ -82,7 +81,20 @@ void CHero::Render(HDC _hdc)
 
 void CHero::FrontRender(HDC _hdc)
 {
-	showOverlay(_hdc);
+	if (isSelected == true)
+	{
+		showOverlay(_hdc);
+
+		ImageData temp;
+		temp.m_img = MG_IMAGE->findImage("memberRect");
+		temp.m_trans.m_pos = Vector2(
+			m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
+			m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight()
+		);
+		temp.m_img->render(_hdc, &temp.m_trans);
+	}
+
+
 }
 
 void CHero::Release()
@@ -143,8 +155,17 @@ void CHero::setMemberOverlay()
 
 void CHero::showOverlay(HDC _hdc)
 {
+	selectedMem.m_trans.m_pos = Vector2(
+		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 10,
+		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() /2 + 70 );
+
+	targetedMem.m_trans.m_pos = Vector2(
+		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
+		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight()/ 2 - 300);
+
 	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
 	targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
+
 }
 
 void CHero::useSkill1()

@@ -10,13 +10,10 @@ HRESULT dungeonUI_info::Init()
 {
     m_layer = LAYER::UI;
 
-    CHero* defalt = new CHero;
-    defalt = MG_GAME->GetHero(0);
-    showWhichHero(defalt);
-
     selectedHeroIndex = 0; 
 
     setInfoImage();
+    setButton();
 
     return S_OK;
 }
@@ -43,6 +40,7 @@ void dungeonUI_info::FrontRender(HDC _hdc)
     showHeroSkill(_hdc);
     showHeroEquip(_hdc);
     showHeroState(_hdc);
+
 }
 
 void dungeonUI_info::Release()
@@ -112,9 +110,44 @@ void dungeonUI_info::setSkillIcon()
 
 }
 
-void dungeonUI_info::showWhichHero(CHero* _hero)
+void dungeonUI_info::setButton()
 {
+    CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
+    //해당 수치가 계속 업데이트 되어야 함
+    bt_hero1->m_transform->m_pos = Vector2(
+        MG_GAME->GetHero(0)->m_transform->m_pos.x - MG_GAME->GetHero(0)->m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
+        MG_GAME->GetHero(0)->m_transform->m_pos.y - MG_GAME->GetHero(0)->m_animator->GetCurImage()->getFrameHeight());
+    bt_hero1->SetButtonSize(150, 285);
+    bt_hero1->AddSpriteRenderer("button");
+    bt_hero1->SetTriggerWhenClick(this, &dungeonUI_info::selHero1);
+    MG_GMOBJ->RegisterObj("selHero1", bt_hero1);
 
+    CButton_buttonPosMove* bt_hero2 = new CButton_buttonPosMove;
+    bt_hero2->m_transform->m_pos = Vector2(
+        MG_GAME->GetHero(1)->m_transform->m_pos.x - MG_GAME->GetHero(1)->m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
+        MG_GAME->GetHero(1)->m_transform->m_pos.y - MG_GAME->GetHero(1)->m_animator->GetCurImage()->getFrameHeight());
+    bt_hero2->SetButtonSize(150, 285);
+    bt_hero2->AddSpriteRenderer("button");
+    bt_hero2->SetTriggerWhenClick(this, &dungeonUI_info::selHero2);
+    MG_GMOBJ->RegisterObj("selHero2", bt_hero2);
+
+    CButton_buttonPosMove* bt_hero3 = new CButton_buttonPosMove;
+    bt_hero3->m_transform->m_pos = Vector2(
+        MG_GAME->GetHero(2)->m_transform->m_pos.x - MG_GAME->GetHero(2)->m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
+        MG_GAME->GetHero(2)->m_transform->m_pos.y - MG_GAME->GetHero(2)->m_animator->GetCurImage()->getFrameHeight());
+    bt_hero3->SetButtonSize(150, 285);
+    bt_hero3->AddSpriteRenderer("button");
+    bt_hero3->SetTriggerWhenClick(this, &dungeonUI_info::selHero3);
+    MG_GMOBJ->RegisterObj("selHero3", bt_hero3);
+
+    CButton_buttonPosMove* bt_hero4 = new CButton_buttonPosMove;
+    bt_hero4->m_transform->m_pos = Vector2(
+        MG_GAME->GetHero(3)->m_transform->m_pos.x - MG_GAME->GetHero(3)->m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
+        MG_GAME->GetHero(3)->m_transform->m_pos.y - MG_GAME->GetHero(3)->m_animator->GetCurImage()->getFrameHeight());
+    bt_hero4->SetButtonSize(150, 285);
+    bt_hero4->AddSpriteRenderer("button");
+    bt_hero4->SetTriggerWhenClick(this, &dungeonUI_info::selHero4);
+    MG_GMOBJ->RegisterObj("selHero4", bt_hero4);
 }
 
 void dungeonUI_info::showHeroState(HDC _hdc)
@@ -183,5 +216,41 @@ void dungeonUI_info::showHeroEquip(HDC _hdc)
     for (int i = 7; i < 9; i++)
     {
         m_heroInfoImage[i].m_img->renderUI(_hdc, &m_heroInfoImage[i].m_trans);
+    }
+}
+
+void dungeonUI_info::selHero1()
+{
+    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+    {
+        if (i == 0) MG_GAME->GetHero(i)->isSelected = true;
+        else MG_GAME->GetHero(i)->isSelected = false;
+    }
+}
+
+void dungeonUI_info::selHero2()
+{
+    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+    {
+        if (i == 1) MG_GAME->GetHero(i)->isSelected = true;
+        else MG_GAME->GetHero(i)->isSelected = false;
+    }
+}
+
+void dungeonUI_info::selHero3()
+{
+    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+    {
+        if (i == 2) MG_GAME->GetHero(i)->isSelected = true;
+        else MG_GAME->GetHero(i)->isSelected = false;
+    }
+}
+
+void dungeonUI_info::selHero4()
+{
+    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+    {
+        if (i == 3) MG_GAME->GetHero(i)->isSelected = true;
+        else MG_GAME->GetHero(i)->isSelected = false;
     }
 }
