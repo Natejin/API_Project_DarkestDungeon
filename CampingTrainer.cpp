@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "CampingTrainer.h"
-
+#include"CButton.h"
 CampingTrainer::CampingTrainer()
 {
 }
@@ -13,12 +13,15 @@ HRESULT CampingTrainer::Init()
 {
     isUi = false;
     //나가기버튼
+    m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
     m_quick->SetButtonSize(200, 200);
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
     m_quick->isActive = false;
-
+    
+    m_windowPanelBG = new CSpriteRenderer(IMAGE::camping_trainer_bg, m_transform);
+    m_windowPanelChar = new CSpriteRenderer(IMAGE::camping_trainer_char, m_transform);
     return S_OK;
 }
 
@@ -48,8 +51,8 @@ void CampingTrainer::FrontRender(HDC _hdc)
 {
     if (isUI == true)
     {
-        MG_IMAGE->findImage("camping_trainer.character.bg")->render(_hdc);
-        MG_IMAGE->findImage("camping_trainer.character")->render(_hdc);
+        m_windowPanelBG->Render(_hdc);
+        m_windowPanelChar->Render(_hdc);
         m_quick->isActive = true;
     }
 }

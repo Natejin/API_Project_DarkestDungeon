@@ -14,6 +14,7 @@ Abbey::~Abbey()
 HRESULT Abbey::Init()
 {
 	isUi = false;
+
 	m_quick = new CButton();
 	m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
 	m_quick->SetButtonSize(200, 200);
@@ -23,6 +24,8 @@ HRESULT Abbey::Init()
 
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::abbey_bg, m_transform);
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
+	m_transform->m_pivot = Vector2(0, 0);
+
 	return S_OK;
 }
 
