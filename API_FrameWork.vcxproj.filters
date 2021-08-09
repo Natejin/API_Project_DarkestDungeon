@@ -64,12 +64,6 @@
     <Filter Include="Enum">
       <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Enum\MJ">
-      <UniqueIdentifier>{0ebbc7be-ae57-45c6-9635-f1b0c8ee6673}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Enum\WT">
-      <UniqueIdentifier>{0d76a86e-9073-4263-bae8-fe745f4582f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Concept\animation">
       <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
     </Filter>
@@ -345,20 +339,8 @@
     <ClInclude Include="Enum.h">
       <Filter>Enum</Filter>
     </ClInclude>
-    <ClInclude Include="Enum_WT.h">
-      <Filter>Enum\WT</Filter>
-    </ClInclude>
-    <ClInclude Include="Enum_MJ.h">
-      <Filter>Enum\MJ</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageAdder_MJ.h">
-      <Filter>Enum\MJ</Filter>
-    </ClInclude>
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageAdder_WT.h">
-      <Filter>Enum\WT</Filter>
     </ClInclude>
     <ClInclude Include="animationManager.h">
       <Filter>Manager\Animation_M</Filter>
@@ -504,6 +486,9 @@
     <ClInclude Include="CButton_move.h">
       <Filter>Scene\UI</Filter>
     </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -626,14 +611,8 @@
     <ClCompile Include="CCameraManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="ImageAdder_MJ.cpp">
-      <Filter>Enum\MJ</Filter>
-    </ClCompile>
     <ClCompile Include="DungeonScene.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageAdder_WT.cpp">
-      <Filter>Enum\WT</Filter>
     </ClCompile>
     <ClCompile Include="animationManager.cpp">
       <Filter>Manager\Animation_M</Filter>
@@ -778,6 +757,9 @@
     </ClCompile>
     <ClCompile Include="CButton_move.cpp">
       <Filter>Scene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
