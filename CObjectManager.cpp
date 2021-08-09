@@ -8,9 +8,11 @@ CObjectManager::~CObjectManager() {}
 HRESULT CObjectManager::Init()
 {
 	renderOrder.push_back(LAYER::BackGround);
+	renderOrder.push_back(LAYER::Building);
 	renderOrder.push_back(LAYER::Enemy);
 	renderOrder.push_back(LAYER::Player);
 	renderOrder.push_back(LAYER::UI);
+	renderOrder.push_back(LAYER::UIButton);
 
 	for (size_t i = 0; i < renderOrder.size(); i++)
 	{

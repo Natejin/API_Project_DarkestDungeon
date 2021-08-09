@@ -153,12 +153,12 @@ public:
 	}
 	inline int setHeight(const float height) { return _imageInfo->height = height; }
 
-	//바운딩 박스(충돌용)
-	inline RECT getBoundingBox()
-	{
-		RECT rc = RectMakeCenter(_imageInfo->x, _imageInfo->y, _imageInfo->width, _imageInfo->height);
-		return rc;
-	}
+	////바운딩 박스(충돌용)
+	//inline RECT getBoundingBox()
+	//{
+	//	RECT rc = RectMakeCenter(_imageInfo->x, _imageInfo->y, _imageInfo->width, _imageInfo->height);
+	//	return rc;
+	//}
 
 	//프레임 X셋팅
 	inline  int getFrameX()const { return _imageInfo->currentFrameX; }

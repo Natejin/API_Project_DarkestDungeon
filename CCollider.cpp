@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CCollider.h"
+//#include "CCollider.h"
 
 CCollider::CCollider()
 {

@@ -1,9 +1,5 @@
 #include "framework.h"
 #include "GameObject.h"
-#include "CTransform.h"
-#include "CCollider.h"
-#include "CAnimator.h"
-#include "CSpriteRenderer.h"
 #include "image.h"
 
 GameObject::GameObject()

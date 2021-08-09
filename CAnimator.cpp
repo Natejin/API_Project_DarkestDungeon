@@ -1,5 +1,5 @@
 #include "framework.h"
-#include "CAnimator.h"
+//#include "CAnimator.h"
 #include "image.h"
 
 CAnimator::CAnimator()
