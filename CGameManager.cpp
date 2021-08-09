@@ -29,6 +29,7 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
+
 }
 
 void CGameManager::FrontRender(HDC _hdc)
@@ -91,7 +92,11 @@ Vestal* CGameManager::CreateVestal(string name)
 	int resist[5] = { 30, 30, 30, 30, 30 };
 	//stun, blight, bleed, debuff, move
 
-	vestal->Init(JOB::Vestal, IMAGE::Vestal_Idle, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+	vestal->Init(JOB::Vestal,  resist, 24, 4, 1, 6, 0, 1, 0, 0);
+	vestal->AddAnimator(IMAGE::Crusader_Idle);
+	vestal->m_animator->SetAnimeSpeed(5);
+	vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
+	vestal->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
 	//pos는 임의로 1에 배치, 공격력은 4-9의 중간값으로.
 
 	//member1->m_transform->m_pos = Vector2(210, 360);

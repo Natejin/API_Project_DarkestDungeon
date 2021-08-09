@@ -18,30 +18,32 @@ void CBattleSystem::BattleSystemInitiate()
 void CBattleSystem::CreateEnemyParty()
 {
 	int random = MG_RND->getInt(2) + 2;
+	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	for (size_t i = 0; i < random; i++)
 	{
 
 		CBoneDefender* enemy = new CBoneDefender();
 		enemy->Init(); //TODO 추후 적 세팅 변경하기
-
+		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
 		enemyParty.push_back(enemy);
 		enemyParty[i]->SetPosition(i);
 		enemyParty[i]->SetPartyIndex(i);
-		enemyParty[i]->m_transform->m_pos = Vector2(1100 + 150 * i, 360);
+		enemyParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 360);
 	}
 }
 
 void CBattleSystem::CreateHeroesParty()
 {
 	int playerPartySize = MG_GAME->GetHeroPartySize();
-
+	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	for (int i = 0; i < playerPartySize; i++)
 	{
 		heroParty.push_back(MG_GAME->GetHero(i));
 		heroParty[i]->SetPosition(i);
 		heroParty[i]->SetPartyIndex(i);
-		heroParty[i]->m_transform->m_pos = Vector2(700 - 150 * i, 360);
+		heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, 360);
+		heroParty[i]->m_animator->SetIndex(2);
 	}
 }
 

@@ -50,4 +50,9 @@ public:
 
 	class Image* GetCurImage();
 
+	void SetIndex(int index);
+
+	void ResetAnimation();
+	Vector2 GetFrameSize();
+
 };

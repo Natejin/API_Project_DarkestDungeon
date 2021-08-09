@@ -26,7 +26,7 @@ public:
 	CHero();
 	~CHero();
 
-	HRESULT Init(JOB job, IMAGE img, int resist[],
+	HRESULT Init(JOB job,  int resist[],
 		int HP, int SPD, int POS, int DMG,
 		int ACRY, int CRI, int DEF, int DODGE);
 

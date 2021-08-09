@@ -20,7 +20,7 @@ void CCameraManager::Update(float deltaTime, float worldTime)
 	{
 		Vector2 fpos = m_pTarget->m_transform->m_pos;
 		Vector2 fpivot = m_pTarget->m_transform->m_pivot;
-		Vector2 fscale = m_pTarget->m_transform->m_scale;
+		Vector2 fscale = m_pTarget->m_animator->GetFrameSize();
 
 		float left = fpos.x - fpivot.x * fscale.x;
 		float top = fpos.y - fpivot.y * fscale.y;

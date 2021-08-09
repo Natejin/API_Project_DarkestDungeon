@@ -45,3 +45,8 @@ void CSpriteRenderer::RenderUI(HDC _hdc)
 {
 	m_image->renderUI(_hdc, m_trans);
 }
+
+Vector2 CSpriteRenderer::GetImageSize()
+{
+	return m_imageSize;
+}

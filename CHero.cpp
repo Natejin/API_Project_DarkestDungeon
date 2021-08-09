@@ -8,7 +8,7 @@ CHero::CHero() {
 }
 CHero::~CHero() {}
 
-HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
+HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
 {
 	m_layer = LAYER::Player;
 	
@@ -40,13 +40,8 @@ HRESULT CHero::Init(JOB job, IMAGE img, int resist[], int HP, int SPD, int POS, 
 
 	m_DIST = 0;
 	isActive = false;
-
+	m_transform->m_pivot = Vector2(0.5, 1);
 	//m_image = MG_IMAGE->findImage(img);
-
-	m_animator = new CAnimator();
-	m_animator->SetTrans(m_transform);
-	m_animator->AddImageFrame(img);
-	m_animator->SetAnimeSpeed(5);
 
 	
 	//job에 따른 스킬을 넣을 변수, 혹은 함수가 필요함
@@ -119,6 +114,11 @@ void CHero::Move()
 				}
 			}
 		}
+
+		m_animator->SetIndex(1);
+	}
+	else {
+		m_animator->SetIndex(0);
 	}
 }
 

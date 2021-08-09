@@ -309,7 +309,7 @@ void DungeonScene2::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 640);
+		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 520);
 	}
 	m_party->SetParty(party);
 	MG_GMOBJ->RegisterObj("Party", m_party);
