@@ -33,6 +33,8 @@ public:
 	ImageData targetedMem;
 
 
+
+
 public:
 	CHero();
 	~CHero();
