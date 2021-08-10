@@ -4,6 +4,7 @@ class CHeroList_button : public CDragButton
 {
 	Vector2 buttonSize;
 	function<void()> m_triggerWhenDrag;
+	Vector2 originPos;
 
 	class CSpriteRenderer* m_heroBG;
 

@@ -26,9 +26,17 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 {
 	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 	{
+
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		{
+			isDragging = true;
+			originPos = m_transform->m_pos;
+
+		}
+
 		if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
 		{
-			if (canTriggerDrag)
+			if (isDragging && canTriggerDrag)
 			{
 				//드래그 중일때 이동해야 한다.
 				m_transform->m_pos = m_ptMouse;
@@ -41,11 +49,8 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 
 		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
 		{
-			if (canTriggerClick)
-			{	//놓았을때 상호작용.
-				
-			}
-
+			isDragging = false;
+			m_transform->m_pos = originPos;
 		}
 	}
 }

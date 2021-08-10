@@ -7,6 +7,7 @@ protected:
 	function<void()> m_triggerWhenDrag;
 
 	bool canTriggerDrag;
+	bool isDragging;
 
 public:
 	CDragButton();
