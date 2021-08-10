@@ -1,16 +1,11 @@
 #pragma once
-#include "CEst_UI.h"
-class Abbey :public CEst_UI
+#include"CEst_UI.h"
+class Activity_log : public CEst_UI 
 {
-
-private:
-	class CButton* m_quick;
-
 public:
-	Rect m_rect;
 
-	Abbey();
-	~Abbey();
+	Activity_log();
+	~Activity_log();
 
 	HRESULT Init();
 
@@ -22,11 +17,5 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-
-	bool isUi;
-	bool isUI;
-	
-	void Setquick();
-	void FinishUI();
-	//===================================
 };
+

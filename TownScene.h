@@ -14,8 +14,16 @@ protected:
 	class NomadWagon* m_nomad_wagon;
 	class Tavern* m_tavern;
 
+	vector<class CDragButton*> m_dragButton;
+	vector<ImageData> v_roster;
+private:
+
+	class CHero* m_hero;
+	
 public:
 	class CEst_UI* m_estui;
+	int curDragHeroIndex;
+	bool isDrag;
 
 public:
 	//껏켯을 할수있게하는 버튼 bool값
@@ -45,9 +53,7 @@ public:
 public:
 	//버튼.
 	void SetIMG_Est();
-	//나가기버튼
-	void Set_quick();
-
+	void SetUI();
 
 public:
 	//버튼의 역활을 하는 bool값을 바꾸는 함수.
@@ -62,6 +68,11 @@ public:
 	void Show_sanitarium(); //요양원
 	void Show_tavern(); //여관
 	
+public:
+
+	void Show_Activity_log();
+	void SetHerolist();
+
 public:
 	TownScene();
 	virtual~TownScene();

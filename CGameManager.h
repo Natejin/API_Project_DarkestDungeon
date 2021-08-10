@@ -2,16 +2,15 @@
 #include"singleton.h"
 
 class CHero;
-class CParty; 
+class CParty;
 class CGameManager : public Singleton<CGameManager>
 {
-private:
+public:
 	//map<int,class GameObject*> objectMap;
 	vector<CHero*> m_partyOrigin;
 	vector<CHero*> m_ownHeroes;
 
 	CParty* m_party;
-
 public:
 	CGameManager();
 	~CGameManager();
@@ -34,11 +33,15 @@ public:
 	vector<CHero*> GetHeroes();
 	CHero* GetHero(int index);
 
+
+
+
+	
+
 	void setParty();
 	CParty* GetParty();
 
 	class CHero* CreateHero(string name, JOB job);
 
-	int GetHeroPartySize() {  return m_partyOrigin.size();}
-
+	int GetHeroPartySize() { return m_partyOrigin.size(); }
 };

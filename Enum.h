@@ -99,6 +99,18 @@ enum class IMAGE
 	tavern_bg,
 	tavern_char,
 
+	estate_activity_log,
+	estate_nameplate,
+	hero_slot_bg,
+	downarrow,
+	uparrow,
+	sort_rarity,
+	unequip_trinkets,
+	sort_stress,
+	roster_topframe,
+	roster_downframe,
+	rosterelement_res,
+	roster_bggrad,
 
 	ruins_endhall,
 	ruins_mid,
@@ -139,6 +151,12 @@ enum class IMAGE
 	room_entrance,		
 	room_treasure,		
 	room_unknown
+	//Hero_roster
+	crusader_roster,
+	highwayman_roster,
+	plague_doctor_roster,
+	vestal_roster,
+
 };
 
 enum class RACE 
@@ -165,9 +183,9 @@ enum class Combat_Skill
 
 enum class Camping_Skill
 {	
-	//¾ß½À¹æÁö
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Night_Attack_Prevention,
-	//Á¤Âû °­È­
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­
 	Reconnaissance,
 	Stress_Down,
 	Cure_disease,
@@ -177,7 +195,7 @@ enum class Camping_Skill
 
 enum class BATTLETURN
 {	
-	//¾ß½À¹æÁö
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	EnemyTurn,
 	PlayerTurn
 };

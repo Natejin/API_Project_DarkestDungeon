@@ -501,7 +501,10 @@
     <ClInclude Include="CMinimapButton.h">
       <Filter>Manager\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CButton_buttonPosMove.h">
+    <ClInclude Include="CDragButtion.h">
+      <Filter>Scene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
       <Filter>Scene\UI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -782,7 +785,10 @@
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Manager\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CButton_buttonPosMove.cpp">
+    <ClCompile Include="CDragButtion.cpp">
+      <Filter>Scene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
       <Filter>Scene\UI</Filter>
     </ClCompile>
   </ItemGroup>

@@ -89,6 +89,9 @@ CParty* CGameManager::GetParty()
 	return m_party;
 }
 
+
+
+
 CHero* CGameManager::CreateHero(string name, JOB job)
 {
 	//member1 = new CHero();
