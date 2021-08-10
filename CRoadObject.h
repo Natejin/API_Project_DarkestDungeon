@@ -13,7 +13,7 @@ private:
 	vector <ImageData> m_roadObj;
 	vector <CTransform> m_SettingArea;
 	bool isTreasureOpen;
-	bool isTrapClear;
+	bool clearTrap;
 
 	CButton_move* bt_treasure;
 	CButton_move* bt_trap;

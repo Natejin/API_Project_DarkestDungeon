@@ -50,8 +50,6 @@ void timer::tick(float lockFPS)
 	_timeElapsed = (_curTime - _lastTime) * _timeScale;
 
 
-	
-
 	if (lockFPS > 0.0f)
 	{
 		while (_timeElapsed <(1.0f/lockFPS))

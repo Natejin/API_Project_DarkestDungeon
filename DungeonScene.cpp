@@ -14,6 +14,7 @@
 
 DungeonScene::DungeonScene()
 {
+
 	isDoorClick = false;
 
 	m_party = nullptr;
@@ -30,12 +31,17 @@ HRESULT DungeonScene::Init()
 
 	//SetUIIMG();
 	CreateBattleSystem();
-	CreateParty();
 	CreateDungeonUI();
 	CreateDungeonMap();
 	CreateRoom();
 	CreateRoad();
+	CreateParty();
+	CreateDungeonInven();
 	CreateDoor();
+
+
+
+
 
 	ActivateRoad();
 	return S_OK;
@@ -45,7 +51,6 @@ void DungeonScene::CreateDungeonUI()
 {
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->Init();
-	m_dungeonUI->isActive = true;
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 
 	m_dungeonUIinfo = new dungeonUI_info;
@@ -121,6 +126,13 @@ void DungeonScene::CreateDungeonMap()
 	m_pMapSystem = new CMapSystem();
 	m_pMapSystem->Init();
 	m_dungeonUI->m_pMapSystem = m_pMapSystem;
+}
+
+void DungeonScene::CreateDungeonInven()
+{
+	m_inven = new CInventorySystem();
+	m_inven->Init();
+	MG_GMOBJ->RegisterObj("inventory", m_inven);
 }
 
 void DungeonScene::CreateParty()
@@ -213,7 +225,6 @@ void DungeonScene::ActivateRoad()
 {
 	m_roomBG->isActive = false;
 	m_roadBG->isActive = true;
-	m_roadObj->isActive = true;
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
 }
@@ -243,7 +254,6 @@ void DungeonScene::ActivateRoom()
 {
 	m_roadBG->isActive = false;
 	m_roomBG->isActive = true;
-	m_roadObj->isActive = false;
 	m_dungeonState = DUNGEONSTATE::ROOM;
 	m_roomBG->m_spriteRenderer->SetImage(roomRandom[MG_RND->getInt(roomRandom.size())]);
 	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));

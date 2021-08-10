@@ -25,7 +25,6 @@ void CRoadObject::Update(float deltaTime, float worldTime)
 {
     Interaction_collision(); 
 
-    
 }
 
 void CRoadObject::LateUpdate()
@@ -125,7 +124,7 @@ void CRoadObject::setRoadObj()
     m_SettingArea.push_back(temp);
 
     isTreasureOpen = false;
-    isTrapClear = false;
+    clearTrap = false;
 
     for (int i = 0; i < m_roadObj.size(); i++)
     {
@@ -148,20 +147,18 @@ void CRoadObject::Interaction_collision()
     }
     else isCollision = false;
 
-    CCollider* _collider = new CCollider;
+    //CCollider* _collider = new CCollider;
 
-    //collision with trap
-
-    //얘부터 차례대로 디버깅하려면
-    (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
-    if (isTrapClear == false)
-    {
-        if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
-        {
-            Interaction_trap_fail();
-            isTrapClear == true;
-        }
-    }
+    ////collision with trap
+    //(*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
+    //if (clearTrap == false)
+    //{
+    //    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
+    //    {
+    //        Interaction_trap_fail();
+    //        clearTrap == true;
+    //    }
+    //}
 
     ////collision with enemyPoint
     //(*_collider).SetRect(m_roadObj[2].m_trans.m_pos.x, m_roadObj[2].m_trans.m_pos.y, m_roadObj[2].m_trans.m_pos.x + 100, m_roadObj[2].m_trans.m_pos.y - 100);
@@ -211,7 +208,7 @@ void CRoadObject::Interaction_trap()
     CCollider* _collider = new CCollider;
     (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x - 100, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 200, m_roadObj[1].m_trans.m_pos.y - 100);
 
-    if (isTrapClear == false)
+    if (clearTrap == false)
     {
         if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 200))
         {
@@ -234,15 +231,12 @@ void CRoadObject::Interaction_trap_fail()
 	m_roadObj[1].m_img->setWidth(100);
 	m_roadObj[1].m_img->setHeight(100);
     MG_GAME->GetParty()->GetHero(0)->setStress(MG_GAME->GetParty()->GetHero(0)->getStress() + 10);
-    isTrapClear = true;
-    
 }
 
 void CRoadObject::Interaction_trap_success()
 {
     //try to clearTrap and succeed
     m_roadObj[1].m_img = MG_IMAGE->findImage("nothing");
-    isTrapClear = true;
 }
 
 void CRoadObject::Interaction_battle()
