@@ -4,7 +4,7 @@
 class CHero;
 class CGameManager : public Singleton<CGameManager>
 {
-private:
+public:
 	//map<int,class GameObject*> objectMap;
 	vector<CHero*> m_partyOrigin;
 	vector<CHero*> m_ownHeroes;

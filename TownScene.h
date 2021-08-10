@@ -13,6 +13,8 @@ protected:
 	class Statue* m_statue ;
 	class NomadWagon* m_nomad_wagon;
 	class Tavern* m_tavern;
+
+	vector<class CDragButton*> m_dragButton;
 private:
 
 	class CHero* m_hero;
