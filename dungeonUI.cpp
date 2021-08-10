@@ -126,6 +126,18 @@ void dungeonUI::TorchLightBarDecrease()
 	vUI[2].m_trans.m_pos.x = 1400 - ((422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
 }
 
+void dungeonUI::ShowInven()
+{
+	showMap = false; 
+	m_pMapSystem->MapButtonOnOff(false);
+}
+
+void dungeonUI::ShowMap()
+{
+	showMap = true;
+	m_pMapSystem->MapButtonOnOff(true);
+}
+
 void dungeonUI::ShowUI(HDC _hdc)
 {
 
@@ -143,6 +155,7 @@ void dungeonUI::ShowUI(HDC _hdc)
 
 void dungeonUI::ShowUIMap(HDC _hdc)
 {
-	m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
-	m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
+	//m_pMapSystem->dungeonMapCreate[0]->minimapButton->Render(_hdc);
+	//m_pMapSystem->dungeonMapCreate[0].minimapButton->m_transform->m_pos = Vector2(1350, 800);
+	//m_pMapSystem->dungeonMapCreate[0]->m_imageData.RenderUI(_hdc);
 }

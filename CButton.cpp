@@ -68,3 +68,16 @@ void CButton::SetButtonSize(float width, float height)
 	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
 	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
 }
+
+void CButton::SetButtonSize()
+{
+	if (m_spriteRenderer)
+	{
+		Vector2 imageSize = m_spriteRenderer->GetImageSize();
+		m_rect.l = m_transform->m_pos.x - imageSize.x * m_transform->m_pivot.x;
+		m_rect.t = m_transform->m_pos.y - imageSize.y * m_transform->m_pivot.y;
+		m_rect.r = m_transform->m_pos.x + imageSize.x * (1 - m_transform->m_pivot.x);
+		m_rect.b = m_transform->m_pos.y + imageSize.y * (1 - m_transform->m_pivot.y);
+	}
+
+}
