@@ -1,12 +1,12 @@
 #include "framework.h"
-#include "dungeonUI_info.h"
+#include "dungeonUI_HeroInfo.h"
 #include "CHero.h"
 #include "CParty.h"
 
-dungeonUI_info::dungeonUI_info() {}
-dungeonUI_info::~dungeonUI_info() {}
+dungeonUI_HeroInfo::dungeonUI_HeroInfo() {}
+dungeonUI_HeroInfo::~dungeonUI_HeroInfo() {}
 
-HRESULT dungeonUI_info::Init()
+HRESULT dungeonUI_HeroInfo::Init()
 {
     m_layer = LAYER::UI;
 
@@ -18,25 +18,25 @@ HRESULT dungeonUI_info::Init()
     return S_OK;
 }
 
-void dungeonUI_info::Update(float deltaTime, float worldTime)
+void dungeonUI_HeroInfo::Update(float deltaTime, float worldTime)
 {
     setInfoImage();
 }
 
-void dungeonUI_info::LateUpdate()
+void dungeonUI_HeroInfo::LateUpdate()
 {
 }
 
-void dungeonUI_info::BackRender(HDC _hdc)
+void dungeonUI_HeroInfo::BackRender(HDC _hdc)
 {
 }
 
-void dungeonUI_info::Render(HDC _hdc)
+void dungeonUI_HeroInfo::Render(HDC _hdc)
 {
 
 }
 
-void dungeonUI_info::FrontRender(HDC _hdc)
+void dungeonUI_HeroInfo::FrontRender(HDC _hdc)
 {
     showHeroSkill(_hdc);
     showHeroEquip(_hdc);
@@ -44,7 +44,7 @@ void dungeonUI_info::FrontRender(HDC _hdc)
 
 }
 
-void dungeonUI_info::Release()
+void dungeonUI_HeroInfo::Release()
 {
 
 }
@@ -53,7 +53,7 @@ void dungeonUI_info::Release()
 //==================================
 
 
-void dungeonUI_info::setInfoImage()
+void dungeonUI_HeroInfo::setInfoImage()
 {
     //portrait and skill
     switch (MG_GAME->GetHero(selectedHeroIndex)->job)
@@ -136,38 +136,38 @@ void dungeonUI_info::setInfoImage()
 
 }
 
-void dungeonUI_info::setButton()
+void dungeonUI_HeroInfo::setButton()
 {
     CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
     bt_hero1->setBtTarget(MG_GAME->GetHero(0));
     bt_hero1->SetButtonSize(100, 285);
     bt_hero1->AddSpriteRenderer("button");
-    bt_hero1->SetTriggerWhenClick(this, &dungeonUI_info::selHero1);
+    bt_hero1->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero1);
     MG_GMOBJ->RegisterObj("selHero1", bt_hero1);
 
     CButton_buttonPosMove* bt_hero2 = new CButton_buttonPosMove;
     bt_hero2->setBtTarget(MG_GAME->GetHero(1));
     bt_hero2->SetButtonSize(100, 285);
     bt_hero2->AddSpriteRenderer("button");
-    bt_hero2->SetTriggerWhenClick(this, &dungeonUI_info::selHero2);
+    bt_hero2->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero2);
     MG_GMOBJ->RegisterObj("selHero2", bt_hero2);
 
     CButton_buttonPosMove* bt_hero3 = new CButton_buttonPosMove;
     bt_hero3->setBtTarget(MG_GAME->GetHero(2)); 
     bt_hero3->SetButtonSize(100, 285);
     bt_hero3->AddSpriteRenderer("button");
-    bt_hero3->SetTriggerWhenClick(this, &dungeonUI_info::selHero3);
+    bt_hero3->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero3);
     MG_GMOBJ->RegisterObj("selHero3", bt_hero3);
 
     CButton_buttonPosMove* bt_hero4 = new CButton_buttonPosMove;
     bt_hero4->setBtTarget(MG_GAME->GetHero(3));
     bt_hero4->SetButtonSize(100, 285);
     bt_hero4->AddSpriteRenderer("button");
-    bt_hero4->SetTriggerWhenClick(this, &dungeonUI_info::selHero4);
+    bt_hero4->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
     MG_GMOBJ->RegisterObj("selHero4", bt_hero4);
 }
 
-void dungeonUI_info::showHeroState(HDC _hdc)
+void dungeonUI_HeroInfo::showHeroState(HDC _hdc)
 {
     char str[256];
     string strFrame;
@@ -237,7 +237,7 @@ void dungeonUI_info::showHeroState(HDC _hdc)
     TextOut(_hdc, 380, 985, str, strlen(str));
 }
 
-void dungeonUI_info::showHeroSkill(HDC _hdc)
+void dungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
 {
     portrait.m_img->renderUI(_hdc, &portrait.m_trans);
     skill1.m_img->renderUI(_hdc, &skill1.m_trans);
@@ -251,13 +251,13 @@ void dungeonUI_info::showHeroSkill(HDC _hdc)
     }
 }
 
-void dungeonUI_info::showHeroEquip(HDC _hdc)
+void dungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
 {
     armor.m_img->renderUI(_hdc, &armor.m_trans);
     weapon.m_img->renderUI(_hdc, &weapon.m_trans);
 }
 
-void dungeonUI_info::selHero1()
+void dungeonUI_HeroInfo::selHero1()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
@@ -266,7 +266,7 @@ void dungeonUI_info::selHero1()
     }
 }
 
-void dungeonUI_info::selHero2()
+void dungeonUI_HeroInfo::selHero2()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
@@ -275,7 +275,7 @@ void dungeonUI_info::selHero2()
     }
 }
 
-void dungeonUI_info::selHero3()
+void dungeonUI_HeroInfo::selHero3()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
@@ -284,7 +284,7 @@ void dungeonUI_info::selHero3()
     }
 }
 
-void dungeonUI_info::selHero4()
+void dungeonUI_HeroInfo::selHero4()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {

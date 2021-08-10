@@ -483,7 +483,7 @@
     <ClInclude Include="Tavern.h">
       <Filter>Manager\UI\EST_UI\Tavern</Filter>
     </ClInclude>
-    <ClInclude Include="dungeonUI_info.h">
+    <ClInclude Include="dungeonUI_HeroInfo.h">
       <Filter>Object\DungeonUI</Filter>
     </ClInclude>
     <ClInclude Include="dungeonUI.h">
@@ -785,7 +785,7 @@
     <ClCompile Include="dungeonUI.cpp">
       <Filter>Object\DungeonUI</Filter>
     </ClCompile>
-    <ClCompile Include="dungeonUI_info.cpp">
+    <ClCompile Include="dungeonUI_HeroInfo.cpp">
       <Filter>Object\DungeonUI</Filter>
     </ClCompile>
     <ClCompile Include="CButton_move.cpp">
