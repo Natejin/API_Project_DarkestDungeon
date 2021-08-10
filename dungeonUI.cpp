@@ -30,13 +30,20 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
+<<<<<<< HEAD
 	//bg의 frontRender에 가려져서 여기에 넣음
 	ShowUI(_hdc);
+=======
+
+>>>>>>> parent of ac14a3e (Merge branch 'MJ' into JT)
 }
 
 void dungeonUI::FrontRender(HDC _hdc)
 {
+	//bg의 frontRender에 가려져서 여기에 넣음
+	ShowUI(_hdc);
 
+	//캐릭터 정보, 인벤토리, 맵 정보
 }
 
 void dungeonUI::Release()
@@ -141,6 +148,12 @@ void dungeonUI::ShowUI(HDC _hdc)
 
 void dungeonUI::ShowUIMap(HDC _hdc)
 {
+<<<<<<< HEAD
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
+=======
+	//m_pMapSystem->dungeonMapCreate[0]->minimapButton->Render(_hdc);
+	//m_pMapSystem->dungeonMapCreate[0].minimapButton->m_transform->m_pos = Vector2(1350, 800);
+	//m_pMapSystem->dungeonMapCreate[0]->m_imageData.RenderUI(_hdc);
+>>>>>>> parent of ac14a3e (Merge branch 'MJ' into JT)
 }

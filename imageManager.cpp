@@ -134,8 +134,6 @@ HRESULT imageManager::init()
 	//���
 	MG_IMAGE->addFrameImage("bg", "images/test/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 	
-	MG_IMAGE->addImage("testItem", "images/dungeonUI/item_testImg.bmp", 1050-982, 135, false, RGB(255, 0, 255));
-
 	//Town
 	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+550 , 776+100+200, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("district_midground", "images/Town/district_midground.bmp", 1000 + 920, 300+400, true, RGB(255, 0, 255));
