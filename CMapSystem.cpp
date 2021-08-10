@@ -205,31 +205,32 @@ void CMapSystem::SetMapWitchCreated()
 
 			if (dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE)
 			{
+			
 				switch (dungeonMap[i][j].dungeonMapState)
 				{
 				case DUNGEONMAPSTATE::Road_Empty:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::hall_clear);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::hall_clear);
 					break;
 				case DUNGEONMAPSTATE::Road_Enemy:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::marker_battle);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::marker_battle);
 					break;
 				case DUNGEONMAPSTATE::Road_Trasure:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::marker_curio);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::marker_curio);
 					break;
 				case DUNGEONMAPSTATE::Road_Trap:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::marker_trap);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::marker_trap);
 					break;
 				case DUNGEONMAPSTATE::Room_Empty:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::room_empty);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_empty);
 					break;
 				case DUNGEONMAPSTATE::Room_Enemy:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::room_battle);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_battle);
 					break;
 				case DUNGEONMAPSTATE::Room_Trasure:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::room_curio);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_curio);
 					break;
 				case DUNGEONMAPSTATE::Room_Boss:
-					dungeonMap[i][j].m_image = MG_IMAGE->findImage(IMAGE::room_boss);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_boss);
 					break;
 				default:
 					break;

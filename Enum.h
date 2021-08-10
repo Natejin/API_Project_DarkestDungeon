@@ -150,7 +150,7 @@ enum class IMAGE
 	room_empty,			
 	room_entrance,		
 	room_treasure,		
-	room_unknown
+	room_unknown,
 	//Hero_roster
 	crusader_roster,
 	highwayman_roster,
