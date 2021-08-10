@@ -42,4 +42,6 @@ public:
 
 	void AddSpriteRenderer(IMAGE imageName);
 	void AddSpriteRenderer(string imageName);
+
+
 };
