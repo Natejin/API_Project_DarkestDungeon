@@ -134,6 +134,8 @@ HRESULT imageManager::init()
 	//���
 	MG_IMAGE->addFrameImage("bg", "images/test/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 	
+	MG_IMAGE->addImage("testItem", "images/dungeonUI/item_testImg.bmp", 1050-982, 135, false, RGB(255, 0, 255));
+
 	//Town
 	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+550 , 776+100+200, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("district_midground", "images/Town/district_midground.bmp", 1000 + 920, 300+400, true, RGB(255, 0, 255));
@@ -200,9 +202,6 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::roster_downframe, "images/Town_UI/roster_bottomframe.bmp", 383, 60, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::rosterelement_res, "images/Town_UI/rosterelement_res1.bmp", 395-20, 104, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::roster_bggrad, "images/Town_UI/roster_bggrad.bmp", 373, 1080/2, true, RGB(255, 0, 255));
-
-	MG_IMAGE->addImage("tavern.character", "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("tavern.character.bg", "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("panel_bg", "images/panel/panel_bg.bmp", 1920, 1080, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("panel_bg2", "images/panel/panel_bg2.bmp", 344, 319, false, RGB(255, 0, 255));
@@ -278,7 +277,16 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 70, 135, false, RGB(255, 0, 255));
+
+
+	//item
+	MG_IMAGE->addImage("torch", "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food1", "images/item/inv_provision+_0.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food2", "images/item/inv_provision+_1.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food3", "images/item/inv_provision+_2.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food4", "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("bandage", "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
 
 	return S_OK;
 }

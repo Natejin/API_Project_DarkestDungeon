@@ -1,19 +1,14 @@
 #pragma once
-#include "CButton.h"
-
-class CMinimapButton : public CButton
+#include"CEst_UI.h"
+class CHeroList_ui : public CEst_UI
 {
-
+	vector<ImageData> v_roster;
 public:
-	DungeonData dungeonData;
-
-
-	CMinimapButton();
-	~CMinimapButton();
+	
+	CHeroList_ui();
+	~CHeroList_ui();
 
 	HRESULT Init();
-
-
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -21,5 +16,8 @@ public:
 	virtual void BackRender(HDC _hdc);
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
+
+	virtual void Release();
+
 };
 

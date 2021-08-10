@@ -13,6 +13,8 @@ public:
 	LAYER m_layer;
 	bool isActive;
 
+
+
 public:
 	GameObject();
 	~GameObject();
@@ -40,6 +42,4 @@ public:
 
 	void AddSpriteRenderer(IMAGE imageName);
 	void AddSpriteRenderer(string imageName);
-
-
 };

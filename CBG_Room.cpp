@@ -15,11 +15,12 @@ HRESULT CBG_Room::Init()
 
 void CBG_Room::BackRender(HDC _hdc)
 {
+	m_spriteRenderer->Render(_hdc);
 }
 
 void CBG_Room::Render(HDC _hdc)
 {
-	m_spriteRenderer->Render(_hdc);
+	
 }
 
 void CBG_Room::FrontRender(HDC _hdc)

@@ -13,6 +13,12 @@ class CSpriteRenderer : public CComponent
 	int imageWidth;
 	int imageHeight;
 
+	
+public:
+	Vector2 pos;
+	bool useCustomPos;
+	int GetCustomPos()const { return useCustomPos; }
+
 protected:
 	CSpriteRenderer();
 
@@ -20,8 +26,6 @@ public:
 	CSpriteRenderer(IMAGE imageName, CTransform* _trans);
 	~CSpriteRenderer();
 	void SetTrans(class CTransform* _trans) { m_trans = _trans; }
-
-
 
 	void SetImage(string imageName);
 	void SetImage(IMAGE imageName);
@@ -32,5 +36,9 @@ public:
 	void RenderUI(HDC _hdc);
 
 	Vector2 GetImageSize();
+
+	
+	
+
 };
 

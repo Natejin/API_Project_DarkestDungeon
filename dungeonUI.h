@@ -13,6 +13,7 @@ public:
 	CButton* bt_map;
 	
 	class CMapSystem* m_pMapSystem;
+	class CInventorySystem* m_inven;
 
 	//==================================
 
@@ -32,11 +33,13 @@ public:
 	void SetUIIMG();
 	void SetButton();
 	void SetTorchUI();
+	void SetInven();
 
 	void TorchLightBarDecrease();
-	void ShowInven() { showMap = false; }
-	void ShowMap() { showMap = true; }
+	void ShowInven();
+	void ShowMap();
 
 	void ShowUI(HDC _hdc);
 	void ShowUIMap(HDC _hdc);
+	void ShowUIUInven(HDC _hdc);
 };
