@@ -201,9 +201,6 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::rosterelement_res, "images/Town_UI/rosterelement_res1.bmp", 395-20, 104, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::roster_bggrad, "images/Town_UI/roster_bggrad.bmp", 373, 1080/2, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("tavern.character", "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("tavern.character.bg", "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-
 	MG_IMAGE->addImage("panel_bg", "images/panel/panel_bg.bmp", 1920, 1080, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("panel_bg2", "images/panel/panel_bg2.bmp", 344, 319, false, RGB(255, 0, 255));
 
