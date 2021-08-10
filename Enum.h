@@ -72,6 +72,34 @@ enum class IMAGE
 	abbey_bg,
 	abbey_char,
 
+	blacksmith_bg,
+	blacksmith_char,
+
+	camping_trainer_bg,
+	camping_trainer_char,
+
+	graveyard_bg,
+	graveyard_char,
+
+	guild_bg,
+	guild_char,
+
+	nomad_wagon_bg,
+	nomad_wagon_char,
+
+	sanitarium_bg,
+	sanitarium_char,
+
+	stage_coach_bg,
+	stage_coach_char,
+
+	statue_bg,
+	statue_char,
+
+	tavern_bg,
+	tavern_char,
+
+
 	ruins_endhall,
 	ruins_mid,
 

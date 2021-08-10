@@ -136,12 +136,13 @@ void DungeonScene::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 680);
+		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
 	}
 	m_party->SetParty(party);
 
 	MG_GMOBJ->RegisterObj("Party", m_party);
 	MG_CAMERA->SetTarget(m_party->GetHero(0));
+	MG_GAME->GetHero(0)->isSelected = true;
 }
 
 void DungeonScene::CreateRoom()

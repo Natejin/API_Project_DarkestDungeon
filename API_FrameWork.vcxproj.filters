@@ -501,6 +501,9 @@
     <ClInclude Include="CMinimapButton.h">
       <Filter>Manager\UI</Filter>
     </ClInclude>
+    <ClInclude Include="CButton_buttonPosMove.h">
+      <Filter>Scene\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -778,6 +781,9 @@
     </ClCompile>
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Manager\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_buttonPosMove.cpp">
+      <Filter>Scene\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

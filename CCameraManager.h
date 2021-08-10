@@ -35,6 +35,7 @@ public:
 
 	Vector2 getTargerPivot()const { return targetPivot; }
 	Vector2 getCameraPos()const { return pos; }
+	Vector2 getSCPV()const { return screenSize.x * targetPivot.x; }
 	void SetWorldSize(Vector2 size);
 	Vector2 GetWorldSize();
 

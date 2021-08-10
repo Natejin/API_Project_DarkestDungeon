@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "CButton_buttonPosMove.h"
 
 class CHero;
 class CParty;
@@ -8,6 +9,16 @@ class dungeonUI_info : public GameObject
 private:
 	vector<ImageData> m_heroInfoImage; //장비, 히어로 아이콘, 스킬 이미지
 	vector<ImageData> m_invenOrMapImage; 
+
+	ImageData portrait;
+	ImageData skill1;
+	ImageData skill2;
+	ImageData skill3;
+	ImageData skill4;
+
+	ImageData armor;
+	ImageData weapon;
+
 
 	int selectedHeroIndex;
 
@@ -31,8 +42,15 @@ public:
 	void setInfoImage(); //모든 job의 이미지 세팅
 	void setSkillIcon(); //버튼과 스킬함수를 연결
 
-	void showWhichHero(CHero* _hero); //보여줄 히어로를 선택
+	void setButton(); 
 	void showHeroState(HDC _hdc);
 	void showHeroSkill(HDC _hdc);
 	void showHeroEquip(HDC _hdc);
+
+	void selHero1();
+	void selHero2();
+	void selHero3();
+	void selHero4();
+
+
 };

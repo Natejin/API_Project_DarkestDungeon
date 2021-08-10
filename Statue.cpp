@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Statue.h"
+#include"CButton.h"
 
 Statue::Statue()
 {
@@ -13,11 +14,15 @@ HRESULT Statue::Init()
 {
     isUi = false;
     //나가기버튼
+    m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
     m_quick->SetButtonSize(200, 200);
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
     m_quick->isActive = false;
+
+    m_windowPanelBG = new CSpriteRenderer(IMAGE::statue_bg, m_transform);
+    m_windowPanelChar = new CSpriteRenderer(IMAGE::statue_char, m_transform);
 
     return S_OK;
 }
@@ -47,8 +52,8 @@ void Statue::FrontRender(HDC _hdc)
 {
     if (isUI)
     {
-        MG_IMAGE->findImage("statue.character.bg")->render(_hdc);
-        MG_IMAGE->findImage("statue.character")->render(_hdc);
+        m_windowPanelBG->Render(_hdc);
+        m_windowPanelChar->Render(_hdc);
         m_quick->isActive = true;
     }
 }

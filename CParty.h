@@ -22,7 +22,7 @@ private:
 	//walkFont 
 	int WF_btwHeroes = 150;
 	//wlakBack
-	int WB_btwHeroes = 100;
+	int WB_btwHeroes = 125;
 
 	int limit;
 
@@ -71,4 +71,6 @@ public:
 	void showMemberInfo(HDC _hdc);
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
+
+	
 };

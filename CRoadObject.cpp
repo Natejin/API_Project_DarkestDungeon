@@ -16,12 +16,15 @@ HRESULT CRoadObject::Init()
     setRoadObjIMG();
     setButton();
 
+    isCollision = false;
+
     return S_OK;
 }
 
 void CRoadObject::Update(float deltaTime, float worldTime)
 {
-    Interaction_collision(); //error
+    Interaction_collision(); 
+
 }
 
 void CRoadObject::LateUpdate()
@@ -38,6 +41,14 @@ void CRoadObject::Render(HDC _hdc)
     {
         m_roadObj[i].m_img->render(_hdc, &m_roadObj[i].m_trans);
     }
+
+    char str[256];
+    string strFrame;
+    SetBkMode(_hdc, TRANSPARENT);
+    SetTextColor(_hdc, RGB(255, 255, 255));
+
+    sprintf_s(str, "isCollision: %d", isCollision);
+    TextOut(_hdc, 0, 200, str, strlen(str));
 }
 
 void CRoadObject::FrontRender(HDC _hdc)
@@ -127,25 +138,34 @@ void CRoadObject::setRoadObj()
 
 void CRoadObject::Interaction_collision()
 {
-    CCollider* _collider = new CCollider;
-    
-    //collision with trap
-    (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
-    if (clearTrap == false)
+    //for test
+    testCollider = new CCollider;
+    testCollider->SetRect(m_roadObj[0].m_trans.m_pos.x - 100, m_roadObj[0].m_trans.m_pos.y, m_roadObj[0].m_trans.m_pos.x + 200, m_roadObj[0].m_trans.m_pos.y - 100);
+    if (testCollider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
     {
-        if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
-        {
-            Interaction_trap_fail();
-            clearTrap == true;
-        }
+        isCollision = true;
     }
+    else isCollision = false;
 
-    //collision with enemyPoint
-    (*_collider).SetRect(m_roadObj[2].m_trans.m_pos.x, m_roadObj[2].m_trans.m_pos.y, m_roadObj[2].m_trans.m_pos.x + 100, m_roadObj[2].m_trans.m_pos.y - 100);
-    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
-    {
-        Interaction_battle();
-    }
+    //CCollider* _collider = new CCollider;
+
+    ////collision with trap
+    //(*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
+    //if (clearTrap == false)
+    //{
+    //    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
+    //    {
+    //        Interaction_trap_fail();
+    //        clearTrap == true;
+    //    }
+    //}
+
+    ////collision with enemyPoint
+    //(*_collider).SetRect(m_roadObj[2].m_trans.m_pos.x, m_roadObj[2].m_trans.m_pos.y, m_roadObj[2].m_trans.m_pos.x + 100, m_roadObj[2].m_trans.m_pos.y - 100);
+    //if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
+    //{
+    //    Interaction_battle();
+    //}
 }
 
 void CRoadObject::Interaction_treassure()
@@ -201,7 +221,6 @@ void CRoadObject::Interaction_trap()
                 //tryed but fail
                 Interaction_trap_fail();
             }
-            clearTrap = true;
         }
     }
 }

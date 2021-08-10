@@ -108,7 +108,9 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 	switch (job)
 	{
 	case JOB::Crusader:
-		vestal->Init(JOB::Crusader, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		resist[0] = 40;
+		resist[4] = 40;
+		vestal->Init(JOB::Crusader, resist, 33, 1, 1, 9, 0, 3, 0, 5);
 		vestal->AddAnimator(IMAGE::Crusader_Idle);
 		vestal->m_animator->SetAnimeSpeed(5);
 		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
@@ -118,8 +120,8 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		vestal->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		vestal->AddAnimator(IMAGE::Vestal_Idle);
 		vestal->m_animator->SetAnimeSpeed(5);
-		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
-		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
+		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
+		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
 		break;
 	case JOB::PlagueDoctor:
 		break;

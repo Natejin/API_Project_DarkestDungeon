@@ -80,6 +80,8 @@ void CParty::FrontRender(HDC _hdc)
 	showMemberInfo(_hdc);
 	showItem(_hdc);
 	showDis(_hdc);
+
+
 }
 
 void CParty::Release()
@@ -368,7 +370,7 @@ void CParty::showMemberInfo(HDC _hdc)
 
 	for (int i = 0; i < m_member.size(); i++)
 	{
-		sprintf_s(str, "POS: %d", m_member[i]->GetPosition());
+		sprintf_s(str, "selectedHero: %d", m_member[i]->isSelected);
 		TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
 	}
 }
