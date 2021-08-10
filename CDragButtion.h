@@ -1,11 +1,11 @@
 #pragma once
 #include "CButton.h"
-class CDragButtion : public CButton
+class CDragButton : public CButton
 {
 public:
 	
-	CDragButtion();
-	~CDragButtion();
+	CDragButton();
+	~CDragButton();
 
 	HRESULT Init();
 

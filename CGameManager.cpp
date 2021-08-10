@@ -8,6 +8,8 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
+
+	
 	RegisterHero(CreateVestal("member1"));
 	RegisterHero(CreateVestal("member2"));
 	RegisterHero(CreateVestal("member3"));

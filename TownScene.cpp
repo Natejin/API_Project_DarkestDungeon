@@ -14,7 +14,7 @@
 #include"StageCoach.h"
 #include"NomadWagon.h"
 #include"Tavern.h"
-
+#include "CDragButtion.h"
 #include"CHero.h"
 TownScene::TownScene(){}
 TownScene::~TownScene(){}
@@ -395,31 +395,31 @@ void TownScene::SetUI()
 	m_sort_stress->AddSpriteRenderer(IMAGE::sort_stress);
 	MG_GMOBJ->RegisterObj("rosterdown", m_sort_stress);
 
-	CDragButtion* m_hero_slot_bg = new CDragButtion();
+	CDragButton* m_hero_slot_bg = new CDragButton();
 	m_hero_slot_bg->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880);
 	m_hero_slot_bg->SetButtonSize(50, 50);
 	m_hero_slot_bg->AddSpriteRenderer(IMAGE::hero_slot_bg);
 	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg);
 
-	CDragButtion* m_hero_slot_bg2 = new CDragButtion();
+	CDragButton* m_hero_slot_bg2 = new CDragButton();
 	m_hero_slot_bg2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 780);
 	m_hero_slot_bg2->SetButtonSize(50, 50);
 	m_hero_slot_bg2->AddSpriteRenderer(IMAGE::hero_slot_bg);
 	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg2);
 
-	CDragButtion* m_hero_slot_bg3 = new CDragButtion();
+	CDragButton* m_hero_slot_bg3 = new CDragButton();
 	m_hero_slot_bg3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 680);
 	m_hero_slot_bg3->SetButtonSize(50, 50);
 	m_hero_slot_bg3->AddSpriteRenderer(IMAGE::hero_slot_bg);
 	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg3);
 
-	CDragButtion* m_hero_slot_bg4 = new CDragButtion();
+	CDragButton* m_hero_slot_bg4 = new CDragButton();
 	m_hero_slot_bg4->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 580);
 	m_hero_slot_bg4->SetButtonSize(50, 50);
 	m_hero_slot_bg4->AddSpriteRenderer(IMAGE::hero_slot_bg);
 	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg4);
 
-	CDragButtion* m_hero_slot_bg5 = new CDragButtion();
+	CDragButton* m_hero_slot_bg5 = new CDragButton();
 	m_hero_slot_bg5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 480);
 	m_hero_slot_bg5->SetButtonSize(50, 50);
 	m_hero_slot_bg5->AddSpriteRenderer(IMAGE::hero_slot_bg);
@@ -491,29 +491,38 @@ void TownScene::SetHerolist()
 	if (true)
 	{
 	
-		CDragButtion* crusader_roster = new CDragButtion();
-		crusader_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880);
-		crusader_roster->SetButtonSize(50, 50);
-		crusader_roster->AddSpriteRenderer(IMAGE::crusader_roster);
-		MG_GMOBJ->RegisterObj("m_hero_slot_bg", crusader_roster);
+		for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
+		{
+			CDragButton* dragButton = new CDragButton();
+			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
+			dragButton->SetButtonSize(50, 50);
+			dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
+			m_dragButton.push_back(dragButton);
+		}
 
-		CDragButtion* highwayman_roster = new CDragButtion();
-		highwayman_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 780);
-		highwayman_roster->SetButtonSize(50, 50);
-		highwayman_roster->AddSpriteRenderer(IMAGE::highwayman_roster);
-		MG_GMOBJ->RegisterObj("m_hero_slot_bg", highwayman_roster);
+		//CDragButton* crusader_roster = new CDragButton();
+		//crusader_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880);
+		//crusader_roster->SetButtonSize(50, 50);
+		//crusader_roster->AddSpriteRenderer(IMAGE::crusader_roster);
+		//MG_GMOBJ->RegisterObj("m_hero_slot_bg", crusader_roster);
 
-		CDragButtion* vestal_roster = new CDragButtion();
-		vestal_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 680);
-		vestal_roster->SetButtonSize(50, 50);
-		vestal_roster->AddSpriteRenderer(IMAGE::vestal_roster);
-		MG_GMOBJ->RegisterObj("m_hero_slot_bg", vestal_roster);
+		//CDragButton* highwayman_roster = new CDragButton();
+		//highwayman_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 780);
+		//highwayman_roster->SetButtonSize(50, 50);
+		//highwayman_roster->AddSpriteRenderer(IMAGE::highwayman_roster);
+		//MG_GMOBJ->RegisterObj("m_hero_slot_bg", highwayman_roster);
 
-		CDragButtion* plague_doctor_roster = new CDragButtion();
-		plague_doctor_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 580);
-		plague_doctor_roster->SetButtonSize(50, 50);
-		plague_doctor_roster->AddSpriteRenderer(IMAGE::plague_doctor_roster);
-		MG_GMOBJ->RegisterObj("m_hero_slot_bg", plague_doctor_roster);
+		//CDragButton* vestal_roster = new CDragButton();
+		//vestal_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 680);
+		//vestal_roster->SetButtonSize(50, 50);
+		//vestal_roster->AddSpriteRenderer(IMAGE::vestal_roster);
+		//MG_GMOBJ->RegisterObj("m_hero_slot_bg", vestal_roster);
+
+		//CDragButton* plague_doctor_roster = new CDragButton();
+		//plague_doctor_roster->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 580);
+		//plague_doctor_roster->SetButtonSize(50, 50);
+		//plague_doctor_roster->AddSpriteRenderer(IMAGE::plague_doctor_roster);
+		//MG_GMOBJ->RegisterObj("m_hero_slot_bg", plague_doctor_roster);
 
 	}
 	
