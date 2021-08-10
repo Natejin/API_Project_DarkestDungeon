@@ -9,6 +9,7 @@
 #include "dungeonUI.h"
 #include "dungeonUI_info.h"
 #include "CBattleSystem.h"
+#include "CInventorySystem.h"
 
 DungeonScene::DungeonScene()
 {
@@ -54,6 +55,10 @@ HRESULT DungeonScene::Init()
 	m_dungeonUIinfo = new dungeonUI_info;
 	m_dungeonUIinfo->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
+
+	m_inven = new CInventorySystem;
+	m_inven->Init();
+	MG_GMOBJ->RegisterObj("scene1_Inventory", m_inven);
 
 	ActivateRoad();
 	return S_OK;
