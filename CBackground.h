@@ -12,9 +12,10 @@ protected:
 	
 	vector<ImageData> most_EST_UI; //°Ç¹°UI
 	vector<ImageData> most_TOWN_UI; //UI
-
+	vector<ImageData> most_EST; //UI
 	int bgCount;
 	int roadCount;
+
 
 
 public:

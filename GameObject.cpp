@@ -5,10 +5,10 @@
 GameObject::GameObject()
 {
 	//m_image = nullptr;
-	m_transform = new CTransform;
+	m_transform = new CTransform();
 	m_transform->m_pos = Vector2(0, 0);
 	m_transform->m_scale = Vector2(1, 1);
-	m_transform->m_pivot = Vector2(0.5, 0.5);
+	m_transform->m_pivot = Vector2(0.5, 1);
 	m_transform->angle = 0;
 
 	m_collider = nullptr;

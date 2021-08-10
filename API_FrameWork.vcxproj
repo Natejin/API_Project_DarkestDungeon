@@ -178,6 +178,8 @@
     <ClInclude Include="CBoneSoldier.h" />
     <ClInclude Include="CBuilding.h" />
     <ClInclude Include="CButton.h" />
+    <ClInclude Include="CButton_buttonPosMove.h" />
+    <ClInclude Include="CButton_move.h" />
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CDragButtion.h" />
@@ -195,14 +197,14 @@
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="DungeonScene2.h" />
+    <ClInclude Include="dungeonUI.h" />
+    <ClInclude Include="dungeonUI_info.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemyManager.h" />
     <ClInclude Include="Enum.h" />
-    <ClInclude Include="Enum_MJ.h" />
-    <ClInclude Include="Enum_WT.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="GameObject.h" />
@@ -210,8 +212,6 @@
     <ClInclude Include="GraveYard.h" />
     <ClInclude Include="Guild.h" />
     <ClInclude Include="image.h" />
-    <ClInclude Include="ImageAdder_MJ.h" />
-    <ClInclude Include="ImageAdder_WT.h" />
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Input.h" />
@@ -283,6 +283,8 @@
     <ClCompile Include="CBoneSoldier.cpp" />
     <ClCompile Include="CBuilding.cpp" />
     <ClCompile Include="CButton.cpp" />
+    <ClCompile Include="CButton_buttonPosMove.cpp" />
+    <ClCompile Include="CButton_move.cpp" />
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CDragButtion.cpp" />
@@ -299,6 +301,8 @@
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="DungeonScene2.cpp" />
+    <ClCompile Include="dungeonUI.cpp" />
+    <ClCompile Include="dungeonUI_info.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />
@@ -309,8 +313,6 @@
     <ClCompile Include="GraveYard.cpp" />
     <ClCompile Include="Guild.cpp" />
     <ClCompile Include="image.cpp" />
-    <ClCompile Include="ImageAdder_MJ.cpp" />
-    <ClCompile Include="ImageAdder_WT.cpp" />
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />

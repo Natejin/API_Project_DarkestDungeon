@@ -56,15 +56,15 @@ enum class IMAGE
 	ruins_wall4,
 	ruins_wall5,
 
-	ruins_room1,
-	ruins_room2,
-	ruins_room3,
-	ruins_room4,
-	ruins_room5,
-	ruins_room6,
-	ruins_room7,
-	ruins_room8,
-	ruins_room9,
+	Ruins_room1,
+	Ruins_room2,
+	Ruins_room3,
+	Ruins_room4,
+	Ruins_room5,
+	Ruins_room6,
+	Ruins_room7,
+	Ruins_room8,
+	Ruins_room9,
 
 	abbey_bg,
 	abbey_char,
@@ -153,9 +153,9 @@ enum class Combat_Skill
 
 enum class Camping_Skill
 {	
-	//¾ß½À¹æÁö
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Night_Attack_Prevention,
-	//Á¤Âû °­È­
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­
 	Reconnaissance,
 	Stress_Down,
 	Cure_disease,
@@ -165,7 +165,7 @@ enum class Camping_Skill
 
 enum class BATTLETURN
 {	
-	//¾ß½À¹æÁö
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	EnemyTurn,
 	PlayerTurn
 };

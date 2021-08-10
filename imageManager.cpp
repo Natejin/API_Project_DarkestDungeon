@@ -6,19 +6,19 @@ imageManager::~imageManager() {}
 
 HRESULT imageManager::init()
 {
-	//¿©±â¿¡ ¸ğµç ÀÌ¹ÌÁö¸¦ ³Ö¾îµÎ°í »ç¿ë
-	MG_IMAGE->addImage("¹è°æÈ­¸é", "images/¹è°æ.bmp", WORLDSIZEX, WORLDSIZEY, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("Ä«¸Ş¶ó", "images/Ä«¸Ş¶ó.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("¹Ì´Ï¸Ê", "images/¹è°æ.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
+	//ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½Î°ï¿½ ï¿½ï¿½ï¿½
+	MG_IMAGE->addImage("ï¿½ï¿½ï¿½È­ï¿½ï¿½", "images/ï¿½ï¿½ï¿½.bmp", WORLDSIZEX, WORLDSIZEY, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("Ä«ï¿½Ş¶ï¿½", "images/Ä«ï¿½Ş¶ï¿½.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("ï¿½Ì´Ï¸ï¿½", "images/ï¿½ï¿½ï¿½.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
 
 	//Darkest dungeon
-	MG_IMAGE->addFrameImage("·Ï¸Ç", "images/·Ï¸Ç.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("ï¿½Ï¸ï¿½", "images/ï¿½Ï¸ï¿½.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
 
 	//Hero
 	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/Vestal_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/Crusader_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/Crusader_Walk_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/Crusader_Combat_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/Crusader_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::crusader_roster, "images/Heroes/crusader_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::highwayman_roster, "images/Heroes/highwayman_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
@@ -26,7 +26,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::plague_doctor_roster, "images/Heroes/plague_doctor_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 
 	//Enemy
-	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
 	//quick
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
 
@@ -83,56 +83,56 @@ HRESULT imageManager::init()
 
 	//========================================================
 	//ruins-map
-	//Á¦ÀÏ µŞ ¹è°æ
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	MG_IMAGE->addImage("ruins_bg", "images/ruins/crypts_corridor_bg.bmp", 720, 720, false, RGB(255, 0, 255));
 
-	//Åë·Î º®
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½
 	MG_IMAGE->addImage("ruins_wall0", "images/ruins/crypts_corridor_door_basic.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall1", "images/ruins/crypts_corridor_wall_00.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall3", "images/ruins/crypts_corridor_wall_02.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall4", "images/ruins/crypts_corridor_wall_03.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall7", "images/ruins/crypts_corridor_wall_06.bmp", 720, 720, false, RGB(255, 0, 255));
-	//¶Õ¸° º®
+	//ï¿½Õ¸ï¿½ ï¿½ï¿½
 	MG_IMAGE->addImage("ruins_wall2", "images/ruins/transperant/crypts_corridor_wall_01.bmp", 720, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall5", "images/ruins/transperant/crypts.corridor_wall_04.bmp", 720, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall6", "images/ruins/transperant/crypts_corridor_wall_05.bmp", 720, 720, true, RGB(255, 0, 255));
 
-	//¹æ
-	MG_IMAGE->addImage("ruins_room1", "images/ruins/crypts_room_wall_empty.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room2", "images/ruins/crypts_room_wall_library.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room3", "images/ruins/crypts_room_wall_entrance.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room4", "images/ruins/crypts_room_wall_drain.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room5", "images/ruins/crypts_room_wall_barrels.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room6", "images/ruins/crypts_room_wall_arch.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room7", "images/ruins/crypts_room_wall_altar.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room8", "images/ruins/crypts_entrance_room_wall.bmp", 1920, 720, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ruins_room9", "images/ruins/crypts_room_wall_torture.bmp", 1920, 720, false, RGB(255, 0, 255));
+	//ï¿½ï¿½
+	MG_IMAGE->addImage(IMAGE::Ruins_room1, "images/ruins/crypts_room_wall_empty.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room2, "images/ruins/crypts_room_wall_library.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room3, "images/ruins/crypts_room_wall_entrance.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room4, "images/ruins/crypts_room_wall_drain.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room5, "images/ruins/crypts_room_wall_barrels.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room6, "images/ruins/crypts_room_wall_arch.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room7, "images/ruins/crypts_room_wall_altar.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room8, "images/ruins/crypts_entrance_room_wall.bmp", 1920, 720, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ruins_room9, "images/ruins/crypts_room_wall_torture.bmp", 1920, 720, false, RGB(255, 0, 255));
 
-	//±âÅ¸
+	//ï¿½ï¿½Å¸
 	MG_IMAGE->addImage("ruins_endhall", "images/ruins/transperant/crypts_endhall_01.bmp", 720, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_mid", "images/ruins/transperant/crypts_corridor_mid.bmp", 720, 720, true, RGB(255, 0, 255));
 
-	//Á¦ÀÏ ¾Õ ¹è°æ
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	MG_IMAGE->addImage("ruins_bottom", "images/ruins/transperant/crypts_foreground_bottom_01.bmp", 720, 101, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_top", "images/ruins/transperant/crypts_foreground_top_01.bmp", 720, 330, true, RGB(255, 0, 255));
 
 
 	//========================================================
-	//ÀÓ½Ã ÀÌ¹ÌÁö
-	//Ä³¸¯ÅÍ
-	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(ÇÃ·¹ÀÌ¾î).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("crusader", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(ÇÃ·¹ÀÌ¾î).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("highwayMan", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(ÇÃ·¹ÀÌ¾î).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("plagueDoctor", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(ÇÃ·¹ÀÌ¾î).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//ï¿½Ó½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
+	//Ä³ï¿½ï¿½ï¿½ï¿½
+	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½Ì¾ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("crusader", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½Ì¾ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("highwayMan", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½Ì¾ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("plagueDoctor", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½Ì¾ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	
+	//ï¿½ï¿½ï¿½ï¿½
+	MG_IMAGE->addFrameImage("mon1", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon2", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon3", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon4", "images/ï¿½Ó½ï¿½/ï¿½Ó½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½(ï¿½ï¿½).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
 
-	//¸ó½ºÅÍ
-	MG_IMAGE->addFrameImage("mon1", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(Àû).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon2", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(Àû).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon3", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(Àû).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon4", "images/ÀÓ½Ã/ÀÓ½ÃÀÌ¹ÌÁö(Àû).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-
-	//¹è°æ
-	MG_IMAGE->addFrameImage("bg", "images/ÀÓ½Ã/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
+	//ï¿½ï¿½ï¿½
+	MG_IMAGE->addFrameImage("bg", "images/ï¿½Ó½ï¿½/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 	
 	//Town
 	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+550 , 776+100+200, true, RGB(255, 0, 255));
@@ -201,6 +201,84 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::rosterelement_res, "images/Town_UI/rosterelement_res1.bmp", 395-20, 104, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::roster_bggrad, "images/Town_UI/roster_bggrad.bmp", 373, 1080/2, true, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("tavern.character", "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("tavern.character.bg", "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("panel_bg", "images/panel/panel_bg.bmp", 1920, 1080, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("panel_bg2", "images/panel/panel_bg2.bmp", 344, 319, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("torchFrontBar", "images/dungeonUI/torch_.bmp", 900, 200, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("torchBackBar", "images/dungeonUI/torch_lightBar.bmp", 890, 30, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("torchBackBar2", "images/dungeonUI/torch_lightBar2.bmp", 422, 30, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("torchBackBar3", "images/dungeonUI/torch_lightBar2.bmp", 422, 30, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("treasure", "images/ï¿½Ó½ï¿½/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("trap", "images/ï¿½Ó½ï¿½/trap.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("enemy", "images/ï¿½Ó½ï¿½/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("nothing", "images/ï¿½Ó½ï¿½/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
+
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	MG_IMAGE->addImage("crusader_portrait", "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill1", "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill2", "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill3", "images/icons_heroes/crusader.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill4", "images/icons_heroes/crusader.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill5", "images/icons_heroes/crusader.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill6", "images/icons_heroes/crusader.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("crusader_skill7", "images/icons_heroes/crusader.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("highwayman_portrait", "images/icons_heroes/highwayman_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill1", "images/icons_heroes/highwayman.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill2", "images/icons_heroes/highwayman.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill3", "images/icons_heroes/highwayman.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill4", "images/icons_heroes/highwayman.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill5", "images/icons_heroes/highwayman.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill6", "images/icons_heroes/highwayman.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill7", "images/icons_heroes/highwayman.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage("plague_doctor_portrait", "images/icons_heroes/plague_doctor_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill1", "images/icons_heroes/plague_doctor.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill2", "images/icons_heroes/plague_doctor.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill3", "images/icons_heroes/plague_doctor.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill4", "images/icons_heroes/plague_doctor.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill5", "images/icons_heroes/plague_doctor.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill6", "images/icons_heroes/plague_doctor.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("vestal_portrait", "images/icons_heroes/vestal_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill1", "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill2", "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill3", "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill4", "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill5", "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill6", "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_skill7", "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("vestal_armor", "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("vestal_weapon", "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	
+	//UIovelay
+	MG_IMAGE->addImage("selected1", "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("selected2", "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target1", "images/dungeonUI/target_2.bmp", 246, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target2", "images/dungeonUI/target_3.bmp", 328, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target3", "images/dungeonUI/target_4.bmp", 436, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target_h_1", "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("target_h_2", "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 100, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 100, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("memberRect", "images/ï¿½Ó½ï¿½/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));
 
 	return S_OK;
 }
@@ -212,21 +290,21 @@ void imageManager::release()
 
 Image* imageManager::addImage(string strKey, const int width, const int height)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(width, height)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -234,21 +312,21 @@ Image* imageManager::addImage(string strKey, const int width, const int height)
 
 Image* imageManager::addImage(string strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -256,21 +334,21 @@ Image* imageManager::addImage(string strKey, const char* fileName, const int wid
 
 Image* imageManager::addImage(string strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, x, y, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -278,21 +356,21 @@ Image* imageManager::addImage(string strKey, const char* fileName, const float x
 
 Image* imageManager::addFrameImage(string strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, width, height, frameX, frameY, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -300,21 +378,21 @@ Image* imageManager::addFrameImage(string strKey, const char* fileName, const in
 
 Image* imageManager::addFrameImage(string strKey, const char* fileName, const float x, const float y, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, x, y, width, height, frameX, frameY, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	_mImageList.insert(make_pair(strKey, img));
 
 	return img;
@@ -322,10 +400,10 @@ Image* imageManager::addFrameImage(string strKey, const char* fileName, const fl
 
 Image* imageManager::findImage(string strKey)
 {
-	//ÇØ´çÅ° °Ë»ö
+	//ï¿½Ø´ï¿½Å° ï¿½Ë»ï¿½
 	mapImageListIter key = _mImageList.find(strKey);
 
-	//Å°¸¦ Ã£À¸¸é
+	//Å°ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½
 	if (key != _mImageList.end())
 	{
 		return key->second;
@@ -349,7 +427,7 @@ bool imageManager::deleteImage(string strKey)
 
 bool imageManager::deleteAll()
 {
-	//¸Ê ÀüÃ¼¸¦ µ¹¸é¼­ »èÁ¦ÇÑ´Ù.
+	//ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½é¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	mapImageListIter iter = _mImageList.begin();
 
 	for (iter; iter != _mImageList.end();)
@@ -371,7 +449,7 @@ bool imageManager::deleteAll()
 
 void imageManager::render(string strKey, HDC hdc)
 {
-	//ÀÌ¹ÌÁö¸¦ Ã£Àº ÈÄ ·»´õ
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	Image* img = findImage(strKey);
 	if (img) img->render(hdc);
 }
@@ -421,21 +499,21 @@ void imageManager::loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea
 //
 Image* imageManager::addImage(IMAGE strKey, const int width, const int height)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(width, height)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;
@@ -443,21 +521,21 @@ Image* imageManager::addImage(IMAGE strKey, const int width, const int height)
 
 Image* imageManager::addImage(IMAGE strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;
@@ -465,21 +543,21 @@ Image* imageManager::addImage(IMAGE strKey, const char* fileName, const int widt
 
 Image* imageManager::addImage(IMAGE strKey, const char* fileName, const float x, const float y, const int const width, const int height, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, x, y, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;
@@ -487,21 +565,21 @@ Image* imageManager::addImage(IMAGE strKey, const char* fileName, const float x,
 
 Image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, width, height, frameX, frameY, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;
@@ -509,21 +587,21 @@ Image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const int
 
 Image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const float x, const float y, const int width, const int height, const int frameX, const int frameY, bool trans, COLORREF transColor)
 {
-	//Ãß°¡ÇÏ·Á´Â Å°°ªÀ¸·Î ÀÌ¹ÌÁö Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	Image* img = findImage(strKey);
-	//Ãß°¡ÇÏ·Á´Â ÀÌ¹ÌÁö°¡ ÀÌ¹Ì ÀÖÀ¸¸é ¸®ÅÏ
+	//ï¿½ß°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	if (img)return img;
 
 	img = new Image;
 
-	//ÀÌ¹ÌÁö°¡ ÃÊ±âÈ­µÇÁö ¾ÊÀ¸¸é
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (FAILED(img->init(fileName, x, y, width, height, frameX, frameY, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//»ı¼ºµÈ ÀÌ¹ÌÁö¸¦ ¸ÊÀ¸·Î ¸¸µç ÀÌ¹ÌÁö ¸ñ·Ï¿¡Ãß°¡ÇÑ´Ù.
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;
@@ -531,10 +609,10 @@ Image* imageManager::addFrameImage(IMAGE strKey, const char* fileName, const flo
 
 Image* imageManager::findImage(IMAGE strKey)
 {
-	//ÇØ´çÅ° °Ë»ö
+	//ï¿½Ø´ï¿½Å° ï¿½Ë»ï¿½
 	mapImageIter key = m_ImageMap.find(strKey);
 
-	//Å°¸¦ Ã£À¸¸é
+	//Å°ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½
 	if (key != m_ImageMap.end())
 	{
 		return key->second;
@@ -560,7 +638,7 @@ bool imageManager::deleteImage(IMAGE strKey)
 
 void imageManager::render(IMAGE strKey, HDC hdc)
 {
-	//ÀÌ¹ÌÁö¸¦ Ã£Àº ÈÄ ·»´õ
+	//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	Image* img = findImage(strKey);
 	if (img) img->render(hdc);
 }

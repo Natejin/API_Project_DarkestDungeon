@@ -13,7 +13,7 @@ Statue::~Statue()
 HRESULT Statue::Init()
 {
     isUi = false;
-    //³ª°¡±â¹öÆ°
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ°
     m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
     m_quick->SetButtonSize(200, 200);

@@ -33,6 +33,16 @@ HRESULT DungeonScene2::Init()
 	SetUIIMG();
 	CreateBattleSystem();
 
+	roomRandom.push_back(IMAGE::Ruins_room1);
+	roomRandom.push_back(IMAGE::Ruins_room2);
+	roomRandom.push_back(IMAGE::Ruins_room3);
+	roomRandom.push_back(IMAGE::Ruins_room4);
+	roomRandom.push_back(IMAGE::Ruins_room5);
+	roomRandom.push_back(IMAGE::Ruins_room6);
+	roomRandom.push_back(IMAGE::Ruins_room7);
+	roomRandom.push_back(IMAGE::Ruins_room8);
+	roomRandom.push_back(IMAGE::Ruins_room9);
+	
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
 	CreateDungeon();
@@ -40,7 +50,10 @@ HRESULT DungeonScene2::Init()
 	CreateRoad();
 	CreateParty();
 	CreateDoor();
-	m_roadBG->isActive = true;
+
+	ActivateRoad();
+	MG_CAMERA->SetTarget(m_party->GetHero(0));
+	
 
 	//CButton* m_testButton1 = new CButton();
 	//m_testButton1->m_transform->m_pos = Vector2(300, 300);
@@ -108,13 +121,33 @@ void DungeonScene2::Render(HDC _hdc)
 		ShowDungeonInfo(_hdc);
 	
 
-		m_roadObj->Render(_hdc);
+		//m_roadObj->Render(_hdc);
 	}
 
 	else
 	{
 
 	}
+}
+
+void DungeonScene2::ActivateRoom()
+{
+	m_roadBG->isActive = false;
+	m_roomBG->isActive = true;
+	m_dungeonState = DUNGEONSTATE::ROOM;
+	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));
+
+	dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
+	m_pBattleSystem->BattleSystemInitiate();
+
+}
+
+void DungeonScene2::ActivateRoad()
+{
+	m_roomBG->isActive = false;
+	 m_roadBG->isActive = true;
+	 m_dungeonState = DUNGEONSTATE::ROAD;
+	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
 }
 
 
@@ -276,11 +309,11 @@ void DungeonScene2::CreateParty()
 	auto party = MG_GAME->GetHeroes();
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 480);
+		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 520);
 	}
 	m_party->SetParty(party);
 	MG_GMOBJ->RegisterObj("Party", m_party);
-	MG_CAMERA->SetTarget(m_party->GetHero(0));
+
 }
 
 void DungeonScene2::CreateRoom()
@@ -403,13 +436,8 @@ void DungeonScene2::CheckDoor()
 		if (MG_INPUT->isOnceKeyDown(VK_UP))
 		{
 			isDoorClick = false;
-			m_roadBG->isActive = false;
-			m_roomBG->isActive = true;
+			ActivateRoom();
 
-
-			m_dungeonState = DUNGEONSTATE::ROOM;
-			dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
-			m_pBattleSystem->BattleSystemInitiate();
 		}
 	}
 	else

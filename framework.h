@@ -20,6 +20,7 @@
 #include <string>
 #include <functional>
 #include <conio.h>
+#include <math.h>
 
 //==========================================
 //					STL
@@ -68,10 +69,6 @@
 
 
 #include "Enum.h"
-#include "Enum_MJ.h"
-#include "Enum_WT.h"
-#include "ImageAdder_MJ.h"
-#include "ImageAdder_WT.h"
 
 
 //======================================

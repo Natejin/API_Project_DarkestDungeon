@@ -4,7 +4,6 @@
 class CCollider : public CComponent
 {
 private:
-	class CTransform* trans;
 
 public:
 	COLLIDERTYPE m_colliderType;
@@ -14,8 +13,7 @@ public:
 	CCollider();
 	~CCollider();
 
-	void SetTrans(class CTransform* _trans) { trans = _trans; }
-	void SetRectAndTrans(CTransform* _trans, int width, int height);
+	void SetRect(float l, float t, float r, float b);
 
 	bool CheckXCollision(int x);
 

@@ -1,9 +1,12 @@
 #pragma once
 #include "Scene.h"
 
+class dungeonUI;
+class dungeonUI_info;
 class DungeonScene : public Scene
 {
 public:
+	vector<IMAGE> roomRandom;
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -14,6 +17,7 @@ public:
 	Vector2Int curPos;
 	int roadCount;
 	int remainRoom;
+
 
 //==================================
 //Room
@@ -46,9 +50,6 @@ public:
 	void setRoadNum();
 	void setRoadKind();
 
-	void setTorchUI();
-	void TorchLightBarDecrease();
-
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
 
@@ -59,24 +60,14 @@ public:
 	int curBattleTurnCount;
 	BATTLETURN curBattleTurn;
 	vector<class CEnemy*> enemyGroup;
-
+	class CBattleSystem* m_pBattleSystem;
 
 //==================================
 //UI
 public:
-	vector<ImageData> vUI;
-	Rect rc_map;
-	Rect rc_inven;
-	bool showMap;
-	int m_sceneSize;
-
-	void SetUIIMG();
-	void ShowMapOrInven(HDC _hdc);
-	void SetSceneSize();
-
-	void TestButton();
-	int m_buttonTest;
-
+	dungeonUI* m_dungeonUI;
+	dungeonUI_info* m_dungeonUIinfo;
+	
 
 //==================================
 public:
@@ -94,6 +85,8 @@ public:
 	void CreateRoad();
 	void CreateDoor();
 
+	void CreateBattleSystem();
+
 public:
 	virtual HRESULT Init();
 	virtual HRESULT Init(bool managerInit);
@@ -101,8 +94,6 @@ public:
 	virtual void Update();
 	virtual void Render(HDC _hdc);
 
-	void DungeonScene::bindFunction(function<void()>& dest)
-	{
-		dest = bind(&DungeonScene::TestButton, this);
-	}
+	void ActivateRoom();
+	void ActivateRoad();
 };

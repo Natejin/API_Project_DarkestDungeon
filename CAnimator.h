@@ -47,7 +47,11 @@ public:
 	void SetFrameY(int frame) { curFrameY = frame; }
 	void AddImageFrame(string imageName);
 	void AddImageFrame(IMAGE imageName);
-
 	class Image* GetCurImage();
+
+	void SetIndex(int index);
+
+	void ResetAnimation();
+	Vector2 GetFrameSize();
 
 };

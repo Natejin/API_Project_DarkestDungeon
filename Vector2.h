@@ -7,6 +7,7 @@ typedef struct Vector2
     float z;
 
     Vector2() { x = 0; y = 0; z = 0; }
+    Vector2(POINT pt) { x = pt.x; y = pt.y; z = 0; }
     Vector2(float x, float y) :x(x), y(y), z(0) {};
     Vector2(float x, float y, float z) :x(x), y(y), z(z) {};
     Vector2(float debugSpeed) :x(debugSpeed), y(debugSpeed), z(0) {}

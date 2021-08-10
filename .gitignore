@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+*.ipch
+
 
 # Compiled Object files
 *.slo
@@ -36,4 +38,8 @@
 /.vs/API_FrameWork/v16
 /Debug
 /x64/Debug
+/ipch
+/.vs
+*.ipch
 /v16
+

@@ -20,10 +20,11 @@ HRESULT Guild::Init()
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
     m_quick->isActive = false;
-    
+  
     m_windowPanelBG = new CSpriteRenderer(IMAGE::guild_bg, m_transform);
     m_windowPanelChar = new CSpriteRenderer(IMAGE::guild_char, m_transform);
     m_transform->m_pivot = Vector2(0, 0);
+
 
     return S_OK;
 }
