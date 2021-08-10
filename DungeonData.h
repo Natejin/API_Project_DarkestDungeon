@@ -3,6 +3,9 @@
 struct DungeonData {
 	DUNGEONMAPSTATE dungeonMapState = DUNGEONMAPSTATE::NONE;
 	bool dirMap[4] = { false };
-	int posX = 0;
-	int posY = 0;
+	Image* m_image = nullptr;
+
+	Vector2Int pos;
+	bool isRoom = false;
+	bool isSearched = false;
 };

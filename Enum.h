@@ -2,9 +2,12 @@
 
 enum class LAYER
 {
-	Unknown = -1,
-	BackGround = 0,
-	Building = 2,
+	Unknown = -2,
+
+	MinimapBackground = 0,
+	Minimap = 1,
+	BackGround = 2,
+	Building = 3,
 	Player = 4,
 	Enemy = 8,
 	AllinceProjectile = 16,
@@ -79,7 +82,35 @@ enum class IMAGE
 	crusader,
 	highwayman,
 	plague_doctor,
-	vestal
+	vestal,
+
+	//Minimap Button
+	hall_clear,			
+	hall_dark,			
+	hall_dim,			
+	hall_door,			
+	indicator,			
+	LockedRoom,			
+	LockedRoom_Blue,	
+	LockedRoom_Green,	
+	LockedRoom_Red,		
+	LockedRoom_Yellow,	
+	marker_battle,		
+	marker_curio,		
+	marker_hunger,		
+	marker_obstacle,	
+	marker_room_visited,
+	marker_secret,		
+	marker_trap,		
+	moving_room,		
+	PrisonerRoom,		
+	room_battle,		
+	room_boss,			
+	room_curio,			
+	room_empty,			
+	room_entrance,		
+	room_treasure,		
+	room_unknown
 };
 
 enum class RACE 

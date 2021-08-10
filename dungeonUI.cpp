@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "dungeonUI.h"
 #include "CParty.h"
+#include "CMapSystem.h"
 
 HRESULT dungeonUI::Init()
 {
@@ -29,6 +30,7 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
+
 }
 
 void dungeonUI::FrontRender(HDC _hdc)
@@ -129,9 +131,15 @@ void dungeonUI::ShowUI(HDC _hdc)
 	{
 		vUI[i].m_img->renderUI(_hdc, &vUI[i].m_trans);
 
-		if (showMap == true)
+		if (showMap )
 		{
 			vUI[4].m_img->renderUI(_hdc, &vUI[4].m_trans);
+			ShowUIMap(_hdc);
 		}
 	}
+}
+
+void dungeonUI::ShowUIMap(HDC _hdc)
+{
+	//m_pMapSystem->dungeonMap
 }

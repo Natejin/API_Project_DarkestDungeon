@@ -6,9 +6,10 @@ class CButton : public GameObject
 protected:
 	function<void()> m_triggerWhenClick;
 	int countNum;
+	Rect m_rect;
 
 public:
-	Rect m_rect;
+	
 
 	CButton();
 	~CButton();

@@ -48,32 +48,32 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("scouting", "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 
 	//Icon_Map
-	MG_IMAGE->addImage("hall_clear", "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("hall_dark", "images/icons_map/hall_dark.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("hall_dim", "images/icons_map/hall_dim.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("hall_door", "images/icons_map/hall_door.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("indicator", "images/icons_map/indicator.bmp", 51, 48, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("LockedRoom", "images/icons_map/LockedRoom.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("LockedRoom_Blue", "images/icons_map/LockedRoom_Blue.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("LockedRoom_Green", "images/icons_map/LockedRoom_Green.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("LockedRoom_Red", "images/icons_map/LockedRoom_Red.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("LockedRoom_Yellow", "images/icons_map/LockedRoom_Yellow.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_battle", "images/icons_map/marker_battle.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_curio", "images/icons_map/marker_curio.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_hunger", "images/icons_map/marker_hunger.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_obstacle", "images/icons_map/marker_obstacle.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_room_visited", "images/icons_map/marker_room_visited.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_secret", "images/icons_map/marker_secret.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("marker_trap", "images/icons_map/marker_trap.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("moving_room", "images/icons_map/moving_room.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("PrisonerRoom", "images/icons_map/PrisonerRoom.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_battle", "images/icons_map/room_battle.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_boss", "images/icons_map/room_boss.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_curio", "images/icons_map/room_curio.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_empty", "images/icons_map/room_empty.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_entrance", "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_treasure", "images/icons_map/room_treasure.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("room_unknown", "images/icons_map/room_unknown.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::hall_clear, "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::hall_dark, "images/icons_map/hall_dark.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::hall_dim, "images/icons_map/hall_dim.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::hall_door, "images/icons_map/hall_door.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::indicator, "images/icons_map/indicator.bmp", 51, 48, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::LockedRoom, "images/icons_map/LockedRoom.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::LockedRoom_Blue, "images/icons_map/LockedRoom_Blue.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::LockedRoom_Green, "images/icons_map/LockedRoom_Green.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::LockedRoom_Red, "images/icons_map/LockedRoom_Red.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::LockedRoom_Yellow, "images/icons_map/LockedRoom_Yellow.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_battle, "images/icons_map/marker_battle.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_curio, "images/icons_map/marker_curio.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_hunger, "images/icons_map/marker_hunger.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_obstacle, "images/icons_map/marker_obstacle.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_room_visited, "images/icons_map/marker_room_visited.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_secret, "images/icons_map/marker_secret.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::marker_trap, "images/icons_map/marker_trap.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::moving_room, "images/icons_map/moving_room.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::PrisonerRoom, "images/icons_map/PrisonerRoom.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_battle, "images/icons_map/room_battle.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_boss, "images/icons_map/room_boss.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_curio, "images/icons_map/room_curio.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_empty, "images/icons_map/room_empty.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_entrance, "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_treasure, "images/icons_map/room_treasure.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::room_unknown, "images/icons_map/room_unknown.bmp", 64, 64, true, RGB(255, 0, 255));
 
 
 	//========================================================
