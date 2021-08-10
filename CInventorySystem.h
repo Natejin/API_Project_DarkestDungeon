@@ -29,7 +29,7 @@ public:
 	vector<itemInfo> m_inven;
 	vector<itemInfo> m_equip;
 
-	CCollider _itemCollider;
+	//CCollider _itemCollider;
 
 	int foodLimit = 12;
 	int torchLimit = 8;

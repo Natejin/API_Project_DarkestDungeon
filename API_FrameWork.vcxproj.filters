@@ -199,9 +199,6 @@
     <Filter Include="Manager\UI\Minimap">
       <UniqueIdentifier>{3a813a6e-cae3-4be8-98df-f1fb90ecb57b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\UI\Town_Button">
-      <UniqueIdentifier>{db8e7495-6d76-4a6f-a0bb-76133766f1e3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -504,17 +501,26 @@
     <ClInclude Include="CMinimapButton.h">
       <Filter>Manager\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CDragButtion.h">
-      <Filter>Scene\UI</Filter>
-    </ClInclude>
     <ClInclude Include="CBuilding.h">
       <Filter>Scene\UI\Town_Button</Filter>
     </ClInclude>
+    <ClInclude Include="Activity_log.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_buttonPosMove.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtion.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="CHeroList_button.h">
-      <Filter>Scene\UI\Town_Button</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CHeroList_ui.h">
-      <Filter>Scene\UI\EST_UI</Filter>
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel.h">
+      <Filter>Manager\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -794,17 +800,26 @@
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Manager\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CDragButtion.cpp">
-      <Filter>Scene\UI</Filter>
-    </ClCompile>
     <ClCompile Include="CBuilding.cpp">
       <Filter>Scene\UI\Town_Button</Filter>
     </ClCompile>
+    <ClCompile Include="Activity_log.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_buttonPosMove.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtion.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="CHeroList_button.cpp">
-      <Filter>Scene\UI\Town_Button</Filter>
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CHeroList_ui.cpp">
-      <Filter>Scene\UI\EST_UI</Filter>
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel.cpp">
+      <Filter>Manager\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

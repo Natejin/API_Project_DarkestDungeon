@@ -7,4 +7,5 @@ public:
 	Vector2Int pos;
 	bool isRoom = false;
 	bool isSearched = false;
+	bool isHorizontal = false;
 };

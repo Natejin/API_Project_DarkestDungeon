@@ -22,9 +22,24 @@ public:
 	int roadCount;
 	int remainRoom;
 
+private:
+	vector<int> rndRoom;
+	vector<int> rndRoad;
+
+
+protected:
+	int randRoomEnemy;
+	int randRoomCurio;
+	int randomRoadEnemy;
+	int randomRoadCurio;
+	int randomRoadTrap;
+
+public:
 	CMapSystem();
 	~CMapSystem();
 	HRESULT Init();
+
+	void SetRandomCreateValue();
 
 	//virtual void Update(float deltaTime, float worldTime);
 	//virtual void LateUpdate();

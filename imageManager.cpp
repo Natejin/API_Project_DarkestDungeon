@@ -44,13 +44,15 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("tag", "images/resistance/skill_attribute_tag.bmp", 24, 24, true, RGB(255, 0, 255));
 
 	//panel
-	MG_IMAGE->addImage("banner", "images/panel/panel_banner.bmp", 685, 123, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("controller", "images/panel/panel_banner_controller.bmp", 754, 136, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("hero", "images/panel/panel_hero.bmp", 655, 203, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("inventory", "images/panel/panel_inventory.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("map", "images/panel/panel_map.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("monster", "images/panel/panel_map.bmp", 702, 368, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("scouting", "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::banner, "images/panel/panel_banner.bmp", 685, 123, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::controller, "images/panel/panel_banner_controller.bmp", 754, 136, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::hero, "images/panel/panel_hero.bmp", 655, 203, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::inventory, "images/panel/panel_inventory.bmp", 630, 325, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map, "images/panel/panel_map.bmp", 630, 325, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map1, "images/panel/panel_map1.bmp", 630, 325, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 325, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 
 	//Icon_Map
 	MG_IMAGE->addImage(IMAGE::hall_clear, "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
@@ -507,21 +509,17 @@ void imageManager::loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea
 //
 Image* imageManager::addImage(IMAGE strKey, const int width, const int height)
 {
-	//�߰��Ϸ��� Ű������ �̹��� �����ϴ��� Ȯ��
 	Image* img = findImage(strKey);
-	//�߰��Ϸ��� �̹����� �̹� ������ ����
 	if (img)return img;
 
 	img = new Image;
 
-	//�̹����� �ʱ�ȭ���� ������
 	if (FAILED(img->init(width, height)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//������ �̹����� ������ ���� �̹��� ��Ͽ��߰��Ѵ�.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;
@@ -529,21 +527,16 @@ Image* imageManager::addImage(IMAGE strKey, const int width, const int height)
 
 Image* imageManager::addImage(IMAGE strKey, const char* fileName, const int width, const int height, bool trans, COLORREF transColor)
 {
-	//�߰��Ϸ��� Ű������ �̹��� �����ϴ��� Ȯ��
 	Image* img = findImage(strKey);
-	//�߰��Ϸ��� �̹����� �̹� ������ ����
 	if (img)return img;
 
 	img = new Image;
-
-	//�̹����� �ʱ�ȭ���� ������
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
 	}
 
-	//������ �̹����� ������ ���� �̹��� ��Ͽ��߰��Ѵ�.
 	m_ImageMap.insert(make_pair(strKey, img));
 
 	return img;

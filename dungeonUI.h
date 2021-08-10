@@ -6,6 +6,8 @@ class dungeonUI : public GameObject
 {
 public:
 	vector<ImageData> vUI;
+
+
 	int m_sceneSize;
 	bool showMap;
 
@@ -14,6 +16,10 @@ public:
 	
 	class CMapSystem* m_pMapSystem;
 	class CInventorySystem* m_inven;
+
+	class CUIPanel* invenPanel;
+	class CUIPanel* mapPanel1;
+	class CUIPanel* mapPanel2;
 
 	//==================================
 
@@ -42,4 +48,8 @@ public:
 	void ShowUI(HDC _hdc);
 	void ShowUIMap(HDC _hdc);
 	void ShowUIUInven(HDC _hdc);
+
+	//CUIPanel* CreatePanel(string name, Vector2 pos);
+	CUIPanel* CreatePanel(string name, Vector2 pos, LAYER layer);
+	CUIPanel* CreatePanel(IMAGE image, Vector2 pos, LAYER layer);
 };

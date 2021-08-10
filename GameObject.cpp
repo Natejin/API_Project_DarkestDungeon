@@ -66,12 +66,12 @@ void GameObject::AddColliderBox(Vector2 pos,
 	float r, 
 	float b)
 {
-	m_collider = new CCollider();
+	m_collider = new CCollider(m_transform);
 	m_collider->m_pos = pos;
-	m_collider->rect.l = l;
-	m_collider->rect.t = t;
-	m_collider->rect.r = r;
-	m_collider->rect.b = b;
+	m_collider->rect.l = pos.x + l;
+	m_collider->rect.t = pos.y + t;
+	m_collider->rect.r = pos.x + r;
+	m_collider->rect.b = pos.y + b;
 	m_collider->m_colliderType = COLLIDERTYPE::BOX;
 }
 

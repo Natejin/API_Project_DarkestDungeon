@@ -92,8 +92,12 @@ public:
 	void render(HDC hdc, const class CTransform* transform);
 	void render(HDC hdc, const CTransform* transform, Vector2 scale);
 	void render(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos);
+
 	void renderUI(HDC hdc, const class CTransform* transform);
 	void renderUI(HDC hdc, const class CTransform* transform, Vector2 customPos);
+
+	void mapRender(HDC hdc, Vector2 pos );
+
 	void render(HDC hdc, const int  destX, const int destY,const int sourX, const int sourY, const int sourWidth, const int sourheight);
 
 

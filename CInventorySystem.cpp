@@ -29,12 +29,14 @@ void CInventorySystem::BackRender(HDC _hdc)
 
 void CInventorySystem::Render(HDC _hdc)
 {
-	showInvenItem(_hdc);
+
 
 }
 
 void CInventorySystem::FrontRender(HDC _hdc)
 {
+	showInvenItem(_hdc);
+
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, RGB(0, 0, 0));
@@ -126,9 +128,6 @@ void CInventorySystem::showInvenItem(HDC _hdc)
 	{
 		m_inven[i].m_imgData.m_img->renderUI(_hdc, &m_inven[i].m_imgData.m_trans);
 	}
-
-
-
 }
 
 void CInventorySystem::changePos()
@@ -137,7 +136,7 @@ void CInventorySystem::changePos()
 
 void CInventorySystem::interactWithItem()
 {
-	CCollider* _collider = new CCollider;
+	/*CCollider* _collider = new CCollider();
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 2; j++)
@@ -151,5 +150,5 @@ void CInventorySystem::interactWithItem()
 				MG_GAME->GetParty()->setBandage(m_inven[2].count);
 			}
 		}
-	}
+	}*/
 }

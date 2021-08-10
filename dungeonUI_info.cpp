@@ -33,14 +33,14 @@ void dungeonUI_info::BackRender(HDC _hdc)
 
 void dungeonUI_info::Render(HDC _hdc)
 {
-    showHeroSkill(_hdc);
-    showHeroEquip(_hdc);
-    showHeroState(_hdc);
+
 }
 
 void dungeonUI_info::FrontRender(HDC _hdc)
 {
-    
+    showHeroSkill(_hdc);
+    showHeroEquip(_hdc);
+    showHeroState(_hdc);
 
 }
 

@@ -3,6 +3,7 @@
 #include "CParty.h"
 #include "CMapSystem.h"
 #include "CInventorySystem.h"
+#include "CUIPanel.h"
 
 HRESULT dungeonUI::Init()
 {
@@ -13,7 +14,7 @@ HRESULT dungeonUI::Init()
 	SetUIIMG();
 	SetButton();
 	SetInven();
-
+	ShowInven();
 	return S_OK;
 }
 
@@ -49,7 +50,6 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
-	//bg�� frontRender�� �������� ���⿡ ����
 	ShowUI(_hdc);
 }
 
@@ -68,28 +68,17 @@ void dungeonUI::SetUIIMG()
 	ImageData UIimg;
 	SetTorchUI();
 
-	UIimg.m_img = MG_IMAGE->findImage("panel_bg2");
-	UIimg.m_trans.m_pos = Vector2(0, 700);
-	vUI.push_back(UIimg);
-	UIimg.m_trans.m_pos = Vector2(1580, 700);
-	vUI.push_back(UIimg);
+	CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
+	CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
+	CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
+	CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
 
-	UIimg.m_img = MG_IMAGE->findImage("banner");
-	UIimg.m_trans.m_pos = Vector2(300, 700);
-	vUI.push_back(UIimg);
+	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
+	//invenPanel->UseBackRender();
+	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
 
-	UIimg.m_img = MG_IMAGE->findImage("hero");
-	UIimg.m_trans.m_pos = Vector2(330, 820);
-	vUI.push_back(UIimg);
-
-	UIimg.m_img = MG_IMAGE->findImage("inventory");
-	UIimg.m_trans.m_pos = Vector2(965, 700);
-	vUI.push_back(UIimg);
-
-	UIimg.m_img = MG_IMAGE->findImage("map");
-	UIimg.m_trans.m_pos = Vector2(965, 700);
-	vUI.push_back(UIimg);
-
+	mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
+	mapPanel2->UseBackRender();
 }
 
 void dungeonUI::SetButton()
@@ -152,25 +141,36 @@ void dungeonUI::ShowInven()
 {
 	showMap = false; 
 	m_pMapSystem->MapButtonOnOff(false);
+
+	invenPanel->isActive = true;
+	mapPanel1->isActive = false;
+	mapPanel2->isActive = false;
+	showMap = false;
+	m_inven->isActive = true;
 }
 
 void dungeonUI::ShowMap()
 {
 	showMap = true;
 	m_pMapSystem->MapButtonOnOff(true);
+
+	invenPanel->isActive = false;
+	mapPanel1->isActive = true;
+	mapPanel2->isActive = true;
+	showMap = true;
+	m_inven->isActive = false;
 }
 
 void dungeonUI::ShowUI(HDC _hdc)
 {
-
-	for (int i = 0; i < vUI.size() - 1; i++)
+	for (int i = 0; i < vUI.size(); i++)
 	{
 		vUI[i].RenderUI(_hdc);
 	}
 
 	if (showMap)
 	{
-		vUI[9].RenderUI(_hdc);
+		//vUI[9].RenderUI(_hdc);
 		ShowUIMap(_hdc);
 	}
 	else
@@ -183,11 +183,38 @@ void dungeonUI::ShowUIMap(HDC _hdc)
 {
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
-	m_inven->isActive = false; 
+
+
 }
 
 void dungeonUI::ShowUIUInven(HDC _hdc)
 {
 	m_inven->showInvenItem(_hdc);
-	m_inven->isActive = true;
+
+
+
+}
+
+CUIPanel* dungeonUI::CreatePanel(string name, Vector2 pos, LAYER layer)
+{
+	CUIPanel* uiPanel = new CUIPanel();
+	uiPanel->Init();
+	uiPanel->AddSpriteRenderer(name);
+	uiPanel->m_transform->m_pos = pos;
+	uiPanel->m_layer = layer;
+	uiPanel->UseFrontRender();
+	MG_GMOBJ->RegisterObj(name, uiPanel);
+	return uiPanel;
+}
+
+CUIPanel* dungeonUI::CreatePanel(IMAGE image, Vector2 pos, LAYER layer)
+{
+	CUIPanel* uiPanel = new CUIPanel();
+	uiPanel->Init();
+	uiPanel->AddSpriteRenderer(image);
+	uiPanel->m_transform->m_pos = pos;
+	uiPanel->m_layer = layer;
+	uiPanel->UseFrontRender();
+	MG_GMOBJ->RegisterObj("panel", uiPanel);
+	return uiPanel;
 }
