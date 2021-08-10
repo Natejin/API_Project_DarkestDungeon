@@ -139,29 +139,29 @@ void CRoadObject::setRoadObj()
 
 void CRoadObject::Interaction_collision()
 {
-    //for test
-    testCollider = new CCollider;
-    testCollider->SetRect(m_roadObj[0].m_trans.m_pos.x - 100, m_roadObj[0].m_trans.m_pos.y, m_roadObj[0].m_trans.m_pos.x + 200, m_roadObj[0].m_trans.m_pos.y - 100);
-    if (testCollider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
-    {
-        isCollision = true;
-    }
-    else isCollision = false;
+    ////for test
+    //testCollider = new CCollider;
+    //testCollider->SetRect(m_roadObj[0].m_trans.m_pos.x - 100, m_roadObj[0].m_trans.m_pos.y, m_roadObj[0].m_trans.m_pos.x + 200, m_roadObj[0].m_trans.m_pos.y - 100);
+    //if (testCollider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
+    //{
+    //    isCollision = true;
+    //}
+    //else isCollision = false;
 
-    CCollider* _collider = new CCollider;
+    //CCollider* _collider = new CCollider;
 
-    //collision with trap
+    ////collision with trap
 
-    //얘부터 차례대로 디버깅하려면
-    (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
-    if (isTrapClear == false)
-    {
-        if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
-        {
-            Interaction_trap_fail();
-            isTrapClear == true;
-        }
-    }
+    ////얘부터 차례대로 디버깅하려면
+    //(*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 100, m_roadObj[1].m_trans.m_pos.y - 100);
+    //if (isTrapClear == false)
+    //{
+    //    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x))
+    //    {
+    //        Interaction_trap_fail();
+    //        isTrapClear == true;
+    //    }
+    //}
 
     ////collision with enemyPoint
     //(*_collider).SetRect(m_roadObj[2].m_trans.m_pos.x, m_roadObj[2].m_trans.m_pos.y, m_roadObj[2].m_trans.m_pos.x + 100, m_roadObj[2].m_trans.m_pos.y - 100);
@@ -173,59 +173,59 @@ void CRoadObject::Interaction_collision()
 
 void CRoadObject::Interaction_treassure()
 {
-    CCollider* _collider = new CCollider;
-    (*_collider).SetRect(m_roadObj[0].m_trans.m_pos.x - 100, m_roadObj[0].m_trans.m_pos.y, m_roadObj[0].m_trans.m_pos.x + 200, m_roadObj[0].m_trans.m_pos.y - 100);
+    //CCollider* _collider = new CCollider;
+    //(*_collider).SetRect(m_roadObj[0].m_trans.m_pos.x - 100, m_roadObj[0].m_trans.m_pos.y, m_roadObj[0].m_trans.m_pos.x + 200, m_roadObj[0].m_trans.m_pos.y - 100);
 
-    //treasure
-    //touchable when it's collision with Hero(0)
-    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
-    {
-        if (isTreasureOpen == false)
-        {
-            if (MG_RND->getInt(10) > 0)
-            {
-                m_roadObj[0].m_img = MG_IMAGE->findImage("mon1");
-                m_roadObj[0].m_img->setWidth(100);
-                m_roadObj[0].m_img->setHeight(100);
+    ////treasure
+    ////touchable when it's collision with Hero(0)
+    //if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 100))
+    //{
+    //    if (isTreasureOpen == false)
+    //    {
+    //        if (MG_RND->getInt(10) > 0)
+    //        {
+    //            m_roadObj[0].m_img = MG_IMAGE->findImage("mon1");
+    //            m_roadObj[0].m_img->setWidth(100);
+    //            m_roadObj[0].m_img->setHeight(100);
 
-                int torch = MG_RND->getInt(2);
-                int food = MG_RND->getInt(2);
-                int band = MG_RND->getInt(2);
+    //            int torch = MG_RND->getInt(2);
+    //            int food = MG_RND->getInt(2);
+    //            int band = MG_RND->getInt(2);
 
-                MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + band);
-                MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + food);
-                MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + torch);
-                isTreasureOpen = true;
-            }
-            else
-            {
-                m_roadObj[0].m_img = MG_IMAGE->findImage("nothing");
-                isTreasureOpen = true;
-            }
-        }
-    }
+    //            MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + band);
+    //            MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + food);
+    //            MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + torch);
+    //            isTreasureOpen = true;
+    //        }
+    //        else
+    //        {
+    //            m_roadObj[0].m_img = MG_IMAGE->findImage("nothing");
+    //            isTreasureOpen = true;
+    //        }
+    //    }
+    //}
 }
 
 void CRoadObject::Interaction_trap()
 {
-    CCollider* _collider = new CCollider;
-    (*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x - 100, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 200, m_roadObj[1].m_trans.m_pos.y - 100);
+    //CCollider* _collider = new CCollider;
+    //(*_collider).SetRect(m_roadObj[1].m_trans.m_pos.x - 100, m_roadObj[1].m_trans.m_pos.y, m_roadObj[1].m_trans.m_pos.x + 200, m_roadObj[1].m_trans.m_pos.y - 100);
 
-    if (isTrapClear == false)
-    {
-        if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 200))
-        {
-            if (MG_RND->getInt(4) > 0)
-            {
-                Interaction_trap_success();
-            }
-            else
-            {
-                //tryed but fail
-                Interaction_trap_fail();
-            }
-        }
-    }
+    //if (isTrapClear == false)
+    //{
+    //    if (_collider->CheckXCollision(MG_GAME->GetHero(0)->m_transform->m_pos.x + 200))
+    //    {
+    //        if (MG_RND->getInt(4) > 0)
+    //        {
+    //            Interaction_trap_success();
+    //        }
+    //        else
+    //        {
+    //            //tryed but fail
+    //            Interaction_trap_fail();
+    //        }
+    //    }
+    //}
 }
 
 void CRoadObject::Interaction_trap_fail()

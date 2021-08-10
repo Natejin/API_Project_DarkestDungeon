@@ -4,18 +4,19 @@ enum class LAYER
 {
 	Unknown = -2,
 
-	MinimapBackground = 0,
-	Minimap = 1,
-	BackGround = 2,
-	Building = 3,
-	Player = 4,
-	Enemy = 8,
-	AllinceProjectile = 16,
-	EnemyProjectile = 32,
-	EffectFrontword = 64,
-	Item = 128,
-	UI = 256,
-	UIButton = 512
+	MinimapBackground,
+	UIMinimapRoom,
+	UIMinimapRoad,
+	BackGround,
+	Building,
+	Player,
+	Enemy,
+	AllinceProjectile,
+	EnemyProjectile,
+	EffectFrontword,
+	Item,
+	UI,
+	UIButton
 };
 
 enum class JOB
@@ -35,7 +36,7 @@ enum class DIR {
 };
 
 enum class IMAGE
-{	
+{
 	//Hero
 	Vestal_Idle,
 	Vestal_Walk,
@@ -157,9 +158,20 @@ enum class IMAGE
 	plague_doctor_roster,
 	vestal_roster,
 
+
+	//panel
+	banner,
+	controller,
+	hero,
+	inventory,
+	map,
+	map1,
+	map2,
+	monster,
+	scouting,
 };
 
-enum class RACE 
+enum class RACE
 {
 	Human,
 	Undying,
@@ -182,7 +194,7 @@ enum class Combat_Skill
 };
 
 enum class Camping_Skill
-{	
+{
 	//�߽�����
 	Night_Attack_Prevention,
 	//���� ��ȭ
@@ -194,13 +206,13 @@ enum class Camping_Skill
 };
 
 enum class BATTLETURN
-{	
+{
 	//�߽�����
 	EnemyTurn,
 	PlayerTurn
 };
 
-enum class DUNGEONSTATE 
+enum class DUNGEONSTATE
 {
 	NONE,
 	ROOM,
@@ -214,7 +226,7 @@ enum class DUNGEONMODE
 	WALK
 };
 
-enum class COLLIDERTYPE 
+enum class COLLIDERTYPE
 {
 	BOX,
 	CIRCLE,
@@ -232,7 +244,7 @@ enum class ANIMATIONTYPE
 
 
 
-enum class DUNGEONMAPSTATE 
+enum class DUNGEONMAPSTATE
 {
 	NONE,
 	Road_Empty,

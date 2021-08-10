@@ -7,7 +7,7 @@
 #include "CButton.h"
 #include "CRoadObject.h"
 #include "dungeonUI.h"
-#include "dungeonUI_info.h"
+#include "dungeonUI_HeroInfo.h"
 #include "CBattleSystem.h"
 #include "CMapSystem.h"
 #include "CInventorySystem.h"
@@ -31,8 +31,9 @@ HRESULT DungeonScene::Init()
 	//SetUIIMG();
 	CreateBattleSystem();
 	CreateParty();
-	CreateDungeonUI();
 	CreateDungeonMap();
+	CreateDungeonUI();
+
 	CreateRoom();
 	CreateRoad();
 	CreateDoor();
@@ -44,11 +45,11 @@ HRESULT DungeonScene::Init()
 void DungeonScene::CreateDungeonUI()
 {
 	m_dungeonUI = new dungeonUI;
+	m_dungeonUI->m_pMapSystem = m_pMapSystem;
 	m_dungeonUI->Init();
-	m_dungeonUI->isActive = true;
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 
-	m_dungeonUIinfo = new dungeonUI_info;
+	m_dungeonUIinfo = new dungeonUI_HeroInfo;
 	m_dungeonUIinfo->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 }
@@ -81,9 +82,7 @@ void DungeonScene::Update()
 
 		CheckDoor();
 		setRoadNum();
-
 	}
-
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
 	{
 
@@ -119,8 +118,9 @@ void DungeonScene::Render(HDC _hdc)
 void DungeonScene::CreateDungeonMap()
 {
 	m_pMapSystem = new CMapSystem();
+
 	m_pMapSystem->Init();
-	m_dungeonUI->m_pMapSystem = m_pMapSystem;
+
 }
 
 void DungeonScene::CreateParty()
@@ -273,6 +273,9 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
+
+	sprintf_s(str, "mousePos : %d, %d", (int)m_ptMouse.x, (int)m_ptMouse.y);
+	TextOut(_hdc, 0, 180, str, strlen(str));
 
 	switch (curDunheonMap.dungeonMapState)
 	{

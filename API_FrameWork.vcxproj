@@ -183,6 +183,7 @@
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CDragButtion.h" />
+    <ClInclude Include="CDragButtonMinimapBG.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEst_UI.h" />
     <ClInclude Include="CGameManager.h" />
@@ -197,12 +198,13 @@
     <ClInclude Include="CParty.h" />
     <ClInclude Include="CRoadObject.h" />
     <ClInclude Include="CSpriteRenderer.h" />
+    <ClInclude Include="CUIPanel.h" />
     <ClInclude Include="CVestal.h" />
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="DungeonScene2.h" />
     <ClInclude Include="dungeonUI.h" />
-    <ClInclude Include="dungeonUI_info.h" />
+    <ClInclude Include="dungeonUI_HeroInfo.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
@@ -292,6 +294,7 @@
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CDragButtion.cpp" />
+    <ClCompile Include="CDragButtonMinimapBG.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEst_UI.cpp" />
     <ClCompile Include="CGameManager.cpp" />
@@ -305,12 +308,13 @@
     <ClCompile Include="CParty.cpp" />
     <ClCompile Include="CRoadObject.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />
+    <ClCompile Include="CUIPanel.cpp" />
     <ClCompile Include="CVestal.cpp" />
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="DungeonScene2.cpp" />
     <ClCompile Include="dungeonUI.cpp" />
-    <ClCompile Include="dungeonUI_info.cpp" />
+    <ClCompile Include="dungeonUI_HeroInfo.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />

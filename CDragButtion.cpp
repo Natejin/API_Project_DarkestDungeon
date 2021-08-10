@@ -27,9 +27,7 @@ void CDragButton::Update(float deltaTime, float worldTime)
 			if (canTriggerDrag) 
 			{	
 				m_triggerWhenDrag();
-				
 			}
-			
 		}
 
 		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
@@ -71,11 +69,11 @@ void CDragButton::SetButtonSize(float width, float height)
 
 void CDragButton::Mouse_icon_Move()
 {
-	//¸¶¿ì½º ÁÂÅ¬¸¯À» ÇÏ¿´À»¶§ ±× ¹öÆ°ÀÇ ÀÌ¹ÌÁö¿Í rect°¡ 
-	//³»°¡ ÀÌµ¿ÇÏ´Â ÁÂÇ¥·Î µû¶ó ¿Í¼­ 
-	//³»°¡ ³õ¾ÒÀ»‹š ±× ÁÂÇ¥°ªÀÌ ÀûÀýÇÑ À§Ä¡¶ó¸é 
-	//¶³¾îÁö°Ô²û ¸¸µé¾î¾ß ÇÑ´Ù. 
-	//¸¶¿ì½º¿Í ¾ÆÀÌÄÜÀÌ °°ÀÌ ÀÌµ¿.
+	//ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ rectï¿½ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½. 
+	//ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½.
 
 	m_transform->m_pos = m_ptMouse;
 	m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
@@ -84,4 +82,14 @@ void CDragButton::Mouse_icon_Move()
 	m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
 }
 
-//¸¶¿ì½ºÁÂÅ¬¸¯¿¡¼­ ¼ÕÀ» ¶ÂÀ» ¶§ 
+void CDragButton::SetButtonSize()
+{
+	if (m_spriteRenderer)
+	{
+		Vector2 imageSize = m_spriteRenderer->GetImageSize();
+		m_rect.l = m_transform->m_pos.x - imageSize.x * m_transform->m_pivot.x;
+		m_rect.t = m_transform->m_pos.y - imageSize.y * m_transform->m_pivot.y;
+		m_rect.r = m_transform->m_pos.x + imageSize.x * (1 - m_transform->m_pivot.x);
+		m_rect.b = m_transform->m_pos.y + imageSize.y * (1 - m_transform->m_pivot.y);
+	}
+}

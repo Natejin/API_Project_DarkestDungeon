@@ -1,19 +1,18 @@
 #pragma once
-#include "CButton.h"
 
-class CMinimapButton : public CButton
+#include "GameObject.h"
+
+class CUIPanel : public GameObject
 {
+	bool useFrontRender;
+	bool useRender;
+	bool useBackRender;
 
 public:
-	DungeonData dungeonData;
-
-
-	CMinimapButton();
-	~CMinimapButton();
+	CUIPanel();
+	~CUIPanel();
 
 	HRESULT Init();
-
-
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -22,7 +21,8 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
-	virtual void AddSpriteRenderer(IMAGE imageName);
-	//virtual void AddSpriteRenderer(string imageName);
+	void UseFrontRender();
+	void UseRender();
+	void UseBackRender();
 };
 

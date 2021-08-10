@@ -1,18 +1,14 @@
 #pragma once
-#include "CButton.h"
-class CDragButton : public CButton
+#include "CDragButtion.h"
+
+class CDragButtonMinimapBG : public CDragButton
 {
-protected:
-	Vector2 buttonSize;
-	function<void()> m_triggerWhenDrag;
-
-	bool canTriggerDrag;
-	bool isDragging;
-
+	class CMapSystem* m_pMapSystem;
+	Vector2 previousMousePoint;
 public:
-	CDragButton();
-	~CDragButton();
-
+	CDragButtonMinimapBG();
+	~CDragButtonMinimapBG();
+	
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);
@@ -24,10 +20,6 @@ public:
 
 	//===================================
 
-	void SetButtonSize(float width, float height);
-	void Mouse_icon_Move();
-	void Mouse_Move();
-	void SetButtonSize();
 
 	template <typename T>
 	void SetTriggerWhenDrag(T* pObj, void(T::* func)())
@@ -35,4 +27,6 @@ public:
 		canTriggerDrag = true;
 		m_triggerWhenDrag = bind(func, pObj);
 	}
+
+	void SetMapSystem(class CMapSystem* _mapSystem);
 };
