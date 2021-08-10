@@ -23,7 +23,7 @@ void CDragButton::Update(float deltaTime, float worldTime)
 	{
 		if (MG_INPUT->isStayKeyDown(VK_LBUTTON)) 
 		{
-			
+			canTriggerDrag = true;
 			if (canTriggerDrag) 
 			{	
 				m_triggerWhenDrag();
@@ -33,7 +33,7 @@ void CDragButton::Update(float deltaTime, float worldTime)
 		}
 
 		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
-		{
+		{	
 			if (canTriggerClick)
 			{	
 				m_triggerWhenUp();
@@ -69,12 +69,13 @@ void CDragButton::SetButtonSize(float width, float height)
 	buttonSize = Vector2(width, height);
 }
 
-void CDragButton::Mouse_Move()
+void CDragButton::Mouse_icon_Move()
 {
 	//마우스 좌클릭을 하였을때 그 버튼의 이미지와 rect가 
 	//내가 이동하는 좌표로 따라 와서 
 	//내가 놓았을떄 그 좌표값이 적절한 위치라면 
 	//떨어지게끔 만들어야 한다. 
+	//마우스와 아이콘이 같이 이동.
 
 	m_transform->m_pos = m_ptMouse;
 	m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
@@ -83,3 +84,4 @@ void CDragButton::Mouse_Move()
 	m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
 }
 
+//마우스좌클릭에서 손을 뗏을 때 

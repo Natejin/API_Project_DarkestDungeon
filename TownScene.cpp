@@ -28,6 +28,7 @@ TownScene::~TownScene(){}
 HRESULT TownScene::Init()
 {
 	CBG_Town* m_town = new CBG_Town();
+
 	m_town->Init();
 	
 	MG_GMOBJ->RegisterObj("Town", m_town);
@@ -116,7 +117,7 @@ void TownScene::Release()
 }
 
 void TownScene::Update()
-{
+{	
 	if (abbey_b==true){	abbey_ui = true;}
 	if (blacksmith_b == true){blacksmith_ui = true;}
 	if (campingTrainer_b ==true){campingTrainer_ui = true;}
@@ -127,7 +128,7 @@ void TownScene::Update()
 	if (town_statue_b ==true){town_statue_ui = true;}
 	if (nomad_wagon_b==true){nomad_wagon_ui = true;}
 	if (stage_coach_b==true){stage_coach_ui = true;}
-	
+
 	if (abbey_ui == true)
 	{
 		m_abbey->isUI = true;
@@ -287,7 +288,7 @@ void TownScene::SetIMG_Est()
 	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
 
 }
-//Hero_List...
+//
 void TownScene::SetUI()
 {	
 	CButton* m_activity_log = new CButton();
@@ -295,8 +296,6 @@ void TownScene::SetUI()
 	m_activity_log->SetButtonSize(100, 100);
 	m_activity_log->AddSpriteRenderer(IMAGE::estate_activity_log);
 	MG_GMOBJ->RegisterObj("log", m_activity_log);
-
-	
 }
 void TownScene::Show_abeey()
 {
@@ -363,11 +362,12 @@ void TownScene::SetHerolist()
 			m_roster.m_trans.m_pos = Vector2(WINSIZEX / 2+510 , WINSIZEY - 930 + i*100);
 			v_roster.push_back(m_roster);
 			*/
-		  
-			CHeroList_button* dragButton = new CHeroList_button();
+			dragButton = new CHeroList_button();
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 			dragButton->SetButtonSize(50, 50);
+			dragButton->SetTriggerWhenDrag(this, &TownScene::Mouse);
+		
 			switch (MG_GAME->GetHero(i)->job)
 			{
 			case JOB::Crusader:
@@ -389,4 +389,12 @@ void TownScene::SetHerolist()
 			m_dragButton.push_back(dragButton);
 			MG_GMOBJ->RegisterObj("m_hero_slot_bg", dragButton);
 		}
+}
+
+void TownScene::Mouse()
+{
+	//현재 
+	//드래그는 가능
+	//예외처리로 드래그중에는 다른 ui나 버튼이 작동안하게 만들고 싶다.
+
 }

@@ -5,13 +5,13 @@ class Abbey :public CEst_UI
 
 private:
 	class CButton* m_quick;
-
+	
 public:
 	Rect m_rect;
-
+	
 	Abbey();
 	~Abbey();
-
+	
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);

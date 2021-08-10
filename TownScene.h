@@ -16,15 +16,11 @@ protected:
 
 	vector<class CDragButton*> m_dragButton;
 
-	vector<ImageData> v_roster;
-
-	vector<class CHero_List*> m_herolist;
-	class CHeroList_ui* m_list;
+//	vector<ImageData> v_roster;
 
 private:
-
 	class CHero* m_hero;
-	
+	class CHeroList_button* dragButton;
 public:
 	class CEst_UI* m_estui;
 	int curDragHeroIndex;
@@ -77,7 +73,7 @@ public:
 
 	void Show_Activity_log();
 	void SetHerolist();
-
+	void Mouse();
 public:
 	TownScene();
 	virtual~TownScene();

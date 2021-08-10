@@ -42,8 +42,8 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
 		{
 			if (canTriggerClick)
-			{	//놓았을때 그 위치에 애가 둬야 한다.
-				m_triggerWhenUp();
+			{	//놓았을때 상호작용.
+				
 			}
 
 		}

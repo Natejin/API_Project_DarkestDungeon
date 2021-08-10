@@ -24,7 +24,7 @@ public:
 	//===================================
 
 	void SetButtonSize(float width, float height);
-	void Mouse_Move();
+	void Mouse_icon_Move();
 
 	template <typename T>
 	void SetTriggerWhenDrag(T* pObj, void(T::* func)())
