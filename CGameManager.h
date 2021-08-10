@@ -8,7 +8,7 @@ private:
 	//map<int,class GameObject*> objectMap;
 	vector<CHero*> m_partyOrigin;
 	vector<CHero*> m_ownHeroes;
-
+	
 public:
 	CGameManager();
 	~CGameManager();
@@ -34,5 +34,5 @@ public:
 	class Vestal* CreateVestal(string name);
 
 	int GetHeroPartySize() {  return m_partyOrigin.size();}
-
+	void HireHero(class CHero* _hero);
 };

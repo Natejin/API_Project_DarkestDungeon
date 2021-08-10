@@ -99,3 +99,8 @@ Vestal* CGameManager::CreateVestal(string name)
 
 	return vestal;
 }
+
+void CGameManager::HireHero(CHero* _hero)
+{	
+	m_ownHeroes.push_back(_hero);
+}

@@ -1,16 +1,9 @@
 #pragma once
-#include"GameObject.h"
-
-class CDragButtion : public GameObject
+#include "CButton.h"
+class CDragButtion : public CButton
 {
-
-protected:
-	function<void()> m_triggerWhenClick;
-	int countNum;
-
 public:
-	Rect m_rect;
-
+	
 	CDragButtion();
 	~CDragButtion();
 
@@ -26,11 +19,6 @@ public:
 	//===================================
 
 	void SetButtonSize(float width, float height);
-
-	template <typename T>
-	void SetTriggerWhenClick(T* pObj, void(T::* func)())
-	{
-		m_triggerWhenClick = bind(func, pObj);
-	}
+	void Mouse_Move(float width, float height);
 
 };

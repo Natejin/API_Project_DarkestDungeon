@@ -119,7 +119,14 @@ enum class IMAGE
 	crusader,
 	highwayman,
 	plague_doctor,
-	vestal
+	vestal,
+
+	//Hero_roster
+	crusader_roster,
+	highwayman_roster,
+	plague_doctor_roster,
+	vestal_roster,
+
 };
 
 enum class RACE 

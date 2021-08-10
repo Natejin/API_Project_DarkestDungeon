@@ -20,6 +20,11 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/Crusader_Walk_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/Crusader_Combat_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage(IMAGE::crusader_roster, "images/Heroes/crusader_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_roster, "images/Heroes/highwayman_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_roster, "images/Heroes/vestal_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_roster, "images/Heroes/plague_doctor_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
+
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
 	//quick
