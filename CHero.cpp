@@ -64,12 +64,13 @@ void CHero::LateUpdate()
 
 void CHero::BackRender(HDC _hdc)
 {
+	m_animator->FrameRender(_hdc);
 }
 
 void CHero::Render(HDC _hdc)
 {
 	//m_image->frameRender(_hdc, m_transform);
-	m_animator->FrameRender(_hdc);
+
 
 }
 

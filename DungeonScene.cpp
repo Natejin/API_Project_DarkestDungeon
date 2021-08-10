@@ -36,6 +36,7 @@ HRESULT DungeonScene::Init()
 	CreateRoom();
 	CreateRoad();
 	CreateParty();
+	CreateDungeonInven();
 	CreateDoor();
 
 
@@ -127,6 +128,13 @@ void DungeonScene::CreateDungeonMap()
 	m_pMapSystem = new CMapSystem();
 	m_pMapSystem->Init();
 	m_dungeonUI->m_pMapSystem = m_pMapSystem;
+}
+
+void DungeonScene::CreateDungeonInven()
+{
+	m_inven = new CInventorySystem();
+	m_inven->Init();
+	MG_GMOBJ->RegisterObj("inventory", m_inven);
 }
 
 void DungeonScene::CreateParty()

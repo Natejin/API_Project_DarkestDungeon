@@ -80,6 +80,7 @@ public:
 
 public:
 	void CreateDungeonMap();
+	void CreateDungeonInven();
 
 	void CreateParty();
 

@@ -30,15 +30,13 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
-
+	//bg의 frontRender에 가려져서 여기에 넣음
+	ShowUI(_hdc);
 }
 
 void dungeonUI::FrontRender(HDC _hdc)
 {
-	//bg의 frontRender에 가려져서 여기에 넣음
-	ShowUI(_hdc);
 
-	//캐릭터 정보, 인벤토리, 맵 정보
 }
 
 void dungeonUI::Release()
