@@ -7,7 +7,7 @@
 #include "CButton.h"
 #include "CRoadObject.h"
 #include "dungeonUI.h"
-#include "dungeonUI_info.h"
+#include "dungeonUI_HeroInfo.h"
 #include "CBattleSystem.h"
 #include "CMapSystem.h"
 #include "CInventorySystem.h"
@@ -45,10 +45,9 @@ void DungeonScene::CreateDungeonUI()
 {
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->Init();
-	m_dungeonUI->isActive = true;
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 
-	m_dungeonUIinfo = new dungeonUI_info;
+	m_dungeonUIinfo = new dungeonUI_HeroInfo;
 	m_dungeonUIinfo->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 }
@@ -81,7 +80,6 @@ void DungeonScene::Update()
 
 		CheckDoor();
 		setRoadNum();
-
 	}
 
 	else if (dungeonMode == DUNGEONMODE::BATTLE)

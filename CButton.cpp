@@ -28,7 +28,6 @@ void CButton::Update(float deltaTime, float worldTime)
 			{
 				m_triggerWhenUp();
 			}
-			
 		}
 	}
 }
@@ -79,5 +78,4 @@ void CButton::SetButtonSize()
 		m_rect.r = m_transform->m_pos.x + imageSize.x * (1 - m_transform->m_pivot.x);
 		m_rect.b = m_transform->m_pos.y + imageSize.y * (1 - m_transform->m_pivot.y);
 	}
-
 }
