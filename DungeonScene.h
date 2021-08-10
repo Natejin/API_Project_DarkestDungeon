@@ -70,7 +70,7 @@ public:
 public:
 	dungeonUI* m_dungeonUI;
 	dungeonUI_info* m_dungeonUIinfo;
-	CInventorySystem* m_inven;
+	
 	
 
 //==================================
@@ -80,7 +80,6 @@ public:
 
 public:
 	void CreateDungeonMap();
-	void CreateDungeonInven();
 
 	void CreateParty();
 

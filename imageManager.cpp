@@ -280,7 +280,16 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 70, 135, false, RGB(255, 0, 255));
+
+
+	//item
+	MG_IMAGE->addImage("torch", "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food1", "images/item/inv_provision+_0.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food2", "images/item/inv_provision+_1.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food3", "images/item/inv_provision+_2.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food4", "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("bandage", "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
 
 	return S_OK;
 }
