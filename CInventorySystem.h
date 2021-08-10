@@ -13,7 +13,7 @@ enum class ITEM
 };
 
 struct itemInfo
-{	
+{
 	ITEM itemKind;
 	ImageData m_imgData;
 	string name;
