@@ -81,13 +81,13 @@ void CHero::FrontRender(HDC _hdc)
 	}
 	showHpStrsBar(_hdc);
 
-	//for test collision
-	ImageData temp;
-	temp.m_img = MG_IMAGE->findImage("memberRect");
-	temp.m_trans. m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 10,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 70);
-	temp.m_img->render(_hdc, &temp.m_trans);
+	////for test collision
+	//ImageData temp;
+	//temp.m_img = MG_IMAGE->findImage("memberRect");
+	//temp.m_trans. m_pos = Vector2(
+	//	m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 10,
+	//	m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 70);
+	//temp.m_img->render(_hdc, &temp.m_trans);
 }
 
 void CHero::Release()

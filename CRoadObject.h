@@ -19,6 +19,9 @@ private:
 	CButton_move* bt_trap;
 	CButton_move* bt_battle;
 
+	CCollider* testCollider;
+	bool isCollision;
+
 public:
 	CRoadObject();
 	~CRoadObject();
@@ -48,6 +51,6 @@ public:
 	void Interaction_trap();
 	void Interaction_trap_fail();
 	void Interaction_trap_success();
-	void Interaction_battle(); //not sure
+	void Interaction_battle(); //change the scene
 
 };
