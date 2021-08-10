@@ -34,8 +34,8 @@ public:
 	void SetTorchUI();
 
 	void TorchLightBarDecrease();
-	void ShowInven();
-	void ShowMap();
+	void ShowInven() { showMap = false; }
+	void ShowMap() { showMap = true; }
 
 	void ShowUI(HDC _hdc);
 	void ShowUIMap(HDC _hdc);

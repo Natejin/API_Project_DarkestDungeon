@@ -186,8 +186,6 @@
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEst_UI.h" />
     <ClInclude Include="CGameManager.h" />
-    <ClInclude Include="CHeroList_button.h" />
-    <ClInclude Include="CHeroList_ui.h" />
     <ClInclude Include="CInventorySystem.h" />
     <ClInclude Include="CMinimapButton.h" />
     <ClInclude Include="CMapSystem.h" />
@@ -295,8 +293,6 @@
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEst_UI.cpp" />
     <ClCompile Include="CGameManager.cpp" />
-    <ClCompile Include="CHeroList_button.cpp" />
-    <ClCompile Include="CHeroList_ui.cpp" />
     <ClCompile Include="CInventorySystem.cpp" />
     <ClCompile Include="CMinimapButton.cpp" />
     <ClCompile Include="CMapSystem.cpp" />

@@ -1,12 +1,12 @@
 ﻿#include "framework.h"
-#include "CMinimapButton.h"
 #include "CMapSystem.h"
 
 CMapSystem::CMapSystem()
 {
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
-	remainRoom = 10;
+	remainRoom = 2;
+	m_layer = LAYER::UI;
 }
 
 CMapSystem::~CMapSystem()
@@ -20,33 +20,32 @@ HRESULT CMapSystem::Init()
 	return S_OK;
 }
 
-//void CMapSystem::Update(float deltaTime, float worldTime)
-//{
-//}
-//
-//void CMapSystem::LateUpdate()
-//{
-//}
-//
-//void CMapSystem::BackRender(HDC _hdc)
-//{
-//}
-//
-//void CMapSystem::Render(HDC _hdc)
-//{
-//	
-//}
-//
-//void CMapSystem::FrontRender(HDC _hdc)
-//{
-//
-//}
+void CMapSystem::Update(float deltaTime, float worldTime)
+{
+}
+
+void CMapSystem::LateUpdate()
+{
+}
+
+void CMapSystem::BackRender(HDC _hdc)
+{
+}
+
+void CMapSystem::Render(HDC _hdc)
+{
+	
+}
+
+void CMapSystem::FrontRender(HDC _hdc)
+{
+
+}
 
 void CMapSystem::CreateDungeon()
 {
 	for (int i = 0; i < MAPSIZE; i++)
 	{
-
 		for (int j = 0; j < MAPSIZE; j++)
 		{
 			DungeonData dungeonData;
@@ -76,7 +75,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 			i > MAPSIZE ||
 			j < 0 ||
 			j > MAPSIZE ||
-			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE)
+			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // �ش���� ������
 			return;
 	}
 
@@ -196,18 +195,8 @@ Vector2Int CMapSystem::GetDirFromInt(int dir) {
 	}
 }
 
-void CMapSystem::MapButtonOnOff(bool active)
-{
-	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
-	{
-		dungeonMapCreate[i]->isActive = active;
-	}
-}
-
 void CMapSystem::SetMapWitchCreated()
 {
-	int mid = MAPSIZE / 2;
-
 	for (int i = 0; i < MAPSIZE; i++)
 	{
 		for (int j = 0; j < MAPSIZE; j++)
@@ -216,56 +205,37 @@ void CMapSystem::SetMapWitchCreated()
 
 			if (dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE)
 			{
-
-				CMinimapButton* minimapButton = new CMinimapButton();
+			
 				switch (dungeonMap[i][j].dungeonMapState)
 				{
 				case DUNGEONMAPSTATE::Road_Empty:
-					minimapButton->AddSpriteRenderer(IMAGE::hall_clear);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::hall_clear);
 					break;
 				case DUNGEONMAPSTATE::Road_Enemy:
-					minimapButton->AddSpriteRenderer(IMAGE::marker_battle);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::marker_battle);
 					break;
 				case DUNGEONMAPSTATE::Road_Trasure:
-					minimapButton->AddSpriteRenderer(IMAGE::marker_curio);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::marker_curio);
 					break;
 				case DUNGEONMAPSTATE::Road_Trap:
-					minimapButton->AddSpriteRenderer(IMAGE::marker_trap);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::marker_trap);
 					break;
 				case DUNGEONMAPSTATE::Room_Empty:
-					minimapButton->AddSpriteRenderer(IMAGE::room_empty);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_empty);
 					break;
 				case DUNGEONMAPSTATE::Room_Enemy:
-					minimapButton->AddSpriteRenderer(IMAGE::room_battle);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_battle);
 					break;
 				case DUNGEONMAPSTATE::Room_Trasure:
-					minimapButton->AddSpriteRenderer(IMAGE::room_curio);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_curio);
 					break;
 				case DUNGEONMAPSTATE::Room_Boss:
-					minimapButton->AddSpriteRenderer(IMAGE::room_boss);
+					dungeonMap[i][j].m_imageData.m_img = MG_IMAGE->findImage(IMAGE::room_boss);
 					break;
 				default:
 					break;
 				}
-				
-				minimapButton->dungeonData = dungeonMap[i][j];
-				int x = ((i) / 4) * 64 + ((i) / 4) * 3 * 24 + (i) % 4 * 24;
-				int y = 0;
-				if (dungeonMap[i][j].isRoom)
-				{
-					y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24;
-				}
-				else {
-					y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24 + 16;
-				}
-				
-				minimapButton->m_transform->m_pos = Vector2(100 + x, 100 + y);
-	
-				//minimapButton->m_transform->m_pivot = Vector2(0.5, 0.5);
-				minimapButton->m_transform->m_pivot = Vector2(0, 0);
-				minimapButton->isActive = false;
-				dungeonMapCreate.push_back(minimapButton);
-				MG_GMOBJ->RegisterObj("dungeonMapButton" + to_string(i), minimapButton);
+				dungeonMapCreate.push_back(dungeonMap[i][j]);
 			}
 		}
 	}

@@ -199,9 +199,6 @@
     <Filter Include="Manager\UI\Minimap">
       <UniqueIdentifier>{3a813a6e-cae3-4be8-98df-f1fb90ecb57b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\UI\Town_Button">
-      <UniqueIdentifier>{db8e7495-6d76-4a6f-a0bb-76133766f1e3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -508,13 +505,7 @@
       <Filter>Scene\UI</Filter>
     </ClInclude>
     <ClInclude Include="CBuilding.h">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroList_button.h">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroList_ui.h">
-      <Filter>Scene\UI\EST_UI</Filter>
+      <Filter>Scene\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -798,13 +789,7 @@
       <Filter>Scene\UI</Filter>
     </ClCompile>
     <ClCompile Include="CBuilding.cpp">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroList_button.cpp">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroList_ui.cpp">
-      <Filter>Scene\UI\EST_UI</Filter>
+      <Filter>Scene\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

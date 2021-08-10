@@ -3,17 +3,11 @@
 
 class CMinimapButton : public CButton
 {
-
 public:
-	DungeonData dungeonData;
-
-
 	CMinimapButton();
 	~CMinimapButton();
 
 	HRESULT Init();
-
-
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();

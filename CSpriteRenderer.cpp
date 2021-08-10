@@ -3,7 +3,7 @@
 
 CSpriteRenderer::CSpriteRenderer()
 {
-	useCustomPos = false;
+
 }
 
 CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
@@ -11,12 +11,10 @@ CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
 	m_trans = _trans;
 	m_image = MG_IMAGE->findImage(imageName);
 	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
-	useCustomPos = false;
 }
 
 CSpriteRenderer::~CSpriteRenderer()
 {
-
 }
 
 
@@ -40,26 +38,12 @@ Image* CSpriteRenderer::GetImage()
 
 void CSpriteRenderer::Render(HDC _hdc)
 {
-	if (useCustomPos)
-	{
-		m_image->render(_hdc, m_trans, m_imageSize, pos);
-	}else{
-		m_image->render(_hdc, m_trans, m_imageSize);
-	}
-
+	m_image->render(_hdc, m_trans, m_imageSize);
 }
 
 void CSpriteRenderer::RenderUI(HDC _hdc)
 {
-	if (useCustomPos)
-	{
-		m_image->renderUI(_hdc, m_trans, pos);
-	}
-	else {
-
-		m_image->renderUI(_hdc, m_trans);
-	}
-	
+	m_image->renderUI(_hdc, m_trans);
 }
 
 Vector2 CSpriteRenderer::GetImageSize()

@@ -15,12 +15,7 @@ protected:
 	class Tavern* m_tavern;
 
 	vector<class CDragButton*> m_dragButton;
-
 	vector<ImageData> v_roster;
-
-	vector<class CHero_List*> m_herolist;
-	class CHeroList_ui* m_list;
-
 private:
 
 	class CHero* m_hero;
