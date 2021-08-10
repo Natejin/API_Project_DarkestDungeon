@@ -4,7 +4,8 @@
 class CButton : public GameObject
 {
 protected:
-	function<void()> m_triggerWhenClick;
+	bool canTriggerClick;
+	function<void()> m_triggerWhenUp;
 	int countNum;
 
 public:
@@ -29,7 +30,8 @@ public:
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)())
 	{
-		m_triggerWhenClick = bind(func, pObj);
+		canTriggerClick = true;
+		m_triggerWhenUp = bind(func, pObj);
 	}
 
 };

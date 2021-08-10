@@ -6,6 +6,7 @@ CButton::CButton()
 {
 	m_layer = LAYER::UIButton;
 	countNum = 0;
+	canTriggerClick = false;
 }
 
 CButton::~CButton()
@@ -21,9 +22,13 @@ void CButton::Update(float deltaTime, float worldTime)
 {
 	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 	{
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
 		{
-			m_triggerWhenClick();
+			if (canTriggerClick)
+			{
+				m_triggerWhenUp();
+			}
+			
 		}
 	}
 }

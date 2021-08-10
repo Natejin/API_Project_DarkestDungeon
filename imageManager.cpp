@@ -7,12 +7,12 @@ imageManager::~imageManager() {}
 HRESULT imageManager::init()
 {
 	//���⿡ ��� �̹����� �־�ΰ� ���
-	MG_IMAGE->addImage("���ȭ��", "images/���.bmp", WORLDSIZEX, WORLDSIZEY, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ī�޶�", "images/ī�޶�.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("�̴ϸ�", "images/���.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("���ȭ��", "images/���.bmp", WORLDSIZEX, WORLDSIZEY, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("ī�޶�", "images/ī�޶�.bmp", WINSIZEX / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("�̴ϸ�", "images/���.bmp", WINSIZEX * 2 / 10, WINSIZEY / 10, true, RGB(255, 0, 255));
 
 	//Darkest dungeon
-	MG_IMAGE->addFrameImage("�ϸ�", "images/�ϸ�.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("�ϸ�", "images/�ϸ�.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
 
 	//Hero
 	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/Vestal_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
@@ -120,16 +120,16 @@ HRESULT imageManager::init()
 	//========================================================
 	//�ӽ� �̹���
 	//ĳ����
-	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("crusader", "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("highwayMan", "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("plagueDoctor", "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	
-	//����
-	MG_IMAGE->addFrameImage("mon1", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon2", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon3", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon4", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("crusader", "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("highwayMan", "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("plagueDoctor", "images/�ӽ�/�ӽ��̹���(�÷��̾�).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//
+	////����
+	//MG_IMAGE->addFrameImage("mon1", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("mon2", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("mon3", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage("mon4", "images/�ӽ�/�ӽ��̹���(��).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
 
 	//���
 	MG_IMAGE->addFrameImage("bg", "images/�ӽ�/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));

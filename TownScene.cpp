@@ -307,7 +307,6 @@ void TownScene::SetIMG_Est() //건물 버튼.
 	MG_GMOBJ->RegisterObj("Statue", m_statue);
 
 	CBuilding* m_nomad_wagon = new CBuilding();
-
 	m_nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 +150, WINSIZEY / 2 + 250);
 	m_nomad_wagon->SetButtonSize(100, 100);
 	m_nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
@@ -413,35 +412,13 @@ void TownScene::SetUI()
 	m_sort_stress->AddSpriteRenderer(IMAGE::sort_stress);
 	MG_GMOBJ->RegisterObj("rosterdown", m_sort_stress);
 
-	CDragButton* m_hero_slot_bg = new CDragButton();
+	/*CDragButton* m_hero_slot_bg = new CDragButton();
 	m_hero_slot_bg->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880);
 	m_hero_slot_bg->SetButtonSize(50, 50);
 	m_hero_slot_bg->AddSpriteRenderer(IMAGE::hero_slot_bg);
 	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg);
 
-	CDragButton* m_hero_slot_bg2 = new CDragButton();
-	m_hero_slot_bg2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 780);
-	m_hero_slot_bg2->SetButtonSize(50, 50);
-	m_hero_slot_bg2->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg2);
-
-	CDragButton* m_hero_slot_bg3 = new CDragButton();
-	m_hero_slot_bg3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 680);
-	m_hero_slot_bg3->SetButtonSize(50, 50);
-	m_hero_slot_bg3->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg3);
-
-	CDragButton* m_hero_slot_bg4 = new CDragButton();
-	m_hero_slot_bg4->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 580);
-	m_hero_slot_bg4->SetButtonSize(50, 50);
-	m_hero_slot_bg4->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg4);
-
-	CDragButton* m_hero_slot_bg5 = new CDragButton();
-	m_hero_slot_bg5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 480);
-	m_hero_slot_bg5->SetButtonSize(50, 50);
-	m_hero_slot_bg5->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	MG_GMOBJ->RegisterObj("rosterdown", m_hero_slot_bg5);
+	*/
 
 	
 }
@@ -502,20 +479,48 @@ void TownScene::Show_Activity_log()
 void TownScene::SetHerolist()
 {	//ownHeros를 가져오자.
 
-	MG_GAME->HireHero(m_hero);
+
 
 	//영웅 리스트.
 	//내가 가지고있는 용병이 ~~이라면 그용병의 이미지를 띄워라.
 	if (true)
 	{
 	
-		for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
+		for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 		{
+			/*ImageData 
+			ImageData UIimg;
+
+			UIimg.m_img = MG_IMAGE->findImage("panel_bg2");
+			UIimg.m_trans.m_pos = Vector2(0, 700);
+			vUI.push_back(UIimg);
+			UIimg.m_trans.m_pos = Vector2(1580, 700);
+			vUI.push_back(UIimg);*/
+			
+
 			CDragButton* dragButton = new CDragButton();
+			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 			dragButton->SetButtonSize(50, 50);
-			dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
+			switch (MG_GAME->GetHero(i)->job)
+			{
+			case JOB::Crusader:
+				dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
+				break;
+			case JOB::Vestal:
+				dragButton->AddSpriteRenderer(IMAGE::vestal_roster);
+				break;
+			case JOB::PlagueDoctor:
+				break;
+			case JOB::Highwayman:
+				break;
+			default:
+				break;
+			}
+	
 			m_dragButton.push_back(dragButton);
+			MG_GMOBJ->RegisterObj("m_hero_slot_bg", dragButton);
+
 		}
 
 		//CDragButton* crusader_roster = new CDragButton();

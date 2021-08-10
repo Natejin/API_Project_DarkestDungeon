@@ -15,12 +15,15 @@ protected:
 	class Tavern* m_tavern;
 
 	vector<class CDragButton*> m_dragButton;
+	vector<ImageData> v_roster;
 private:
 
 	class CHero* m_hero;
 	
 public:
 	class CEst_UI* m_estui;
+	int curDragHeroIndex;
+	bool isDrag;
 
 public:
 	//껏켯을 할수있게하는 버튼 bool값
