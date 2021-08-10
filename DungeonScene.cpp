@@ -36,7 +36,7 @@ HRESULT DungeonScene::Init()
 	CreateRoom();
 	CreateRoad();
 	CreateParty();
-<<<<<<< HEAD
+
 	CreateDungeonInven();
 	CreateDoor();
 
@@ -44,11 +44,11 @@ HRESULT DungeonScene::Init()
 
 
 
-=======
-	CreateDoor();
-
-
->>>>>>> parent of ac14a3e (Merge branch 'MJ' into JT)
+//=======
+//	CreateDoor();
+//
+//
+//>>>>>>> parent of ac14a3e (Merge branch 'MJ' into JT)
 	ActivateRoad();
 	return S_OK;
 }
