@@ -115,19 +115,19 @@ HRESULT imageManager::init()
 	//========================================================
 	//임시 이미지
 	//캐릭터
-	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/임시/임시이미지(플레이어).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("crusader", "images/임시/임시이미지(플레이어).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("highwayMan", "images/임시/임시이미지(플레이어).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("plagueDoctor", "images/임시/임시이미지(플레이어).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/mem11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("crusader", "images/test/mem11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("highwayMan", "images/test/mem11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("plagueDoctor", "images/test/mem11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
 
 	//몬스터
-	MG_IMAGE->addFrameImage("mon1", "images/임시/임시이미지(적).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon2", "images/임시/임시이미지(적).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon3", "images/임시/임시이미지(적).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage("mon4", "images/임시/임시이미지(적).bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon1", "images/test/mon11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon2", "images/test/mon11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon3", "images/test/mon11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("mon4", "images/test/mon11.bmp", 400, 700, 1, 1, true, RGB(255, 0, 255));
 
 	//배경
-	MG_IMAGE->addFrameImage("bg", "images/임시/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage("bg", "images/test/temporary bg.bmp", WORLDSIZEX, WORLDSIZEY, 1, 1, true, RGB(255, 0, 255));
 	
 	//Town
 	MG_IMAGE->addImage("district", "images/Town/district.bmp", 1395+300 , 776+100, true, RGB(255, 0, 255));
@@ -193,10 +193,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("treasure", "images/임시/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("trap", "images/임시/trap.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("enemy", "images/임시/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("nothing", "images/임시/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("treasure", "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("trap", "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("enemy", "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("nothing", "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	//히어로 아이콘
 	MG_IMAGE->addImage("crusader_portrait", "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
@@ -256,7 +256,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("memberRect", "images/임시/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 150, 285, false, RGB(255, 0, 255));
 
 	return S_OK;
 }

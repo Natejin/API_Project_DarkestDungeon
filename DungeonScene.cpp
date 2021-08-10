@@ -10,6 +10,7 @@
 #include "dungeonUI_info.h"
 #include "CBattleSystem.h"
 #include "CMapSystem.h"
+#include "CInventorySystem.h"
 
 DungeonScene::DungeonScene()
 {

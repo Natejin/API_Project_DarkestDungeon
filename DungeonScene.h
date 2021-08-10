@@ -3,6 +3,7 @@
 
 class dungeonUI;
 class dungeonUI_info;
+class CInventorySystem;
 class DungeonScene : public Scene
 {
 public:
@@ -69,6 +70,7 @@ public:
 public:
 	dungeonUI* m_dungeonUI;
 	dungeonUI_info* m_dungeonUIinfo;
+	CInventorySystem* m_inven;
 	
 
 //==================================
