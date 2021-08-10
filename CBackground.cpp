@@ -27,23 +27,20 @@ void CBackground::BackRender(HDC _hdc)
 		//mostFrontBg오류를 해결한 뒤에 이동처리
 		mostBG[i].Render(_hdc);
 	}
-}
-
-void CBackground::Render(HDC _hdc)
-{
 	for (size_t i = 0; i < road.size(); i++)
 	{
 		//mostFrontBg오류를 해결한 뒤에 이동처리
 		road[i].Render(_hdc);
 	}
+}
+
+void CBackground::Render(HDC _hdc)
+{
+
 	for (size_t i = 0; i < most_TOWN_UI.size(); i++)
 	{
 		
 	}
-}
-
-void CBackground::FrontRender(HDC _hdc)
-{
 	for (size_t i = 0; i < mostFG_Bottom.size(); i++)
 	{
 		//-1440부터 720*8까지 그려져야 하는데 그렇게 되지 못한 것 같음
@@ -56,6 +53,11 @@ void CBackground::FrontRender(HDC _hdc)
 		most_HeroList_UI[i].Render(_hdc);
 
 	}
+}
+
+void CBackground::FrontRender(HDC _hdc)
+{
+
 
 }
 

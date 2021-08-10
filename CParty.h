@@ -56,7 +56,7 @@ public:
 
 	//아이템의 갯수 get/set
 	void setTorch(int torch);
-	int getTorch() { return m_Item_bandage; }
+	int getTorch() { return m_Item_Torch; }
 	void setFood(int food);
 	int getFood() { return m_Item_food; }
 	void setBandage(int bandage);

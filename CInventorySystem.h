@@ -13,7 +13,7 @@ enum class ITEM
 };
 
 struct itemInfo
-{	
+{
 	ITEM itemKind;
 	ImageData m_imgData;
 	string name;
@@ -29,8 +29,11 @@ public:
 	vector<itemInfo> m_inven;
 	vector<itemInfo> m_equip;
 
+	CCollider _itemCollider;
+
 	int foodLimit = 12;
 	int torchLimit = 8;
+	int itemIndex;
 	
 public:
 	CInventorySystem();
@@ -54,9 +57,12 @@ public:
 	void setEquip(); //not sure it's nessaccery
 	void setButton(); //set button to interact with inventory item
 
-	void showInvenItem(); //render inventory item and itemInfo
+	void updateItem();
+
+	void showInvenItem(HDC _hdc); //render inventory item and itemInfo
 
 	void changePos(); //drag to change item pos(vector order change either)
 
+	void interactWithItem();
 
 };

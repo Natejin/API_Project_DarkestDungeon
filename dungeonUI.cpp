@@ -2,6 +2,7 @@
 #include "dungeonUI.h"
 #include "CParty.h"
 #include "CMapSystem.h"
+#include "CInventorySystem.h"
 
 HRESULT dungeonUI::Init()
 {
@@ -11,6 +12,7 @@ HRESULT dungeonUI::Init()
 
 	SetUIIMG();
 	SetButton();
+	SetInven();
 
 	return S_OK;
 }
@@ -18,6 +20,23 @@ HRESULT dungeonUI::Init()
 void dungeonUI::Update(float deltaTime, float worldTime)
 {
 	TorchLightBarDecrease();
+
+	//for test
+
+	if (MG_INPUT->isOnceKeyDown('A'))
+	{
+		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + 1);
+	}
+	if (MG_INPUT->isOnceKeyDown('S'))
+	{
+		MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + 1);
+	}
+	if (MG_INPUT->isOnceKeyDown('D'))
+	{
+		MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + 1);
+	}
+
+	
 }
 
 void dungeonUI::LateUpdate()
@@ -30,15 +49,13 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
-
+	//bgï¿½ï¿½ frontRenderï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½
+	ShowUI(_hdc);
 }
 
 void dungeonUI::FrontRender(HDC _hdc)
 {
-	//bgÀÇ frontRender¿¡ °¡·ÁÁ®¼­ ¿©±â¿¡ ³ÖÀ½
-	ShowUI(_hdc);
 
-	//Ä³¸¯ÅÍ Á¤º¸, ÀÎº¥Åä¸®, ¸Ê Á¤º¸
 }
 
 void dungeonUI::Release()
@@ -72,8 +89,6 @@ void dungeonUI::SetUIIMG()
 	UIimg.m_img = MG_IMAGE->findImage("map");
 	UIimg.m_trans.m_pos = Vector2(965, 700);
 	vUI.push_back(UIimg);
-
-
 
 }
 
@@ -115,6 +130,13 @@ void dungeonUI::SetTorchUI()
 	vUI.push_back(UIimg);
 }
 
+void dungeonUI::SetInven()
+{
+	m_inven = new CInventorySystem();
+	m_inven->Init();
+	MG_GMOBJ->RegisterObj("inventory", m_inven);
+}
+
 void dungeonUI::TorchLightBarDecrease()
 {
 	vUI[1].m_img->setWidth(20);
@@ -151,11 +173,21 @@ void dungeonUI::ShowUI(HDC _hdc)
 		vUI[9].RenderUI(_hdc);
 		ShowUIMap(_hdc);
 	}
+	else
+	{
+		ShowUIUInven(_hdc);
+	}
 }
 
 void dungeonUI::ShowUIMap(HDC _hdc)
 {
-	//m_pMapSystem->dungeonMapCreate[0]->minimapButton->Render(_hdc);
-	//m_pMapSystem->dungeonMapCreate[0].minimapButton->m_transform->m_pos = Vector2(1350, 800);
-	//m_pMapSystem->dungeonMapCreate[0]->m_imageData.RenderUI(_hdc);
+	m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
+	m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
+	m_inven->isActive = false; 
+}
+
+void dungeonUI::ShowUIUInven(HDC _hdc)
+{
+	m_inven->showInvenItem(_hdc);
+	m_inven->isActive = true;
 }
