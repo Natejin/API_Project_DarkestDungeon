@@ -49,7 +49,7 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
-	//bgÀÇ frontRender¿¡ °¡·ÁÁ®¼­ ¿©±â¿¡ ³ÖÀ½
+	//bgï¿½ï¿½ frontRenderï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½
 	ShowUI(_hdc);
 }
 
@@ -146,6 +146,18 @@ void dungeonUI::TorchLightBarDecrease()
 	vUI[1].m_img->setWidth(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
 	vUI[2].m_img->setWidth2(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
 	vUI[2].m_trans.m_pos.x = 1400 - ((422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
+}
+
+void dungeonUI::ShowInven()
+{
+	showMap = false; 
+	m_pMapSystem->MapButtonOnOff(false);
+}
+
+void dungeonUI::ShowMap()
+{
+	showMap = true;
+	m_pMapSystem->MapButtonOnOff(true);
 }
 
 void dungeonUI::ShowUI(HDC _hdc)

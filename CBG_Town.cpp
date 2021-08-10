@@ -44,12 +44,7 @@ HRESULT CBG_Town::Init()
 //}
 
 void CBG_Town::SetIMG()
-{	/*
-	�ڿ� ��Ÿ���� ���� ���� �׸���
-	������ estate�� �������� �׸���.
-	townbg->sky->ruins->ground->town_backdrop->tree
-	->�����ü�.
-	*/
+{	
 
 	ImageData temp0;
 	mostBG.push_back(temp0);
@@ -79,99 +74,59 @@ void CBG_Town::SetIMG()
 	mostBG[3].m_trans.m_scale = Vector2(720, 720);
 	mostBG[3].m_trans.m_pos = Vector2(720 * 0, 0);
 
-	/*ImageData temp4;
-	mostBG.push_back(temp4);
-	mostBG[4].m_img = MG_IMAGE->findImage("roster_topframe");
-	mostBG[4].m_trans.m_pivot = 0;
-	mostBG[4].m_trans.m_scale = Vector2(720, 720);
-	mostBG[4].m_trans.m_pos = Vector2(720 * 0, 0);*/
-
-
 }
 
 void CBG_Town::SetIMG_Est()
 {	
-	ImageData temp0;
-	most_EST.push_back(temp0);
-	most_EST[0].m_img = MG_IMAGE->findImage("town_abbey");
-	most_EST[0].m_trans.m_pivot = 0;
-	most_EST[0].m_trans.m_scale = Vector2(720, 720);
-	most_EST[0].m_trans.m_pos = Vector2(WINSIZEX / 2 - 350, WINSIZEY / 2 - 450);
-
-	ImageData temp1;
-	most_EST.push_back(temp1);
-	most_EST[1].m_img = MG_IMAGE->findImage("town_graveyard");
-	most_EST[1].m_trans.m_pivot = 0;
-	most_EST[1].m_trans.m_scale = Vector2(720, 720);
-	most_EST[1].m_trans.m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 - 150);
-
-	ImageData temp2;
-	most_EST.push_back(temp2);
-	most_EST[2].m_img = MG_IMAGE->findImage("town_guild");
-	most_EST[2].m_trans.m_pivot = 0;
-	most_EST[2].m_trans.m_scale = Vector2(720, 720);
-	most_EST[2].m_trans.m_pos = Vector2(WINSIZEX / 2 - 180, WINSIZEY / 2 - 250);
-
-	ImageData temp3;
-	most_EST.push_back(temp3);
-	most_EST[3].m_img = MG_IMAGE->findImage("town_blacksmith");
-	most_EST[3].m_trans.m_pivot = 0;
-	most_EST[3].m_trans.m_scale = Vector2(720, 720);
-	most_EST[3].m_trans.m_pos = Vector2(WINSIZEX / 2 - 50, WINSIZEY / 2 - 100);
-
-	ImageData temp4;
-	most_EST.push_back(temp4);
-	most_EST[4].m_img = MG_IMAGE->findImage("town_sanitarium");
-	most_EST[4].m_trans.m_pivot = 0;
-	most_EST[4].m_trans.m_scale = Vector2(720, 720);
-	most_EST[4].m_trans.m_pos = Vector2(WINSIZEX / 2 - 550, WINSIZEY / 2 - 280);
-
-	ImageData temp5;
-	most_EST.push_back(temp5);
-	most_EST[5].m_img = MG_IMAGE->findImage("town_tavern");
-	most_EST[5].m_trans.m_pivot = 0;
-	most_EST[5].m_trans.m_scale = Vector2(720, 720);
-	most_EST[5].m_trans.m_pos = Vector2(WINSIZEX / 2 - 700, WINSIZEY / 2 - 150);
-
-	ImageData temp6;
-	most_EST.push_back(temp6);
-	most_EST[6].m_img = MG_IMAGE->findImage("town_statue");
-	most_EST[6].m_trans.m_pivot = 0;
-	most_EST[6].m_trans.m_scale = Vector2(720, 720);
-	most_EST[6].m_trans.m_pos = Vector2(WINSIZEX / 2 - 350, WINSIZEY / 2 - 80);
-
-	ImageData temp7;
-	most_EST.push_back(temp7);
-	most_EST[7].m_img = MG_IMAGE->findImage("town_nomad_wagon");
-	most_EST[7].m_trans.m_pivot = 0;
-	most_EST[7].m_trans.m_scale = Vector2(720, 720);
-	most_EST[7].m_trans.m_pos = Vector2(WINSIZEX / 2 - 200, WINSIZEY / 2 + 30);
-
-	ImageData temp8;
-	most_EST.push_back(temp8);
-	most_EST[8].m_img = MG_IMAGE->findImage("town_stage_coach");
-	most_EST[8].m_trans.m_pivot = 0;
-	most_EST[8].m_trans.m_scale = Vector2(720, 720);
-	most_EST[8].m_trans.m_pos = Vector2(WINSIZEX / 2 - 850, WINSIZEY / 2 - 50);
-
-	ImageData temp9;
-	most_EST.push_back(temp9);
-	most_EST[9].m_img = MG_IMAGE->findImage("town_camping_trainer");
-	most_EST[9].m_trans.m_pivot = 0;
-	most_EST[9].m_trans.m_scale = Vector2(720, 720);
-	most_EST[9].m_trans.m_pos = Vector2(WINSIZEX / 2 - 900, WINSIZEY / 2 - 330);
-
 	
 }
 
 void CBG_Town::SetIMG_UI()
 {
 	/*ImageData temp0;
-	most_EST_UI.push_back(temp0);
-	most_EST_UI[0].m_img = MG_IMAGE->findImage("town_abbey_frame");
-	most_EST_UI[0].m_trans.m_pivot = 0;
-	most_EST_UI[0].m_trans.m_scale = Vector2(720, 720);
-	most_EST_UI[0].m_trans.m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);*/
+	most_HeroList_UI.push_back(temp0);
+	most_HeroList_UI[0].m_img = MG_IMAGE->findImage("town_abbey_frame");
+	most_HeroList_UI[0].m_trans.m_pivot = 0;
+	most_HeroList_UI[0].m_trans.m_scale = Vector2(720, 720);
+	most_HeroList_UI[0].m_trans.m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2);*/
+
+	ImageData m_rostertop;
+	m_rostertop.m_img = MG_IMAGE->findImage(IMAGE::roster_topframe);
+	m_rostertop.m_trans.m_pos = Vector2(WINSIZEX / 2 + 500, WINSIZEY / 2 - 440);
+	most_HeroList_UI.push_back(m_rostertop);
+	/*most_HeroList_UI[0].m_trans.m_pivot = 0;
+	most_HeroList_UI[0].m_trans.m_scale = Vector2(720, 720);
+	most_HeroList_UI[0].m_trans.m_pos = Vector2(WINSIZEX / 2 + 500, WINSIZEY / 2 - 440);*/
+
+	ImageData m_rosterdown;
+	m_rosterdown.m_img = MG_IMAGE->findImage(IMAGE::roster_downframe);
+	m_rosterdown.m_trans.m_pos = Vector2(WINSIZEX / 2 + 500, WINSIZEY + 200);
+	most_HeroList_UI.push_back(m_rosterdown);
+
+	ImageData m_rosterbg;
+	m_rosterbg.m_img = MG_IMAGE->findImage(IMAGE::roster_bggrad);
+	m_rosterbg.m_trans.m_pos = Vector2(WINSIZEX / 2 + 520, WINSIZEY - 950);
+	most_HeroList_UI.push_back(m_rosterbg);
+
+	ImageData m_nameplate;
+	m_nameplate.m_img = MG_IMAGE->findImage(IMAGE::estate_nameplate);
+	m_nameplate.m_trans.m_pos = Vector2(WINSIZEX / 2 - 900, 0);
+	most_HeroList_UI.push_back(m_nameplate);
+
+	ImageData m_unequip_trinkets;
+	m_unequip_trinkets.m_img = MG_IMAGE->findImage(IMAGE::unequip_trinkets);
+	m_unequip_trinkets.m_trans.m_pos = Vector2(WINSIZEX / 2 + 670, WINSIZEY - 970);
+	most_HeroList_UI.push_back(m_unequip_trinkets);
+
+	ImageData m_sort_rarity;
+	m_sort_rarity.m_img = MG_IMAGE->findImage(IMAGE::sort_rarity);
+	m_sort_rarity.m_trans.m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 970);
+	most_HeroList_UI.push_back(m_sort_rarity);
+
+	ImageData m_sort_stress;
+	m_sort_stress.m_img = MG_IMAGE->findImage(IMAGE::sort_rarity);
+	m_sort_stress.m_trans.m_pos = Vector2(WINSIZEX / 2 + 730, WINSIZEY - 970);
+	most_HeroList_UI.push_back(m_sort_stress);
 }
 
 void CBG_Town::SetImageSize(float width, float height)

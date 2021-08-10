@@ -13,6 +13,8 @@ public:
 	LAYER m_layer;
 	bool isActive;
 
+
+
 public:
 	GameObject();
 	~GameObject();

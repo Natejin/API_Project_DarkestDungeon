@@ -101,13 +101,11 @@ void DungeonScene::Render(HDC _hdc)
 	{
 
 	}
-
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 		ShowDungeonInfo(_hdc);
 		m_roadObj->Render(_hdc);
 	}
-
 	else 
 	{
 
@@ -206,21 +204,7 @@ void DungeonScene::setRoadNum()
 
 void DungeonScene::setRoadKind()
 {
-	//switch (curDunheonMap.dungeonMapState)
-	//{
-	//case DUNGEONMAPSTATE::Road_Empty:
-	//	break;
-
-	//case DUNGEONMAPSTATE::Road_Enemy:
-	//	break;
-
-	//case DUNGEONMAPSTATE::Road_Trap:
-	//	break;
-
-	//case DUNGEONMAPSTATE::Road_Trasure:
-	//	
-	// break;
-	//}
+	
 }
 
 

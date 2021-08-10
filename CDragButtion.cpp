@@ -22,10 +22,12 @@ void CDragButton::Update(float deltaTime, float worldTime)
 	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 	{
 		if (MG_INPUT->isStayKeyDown(VK_LBUTTON)) 
-		{	
-			if (canTriggerDrag)
-			{
+		{
+			
+			if (canTriggerDrag) 
+			{	
 				m_triggerWhenDrag();
+				
 			}
 			
 		}
@@ -33,14 +35,12 @@ void CDragButton::Update(float deltaTime, float worldTime)
 		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
 		{
 			if (canTriggerClick)
-			{
+			{	
 				m_triggerWhenUp();
 			}
 		
 		}
 	}
-	
-
 }
 
 void CDragButton::LateUpdate()

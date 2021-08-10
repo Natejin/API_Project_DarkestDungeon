@@ -10,7 +10,7 @@ protected:
 	vector<ImageData> mostFG_Top;
 	vector<ImageData> mostFG_Bottom;
 	
-	vector<ImageData> most_EST_UI; //건물UI
+	vector<ImageData> most_HeroList_UI; //건물UI
 	vector<ImageData> most_TOWN_UI; //UI
 	vector<ImageData> most_EST; //UI
 	int bgCount;
