@@ -13,6 +13,19 @@ HRESULT CBG_Room::Init()
 	return S_OK;
 }
 
+void CBG_Room::BackRender(HDC _hdc)
+{
+}
+
+void CBG_Room::Render(HDC _hdc)
+{
+	m_spriteRenderer->Render(_hdc);
+}
+
+void CBG_Room::FrontRender(HDC _hdc)
+{
+}
+
 //void CBG_Road::Update(float deltaTime, float worldTime)
 //{
 //}
@@ -23,5 +36,5 @@ HRESULT CBG_Room::Init()
 
 void CBG_Room::SetIMG()
 {
-	
+	m_transform->m_pivot = Vector2(0, 0);
 }

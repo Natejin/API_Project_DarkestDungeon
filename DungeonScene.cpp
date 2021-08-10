@@ -9,13 +9,12 @@
 #include "dungeonUI.h"
 #include "dungeonUI_info.h"
 #include "CBattleSystem.h"
+#include "CMapSystem.h"
 #include "CInventorySystem.h"
 
 DungeonScene::DungeonScene()
 {
-	curPos = Vector2Int(0, 0);
-	roadCount = 3;
-	remainRoom = 2;
+
 	isDoorClick = false;
 
 	m_party = nullptr;
@@ -27,41 +26,35 @@ DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
-	//SetUIIMG();
-	CreateBattleSystem();
-
-	roomRandom.push_back(IMAGE::Ruins_room1);
-	roomRandom.push_back(IMAGE::Ruins_room2);
-	roomRandom.push_back(IMAGE::Ruins_room3);
-	roomRandom.push_back(IMAGE::Ruins_room4);
-	roomRandom.push_back(IMAGE::Ruins_room5);
-	roomRandom.push_back(IMAGE::Ruins_room6);
-	roomRandom.push_back(IMAGE::Ruins_room7);
-	roomRandom.push_back(IMAGE::Ruins_room8);
-	roomRandom.push_back(IMAGE::Ruins_room9);
-
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
-	CreateDungeon();
+
+	//SetUIIMG();
+	CreateBattleSystem();
+	CreateDungeonUI();
+	CreateDungeonMap();
 	CreateRoom();
 	CreateRoad();
 	CreateParty();
 	CreateDoor();
 
-	m_dungeonUI = new dungeonUI;
-	m_dungeonUI->Init();
-	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
-	
-	m_dungeonUIinfo = new dungeonUI_info;
-	m_dungeonUIinfo->Init();
-	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 
-	m_inven = new CInventorySystem;
-	m_inven->Init();
-	MG_GMOBJ->RegisterObj("scene1_Inventory", m_inven);
+
+
 
 	ActivateRoad();
 	return S_OK;
+}
+
+void DungeonScene::CreateDungeonUI()
+{
+	m_dungeonUI = new dungeonUI;
+	m_dungeonUI->Init();
+	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
+
+	m_dungeonUIinfo = new dungeonUI_info;
+	m_dungeonUIinfo->Init();
+	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 }
 
 HRESULT DungeonScene::Init(bool managerInit)
@@ -127,153 +120,13 @@ void DungeonScene::Render(HDC _hdc)
 
 
 #pragma region InitDungeon
-void DungeonScene::CreateDungeon()
+
+
+void DungeonScene::CreateDungeonMap()
 {
-	for (int i = 0; i < MAPSIZE; i++)
-	{
-		for (int j = 0; j < MAPSIZE; j++)
-		{
-			DungeonData dungeonData;
-			dungeonMap[i][j] = dungeonData;
-		}
-	}
-
-	curPos = Vector2Int(MAPSIZE / 2, MAPSIZE / 2);
-	dungeonMap[curPos.x][curPos.y].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
-
-	CreateMapPart(curPos.x, curPos.y, 0, Vector2Int(0, 0));
-	curDunheonMap = dungeonMap[curPos.x][curPos.y];
-}
-
-void DungeonScene::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
-{
-	if (_lastDir != Vector2Int(0, 0))
-	{
-		if (remainRoom < 0) 
-		{
-			return;
-		}
-		if (i < 0 ||
-			i > MAPSIZE || 
-			j < 0 ||
-			j > MAPSIZE || 
-			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE) // �ش���� ������
-			return;
-	}
-
-#ifdef _DEBUG
-	//system("CLS");
-	//for (size_t m = 0; m < MAPSIZE; m++)
-	//{
-	//	for (size_t n = 0; n < MAPSIZE; n++)
-	//	{
-	//		_cprintf("%d ", (int)dungeonMap[m][n].dungeonMapState);
-	//	}
-	//	_cprintf("\n");
-	//}
-
-#endif // _DEBUG
-
-	if (count > 0)
-	{
-		count--;
-		if (!(bool)MG_RND->getInt(10)) {
-			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Enemy;
-		}
-		else if (!(bool)MG_RND->getInt(10)) {
-			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trasure;
-		}
-		else if (!(bool)MG_RND->getInt(10)) {
-			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trap;
-		}
-		else {
-			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Empty;
-		}
-		
-		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
-	}
-	else {
-		if (_lastDir == Vector2Int(0, 0))
-		{
-			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
-		}
-		else 
-		{
-			if (!(bool)MG_RND->getInt(4)) {
-				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Enemy;
-			}
-			else if (!(bool)MG_RND->getInt(4)) {
-				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Trasure;
-			}
-
-			else {
-				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
-			}
-		}
-
-		remainRoom--;
-
-		Vector2Int lastDir;
-		bool noneDir = true;
-		if (!(bool)MG_RND->getInt(2)) {
-			noneDir = false;
-			lastDir = Vector2Int(1, 0);
-			dungeonMap[i][j].dirMap[(int)DIR::Right] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, 3, lastDir);
-		}
-		if (!(bool)MG_RND->getInt(2)) {
-			noneDir = false;
-			lastDir = Vector2Int(-1, 0);
-			dungeonMap[i][j].dirMap[(int)DIR::Left] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, 3, lastDir);
-		}
-		if (!(bool)MG_RND->getInt(2)) {
-			noneDir = false;
-			lastDir = Vector2Int(0, 1);
-			dungeonMap[i][j].dirMap[(int)DIR::Down] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, 3, lastDir);
-		}
-
-		if (!(bool)MG_RND->getInt(2)) {
-			noneDir = false;
-			lastDir = Vector2Int(0, -1);
-			dungeonMap[i][j].dirMap[(int)DIR::Up] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, 3, lastDir);
-		}
-
-		if (noneDir)
-		{
-			vector<int> dirVec;
-			for (int k = 0; k < 4; k++)
-			{
-				Vector2Int newDic = GetDirFromInt(k);
-				if (_lastDir != newDic)
-				{
-					dungeonMap[i][j].dirMap[k] = true;
-					CreateMapPart(i + newDic.x, j + newDic.y, 3, newDic);
-					return;
-				}
-			}
-		}
-	}
-}
-
-Vector2Int DungeonScene::GetDirFromInt(int dir) {
-	switch (dir)
-	{
-	case (int)DIR::Left:
-		return Vector2Int(-1, 0);
-		break;
-	case (int)DIR::Up:
-		return Vector2Int(-0, -1);
-		break;
-	case (int)DIR::Right:
-		return Vector2Int(1, 0);
-		break;
-	case (int)DIR::Down:
-		return Vector2Int(0, 1);
-		break;
-	}
+	m_pMapSystem = new CMapSystem();
+	m_pMapSystem->Init();
+	m_dungeonUI->m_pMapSystem = m_pMapSystem;
 }
 
 void DungeonScene::CreateParty()
@@ -301,6 +154,16 @@ void DungeonScene::CreateRoom()
 	room->AddSpriteRenderer(IMAGE::Ruins_room1);
 	MG_GMOBJ->RegisterObj("RoomBG", room);
 	m_roomBG = room;
+
+	roomRandom.push_back(IMAGE::Ruins_room1);
+	roomRandom.push_back(IMAGE::Ruins_room2);
+	roomRandom.push_back(IMAGE::Ruins_room3);
+	roomRandom.push_back(IMAGE::Ruins_room4);
+	roomRandom.push_back(IMAGE::Ruins_room5);
+	roomRandom.push_back(IMAGE::Ruins_room6);
+	roomRandom.push_back(IMAGE::Ruins_room7);
+	roomRandom.push_back(IMAGE::Ruins_room8);
+	roomRandom.push_back(IMAGE::Ruins_room9);
 }
 
 void DungeonScene::CreateDoor()

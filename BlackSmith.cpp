@@ -16,7 +16,7 @@ HRESULT BlackSmith::Init()
     isUi = false;
 
     m_quick2 = new CButton();
-    m_quick2->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
+    m_quick2->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
     m_quick2->SetButtonSize(200, 200);
     m_quick2->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick2);
@@ -24,6 +24,8 @@ HRESULT BlackSmith::Init()
 
     m_windowPanelBG = new CSpriteRenderer(IMAGE::blacksmith_bg, m_transform);
     m_windowPanelChar = new CSpriteRenderer(IMAGE::blacksmith_char, m_transform);
+    m_transform->m_pivot = Vector2(0, 0);
+
     return S_OK;
 }
 

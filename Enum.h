@@ -2,9 +2,12 @@
 
 enum class LAYER
 {
-	Unknown = -1,
-	BackGround = 0,
-	Building = 2,
+	Unknown = -2,
+
+	MinimapBackground = 0,
+	Minimap = 1,
+	BackGround = 2,
+	Building = 3,
 	Player = 4,
 	Enemy = 8,
 	AllinceProjectile = 16,
@@ -96,6 +99,18 @@ enum class IMAGE
 	tavern_bg,
 	tavern_char,
 
+	estate_activity_log,
+	estate_nameplate,
+	hero_slot_bg,
+	downarrow,
+	uparrow,
+	sort_rarity,
+	unequip_trinkets,
+	sort_stress,
+	roster_topframe,
+	roster_downframe,
+	rosterelement_res,
+	roster_bggrad,
 
 	ruins_endhall,
 	ruins_mid,
@@ -107,7 +122,41 @@ enum class IMAGE
 	crusader,
 	highwayman,
 	plague_doctor,
-	vestal
+	vestal,
+
+	//Minimap Button
+	hall_clear,			
+	hall_dark,			
+	hall_dim,			
+	hall_door,			
+	indicator,			
+	LockedRoom,			
+	LockedRoom_Blue,	
+	LockedRoom_Green,	
+	LockedRoom_Red,		
+	LockedRoom_Yellow,	
+	marker_battle,		
+	marker_curio,		
+	marker_hunger,		
+	marker_obstacle,	
+	marker_room_visited,
+	marker_secret,		
+	marker_trap,		
+	moving_room,		
+	PrisonerRoom,		
+	room_battle,		
+	room_boss,			
+	room_curio,			
+	room_empty,			
+	room_entrance,		
+	room_treasure,		
+	room_unknown,
+	//Hero_roster
+	crusader_roster,
+	highwayman_roster,
+	plague_doctor_roster,
+	vestal_roster,
+
 };
 
 enum class RACE 
@@ -134,9 +183,9 @@ enum class Combat_Skill
 
 enum class Camping_Skill
 {	
-	//¾ß½À¹æÁö
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Night_Attack_Prevention,
-	//Á¤Âû °­È­
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­
 	Reconnaissance,
 	Stress_Down,
 	Cure_disease,
@@ -146,7 +195,7 @@ enum class Camping_Skill
 
 enum class BATTLETURN
 {	
-	//¾ß½À¹æÁö
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	EnemyTurn,
 	PlayerTurn
 };

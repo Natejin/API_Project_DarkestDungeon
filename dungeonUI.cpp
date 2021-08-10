@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "dungeonUI.h"
 #include "CParty.h"
+#include "CMapSystem.h"
 
 HRESULT dungeonUI::Init()
 {
@@ -29,6 +30,7 @@ void dungeonUI::BackRender(HDC _hdc)
 
 void dungeonUI::Render(HDC _hdc)
 {
+
 }
 
 void dungeonUI::FrontRender(HDC _hdc)
@@ -47,6 +49,7 @@ void dungeonUI::Release()
 void dungeonUI::SetUIIMG()
 {
 	ImageData UIimg;
+	SetTorchUI();
 
 	UIimg.m_img = MG_IMAGE->findImage("panel_bg2");
 	UIimg.m_trans.m_pos = Vector2(0, 700);
@@ -70,21 +73,21 @@ void dungeonUI::SetUIIMG()
 	UIimg.m_trans.m_pos = Vector2(965, 700);
 	vUI.push_back(UIimg);
 
-	SetTorchUI();
+
 
 }
 
 void dungeonUI::SetButton()
 {	
 	bt_inven = new CButton();
-	bt_inven->m_transform->m_pos = Vector2(1550, 1080 - 235);
+	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
 	bt_inven->SetButtonSize(50, 65);
 	bt_inven->AddSpriteRenderer("button");
 	bt_inven->SetTriggerWhenClick(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
 	bt_map = new CButton();
-	bt_map->m_transform->m_pos = Vector2(1550, 1080 - 150);
+	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
 	bt_map->SetButtonSize(50, 65);
 	bt_map->AddSpriteRenderer("button");
 	bt_map->SetTriggerWhenClick(this, &dungeonUI::ShowMap);
@@ -114,24 +117,32 @@ void dungeonUI::SetTorchUI()
 
 void dungeonUI::TorchLightBarDecrease()
 {
-	vUI[7].m_img->setWidth(20);
-	vUI[8].m_img->setWidth2(20);
-	vUI[8].m_trans.m_pos.x = 1400;
+	vUI[1].m_img->setWidth(20);
+	vUI[2].m_img->setWidth2(20);
+	vUI[2].m_trans.m_pos.x = 1400;
 
-	vUI[7].m_img->setWidth(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
-	vUI[8].m_img->setWidth2(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
-	vUI[8].m_trans.m_pos.x = 1400 - ((422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
+	vUI[1].m_img->setWidth(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
+	vUI[2].m_img->setWidth2(20 + (422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
+	vUI[2].m_trans.m_pos.x = 1400 - ((422 / 100) * (100 - MG_GAME->GetParty()->getBrightness()));
 }
 
 void dungeonUI::ShowUI(HDC _hdc)
 {
-	for (int i = 0; i < vUI.size(); i++)
-	{
-		vUI[i].m_img->renderUI(_hdc, &vUI[i].m_trans);
 
-		if (showMap == true)
-		{
-			vUI[4].m_img->renderUI(_hdc, &vUI[4].m_trans);
-		}
+	for (int i = 0; i < vUI.size() - 1; i++)
+	{
+		vUI[i].RenderUI(_hdc);
 	}
+
+	if (showMap)
+	{
+		vUI[9].RenderUI(_hdc);
+		ShowUIMap(_hdc);
+	}
+}
+
+void dungeonUI::ShowUIMap(HDC _hdc)
+{
+	m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
+	m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
 }

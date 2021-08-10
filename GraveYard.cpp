@@ -15,7 +15,9 @@ HRESULT GraveYard::Init()
     isUi = false;
     //나가기버튼
     m_quick = new CButton();
-    m_quick->m_transform->m_pos = Vector2(WINSIZEX - 500, 100);
+
+    m_quick->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
+
     m_quick->SetButtonSize(200, 200);
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
@@ -23,7 +25,10 @@ HRESULT GraveYard::Init()
 
     m_windowPanelBG = new CSpriteRenderer(IMAGE::graveyard_bg, m_transform);
     m_windowPanelChar = new CSpriteRenderer(IMAGE::graveyard_char, m_transform);
-   
+
+    m_transform->m_pivot = Vector2(0, 0);
+
+
     return S_OK;
 }
 

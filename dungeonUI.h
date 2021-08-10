@@ -11,6 +11,8 @@ public:
 
 	CButton* bt_inven;
 	CButton* bt_map;
+	
+	class CMapSystem* m_pMapSystem;
 
 	//==================================
 
@@ -36,5 +38,5 @@ public:
 	void ShowMap() { showMap = true; }
 
 	void ShowUI(HDC _hdc);
-
+	void ShowUIMap(HDC _hdc);
 };

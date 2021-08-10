@@ -15,21 +15,18 @@ public:
 
 	class CParty* m_party;
 
-	Vector2Int curPos;
-	int roadCount;
-	int remainRoom;
 
 
 //==================================
 //Room
 public:
-	class CBackground* m_roomBG;
+	class CBG_Room* m_roomBG;
 
 
 //==================================
 //Road
 public:
-	class CBackground* m_roadBG;
+	class CBG_Road* m_roadBG;
 	Rect door1;
 	Rect door2;
 
@@ -54,8 +51,13 @@ public:
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
 
+//==================================
+//맵시스템
+public:
+	class CMapSystem* m_pMapSystem;
 
 //==================================
+
 //배틀시스템
 public:
 	int curBattleTurnCount;
@@ -77,9 +79,7 @@ public:
 	virtual~DungeonScene();
 
 public:
-	void CreateDungeon();
-	void CreateMapPart(int i, int j, int count, Vector2Int lastDir);
-	Vector2Int GetDirFromInt(int dir);
+	void CreateDungeonMap();
 
 	void CreateParty();
 
@@ -91,6 +91,7 @@ public:
 
 public:
 	virtual HRESULT Init();
+	void CreateDungeonUI();
 	virtual HRESULT Init(bool managerInit);
 	virtual void Release();
 	virtual void Update();

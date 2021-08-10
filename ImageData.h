@@ -12,4 +12,9 @@ struct ImageData
 	{
 		m_img->render(hdc, &m_trans);
 	}
+
+	void RenderUI(HDC hdc)
+	{
+		m_img->renderUI(hdc, &m_trans);
+	}
 };
