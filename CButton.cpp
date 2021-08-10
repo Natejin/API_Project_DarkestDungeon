@@ -22,7 +22,7 @@ void CButton::Update(float deltaTime, float worldTime)
 {
 	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 	{
-		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+		if (MG_INPUT->isOnceKeyClick(VK_LBUTTON))
 		{
 			if (canTriggerClick)
 			{

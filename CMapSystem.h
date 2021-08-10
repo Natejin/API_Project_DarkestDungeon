@@ -17,6 +17,7 @@ public:
 	DungeonData curDungeonMap;
 
 	vector<class CMinimapButton*> dungeonMapCreate;
+	class CUIPanel* curPosPanel;
 
 	Vector2Int curPos;
 	int roadCount;
@@ -55,5 +56,8 @@ public:
 	void MapButtonOnOff(bool active);
 
 	void SetMapWitchCreated();
+
+	void DragMinimap(Vector2 deltaMove);
+	void SetMinimapPos(Vector2 deltaMove);
 };
 

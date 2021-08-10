@@ -18,8 +18,10 @@ public:
 	class CInventorySystem* m_inven;
 
 	class CUIPanel* invenPanel;
+	//class CDragButtonMinimapBG* mapPanel1;
 	class CUIPanel* mapPanel1;
-	class CUIPanel* mapPanel2;
+	class CDragButtonMinimapBG* mapPanel2;
+	//class CUIPanel* mapPanel2;
 
 	//==================================
 
