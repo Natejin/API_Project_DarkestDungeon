@@ -140,28 +140,28 @@ void dungeonUI_info::setButton()
 {
     CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
     bt_hero1->setBtTarget(MG_GAME->GetHero(0));
-    bt_hero1->SetButtonSize(100, 285);
+    bt_hero1->AddColliderBox(100, 285);
     bt_hero1->AddSpriteRenderer("button");
     bt_hero1->SetTriggerWhenClick(this, &dungeonUI_info::selHero1);
     MG_GMOBJ->RegisterObj("selHero1", bt_hero1);
 
     CButton_buttonPosMove* bt_hero2 = new CButton_buttonPosMove;
     bt_hero2->setBtTarget(MG_GAME->GetHero(1));
-    bt_hero2->SetButtonSize(100, 285);
+    bt_hero2->AddColliderBox(100, 285);
     bt_hero2->AddSpriteRenderer("button");
     bt_hero2->SetTriggerWhenClick(this, &dungeonUI_info::selHero2);
     MG_GMOBJ->RegisterObj("selHero2", bt_hero2);
 
     CButton_buttonPosMove* bt_hero3 = new CButton_buttonPosMove;
     bt_hero3->setBtTarget(MG_GAME->GetHero(2)); 
-    bt_hero3->SetButtonSize(100, 285);
+    bt_hero3->AddColliderBox(100, 285);
     bt_hero3->AddSpriteRenderer("button");
     bt_hero3->SetTriggerWhenClick(this, &dungeonUI_info::selHero3);
     MG_GMOBJ->RegisterObj("selHero3", bt_hero3);
 
     CButton_buttonPosMove* bt_hero4 = new CButton_buttonPosMove;
     bt_hero4->setBtTarget(MG_GAME->GetHero(3));
-    bt_hero4->SetButtonSize(100, 285);
+    bt_hero4->AddColliderBox(100, 285);
     bt_hero4->AddSpriteRenderer("button");
     bt_hero4->SetTriggerWhenClick(this, &dungeonUI_info::selHero4);
     MG_GMOBJ->RegisterObj("selHero4", bt_hero4);

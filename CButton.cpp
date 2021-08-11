@@ -6,7 +6,7 @@ CButton::CButton()
 {
 	m_layer = LAYER::UIButton;
 	countNum = 0;
-	canTriggerClick = false;
+	canTriggerUp = false;
 }
 
 CButton::~CButton()
@@ -20,13 +20,13 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 	{
-		if (MG_INPUT->isOnceKeyClick(VK_LBUTTON))
+		if (MG_INPUT->IsDownLMB())
 		{
-			if (canTriggerClick)
+			if (canTriggerDown)
 			{
-				m_triggerWhenUp();
+				m_triggerWhenDown();
 			}
 			
 		}
@@ -55,7 +55,7 @@ void CButton::FrontRender(HDC _hdc)
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		RectangleMake(_hdc, m_rect);
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
 	}
 
 #endif // _DEBUG

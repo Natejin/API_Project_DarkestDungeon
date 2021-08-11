@@ -76,6 +76,16 @@ void dungeonUI::SetUIIMG()
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
 	//invenPanel->UseBackRender();
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
+	mapPanel1->UseFrontRender();
+
+
+	mapPanel2 = new CDragButtonMinimapBG();
+	mapPanel2->Init();
+	mapPanel2->m_transform->m_pos = Vector2(965, 700);
+	mapPanel2->AddSpriteRenderer(IMAGE::map2);
+	mapPanel2->SetMapSystem(m_pMapSystem);
+	mapPanel2->AddColliderBox();
+	MG_GMOBJ->RegisterObj("minimapBG", mapPanel2);
 
 	mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
 	mapPanel2->UseBackRender();
@@ -85,16 +95,16 @@ void dungeonUI::SetButton()
 {	
 	bt_inven = new CButton();
 	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
-	bt_inven->SetButtonSize(50, 65);
+	bt_inven->AddColliderBox(50, 65);
 	bt_inven->AddSpriteRenderer("button");
-	bt_inven->SetTriggerWhenOnceDown(this, &dungeonUI::ShowInven);
+	bt_inven->SetTriggerWhenUp(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
 	bt_map = new CButton();
 	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
-	bt_map->SetButtonSize(50, 65);
+	bt_map->AddColliderBox(50, 65);
 	bt_map->AddSpriteRenderer("button");
-	bt_map->SetTriggerWhenOnceDown(this, &dungeonUI::ShowMap);
+	bt_map->SetTriggerWhenUp(this, &dungeonUI::ShowMap);
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
 
@@ -181,6 +191,8 @@ void dungeonUI::ShowUI(HDC _hdc)
 
 void dungeonUI::ShowUIMap(HDC _hdc)
 {
+	/*m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
+	m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);*/
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
 	m_inven->isActive = false; 

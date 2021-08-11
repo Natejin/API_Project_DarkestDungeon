@@ -46,6 +46,12 @@ inline void RectangleMake(HDC hdc, Rect rect)
 	Rectangle(hdc, rect.l, rect.t, rect.r, rect.b);
 }
 
+inline void RectangleMake(HDC hdc, Rect rect, Vector2 pos)
+{
+	Rectangle(hdc, rect.l + pos.x, rect.t + pos.y, rect.r + pos.x, rect.b + pos.y);
+}
+
+
 inline void RectangleMakeCenter(HDC hdc, int x, int y, int width, int height)
 {
 	Rectangle(hdc, x - (width / 2), y - (height / 2), x + (width / 2), y + (height / 2));

@@ -1,6 +1,9 @@
 #include "framework.h"
 #include "CDragButtion.h"
 
+CDragButton* CDragButton::selDragButton = nullptr;
+int CDragButton::selKeyIndex = -1;
+
 CDragButton::CDragButton()
 {
     m_layer = LAYER::UIButton;
@@ -19,14 +22,30 @@ HRESULT CDragButton::Init()
 
 void CDragButton::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (!selDragButton)
 	{
-		if (MG_INPUT->isStayKeyDown(VK_LBUTTON)) 
+		if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 		{
-			if (canTriggerDrag) 
-			{	
-				m_triggerWhenDrag();
+			if (MG_INPUT->IsDownLMB())
+			{
+				selDragButton = this;
+				selKeyIndex = VK_LBUTTON;
+				if (canTriggerDown)
+				{
+					m_triggerWhenDown();
+				}
 			}
+		}
+	}
+	else {
+		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+		{
+			if (canTriggerUp)
+			{
+				m_triggerWhenUp();
+			}
+			selDragButton = nullptr;
+			selKeyIndex = -1;
 		}
 	}
 }
@@ -48,37 +67,25 @@ void CDragButton::FrontRender(HDC _hdc)
 	m_spriteRenderer->RenderUI(_hdc);
 }
 
-void CDragButton::SetButtonSize(float width, float height)
-{
-	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
-	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
-	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
-	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
-	buttonSize = Vector2(width, height);
-}
+//void CDragButton::SetButtonSize(float width, float height)
+//{
+//	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
+//	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
+//	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
+//	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
+//	buttonSize = Vector2(width, height);
+//}
 
 void CDragButton::Mouse_Move()
 {
-	//¸¶¿ì½º ÁÂÅ¬¸¯À» ÇÏ¿´À»¶§ ±× ¹öÆ°ÀÇ ÀÌ¹ÌÁö¿Í rect°¡ 
-	//³»°¡ ÀÌµ¿ÇÏ´Â ÁÂÇ¥·Î µû¶ó ¿Í¼­ 
-	//³»°¡ ³õ¾ÒÀ»‹š ±× ÁÂÇ¥°ªÀÌ ÀûÀýÇÑ À§Ä¡¶ó¸é 
-	//¶³¾îÁö°Ô²û ¸¸µé¾î¾ß ÇÑ´Ù. 
+	//ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ rectï¿½ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½. 
 
 	m_transform->m_pos = m_ptMouse;
-	m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
-	m_rect.t = m_ptMouse.y - buttonSize.y * m_transform->m_pivot.y;
-	m_rect.r = m_ptMouse.x + buttonSize.x * (1 - m_transform->m_pivot.x);
-	m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
-}
-
-void CDragButton::SetButtonSize()
-{
-	if (m_spriteRenderer)
-	{
-		Vector2 imageSize = m_spriteRenderer->GetImageSize();
-		m_rect.l = m_transform->m_pos.x - imageSize.x * m_transform->m_pivot.x;
-		m_rect.t = m_transform->m_pos.y - imageSize.y * m_transform->m_pivot.y;
-		m_rect.r = m_transform->m_pos.x + imageSize.x * (1 - m_transform->m_pivot.x);
-		m_rect.b = m_transform->m_pos.y + imageSize.y * (1 - m_transform->m_pivot.y);
-	}
+	//m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
+	//m_rect.t = m_ptMouse.y - buttonSize.y * m_transform->m_pivot.y;
+	//m_rect.r = m_ptMouse.x + buttonSize.x * (1 - m_transform->m_pivot.x);
+	//m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="소스 파일">
@@ -203,6 +203,8 @@
       <UniqueIdentifier>{c6f6bf16-0430-43b1-920a-969b086cd62c}</UniqueIdentifier>
     <Filter Include="Scene\UI\Town_Button">
       <UniqueIdentifier>{db8e7495-6d76-4a6f-a0bb-76133766f1e3}</UniqueIdentifier>
+    <Filter Include="Object\UI\EST_Button">
+      <UniqueIdentifier>{a4603b8e-dcd0-403a-8f29-a2e1eb9cbeb8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -521,6 +523,9 @@
     <ClInclude Include="CUIPanel.h">
       <Filter>Manager\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Activity_log.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="CUIPanel.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
@@ -544,6 +549,20 @@
     </ClInclude>
     <ClInclude Include="itemList.h">
       <Filter>Object\inventory</Filter>
+    <ClInclude Include="CButton_buttonPosMove.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_button.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_ui.h">
+      <Filter>Object\UI\EST_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -832,6 +851,9 @@
     <ClCompile Include="CHeroList_button.cpp">
       <Filter>Scene\UI\Town_Button</Filter>
     </ClCompile>
+    <ClCompile Include="Activity_log.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="CUIPanel.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
@@ -858,6 +880,20 @@
     </ClCompile>
     <ClCompile Include="itemList.cpp">
       <Filter>Object\inventory</Filter>
+    <ClCompile Include="CButton_buttonPosMove.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_button.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_ui.cpp">
+      <Filter>Object\UI\EST_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

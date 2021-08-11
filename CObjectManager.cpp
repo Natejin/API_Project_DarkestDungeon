@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CObjectManager.h"
 #include "GameObject.h"
+#include "CDragButtion.h"
 
 CObjectManager::CObjectManager() {}
 CObjectManager::~CObjectManager() {}
@@ -12,6 +13,7 @@ HRESULT CObjectManager::Init()
 	renderOrder.push_back(LAYER::UIMinimapRoad);
 	renderOrder.push_back(LAYER::UIMinimapRoom);
 	renderOrder.push_back(LAYER::BackGround);
+
 
 	renderOrder.push_back(LAYER::Building);
 	renderOrder.push_back(LAYER::Enemy);
@@ -74,6 +76,15 @@ void CObjectManager::LateUpdate()
 			}
 		}
 	}
+	if (CDragButton::selDragButton && MG_INPUT->isStayKeyDown(VK_LBUTTON))
+	{
+		if (CDragButton::selDragButton->CanTriggerDrag())
+		{
+			CDragButton::selDragButton->TriggerWhenDrag();
+		}
+	}
+
+
 
 	for (auto g : objsToRegister)
 	{

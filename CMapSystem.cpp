@@ -24,6 +24,34 @@ HRESULT CMapSystem::Init()
 	return S_OK;
 }
 
+void CMapSystem::Update(float deltaTime, float worldTime)
+{
+	if (MG_INPUT->isOnceKeyDown('W'))
+	{
+
+	}
+}
+
+void CMapSystem::LateUpdate()
+{
+}
+
+void CMapSystem::BackRender(HDC _hdc)
+{
+}
+
+void CMapSystem::Render(HDC _hdc)
+{
+}
+
+void CMapSystem::FrontRender(HDC _hdc)
+{
+}
+
+void CMapSystem::Release()
+{
+}
+
 void CMapSystem::SetRandomCreateValue()
 {
 
@@ -332,4 +360,10 @@ void CMapSystem::SetMinimapPos(Vector2 deltaMove)
 DungeonData CMapSystem::GetCurDungeonData()
 {
 	return dungeonMap[curPos.x][curPos.y];
+}
+
+void CMapSystem::MoveCurPoint(Vector2Int pos)
+{
+	curPos += pos;
+	//SetMinimapPos
 }
