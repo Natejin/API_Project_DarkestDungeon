@@ -30,9 +30,9 @@ HRESULT TownScene::Init()
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
 
-	SetEst_ui();  //�ǹ� UI.
-	SetEst_Img(); //�ǹ� ��ư.
-	SetHerolist(); //��������Ʈ
+	SetEst_ui();  
+	SetEst_Img(); 
+	SetHerolist(); 
 
 	return S_OK;
 }
@@ -241,7 +241,7 @@ void TownScene::SetHerolist()
 			dragButton = new CHeroList_button();
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
-			dragButton->AddColliderBox(100, 100);
+			dragButton->AddColliderBox(50, 50);
 			switch (MG_GAME->GetHero(i)->job)
 			{
 			case JOB::Crusader:
@@ -249,13 +249,12 @@ void TownScene::SetHerolist()
 				break;
 			case JOB::Vestal:
 				dragButton->AddSpriteRenderer(IMAGE::vestal_roster);
-
 				break;
 			case JOB::PlagueDoctor:
-				//dragButton->AddSpriteRenderer(IMAGE::plague_doctor_roster);
+				dragButton->AddSpriteRenderer(IMAGE::plague_doctor_roster);
 				break;
 			case JOB::Highwayman:
-				//dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
+				dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
 				break;
 			default:
 				break;

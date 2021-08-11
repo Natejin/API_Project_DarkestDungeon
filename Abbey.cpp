@@ -15,7 +15,6 @@ Abbey::~Abbey()
 
 HRESULT Abbey::Init()
 {
-
 	isActive = false;
 
 	m_quick = new CButton();
@@ -32,12 +31,12 @@ HRESULT Abbey::Init()
 
 	m_HeroList_button = new CHeroList_button();
 
-
 	return S_OK;
 }
 
 void Abbey::Update(float deltaTime, float worldTime)
 {
+	
 }
 
 void Abbey::LateUpdate()
@@ -51,18 +50,19 @@ void Abbey::BackRender(HDC _hdc)
 void Abbey::Render(HDC _hdc)
 {
 
-	if (!m_HeroList_button->GetDrag())
-	{
-		m_windowPanelBG->Render(_hdc);
-		m_windowPanelChar->Render(_hdc);
-		m_quick->isActive = true;
-	}
+	m_windowPanelBG->Render(_hdc);
+	m_windowPanelChar->Render(_hdc);
+	m_quick->isActive = true;
+
 }
 
 void Abbey::FrontRender(HDC _hdc)
 {
 	//m_spriteRenderer->RenderUI(_hdc);
-	
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+	}
 }
 
 void Abbey::Release()

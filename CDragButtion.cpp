@@ -4,7 +4,6 @@
 CDragButton* CDragButton::selDragButton = nullptr;
 int CDragButton::selKeyIndex = -1;
 
-
 CDragButton::CDragButton()
 {
     m_layer = LAYER::UIButton;

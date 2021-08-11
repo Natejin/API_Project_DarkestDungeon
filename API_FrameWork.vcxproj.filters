@@ -495,9 +495,6 @@
     <ClInclude Include="CMapSystem.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="CBuilding.h">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClInclude>
     <ClInclude Include="Activity_log.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -527,6 +524,9 @@
     </ClInclude>
     <ClInclude Include="CHeroList_ui.h">
       <Filter>Object\UI\EST_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -797,9 +797,6 @@
     <ClCompile Include="CMapSystem.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="CBuilding.cpp">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClCompile>
     <ClCompile Include="Activity_log.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -829,6 +826,9 @@
     </ClCompile>
     <ClCompile Include="CHeroList_ui.cpp">
       <Filter>Object\UI\EST_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
