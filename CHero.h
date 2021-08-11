@@ -35,7 +35,6 @@ public:
 
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 
-	class CButton_buttonPosMove* m_selButton;
 
 public:
 	CHero();
@@ -83,8 +82,6 @@ public:
 	void setSTRSbar();
 	void setSelectedMem();
 	void setTargetedMem();
-
-	void setButton(class CButton_buttonPosMove* button) { m_selButton = button; }
 
 	//얘를 CVestal에서 오버라이드??하라는 말씀이신가요
 	//아아

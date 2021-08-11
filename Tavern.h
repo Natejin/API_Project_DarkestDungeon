@@ -3,9 +3,11 @@
 class Tavern : public CEst_UI
 {
 private:
-	class CHeroList_button* m_HeroList_button;
+	class CButton* m_quick;
+
 public:
-	
+	Rect m_rect;
+
 	Tavern();
 	~Tavern();
 
@@ -19,5 +21,11 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	bool isUi;
+	bool isUI;
+	void Setquick();
+	void FinishUI();
+
 };
 

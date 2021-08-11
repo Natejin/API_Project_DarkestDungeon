@@ -26,7 +26,7 @@ void CMinimapButton::Update(float deltaTime, float worldTime)
 		}
 		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
 		{
-			if (canTriggerUp)
+			if (canTriggerClick)
 			{
 				m_triggerWhenOnceUp();
 			}

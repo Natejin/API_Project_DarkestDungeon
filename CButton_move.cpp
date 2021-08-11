@@ -17,7 +17,7 @@ void CButton_move::Update(float deltaTime, float worldTime)
 {
 	Vector2 PointToVector = Vector2(m_ptMouse) + MG_CAMERA->getCameraPos();
 
-	if (m_collider->new_CheckColliderBoxWithPoint(PointToVector))
+	if (m_rect.CheckCollisionWithPoint(PointToVector))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 		{
@@ -46,4 +46,12 @@ void CButton_move::FrontRender(HDC _hdc)
 void CButton_move::Release()
 {
 	GameObject::Release();
+}
+
+void CButton_move::SetButtonSize(float width, float height)
+{
+	m_rect.l = m_transform->m_pos.x;
+	m_rect.t = m_transform->m_pos.y;
+	m_rect.r = m_transform->m_pos.x + width;
+	m_rect.b = m_transform->m_pos.y + height;
 }

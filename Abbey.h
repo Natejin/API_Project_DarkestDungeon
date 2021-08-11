@@ -2,12 +2,16 @@
 #include "CEst_UI.h"
 class Abbey :public CEst_UI
 {
+
 private:
-	class CHeroList_button* m_HeroList_button;
+	class CButton* m_quick;
+
 public:
+	Rect m_rect;
+
 	Abbey();
 	~Abbey();
-	
+
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);
@@ -19,4 +23,10 @@ public:
 
 	virtual void Release();
 
+	bool isUi;
+	bool isUI;
+	
+	void Setquick();
+	void FinishUI();
+	//===================================
 };

@@ -1,13 +1,8 @@
 #include"framework.h"
 #include "Input.h"
 
-CInputManager::CInputManager():m_OldptMouse(Vector2(0,0)){
-	m_OldptMouse = Vector2(0, 0);
-	m_Mouse = Vector2(0, 0);
-	m_ptDeltaMouse = Vector2(0, 0);
-}
+CInputManager::CInputManager() {}
 CInputManager::~CInputManager() {}
-
 
 HRESULT CInputManager::init()
 {
@@ -18,11 +13,8 @@ HRESULT CInputManager::init()
 		_keyDown.set(i, false);
 	}
 
-
-
 	clickCoolTime = 2.f;
 	clickCurTime = 0.f;
-
 	return S_OK;
 }
 
@@ -30,19 +22,14 @@ void CInputManager::release() {}
 
 void CInputManager::Update(float deltaTime, float worldTime)
 {
-
-	wasDownLMB = isDownLMB ? true : false;
-	isDownLMB = false;
-	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
-	
-		isDownLMB = true;
+	if (curClickKeyCode > -1)
+	{
+		if (clickCurTime < worldTime)
+		{
+			_keyClick.set(curClickKeyCode, false);
+			curClickKeyCode = -1;
+		}
 	}
-
-	m_Mouse = Vector2(m_ptMouse);
-	m_ptDeltaMouse = m_Mouse - m_OldptMouse;
-	m_OldptMouse = m_Mouse;
-	//OutputDebugString(TEXT("1234"));
-	
 }
 
 

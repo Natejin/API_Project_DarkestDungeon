@@ -13,8 +13,6 @@ HRESULT CGameManager::Init()
 	RegisterHero(CreateHero("member2", JOB::Vestal));
 	RegisterHero(CreateHero("member3", JOB::Crusader));
 	RegisterHero(CreateHero("member4", JOB::Vestal));
-	RegisterHero(CreateHero("member5", JOB::Highwayman));
-	RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
 
 	return S_OK;
 }
@@ -57,7 +55,7 @@ void CGameManager::Release()
 
 void CGameManager::RegisterHero(CHero* hero)
 {
-	if (m_partyOrigin.size() < 6)
+	if (m_partyOrigin.size() < 4)
 	{
 		m_partyOrigin.push_back(hero);
 
@@ -129,12 +127,8 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
 		break;
 	case JOB::PlagueDoctor:
-		
-		vestal->Init(JOB::PlagueDoctor, resist, 33, 1, 1, 9, 0, 3, 0, 5);
 		break;
 	case JOB::Highwayman:
-		
-		vestal->Init(JOB::Highwayman, resist, 33, 1, 1, 9, 0, 3, 0, 5);
 		break;
 	default:
 		break;

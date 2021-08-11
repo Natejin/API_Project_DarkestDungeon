@@ -72,14 +72,14 @@ void CRoadObject::setButton()
 {
     bt_treasure = new CButton_move();
     bt_treasure->m_transform->m_pos = m_roadObj[0].m_trans.m_pos;
-    bt_treasure->AddColliderBox(100, 100);
+    bt_treasure->SetButtonSize(100, 100);
     bt_treasure->AddSpriteRenderer ("button");
     bt_treasure->SetTriggerWhenClick(this, &CRoadObject::Interaction_treassure);
     MG_GMOBJ->RegisterObj("RoadObj_treasure", bt_treasure);
 
     bt_trap = new CButton_move();
     bt_trap->m_transform->m_pos = m_roadObj[1].m_trans.m_pos;
-    bt_trap->AddColliderBox(100, 100);
+    bt_trap->SetButtonSize(100, 100);
     bt_trap->AddSpriteRenderer ("button");
     bt_trap->SetTriggerWhenClick(this, &CRoadObject::Interaction_trap);
     MG_GMOBJ->RegisterObj("RoadObj_trap", bt_trap);

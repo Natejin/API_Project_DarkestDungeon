@@ -6,7 +6,7 @@ CButton::CButton()
 {
 	m_layer = LAYER::UIButton;
 	countNum = 0;
-	canTriggerUp = false;
+	canTriggerClick = false;
 }
 
 CButton::~CButton()
@@ -20,15 +20,11 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 	{
-		if (MG_INPUT->IsDownLMB())
+		if (MG_INPUT->isOnceKeyClick(VK_LBUTTON))
 		{
-			if (canTriggerDown)
-			{
-				m_triggerWhenDown();
-			}
-			
+			m_triggerWhenOnceUp();
 		}
 	}
 }
@@ -55,7 +51,7 @@ void CButton::FrontRender(HDC _hdc)
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+		RectangleMake(_hdc, m_rect);
 	}
 
 #endif // _DEBUG
@@ -79,5 +75,4 @@ void CButton::SetButtonSize()
 		m_rect.r = m_transform->m_pos.x + imageSize.x * (1 - m_transform->m_pivot.x);
 		m_rect.b = m_transform->m_pos.y + imageSize.y * (1 - m_transform->m_pivot.y);
 	}
-
 }

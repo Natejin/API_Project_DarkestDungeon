@@ -254,7 +254,7 @@ void DungeonScene::ActivateRoom()
 	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));
 
 	door1.SetRect(145, 0, 365, WINSIZEY);
-	door2.SetRect(WINSIZEX - 200, 0, WINSIZEX - 100, WINSIZEY);
+	door2.SetRect(WORLDSIZEX - 200, 0, WORLDSIZEX - 100, WINSIZEY);
 
 	switch (m_pMapSystem->GetCurDungeonData().dungeonMapState)
 	{
@@ -329,8 +329,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	}
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		RectangleMake(_hdc, door1);
-		RectangleMake(_hdc, door2);
+	
 	}
 }
 #pragma endregion

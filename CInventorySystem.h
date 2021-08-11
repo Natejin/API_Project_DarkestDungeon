@@ -2,9 +2,9 @@
 #include "slot.h"
 
 //dungeonInven, memberEquip
-//Heroï¿½È¿ï¿½ ItemVectorï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
+//Hero¾È¿¡ ItemVector¸¦ ÇÏ³ª ´õ ¸¸µé °Í 
 
-//dungeonInven ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//dungeonInven ±âÁØÀ¸·Î¸¸ ¸¸µé¾î º¸±â
 class CInventorySystem : public GameObject
 {
 public:

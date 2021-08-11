@@ -19,6 +19,8 @@ CSpriteRenderer::~CSpriteRenderer()
 
 }
 
+
+
 void CSpriteRenderer::SetImage(string imageName)
 {
 	m_image = MG_IMAGE->findImage(imageName);

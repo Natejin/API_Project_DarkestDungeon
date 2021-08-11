@@ -126,8 +126,8 @@ enum class IMAGE
 	vestal,
 
 	//Minimap Button
-	hall_clear,			
-	hall_dark,			
+	hall_clear,
+	hall_dark,
 	hall_dim,
 	hall_door,
 	indicator,

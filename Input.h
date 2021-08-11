@@ -3,9 +3,6 @@
 #include<bitset>
 using namespace std;
 #define KEYMAX 256
-#include "Vector2.h"
-
-
 
 class CInputManager : public Singleton<CInputManager>
 {
@@ -21,18 +18,6 @@ private:
 	float clickCurTime;
 
 	int curClickKeyCode;
-
-	//vector<tKeyState>	m_vecKey;
-
-	bool isDownLMB;
-	bool wasDownLMB;
-
-
-	bool isDownRMB;
-
-	Vector2 m_OldptMouse;
-	Vector2 m_Mouse;
-	Vector2 m_ptDeltaMouse;
 
 public:
 	CInputManager();
@@ -56,11 +41,4 @@ public:
 
 	//한번만 눌렀냐
 	bool isOnceKeyClick(int key);
-
-	bool IsDownLMB() { return isDownLMB && !wasDownLMB; }
-	bool IsStayLMB() { return isDownLMB && wasDownLMB; }
-	bool IsUpLMB() { return !isDownLMB && wasDownLMB; }
-	bool WasDownLMB() { return wasDownLMB; }
-
-	Vector2 GetptDeltaMouse() { return m_ptDeltaMouse; }
 };

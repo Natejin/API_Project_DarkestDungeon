@@ -4,15 +4,11 @@
 class CEst_UI :public GameObject
 {
 protected:
-
-	 class CButton* m_quick;
-
 	 class CSpriteRenderer* m_windowPanelBG;
 	 class CSpriteRenderer* m_windowPanelChar;
 
 public:
-
-	class TownScene* townScene;
+	Rect m_rect;
 
 	CEst_UI();
 	~CEst_UI();
@@ -27,7 +23,4 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-
-	void FinishUI();
-
 };

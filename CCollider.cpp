@@ -33,7 +33,7 @@ void CCollider::SetRect(float l, float t, float r, float b)
 
 bool CCollider::CheckXCollision(int x)
 {
-	if (m_transform->m_pos.x + rect.l < x && m_transform->m_pos.x + rect.r > x)
+	if (rect.l < x && rect.r > x)
 	{
 		return true;
 	}
