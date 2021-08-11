@@ -16,7 +16,7 @@ HRESULT Guild::Init()
     //나가기버튼
     m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
-    m_quick->SetButtonSize(200, 200);
+    m_quick->AddColliderBox(200, 200);
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
     m_quick->isActive = false;
@@ -69,7 +69,7 @@ void Guild::Release()
 void Guild::Setquick()
 {
    
-    m_quick->SetTriggerWhenClick(this, &Guild::FinishUI);
+    m_quick->SetTriggerWhenUp(this, &Guild::FinishUI);
 }
 
 void Guild::FinishUI()

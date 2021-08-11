@@ -17,7 +17,7 @@ HRESULT BlackSmith::Init()
 
     m_quick2 = new CButton();
     m_quick2->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
-    m_quick2->SetButtonSize(200, 200);
+    m_quick2->AddColliderBox(200, 200);
     m_quick2->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick2);
     m_quick2->isActive = false;
@@ -67,7 +67,7 @@ void BlackSmith::Release()
 void BlackSmith::Setquick()
 {
     //나가기버튼
-    m_quick2->SetTriggerWhenClick(this, &BlackSmith::FinishUI);
+    m_quick2->SetTriggerWhenUp(this, &BlackSmith::FinishUI);
 }
 
 void BlackSmith::FinishUI()

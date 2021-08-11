@@ -7,8 +7,12 @@ protected:
 	function<void()> m_triggerWhenDrag;
 
 	bool canTriggerDrag;
+	
 
 public:
+	static CDragButton* selDragButton;
+	static int selKeyIndex;
+
 	CDragButton();
 	~CDragButton();
 
@@ -23,9 +27,9 @@ public:
 
 	//===================================
 
-	void SetButtonSize(float width, float height);
+
 	void Mouse_Move();
-	void SetButtonSize();
+
 
 	template <typename T>
 	void SetTriggerWhenDrag(T* pObj, void(T::* func)())
@@ -33,4 +37,8 @@ public:
 		canTriggerDrag = true;
 		m_triggerWhenDrag = bind(func, pObj);
 	}
+
+	bool CanTriggerDrag() {	return canTriggerDrag;}
+	void TriggerWhenDrag() { m_triggerWhenDrag(); }
 };
+

@@ -18,7 +18,7 @@ HRESULT StageCoach::Init()
 
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
 
-    m_quick->SetButtonSize(200, 200);
+    m_quick->AddColliderBox(200, 200);
     m_quick->AddSpriteRenderer("quick");
     MG_GMOBJ->RegisterObj("quick", m_quick);
     m_quick->isActive = false;
@@ -70,7 +70,7 @@ void StageCoach::Release()
 void StageCoach::Setquick()
 {
    
-    m_quick->SetTriggerWhenClick(this, &StageCoach::FinishUI);
+    m_quick->SetTriggerWhenUp(this, &StageCoach::FinishUI);
 }
 
 void StageCoach::FinishUI()

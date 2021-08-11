@@ -27,7 +27,7 @@ public:
 
 	//===================================
 
-	void SetButtonSize(float width, float height);
+	//void SetButtonSize(float width, float height);
 
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)())

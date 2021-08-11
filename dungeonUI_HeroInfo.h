@@ -40,7 +40,7 @@ public:
 	//==================================
 
 	void setInfoImage(); //모든 job의 이미지 세팅
-	void setSkillIcon(); //버튼과 스킬함수를 연결
+	//void setSkillIcon(); //버튼과 스킬함수를 연결
 
 	void setButton(); 
 	void showHeroState(HDC _hdc);
