@@ -1,5 +1,6 @@
 #include"framework.h"
 #include "Input.h"
+#include "CButton.h"
 
 CInputManager::CInputManager() {}
 CInputManager::~CInputManager() {}
@@ -22,6 +23,7 @@ void CInputManager::release() {}
 
 void CInputManager::Update(float deltaTime, float worldTime)
 {
+	isDownLButton = false;
 	if (curClickKeyCode > -1)
 	{
 		if (clickCurTime < worldTime)
@@ -29,6 +31,16 @@ void CInputManager::Update(float deltaTime, float worldTime)
 			_keyClick.set(curClickKeyCode, false);
 			curClickKeyCode = -1;
 		}
+	}
+	if (isOnceKeyDown(VK_LBUTTON))
+	{
+		isDownLButton = true;
+	}
+
+	if (isOnceKeyUp(VK_LBUTTON))
+	{
+		isDownLButton = false;
+		CButton::clickable = true;
 	}
 }
 

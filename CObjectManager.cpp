@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CObjectManager.h"
 #include "GameObject.h"
+#include "CButton.h"
 
 CObjectManager::CObjectManager() {}
 CObjectManager::~CObjectManager() {}
@@ -72,6 +73,13 @@ void CObjectManager::LateUpdate()
 
 				break;
 			}
+		}
+	}
+	if (!CButton::clickable)
+	{
+		if (!(MG_INPUT->isStayKeyDown(VK_LBUTTON) || MG_INPUT->isStayKeyDown(VK_RBUTTON)))
+		{
+			CButton::clickable = true;
 		}
 	}
 

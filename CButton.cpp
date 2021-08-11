@@ -2,11 +2,12 @@
 #include "CButton.h"
 #include "DungeonScene.h"
 
+bool CButton::clickable = true;
 CButton::CButton()
 {
 	m_layer = LAYER::UIButton;
 	countNum = 0;
-	canTriggerClick = false;
+	clickable = true;
 }
 
 CButton::~CButton()
@@ -20,16 +21,47 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (clickable)
 	{
-		if (MG_INPUT->isOnceKeyClick(VK_LBUTTON))
+		if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 		{
-			if (canTriggerClick)
+		    /*if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 			{
-				m_triggerWhenUp();
+				clickable = false;
+				if (canTriggerDown)
+				{
+					m_triggerWhenDown();
+				}
+			}*/
+
+			if (MG_INPUT->IsDownLButton())
+			{
+				clickable = false;
+				if (canTriggerDown)
+				{
+					m_triggerWhenDown();
+				}
 			}
 		}
+	
 	}
+
+	/*if (clickable)
+	{
+		if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+		{
+			if (MG_INPUT->IsDownLButton())
+			{
+				clickable = false;
+				if (canTriggerDown)
+				{
+					m_triggerWhenDown();
+				}
+			}
+		}
+	}*/
+	
+	
 }
 
 void CButton::LateUpdate()

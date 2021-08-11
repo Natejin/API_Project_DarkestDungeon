@@ -2,19 +2,15 @@
 #include"CDragButtion.h"
 class CHeroList_button : public CDragButton
 {
-	Vector2 buttonSize;
-	function<void()> m_triggerWhenDrag;
+
 	Vector2 originPos;
-
 	class CSpriteRenderer* m_heroBG;
-
-
 public:
 	CHeroList_button();
 	~CHeroList_button();
 
 	HRESULT Init();
-
+	class TownScene* townScene;
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
 
@@ -24,12 +20,7 @@ public:
 	
 	void SetButtonSize(float width, float height);
 	
-	template <typename T>
-	void SetTriggerWhenDrag(T* pObj, void(T::* func)())
-	{
-		canTriggerDrag = true;
-		m_triggerWhenDrag = bind(func, pObj);
-	}
 
+	bool isClick;
 };
 

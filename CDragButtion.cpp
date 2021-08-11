@@ -24,20 +24,26 @@ void CDragButton::Update(float deltaTime, float worldTime)
 		if (MG_INPUT->isStayKeyDown(VK_LBUTTON)) 
 		{
 			canTriggerDrag = true;
+			//clickable = false;
 			if (canTriggerDrag) 
 			{	
 				m_triggerWhenDrag();
 			}
+			
 		}
 
-		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+		/*if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
 		{	
-			if (canTriggerClick)
+			if (canTriggerUp)
 			{	
 				m_triggerWhenUp();
 			}
 		
 		}
+		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+		{
+
+		}*/
 	}
 }
 

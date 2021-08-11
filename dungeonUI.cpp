@@ -107,14 +107,14 @@ void dungeonUI::SetButton()
 	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
 	bt_inven->SetButtonSize(50, 65);
 	bt_inven->AddSpriteRenderer("button");
-	bt_inven->SetTriggerWhenClick(this, &dungeonUI::ShowInven);
+	bt_inven->SetTriggerWhenUp(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
 	bt_map = new CButton();
 	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
 	bt_map->SetButtonSize(50, 65);
 	bt_map->AddSpriteRenderer("button");
-	bt_map->SetTriggerWhenClick(this, &dungeonUI::ShowMap);
+	bt_map->SetTriggerWhenUp(this, &dungeonUI::ShowMap);
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
 

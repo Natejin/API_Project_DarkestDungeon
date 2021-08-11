@@ -19,6 +19,8 @@ private:
 
 	int curClickKeyCode;
 
+	bool isDownLButton;
+
 public:
 	CInputManager();
 	~CInputManager();
@@ -41,4 +43,9 @@ public:
 
 	//한번만 눌렀냐
 	bool isOnceKeyClick(int key);
+
+	bool IsDownLButton() {
+		return isDownLButton;
+	
+	}
 };

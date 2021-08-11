@@ -1,10 +1,12 @@
 #include "framework.h"
 #include "CHeroList_button.h"
+#include "TownScene.h"
 
 CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;
 	canTriggerDrag = false;
+	isClick = false;
 }
 
 CHeroList_button::~CHeroList_button()
@@ -24,60 +26,61 @@ HRESULT CHeroList_button::Init()
 
 void CHeroList_button::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (clickable)
 	{
-
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		if (m_rect.CheckCollisionWithPoint(m_ptMouse))
 		{
-			isDragging = true;
-			originPos = m_transform->m_pos;
-
-		}
-
-		if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
-		{
-			if (isDragging && canTriggerDrag)
+			
+			if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 			{
-				//드래그 중일때 이동해야 한다.
-				m_transform->m_pos = m_ptMouse;
-				m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
-				m_rect.t = m_ptMouse.y - buttonSize.y * m_transform->m_pivot.y;
-				m_rect.r = m_ptMouse.x + buttonSize.x * (1 - m_transform->m_pivot.x);
-				m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
+				clickable = false;
+				isDragging = true;
+				originPos = m_transform->m_pos;
+
 			}
 		}
-
-		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
-		{
-			isDragging = false;
-			m_transform->m_pos = originPos;
-
-			m_rect.l = m_transform->m_pos.x - buttonSize.x * m_transform->m_pivot.x;
-			m_rect.t = m_transform->m_pos.y - buttonSize.y * m_transform->m_pivot.y;
-			m_rect.r = m_transform->m_pos.x + buttonSize.x * (1 - m_transform->m_pivot.x);
-			m_rect.b = m_transform->m_pos.y + buttonSize.y * (1 - m_transform->m_pivot.y);
-		}
 	}
-}
+	
+	if (townScene->isDrag&&isDragging)
+	{
+		m_transform->m_pos = m_ptMouse;
+		m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
+		m_rect.t = m_ptMouse.y - buttonSize.y * m_transform->m_pivot.y;
+		m_rect.r = m_ptMouse.x + buttonSize.x * (1 - m_transform->m_pivot.x);
+		m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
+	}
+	if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+	{
+		isDragging = false;
+		m_transform->m_pos = originPos;
 
+		m_rect.l = m_transform->m_pos.x - buttonSize.x * m_transform->m_pivot.x;
+		m_rect.t = m_transform->m_pos.y - buttonSize.y * m_transform->m_pivot.y;
+		m_rect.r = m_transform->m_pos.x + buttonSize.x * (1 - m_transform->m_pivot.x);
+		m_rect.b = m_transform->m_pos.y + buttonSize.y * (1 - m_transform->m_pivot.y);
+
+	}
+
+}
 void CHeroList_button::LateUpdate()
 {
 }
-
 void CHeroList_button::BackRender(HDC _hdc)
 {
 }
-
 void CHeroList_button::Render(HDC _hdc)
 {
 }
-
 void CHeroList_button::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
 	m_heroBG->RenderUI(_hdc);
-}
 
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		Rectangle(_hdc,m_rect.l, m_rect.t, m_rect.r, m_rect.b);
+	}
+}
 void CHeroList_button::SetButtonSize(float width, float height)
 {
 	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;

@@ -5,6 +5,7 @@ class CampingTrainer : public CEst_UI
 
 private:
 	class CButton* m_quick;
+	class CHeroList_button* m_HeroList_button;
 public:
 	Rect m_rect;
 

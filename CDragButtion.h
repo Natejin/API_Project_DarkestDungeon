@@ -14,7 +14,7 @@ public:
 	~CDragButton();
 
 	HRESULT Init();
-
+	
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
 
@@ -26,7 +26,6 @@ public:
 
 	void SetButtonSize(float width, float height);
 	void Mouse_icon_Move();
-	void Mouse_Move();
 	void SetButtonSize();
 
 	template <typename T>
@@ -35,4 +34,5 @@ public:
 		canTriggerDrag = true;
 		m_triggerWhenDrag = bind(func, pObj);
 	}
+	bool GetDrag()const { return isDragging; }
 };
