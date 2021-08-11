@@ -17,6 +17,7 @@ protected:
 
 private:
 	class CHeroList_button* dragButton;
+	vector<class CBuilding*> buildingVec;
 
 public:
 	int curDragHeroIndex;
@@ -27,7 +28,7 @@ public:
 	void SetEst_ui(); //건물셋팅
 	void SetEst_Img();//버튼.
 public:
-	
+	void SetDeactiveWhenClick(GameObject* object);
 	void Show_abeey();//수도원
 	void Show_blacksmith(); //대장간
 	void Show_campingTrainer(); //생존기술 배우는곳
@@ -56,4 +57,7 @@ public:
 	virtual void Render();
 	virtual void Render(HDC _hdc);
 
+
+	void DeactivateBuildings();
+	void ActivateBuildings();
 };

@@ -20,7 +20,6 @@ HRESULT CHeroList_button::Init()
 	m_heroBG->pos = Vector2(130, 0);
 	originPos = Vector2(0, 0);
 	SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
-
 	return S_OK;
 
 }
@@ -44,8 +43,9 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 		}
 		
 	}
-	
-	else {
+	else if (selDragButton == this)
+	//else
+	{
 		if (MG_INPUT->IsUpLMB())
 		{
 			m_transform->m_pos = originPos;

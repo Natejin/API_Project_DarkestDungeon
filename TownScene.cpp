@@ -55,85 +55,95 @@ void TownScene::Render(HDC _hdc)
 //Building.
 void TownScene::SetEst_Img()
 {	
-	CBuilding* m_abbey = new CBuilding();
-	m_abbey->Init();
-	m_abbey->m_transform->m_pos = Vector2(WINSIZEX / 2 , WINSIZEY / 2 -200);
-	m_abbey->AddSpriteRenderer("town_abbey");
-	m_abbey->AddColliderBox(200, 200);
-	m_abbey->SetTriggerWhenDown(this, &TownScene::Show_abeey);
-	MG_GMOBJ->RegisterObj("Abbey", m_abbey);
+	CBuilding* abeey = new CBuilding();
+	abeey->Init();
+	abeey->m_transform->m_pos = Vector2(WINSIZEX / 2 , WINSIZEY / 2 -200);
+	abeey->AddSpriteRenderer("town_abbey");
+	abeey->AddColliderBox(200, 200);
+	abeey->SetTriggerWhenDown(this, &TownScene::Show_abeey);
+	buildingVec.push_back(abeey);
+	MG_GMOBJ->RegisterObj("Abbey", abeey);
 
-	CBuilding* m_guild = new CBuilding();
-	m_guild->Init();
-	m_guild->m_transform->m_pos = Vector2(WINSIZEX / 2 + 250, WINSIZEY / 2 +0);
-	m_guild->AddColliderBox(200, 200);
-	m_guild->AddSpriteRenderer("town_guild");
-	m_guild->SetTriggerWhenDown(this, &TownScene::Show_guild);
-	MG_GMOBJ->RegisterObj("Guild", m_guild);
+	CBuilding* guild = new CBuilding();
+	guild->Init();
+	guild->m_transform->m_pos = Vector2(WINSIZEX / 2 + 250, WINSIZEY / 2 +0);
+	guild->AddColliderBox(200, 200);
+	guild->AddSpriteRenderer("town_guild");
+	guild->SetTriggerWhenDown(this, &TownScene::Show_guild);
+	buildingVec.push_back(guild);
+	MG_GMOBJ->RegisterObj("Guild", guild);
 
-	CBuilding* m_blacksmith = new CBuilding();
-	m_blacksmith->Init();
-	m_blacksmith->m_transform->m_pos = Vector2(WINSIZEX - 500, WINSIZEY / 2 + 50);
-	m_blacksmith->AddColliderBox(200, 200);
-	m_blacksmith->AddSpriteRenderer("town_blacksmith");
-	m_blacksmith->SetTriggerWhenDown(this, &TownScene::Show_blacksmith);
-	MG_GMOBJ->RegisterObj("Blacksmith", m_blacksmith);
+	CBuilding* blacksmith = new CBuilding();
+	blacksmith->Init();
+	blacksmith->m_transform->m_pos = Vector2(WINSIZEX - 500, WINSIZEY / 2 + 50);
+	blacksmith->AddColliderBox(200, 200);
+	blacksmith->AddSpriteRenderer("town_blacksmith");
+	blacksmith->SetTriggerWhenDown(this, &TownScene::Show_blacksmith);
+	buildingVec.push_back(blacksmith);
+	MG_GMOBJ->RegisterObj("Blacksmith", blacksmith);
 
-	CBuilding* m_campingTrainer = new CBuilding();
-	m_campingTrainer->Init();
-	m_campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
-	m_campingTrainer->AddColliderBox(150, 150);
-	m_campingTrainer->AddSpriteRenderer("town_camping_trainer");
-	m_campingTrainer->SetTriggerWhenDown(this, &TownScene::Show_campingTrainer);
-	MG_GMOBJ->RegisterObj("CampingTrainer", m_campingTrainer);
+	CBuilding* campingTrainer = new CBuilding();
+	campingTrainer->Init();
+	campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
+	campingTrainer->AddColliderBox(150, 150);
+	campingTrainer->AddSpriteRenderer("town_camping_trainer");
+	campingTrainer->SetTriggerWhenDown(this, &TownScene::Show_campingTrainer);
+	buildingVec.push_back(campingTrainer);
+	MG_GMOBJ->RegisterObj("CampingTrainer", campingTrainer);
 
-	CBuilding* m_graveyard = new CBuilding();
-	m_graveyard->Init();
-	m_graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2+0);
-	m_graveyard->AddColliderBox(150, 150);
-	m_graveyard->AddSpriteRenderer("town_graveyard");
-	m_graveyard->SetTriggerWhenDown(this, &TownScene::Show_graveyard);
-	MG_GMOBJ->RegisterObj("Graveyard", m_graveyard);
+	CBuilding* graveyard = new CBuilding();
+	graveyard->Init();
+	graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2+0);
+	graveyard->AddColliderBox(150, 150);
+	graveyard->AddSpriteRenderer("town_graveyard");
+	graveyard->SetTriggerWhenDown(this, &TownScene::Show_graveyard);
+	buildingVec.push_back(graveyard);
+	MG_GMOBJ->RegisterObj("Graveyard", graveyard);
 
-	CBuilding* m_sanitarium = new CBuilding();
-	m_sanitarium->Init();
-	m_sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 220, WINSIZEY / 2 -100);
-	m_sanitarium->AddColliderBox(200, 200);
-	m_sanitarium->AddSpriteRenderer("town_sanitarium");
-	m_sanitarium->SetTriggerWhenDown(this, &TownScene::Show_sanitarium);
-	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
+	CBuilding* sanitarium = new CBuilding();
+	sanitarium->Init();
+	sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 220, WINSIZEY / 2 -100);
+	sanitarium->AddColliderBox(200, 200);
+	sanitarium->AddSpriteRenderer("town_sanitarium");
+	sanitarium->SetTriggerWhenDown(this, &TownScene::Show_sanitarium);
+	buildingVec.push_back(sanitarium);
+	MG_GMOBJ->RegisterObj("Sanitarium", sanitarium);
 
-	CBuilding* m_statue = new CBuilding();
-	m_statue->Init();
-	m_statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2 + 100);
-	m_statue->AddColliderBox(100, 100);
-	m_statue->AddSpriteRenderer("town_statue");
-	m_statue->SetTriggerWhenDown(this, &TownScene::Show_town_statue);
-	MG_GMOBJ->RegisterObj("Statue", m_statue);
+	CBuilding* statue = new CBuilding();
+	statue->Init();
+	statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2 + 100);
+	statue->AddColliderBox(100, 100);
+	statue->AddSpriteRenderer("town_statue");
+	statue->SetTriggerWhenDown(this, &TownScene::Show_town_statue);
+	buildingVec.push_back(statue);
+	MG_GMOBJ->RegisterObj("Statue", statue);
 
-	CBuilding* m_nomad_wagon = new CBuilding();
-	m_nomad_wagon->Init();
-	m_nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 + 100, WINSIZEY / 2 +200);
-	m_nomad_wagon->AddColliderBox(100, 100);
-	m_nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
-	m_nomad_wagon->SetTriggerWhenDown(this, &TownScene::Show_nomad_wagon);
-	MG_GMOBJ->RegisterObj("Nomad_wagon", m_nomad_wagon);
+	CBuilding* nomad_wagon = new CBuilding();
+	nomad_wagon->Init();
+	nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 + 100, WINSIZEY / 2 +200);
+	nomad_wagon->AddColliderBox(100, 100);
+	nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
+	nomad_wagon->SetTriggerWhenDown(this, &TownScene::Show_nomad_wagon);
+	buildingVec.push_back(nomad_wagon);
+	MG_GMOBJ->RegisterObj("Nomad_wagon", nomad_wagon);
 
-	CBuilding* m_tavern = new CBuilding();
-	m_tavern->Init();
-	m_tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 + 50);
-	m_tavern->AddColliderBox(200, 200);
-	m_tavern->AddSpriteRenderer("town_tavern");
-	m_tavern->SetTriggerWhenDown(this, &TownScene::Show_tavern);
-	MG_GMOBJ->RegisterObj("Tavern", m_tavern);
+	CBuilding* tavern = new CBuilding();
+	tavern->Init();
+	tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 + 50);
+	tavern->AddColliderBox(200, 200);
+	tavern->AddSpriteRenderer("town_tavern");
+	tavern->SetTriggerWhenDown(this, &TownScene::Show_tavern);
+	buildingVec.push_back(tavern);
+	MG_GMOBJ->RegisterObj("Tavern", tavern);
 
-	CBuilding* m_stage_coach = new CBuilding();
-	m_stage_coach->Init();
-	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 650, WINSIZEY / 2 +150);
-	m_stage_coach->AddColliderBox(150, 150);
-	m_stage_coach->AddSpriteRenderer("town_stage_coach");
-	m_stage_coach->SetTriggerWhenDown(this, &TownScene::Show_stage_coach);
-	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
+	CBuilding* stage_coach = new CBuilding();
+	stage_coach->Init();
+	stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 650, WINSIZEY / 2 +150);
+	stage_coach->AddColliderBox(150, 150);
+	stage_coach->AddSpriteRenderer("town_stage_coach");
+	stage_coach->SetTriggerWhenDown(this, &TownScene::Show_stage_coach);
+	buildingVec.push_back(stage_coach);
+	MG_GMOBJ->RegisterObj("Stage_coach", stage_coach);
 
 }
 //
@@ -147,83 +157,119 @@ void TownScene::SetEst_ui()
 
 	m_abbey = new Abbey();
 	m_abbey->Init();
+	m_abbey->townScene = this;
 	MG_GMOBJ->RegisterObj("AbbeyUI", m_abbey);
 
 	m_blacksmith = new BlackSmith();
 	m_blacksmith->Init();
+	m_blacksmith->townScene = this;
+
 	MG_GMOBJ->RegisterObj("BlackSmithUI", m_blacksmith);
 
 	m_campingTrainer = new CampingTrainer();
 	m_campingTrainer->Init();
+	m_campingTrainer->townScene = this;
+
 	MG_GMOBJ->RegisterObj("CampingTrainerUI", m_campingTrainer);
 
 	m_graveyard = new GraveYard();
 	m_graveyard->Init();
+	m_graveyard->townScene = this;
 	MG_GMOBJ->RegisterObj("GraveYardUI", m_graveyard);
 
 	m_guild = new Guild();
 	m_guild->Init();
+	m_guild->townScene = this;
 	MG_GMOBJ->RegisterObj("GuildUI", m_guild);
 
 	m_sanitarium = new Sanitarium();
 	m_sanitarium->Init();
+	m_sanitarium->townScene = this;
 	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
 
 	m_stage_coach = new StageCoach();
 	m_stage_coach->Init();
+	m_stage_coach->townScene = this;
 	MG_GMOBJ->RegisterObj("StageCoachUI", m_stage_coach);
 
 	m_statue = new Statue();
 	m_statue->Init();
+	m_statue->townScene = this;
 	MG_GMOBJ->RegisterObj("StatueUI", m_statue);
 
 	m_nomad_wagon = new NomadWagon();
 	m_nomad_wagon->Init();
+	m_nomad_wagon->townScene = this;
 	MG_GMOBJ->RegisterObj("NomadWagonUI", m_nomad_wagon);
 
 	m_tavern = new Tavern();
 	m_tavern->Init();
+	m_tavern->townScene = this;
 	MG_GMOBJ->RegisterObj("TavernUI", m_tavern);
+}
+void TownScene::DeactivateBuildings()
+{
+	for (size_t i = 0; i < buildingVec.size(); i++)
+	{
+		buildingVec[i]->isActive = false;
+	}
+}
+
+void TownScene::ActivateBuildings() {
+	for (size_t i = 0; i < buildingVec.size(); i++)
+	{
+		buildingVec[i]->isActive = true;
+	}
 }
 void TownScene::Show_abeey()
 {	
 	m_abbey->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_blacksmith( )
 {
 	m_blacksmith->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_campingTrainer( )
 {
 	m_campingTrainer->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_graveyard()
 {
 	m_graveyard->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_guild()
 {
 	m_guild->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_nomad_wagon( )
 {
 	m_nomad_wagon->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_stage_coach( )
 {
 	m_stage_coach->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_town_statue()
 {
 	m_statue->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_sanitarium()
 {
 	m_sanitarium->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_tavern()
 {
 	m_tavern->isActive = true;
+	DeactivateBuildings();
 }
 void TownScene::Show_Activity_log()
 {

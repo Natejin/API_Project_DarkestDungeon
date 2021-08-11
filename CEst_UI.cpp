@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "CEst_UI.h"
 #include "CSpriteRenderer.h"
+#include "CButton.h"
+#include "TownScene.h"
 
 CEst_UI::CEst_UI()
 {
@@ -13,6 +15,15 @@ CEst_UI::~CEst_UI()
 
 HRESULT CEst_UI::Init()
 {	
+	m_quick = new CButton();
+	m_quick->m_transform->m_pos = Vector2(WINSIZEX - 400, 100);
+	m_quick->AddColliderBox(50, 50);
+	m_quick->AddSpriteRenderer("quick");
+	m_quick->isActive = false;
+
+	m_quick->SetTriggerWhenDown(this, &CEst_UI::FinishUI);
+	MG_GMOBJ->RegisterObj("quick", m_quick);
+
     return S_OK;
 }
 
@@ -49,3 +60,9 @@ void CEst_UI::Release()
 	SAFE_DELETE(m_windowPanelChar);
 }
 
+void CEst_UI::FinishUI()
+{
+	m_quick->isActive = false;
+	isActive = false;
+	townScene->ActivateBuildings();
+}

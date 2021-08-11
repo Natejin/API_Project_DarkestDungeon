@@ -4,10 +4,9 @@ class BlackSmith :public CEst_UI
 {
 
 private:
-	class CButton* m_quick;
+	
 	class CHeroList_button* m_heroButton;
 public:
-	Rect m_rect;
 
 	BlackSmith();
 	~BlackSmith();
@@ -22,11 +21,6 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-
-	bool isUi;
-	bool isUI;
-	void Setquick();
-	void FinishUI();
 
 };
 
