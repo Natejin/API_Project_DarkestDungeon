@@ -2,7 +2,7 @@
 #include "Scene.h"
 
 class dungeonUI;
-class dungeonUI_HeroInfo;
+class dungeonUI_info;
 class CInventorySystem;
 class DungeonScene : public Scene
 {
@@ -69,7 +69,9 @@ public:
 //UI
 public:
 	dungeonUI* m_dungeonUI;
-	dungeonUI_HeroInfo* m_dungeonUIinfo;
+	dungeonUI_info* m_dungeonUIinfo;
+	
+	
 
 //==================================
 public:

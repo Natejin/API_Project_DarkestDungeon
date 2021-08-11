@@ -2,7 +2,6 @@
 #include "CInventorySystem.h"
 #include "CParty.h"
 #include "CButton.h"
-#include "CHero.h"
 
 CInventorySystem::CInventorySystem() {}
 CInventorySystem::~CInventorySystem() {}
@@ -10,18 +9,14 @@ CInventorySystem::~CInventorySystem() {}
 HRESULT CInventorySystem::Init()
 {
 	m_layer = LAYER::UI;
-
-	setConsumableItem();
-	setEmptyItem();
-	setButton();
-	
-
+	setItem();
 	return S_OK;
 }
 
 void CInventorySystem::Update(float deltaTime, float worldTime)
 {
 	updateItem();
+	//interactWithItem();
 }
 
 void CInventorySystem::LateUpdate()
@@ -35,17 +30,22 @@ void CInventorySystem::BackRender(HDC _hdc)
 void CInventorySystem::Render(HDC _hdc)
 {
 	showInvenItem(_hdc);
+
 }
 
 void CInventorySystem::FrontRender(HDC _hdc)
 {
+<<<<<<< HEAD
 	showInvenItem(_hdc);
 
 	int k = 0;
+=======
+>>>>>>> parent of 42f5e7a (210811_MJ_inventory)
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, RGB(0, 0, 0));
 	SetTextColor(_hdc, RGB(255, 255, 255));
+<<<<<<< HEAD
 	for (int j = 0; j < 2; j++)
 	{
 		for (int i = 0; i < 8; i++)
@@ -56,9 +56,17 @@ void CInventorySystem::FrontRender(HDC _hdc)
 				TextOut(_hdc, 990 + 70 * i, 730 + 140 * j, str, strlen(str));
 			}
 			k++;
+=======
+	sprintf_s(str, "%d", m_inven[0].count);
+	TextOut(_hdc, 990, 730, str, strlen(str));
 
-		}
-	}
+	sprintf_s(str, "%d", m_inven[1].count);
+	TextOut(_hdc, 1060, 730, str, strlen(str));
+
+	sprintf_s(str, "%d", m_inven[2].count);
+	TextOut(_hdc, 1130, 730, str, strlen(str));
+>>>>>>> parent of 42f5e7a (210811_MJ_inventory)
+
 }
 
 void CInventorySystem::Release()
@@ -69,14 +77,14 @@ void CInventorySystem::Release()
 //==================================
 
 
-void CInventorySystem::setConsumableItem()
+void CInventorySystem::setItem()
 {
 	itemInfo torch;
 	torch.m_imgData.m_img = MG_IMAGE->findImage("torch");
 	torch.m_imgData.m_trans.m_pos = Vector2(982, 725);
 	torch.itemKind = ITEM::ITEM_CONSUMABLE;
 	torch.name = "torch";
-	torch.description = "+20 brightness";
+	torch.description = "+25 brightness";
 	torch.count = MG_GAME->GetParty()->getTorch();
 	m_inven.push_back(torch);
 
@@ -98,6 +106,10 @@ void CInventorySystem::setConsumableItem()
 	bandage.count = MG_GAME->GetParty()->getBandage();
 	m_inven.push_back(bandage);
 
+	m_inven[0].count = MG_GAME->GetParty()->getTorch();
+	m_inven[1].count = MG_GAME->GetParty()->getFood();
+	m_inven[2].count = MG_GAME->GetParty()->getBandage();
+
 }
 
 void CInventorySystem::setInven()
@@ -110,18 +122,12 @@ void CInventorySystem::setEquip()
 
 void CInventorySystem::setButton()
 {
-	for (int j = 0; j < 2; j++)
-	{
-		for (int i = 0; i < 8; i++)
-		{
-			class CButton* bt_interactWithInvenItem = new CButton();
-			bt_interactWithInvenItem->m_transform->m_pos = Vector2(982 + 70 * i, 725 + 135 * j);
-			bt_interactWithInvenItem->SetButtonSize(70 * (i + 1), 135 * (j + 1));
-			bt_interactWithInvenItem->AddSpriteRenderer("button");
-			bt_interactWithInvenItem->SetTriggerWhenClick(this, &CInventorySystem::interactWithItem);
-			MG_GMOBJ->RegisterObj("bt_invenInteract", bt_interactWithInvenItem);
-		}
-	}
+	CButton* bt_iteractWithInvenItem = new CButton();
+	bt_iteractWithInvenItem->m_transform->m_pos = Vector2(982, 725);
+	bt_iteractWithInvenItem->SetButtonSize(70, 135);
+	bt_iteractWithInvenItem->m_spriteRenderer->SetImage("button");
+	bt_iteractWithInvenItem->SetTriggerWhenClick(this, &CInventorySystem::interactWithItem);
+	MG_GMOBJ->RegisterObj("bt_invenInteract", bt_iteractWithInvenItem);
 }
 
 void CInventorySystem::updateItem()
@@ -130,6 +136,7 @@ void CInventorySystem::updateItem()
 	m_inven[1].count = MG_GAME->GetParty()->getFood();
 	m_inven[2].count = MG_GAME->GetParty()->getBandage();
 
+<<<<<<< HEAD
 	//dessapear when count is 0
 	for (int i = 0; i < m_inven.size(); i++)
 	{
@@ -156,6 +163,8 @@ void CInventorySystem::updateItem()
 			}
 		}
 	}	
+=======
+>>>>>>> parent of 42f5e7a (210811_MJ_inventory)
 }
 
 void CInventorySystem::showInvenItem(HDC _hdc)
@@ -165,10 +174,14 @@ void CInventorySystem::showInvenItem(HDC _hdc)
 	{
 		m_inven[i].m_imgData.m_img->renderUI(_hdc, &m_inven[i].m_imgData.m_trans);
 	}
+
+
+
 }
 
 void CInventorySystem::changePos()
 {
+<<<<<<< HEAD
 	//�巡���Ͽ� �ű��
 	/*CCollider* _collider = new CCollider();
 	for (int j = 0; j < 2; j++)
@@ -186,10 +199,13 @@ void CInventorySystem::changePos()
 		}
 	}*/
 
+=======
+>>>>>>> parent of 42f5e7a (210811_MJ_inventory)
 }
 
 void CInventorySystem::interactWithItem()
 {
+<<<<<<< HEAD
 
 }
 void CInventorySystem::useConsumableItem(int itemInfoIndex)
@@ -277,3 +293,21 @@ void CInventorySystem::setEmptyItem()
 //		}
 //	}
 //}
+=======
+	CCollider* _collider = new CCollider;
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			_collider->SetRect(982 + 70 * i, 725 + 135 * j, 982 + 70 * (i + 1), 725 + 135 * (j + 1));
+			if (_collider->CheckColliderBoxWithPoint(m_ptMouse))
+			{
+				if (m_inven[i * (j + 1)].count != NULL) m_inven[i * (j + 1)].count--;
+				MG_GAME->GetParty()->setTorch(m_inven[0].count);
+				MG_GAME->GetParty()->setFood(m_inven[1].count);
+				MG_GAME->GetParty()->setBandage(m_inven[2].count);
+			}
+		}
+	}
+}
+>>>>>>> parent of 42f5e7a (210811_MJ_inventory)

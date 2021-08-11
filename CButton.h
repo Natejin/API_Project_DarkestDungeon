@@ -10,6 +10,8 @@ protected:
 	Rect m_rect;
 
 public:
+	
+
 	CButton();
 	~CButton();
 
