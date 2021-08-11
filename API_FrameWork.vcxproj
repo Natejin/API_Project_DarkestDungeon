@@ -204,7 +204,7 @@
     <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="DungeonScene2.h" />
     <ClInclude Include="dungeonUI.h" />
-    <ClInclude Include="dungeonUI_HeroInfo.h" />
+    <ClInclude Include="dungeonUI_info.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
     <ClInclude Include="effectTest.h" />
@@ -317,7 +317,7 @@
     <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="DungeonScene2.cpp" />
     <ClCompile Include="dungeonUI.cpp" />
-    <ClCompile Include="dungeonUI_HeroInfo.cpp" />
+    <ClCompile Include="dungeonUI_info.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="effectTest.cpp" />

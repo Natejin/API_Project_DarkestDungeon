@@ -201,6 +201,8 @@
     </Filter>
     <Filter Include="Object\inventory">
       <UniqueIdentifier>{c6f6bf16-0430-43b1-920a-969b086cd62c}</UniqueIdentifier>
+    <Filter Include="Scene\UI\Town_Button">
+      <UniqueIdentifier>{db8e7495-6d76-4a6f-a0bb-76133766f1e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -483,7 +485,7 @@
     <ClInclude Include="Tavern.h">
       <Filter>Object\UI\EST_UI\Tavern</Filter>
     </ClInclude>
-    <ClInclude Include="dungeonUI_HeroInfo.h">
+    <ClInclude Include="dungeonUI_info.h">
       <Filter>Object\DungeonUI</Filter>
     </ClInclude>
     <ClInclude Include="dungeonUI.h">
@@ -498,6 +500,9 @@
     <ClInclude Include="CBuilding.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="CDragButtion.h">
+      <Filter>Scene\UI</Filter>
+    </ClInclude>
     <ClInclude Include="CBuilding.h">
       <Filter>Scene\UI\Town_Button</Filter>
     </ClInclude>
@@ -508,10 +513,13 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CHeroList_button.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Scene\UI\Town_Button</Filter>
     </ClInclude>
     <ClInclude Include="CHeroList_ui.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Scene\UI\EST_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel.h">
+      <Filter>Manager\UI</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel.h">
       <Filter>Object\UI</Filter>
@@ -797,7 +805,7 @@
     <ClCompile Include="dungeonUI.cpp">
       <Filter>Object\DungeonUI</Filter>
     </ClCompile>
-    <ClCompile Include="dungeonUI_HeroInfo.cpp">
+    <ClCompile Include="dungeonUI_info.cpp">
       <Filter>Object\DungeonUI</Filter>
     </ClCompile>
     <ClCompile Include="CButton_move.cpp">
@@ -809,6 +817,9 @@
     <ClCompile Include="CBuilding.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
+    <ClCompile Include="CDragButtion.cpp">
+      <Filter>Scene\UI</Filter>
+    </ClCompile>
     <ClCompile Include="CBuilding.cpp">
       <Filter>Scene\UI\Town_Button</Filter>
     </ClCompile>
@@ -819,7 +830,7 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CHeroList_button.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Scene\UI\Town_Button</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel.cpp">
       <Filter>Object\UI</Filter>
@@ -840,7 +851,10 @@
       <Filter>Object\inventory</Filter>
     </ClCompile>
     <ClCompile Include="CHeroList_ui.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Scene\UI\EST_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel.cpp">
+      <Filter>Manager\UI</Filter>
     </ClCompile>
     <ClCompile Include="itemList.cpp">
       <Filter>Object\inventory</Filter>
