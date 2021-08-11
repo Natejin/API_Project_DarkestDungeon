@@ -33,7 +33,7 @@ void CCollider::SetRect(float l, float t, float r, float b)
 
 bool CCollider::CheckXCollision(int x)
 {
-	if (rect.l < x && rect.r > x)
+	if (m_transform->m_pos.x + rect.l < x && m_transform->m_pos.x + rect.r > x)
 	{
 		return true;
 	}
@@ -68,8 +68,6 @@ bool CCollider::CheckColliderBoxWithPoint(POINT _pos)
 
 bool CCollider::new_CheckColliderBoxWithPoint(Vector2 pos)
 {
-
-
 	if (m_transform->m_pos.x + rect.l < pos.x &&
 		m_transform->m_pos.x + rect.r > pos.x &&
 		m_transform->m_pos.y + rect.t < pos.y &&

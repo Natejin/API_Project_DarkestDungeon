@@ -116,8 +116,10 @@ void CInventorySystem::setButton()
 		{
 			class CButton* bt_interactWithInvenItem = new CButton();
 			bt_interactWithInvenItem->m_transform->m_pos = Vector2(982 + 70 * i, 725 + 135 * j);
-			bt_interactWithInvenItem->SetButtonSize(70 * (i + 1), 135 * (j + 1));
+			bt_interactWithInvenItem->m_transform->m_pivot = Vector2(0,0);
 			bt_interactWithInvenItem->AddSpriteRenderer("button");
+			bt_interactWithInvenItem->AddColliderBox();
+			//bt_interactWithInvenItem->SetButtonSize(70 * (i + 1), 135 * (j + 1));
 			bt_interactWithInvenItem->SetTriggerWhenUp(this, &CInventorySystem::interactWithItem);
 			MG_GMOBJ->RegisterObj("bt_invenInteract", bt_interactWithInvenItem);
 		}

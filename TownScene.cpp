@@ -30,9 +30,9 @@ HRESULT TownScene::Init()
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
 
-	SetEst_ui();  //°Ç¹° UI.
-	SetEst_Img(); //°Ç¹° ¹öÆ°.
-	SetHerolist(); //¿µ¿õ¸®½ºÆ®
+	SetEst_ui();  //ï¿½Ç¹ï¿½ UI.
+	SetEst_Img(); //ï¿½Ç¹ï¿½ ï¿½ï¿½Æ°.
+	SetHerolist(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
 	return S_OK;
 }
@@ -66,7 +66,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_guild = new CBuilding();
 	m_guild->Init();
 	m_guild->m_transform->m_pos = Vector2(WINSIZEX / 2 + 250, WINSIZEY / 2 +0);
-	m_guild->SetButtonSize(200, 200);
+	m_guild->AddColliderBox(200, 200);
 	m_guild->AddSpriteRenderer("town_guild");
 	m_guild->SetTriggerWhenDown(this, &TownScene::Show_guild);
 	MG_GMOBJ->RegisterObj("Guild", m_guild);
@@ -74,7 +74,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_blacksmith = new CBuilding();
 	m_blacksmith->Init();
 	m_blacksmith->m_transform->m_pos = Vector2(WINSIZEX - 500, WINSIZEY / 2 + 50);
-	m_blacksmith->SetButtonSize(200, 200);
+	m_blacksmith->AddColliderBox(200, 200);
 	m_blacksmith->AddSpriteRenderer("town_blacksmith");
 	m_blacksmith->SetTriggerWhenDown(this, &TownScene::Show_blacksmith);
 	MG_GMOBJ->RegisterObj("Blacksmith", m_blacksmith);
@@ -82,7 +82,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_campingTrainer = new CBuilding();
 	m_campingTrainer->Init();
 	m_campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
-	m_campingTrainer->SetButtonSize(150, 150);
+	m_campingTrainer->AddColliderBox(150, 150);
 	m_campingTrainer->AddSpriteRenderer("town_camping_trainer");
 	m_campingTrainer->SetTriggerWhenDown(this, &TownScene::Show_campingTrainer);
 	MG_GMOBJ->RegisterObj("CampingTrainer", m_campingTrainer);
@@ -90,7 +90,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_graveyard = new CBuilding();
 	m_graveyard->Init();
 	m_graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2+0);
-	m_graveyard->SetButtonSize(150, 150);
+	m_graveyard->AddColliderBox(150, 150);
 	m_graveyard->AddSpriteRenderer("town_graveyard");
 	m_graveyard->SetTriggerWhenDown(this, &TownScene::Show_graveyard);
 	MG_GMOBJ->RegisterObj("Graveyard", m_graveyard);
@@ -98,7 +98,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_sanitarium = new CBuilding();
 	m_sanitarium->Init();
 	m_sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 220, WINSIZEY / 2 -100);
-	m_sanitarium->SetButtonSize(200, 200);
+	m_sanitarium->AddColliderBox(200, 200);
 	m_sanitarium->AddSpriteRenderer("town_sanitarium");
 	m_sanitarium->SetTriggerWhenDown(this, &TownScene::Show_sanitarium);
 	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
@@ -106,7 +106,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_statue = new CBuilding();
 	m_statue->Init();
 	m_statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2 + 100);
-	m_statue->SetButtonSize(100, 100);
+	m_statue->AddColliderBox(100, 100);
 	m_statue->AddSpriteRenderer("town_statue");
 	m_statue->SetTriggerWhenDown(this, &TownScene::Show_town_statue);
 	MG_GMOBJ->RegisterObj("Statue", m_statue);
@@ -114,7 +114,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_nomad_wagon = new CBuilding();
 	m_nomad_wagon->Init();
 	m_nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 + 100, WINSIZEY / 2 +200);
-	m_nomad_wagon->SetButtonSize(100, 100);
+	m_nomad_wagon->AddColliderBox(100, 100);
 	m_nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
 	m_nomad_wagon->SetTriggerWhenDown(this, &TownScene::Show_nomad_wagon);
 	MG_GMOBJ->RegisterObj("Nomad_wagon", m_nomad_wagon);
@@ -122,7 +122,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_tavern = new CBuilding();
 	m_tavern->Init();
 	m_tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 + 50);
-	m_tavern->SetButtonSize(200, 200);
+	m_tavern->AddColliderBox(200, 200);
 	m_tavern->AddSpriteRenderer("town_tavern");
 	m_tavern->SetTriggerWhenDown(this, &TownScene::Show_tavern);
 	MG_GMOBJ->RegisterObj("Tavern", m_tavern);
@@ -130,7 +130,7 @@ void TownScene::SetEst_Img()
 	CBuilding* m_stage_coach = new CBuilding();
 	m_stage_coach->Init();
 	m_stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 650, WINSIZEY / 2 +150);
-	m_stage_coach->SetButtonSize(150, 150);
+	m_stage_coach->AddColliderBox(150, 150);
 	m_stage_coach->AddSpriteRenderer("town_stage_coach");
 	m_stage_coach->SetTriggerWhenDown(this, &TownScene::Show_stage_coach);
 	MG_GMOBJ->RegisterObj("Stage_coach", m_stage_coach);
@@ -141,7 +141,7 @@ void TownScene::SetEst_ui()
 {	
 	/*CButton* m_activity_log = new CButton();
 	m_activity_log->m_transform->m_pos = Vector2(WINSIZEX / 2+100, WINSIZEY / 2 +450);
-	m_activity_log->SetButtonSize(100, 100);
+	m_activity_log->AddColliderBox(100, 100);
 	m_activity_log->AddSpriteRenderer(IMAGE::estate_activity_log);
 	MG_GMOBJ->RegisterObj("log", m_activity_log);*/
 
@@ -241,9 +241,7 @@ void TownScene::SetHerolist()
 			dragButton = new CHeroList_button();
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
-			dragButton->SetButtonSize(50, 50);
-			dragButton->SetTriggerWhenDrag(this, &TownScene::Mouse);
-			dragButton->townScene = this;
+			dragButton->AddColliderBox(100, 100);
 			switch (MG_GAME->GetHero(i)->job)
 			{
 			case JOB::Crusader:

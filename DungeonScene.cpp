@@ -38,7 +38,7 @@ HRESULT DungeonScene::Init()
 	CreateRoad();
 	CreateDoor();
 
-	ActivateRoad();
+	ActivateRoom();
 	return S_OK;
 }
 
@@ -86,8 +86,10 @@ void DungeonScene::Update()
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
 	{
 
-	}
 
+
+
+	}
 	else 
 	{
 	
@@ -96,13 +98,14 @@ void DungeonScene::Update()
 
 void DungeonScene::Render(HDC _hdc)
 {
+	ShowDungeonInfo(_hdc);
 	if (m_dungeonState == DUNGEONSTATE::ROOM)
 	{
 
 	}
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
-		ShowDungeonInfo(_hdc);
+	
 		m_roadObj->Render(_hdc);
 	}
 	else 
@@ -162,8 +165,7 @@ void DungeonScene::CreateRoom()
 
 void DungeonScene::CreateDoor()
 {
-	door1.SetRect(145, 0, 365, WINSIZEY);
-	door2.SetRect(WORLDSIZEX - 675, 0, WORLDSIZEX - 355, WINSIZEY);
+
 }
 
 void DungeonScene::CreateRoad()
@@ -216,6 +218,9 @@ void DungeonScene::ActivateRoad()
 	m_roadObj->isActive = true;
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
+
+	door1.SetRect(145, 0, 365, WINSIZEY);
+	door2.SetRect(WORLDSIZEX - 675, 0, WORLDSIZEX - 355, WINSIZEY);
 }
 
 void DungeonScene::CheckDoor()
@@ -248,8 +253,28 @@ void DungeonScene::ActivateRoom()
 	m_roomBG->m_spriteRenderer->SetImage(roomRandom[MG_RND->getInt(roomRandom.size())]);
 	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));
 
-	dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
-	m_pBattleSystem->BattleSystemInitiate();
+	door1.SetRect(145, 0, 365, WINSIZEY);
+	door2.SetRect(WINSIZEX - 200, 0, WINSIZEX - 100, WINSIZEY);
+
+	switch (m_pMapSystem->GetCurDungeonData().dungeonMapState)
+	{
+	case DUNGEONMAPSTATE::Room_Empty:
+
+		break;
+	case DUNGEONMAPSTATE::Room_Enemy:
+		dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
+		m_pBattleSystem->BattleSystemInitiate();
+		break;
+	case DUNGEONMAPSTATE::Room_Trasure:
+
+		break;
+	case DUNGEONMAPSTATE::Room_Boss:
+
+		break;
+	default:
+		break;
+	}
+
 
 }
 
@@ -263,7 +288,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 255, 255));
+	SetTextColor(_hdc, RGB(255, 0, 255));
 
 	sprintf_s(str, "<dungeonInfo>");
 	TextOut(_hdc, 0, 80, str, strlen(str));
@@ -301,6 +326,11 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	{
 		sprintf_s(str, "near Door");
 		TextOut(_hdc, 0, 160, str, strlen(str));
+	}
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, door1);
+		RectangleMake(_hdc, door2);
 	}
 }
 #pragma endregion

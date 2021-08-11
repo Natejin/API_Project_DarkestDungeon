@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 class Image;
-class CMapSystem 
+class CMapSystem : public GameObject
 {
 public:
 	//DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -20,6 +20,7 @@ public:
 	class CUIPanel* curPosPanel;
 
 	Vector2Int curPos;
+	Vector2 minimapCenterPos;
 	int roadCount;
 	int remainRoom;
 
@@ -38,7 +39,18 @@ protected:
 public:
 	CMapSystem();
 	~CMapSystem();
+
 	HRESULT Init();
+
+	virtual void Update(float deltaTime, float worldTime);
+	virtual void LateUpdate();
+
+	virtual void BackRender(HDC _hdc);
+	virtual void Render(HDC _hdc);
+	virtual void FrontRender(HDC _hdc);
+
+	virtual void Release();
+
 
 	void SetRandomCreateValue();
 
@@ -59,5 +71,8 @@ public:
 
 	void DragMinimap(Vector2 deltaMove);
 	void SetMinimapPos(Vector2 deltaMove);
+
+	DungeonData GetCurDungeonData();
+	void MoveCurPoint(Vector2Int pos);
 };
 

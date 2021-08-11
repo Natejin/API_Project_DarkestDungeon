@@ -16,11 +16,40 @@ CMapSystem::~CMapSystem()
 
 HRESULT CMapSystem::Init()
 {
+	minimapCenterPos = Vector2(850, 450);
 	SetRandomCreateValue();
 	CreateDungeon();
 
 
 	return S_OK;
+}
+
+void CMapSystem::Update(float deltaTime, float worldTime)
+{
+	if (MG_INPUT->isOnceKeyDown('W'))
+	{
+
+	}
+}
+
+void CMapSystem::LateUpdate()
+{
+}
+
+void CMapSystem::BackRender(HDC _hdc)
+{
+}
+
+void CMapSystem::Render(HDC _hdc)
+{
+}
+
+void CMapSystem::FrontRender(HDC _hdc)
+{
+}
+
+void CMapSystem::Release()
+{
 }
 
 void CMapSystem::SetRandomCreateValue()
@@ -46,27 +75,7 @@ void CMapSystem::SetRandomCreateValue()
 
 }
 
-//void CMapSystem::Update(float deltaTime, float worldTime)
-//{
-//}
-//
-//void CMapSystem::LateUpdate()
-//{
-//}
-//
-//void CMapSystem::BackRender(HDC _hdc)
-//{
-//}
-//
-//void CMapSystem::Render(HDC _hdc)
-//{
-//	
-//}
-//
-//void CMapSystem::FrontRender(HDC _hdc)
-//{
-//
-//}
+
 
 void CMapSystem::CreateDungeon()
 {
@@ -281,6 +290,9 @@ void CMapSystem::SetMapWitchCreated()
 				}
 				
 				minimapButton->dungeonData = dungeonMap[i][j];
+				minimapButton->dungeonData.pos.x = i;
+				minimapButton->dungeonData.pos.y = j;
+		
 				int x = 0;
 				int y = 0;
 				if (dungeonMap[i][j].isRoom)
@@ -300,11 +312,9 @@ void CMapSystem::SetMapWitchCreated()
 						x = ((i) / 4) * 64 + ((i) / 4) * 3 * 24 + (i) % 4 * 24 - 2;
 						y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24 + 16;
 					}
-				
-					
 				}
-				
-				minimapButton->m_transform->m_pos = Vector2(1000 + x, 500 + y);
+				minimapButton->dungeonData.posFromCenter = Vector2(x,y);
+				minimapButton->m_transform->m_pos = minimapCenterPos + minimapButton->dungeonData.posFromCenter ;
 				minimapButton->m_transform->m_pivot = Vector2(0.5, 0.5);
 				minimapButton->isActive = false;
 				dungeonMapCreate.push_back(minimapButton);
@@ -324,8 +334,6 @@ void CMapSystem::SetMapWitchCreated()
 			}
 		}
 	}
-
-
 }
 
 void CMapSystem::DragMinimap(Vector2 deltaMove)
@@ -336,9 +344,26 @@ void CMapSystem::DragMinimap(Vector2 deltaMove)
 	
 	}
 	curPosPanel->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
-	
 }
 
 void CMapSystem::SetMinimapPos(Vector2 deltaMove)
 {
+	minimapCenterPos += deltaMove;
+	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
+	{
+		dungeonMapCreate[i]->m_transform->m_pos = minimapCenterPos + dungeonMapCreate[i]->dungeonData.posFromCenter;
+	}
+
+	curPosPanel->m_transform->m_pos = minimapCenterPos;
+}
+
+DungeonData CMapSystem::GetCurDungeonData()
+{
+	return dungeonMap[curPos.x][curPos.y];
+}
+
+void CMapSystem::MoveCurPoint(Vector2Int pos)
+{
+	curPos += pos;
+	//SetMinimapPos
 }

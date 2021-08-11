@@ -31,6 +31,9 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 
 	limit = 0;
 
+
+
+
 	for (size_t i = 0; i < 5; i++)
 	{
 		this->resist[i] = resist[i];
