@@ -7,7 +7,7 @@ protected:
 	function<void()> m_triggerWhenDrag;
 
 	bool canTriggerDrag;
-	
+	bool isDragging;
 
 public:
 	static CDragButton* selDragButton;
@@ -40,5 +40,6 @@ public:
 
 	bool CanTriggerDrag() {	return canTriggerDrag;}
 	void TriggerWhenDrag() { m_triggerWhenDrag(); }
+	bool GetDrag()const { return isDragging; }
 };
 

@@ -199,6 +199,9 @@
     <Filter Include="Object\UI\Minimap">
       <UniqueIdentifier>{3a813a6e-cae3-4be8-98df-f1fb90ecb57b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UI\EST_Button">
+      <UniqueIdentifier>{a4603b8e-dcd0-403a-8f29-a2e1eb9cbeb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -492,22 +495,7 @@
     <ClInclude Include="CMapSystem.h">
       <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="CBuilding.h">
-      <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CBuilding.h">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClInclude>
     <ClInclude Include="Activity_log.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CButton_buttonPosMove.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroList_button.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroList_ui.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel.h">
@@ -524,6 +512,21 @@
     </ClInclude>
     <ClInclude Include="CDragButtonMinimapBG.h">
       <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_buttonPosMove.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_button.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_ui.h">
+      <Filter>Object\UI\EST_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -794,22 +797,7 @@
     <ClCompile Include="CMapSystem.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="CBuilding.cpp">
-      <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="CBuilding.cpp">
-      <Filter>Scene\UI\Town_Button</Filter>
-    </ClCompile>
     <ClCompile Include="Activity_log.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CButton_buttonPosMove.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroList_button.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroList_ui.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel.cpp">
@@ -826,6 +814,21 @@
     </ClCompile>
     <ClCompile Include="CDragButtonMinimapBG.cpp">
       <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_buttonPosMove.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_button.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_ui.cpp">
+      <Filter>Object\UI\EST_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

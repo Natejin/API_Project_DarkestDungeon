@@ -201,6 +201,8 @@ void dungeonUI::ShowUI(HDC _hdc)
 
 void dungeonUI::ShowUIMap(HDC _hdc)
 {
+	/*m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
+	m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);*/
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
 	m_inven->isActive = false; 

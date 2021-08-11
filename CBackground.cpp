@@ -48,17 +48,16 @@ void CBackground::Render(HDC _hdc)
 		mostFG_Top[i].Render(_hdc);
 		
 	}
-	for (size_t i = 0; i <most_HeroList_UI.size(); i++)
-	{
-		most_HeroList_UI[i].Render(_hdc);
-
-	}
+	
 }
 
 void CBackground::FrontRender(HDC _hdc)
 {
+	for (size_t i = 0; i < most_HeroList_UI.size(); i++)
+	{
+		most_HeroList_UI[i].Render(_hdc);
 
-
+	}
 }
 
 void CBackground::Release()
