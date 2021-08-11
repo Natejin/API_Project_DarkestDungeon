@@ -23,6 +23,7 @@ void dungeonUI::Update(float deltaTime, float worldTime)
 	TorchLightBarDecrease();
 
 	//for test
+
 	if (MG_INPUT->isOnceKeyDown('A'))
 	{
 		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + 1);
