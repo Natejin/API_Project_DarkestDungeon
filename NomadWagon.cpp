@@ -17,7 +17,7 @@ HRESULT NomadWagon::Init()
     //나가기버튼
     m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 400, 100);
-    m_quick->SetButtonSize(50, 50);
+    m_quick->AddColliderBox(50, 50);
     m_quick->AddSpriteRenderer("quick");
     m_quick->isActive = false;
     m_quick->SetTriggerWhenDown(this, &NomadWagon::FinishUI);
@@ -49,12 +49,11 @@ void NomadWagon::Render(HDC _hdc)
 
 void NomadWagon::FrontRender(HDC _hdc)
 {
-    if (!m_HeroList_button->GetDrag())
-    {
+    
         m_windowPanelBG->Render(_hdc);
         m_windowPanelChar->Render(_hdc);
         m_quick->isActive = true;
-    }
+   
 }
 
 void NomadWagon::Release()

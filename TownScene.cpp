@@ -59,7 +59,7 @@ void TownScene::SetEst_Img()
 	m_abbey->Init();
 	m_abbey->m_transform->m_pos = Vector2(WINSIZEX / 2 , WINSIZEY / 2 -200);
 	m_abbey->AddSpriteRenderer("town_abbey");
-	m_abbey->SetButtonSize(200, 200);
+	m_abbey->AddColliderBox(200, 200);
 	m_abbey->SetTriggerWhenDown(this, &TownScene::Show_abeey);
 	MG_GMOBJ->RegisterObj("Abbey", m_abbey);
 

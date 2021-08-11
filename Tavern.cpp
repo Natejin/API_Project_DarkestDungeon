@@ -16,7 +16,7 @@ HRESULT Tavern::Init()
 
     m_quick = new CButton();
     m_quick->m_transform->m_pos = Vector2(WINSIZEX - 400, 100);
-    m_quick->SetButtonSize(50, 50);
+    m_quick->AddColliderBox(50, 50);
     m_quick->AddSpriteRenderer("quick");
     m_quick->isActive = false;
     m_quick->SetTriggerWhenDown(this, &Tavern::FinishUI);
@@ -48,12 +48,11 @@ void Tavern::Render(HDC _hdc)
 
 void Tavern::FrontRender(HDC _hdc)
 {
-    if (!m_HeroList_button->GetDrag())
-    {
+    
         m_windowPanelBG->Render(_hdc);
         m_windowPanelChar->Render(_hdc);
         m_quick->isActive = true;
-    }
+   
 }
 
 void Tavern::Release()
