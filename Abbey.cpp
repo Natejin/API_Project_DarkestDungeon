@@ -51,11 +51,12 @@ void Abbey::BackRender(HDC _hdc)
 void Abbey::Render(HDC _hdc)
 {
 
-	
+	if (!m_HeroList_button->GetDrag())
+	{
 		m_windowPanelBG->Render(_hdc);
 		m_windowPanelChar->Render(_hdc);
 		m_quick->isActive = true;
-	
+	}
 }
 
 void Abbey::FrontRender(HDC _hdc)
