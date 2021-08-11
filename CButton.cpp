@@ -24,9 +24,9 @@ void CButton::Update(float deltaTime, float worldTime)
 	{
 		if (MG_INPUT->IsDownLMB())
 		{
-			if (canTriggerUp)
+			if (canTriggerDown)
 			{
-				m_triggerWhenUp();
+				m_triggerWhenDown();
 			}
 		}
 	}

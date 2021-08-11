@@ -14,6 +14,7 @@ HRESULT CObjectManager::Init()
 	renderOrder.push_back(LAYER::UIMinimapRoom);
 	renderOrder.push_back(LAYER::BackGround);
 
+
 	renderOrder.push_back(LAYER::Building);
 	renderOrder.push_back(LAYER::Enemy);
 	renderOrder.push_back(LAYER::Player);
