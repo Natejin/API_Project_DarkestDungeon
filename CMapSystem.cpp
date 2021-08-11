@@ -1,7 +1,7 @@
 ﻿#include "framework.h"
 #include "CMinimapButton.h"
 #include "CMapSystem.h"
-
+#include "CUIPanel.h"
 CMapSystem::CMapSystem()
 {
 	curPos = Vector2Int(0, 0);
@@ -16,31 +16,38 @@ CMapSystem::~CMapSystem()
 
 HRESULT CMapSystem::Init()
 {
+	minimapCenterPos = Vector2(850, 450);
+	SetRandomCreateValue();
 	CreateDungeon();
+
+
 	return S_OK;
 }
 
-//void CMapSystem::Update(float deltaTime, float worldTime)
-//{
-//}
-//
-//void CMapSystem::LateUpdate()
-//{
-//}
-//
-//void CMapSystem::BackRender(HDC _hdc)
-//{
-//}
-//
-//void CMapSystem::Render(HDC _hdc)
-//{
-//	
-//}
-//
-//void CMapSystem::FrontRender(HDC _hdc)
-//{
-//
-//}
+void CMapSystem::SetRandomCreateValue()
+{
+
+	randRoomEnemy = 10;
+	randRoomCurio = 15;
+	randomRoadEnemy = 15;
+	randomRoadCurio = 15;
+	randomRoadTrap = 15;
+
+	int _rndRoomEnemy = randRoomEnemy;
+	int _rndRoomCurio = randRoomEnemy + randRoomCurio;
+	rndRoom.push_back(_rndRoomEnemy < 100 ? _rndRoomEnemy : 100);
+	rndRoom.push_back(_rndRoomCurio < 100 ? _rndRoomCurio : 100);
+
+	int _rndRoadEnemy = randomRoadEnemy;
+	int _rndRoadCurio = randomRoadEnemy + randomRoadCurio;
+	int _rndRoadTrap = randomRoadEnemy + randomRoadCurio + randomRoadTrap;
+	rndRoad.push_back(_rndRoadEnemy < 100 ? _rndRoadEnemy : 100);
+	rndRoad.push_back(_rndRoadCurio < 100 ? _rndRoadCurio : 100);
+	rndRoad.push_back(_rndRoadTrap < 100 ? _rndRoadTrap : 100);
+
+}
+
+
 
 void CMapSystem::CreateDungeon()
 {
@@ -58,9 +65,13 @@ void CMapSystem::CreateDungeon()
 	dungeonMap[curPos.x][curPos.y].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
 	dungeonMap[curPos.x][curPos.y].pos = curPos;
 
-	CreateMapPart(curPos.x, curPos.y, 0, Vector2Int(0, 0));
-	curDungeonMap = dungeonMap[curPos.x][curPos.y];
+	while (remainRoom > 0)
+	{
+		CreateMapPart(curPos.x, curPos.y, 0, Vector2Int(0, 0));
+	
+	}
 
+	curDungeonMap = dungeonMap[curPos.x][curPos.y];
 	SetMapWitchCreated();
 }
 
@@ -93,22 +104,27 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 
 #endif // _DEBUG
 	dungeonMap[i][j].pos = Vector2Int(i, j);
+
+	int random = MG_RND->getInt(100);
 	if (count > 0)
 	{
 		count--;
-		if (!(bool)MG_RND->getInt(10)) {
+		if (random < rndRoad[0]) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Enemy;
 		}
-		else if (!(bool)MG_RND->getInt(10)) {
+		else if (random < rndRoad[1]) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trasure;
 		}
-		else if (!(bool)MG_RND->getInt(10)) {
+		else if (random < rndRoad[2]) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trap;
 		}
 		else {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Empty;
 		}
-
+		if (_lastDir == Vector2Int(1,0) || _lastDir == Vector2Int(-1, 0))
+		{
+			dungeonMap[i][j].isHorizontal = true;
+		}
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
 	else {
@@ -119,10 +135,10 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		}
 		else
 		{
-			if (!(bool)MG_RND->getInt(4)) {
+			if (random < rndRoom[0]) {
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Enemy;
 			}
-			else if (!(bool)MG_RND->getInt(4)) {
+			else if (random < rndRoom[1]) {
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Trasure;
 			}
 
@@ -212,11 +228,8 @@ void CMapSystem::SetMapWitchCreated()
 	{
 		for (int j = 0; j < MAPSIZE; j++)
 		{
-
-
 			if (dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE)
 			{
-
 				CMinimapButton* minimapButton = new CMinimapButton();
 				switch (dungeonMap[i][j].dungeonMapState)
 				{
@@ -249,24 +262,74 @@ void CMapSystem::SetMapWitchCreated()
 				}
 				
 				minimapButton->dungeonData = dungeonMap[i][j];
-				int x = ((i) / 4) * 64 + ((i) / 4) * 3 * 24 + (i) % 4 * 24;
+				minimapButton->dungeonData.pos.x = i;
+				minimapButton->dungeonData.pos.y = j;
+		
+				int x = 0;
 				int y = 0;
 				if (dungeonMap[i][j].isRoom)
 				{
-					y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24;
+					minimapButton->m_layer = LAYER::UIMinimapRoom;
+					x = ((i) / 4) * 64 + ((i) / 4) * 3 * 24 + (i) % 4 * 24 - 2;
+					y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24 -4;
 				}
 				else {
-					y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24 + 16;
+					minimapButton->m_layer = LAYER::UIMinimapRoad;
+					if (dungeonMap[i][j].isHorizontal)
+					{
+						x = ((i) / 4) * 64 + ((i) / 4) * 3 * 24 + (i) % 4 * 24 + 18;
+						y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24 - 2;
+					}
+					else {
+						x = ((i) / 4) * 64 + ((i) / 4) * 3 * 24 + (i) % 4 * 24 - 2;
+						y = ((j) / 4) * 64 + ((j) / 4) * 3 * 24 + (j) % 4 * 24 + 16;
+					}
 				}
-				
-				minimapButton->m_transform->m_pos = Vector2(100 + x, 100 + y);
-	
-				//minimapButton->m_transform->m_pivot = Vector2(0.5, 0.5);
-				minimapButton->m_transform->m_pivot = Vector2(0, 0);
+				minimapButton->dungeonData.posFromCenter = Vector2(x,y);
+				minimapButton->m_transform->m_pos = minimapCenterPos + minimapButton->dungeonData.posFromCenter ;
+				minimapButton->m_transform->m_pivot = Vector2(0.5, 0.5);
 				minimapButton->isActive = false;
 				dungeonMapCreate.push_back(minimapButton);
 				MG_GMOBJ->RegisterObj("dungeonMapButton" + to_string(i), minimapButton);
+
+				if (curPos == Vector2Int(i,j))
+				{
+					curPosPanel = new CUIPanel();
+					curPosPanel->Init();
+					curPosPanel->AddSpriteRenderer(IMAGE::indicator);
+					curPosPanel->m_transform->m_pos = minimapButton->m_transform->m_pos;
+					curPosPanel->m_transform->m_pivot = Vector2(0.5, 0.5);
+					curPosPanel->m_layer = LAYER::UIMinimapRoom;
+					curPosPanel->UseFrontRender();
+					MG_GMOBJ->RegisterObj("panel", curPosPanel);
+				}
 			}
 		}
 	}
+}
+
+void CMapSystem::DragMinimap(Vector2 deltaMove)
+{
+	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
+	{
+		dungeonMapCreate[i]->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
+	
+	}
+	curPosPanel->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
+}
+
+void CMapSystem::SetMinimapPos(Vector2 deltaMove)
+{
+	minimapCenterPos += deltaMove;
+	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
+	{
+		dungeonMapCreate[i]->m_transform->m_pos = minimapCenterPos + dungeonMapCreate[i]->dungeonData.posFromCenter;
+	}
+
+	curPosPanel->m_transform->m_pos = minimapCenterPos;
+}
+
+DungeonData CMapSystem::GetCurDungeonData()
+{
+	return dungeonMap[curPos.x][curPos.y];
 }

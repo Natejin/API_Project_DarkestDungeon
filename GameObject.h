@@ -40,6 +40,6 @@ public:
 	void AddAnimator(string imageName);
 	void AddAnimator(IMAGE imageName);
 
-	void AddSpriteRenderer(IMAGE imageName);
-	void AddSpriteRenderer(string imageName);
+	virtual void AddSpriteRenderer(IMAGE imageName);
+	virtual void AddSpriteRenderer(string imageName);
 };

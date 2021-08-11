@@ -463,7 +463,7 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale, Ve
 			hdc,						//복삳될 장소의 DC
 			pos.x,						//복사될 좌표의 시작점X
 			pos.y,						//복사될 좌표의 시작점Y
-			_imageInfo->width * transform->m_scale.x,			//복사될 이미지 가로크기
+			_imageInfo->width  * transform->m_scale.x,			//복사될 이미지 가로크기
 			_imageInfo->height * transform->m_scale.y,			//복사될 이미지 세로크기
 			_imageInfo->hMemDC,			//복사될 대상DC
 			0,							//복사시작 지점 X
@@ -494,8 +494,8 @@ void Image::renderUI(HDC hdc, const CTransform* transform)
 			hdc,						//복삳될 장소의 DC
 			pos.x,							//복사될 좌표의 시작점X
 			pos.y,							//복사될 좌표의 시작점Y
-			_imageInfo->width,			//복사될 이미지 가로크기
-			_imageInfo->height,			//복사될 이미지 세로크기
+			_imageInfo->width * transform->m_scale.x,			//복사될 이미지 가로크기
+			_imageInfo->height * transform->m_scale.y,			//복사될 이미지 세로크기
 			_imageInfo->hMemDC,			//복사될 대상DC
 			0,							//복사시작 지점 X
 			0,							//복사시작 지점 Y
@@ -538,6 +538,32 @@ void Image::renderUI(HDC hdc, const CTransform* transform, Vector2 customPos)
 			pos.x,
 			pos.y, _imageInfo->width, _imageInfo->height,
 			_imageInfo->hMemDC, 0, 0, SRCCOPY);
+	}
+}
+
+void Image::mapRender(HDC hdc, Vector2 pos)
+{
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,                        //복삳될 장소의 DC
+			pos.x,                            //복사될 좌표의 시작점X
+			pos.y,                            //복사될 좌표의 시작점Y
+			_imageInfo->width,            //복사될 이미지 가로크기
+			_imageInfo->height,            //복사될 이미지 세로크기
+			_imageInfo->hMemDC,            //복사될 대상DC
+			0,                            //복사시작 지점 X
+			0,                            //복사시작 지점 Y
+			_imageInfo->width,            //복사영역 가로크기
+			_imageInfo->height,            //복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//이미지의 크기를 조절하여 화면에 출력해주는 함수
+		SetStretchBltMode(hdc, COLORONCOLOR);
+		StretchBlt(hdc, pos.x, pos.y, _imageInfo->width / 10, _imageInfo->height / 10,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, SRCCOPY);
 	}
 }
 

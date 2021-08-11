@@ -43,7 +43,7 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 		{
 			if (canTriggerClick)
 			{	//놓았을때 그 위치에 애가 둬야 한다.
-				m_triggerWhenUp();
+				m_triggerWhenOnceUp();
 			}
 
 		}

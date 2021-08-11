@@ -3,6 +3,7 @@
 #include "CParty.h"
 #include "CButton.h"
 #include "CHero.h"
+#include "CCollider.h"
 
 CInventorySystem::CInventorySystem() {}
 CInventorySystem::~CInventorySystem() {}
@@ -11,17 +12,22 @@ HRESULT CInventorySystem::Init()
 {
 	m_layer = LAYER::UI;
 
-	setConsumableItem();
-	setEmptyItem();
-	setButton();
+	setInvenSlot();
 	
+	for (int i = 0; i < m_inven.size(); i++)
+	{
+		m_inven[i].m_collider = new CCollider(&m_inven[i].slotItemImg.m_trans);
+	}
+	nowMouseOnSlot = 0;
 
+	setSlotCollider();
 	return S_OK;
 }
 
 void CInventorySystem::Update(float deltaTime, float worldTime)
 {
 	updateItem();
+	setNowMouseOnSlot();
 }
 
 void CInventorySystem::LateUpdate()
@@ -34,27 +40,13 @@ void CInventorySystem::BackRender(HDC _hdc)
 
 void CInventorySystem::Render(HDC _hdc)
 {
-	showInvenItem(_hdc);
 }
 
 void CInventorySystem::FrontRender(HDC _hdc)
 {
-	int k = 0;
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, RGB(0, 0, 0));
-	SetTextColor(_hdc, RGB(255, 255, 255));
-	for (int j = 0; j < 2; j++)
-	{
-		for (int i = 0; i < 8; i++)
-		{
-			
-			sprintf_s(str, "%d", m_inven[k].count);
-			TextOut(_hdc, 990 + 70 * i, 730 + 140 * j, str, strlen(str));
-			k++;
-
-		}
-	}
+	showInvenItem(_hdc);
+	showSlotItemCount(_hdc);
+	showSlotMouseOn(_hdc);
 }
 
 void CInventorySystem::Release()
@@ -65,201 +57,220 @@ void CInventorySystem::Release()
 //==================================
 
 
-void CInventorySystem::setConsumableItem()
+void CInventorySystem::setConsumableSlot()
 {
-	itemInfo torch;
-	torch.m_imgData.m_img = MG_IMAGE->findImage("torch");
-	torch.m_imgData.m_trans.m_pos = Vector2(982, 725);
-	torch.itemKind = ITEM::ITEM_CONSUMABLE;
-	torch.name = "torch";
-	torch.description = "+20 brightness";
-	torch.count = MG_GAME->GetParty()->getTorch();
-	m_inven.push_back(torch);
+	slot temp;
+	temp.slotItemImg.m_img = MG_IMAGE->findImage("torch");
+	temp.slotItemImg.m_trans.m_pos = Vector2(982, 725);
+	temp.slotItem.m_itemKind = ITEMKIND::ITEM_CONSUMABLE;
+	temp.slotItem.m_name = "torch";
+	temp.slotItem.m_description = "+20 brightness";
+	temp.slotItem.m_count = MG_GAME->GetParty()->getTorch();
+	m_inven.push_back(temp);
 
-	itemInfo food;
-	food.m_imgData.m_img = MG_IMAGE->findImage("food1");
-	food.m_imgData.m_trans.m_pos = Vector2(1052, 725);
-	food.itemKind = ITEM::ITEM_CONSUMABLE;
-	food.name = "food";
-	food.description = "+(1~3) HP";
-	food.count = MG_GAME->GetParty()->getFood();
-	m_inven.push_back(food);
+	temp.slotItemImg.m_img = MG_IMAGE->findImage("food1");
+	temp.slotItemImg.m_trans.m_pos = Vector2(1052, 725);
+	temp.slotItem.m_itemKind = ITEMKIND::ITEM_CONSUMABLE;
+	temp.slotItem.m_name = "food";
+	temp.slotItem.m_description = "+(1~3) HP";
+	temp.slotItem.m_count = MG_GAME->GetParty()->getFood();
+	m_inven.push_back(temp);
 
-	itemInfo bandage;
-	bandage.m_imgData.m_img = MG_IMAGE->findImage("bandage");
-	bandage.m_imgData.m_trans.m_pos = Vector2(1122, 725);
-	bandage.itemKind = ITEM::ITEM_CONSUMABLE;
-	bandage.name = "bandage";
-	bandage.description = "heals bleeding.";
-	bandage.count = MG_GAME->GetParty()->getBandage();
-	m_inven.push_back(bandage);
-
+	temp.slotItemImg.m_img = MG_IMAGE->findImage("bandage");
+	temp.slotItemImg.m_trans.m_pos = Vector2(1122, 725);
+	temp.slotItem.m_itemKind = ITEMKIND::ITEM_CONSUMABLE;
+	temp.slotItem.m_name = "bandage";
+	temp.slotItem.m_description = "heals bleeding.";
+	temp.slotItem.m_count = MG_GAME->GetParty()->getBandage();
+	m_inven.push_back(temp);
 }
 
-void CInventorySystem::setInven()
+void CInventorySystem::setInvenSlot()
 {
-}
+	setConsumableSlot();
 
-void CInventorySystem::setEquip()
-{
-}
-
-void CInventorySystem::setButton()
-{
-	for (int j = 0; j < 2; j++)
+	//fill emptySlot expert already filled
+	for (int i = 0; i < 2; i++)
 	{
-		for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 8; j++)
 		{
-			class CButton* bt_interactWithInvenItem = new CButton();
-			bt_interactWithInvenItem->m_transform->m_pos = Vector2(982 + 70 * i, 725 + 135 * j);
-			bt_interactWithInvenItem->SetButtonSize(70 * (i + 1), 135 * (j + 1));
-			bt_interactWithInvenItem->AddSpriteRenderer("button");
-			bt_interactWithInvenItem->SetTriggerWhenClick(this, &CInventorySystem::interactWithItem);
-			MG_GMOBJ->RegisterObj("bt_invenInteract", bt_interactWithInvenItem);
+			if (j <= m_inven.size()) continue;
+			for (int i = m_inven.size(); i < 16; i++)
+			{
+				setEmptySlot(i * 1 + j, Vector2(982 + 70 * j, 725 + 120 * i));
+			}
 		}
 	}
+}
+
+void CInventorySystem::setEquipSlot()
+{
+
 }
 
 void CInventorySystem::updateItem()
 {
-	m_inven[0].count = MG_GAME->GetParty()->getTorch();
-	m_inven[1].count = MG_GAME->GetParty()->getFood();
-	m_inven[2].count = MG_GAME->GetParty()->getBandage();
-
-	//dessapear when count is 0
-	for (int i = 0; i < 16; i++) 
+	for (int i = 0; i < m_inven.size(); i++)
 	{
-		if (m_inven[i].count == 0)
+		if (m_inven[i].slotItem.m_name == "torch")
 		{
-			m_inven[i] = none;
+			if (m_inven[i].slotItem.m_count < torchLimit)
+			{
+				//find emptySlot
+			}
+			else
+			{
+				//fill torchSlot
+			}
+			m_inven[i].slotItem.m_count = MG_GAME->GetParty()->getTorch() % torchLimit;
 		}
 	}
+	m_inven[1].slotItem.m_count = MG_GAME->GetParty()->getFood();
+	m_inven[2].slotItem.m_count = MG_GAME->GetParty()->getBandage();
 
-	for (int i = 0; i < 16; i++)
+	//changeEmptySlot when count is 0
+	for (int i = 0; i < m_inven.size(); i++)
 	{
-		if (m_inven[i].count > torchLimit && m_inven[i].name == "torch")
+		if (m_inven[i].slotItem.m_itemKind != ITEMKIND::ITEM_EMPTY && m_inven[i].slotItem.m_count == 0)
 		{
-			for (int j = 0; j < 16; j++)
-			{
-				if (m_inven[j].itemKind == ITEM::ITEM_NONE)
-				{
-					CTransform temp = m_inven[j].m_imgData.m_trans;
-					m_inven[j] = m_inven[i];
-					m_inven[j].m_imgData.m_trans = temp;
-					m_inven[j].count = m_inven[i].count - torchLimit;
-					m_inven[i].count = torchLimit;
-				}
-			}
+			setEmptySlot(i, m_inven[i].slotItemImg.m_trans.m_pos);
 		}
-	}	
+	}
+	fillAnotherSpace();
 }
 
 void CInventorySystem::showInvenItem(HDC _hdc)
 {
-	//간격차이 72
+	//btween 72
 	for (int i = 0; i < m_inven.size(); i++)
 	{
-		m_inven[i].m_imgData.m_img->renderUI(_hdc, &m_inven[i].m_imgData.m_trans);
+		m_inven[i].slotItemImg.m_img->render(_hdc, &m_inven[i].slotItemImg.m_trans);
 	}
 }
 
-void CInventorySystem::changePos()
+void CInventorySystem::showSlotItemCount(HDC _hdc)
 {
-	//드래그하여 옮기기
-	CCollider* _collider = new CCollider;
+	int k = 0;
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, RGB(0, 0, 0));
+	SetTextColor(_hdc, RGB(255, 255, 255));
+
 	for (int j = 0; j < 2; j++)
 	{
 		for (int i = 0; i < 8; i++)
 		{
-			_collider->SetRect(982 + 70 * i, 725 + 135 * j, 982 + 70 * (i + 1), 725 + 135 * (j + 1));
-			if (_collider->CheckColliderBoxWithPoint(m_ptMouse))
+			if (k < m_inven.size())
 			{
-				if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
-				{
-
-				}
+				sprintf_s(str, "%d", m_inven[k].slotItem.m_count);
+				TextOut(_hdc, 990 + 70 * i, 730 + 140 * j, str, strlen(str));
 			}
+			k++;
 		}
 	}
+}
 
+void CInventorySystem::showSlotMouseOn(HDC _hdc)
+{
+	int k = 0;
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, RGB(0, 0, 0));
+	SetTextColor(_hdc, RGB(255, 255, 255));
+
+	for (int i = 0; i < m_inven.size(); i++)
+	{
+		if (m_inven[i].m_collider->CheckColliderBoxWithPoint(m_ptMouse))
+		{
+			sprintf_s(str, "nowMouseOnSlot : %d", nowMouseOnSlot);
+			TextOut(_hdc, 300, 300, str, strlen(str));
+		}
+	}
+}
+
+void CInventorySystem::setNowMouseOnSlot()
+{
+	for (int i = 0; i < m_inven.size(); i++)
+	{
+		if (m_inven[i].slotItem.m_itemKind == ITEMKIND::ITEM_CONSUMABLE)
+		{
+			useConsumableItem(i);
+		}
+	}
+}
+
+void CInventorySystem::setSlotCollider()
+{
+	for (int i = 0; i < m_inven.size(); i++)
+	{
+		m_inven[i].m_collider->SetRect(
+			m_inven[i].slotItemImg.m_trans.m_pos.x,
+			m_inven[i].slotItemImg.m_trans.m_pos.y,
+			m_inven[i].slotItemImg.m_trans.m_pos.x + m_inven[i].slotItemImg.m_img->getWidth(),
+			m_inven[i].slotItemImg.m_trans.m_pos.y + m_inven[i].slotItemImg.m_img->getHeight());
+	}
+}
+
+void CInventorySystem::changeSlot()
+{
 }
 
 void CInventorySystem::interactWithItem()
 {
-	CCollider* _collider = new CCollider;
-	for (int j = 0; j < 2; j++)
+}
+
+void CInventorySystem::useConsumableItem(int itemInfoIndex)
+{
+	for (int i = 0; i < m_inven.size(); i++)
 	{
-		for (int i = 0; i < 8; i++)
+		if (m_inven[i].m_collider->CheckColliderBoxWithPoint(m_ptMouse))
 		{
-			_collider->SetRect(982 + 70 * i, 725 + 135 * j, 982 + 70 * (i + 1), 725 + 135 * (j + 1));
-			if (_collider->CheckColliderBoxWithPoint(m_ptMouse))
+			nowMouseOnSlot = i;
+			if (MG_INPUT->isOnceKeyClick(VK_RBUTTON))
 			{
-				if (m_inven[i * (j + 1)].itemKind == ITEM::ITEM_NONE) continue;
-				else if (m_inven[i * (j + 1)].itemKind == ITEM::ITEM_CONSUMABLE)
-				{
-					if (m_inven[i * (j + 1)].count > 0)
-					{
-						useConsumableItem(i * (j + 1));
-					}
-				}
-				MG_GAME->GetParty()->setTorch(m_inven[0].count);
-				MG_GAME->GetParty()->setFood(m_inven[1].count);
-				MG_GAME->GetParty()->setBandage(m_inven[2].count);
+				m_inven[i].slotItem.m_count--;
 			}
 		}
 	}
 }
 
-void CInventorySystem::useConsumableItem(int itemInfoIndex)
+void CInventorySystem::setEmptySlot(int slotIndex, Vector2 slotItemImgPos)
 {
-	if (itemInfoIndex == 0)
-	{
-		if (MG_GAME->GetParty()->getBrightness() < 100)
-		{
-			m_inven[0].count--;
-			if (MG_GAME->GetParty()->getBrightness() + 20 > 100) MG_GAME->GetParty()->setBrightness(100);
-			else MG_GAME->GetParty()->setBrightness(MG_GAME->GetParty()->getBrightness() + 20);
-		}
-		else return;
-	}
+	slot emptySlot;
 
-	if (itemInfoIndex == 1)
-	{
-		int SelMemIndex;
-		for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-		{
-			if (MG_GAME->GetHero(i)->isSelected) SelMemIndex = i;
-
-		}
-		if (MG_GAME->GetHero(SelMemIndex)->getHP() < 25) //대충 fullHp가 아닐 경우를 가정한 것
-		{
-			MG_GAME->GetHero(SelMemIndex)->setHP(MG_GAME->GetHero(SelMemIndex)->getHP() + MG_RND->getFromIntTo(1, 4));
-			m_inven[1].count--;
-		}
-		else return;
-	}
-
-	//출혈 상태를 구현한 뒤에 완성할 것
-	if (itemInfoIndex == 2)
-	{
-		m_inven[2].count--;
-	}
+	m_inven.push_back(emptySlot);
+	m_inven.back().slotItemImg.m_img = MG_IMAGE->findImage("button");
+	m_inven.back().slotItemImg.m_trans.m_pos = slotItemImgPos;
+	m_inven.back().slotItem.m_itemKind = ITEMKIND::ITEM_EMPTY;
+	m_inven.back().slotItem.m_name = "nothing";
+	m_inven.back().slotItem.m_description = "it's emptySlot";
+	m_inven.back().slotItem.m_count = 0;
 }
 
-void CInventorySystem::setEmptyItem()
+void CInventorySystem::fillAnotherSpace()
 {
-	none.m_imgData.m_img = MG_IMAGE->findImage("button");
-	none.itemKind = ITEM::ITEM_NONE;
-	none.name = "nothing";
-	none.description = "empty.";
-	none.count = 0;
-	for (int j = 0; j < 2; j++)
+	for (int i = 0; i < m_inven.size(); i++)
 	{
-		for (int i = 0; i < 8; i++)
+		if (m_inven[i].slotItem.m_count > torchLimit && m_inven[i].slotItem.m_name == "torch")
 		{
-			if (i == 0 && j == 0 || i == 1 && j == 0 || i == 2 && j == 0) continue;
-			none.m_imgData.m_trans.m_pos = Vector2(982 + 70 * i, 725 + 135 * j);
-			m_inven.push_back(none);
+			for (int j = 0; j < m_inven.size(); j++)
+			{
+				if (m_inven[j].slotItem.m_itemKind == ITEMKIND::ITEM_CONSUMABLE && m_inven[j].slotItem.m_name == "torch")
+				{
+					
+				}
+
+				if (m_inven[j].slotItem.m_itemKind == ITEMKIND::ITEM_EMPTY)
+				{
+					CTransform temp = m_inven[j].slotItemImg.m_trans;
+					m_inven[j] = m_inven[i];
+					m_inven[j].slotItemImg.m_trans = temp;
+					m_inven[j].slotItem.m_count = m_inven[i].slotItem.m_count % torchLimit;
+					m_inven[i].slotItem.m_count = torchLimit;
+					break;
+					//find one of emptyPlace to fill, get out of For
+				}
+			}
 		}
 	}
 }

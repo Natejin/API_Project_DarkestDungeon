@@ -1,42 +1,31 @@
 #pragma once
+#include "slot.h"
 
 //dungeonInven, memberEquip
 //Hero안에 ItemVector를 하나 더 만들 것 
 
 //dungeonInven 기준으로만 만들어 보기
-enum class ITEM
-{
-	ITEM_CONSUMABLE,
-	ITEM_NONE,
-	ITEM_TRINKET_SHOPPURCHASE,
-	ITEM_TRINKET_DUNGEONDROP
-};
-
-struct itemInfo
-{
-	ITEM itemKind;
-	ImageData m_imgData;
-	string name;
-	string description;
-	int ability;
-	int count;
-	int price;
-};
-
 class CInventorySystem : public GameObject
 {
 public:
-	vector<itemInfo> m_inven;
-	vector<itemInfo> m_equip;
-
-	CCollider _itemCollider;
+	vector<slot> m_inven;
+	vector<slot> m_equip;
 
 	int foodLimit = 12;
 	int torchLimit = 8;
-	int itemIndex;
 
-	itemInfo none;
-	
+	int nowMouseOnSlot;
+
+	//drag to change pos
+	slot* swap_slotB;
+	slot* swap_slotA;
+
+	//fakeImageSlot?
+	slot* dummySlot;
+
+	slot empty;
+	slot torch;
+
 public:
 	CInventorySystem();
 	~CInventorySystem();
@@ -54,20 +43,28 @@ public:
 
 	//==================================
 
-	void setConsumableItem(); //set itemInfo
-	void setInven(); //set dungeonInventory according to party info
-	void setEquip(); //not sure it's nessaccery
-	void setButton(); //set button to interact with inventory item
+	void setConsumableSlot(); //set itemInfo
+	void setInvenSlot(); //set dungeonInventory according to party info
+	void setEquipSlot(); //not sure it's nessaccery
 
 	void updateItem();
 
 	void showInvenItem(HDC _hdc); //render inventory item and itemInfo
+	void showSlotItemCount(HDC _hdc);
+	void showSlotMouseOn(HDC _hdc);
 
-	void changePos(); //drag to change item pos(vector order change either)
+	void setNowMouseOnSlot();
+
+	void setSlotCollider();
+
+	void changeSlot(); //drag to change item pos(vector order change either)
 
 	void interactWithItem();
 
 	void useConsumableItem(int itemInfoIndex);
 
-	void setEmptyItem();
+	void setEmptySlot(int slotIndex, Vector2 slotItemImgPos);
+
+	void fillAnotherSpace();
+
 };

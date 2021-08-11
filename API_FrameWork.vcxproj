@@ -183,6 +183,7 @@
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CDragButtion.h" />
+    <ClInclude Include="CDragButtonMinimapBG.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEst_UI.h" />
     <ClInclude Include="CGameManager.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="CParty.h" />
     <ClInclude Include="CRoadObject.h" />
     <ClInclude Include="CSpriteRenderer.h" />
+    <ClInclude Include="CUIPanel.h" />
     <ClInclude Include="CVestal.h" />
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
@@ -219,6 +221,8 @@
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="itemInfo.h" />
+    <ClInclude Include="itemList.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
@@ -241,6 +245,7 @@
     <ClInclude Include="scene2.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="singleton.h" />
+    <ClInclude Include="slot.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="soundTest.h" />
     <ClInclude Include="StageCoach.h" />
@@ -292,6 +297,7 @@
     <ClCompile Include="CCameraManager.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CDragButtion.cpp" />
+    <ClCompile Include="CDragButtonMinimapBG.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEst_UI.cpp" />
     <ClCompile Include="CGameManager.cpp" />
@@ -305,6 +311,7 @@
     <ClCompile Include="CParty.cpp" />
     <ClCompile Include="CRoadObject.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />
+    <ClCompile Include="CUIPanel.cpp" />
     <ClCompile Include="CVestal.cpp" />
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
@@ -324,6 +331,7 @@
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="itemList.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />
@@ -343,6 +351,7 @@
     <ClCompile Include="scene1.cpp" />
     <ClCompile Include="scene2.cpp" />
     <ClCompile Include="sceneManager.cpp" />
+    <ClCompile Include="slot.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="soundTest.cpp" />
     <ClCompile Include="StageCoach.cpp" />
