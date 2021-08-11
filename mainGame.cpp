@@ -35,16 +35,12 @@ void mainGame::update()
 {
 	gameNode::update();
 	MG_TIME->update(60.0f);
-
-	float deltaTime = MG_TIME->getElapsedTime();
-	float worldTime = MG_TIME->getWorldTime();
-
 	MG_SCENE->update();
-	MG_INPUT->Update(deltaTime, worldTime);
-	MG_GMOBJ->Update(deltaTime, worldTime);
+
+	MG_GMOBJ->Update(MG_TIME->getElapsedTime(), MG_TIME->getWorldTime());
 	MG_GMOBJ->LateUpdate();
 
-	MG_CAMERA->Update(deltaTime, worldTime);
+	MG_CAMERA->Update(MG_TIME->getElapsedTime(), MG_TIME->getWorldTime());
 
 
 }

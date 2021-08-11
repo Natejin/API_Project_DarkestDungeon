@@ -12,26 +12,10 @@ HRESULT CInputManager::init()
 		_keyUp.set(i, false);
 		_keyDown.set(i, false);
 	}
-
-	clickCoolTime = 2.f;
-	clickCurTime = 0.f;
 	return S_OK;
 }
 
 void CInputManager::release() {}
-
-void CInputManager::Update(float deltaTime, float worldTime)
-{
-	if (curClickKeyCode > -1)
-	{
-		if (clickCurTime < worldTime)
-		{
-			_keyClick.set(curClickKeyCode, false);
-			curClickKeyCode = -1;
-		}
-	}
-}
-
 
 bool CInputManager::isOnceKeyDown(int key)
 {
@@ -82,32 +66,5 @@ bool CInputManager::isToggleKey(int key)
 	//GetKeyState :현재 키의 토글상태
 	//0x0001 이전에 누른적이 있고 호출시점에서 안눌린 상태
 	if (GetKeyState(key) & 0x0001) return true;
-	return false;
-}
-
-bool CInputManager::isOnceKeyClick(int key)
-{
-	if (GetAsyncKeyState(key) & 0x8000)
-	{
-		if (!_keyClick[key])
-		{
-			_keyClick.set(key, true);
-			clickCurTime = clickCoolTime + MG_TIME->getWorldTime();
-			return false;
-		}
-	}
-	else
-	{
-		if (_keyClick[key])
-		{
-			_keyClick.set(key, false);
-			curClickKeyCode = -1;
-			if (clickCurTime > MG_TIME->getWorldTime())
-			{
-
-				return true;
-			}
-		}
-	}
 	return false;
 }

@@ -1,7 +1,7 @@
 ﻿#include "framework.h"
 #include "CMinimapButton.h"
 #include "CMapSystem.h"
-#include "CUIPanel.h"
+
 CMapSystem::CMapSystem()
 {
 	curPos = Vector2Int(0, 0);
@@ -309,36 +309,9 @@ void CMapSystem::SetMapWitchCreated()
 				minimapButton->isActive = false;
 				dungeonMapCreate.push_back(minimapButton);
 				MG_GMOBJ->RegisterObj("dungeonMapButton" + to_string(i), minimapButton);
-
-				if (curPos == Vector2Int(i,j))
-				{
-					curPosPanel = new CUIPanel();
-					curPosPanel->Init();
-					curPosPanel->AddSpriteRenderer(IMAGE::indicator);
-					curPosPanel->m_transform->m_pos = minimapButton->m_transform->m_pos;
-					curPosPanel->m_transform->m_pivot = Vector2(0.5, 0.5);
-					curPosPanel->m_layer = LAYER::UIMinimapRoom;
-					curPosPanel->UseFrontRender();
-					MG_GMOBJ->RegisterObj("panel", curPosPanel);
-				}
 			}
 		}
 	}
 
 
-}
-
-void CMapSystem::DragMinimap(Vector2 deltaMove)
-{
-	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
-	{
-		dungeonMapCreate[i]->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
-	
-	}
-	curPosPanel->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
-	
-}
-
-void CMapSystem::SetMinimapPos(Vector2 deltaMove)
-{
 }

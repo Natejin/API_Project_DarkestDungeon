@@ -4,7 +4,7 @@
 #include "CMapSystem.h"
 #include "CInventorySystem.h"
 #include "CUIPanel.h"
-#include "CDragButtonMinimapBG.h"
+
 HRESULT dungeonUI::Init()
 {
 	m_layer = LAYER::UI;
@@ -23,7 +23,6 @@ void dungeonUI::Update(float deltaTime, float worldTime)
 	TorchLightBarDecrease();
 
 	//for test
-
 	if (MG_INPUT->isOnceKeyDown('A'))
 	{
 		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + 1);
@@ -75,31 +74,10 @@ void dungeonUI::SetUIIMG()
 
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
 	//invenPanel->UseBackRender();
-
-	//mapPanel1 = new CDragButtonMinimapBG();
-	//mapPanel1->SetMapSystem(m_pMapSystem);
-
-
-	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
-	//mapPanel2->UseBackRender();
-
-
-
-
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
-	mapPanel1->UseFrontRender();
 
-
-	mapPanel2 = new CDragButtonMinimapBG();
-	mapPanel2->Init();
-	mapPanel2->m_transform->m_pos = Vector2(965, 700);
-	mapPanel2->AddSpriteRenderer(IMAGE::map2);
-	mapPanel2->SetMapSystem(m_pMapSystem);
-	mapPanel2->SetButtonSize();
-	MG_GMOBJ->RegisterObj("minimapBG", mapPanel2);
-
-	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
-	//mapPanel2->UseBackRender();
+	mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
+	mapPanel2->UseBackRender();
 }
 
 void dungeonUI::SetButton()
