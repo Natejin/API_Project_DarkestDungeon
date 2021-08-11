@@ -51,6 +51,11 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 		{
 			isDragging = false;
 			m_transform->m_pos = originPos;
+
+			m_rect.l = m_transform->m_pos.x - buttonSize.x * m_transform->m_pivot.x;
+			m_rect.t = m_transform->m_pos.y - buttonSize.y * m_transform->m_pivot.y;
+			m_rect.r = m_transform->m_pos.x + buttonSize.x * (1 - m_transform->m_pivot.x);
+			m_rect.b = m_transform->m_pos.y + buttonSize.y * (1 - m_transform->m_pivot.y);
 		}
 	}
 }

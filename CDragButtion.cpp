@@ -69,12 +69,6 @@ void CDragButton::SetButtonSize(float width, float height)
 
 void CDragButton::Mouse_icon_Move()
 {
-	//���콺 ��Ŭ���� �Ͽ����� �� ��ư�� �̹����� rect�� 
-	//���� �̵��ϴ� ��ǥ�� ���� �ͼ� 
-	//���� �������� �� ��ǥ���� ������ ��ġ��� 
-	//�������Բ� ������ �Ѵ�. 
-	//���콺�� �������� ���� �̵�.
-
 	m_transform->m_pos = m_ptMouse;
 	m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
 	m_rect.t = m_ptMouse.y - buttonSize.y * m_transform->m_pivot.y;
