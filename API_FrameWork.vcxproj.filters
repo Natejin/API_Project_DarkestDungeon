@@ -531,6 +531,9 @@
     <ClInclude Include="CBuilding_PanelButton.h">
       <Filter>Object\UI\EST_Button</Filter>
     </ClInclude>
+    <ClInclude Include="CBTN_Skill.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -835,6 +838,9 @@
     </ClCompile>
     <ClCompile Include="CBuilding_PanelButton.cpp">
       <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CBTN_Skill.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
