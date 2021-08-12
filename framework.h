@@ -98,6 +98,7 @@
 #define WINSIZEY		1080
 #define WORLDSIZEX		4320
 #define WORLDSIZEY		720
+#define ROOMSIZE		720
 #define MAPSIZE			25
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU
 

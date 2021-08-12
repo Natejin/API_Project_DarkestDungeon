@@ -194,6 +194,7 @@
     <ClInclude Include="CMapSystem.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="CCollider.h" />
+    <ClInclude Include="CObjOnRoad.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="CParty.h" />
     <ClInclude Include="CRoadObject.h" />
@@ -305,6 +306,7 @@
     <ClCompile Include="CMapSystem.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CObjOnRoad.cpp" />
     <ClCompile Include="CParty.cpp" />
     <ClCompile Include="CRoadObject.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />

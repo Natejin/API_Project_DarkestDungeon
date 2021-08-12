@@ -13,7 +13,9 @@ CDragButtonMinimapBG::~CDragButtonMinimapBG()
 
 HRESULT CDragButtonMinimapBG::Init()
 {
-	
+	isDraged = false;
+	moveOriginPosCurTime = 0;
+	moveOriginPosCoolTime = 5;
 	m_transform->m_pivot = Vector2(0, 0);
 	return S_OK;
 }
@@ -30,12 +32,19 @@ void CDragButtonMinimapBG::Update(float deltaTime, float worldTime)
 		if (MG_INPUT->isStayKeyDown(VK_RBUTTON))
 		{
 			m_pMapSystem->DragMinimap(previousMousePoint);
+			moveOriginPosCurTime = moveOriginPosCoolTime + worldTime;
 			previousMousePoint = m_ptMouse;
+			isDraged = true;
 		}
 
-
+	
 	}
 
+	if (isDraged && moveOriginPosCurTime < worldTime)
+	{
+		isDraged = false;
+		m_pMapSystem->SetMinimapPosOrigin();
+	}
 }
 
 void CDragButtonMinimapBG::LateUpdate()

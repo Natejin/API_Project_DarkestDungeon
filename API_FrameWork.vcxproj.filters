@@ -510,9 +510,6 @@
     <ClInclude Include="CDragButtion.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CDragButtonMinimapBG.h">
-      <Filter>Object\UI</Filter>
-    </ClInclude>
     <ClInclude Include="CButton_buttonPosMove.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
@@ -527,6 +524,12 @@
     </ClInclude>
     <ClInclude Include="CBuilding.h">
       <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtonMinimapBG.h">
+      <Filter>Object\UI\Minimap</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjOnRoad.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -812,9 +815,6 @@
     <ClCompile Include="CDragButtion.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CDragButtonMinimapBG.cpp">
-      <Filter>Object\UI</Filter>
-    </ClCompile>
     <ClCompile Include="CButton_buttonPosMove.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
@@ -829,6 +829,12 @@
     </ClCompile>
     <ClCompile Include="CBuilding.cpp">
       <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtonMinimapBG.cpp">
+      <Filter>Object\UI\Minimap</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoad.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

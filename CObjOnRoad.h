@@ -1,19 +1,19 @@
 #pragma once
 #include "CButton.h"
 
-class CMinimapButton : public CButton
+class CObjOnRoad :public CButton
 {
-	class CMapSystem* m_pMapSystem;
+	RoadObjType objType;
+
 public:
-	DungeonData dungeonData;
 
+	class DungeonScene* dungeonScene;
+	CObjOnRoad();
+	~CObjOnRoad();
 
-	CMinimapButton();
-	~CMinimapButton();
-
+	//will be created according to the number of road
 	HRESULT Init();
-
-
+	HRESULT Init(RoadObjType type, int index);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -22,7 +22,8 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
-	virtual void AddSpriteRenderer(IMAGE imageName);
-	void SetMapSystem(class CMapSystem* _mapSystem);
+	virtual void Release();
+
+
 };
 

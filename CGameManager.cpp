@@ -13,8 +13,8 @@ HRESULT CGameManager::Init()
 	RegisterHero(CreateHero("member2", JOB::Vestal));
 	RegisterHero(CreateHero("member3", JOB::Crusader));
 	RegisterHero(CreateHero("member4", JOB::Vestal));
-	RegisterHero(CreateHero("member5", JOB::Highwayman));
-	RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
+	//RegisterHero(CreateHero("member5", JOB::Highwayman));
+	//RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
 
 	return S_OK;
 }
@@ -96,15 +96,6 @@ CParty* CGameManager::GetParty()
 
 CHero* CGameManager::CreateHero(string name, JOB job)
 {
-	//member1 = new CHero();
-	//int resist[5] = { 30, 30, 30, 30, 30 };
-	//member1->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
-	//member1->m_transform->m_pos = Vector2(210, 360);
-	//MG_GMOBJ->RegisterObj(name, member1);
-	//m_member.push_back(member1);
-
-	//================================================
-
 	CHero* vestal = new CHero();
 
 	int resist[5] = { 30, 30, 30, 30, 30 };

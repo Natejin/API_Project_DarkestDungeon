@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "CMinimapButton.h"
+#include "CMapSystem.h"
 
 CMinimapButton::CMinimapButton()
 {
@@ -24,11 +25,11 @@ void CMinimapButton::Update(float deltaTime, float worldTime)
 		{
 			m_transform->m_scale += 0.05;
 		}
-		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 		{
-			if (canTriggerUp)
+			if (m_pMapSystem)
 			{
-				m_triggerWhenUp();
+				m_pMapSystem->UseClickToMoveCurPoint(dungeonData);
 			}
 		}
 	}
@@ -67,4 +68,9 @@ void CMinimapButton::AddSpriteRenderer(IMAGE imageName)
 
 	Vector2 imageSize = m_spriteRenderer->GetImageSize()/2;
 	AddColliderBox(Vector2(0,0), -imageSize.x, -imageSize.y, imageSize.x, imageSize.y);
+}
+
+void CMinimapButton::SetMapSystem(CMapSystem* _mapSystem)
+{
+	m_pMapSystem = _mapSystem;
 }

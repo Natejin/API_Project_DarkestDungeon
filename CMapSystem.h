@@ -17,13 +17,23 @@ public:
 	DungeonData curDungeonMap;
 
 	vector<class CMinimapButton*> dungeonMapCreate;
-	class CUIPanel* curPosPanel;
+	class CMinimapButton* curPosPanel;
+	class DungeonScene* dungeonScene;
 
 	Vector2Int curPos;
+	Vector2Int curDir;
+
 	Vector2 minimapCenterPos;
+	Vector2 minimapOriginPos;
+
+	Vector2 customDragPos;
+
+	bool canMoveAnotherRoom;
+
 	int roadCount;
 	int remainRoom;
 
+	float moveDistance;
 private:
 	vector<int> rndRoom;
 	vector<int> rndRoad;
@@ -71,8 +81,15 @@ public:
 
 	void DragMinimap(Vector2 deltaMove);
 	void SetMinimapPos(Vector2 deltaMove);
+	void SetMinimapPosOrigin();
 
 	DungeonData GetCurDungeonData();
-	void MoveCurPoint(Vector2Int pos);
+	DungeonData GetCurDungeonData(int i);
+
+
+	void UseClickToMoveCurPoint(DungeonData pos);
+	void MoveCurPoint(Vector2Int dir);
+	void UseKeyBoardToMoveCurPoint();
+	void UseKeyBoardToReverseMoveCurPoint();
 };
 
