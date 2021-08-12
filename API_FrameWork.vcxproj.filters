@@ -193,8 +193,13 @@
     <Filter Include="Object\UI\EST_UI\Tavern">
       <UniqueIdentifier>{769545c5-0e71-4e96-b6b8-ab7396a34d3e}</UniqueIdentifier>
     </Filter>
+<<<<<<< Updated upstream
     <Filter Include="Object\UI\EST_UI\Guild">
       <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
+=======
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Abbey">
+      <UniqueIdentifier>{86f7c843-c08c-4b20-badc-ebb203b6eff1}</UniqueIdentifier>
+>>>>>>> Stashed changes
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -492,9 +497,51 @@
     <ClInclude Include="Tavern.h">
       <Filter>Object\UI\EST_UI\Tavern</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="CBuilding.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="Activity_log.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomScene.h">
+      <Filter>Scene\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="CMinimapButton.h">
+      <Filter>Object\UI\Minimap</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtion.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtonMinimapBG.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_buttonPosMove.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_button.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_ui.h">
+      <Filter>Object\UI\CUIPanel_Building</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding_PanelButton.h">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CBTN_Skill.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -761,9 +808,51 @@
     <ClCompile Include="Tavern.cpp">
       <Filter>Object\UI\EST_UI\Tavern</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="CBuilding.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="Activity_log.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomScene.cpp">
+      <Filter>Scene\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="CMinimapButton.cpp">
+      <Filter>Object\UI\Minimap</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtion.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtonMinimapBG.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_buttonPosMove.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_button.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_ui.cpp">
+      <Filter>Object\UI\CUIPanel_Building</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding_PanelButton.cpp">
+      <Filter>Object\UI\EST_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CBTN_Skill.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="API_FrameWork.rc">
