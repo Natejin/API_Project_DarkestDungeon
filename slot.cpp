@@ -14,7 +14,7 @@ HRESULT CButton_SlotItem::Init()
 	AddSpriteRenderer();
 	AddColliderBox(70,125);
 
-	itemInfo = nullptr;
+	m_itemInfo = nullptr;
 	return S_OK;
 }
 
@@ -24,15 +24,25 @@ void CButton_SlotItem::Update(float deltaTime, float worldTime)
 	{
 		if (MG_INPUT->IsDownLMB())
 		{
-			if (itemInfo != nullptr && m_invenSys->dummySlot->m_spriteRenderer->GetImage() == nullptr)
+			if (m_itemInfo != nullptr && !m_invenSys->isDragging)
 			{
-				m_invenSys->dummySlot->m_spriteRenderer->SetImage(m_spriteRenderer->GetImage());
-				m_invenSys->dummySlot->Enable();
+				//m_invenSys->dummySlot->m_spriteRenderer->SetImage(m_spriteRenderer->GetImage());
+				m_invenSys->StartDragItem(this);
 			}
 		}
 	}
 
-
+	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->IsUpLMB())
+		{
+			if (m_invenSys->isDragging)
+			{
+				//m_invenSys->dummySlot->m_spriteRenderer->SetImage(m_spriteRenderer->GetImage());
+				m_invenSys->EndDragItem(this);
+			}
+		}
+	}
 }
 
 void CButton_SlotItem::LateUpdate()
@@ -67,7 +77,7 @@ void CButton_SlotItem::FrontRender(HDC _hdc)
 		SetBkMode(_hdc, RGB(0, 0, 0));
 		SetTextColor(_hdc, RGB(255, 255, 255));
 
-		sprintf_s(str, "%d", itemInfo->m_count);
+		sprintf_s(str, "%d", m_itemInfo->m_count);
 		TextOut(_hdc, 990 + 70 * slotID.x, 730 + 140 * slotID.y, str, strlen(str));
 
 		/*int quotient;
@@ -86,39 +96,35 @@ void CButton_SlotItem::FrontRender(HDC _hdc)
 	}
 }
 
-void CButton_SlotItem::setButton()
-{
-	//CHeroList_button* dragButton = new CHeroList_button();
-	//dragButton->Init();
-	//dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
-	//dragButton->SetButtonSize(50, 50);
-	//switch (MG_GAME->GetHero(i)->job)
-	//case JOB::Highwayman:
-	//	//dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
-	//	break;
-	//default:
-	//	break;
-	//}
-	//m_dragButton.push_back(dragButton);
-	//MG_GMOBJ->RegisterObj("m_hero_slot_bg", dragButton);
 
-	//bt_slot = new CDragButton();
-	//bt_slot->Init();
-	//bt_slot->m_transform->m_pos = Vector2(m_collider->rect.l, m_collider->rect.t);
-	//bt_slot->SetButtonSize(70, 125);
-	//bt_slot->AddSpriteRenderer("torch");
-	//MG_GMOBJ->RegisterObj("bt_inven_dragButton", bt_slot);
-
-
-}
 
 void CButton_SlotItem::AddItem(CItemInfo* _iteminfo)
 {
-	itemInfo = _iteminfo;
+	m_itemInfo = _iteminfo;
 	m_spriteRenderer->SetImage(_iteminfo->m_imgData);
+}
+
+void CButton_SlotItem::SwapItem(CButton_SlotItem* _slot)
+{
+	if (_slot->m_itemInfo == nullptr)
+	{
+		_slot->m_itemInfo = m_itemInfo;
+		m_itemInfo = nullptr;
+		_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
+		m_spriteRenderer->SetImage();
+	}
+	else {
+		auto itemInfo = m_itemInfo;
+		m_itemInfo = _slot->m_itemInfo;
+		_slot->m_itemInfo = itemInfo;
+
+
+		_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
+		m_spriteRenderer->SetImage(m_itemInfo->m_imgData);
+	}
 }
 
 void CButton_SlotItem::RemoveItem()
 {
-	itemInfo = nullptr;
+	m_itemInfo = nullptr;
 }

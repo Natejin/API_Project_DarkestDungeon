@@ -546,6 +546,9 @@
     <ClInclude Include="ItemDataBase.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="DummySlot.h">
+      <Filter>Object\inventory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -859,6 +862,9 @@
     </ClCompile>
     <ClCompile Include="ItemDataBase.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DummySlot.cpp">
+      <Filter>Object\inventory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

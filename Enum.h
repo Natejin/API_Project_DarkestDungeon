@@ -17,7 +17,8 @@ enum class LAYER
 	EffectFrontword,
 	Item,
 	UI,
-	UIButton
+	UIButton,
+	DummySlot
 };
 
 enum class ITEM

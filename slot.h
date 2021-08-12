@@ -6,7 +6,7 @@ class CItemInfo;
 class CButton_SlotItem : public CDragButton
 {
 public:
-	CItemInfo* itemInfo;
+	CItemInfo* m_itemInfo;
 	//ImageData slotItemImg;
 	class CInventorySystem* m_invenSys;
 
@@ -29,8 +29,9 @@ public:
 
 	//===================================
 
-	void setButton();
+	void SetButton(CItemInfo* _iteminfo);
 
 	void AddItem(CItemInfo* _iteminfo);
+	void SwapItem(CButton_SlotItem* _iteminfo);
 	void RemoveItem();
 };

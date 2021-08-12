@@ -8,6 +8,8 @@
 #include "CTransform.h"
 #include "iteminfo.h"
 #include "slot.h"
+#include "DummySlot.h"
+
 
 CInventorySystem::CInventorySystem() {}
 CInventorySystem::~CInventorySystem() {}
@@ -20,8 +22,8 @@ HRESULT CInventorySystem::Init()
 
 	nowMouseOnSlot = 0;
 	filledSlot = 0;
-	dummySlot = new CButton_SlotItem();
-	dummySlot->Init();
+	dummySlot = new DummySlot();
+	dummySlot->AddSpriteRenderer();
 	dummySlot->Unable();
 	MG_GMOBJ->RegisterObj("dummySlot", dummySlot);
 	return S_OK;
@@ -155,9 +157,9 @@ void CInventorySystem::showSlotMouseOn(HDC _hdc)
 		{
 			sprintf_s(str, "nowMouseOnSlot : %d", i);
 			TextOut(_hdc, 0, 300, str, strlen(str));
-			if (m_invenSlots[i]->itemInfo !=nullptr)
+			if (m_invenSlots[i]->m_itemInfo !=nullptr)
 			{
-				sprintf_s(str, "SlotKind : %d", m_invenSlots[i]->itemInfo->m_item);
+				sprintf_s(str, "SlotKind : %d", m_invenSlots[i]->m_itemInfo->m_item);
 				TextOut(_hdc, 0, 320, str, strlen(str));
 			}
 		}
@@ -171,23 +173,23 @@ bool CInventorySystem::AddItem(ITEM itemInfo, int& count)
 
 	for (int i = 0; i < m_invenSlots.size(); i++)
 	{
-		if (m_invenSlots[i]->itemInfo == nullptr)
+		if (m_invenSlots[i]->m_itemInfo == nullptr)
 		{
 			continue;
 		}
 		else {
-			if (m_invenSlots[i]->itemInfo->m_item == itemInfo
-				&& m_invenSlots[i]->itemInfo->isStockable
-				&& !m_invenSlots[i]->itemInfo->IsFull())
+			if (m_invenSlots[i]->m_itemInfo->m_item == itemInfo
+				&& m_invenSlots[i]->m_itemInfo->isStockable
+				&& !m_invenSlots[i]->m_itemInfo->IsFull())
 			{
-				if (m_invenSlots[i]->itemInfo->maxCount > curCount + m_invenSlots[i]->itemInfo->m_count)
+				if (m_invenSlots[i]->m_itemInfo->maxCount > curCount + m_invenSlots[i]->m_itemInfo->m_count)
 				{
-					m_invenSlots[i]->itemInfo->m_count += curCount;
+					m_invenSlots[i]->m_itemInfo->m_count += curCount;
 					return true;
 				}
 				else {
-					curCount -= m_invenSlots[i]->itemInfo->maxCount - m_invenSlots[i]->itemInfo->m_count;
-					m_invenSlots[i]->itemInfo->m_count = m_invenSlots[i]->itemInfo->maxCount;
+					curCount -= m_invenSlots[i]->m_itemInfo->maxCount - m_invenSlots[i]->m_itemInfo->m_count;
+					m_invenSlots[i]->m_itemInfo->m_count = m_invenSlots[i]->m_itemInfo->maxCount;
 				}
 			}
 		}
@@ -198,7 +200,7 @@ bool CInventorySystem::AddItem(ITEM itemInfo, int& count)
 	}
 	for (int i = 0; i < m_invenSlots.size(); i++)
 	{
-		if (m_invenSlots[i]->itemInfo == nullptr)
+		if (m_invenSlots[i]->m_itemInfo == nullptr)
 		{
 			auto item = DB_ITEM->CallItem(itemInfo);
 			item->m_count = curCount;
@@ -214,7 +216,26 @@ void CInventorySystem::RemoveItem(Vector2Int pos)
 
 }
 
-void CInventorySystem::SwapItem(Vector2Int originPos, Vector2Int swapPos)
+void CInventorySystem::StartDragItem(CButton_SlotItem* slot)
+{
+	originPos = slot->slotID;
+	dragSlot = slot;
+	dummySlot->Enable();
+	dummySlot->SetDummySlot(originPos, slot->m_itemInfo);
+	isDragging = true;
+}
+
+void CInventorySystem::EndDragItem(CButton_SlotItem* _slot)
 {
 
+
+	if (dragSlot != _slot)
+	{
+		dragSlot->SwapItem(_slot);
+	}
+	isDragging = false;
+	dragSlot = nullptr;
+	dummySlot->Unable();
 }
+
+

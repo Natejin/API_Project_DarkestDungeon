@@ -201,6 +201,7 @@
     <ClInclude Include="CSpriteRenderer.h" />
     <ClInclude Include="CUIPanel.h" />
     <ClInclude Include="CVestal.h" />
+    <ClInclude Include="DummySlot.h" />
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="DungeonScene2.h" />
@@ -316,6 +317,7 @@
     <ClCompile Include="CSpriteRenderer.cpp" />
     <ClCompile Include="CUIPanel.cpp" />
     <ClCompile Include="CVestal.cpp" />
+    <ClCompile Include="DummySlot.cpp" />
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="DungeonScene2.cpp" />

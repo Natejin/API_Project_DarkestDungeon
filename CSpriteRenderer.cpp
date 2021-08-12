@@ -26,6 +26,12 @@ void CSpriteRenderer::SetImage(Image* image)
 	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
 }
 
+void CSpriteRenderer::SetImage()
+{
+	m_image = nullptr;
+	m_imageSize = Vector2(0, 0);
+}
+
 
 void CSpriteRenderer::SetImage(string imageName)
 {

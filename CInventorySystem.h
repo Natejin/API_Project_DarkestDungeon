@@ -22,11 +22,13 @@ public:
 	CButton_SlotItem* swap_slotA;
 
 	//fakeImageSlot?
-	CButton_SlotItem* dummySlot;
+	class DummySlot* dummySlot;
 
 	int filledSlot;
 
-
+	CButton_SlotItem* dragSlot;
+	Vector2Int originPos;
+	bool isDragging;
 
 public:
 	CInventorySystem();
@@ -54,7 +56,10 @@ public:
 
 	bool AddItem(ITEM itemInfo, int& count);
 	void RemoveItem(Vector2Int pos);
-	void SwapItem(Vector2Int originPos, Vector2Int swapPos);
+	//void SwapItem(Vector2Int originPos, Vector2Int swapPos);
+
+	void StartDragItem(class CButton_SlotItem* slot);
+	void EndDragItem(class CButton_SlotItem* slot);
 
 
 };

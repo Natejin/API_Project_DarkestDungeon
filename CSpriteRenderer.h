@@ -30,6 +30,7 @@ public:
 	void SetImage(string imageName);
 	void SetImage(IMAGE imageName);
 	void SetImage(Image* image);
+	void SetImage();
 
 	class Image* GetImage();
 
