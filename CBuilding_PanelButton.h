@@ -5,6 +5,9 @@ class CBuilding_PanelButton : public CButton
 public:
 	class TownScene* townScene;
 	class CHeroList_button* listbutton;
+
+	class CHero* hero;
+
 	CBuilding_PanelButton();
 	~CBuilding_PanelButton();
 

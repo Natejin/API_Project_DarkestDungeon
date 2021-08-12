@@ -4,10 +4,13 @@ class CHeroList_button : public CDragButton
 {
 	class CSpriteRenderer* m_heroBG;
 	Vector2 originPos;
-	class CHero* m_hero;
+
 public:
+	class CHero* m_hero;
+
 	CHeroList_button();
 	~CHeroList_button();
+
 
 	HRESULT Init();
 
@@ -19,6 +22,8 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	void DragHeroList();
+
+
 
 };
 

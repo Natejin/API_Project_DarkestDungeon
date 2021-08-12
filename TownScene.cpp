@@ -277,6 +277,12 @@ void TownScene::Show_Activity_log()
 }
 void TownScene::SetHerolist()
 {	
+	for (size_t i = 0; i < m_dragButtonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_dragButtonVec[i]->GetId());
+	}
+	m_dragButtonVec.clear();
+
 		for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 		{
 		   /*
@@ -285,11 +291,13 @@ void TownScene::SetHerolist()
 			m_roster.m_trans.m_pos = Vector2(WINSIZEX / 2+510 , WINSIZEY - 930 + i*100);
 			v_roster.push_back(m_roster);
 			*/
-			dragButton = new CHeroList_button();
+			CHeroList_button* dragButton = new CHeroList_button();
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 			dragButton->AddColliderBox(50, 50);
-			switch (MG_GAME->GetHero(i)->job)
+			MG_GAME->GetHero(i)->ownIndex = i;
+			dragButton->m_hero = MG_GAME->GetHero(i);
+			switch (dragButton->m_hero->job)
 			{
 			case JOB::Crusader:
 				dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
@@ -306,7 +314,7 @@ void TownScene::SetHerolist()
 			default:
 				break;
 			}
-			m_dragButton.push_back(dragButton);
+			m_dragButtonVec.push_back(dragButton);
 			MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
 		}
 }

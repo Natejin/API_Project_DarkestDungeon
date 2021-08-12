@@ -22,33 +22,36 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 {
 	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 	{
-	
 		if (MG_INPUT->IsUpLMB())
 		{
-			if (canTriggerUp)
+			if (hero == nullptr && CHeroList_button::selDragButton != nullptr)
 			{
-				townScene->SetHerolist(); //정보를 받아온다.
-				for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
+				hero = ((CHeroList_button*)CHeroList_button::selDragButton)->m_hero;
+
+				MG_GAME->RemoveHero(hero->ownIndex);
+				townScene->SetHerolist();
+
+				switch (hero->job)
 				{
-					switch (MG_GAME->GetHero(i)->job)
-					{
-					case JOB::Crusader:
-						this->AddSpriteRenderer(IMAGE::crusader_roster);
-						break;
-					case JOB::Vestal:
-						this->AddSpriteRenderer(IMAGE::vestal_roster);
-						break;
-					case JOB::PlagueDoctor:
-						this->AddSpriteRenderer(IMAGE::plague_doctor_roster);
-						break;
-					case JOB::Highwayman:
-						this->AddSpriteRenderer(IMAGE::highwayman_roster);
-						break;
-					default:
-						break;
-					}
+				case JOB::Crusader:
+					m_spriteRenderer->SetImage(IMAGE::crusader_roster);
+					break;
+				case JOB::Vestal:
+					m_spriteRenderer->SetImage(IMAGE::vestal_roster);
+					break;
+				case JOB::PlagueDoctor:
+					m_spriteRenderer->SetImage(IMAGE::plague_doctor_roster);
+					break;
+				case JOB::Highwayman:
+					m_spriteRenderer->SetImage(IMAGE::highwayman_roster);
+					break;
+				default:
+					break;
 				}
 			}
+			
+
+			
 			//TownScene::SetHerolist에 nullptr을 못주는데. 주는법을...
 		}
 	
@@ -65,6 +68,7 @@ void CBuilding_PanelButton::BackRender(HDC _hdc)
 
 void CBuilding_PanelButton::Render(HDC _hdc)
 {
+
 }
 
 void CBuilding_PanelButton::FrontRender(HDC _hdc)

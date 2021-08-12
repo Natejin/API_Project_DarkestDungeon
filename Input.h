@@ -58,8 +58,8 @@ public:
 	bool isOnceKeyClick(int key);
 
 	bool IsDownLMB() { return isDownLMB && !wasDownLMB; }
-	bool IsStayLMB() { return isDownLMB && wasDownLMB; }
-	bool IsUpLMB() { return !isDownLMB && wasDownLMB; }
+	bool IsStayLMB() { return isDownLMB && wasDownLMB; }  
+	bool IsUpLMB() {   return !isDownLMB && wasDownLMB; } 
 	bool WasDownLMB() { return wasDownLMB; }
 
 	Vector2 GetptDeltaMouse() { return m_ptDeltaMouse; }

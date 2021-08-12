@@ -13,10 +13,10 @@ protected:
 	class CUIPanel_Statue* m_statue ;
 	class CUIPanel_NomadWagon* m_nomad_wagon;
 	class CUIPanel_Tavern* m_tavern;
-	vector<class CDragButton*> m_dragButton;
+	vector<class CDragButton*> m_dragButtonVec;
 
-private:
-	class CHeroList_button* dragButton;
+public:
+	class CHeroList_button* m_dragButton;
 	vector<class CBuilding*> buildingVec;
 	
 public:

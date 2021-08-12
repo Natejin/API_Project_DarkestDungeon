@@ -6,7 +6,7 @@ CButton::CButton()
 {
 	m_layer = LAYER::UIButton;
 	countNum = 0;
-	canTriggerUp = false;
+	//canTriggerUp = false;
 }
 
 CButton::~CButton()
@@ -27,6 +27,13 @@ void CButton::Update(float deltaTime, float worldTime)
 			if (canTriggerDown)
 			{
 				m_triggerWhenDown();
+			}
+		}
+		if (MG_INPUT->IsUpLMB())
+		{
+			if (canTriggerUp)
+			{
+				m_triggerWhenUp();
 			}
 		}
 	}

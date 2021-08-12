@@ -52,13 +52,11 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 		{
 			if (canTriggerUp)
 			{
-				//m_triggerWhenUp();
-
+				m_triggerWhenUp();
 			}
 			else
 			{
 				m_transform->m_pos = originPos;
-
 				selDragButton = nullptr;
 				selKeyIndex = -1;
 			}
