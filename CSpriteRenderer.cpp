@@ -3,7 +3,8 @@
 
 CSpriteRenderer::CSpriteRenderer()
 {
-
+	useCustomPos = false;
+	m_image = nullptr;
 }
 
 CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
@@ -11,12 +12,25 @@ CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
 	m_trans = _trans;
 	m_image = MG_IMAGE->findImage(imageName);
 	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
+	useCustomPos = false;
 }
 
 CSpriteRenderer::~CSpriteRenderer()
 {
+
 }
 
+void CSpriteRenderer::SetImage(Image* image)
+{
+	m_image = image;
+	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
+}
+
+void CSpriteRenderer::SetImage()
+{
+	m_image = nullptr;
+	m_imageSize = Vector2(0, 0);
+}
 
 
 void CSpriteRenderer::SetImage(string imageName)
@@ -31,6 +45,8 @@ void CSpriteRenderer::SetImage(IMAGE imageName)
 	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
 }
 
+
+
 Image* CSpriteRenderer::GetImage()
 {
 	return m_image;
@@ -38,10 +54,34 @@ Image* CSpriteRenderer::GetImage()
 
 void CSpriteRenderer::Render(HDC _hdc)
 {
-	m_image->render(_hdc, m_trans, m_imageSize);
+	if (useCustomPos)
+	{
+		m_image->render(_hdc, m_trans, m_imageSize, pos);
+	}else{
+		m_image->render(_hdc, m_trans, m_imageSize);
+	}
+
 }
 
 void CSpriteRenderer::RenderUI(HDC _hdc)
 {
-	m_image->renderUI(_hdc, m_trans);
+	if (useCustomPos)
+	{
+		m_image->renderUI(_hdc, m_trans, pos);
+	}
+	else {
+
+		m_image->renderUI(_hdc, m_trans);
+	}
+	
+}
+
+Vector2 CSpriteRenderer::GetImageSize()
+{
+	return m_imageSize;
+}
+
+bool CSpriteRenderer::HasImage()
+{
+	return m_image ? true : false;
 }

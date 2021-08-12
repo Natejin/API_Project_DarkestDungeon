@@ -1,9 +1,13 @@
 #pragma once
 #include "Scene.h"
 
+class dungeonUI;
+class dungeonUI_HeroInfo;
+class CInventorySystem;
 class DungeonScene : public Scene
 {
 public:
+	vector<IMAGE> roomRandom;
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
@@ -11,20 +15,18 @@ public:
 
 	class CParty* m_party;
 
-	Vector2Int curPos;
-	int roadCount;
-	int remainRoom;
+
 
 //==================================
 //Room
 public:
-	class CBackground* m_roomBG;
+	class CBG_Room* m_roomBG;
 
 
 //==================================
 //Road
 public:
-	class CBackground* m_roadBG;
+	class CBG_Road* m_roadBG;
 	Rect door1;
 	Rect door2;
 
@@ -32,10 +34,12 @@ public:
 	bool isDoorClick;
 	int m_movedDistance;
 	int m_roadNum;
+	int m_previousRoadMap;
 	int imageCount;
 	int torchLight;
 
-	class CRoadObject* m_roadObj;
+
+	vector<class CObjOnRoad*> m_roadObjs;
 
 	//앞으로 이동할때 최대 간격
 	int m_WF_btwHeroes = 150;
@@ -46,37 +50,28 @@ public:
 	void setRoadNum();
 	void setRoadKind();
 
-	void setTorchUI();
-	void TorchLightBarDecrease();
-
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
 
+//==================================
+//맵시스템
+public:
+	class CMapSystem* m_pMapSystem;
 
 //==================================
+
 //배틀시스템
 public:
 	int curBattleTurnCount;
 	BATTLETURN curBattleTurn;
 	vector<class CEnemy*> enemyGroup;
-
+	class CBattleSystem* m_pBattleSystem;
 
 //==================================
 //UI
 public:
-	vector<ImageData> vUI;
-	Rect rc_map;
-	Rect rc_inven;
-	bool showMap;
-	int m_sceneSize;
-
-	void SetUIIMG();
-	void ShowMapOrInven(HDC _hdc);
-	void SetSceneSize();
-
-	void TestButton();
-	int m_buttonTest;
-
+	dungeonUI* m_dungeonUI;
+	dungeonUI_HeroInfo* m_dungeonUIinfo;
 
 //==================================
 public:
@@ -84,9 +79,7 @@ public:
 	virtual~DungeonScene();
 
 public:
-	void CreateDungeon();
-	void CreateMapPart(int i, int j, int count, Vector2Int lastDir);
-	Vector2Int GetDirFromInt(int dir);
+	void CreateDungeonMap();
 
 	void CreateParty();
 
@@ -94,15 +87,17 @@ public:
 	void CreateRoad();
 	void CreateDoor();
 
+	void CreateBattleSystem();
+
 public:
 	virtual HRESULT Init();
+	void CreateDungeonUI();
 	virtual HRESULT Init(bool managerInit);
 	virtual void Release();
 	virtual void Update();
 	virtual void Render(HDC _hdc);
 
-	void DungeonScene::bindFunction(function<void()>& dest)
-	{
-		dest = bind(&DungeonScene::TestButton, this);
-	}
+	void ActivateRoom();
+	void ActivateRoad();
+	void SetRoadObject(int i);
 };

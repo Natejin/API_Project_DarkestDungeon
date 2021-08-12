@@ -13,6 +13,7 @@ CBuilding::~CBuilding()
 
 HRESULT CBuilding::Init()
 {
+	m_transform->m_pivot = Vector2(0.5,0.5);
 	return S_OK;
 }
 
@@ -28,7 +29,7 @@ void CBuilding::Render(HDC _hdc)
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		RectangleMake(_hdc, m_rect);
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
 	}
 
 #endif // _DEBUG
@@ -38,3 +39,4 @@ void CBuilding::FrontRender(HDC _hdc)
 {
 
 }
+

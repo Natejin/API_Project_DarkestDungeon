@@ -22,9 +22,9 @@ private:
 	//walkFont 
 	int WF_btwHeroes = 150;
 	//wlakBack
-	int WB_btwHeroes = 100;
+	int WB_btwHeroes = 125;
 
-	int limit = 0;
+	int limit;
 
 	DUNGEONSTATE nowScene;
 
@@ -50,13 +50,14 @@ public:
 	void SetHero(CHero* member);
 	void SetCamera();
 	int GetPartySize() { return m_member.size(); }
+	vector<CHero*> GetParty() { return m_member; }
 	CHero* GetHero(int index);
 
 	void FormationMove();
 
 	//아이템의 갯수 get/set
 	void setTorch(int torch);
-	int getTorch() { return m_Item_bandage; }
+	int getTorch() { return m_Item_Torch; }
 	void setFood(int food);
 	int getFood() { return m_Item_food; }
 	void setBandage(int bandage);
@@ -71,4 +72,6 @@ public:
 	void showMemberInfo(HDC _hdc);
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
+
+	
 };

@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CGameManager.h"
 #include "CHero.h"
+#include "CParty.h"
 #include "CVestal.h"
 
 CGameManager::CGameManager() {}
@@ -8,10 +9,13 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
-	RegisterHero(CreateVestal("member1"));
-	RegisterHero(CreateVestal("member2"));
-	RegisterHero(CreateVestal("member3"));
-	RegisterHero(CreateVestal("member4"));
+	RegisterHero(CreateHero("member1", JOB::Crusader));
+	RegisterHero(CreateHero("member2", JOB::Vestal));
+	RegisterHero(CreateHero("member3", JOB::Crusader));
+	RegisterHero(CreateHero("member4", JOB::Vestal));
+	//RegisterHero(CreateHero("member5", JOB::Highwayman));
+	//RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
+
 	return S_OK;
 }
 
@@ -29,6 +33,7 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
+
 }
 
 void CGameManager::FrontRender(HDC _hdc)
@@ -75,27 +80,57 @@ CHero* CGameManager::GetHero(int index)
 	return index < m_partyOrigin.size() ? m_partyOrigin[index] : nullptr;
 }
 
-Vestal* CGameManager::CreateVestal(string name)
+void CGameManager::setParty()
 {
-	//member1 = new CHero();
-	//int resist[5] = { 30, 30, 30, 30, 30 };
-	//member1->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
-	//member1->m_transform->m_pos = Vector2(210, 360);
-	//MG_GMOBJ->RegisterObj(name, member1);
-	//m_member.push_back(member1);
+	m_party = new CParty;
+	m_party->Init(1, 1, 1);
+}
 
-	//================================================
+CParty* CGameManager::GetParty()
+{
+	return m_party;
+}
 
-	Vestal* vestal = new Vestal();
+
+
+
+CHero* CGameManager::CreateHero(string name, JOB job)
+{
+	CHero* vestal = new CHero();
 
 	int resist[5] = { 30, 30, 30, 30, 30 };
 	//stun, blight, bleed, debuff, move
 
-	vestal->Init(JOB::Vestal, IMAGE::Vestal_Idle, resist, 24, 4, 1, 6, 0, 1, 0, 0);
-	//pos´Â ÀÓÀÇ·Î 1¿¡ ¹èÄ¡, °ø°Ý·ÂÀº 4-9ÀÇ Áß°£°ªÀ¸·Î.
+	switch (job)
+	{
+	case JOB::Crusader:
+		resist[0] = 40;
+		resist[4] = 40;
+		vestal->Init(JOB::Crusader, resist, 33, 1, 1, 9, 0, 3, 0, 5);
+		vestal->AddAnimator(IMAGE::Crusader_Idle);
+		vestal->m_animator->SetAnimeSpeed(5);
+		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
+		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
+		break;
+	case JOB::Vestal:
+		vestal->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		vestal->AddAnimator(IMAGE::Vestal_Idle);
+		vestal->m_animator->SetAnimeSpeed(5);
+		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
+		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
+		break;
+	case JOB::PlagueDoctor:
+		break;
+	case JOB::Highwayman:
+		break;
+	default:
+		break;
+	}
+
+	//posï¿½ï¿½ ï¿½ï¿½ï¿½Ç·ï¿½ 1ï¿½ï¿½ ï¿½ï¿½Ä¡, ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ 4-9ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
 	//member1->m_transform->m_pos = Vector2(210, 360);
-	//½ÇÁúÀûÀ¸·Î ÁÂÇ¥»ó Á¸ÀçÇÏ´Â À§Ä¡
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Ä¡
 
 	return vestal;
 }

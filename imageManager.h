@@ -47,6 +47,7 @@ public:
 	void render(string strKey, HDC hdc);
 	void render(string strKey, HDC hdc, const int destX, const int destY);
 	void render(string strKey, HDC hdc, const int destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourHeight);
+	
 
 	//프레임
 	void frameRender(string strKey, HDC hdc, const int destX, const int destY);
@@ -55,6 +56,8 @@ public:
 	//루프
 	void loopRender(string strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY);
 	void loopAlphaRender(string strKey, HDC hdc, const LPRECT drawArea, int offSetX, int offSetY, BYTE alpha);
+
+	//맵
 
 
 	//==================================

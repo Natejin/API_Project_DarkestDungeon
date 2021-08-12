@@ -1,8 +1,14 @@
 #pragma once
 
 struct DungeonData {
+public:
 	DUNGEONMAPSTATE dungeonMapState = DUNGEONMAPSTATE::NONE;
 	bool dirMap[4] = { false };
-	int posX = 0;
-	int posY = 0;
+	Vector2Int pos;
+	Vector2 posFromCenter;
+	RoadObjType m_roadObjType;
+
+	bool isRoom = false;
+	bool isSearched = false;
+	bool isHorizontal = false;
 };

@@ -7,12 +7,19 @@ CObjectManager::~CObjectManager() {}
 
 HRESULT CObjectManager::Init()
 {
+	//renderOrder.push_back(LAYER::MinimapBackground);
+	renderOrder.push_back(LAYER::MinimapBackground);
+	renderOrder.push_back(LAYER::UIMinimapRoad);
+	renderOrder.push_back(LAYER::UIMinimapRoom);
+	renderOrder.push_back(LAYER::UIMinimapTouch);
 	renderOrder.push_back(LAYER::BackGround);
+
 	renderOrder.push_back(LAYER::Building);
 	renderOrder.push_back(LAYER::Enemy);
 	renderOrder.push_back(LAYER::Player);
 	renderOrder.push_back(LAYER::UI);
 	renderOrder.push_back(LAYER::UIButton);
+	renderOrder.push_back(LAYER::DummySlot);
 
 	for (size_t i = 0; i < renderOrder.size(); i++)
 	{
@@ -74,6 +81,7 @@ void CObjectManager::LateUpdate()
 	{
 		objectVec.push_back(g);
 	}
+	objsToRegister.clear();
 }
 
 void CObjectManager::BackRender(HDC _hdc)
@@ -131,7 +139,7 @@ void CObjectManager::RegisterObj(string name, GameObject* gameObj)
 {
 	gameObj->SetId(_instance_id++);
 	gameObj->SetName(name);
-	objectVec.push_back(gameObj);
+	objsToRegister.push_back(gameObj);
 	objectRender[gameObj->m_layer].push_back(gameObj);
 }
 

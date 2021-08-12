@@ -4,12 +4,18 @@
 class CButton : public GameObject
 {
 protected:
-	function<void()> m_triggerWhenClick;
+	//bool canTriggerClick; //ÀÇµµ
+	//int countNum;
+	//function<void()> m_triggerWhenOnceUp;
+	//function<void()> m_triggerWhenOnceDown;
+	//Rect m_rect;
+
+	bool canTriggerUp;
+	bool canTriggerDown;
+	function<void()> m_triggerWhenUp;
+	function<void()> m_triggerWhenDown;
 	int countNum;
-
 public:
-	Rect m_rect;
-
 	CButton();
 	~CButton();
 
@@ -24,12 +30,18 @@ public:
 
 	//===================================
 
-	void SetButtonSize(float width, float height);
+	template <typename T>
+	void SetTriggerWhenDown(T* pObj, void(T::* func)())
+	{
+		canTriggerUp = true;
+		m_triggerWhenUp = bind(func, pObj);
+	}
 
 	template <typename T>
-	void SetTriggerWhenClick(T* pObj, void(T::* func)())
+	void SetTriggerWhenUp(T* pObj, void(T::* func)())
 	{
-		m_triggerWhenClick = bind(func, pObj);
+		canTriggerDown = true;
+		m_triggerWhenDown = bind(func, pObj);
 	}
 
 };

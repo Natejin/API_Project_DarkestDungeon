@@ -13,12 +13,8 @@ struct ImageData
 		m_img->render(hdc, &m_trans);
 	}
 
-	bool Collision(float x)
+	void RenderUI(HDC hdc)
 	{
-		if (m_trans.m_pos.x < x && x < m_trans.m_pos.x + m_img->getFrameWidth())
-		{
-			return true;
-		}
-		else return false;
+		m_img->renderUI(hdc, &m_trans);
 	}
 };

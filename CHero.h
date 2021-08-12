@@ -7,9 +7,7 @@ class CHero : public Unit
 {
 public:
 	JOB job;
-
-	//unit: HP, SPD, POS, SKILL, resist, attribute
-	//hero만 갖는 값들
+	int ownIndex;
 	int m_DMG; //skill에서 값 넣어주기
 	int m_ACRY; //명중률
 	int m_CRI;
@@ -24,11 +22,25 @@ public:
 	int m_DIST; //이동한 거리
 	int m_DIST_retreat; //후퇴한 거리
 
+	int limit;
+
+	bool isSelected;
+	bool isBattle;
+
+	//always
+	ImageData HPbar_front;
+	ImageData HPbar_back;
+	vector<ImageData> STRSbar;
+	ImageData selectedMem; 
+
+	ImageData targeted_h_Mem; //appear when some member using healSkill
+
+
 public:
 	CHero();
 	~CHero();
 
-	HRESULT Init(JOB job, IMAGE img, int resist[],
+	HRESULT Init(JOB job,  int resist[],
 		int HP, int SPD, int POS, int DMG,
 		int ACRY, int CRI, int DEF, int DODGE);
 
@@ -49,12 +61,29 @@ public:
 	int getMoveDis_reteat()const { return m_DIST_retreat; }
 
 	int getStress()const { return m_STRS; }
-	void setStress(int strs) { m_STRS += strs; }
-
-	//int getPos()const { return m_POS; }
-	//void setPos(int pos) { m_POS = pos; }
+	void setStress(int strs) { m_STRS = strs; }
+	void addStress(int strs) { m_STRS += strs; }
 
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);
 
+	void setMemberOverlay();
+	void showSelMember(HDC _hdc);
+	void showHpStrsBar(HDC _hdc);
+
+	void useSkill1();
+	void useSkill2();
+	void useSkill3();
+	void useSkill4();
+	void useMoveSkill();
+	void usePassTrun();
+
+	void setHpBar();
+	void setSTRSbar();
+	void setSelectedMem();
+	void setTargetedMem();
+
+	//얘를 CVestal에서 오버라이드??하라는 말씀이신가요
+	//아아
+	//네네 bind& func
 };

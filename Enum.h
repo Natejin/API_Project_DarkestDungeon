@@ -2,17 +2,39 @@
 
 enum class LAYER
 {
-	Unknown = -1,
-	BackGround = 0,
-	Building = 2,
-	Player = 4,
-	Enemy = 8,
-	AllinceProjectile = 16,
-	EnemyProjectile = 32,
-	EffectFrontword = 64,
-	Item = 128,
-	UI = 256,
-	UIButton = 512
+	Unknown = -2,
+
+	MinimapBackground,
+	UIMinimapRoom,
+	UIMinimapRoad,
+	UIMinimapTouch,
+	BackGround,
+	Building,
+	Player,
+	Enemy,
+	AllinceProjectile,
+	EnemyProjectile,
+	EffectFrontword,
+	Item,
+	UI,
+	UIButton,
+	DummySlot
+};
+
+enum class ITEM
+{
+	ITEM_EMPTY,
+		ITEM_CONSUMABLE,
+		ITEM_TREASURE,
+		ITEM_MONEY,
+		ITEM_TRINKET_DROP,
+		ITEM_TRINKET_EQUIP,
+
+		Torch,
+		Food,
+		Bandage
+
+
 };
 
 enum class JOB
@@ -32,7 +54,7 @@ enum class DIR {
 };
 
 enum class IMAGE
-{	
+{
 	//Hero
 	Vestal_Idle,
 	Vestal_Walk,
@@ -56,15 +78,15 @@ enum class IMAGE
 	ruins_wall4,
 	ruins_wall5,
 
-	ruins_room1,
-	ruins_room2,
-	ruins_room3,
-	ruins_room4,
-	ruins_room5,
-	ruins_room6,
-	ruins_room7,
-	ruins_room8,
-	ruins_room9,
+	Ruins_room1,
+	Ruins_room2,
+	Ruins_room3,
+	Ruins_room4,
+	Ruins_room5,
+	Ruins_room6,
+	Ruins_room7,
+	Ruins_room8,
+	Ruins_room9,
 
 	abbey_bg,
 	abbey_char,
@@ -96,6 +118,18 @@ enum class IMAGE
 	tavern_bg,
 	tavern_char,
 
+	estate_activity_log,
+	estate_nameplate,
+	hero_slot_bg,
+	downarrow,
+	uparrow,
+	sort_rarity,
+	unequip_trinkets,
+	sort_stress,
+	roster_topframe,
+	roster_downframe,
+	rosterelement_res,
+	roster_bggrad,
 
 	ruins_endhall,
 	ruins_mid,
@@ -107,10 +141,70 @@ enum class IMAGE
 	crusader,
 	highwayman,
 	plague_doctor,
-	vestal
+	vestal,
+
+	//Minimap Button
+	hall_clear,
+	hall_dark,
+	hall_dim,
+	hall_door,
+	indicator,
+	LockedRoom,
+	LockedRoom_Blue,
+	LockedRoom_Green,
+	LockedRoom_Red,
+	LockedRoom_Yellow,
+	marker_battle,
+	marker_curio,
+	marker_hunger,
+	marker_obstacle,
+	marker_room_visited,
+	marker_secret,
+	marker_trap,
+	moving_room,
+	PrisonerRoom,
+	room_battle,
+	room_boss,
+	room_curio,
+	room_empty,
+	room_entrance,
+	room_treasure,
+	room_unknown,
+	//Hero_roster
+	crusader_roster,
+	highwayman_roster,
+	plague_doctor_roster,
+	vestal_roster,
+
+	check,
+
+	//panel
+	banner,
+	controller,
+	hero,
+	inventory,
+	map,
+	map1,
+	map2,
+	monster,
+	scouting,
+
+	treasure,
+	trap,
+	enemy,
+	nothing,
+
+
+		//Item
+		torch,
+		food1,
+		food2,
+		food3,
+		food4,
+		bandage,
 };
 
-enum class RACE 
+enum class RACE
 {
 	Human,
 	Undying,
@@ -133,10 +227,10 @@ enum class Combat_Skill
 };
 
 enum class Camping_Skill
-{	
-	//¾ß½À¹æÁö
+{
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Night_Attack_Prevention,
-	//Á¤Âû °­È­
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­
 	Reconnaissance,
 	Stress_Down,
 	Cure_disease,
@@ -145,13 +239,13 @@ enum class Camping_Skill
 };
 
 enum class BATTLETURN
-{	
-	//¾ß½À¹æÁö
+{
+	//ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½
 	EnemyTurn,
 	PlayerTurn
 };
 
-enum class DUNGEONSTATE 
+enum class DUNGEONSTATE
 {
 	NONE,
 	ROOM,
@@ -165,7 +259,7 @@ enum class DUNGEONMODE
 	WALK
 };
 
-enum class COLLIDERTYPE 
+enum class COLLIDERTYPE
 {
 	BOX,
 	CIRCLE,
@@ -183,7 +277,7 @@ enum class ANIMATIONTYPE
 
 
 
-enum class DUNGEONMAPSTATE 
+enum class DUNGEONMAPSTATE
 {
 	NONE,
 	Road_Empty,
@@ -207,6 +301,14 @@ enum class SCENETYPE
 enum class UNITTYPE {
 	NONE,
 	Hero,
+	Enemy
+
+};
+
+enum class RoadObjType {
+	Empty,
+	Trap,
+	Tresure,
 	Enemy
 
 };

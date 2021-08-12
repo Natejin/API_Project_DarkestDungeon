@@ -5,16 +5,10 @@
 class GameObject : public Object
 {
 public:
-	//Vector2 m_pos;
-	//Vector2 m_scale;
-	//Vector2 m_pivot;
 	class CTransform* m_transform;
 	class CCollider* m_collider;
 	class CAnimator* m_animator;
 	class CSpriteRenderer* m_spriteRenderer;
-
-	//class Image* m_image;
-
 
 	LAYER m_layer;
 	bool isActive;
@@ -33,19 +27,25 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-	
+
 
 	void AddColliderBox(Vector2 pos,
 		float l,
 		float t,
 		float r,
 		float b);
+	void AddColliderBox(float width, float height);
+	void AddColliderBox();
+
+
 
 	void AddAnimator(string imageName);
 	void AddAnimator(IMAGE imageName);
 
-	void AddSpriteRenderer(IMAGE imageName);
-	void AddSpriteRenderer(string imageName);
+	virtual void AddSpriteRenderer();
+	virtual void AddSpriteRenderer(IMAGE imageName);
+	virtual void AddSpriteRenderer(string imageName);
 
+	virtual void Enable();
+	virtual void Unable();
 };
-

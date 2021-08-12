@@ -1,6 +1,7 @@
 #pragma once
 #include"singleton.h"
 #include<bitset>
+#include "Vector2.h"
 using namespace std;
 #define KEYMAX 256
 
@@ -9,8 +10,27 @@ class CInputManager : public Singleton<CInputManager>
 private:
 	bitset<KEYMAX> _keyUp;
 	bitset<KEYMAX> _keyDown;
+	bitset<KEYMAX> _keyClick;
+
 	bitset<KEYMAX> _keyDownFrame;
 	bitset<KEYMAX> _keyUpFrame;
+
+	float clickCoolTime;
+	float clickCurTime;
+
+	int curClickKeyCode;
+
+	//vector<tKeyState>	m_vecKey;
+
+	bool isDownLMB;
+	bool wasDownLMB;
+
+
+	bool isDownRMB;
+
+	Vector2 m_OldptMouse;
+	Vector2 m_Mouse;
+	Vector2 m_ptDeltaMouse;
 
 public:
 	CInputManager();
@@ -20,12 +40,29 @@ public:
 
 	void release();
 
-	//ÇÑ¹ø¸¸ ´­·¶³Ä
+
+	void Update(float deltaTime, float worldTime);
+	
+	//ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool isOnceKeyDown(int key);
-	//´­·¶´Ù°¡ ¶Â³Ä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½Â³ï¿½
 	bool isOnceKeyUp(int key);
-	//´©¸£°í ÀÖ³Ä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö³ï¿½
 	bool isStayKeyDown(int key);
-	//Åä±ÛÅ°³Ä
+	//ï¿½ï¿½ï¿½Å°ï¿½ï¿½
 	bool isToggleKey(int key);
+
+	//ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	bool isOnceKeyClick(int key);
+
+
+	bool IsDownLMB() { return isDownLMB && !wasDownLMB; }
+	bool IsStayLMB() { return isDownLMB && wasDownLMB; }
+	bool IsUpLMB() { return !isDownLMB && wasDownLMB; }
+	bool WasDownLMB() { return wasDownLMB; }
+
+
+
+	Vector2 GetptDeltaMouse() { return m_ptDeltaMouse; }
+	Vector2 GetptMouse() { return m_Mouse; }
 };

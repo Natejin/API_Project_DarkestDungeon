@@ -3,54 +3,33 @@
 class TownScene : public Scene
 {
 protected:
-	class Abbey* m_abbey;
-	class BlackSmith* m_blacksmith ;
-	class CampingTrainer* m_campingTrainer;
-	class GraveYard* m_graveyard;
-	class Guild* m_guild;
-	class Sanitarium* m_sanitarium ;
-	class StageCoach* m_stage_coach ;
-	class Statue* m_statue ;
-	class NomadWagon* m_nomad_wagon;
-	class Tavern* m_tavern;
+	class CUIPanel_Abbey* m_abbey;
+	class CUIPanel_BlackSmith* m_blacksmith ;
+	class CUIPanel_CampingTrainer* m_campingTrainer;
+	class CUIPanel_GraveYard* m_graveyard;
+	class CUIPanel_Guild* m_guild;
+	class CUIPanel_Sanitarium* m_sanitarium ;
+	class CUIPanel_StageCoach* m_stage_coach ;
+	class CUIPanel_Statue* m_statue ;
+	class CUIPanel_NomadWagon* m_nomad_wagon;
+	class CUIPanel_Tavern* m_tavern;
+	vector<class CHeroList_button*> m_dragButtonVec;
+	
+	
+	vector<class CBuilding*> buildingVec;
+	
+public:
+	//class CHeroList_button* m_dragButton;
+	int curDragHeroIndex;
+	bool isDrag; // 드래그중이냐.
+	bool isHold; // 들고있냐.
 
 public:
-	class CEst_UI* m_estui;
+	void SetEst_ui(); //건물셋팅
+	void SetEst_Img();//버튼.
 
 public:
-	//껏켯을 할수있게하는 버튼 bool값
-	bool abbey_b;
-	bool blacksmith_b;
-	bool campingTrainer_b;
-	bool graveyard_b;
-	bool guild_b;
-	bool nomad_wagon_b;
-	bool stage_coach_b;
-	bool town_statue_b;
-	bool sanitarium_b;
-	bool tavern_b;
-//================================
-	//건물ui이미지 띄우는bool값
-	bool abbey_ui;
-	bool blacksmith_ui;
-	bool campingTrainer_ui;
-	bool graveyard_ui;
-	bool guild_ui;
-	bool nomad_wagon_ui;
-	bool stage_coach_ui;
-	bool town_statue_ui;
-	bool sanitarium_ui;
-	bool tavern_ui;
-
-public:
-	//버튼.
-	void SetIMG_Est();
-	//나가기버튼
-	void Set_quick();
-
-
-public:
-	//버튼의 역활을 하는 bool값을 바꾸는 함수.
+	void SetDeactiveWhenClick(GameObject* object);
 	void Show_abeey();//수도원
 	void Show_blacksmith(); //대장간
 	void Show_campingTrainer(); //생존기술 배우는곳
@@ -61,10 +40,15 @@ public:
 	void Show_town_statue(); //영지상황 보여주는 시설.
 	void Show_sanitarium(); //요양원
 	void Show_tavern(); //여관
-	
+
+public:
+	void Show_Activity_log();
+	void SetHerolist();
+	void Mouse();
+
 public:
 	TownScene();
-	virtual~TownScene();
+	~TownScene();
 
 public:
 	virtual HRESULT Init();
@@ -74,4 +58,7 @@ public:
 	virtual void Render();
 	virtual void Render(HDC _hdc);
 
+
+	void DeactivateBuildings();
+	void ActivateBuildings();
 };

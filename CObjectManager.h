@@ -6,6 +6,8 @@ class CObjectManager : public Singleton<CObjectManager>
 private:
 	//map<int,class GameObject*> objectMap;
 	vector<class GameObject*> objectVec;
+	map<LAYER, vector<class GameObject*>> objectUpdate;
+
 	vector<class GameObject*> objsToRegister;
 	vector<int> objsToErase;
 

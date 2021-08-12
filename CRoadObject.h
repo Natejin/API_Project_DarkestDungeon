@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "CBackground.h"
+#include "CButton_move.h"
 
 #define ROADSIZEX 4320 
 
@@ -9,12 +10,17 @@ class CHero;
 class CRoadObject : public GameObject
 {
 private:
-	vector<ImageData> m_roadObj;
-	vector<CTransform> m_SettingArea;
-	
+	vector <ImageData> m_roadObj;
+	vector <CTransform> m_SettingArea;
 	bool isTreasureOpen;
+	bool isTrapClear;
 
-	CParty* party;
+	CButton_move* bt_treasure;
+	CButton_move* bt_trap;
+	CButton_move* bt_battle;
+
+	CCollider* testCollider;
+	bool isCollision;
 
 public:
 	CRoadObject();
@@ -34,17 +40,17 @@ public:
 
 	//==================================
 	
-	void setRoadObjIMG();
+	void setButton();
+
 	void getMapInfo(int a1, int a2, int a3); //get what should be in this area
+	void setRoadObjIMG();
 	void setRoadObj(); //set Obj according to MapInfo
 
-	void reach_InteractionArea(CParty* _party);
+	void Interaction_collision();
 	void Interaction_treassure();
 	void Interaction_trap();
-	void Interaction_battle(); //not sure
-
-	void showDividedArea(HDC _hdc);
-
-	CParty* afterObjTouch() { return party; }
+	void Interaction_trap_fail();
+	void Interaction_trap_success();
+	void Interaction_battle(); //change the scene
 
 };

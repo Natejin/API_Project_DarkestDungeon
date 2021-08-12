@@ -23,6 +23,8 @@ HRESULT CParty::Init(int food, int bandage, int torch)
 
 	m_brightness = 100;
 
+	limit = 0;
+
 	//torch와 brightness는 다름
 	return S_OK;
 }
@@ -78,6 +80,8 @@ void CParty::FrontRender(HDC _hdc)
 	showMemberInfo(_hdc);
 	showItem(_hdc);
 	showDis(_hdc);
+
+
 }
 
 void CParty::Release()
@@ -115,7 +119,6 @@ void CParty::SetParty(vector<CHero*> party)
 	for (size_t i = 0; i < m_member.size(); i++)
 	{
 		m_member[i]->isActive = true;
-		//MG_GMOBJ->RegisterObj(m_member[i]->GetName(), m_member[i]);
 	}
 }
 
@@ -123,6 +126,8 @@ CHero* CParty::GetHero(int index)
 {
 	return index < m_member.size() ? m_member[index] : nullptr;
 }
+
+#pragma region Annotating
 //
 //void CParty::createParty()
 //{
@@ -255,6 +260,7 @@ CHero* CParty::GetHero(int index)
 //	MG_GMOBJ->RegisterObj(name, hero);
 //	m_member.push_back(hero);
 //}
+#pragma endregion
 
 void CParty::FormationMove()
 {
@@ -263,30 +269,38 @@ void CParty::FormationMove()
 	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
 	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
 
-
-
-
 	m_member[0]->Move();
+	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
+	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
 	for (size_t i = 0; i < 3; i++)
 	{
-		if (MG_INPUT->isStayKeyDown(VK_LEFT))
+		
+		if (vk_Right | vk_Left)
 		{
-			if (WB_btwHeroes > substraction[i])
+			if (vk_Left)
 			{
-				m_member[i + 1]->Move();
-				continue;
+				if (WB_btwHeroes > substraction[i])
+				{
+					m_member[i + 1]->Move();
+					continue;
+				}
+			}
+
+			if (vk_Right)
+			{
+				if (substraction[i] > WF_btwHeroes)
+				{
+					m_member[i + 1]->Move();
+				}
 			}
 		}
-		if (MG_INPUT->isStayKeyDown(VK_RIGHT))
-		{
-			if (substraction[i] > WF_btwHeroes)
-			{
-				m_member[i + 1]->Move();
-			}
+		else {
+			m_member[i + 1]->Move();
 		}
+	
+
 	}
 }
-
 
 void CParty::setTorch(int torch)
 {
@@ -311,21 +325,12 @@ void CParty::setBrightness(int brightness)
 
 void CParty::decreaseBright_movement()
 {
-	//앞뒤 속도차이로 인해 가끔씩 distance이동 적용이 잘 되지 않음
-	
-	if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 100 == 0)
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT) || MG_INPUT->isStayKeyDown(VK_LEFT))
 	{
-		limit += 1;
-	}
-
-	if (limit % 2 == 0)
-	{
-		if (MG_INPUT->isStayKeyDown(VK_RIGHT) || MG_INPUT->isStayKeyDown(VK_LEFT))
+		if (m_member[0]->getMoveDis() > limit && m_member[0]->getMoveDis() > 200)
 		{
-			if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 100 == 0)
-			{
-				setBrightness(getBrightness() - 1);
-			}
+			limit += 200;
+			setBrightness(getBrightness() - 1);
 		}
 	}
 }
@@ -335,22 +340,20 @@ void CParty::getStress_movement()
 	//TODO 추후 횃불의 밝기에 따라 빈도수를 조정하도록 수정
 	if (MG_INPUT->isStayKeyDown(VK_RIGHT))
 	{
-		if (!(m_member[0]->getMoveDis()) == 0 && m_member[0]->getMoveDis() % 300 == 0 )
+		if (m_member[0]->getMoveDis() % 300 == 0 )
 		{
 			//10분의 1확률로 스트레스를 받음
 			if (MG_RND->getInt(9) == 0)
 			{
-				m_member[MG_RND->getInt(3)]->setStress(3);
+				m_member[MG_RND->getInt(3)]->addStress(3);
 			}
 		}
 	}
-
 }
 
 void CParty::showMemberInfo(HDC _hdc)
 {
 	//나중에 스테이더스를 확인하는 용도로 사용할 것
-
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
@@ -367,7 +370,7 @@ void CParty::showMemberInfo(HDC _hdc)
 
 	for (int i = 0; i < m_member.size(); i++)
 	{
-		sprintf_s(str, "POS: %d", m_member[i]->GetPosition());
+		sprintf_s(str, "selectedHero: %d", m_member[i]->isSelected);
 		TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
 	}
 }

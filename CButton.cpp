@@ -6,6 +6,8 @@ CButton::CButton()
 {
 	m_layer = LAYER::UIButton;
 	countNum = 0;
+	canTriggerDown = false;
+	canTriggerUp = false;
 }
 
 CButton::~CButton()
@@ -19,11 +21,34 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 	{
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+		if (MG_INPUT->IsDownLMB())
 		{
-			m_triggerWhenClick();
+			if (canTriggerDown)
+			{
+				m_triggerWhenDown();
+			}
+	
+		}
+	}
+
+	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->IsUpLMB())
+		{
+			if (canTriggerUp)
+			{
+				m_triggerWhenUp();
+			}
+			
+		}
+		if (MG_INPUT->IsUpLMB())
+		{
+			if (canTriggerUp)
+			{
+				m_triggerWhenUp();
+			}
 		}
 	}
 }
@@ -46,12 +71,12 @@ void CButton::Render(HDC _hdc)
 void CButton::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
-}
 
-void CButton::SetButtonSize(float width, float height)
-{
-	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
-	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
-	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
-	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
+#ifdef _DEBUG
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+	}
+
+#endif // _DEBUG
 }

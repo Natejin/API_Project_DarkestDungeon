@@ -20,6 +20,7 @@
 #include <string>
 #include <functional>
 #include <conio.h>
+#include <math.h>
 
 //==========================================
 //					STL
@@ -49,6 +50,7 @@
 #include "CCameraManager.h"
 #include "CObjectManager.h"
 #include "CGameManager.h"
+#include "ItemDataBase.h"
 #include "utils.h"
 #include "txtData.h"
 
@@ -68,10 +70,6 @@
 
 
 #include "Enum.h"
-#include "Enum_MJ.h"
-#include "Enum_WT.h"
-#include "ImageAdder_MJ.h"
-#include "ImageAdder_WT.h"
 
 
 //======================================
@@ -89,7 +87,7 @@
 #define MG_GMOBJ		CObjectManager::getSingleton()
 #define MG_CAMERA		CCameraManager::getSingleton()
 #define MG_GAME			CGameManager::getSingleton()
-
+#define DB_ITEM			CItemDB::getSingleton()
 
 //==========================================
 //				 매크로 설정
@@ -101,6 +99,7 @@
 #define WINSIZEY		1080
 #define WORLDSIZEX		4320
 #define WORLDSIZEY		720
+#define ROOMSIZE		720
 #define MAPSIZE			25
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU
 
