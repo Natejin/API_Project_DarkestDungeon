@@ -23,15 +23,15 @@ void dungeonUI::Update(float deltaTime, float worldTime)
 	TorchLightBarDecrease();
 
 	//for test
-	if (MG_INPUT->isOnceKeyDown('A'))
+	if (MG_INPUT->isOnceKeyDown('Z'))
 	{
 		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + 1);
 	}
-	if (MG_INPUT->isOnceKeyDown('S'))
+	if (MG_INPUT->isOnceKeyDown('X'))
 	{
 		MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + 1);
 	}
-	if (MG_INPUT->isOnceKeyDown('D'))
+	if (MG_INPUT->isOnceKeyDown('C'))
 	{
 		MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + 1);
 	}

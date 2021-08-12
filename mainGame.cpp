@@ -41,6 +41,7 @@ void mainGame::update()
 
 	MG_SCENE->update();
 	MG_INPUT->Update(deltaTime, worldTime);
+
 	MG_GMOBJ->Update(deltaTime, worldTime);
 	MG_GMOBJ->LateUpdate();
 
