@@ -107,14 +107,14 @@ void dungeonUI::SetButton()
 	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
 	bt_inven->SetButtonSize(50, 65);
 	bt_inven->AddSpriteRenderer("button");
-	bt_inven->SetTriggerWhenOnceDown(this, &dungeonUI::ShowInven);
+	bt_inven->SetTriggerWhenDown(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
 	bt_map = new CButton();
 	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
 	bt_map->SetButtonSize(50, 65);
 	bt_map->AddSpriteRenderer("button");
-	bt_map->SetTriggerWhenOnceDown(this, &dungeonUI::ShowMap);
+	bt_map->SetTriggerWhenDown(this, &dungeonUI::ShowMap);
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
 
@@ -148,7 +148,7 @@ void dungeonUI::SetInven()
 
 void dungeonUI::SetSkillButton()
 {
-	//battle»óÅÂ¿¡¼­¸¸ skill¹öÆ°ÀÌ È°¼ºÈ­ µÇµµ·Ï
+	//battleï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ skillï¿½ï¿½Æ°ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½Çµï¿½ï¿½ï¿½
 	
 
 
@@ -179,6 +179,7 @@ void dungeonUI::ShowInven()
 
 void dungeonUI::ShowMap()
 {
+
 	showMap = true;
 	m_pMapSystem->MapButtonOnOff(true);
 

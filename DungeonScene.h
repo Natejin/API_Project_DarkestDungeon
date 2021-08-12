@@ -34,10 +34,12 @@ public:
 	bool isDoorClick;
 	int m_movedDistance;
 	int m_roadNum;
+	int m_previousRoadMap;
 	int imageCount;
 	int torchLight;
 
-	class CRoadObject* m_roadObj;
+
+	vector<class CObjOnRoad*> m_roadObjs;
 
 	//앞으로 이동할때 최대 간격
 	int m_WF_btwHeroes = 150;
@@ -97,4 +99,5 @@ public:
 
 	void ActivateRoom();
 	void ActivateRoad();
+	void SetRoadObject(int i);
 };

@@ -89,6 +89,13 @@ void GameObject::AddAnimator(IMAGE imageName)
 	m_animator->AddImageFrame(imageName);
 }
 
+void GameObject::AddSpriteRenderer()
+{
+	m_spriteRenderer = new CSpriteRenderer();
+	m_spriteRenderer->SetTrans(m_transform);
+}
+
+
 void GameObject::AddSpriteRenderer(IMAGE imageName)
 {
 	m_spriteRenderer = new CSpriteRenderer();

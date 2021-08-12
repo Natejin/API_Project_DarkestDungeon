@@ -2,6 +2,7 @@
 #include "CButton.h"
 
 class CParty;
+class CUIPanel;
 class dungeonUI : public GameObject
 {
 public:
@@ -24,9 +25,9 @@ public:
 	class CMapSystem* m_pMapSystem;
 	class CInventorySystem* m_inven;
 
-	class CUIPanel* invenPanel;
+	CUIPanel* invenPanel;
 	//class CDragButtonMinimapBG* mapPanel1;
-	class CUIPanel* mapPanel1;
+	CUIPanel* mapPanel1;
 	class CDragButtonMinimapBG* mapPanel2;
 	//class CUIPanel* mapPanel2;
 

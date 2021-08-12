@@ -13,6 +13,8 @@ HRESULT CGameManager::Init()
 	RegisterHero(CreateHero("member2", JOB::Vestal));
 	RegisterHero(CreateHero("member3", JOB::Crusader));
 	RegisterHero(CreateHero("member4", JOB::Vestal));
+	//RegisterHero(CreateHero("member5", JOB::Highwayman));
+	//RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
 
 	return S_OK;
 }
@@ -94,15 +96,6 @@ CParty* CGameManager::GetParty()
 
 CHero* CGameManager::CreateHero(string name, JOB job)
 {
-	//member1 = new CHero();
-	//int resist[5] = { 30, 30, 30, 30, 30 };
-	//member1->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
-	//member1->m_transform->m_pos = Vector2(210, 360);
-	//MG_GMOBJ->RegisterObj(name, member1);
-	//m_member.push_back(member1);
-
-	//================================================
-
 	CHero* vestal = new CHero();
 
 	int resist[5] = { 30, 30, 30, 30, 30 };
@@ -134,10 +127,10 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		break;
 	}
 
-	//pos┤┬ └╙└╟╖╬ 1┐б ╣ш─б, ░°░▌╖┬└║ 4-9└╟ ┴▀░г░к└╕╖╬.
+	//posя┐╜я┐╜ я┐╜я┐╜я┐╜╟╖я┐╜ 1я┐╜я┐╜ я┐╜я┐╜─б, я┐╜я┐╜я┐╜▌╖я┐╜я┐╜я┐╜ 4-9я┐╜я┐╜ я┐╜▀░я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜.
 
 	//member1->m_transform->m_pos = Vector2(210, 360);
-	//╜╟┴·└√└╕╖╬ ┴┬╟е╗є ┴╕└ч╟╧┤┬ └з─б
+	//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜╟ея┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜╧┤я┐╜ я┐╜я┐╜─б
 
 	return vestal;
 }

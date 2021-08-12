@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include <functional>
 
 class CButton_move : public GameObject
 {

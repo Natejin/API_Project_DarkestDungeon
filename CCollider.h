@@ -15,11 +15,13 @@ public:
 	COLLIDERTYPE m_colliderType;
 	Vector2 m_pos;
 	Rect rect;
+	Rect transRect;
 
 	CCollider(CTransform* transform);
 	~CCollider();
 
 	void SetRect(float l, float t, float r, float b);
+	void SetTransRect(float l, float t, float r, float b);
 
 	bool CheckXCollision(int x);
 

@@ -11,6 +11,7 @@
 #include "CBattleSystem.h"
 #include "CMapSystem.h"
 #include "CInventorySystem.h"
+#include "CObjOnRoad.h"
 
 DungeonScene::DungeonScene()
 {
@@ -19,7 +20,7 @@ DungeonScene::DungeonScene()
 	m_party = nullptr;
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
-	m_roadObj = nullptr;
+	
 }
 DungeonScene::~DungeonScene() {}
 
@@ -28,9 +29,12 @@ HRESULT DungeonScene::Init()
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	dungeonMode = DUNGEONMODE::WALK;
 
+
+
 	//SetUIIMG();
 	CreateBattleSystem();
 	CreateParty();
+
 	CreateDungeonMap();
 	CreateDungeonUI();
 
@@ -106,7 +110,7 @@ void DungeonScene::Render(HDC _hdc)
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 	
-		m_roadObj->Render(_hdc);
+		//m_roadObj->Render(_hdc);
 	}
 	else 
 	{
@@ -123,7 +127,8 @@ void DungeonScene::CreateDungeonMap()
 	m_pMapSystem = new CMapSystem();
 
 	m_pMapSystem->Init();
-
+	m_pMapSystem->dungeonScene = this;
+	MG_GMOBJ->RegisterObj("Party", m_pMapSystem);
 }
 
 void DungeonScene::CreateParty()
@@ -173,14 +178,21 @@ void DungeonScene::CreateRoad()
 	auto road = new CBG_Road();
 	road->Init();
 	road->isActive = false;
+
 	MG_GMOBJ->RegisterObj("RoadBG", road);
 	m_roadBG = road;
 
-	auto roadOBJ = new CRoadObject();
-	roadOBJ->Init();
-	roadOBJ->isActive = false;
-	MG_GMOBJ->RegisterObj("RoadOBJ", roadOBJ);
-	m_roadObj = roadOBJ;
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		CObjOnRoad* obj = new CObjOnRoad();
+		obj->Init();
+		obj->isActive = false;
+		obj->dungeonScene = this;
+		m_roadObjs.push_back(obj);
+		string name = "roadObj_";
+		MG_GMOBJ->RegisterObj(name, obj);
+	}
 }
 
 void DungeonScene::CreateBattleSystem()
@@ -197,11 +209,34 @@ void DungeonScene::setRoadNum()
 {
 	for (size_t i = 0; i < 6; i++)
 	{
-		if (i * 720 < m_party->GetHero(0)->m_transform->m_pos.x)
+		if (i * ROOMSIZE < m_party->GetHero(0)->m_transform->m_pos.x)
 		{
 			m_roadNum = i + 1;
 		}
 	}
+	if (m_previousRoadMap != m_roadNum)
+	{
+		if (m_previousRoadMap == 2 && m_roadNum == 3)
+		{
+			m_pMapSystem->UseKeyBoardToMoveCurPoint();
+		}
+
+		if (m_previousRoadMap == 3 && m_roadNum == 2)
+		{
+			m_pMapSystem->UseKeyBoardToReverseMoveCurPoint();
+		}
+
+		if (m_previousRoadMap == 4 && m_roadNum == 5)
+		{
+			m_pMapSystem->UseKeyBoardToMoveCurPoint();
+		}
+		if (m_previousRoadMap == 5 && m_roadNum == 4)
+		{
+			m_pMapSystem->UseKeyBoardToReverseMoveCurPoint();
+		}
+		m_previousRoadMap = m_roadNum;
+	}
+	
 }
 
 void DungeonScene::setRoadKind()
@@ -211,17 +246,6 @@ void DungeonScene::setRoadKind()
 
 
 
-void DungeonScene::ActivateRoad()
-{
-	m_roomBG->isActive = false;
-	m_roadBG->isActive = true;
-	m_roadObj->isActive = true;
-	m_dungeonState = DUNGEONSTATE::ROAD;
-	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
-
-	door1.SetRect(145, 0, 365, WINSIZEY);
-	door2.SetRect(WORLDSIZEX - 675, 0, WORLDSIZEX - 355, WINSIZEY);
-}
 
 void DungeonScene::CheckDoor()
 {
@@ -229,17 +253,64 @@ void DungeonScene::CheckDoor()
 		door2.CheckCollisionWithPoint(m_party->GetHero(0)->m_transform->m_pos))
 	{
 		isDoorClick = true;
-		if (MG_INPUT->isOnceKeyDown(VK_UP))
+		if (m_dungeonState == DUNGEONSTATE::ROAD)
 		{
-			isDoorClick = false;
-			ActivateRoom();
+			m_pMapSystem->canMoveAnotherRoom = false;
+			if (MG_INPUT->isOnceKeyDown(VK_UP))
+			{
+				if (m_dungeonState == DUNGEONSTATE::ROAD)
+				{
+					m_pMapSystem->canMoveAnotherRoom = false;
+				}
+				else {
+					m_pMapSystem->canMoveAnotherRoom = true;
+				}
+				ActivateRoom();
+			}
+		}
+		else {
+			m_pMapSystem->canMoveAnotherRoom = true;
+		
 		}
 	}
 	else
 	{
+		m_pMapSystem->canMoveAnotherRoom = false;
 		isDoorClick = false;
 	}
 }
+
+void DungeonScene::ActivateRoad()
+{
+	m_previousRoadMap = 1;
+	m_roomBG->isActive = false;
+	m_roadBG->isActive = true;
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		m_roadObjs[i]->isActive = true;
+		SetRoadObject(i);
+	}
+	
+
+	m_dungeonState = DUNGEONSTATE::ROAD;
+	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
+
+	door1.SetRect(220, 0, 500, WINSIZEY);
+	door2.SetRect(WORLDSIZEX - 500, 0, WORLDSIZEX - 220, WINSIZEY);
+	vector<CHero*> party = m_party->GetParty();
+	for (int i = 0; i < party.size(); i++)
+	{
+		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+	}
+}
+
+void DungeonScene::SetRoadObject(int i)
+{
+	DungeonData dungeonData = m_pMapSystem->GetCurDungeonData(i);
+	m_roadObjs[i]->Init(dungeonData.m_roadObjType, i);
+}
+
 #pragma endregion
 
 
@@ -248,28 +319,45 @@ void DungeonScene::ActivateRoom()
 {
 	m_roadBG->isActive = false;
 	m_roomBG->isActive = true;
-	m_roadObj->isActive = false;
+
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		m_roadObjs[i]->isActive = false;
+	}
+
+
 	m_dungeonState = DUNGEONSTATE::ROOM;
 	m_roomBG->m_spriteRenderer->SetImage(roomRandom[MG_RND->getInt(roomRandom.size())]);
 	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));
 
-	door1.SetRect(145, 0, 365, WINSIZEY);
-	door2.SetRect(WORLDSIZEX - 200, 0, WORLDSIZEX - 100, WINSIZEY);
+	door1.SetRect(0, 0, 350, WINSIZEY);
+	door2.SetRect(WINSIZEX - 350, 0, WINSIZEX, WINSIZEY);
 
+	vector<CHero*> party = m_party->GetParty();
+	m_pMapSystem->UseKeyBoardToMoveCurPoint();
 	switch (m_pMapSystem->GetCurDungeonData().dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Room_Empty:
 
+		for (int i = 0; i < party.size(); i++)
+		{
+			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		}
 		break;
 	case DUNGEONMAPSTATE::Room_Enemy:
 		dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
 		m_pBattleSystem->BattleSystemInitiate();
 		break;
 	case DUNGEONMAPSTATE::Room_Trasure:
-
+		for (int i = 0; i < party.size(); i++)
+		{
+			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		}
 		break;
 	case DUNGEONMAPSTATE::Room_Boss:
-
+		dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
+		m_pBattleSystem->BattleSystemInitiate();
 		break;
 	default:
 		break;

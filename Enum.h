@@ -7,6 +7,7 @@ enum class LAYER
 	MinimapBackground,
 	UIMinimapRoom,
 	UIMinimapRoad,
+	UIMinimapTouch,
 	BackGround,
 	Building,
 	Player,
@@ -169,6 +170,11 @@ enum class IMAGE
 	map2,
 	monster,
 	scouting,
+
+	treasure,
+	trap,
+	enemy,
+	nothing,
 };
 
 enum class RACE
@@ -268,6 +274,14 @@ enum class SCENETYPE
 enum class UNITTYPE {
 	NONE,
 	Hero,
+	Enemy
+
+};
+
+enum class RoadObjType {
+	Empty,
+	Trap,
+	Tresure,
 	Enemy
 
 };

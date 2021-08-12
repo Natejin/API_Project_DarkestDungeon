@@ -216,10 +216,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("treasure", "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("trap", "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("enemy", "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("nothing", "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::enemy, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::nothing, "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	//����� ������
 	MG_IMAGE->addImage("crusader_portrait", "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));

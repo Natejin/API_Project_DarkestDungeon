@@ -5,6 +5,11 @@ class CDragButtonMinimapBG : public CDragButton
 {
 	class CMapSystem* m_pMapSystem;
 	Vector2 previousMousePoint;
+	float moveOriginPosCoolTime;
+	float moveOriginPosCurTime;
+
+	bool isDraged;
+
 public:
 	CDragButtonMinimapBG();
 	~CDragButtonMinimapBG();
