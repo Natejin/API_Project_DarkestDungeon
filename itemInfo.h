@@ -11,11 +11,11 @@ enum class ITEMKIND
 	ITEM_TRINKET_EQUIP
 };
 
-class itemInfo
+class CItemInfo
 {
 public:
 	ITEMKIND m_itemKind;
-	ImageData m_imgData;
+	IMAGE m_imgData;
 	string m_name;
 	string m_description;
 	int m_abillity;
@@ -24,5 +24,6 @@ public:
 	int m_count;
 	
 public:
-	
+	CItemInfo() {};
+	~CItemInfo() {};
 };

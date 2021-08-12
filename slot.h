@@ -1,21 +1,20 @@
 #pragma once
 #include "GameObject.h"
 #include "CDragButtion.h"
-#include "itemInfo.h"
 
-class slot : public CDragButton
+class CItemInfo;
+class CButton_SlotItem : public CDragButton
 {
 public:
-	itemInfo slotItem;
-	ImageData slotItemImg;
-
-	int ID; //slotPos
+	CItemInfo* itemInfo;
+	//ImageData slotItemImg;
+	Vector2Int slotID; 
 
 	CDragButton* bt_slot;
 
 public:
-	slot();
-	~slot();
+	CButton_SlotItem();
+	~CButton_SlotItem();
 
 	HRESULT Init();
 
@@ -29,4 +28,7 @@ public:
 	//===================================
 
 	void setButton();
+
+	void AddItem(CItemInfo* _iteminfo);
+	void RemoveItem();
 };

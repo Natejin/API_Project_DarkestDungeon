@@ -4,6 +4,7 @@
 CSpriteRenderer::CSpriteRenderer()
 {
 	useCustomPos = false;
+	m_image = nullptr;
 }
 
 CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
@@ -65,4 +66,9 @@ void CSpriteRenderer::RenderUI(HDC _hdc)
 Vector2 CSpriteRenderer::GetImageSize()
 {
 	return m_imageSize;
+}
+
+bool CSpriteRenderer::HasImage()
+{
+	return m_image ? true : false;
 }

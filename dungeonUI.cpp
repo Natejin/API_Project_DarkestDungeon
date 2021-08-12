@@ -107,14 +107,14 @@ void dungeonUI::SetButton()
 	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
 	bt_inven->SetButtonSize(50, 65);
 	bt_inven->AddSpriteRenderer("button");
-	bt_inven->SetTriggerWhenDown(this, &dungeonUI::ShowInven);
+	bt_inven->SetTriggerWhenOnceDown(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
 	bt_map = new CButton();
 	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
 	bt_map->SetButtonSize(50, 65);
 	bt_map->AddSpriteRenderer("button");
-	bt_map->SetTriggerWhenDown(this, &dungeonUI::ShowMap);
+	bt_map->SetTriggerWhenOnceDown(this, &dungeonUI::ShowMap);
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
 
@@ -171,6 +171,7 @@ void dungeonUI::ShowInven()
 	m_pMapSystem->MapButtonOnOff(false);
 
 	invenPanel->isActive = true;
+	m_inven->Enable();
 	mapPanel1->isActive = false;
 	mapPanel2->isActive = false;
 	showMap = false;
@@ -179,7 +180,7 @@ void dungeonUI::ShowInven()
 
 void dungeonUI::ShowMap()
 {
-
+	m_inven->Unable();
 	showMap = true;
 	m_pMapSystem->MapButtonOnOff(true);
 
@@ -197,30 +198,28 @@ void dungeonUI::ShowUI(HDC _hdc)
 		vUI[i].RenderUI(_hdc);
 	}
 
-	if (showMap)
-	{
-		//vUI[9].RenderUI(_hdc);
-		ShowUIMap(_hdc);
-	}
-	else
-	{
-		ShowUIUInven(_hdc);
-	}
+	//if (showMap)
+	//{
+	//	//vUI[9].RenderUI(_hdc);
+	//	ShowUIMap(_hdc);
+	//}
+	//else
+	//{
+	//	ShowUIUInven(_hdc);
+	//}
 }
 
 void dungeonUI::ShowUIMap(HDC _hdc)
 {
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
 	//m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
-	m_inven->isActive = false; 
+
+	//m_inven->Enable();
 }
 
 void dungeonUI::ShowUIUInven(HDC _hdc)
 {
-	m_inven->showInvenItem(_hdc);
-
-
-
+	//m_inven->Unable();
 }
 
 CUIPanel* dungeonUI::CreatePanel(string name, Vector2 pos, LAYER layer)
