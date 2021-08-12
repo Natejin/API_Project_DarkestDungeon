@@ -3,18 +3,19 @@
 #include "TownScene.h"
 #include "CHeroList_button.h"
 #include "CHero.h"	
+#include"CUIPanel_Abbey.h"
 CBuilding_PanelButton::CBuilding_PanelButton()
 {
 	m_layer = LAYER::UIButton;
-}
 
+}
 CBuilding_PanelButton::~CBuilding_PanelButton()
 {
 }
 
 HRESULT CBuilding_PanelButton::Init()
 {
-	//listbutton = new CHeroList_button();
+	isResist = true; //등록 다해주고 나서 bool값을 트루로 변경.
 	return S_OK;
 }
 
@@ -30,7 +31,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 
 				MG_GAME->RemoveHero(hero->ownIndex);
 				townScene->SetHerolist();
-
+				
 				switch (hero->job)
 				{
 				case JOB::Crusader:
@@ -48,14 +49,13 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 				default:
 					break;
 				}
+				
 			}
-			
-
-			
-			//TownScene::SetHerolist에 nullptr을 못주는데. 주는법을...
+		
 		}
-	
+
 	}
+	
 }
 
 void CBuilding_PanelButton::LateUpdate()

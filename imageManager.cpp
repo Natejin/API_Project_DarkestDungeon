@@ -286,6 +286,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("food4", "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("bandage", "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
 
+	//check
+	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));
+
 	return S_OK;
 }
 

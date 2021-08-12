@@ -158,53 +158,51 @@ void TownScene::SetEst_ui()
 	m_abbey = new CUIPanel_Abbey();
 	m_abbey->townScene = this;
 	m_abbey->Init();
-	
 	MG_GMOBJ->RegisterObj("AbbeyUI", m_abbey);
 
 	m_blacksmith = new CUIPanel_BlackSmith();
 	m_blacksmith->townScene = this;
 	m_blacksmith->Init();
-
 	MG_GMOBJ->RegisterObj("BlackSmithUI", m_blacksmith);
 
 	m_campingTrainer = new CUIPanel_CampingTrainer();
-	m_campingTrainer->Init();
 	m_campingTrainer->townScene = this;
+	m_campingTrainer->Init();
 	MG_GMOBJ->RegisterObj("CampingTrainerUI", m_campingTrainer);
 
 	m_graveyard = new CUIPanel_GraveYard();
-	m_graveyard->Init();
 	m_graveyard->townScene = this;
+	m_graveyard->Init();
 	MG_GMOBJ->RegisterObj("GraveYardUI", m_graveyard);
 
 	m_guild = new CUIPanel_Guild();
-	m_guild->Init();
 	m_guild->townScene = this;
+	m_guild->Init();
 	MG_GMOBJ->RegisterObj("GuildUI", m_guild);
 
 	m_sanitarium = new CUIPanel_Sanitarium();
-	m_sanitarium->Init();
 	m_sanitarium->townScene = this;
+	m_sanitarium->Init();
 	MG_GMOBJ->RegisterObj("Sanitarium", m_sanitarium);
 
 	m_stage_coach = new CUIPanel_StageCoach();
-	m_stage_coach->Init();
 	m_stage_coach->townScene = this;
+	m_stage_coach->Init();
 	MG_GMOBJ->RegisterObj("StageCoachUI", m_stage_coach);
 
 	m_statue = new CUIPanel_Statue();
-	m_statue->Init();
 	m_statue->townScene = this;
+	m_statue->Init();
 	MG_GMOBJ->RegisterObj("StatueUI", m_statue);
 
 	m_nomad_wagon = new CUIPanel_NomadWagon();
-	m_nomad_wagon->Init();
 	m_nomad_wagon->townScene = this;
+	m_nomad_wagon->Init();
 	MG_GMOBJ->RegisterObj("NomadWagonUI", m_nomad_wagon);
 
 	m_tavern = new CUIPanel_Tavern();
-	m_tavern->Init();
 	m_tavern->townScene = this;
+	m_tavern->Init();
 	MG_GMOBJ->RegisterObj("TavernUI", m_tavern);
 }
 void TownScene::DeactivateBuildings()

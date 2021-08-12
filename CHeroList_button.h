@@ -22,7 +22,7 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	void DragHeroList();
-
+	
 
 
 };
