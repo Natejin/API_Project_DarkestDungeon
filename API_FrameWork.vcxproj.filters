@@ -450,43 +450,10 @@
     <ClInclude Include="CSpriteRenderer.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Abbey.h">
-      <Filter>Object\UI\EST_UI\Abbey</Filter>
-    </ClInclude>
     <ClInclude Include="CEst_UI.h">
       <Filter>Object\UI\EST_UI</Filter>
     </ClInclude>
-    <ClInclude Include="BlackSmith.h">
-      <Filter>Object\UI\EST_UI\Blacksmith</Filter>
-    </ClInclude>
-    <ClInclude Include="CampingTrainer.h">
-      <Filter>Object\UI\EST_UI\CampingTrainer</Filter>
-    </ClInclude>
-    <ClInclude Include="GraveYard.h">
-      <Filter>Object\UI\EST_UI\GraveYard</Filter>
-    </ClInclude>
-    <ClInclude Include="Guild.h">
-      <Filter>Object\UI\EST_UI\Guild</Filter>
-    </ClInclude>
-    <ClInclude Include="Sanitarium.h">
-      <Filter>Object\UI\EST_UI\Sanitarium</Filter>
-    </ClInclude>
-    <ClInclude Include="Statue.h">
-      <Filter>Object\UI\EST_UI\Statue</Filter>
-    </ClInclude>
-    <ClInclude Include="StageCoach.h">
-      <Filter>Object\UI\EST_UI\StageCoach</Filter>
-    </ClInclude>
-    <ClInclude Include="NomadWagon.h">
-      <Filter>Object\UI\EST_UI\NomadWagon</Filter>
-    </ClInclude>
-    <ClInclude Include="Tavern.h">
-      <Filter>Object\UI\EST_UI\Tavern</Filter>
-    </ClInclude>
     <ClInclude Include="dungeonUI_HeroInfo.h">
-      <Filter>Object\DungeonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="dungeonUI.h">
       <Filter>Object\DungeonUI</Filter>
     </ClInclude>
     <ClInclude Include="CButton_move.h">
@@ -536,6 +503,42 @@
     </ClInclude>
     <ClInclude Include="itemList.h">
       <Filter>Object\inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuilding_PanelButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_Abbey.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_BlackSmith.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_CampingTrainer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjOnRoad.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_GraveYard.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_Guild.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_NomadWagon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_Sanitarium.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_StageCoach.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_Statue.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIPanel_Tavern.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -761,41 +764,8 @@
     <ClCompile Include="CSpriteRenderer.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Abbey.cpp">
-      <Filter>Object\UI\EST_UI\Abbey</Filter>
-    </ClCompile>
     <ClCompile Include="CEst_UI.cpp">
       <Filter>Object\UI\EST_UI</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackSmith.cpp">
-      <Filter>Object\UI\EST_UI\Blacksmith</Filter>
-    </ClCompile>
-    <ClCompile Include="CampingTrainer.cpp">
-      <Filter>Object\UI\EST_UI\CampingTrainer</Filter>
-    </ClCompile>
-    <ClCompile Include="GraveYard.cpp">
-      <Filter>Object\UI\EST_UI\GraveYard</Filter>
-    </ClCompile>
-    <ClCompile Include="Guild.cpp">
-      <Filter>Object\UI\EST_UI\Guild</Filter>
-    </ClCompile>
-    <ClCompile Include="Sanitarium.cpp">
-      <Filter>Object\UI\EST_UI\Sanitarium</Filter>
-    </ClCompile>
-    <ClCompile Include="Statue.cpp">
-      <Filter>Object\UI\EST_UI\Statue</Filter>
-    </ClCompile>
-    <ClCompile Include="StageCoach.cpp">
-      <Filter>Object\UI\EST_UI\StageCoach</Filter>
-    </ClCompile>
-    <ClCompile Include="NomadWagon.cpp">
-      <Filter>Object\UI\EST_UI\NomadWagon</Filter>
-    </ClCompile>
-    <ClCompile Include="Tavern.cpp">
-      <Filter>Object\UI\EST_UI\Tavern</Filter>
-    </ClCompile>
-    <ClCompile Include="dungeonUI.cpp">
-      <Filter>Object\DungeonUI</Filter>
     </ClCompile>
     <ClCompile Include="dungeonUI_HeroInfo.cpp">
       <Filter>Object\DungeonUI</Filter>
@@ -844,6 +814,42 @@
     </ClCompile>
     <ClCompile Include="itemList.cpp">
       <Filter>Object\inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuilding_PanelButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_Abbey.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_BlackSmith.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_CampingTrainer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoad.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_GraveYard.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_Guild.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_NomadWagon.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_Sanitarium.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_StageCoach.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_Statue.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIPanel_Tavern.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
