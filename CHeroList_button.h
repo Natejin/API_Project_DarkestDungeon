@@ -1,5 +1,6 @@
 #pragma once
 #include"CDragButtion.h"
+
 class CHeroList_button : public CDragButton
 {
 	class CSpriteRenderer* m_heroBG;
@@ -23,7 +24,4 @@ public:
 
 	void DragHeroList();
 	
-
-
 };
-

@@ -5,11 +5,10 @@
 #include "CInventorySystem.h"
 #include "CUIPanel.h"
 #include "CDragButtonMinimapBG.h"
+
 HRESULT dungeonUI::Init()
 {
 	m_layer = LAYER::UI;
-
-	showMap = false;
 
 	SetUIIMG();
 	SetButton();
@@ -21,22 +20,6 @@ HRESULT dungeonUI::Init()
 void dungeonUI::Update(float deltaTime, float worldTime)
 {
 	TorchLightBarDecrease();
-
-	//for test
-	if (MG_INPUT->isOnceKeyDown('A'))
-	{
-		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + 1);
-	}
-	if (MG_INPUT->isOnceKeyDown('S'))
-	{
-		MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + 1);
-	}
-	if (MG_INPUT->isOnceKeyDown('D'))
-	{
-		MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + 1);
-	}
-
-	
 }
 
 void dungeonUI::LateUpdate()
@@ -54,18 +37,16 @@ void dungeonUI::Render(HDC _hdc)
 
 void dungeonUI::FrontRender(HDC _hdc)
 {
-
 }
 
 void dungeonUI::Release()
 {
-
 }
 
 void dungeonUI::SetUIIMG()
 {
 	ImageData UIimg;
-	SetTorchUI();
+	SetTorchUIimg();
 
 	CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
 	CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
@@ -74,17 +55,25 @@ void dungeonUI::SetUIIMG()
 
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
 	
+	//invenPanel->UseBackRender();
+
+	//mapPanel1 = new CDragButtonMinimapBG();
+	//mapPanel1->SetMapSystem(m_pMapSystem);
+
+	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
+	//mapPanel2->UseBackRender();
 
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
 	mapPanel1->UseFrontRender();
-
 
 	mapPanel2 = new CDragButtonMinimapBG();
 	mapPanel2->Init();
 	mapPanel2->m_transform->m_pos = Vector2(965, 700);
 	mapPanel2->AddSpriteRenderer(IMAGE::map2);
+
 	mapPanel2->SetMapSystem(m_pMapSystem);
 	mapPanel2->AddColliderBox();
+
 	MG_GMOBJ->RegisterObj("minimapBG", mapPanel2);
 
 	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
@@ -108,7 +97,7 @@ void dungeonUI::SetButton()
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
 
-void dungeonUI::SetTorchUI()
+void dungeonUI::SetTorchUIimg()
 {
 	ImageData UIimg;
 
@@ -131,17 +120,14 @@ void dungeonUI::SetTorchUI()
 
 void dungeonUI::SetInven()
 {
-	m_inven = new CInventorySystem();
-	m_inven->Init();
-	MG_GMOBJ->RegisterObj("inventory", m_inven);
+	m_invenSystem = new CInventorySystem();
+	m_invenSystem->Init();
+	MG_GMOBJ->RegisterObj("inventory", m_invenSystem);
 }
 
 void dungeonUI::SetSkillButton()
 {
-	//battle���¿����� skill��ư�� Ȱ��ȭ �ǵ���
-	
-
-
+	//only active on battleState
 }
 
 void dungeonUI::TorchLightBarDecrease()
@@ -157,28 +143,26 @@ void dungeonUI::TorchLightBarDecrease()
 
 void dungeonUI::ShowInven()
 {
-	showMap = false; 
 	m_pMapSystem->MapButtonOnOff(false);
 
 	invenPanel->isActive = true;
-	m_inven->Enable();
+	m_invenSystem->isActive = true;
+	m_invenSystem->Enable();
+
 	mapPanel1->isActive = false;
 	mapPanel2->isActive = false;
-	showMap = false;
-	m_inven->isActive = true;
 }
 
 void dungeonUI::ShowMap()
 {
-	m_inven->Unable();
-	showMap = true;
 	m_pMapSystem->MapButtonOnOff(true);
 
 	invenPanel->isActive = false;
+	m_invenSystem->isActive = false;
+	m_invenSystem->Unable();
+
 	mapPanel1->isActive = true;
 	mapPanel2->isActive = true;
-	showMap = true;
-	m_inven->isActive = false;
 }
 
 void dungeonUI::ShowUI(HDC _hdc)
@@ -187,29 +171,6 @@ void dungeonUI::ShowUI(HDC _hdc)
 	{
 		vUI[i].RenderUI(_hdc);
 	}
-
-	//if (showMap)
-	//{
-	//	//vUI[9].RenderUI(_hdc);
-	//	ShowUIMap(_hdc);
-	//}
-	//else
-	//{
-	//	ShowUIUInven(_hdc);
-	//}
-}
-
-void dungeonUI::ShowUIMap(HDC _hdc)
-{
-	//m_pMapSystem->dungeonMapCreate[0].m_imageData.m_trans.m_pos = Vector2(500, 500);
-	//m_pMapSystem->dungeonMapCreate[0].m_imageData.RenderUI(_hdc);
-
-	//m_inven->Enable();
-}
-
-void dungeonUI::ShowUIUInven(HDC _hdc)
-{
-	//m_inven->Unable();
 }
 
 CUIPanel* dungeonUI::CreatePanel(string name, Vector2 pos, LAYER layer)

@@ -1,13 +1,13 @@
 #include "framework.h"
-#include "slot.h"
+#include "CSlotItemButton.h"
 #include "CSpriteRenderer.h"
 #include "itemInfo.h"
 #include "CInventorySystem.h"
 
-CButton_SlotItem::CButton_SlotItem() {}
-CButton_SlotItem::~CButton_SlotItem() {}
+CSlotItemButton::CSlotItemButton() {}
+CSlotItemButton::~CSlotItemButton() {}
 
-HRESULT CButton_SlotItem::Init()
+HRESULT CSlotItemButton::Init()
 {
 	LAYER::UIButton;
 	m_transform->m_pivot = Vector2(0, 0);
@@ -18,7 +18,7 @@ HRESULT CButton_SlotItem::Init()
 	return S_OK;
 }
 
-void CButton_SlotItem::Update(float deltaTime, float worldTime)
+void CSlotItemButton::Update(float deltaTime, float worldTime)
 {
 	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 	{
@@ -45,21 +45,21 @@ void CButton_SlotItem::Update(float deltaTime, float worldTime)
 	}
 }
 
-void CButton_SlotItem::LateUpdate()
+void CSlotItemButton::LateUpdate()
 {
 }
 
-void CButton_SlotItem::BackRender(HDC _hdc)
-{
-
-}
-
-void CButton_SlotItem::Render(HDC _hdc)
+void CSlotItemButton::BackRender(HDC _hdc)
 {
 
 }
 
-void CButton_SlotItem::FrontRender(HDC _hdc)
+void CSlotItemButton::Render(HDC _hdc)
+{
+
+}
+
+void CSlotItemButton::FrontRender(HDC _hdc)
 {
 
 	if (MG_INPUT->isToggleKey(VK_TAB))
@@ -98,13 +98,13 @@ void CButton_SlotItem::FrontRender(HDC _hdc)
 
 
 
-void CButton_SlotItem::AddItem(CItemInfo* _iteminfo)
+void CSlotItemButton::AddItem(CItemInfo* _iteminfo)
 {
 	m_itemInfo = _iteminfo;
 	m_spriteRenderer->SetImage(_iteminfo->m_imgData);
 }
 
-void CButton_SlotItem::SwapItem(CButton_SlotItem* _slot)
+void CSlotItemButton::SwapItem(CSlotItemButton* _slot)
 {
 	if (_slot->m_itemInfo == nullptr)
 	{
@@ -124,7 +124,7 @@ void CButton_SlotItem::SwapItem(CButton_SlotItem* _slot)
 	}
 }
 
-void CButton_SlotItem::RemoveItem()
+void CSlotItemButton::RemoveItem()
 {
 	m_itemInfo = nullptr;
 }

@@ -4,9 +4,6 @@
 class CEnemy : public Unit
 {
 public:
-	RACE m_race;
-
-public:
 	int m_DEF;
 	int m_DODGE;
 	//½ºÅ³

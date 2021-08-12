@@ -20,20 +20,11 @@ void CBG_Room::BackRender(HDC _hdc)
 
 void CBG_Room::Render(HDC _hdc)
 {
-	
 }
 
 void CBG_Room::FrontRender(HDC _hdc)
 {
 }
-
-//void CBG_Road::Update(float deltaTime, float worldTime)
-//{
-//}
-//
-//void CBG_Road::LateUpdate()
-//{
-//}
 
 void CBG_Room::SetIMG()
 {

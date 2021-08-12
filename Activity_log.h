@@ -1,9 +1,9 @@
 #pragma once
 #include"CEst_UI.h"
+
 class Activity_log : public CEst_UI 
 {
 public:
-
 	Activity_log();
 	~Activity_log();
 

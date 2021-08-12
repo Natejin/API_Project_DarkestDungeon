@@ -16,8 +16,6 @@ protected:
 	int bgCount;
 	int roadCount;
 
-
-
 public:
 	CBackground();
 	~CBackground();
@@ -36,7 +34,6 @@ public:
 	//==================================
 
 	virtual void SetRoadIMG();
-	
-	int getSceneSize()const;
+	int getSceneSize() const;
 
 };

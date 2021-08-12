@@ -3,13 +3,14 @@
 
 class DummySlot : public GameObject
 {
+private:
 	Vector2Int originSlotID;
 	CItemInfo* itemInfo;
 	bool hasItem;
+
 public:
 	DummySlot();
 	~DummySlot();
-
 
 	HRESULT Init();
 
@@ -25,6 +26,4 @@ public:
 	void SetDummySlot(Vector2Int originslotID, CItemInfo* item);
 	virtual void Unable();
 
-
 };
-

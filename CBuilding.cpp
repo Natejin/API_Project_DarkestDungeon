@@ -39,4 +39,3 @@ void CBuilding::FrontRender(HDC _hdc)
 {
 
 }
-

@@ -4,10 +4,9 @@
 #include "CButton.h"
 #include "CHero.h"
 #include "CCollider.h"
-#include "slot.h"
+#include "CSlotItemButton.h"
 #include "CTransform.h"
 #include "iteminfo.h"
-#include "slot.h"
 #include "DummySlot.h"
 
 
@@ -111,7 +110,7 @@ void CInventorySystem::setInvenSlot()
 	{
 		for (int j = 0; j < 8; j++)
 		{
-			CButton_SlotItem* temp = new CButton_SlotItem();
+			CSlotItemButton* temp = new CSlotItemButton();
 			m_invenSlots.push_back(temp);
 			temp->Init();
 			temp->m_transform->m_pos = (i * 8 + j, Vector2(982 + 70 * j, 725 + 120 * i));
@@ -120,7 +119,6 @@ void CInventorySystem::setInvenSlot()
 			MG_GMOBJ->RegisterObj("Slot", temp);
 		}
 	}
-
 	setConsumableSlot();
 }
 
@@ -170,7 +168,6 @@ bool CInventorySystem::AddItem(ITEM itemInfo, int& count)
 {
 	int curCount = count;
 
-
 	for (int i = 0; i < m_invenSlots.size(); i++)
 	{
 		if (m_invenSlots[i]->m_itemInfo == nullptr)
@@ -216,7 +213,7 @@ void CInventorySystem::RemoveItem(Vector2Int pos)
 
 }
 
-void CInventorySystem::StartDragItem(CButton_SlotItem* slot)
+void CInventorySystem::StartDragItem(CSlotItemButton* slot)
 {
 	originPos = slot->slotID;
 	dragSlot = slot;
@@ -225,17 +222,14 @@ void CInventorySystem::StartDragItem(CButton_SlotItem* slot)
 	isDragging = true;
 }
 
-void CInventorySystem::EndDragItem(CButton_SlotItem* _slot)
+void CInventorySystem::EndDragItem(CSlotItemButton* _slot)
 {
-
-
 	if (dragSlot != _slot)
 	{
 		dragSlot->SwapItem(_slot);
 	}
+
 	isDragging = false;
 	dragSlot = nullptr;
 	dummySlot->Unable();
 }
-
-

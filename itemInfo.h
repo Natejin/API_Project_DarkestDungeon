@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 class CItemInfo
 {
 public:
@@ -16,23 +14,10 @@ public:
 	
 	bool isStockable;
 	int maxCount;
+
 public:
-	CItemInfo() {
-	
-	};
-	~CItemInfo() {
-	
-	};
+	CItemInfo() {};
+	~CItemInfo() {};
 
-	bool IsFull() {
-		if (m_count < maxCount)
-		{
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-
-
+	bool IsFull();
 };

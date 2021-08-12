@@ -1,5 +1,6 @@
 #pragma once
 #include"CEst_UI.h"
+
 class CBuilding_PanelButton : public CEst_UI
 {
 public:
@@ -21,4 +22,3 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 };
-

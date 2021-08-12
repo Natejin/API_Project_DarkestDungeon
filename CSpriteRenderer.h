@@ -5,22 +5,25 @@
 class CTransform;
 class CSpriteRenderer : public CComponent
 {
+private:
 	friend GameObject;
-	 CTransform* m_trans;
+	CTransform* m_trans;
 	class Image* m_image;
 
 	Vector2 m_imageSize;
 	int imageWidth;
 	int imageHeight;
 
-	
+
 public:
 	Vector2 pos;
 	bool useCustomPos;
 	int GetCustomPos()const { return useCustomPos; }
 
+
 protected:
 	CSpriteRenderer();
+
 
 public:
 	CSpriteRenderer(IMAGE imageName, CTransform* _trans);
@@ -40,8 +43,4 @@ public:
 	Vector2 GetImageSize();
 	bool HasImage();
 
-	
-	
-
 };
-
