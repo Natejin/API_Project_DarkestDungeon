@@ -146,6 +146,14 @@ void dungeonUI::SetInven()
 	MG_GMOBJ->RegisterObj("inventory", m_inven);
 }
 
+void dungeonUI::SetSkillButton()
+{
+	//battle상태에서만 skill버튼이 활성화 되도록
+	
+
+
+}
+
 void dungeonUI::TorchLightBarDecrease()
 {
 	vUI[1].m_img->setWidth(20);

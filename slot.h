@@ -11,7 +11,7 @@ public:
 
 	int ID; //slotPos
 
-	CDragButton bt_slot;
+	CDragButton* bt_slot;
 
 public:
 	slot();
@@ -28,4 +28,5 @@ public:
 
 	//===================================
 
+	void setButton();
 };

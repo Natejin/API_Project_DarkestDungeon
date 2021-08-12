@@ -12,7 +12,7 @@ public:
 	vector<slot> m_equip;
 
 	int foodLimit = 12;
-	int torchLimit = 8;
+	int torchLimit = 9;
 
 	int nowMouseOnSlot;
 
@@ -25,6 +25,8 @@ public:
 
 	slot empty;
 	slot torch;
+
+	int filledSlot;
 
 public:
 	CInventorySystem();
@@ -43,28 +45,30 @@ public:
 
 	//==================================
 
-	void setConsumableSlot(); //set itemInfo
 	void setInvenSlot(); //set dungeonInventory according to party info
 	void setEquipSlot(); //not sure it's nessaccery
+	void setSlotCollider();
+	void setConsumableSlot(); //set itemInfo
 
 	void updateItem();
+
+	void setNowMouseOnSlot();
+	void setEmptySlot(int slotIndex, Vector2 slotItemImgPos);
+
+	void interactWithItem();
+	void useConsumableItem(int itemInfoIndex);
+
+	void fillAnotherSpace();
+	void changeSlot(); //drag to change item pos(vector order change either)
 
 	void showInvenItem(HDC _hdc); //render inventory item and itemInfo
 	void showSlotItemCount(HDC _hdc);
 	void showSlotMouseOn(HDC _hdc);
 
-	void setNowMouseOnSlot();
+	
+	void setFilledSlot();
 
-	void setSlotCollider();
+	bool isDividedCorrectly();
 
-	void changeSlot(); //drag to change item pos(vector order change either)
-
-	void interactWithItem();
-
-	void useConsumableItem(int itemInfoIndex);
-
-	void setEmptySlot(int slotIndex, Vector2 slotItemImgPos);
-
-	void fillAnotherSpace();
 
 };

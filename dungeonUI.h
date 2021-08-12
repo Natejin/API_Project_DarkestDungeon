@@ -13,6 +13,13 @@ public:
 
 	CButton* bt_inven;
 	CButton* bt_map;
+
+	CButton* bt_skill1;
+	CButton* bt_skill2;
+	CButton* bt_skill3;
+	CButton* bt_skill4;
+	CButton* bt_passTurn;
+	CButton* bt_changePos;
 	
 	class CMapSystem* m_pMapSystem;
 	class CInventorySystem* m_inven;
@@ -42,6 +49,7 @@ public:
 	void SetButton();
 	void SetTorchUI();
 	void SetInven();
+	void SetSkillButton();
 
 	void TorchLightBarDecrease();
 	void ShowInven();
