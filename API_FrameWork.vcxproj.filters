@@ -64,12 +64,6 @@
     <Filter Include="Enum">
       <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Enum\MJ">
-      <UniqueIdentifier>{0ebbc7be-ae57-45c6-9635-f1b0c8ee6673}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Enum\WT">
-      <UniqueIdentifier>{0d76a86e-9073-4263-bae8-fe745f4582f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Concept\animation">
       <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
     </Filter>
@@ -160,46 +154,53 @@
     <Filter Include="헤더 파일\Struct\NewFilter1">
       <UniqueIdentifier>{1ad2d0a1-248c-4acd-a1df-8c44f047a010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\DungeonUI">
+      <UniqueIdentifier>{efb3261e-002f-4b2f-8fb1-b22095ed1229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\ProtoType">
+      <UniqueIdentifier>{4a67bdcb-21e9-4736-8702-e189b8000343}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI">
+    <Filter Include="Object\UI\Minimap">
+      <UniqueIdentifier>{3a813a6e-cae3-4be8-98df-f1fb90ecb57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\EST_Button">
+      <UniqueIdentifier>{a4603b8e-dcd0-403a-8f29-a2e1eb9cbeb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\CUIPanel_Building">
       <UniqueIdentifier>{db4d9074-c7a3-4160-80d8-1d94258ff23b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\Abbey">
-      <UniqueIdentifier>{86f7c843-c08c-4b20-badc-ebb203b6eff1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\EST_UI\Blacksmith">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Blacksmith">
       <UniqueIdentifier>{9bccebd8-bd00-43c8-a34a-6ef45639b367}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\CampingTrainer">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_CampingTrainer">
       <UniqueIdentifier>{2b9e8a28-5e17-4ce4-acd9-a10368a473e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\GraveYard">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_GraveYard">
       <UniqueIdentifier>{eba194aa-45d7-40a1-be2f-8623270b6cb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\Sanitarium">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Guild">
+      <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Sanitarium">
       <UniqueIdentifier>{67e1d9bd-c95c-4b96-8cf3-7f086b58672a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\Statue">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Statue">
       <UniqueIdentifier>{04f9895e-a2db-49a1-a847-fa861319ddd3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\StageCoach">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_StageCoach">
       <UniqueIdentifier>{f09d7894-f3b8-448e-a29d-53b61f141232}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\NomadWagon">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_NomadWagon">
       <UniqueIdentifier>{dffccadc-f583-4c43-b444-b601b6649c21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\EST_UI\Tavern">
+    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Tavern">
       <UniqueIdentifier>{769545c5-0e71-4e96-b6b8-ab7396a34d3e}</UniqueIdentifier>
     </Filter>
-<<<<<<< Updated upstream
-    <Filter Include="Object\UI\EST_UI\Guild">
-      <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
-=======
     <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Abbey">
       <UniqueIdentifier>{86f7c843-c08c-4b20-badc-ebb203b6eff1}</UniqueIdentifier>
->>>>>>> Stashed changes
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -347,20 +348,8 @@
     <ClInclude Include="Enum.h">
       <Filter>Enum</Filter>
     </ClInclude>
-    <ClInclude Include="Enum_WT.h">
-      <Filter>Enum\WT</Filter>
-    </ClInclude>
-    <ClInclude Include="Enum_MJ.h">
-      <Filter>Enum\MJ</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageAdder_MJ.h">
-      <Filter>Enum\MJ</Filter>
-    </ClInclude>
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageAdder_WT.h">
-      <Filter>Enum\WT</Filter>
     </ClInclude>
     <ClInclude Include="animationManager.h">
       <Filter>Manager\Animation_M</Filter>
@@ -437,9 +426,6 @@
     <ClInclude Include="CEnemy.h">
       <Filter>Object\Enemy\ProtoType</Filter>
     </ClInclude>
-    <ClInclude Include="RoomScene.h">
-      <Filter>Scene\Prototype</Filter>
-    </ClInclude>
     <ClInclude Include="TownScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -464,44 +450,51 @@
     <ClInclude Include="CSpriteRenderer.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Abbey.h">
-      <Filter>Object\UI\EST_UI\Abbey</Filter>
+    <ClInclude Include="CUIPanel_Abbey.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Abbey</Filter>
     </ClInclude>
     <ClInclude Include="CEst_UI.h">
-      <Filter>Object\UI\EST_UI</Filter>
+      <Filter>Object\UI\CUIPanel_Building</Filter>
     </ClInclude>
-    <ClInclude Include="BlackSmith.h">
-      <Filter>Object\UI\EST_UI\Blacksmith</Filter>
+    <ClInclude Include="CUIPanel_BlackSmith.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Blacksmith</Filter>
     </ClInclude>
-    <ClInclude Include="CampingTrainer.h">
-      <Filter>Object\UI\EST_UI\CampingTrainer</Filter>
+    <ClInclude Include="CUIPanel_CampingTrainer.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_CampingTrainer</Filter>
     </ClInclude>
-    <ClInclude Include="GraveYard.h">
-      <Filter>Object\UI\EST_UI\GraveYard</Filter>
+    <ClInclude Include="CUIPanel_GraveYard.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_GraveYard</Filter>
     </ClInclude>
-    <ClInclude Include="Guild.h">
-      <Filter>Object\UI\EST_UI\Guild</Filter>
+    <ClInclude Include="CUIPanel_Guild.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Guild</Filter>
     </ClInclude>
-    <ClInclude Include="Sanitarium.h">
-      <Filter>Object\UI\EST_UI\Sanitarium</Filter>
+    <ClInclude Include="CUIPanel_Sanitarium.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Sanitarium</Filter>
     </ClInclude>
-    <ClInclude Include="Statue.h">
-      <Filter>Object\UI\EST_UI\Statue</Filter>
+    <ClInclude Include="CUIPanel_Statue.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Statue</Filter>
     </ClInclude>
-    <ClInclude Include="StageCoach.h">
-      <Filter>Object\UI\EST_UI\StageCoach</Filter>
+    <ClInclude Include="CUIPanel_StageCoach.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_StageCoach</Filter>
     </ClInclude>
-    <ClInclude Include="NomadWagon.h">
-      <Filter>Object\UI\EST_UI\NomadWagon</Filter>
+    <ClInclude Include="CUIPanel_NomadWagon.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_NomadWagon</Filter>
     </ClInclude>
-    <ClInclude Include="Tavern.h">
-      <Filter>Object\UI\EST_UI\Tavern</Filter>
+    <ClInclude Include="CUIPanel_Tavern.h">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Tavern</Filter>
     </ClInclude>
-<<<<<<< Updated upstream
-    <ClInclude Include="CBuilding.h">
+    <ClInclude Include="dungeonUI_HeroInfo.h">
+      <Filter>Object\DungeonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="dungeonUI.h">
+      <Filter>Object\DungeonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_move.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
-=======
+    <ClInclude Include="CMapSystem.h">
+      <Filter>System</Filter>
+    </ClInclude>
     <ClInclude Include="Activity_log.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -541,7 +534,6 @@
     <ClInclude Include="CBTN_Skill.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -664,14 +656,8 @@
     <ClCompile Include="CCameraManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="ImageAdder_MJ.cpp">
-      <Filter>Enum\MJ</Filter>
-    </ClCompile>
     <ClCompile Include="DungeonScene.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageAdder_WT.cpp">
-      <Filter>Enum\WT</Filter>
     </ClCompile>
     <ClCompile Include="animationManager.cpp">
       <Filter>Manager\Animation_M</Filter>
@@ -748,9 +734,6 @@
     <ClCompile Include="CEnemy.cpp">
       <Filter>Object\Enemy\ProtoType</Filter>
     </ClCompile>
-    <ClCompile Include="RoomScene.cpp">
-      <Filter>Scene\Prototype</Filter>
-    </ClCompile>
     <ClCompile Include="TownScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -775,44 +758,51 @@
     <ClCompile Include="CSpriteRenderer.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Abbey.cpp">
-      <Filter>Object\UI\EST_UI\Abbey</Filter>
+    <ClCompile Include="CUIPanel_Abbey.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Abbey</Filter>
     </ClCompile>
     <ClCompile Include="CEst_UI.cpp">
-      <Filter>Object\UI\EST_UI</Filter>
+      <Filter>Object\UI\CUIPanel_Building</Filter>
     </ClCompile>
-    <ClCompile Include="BlackSmith.cpp">
-      <Filter>Object\UI\EST_UI\Blacksmith</Filter>
+    <ClCompile Include="CUIPanel_BlackSmith.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Blacksmith</Filter>
     </ClCompile>
-    <ClCompile Include="CampingTrainer.cpp">
-      <Filter>Object\UI\EST_UI\CampingTrainer</Filter>
+    <ClCompile Include="CUIPanel_CampingTrainer.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_CampingTrainer</Filter>
     </ClCompile>
-    <ClCompile Include="GraveYard.cpp">
-      <Filter>Object\UI\EST_UI\GraveYard</Filter>
+    <ClCompile Include="CUIPanel_GraveYard.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_GraveYard</Filter>
     </ClCompile>
-    <ClCompile Include="Guild.cpp">
-      <Filter>Object\UI\EST_UI\Guild</Filter>
+    <ClCompile Include="CUIPanel_Guild.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Guild</Filter>
     </ClCompile>
-    <ClCompile Include="Sanitarium.cpp">
-      <Filter>Object\UI\EST_UI\Sanitarium</Filter>
+    <ClCompile Include="CUIPanel_Sanitarium.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Sanitarium</Filter>
     </ClCompile>
-    <ClCompile Include="Statue.cpp">
-      <Filter>Object\UI\EST_UI\Statue</Filter>
+    <ClCompile Include="CUIPanel_Statue.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Statue</Filter>
     </ClCompile>
-    <ClCompile Include="StageCoach.cpp">
-      <Filter>Object\UI\EST_UI\StageCoach</Filter>
+    <ClCompile Include="CUIPanel_StageCoach.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_StageCoach</Filter>
     </ClCompile>
-    <ClCompile Include="NomadWagon.cpp">
-      <Filter>Object\UI\EST_UI\NomadWagon</Filter>
+    <ClCompile Include="CUIPanel_NomadWagon.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_NomadWagon</Filter>
     </ClCompile>
-    <ClCompile Include="Tavern.cpp">
-      <Filter>Object\UI\EST_UI\Tavern</Filter>
+    <ClCompile Include="CUIPanel_Tavern.cpp">
+      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Tavern</Filter>
     </ClCompile>
-<<<<<<< Updated upstream
-    <ClCompile Include="CBuilding.cpp">
+    <ClCompile Include="dungeonUI.cpp">
+      <Filter>Object\DungeonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="dungeonUI_HeroInfo.cpp">
+      <Filter>Object\DungeonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_move.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
-=======
+    <ClCompile Include="CMapSystem.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
     <ClCompile Include="Activity_log.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -852,7 +842,6 @@
     <ClCompile Include="CBTN_Skill.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="API_FrameWork.rc">
