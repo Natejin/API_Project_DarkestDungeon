@@ -22,10 +22,6 @@ HRESULT CUIPanel_Abbey::Init()
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095,-0.095);
 	CreateRooms();
-	CreatsmallX();
-
-	panelbutton = new CBuilding_PanelButton();
-
 	return S_OK;
 }
 
@@ -42,13 +38,10 @@ void CUIPanel_Abbey::Update(float deltaTime, float worldTime)
 		m_empty7->isActive = true;
 		m_empty8->isActive = true;
 		m_empty9->isActive = true;
+	}
+	//if(m_collider->CheckColliderBoxWithPoint())
+	
 
-		
-	}
-	if (true)
-	{
-		m_smallx1->isActive = true;
-	}
 }
 
 void CUIPanel_Abbey::LateUpdate()
@@ -150,17 +143,6 @@ void CUIPanel_Abbey::CreateRooms()
 	m_empty9->isActive = false;
 	m_empty9->townScene = townScene;
 	MG_GMOBJ->RegisterObj("emptyroom", m_empty9);
-
-}
-
-void CUIPanel_Abbey::CreatsmallX()
-{
-	m_smallx1 = new CButton();
-	m_smallx1->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240 + 50);
-	m_smallx1->AddColliderBox(100, 25);
-	m_smallx1->AddSpriteRenderer(IMAGE::check);
-	m_smallx1->isActive = false;
-	MG_GMOBJ->RegisterObj("smallx", m_smallx1);
 
 }
 
