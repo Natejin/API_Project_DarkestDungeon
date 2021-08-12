@@ -96,16 +96,6 @@ void DungeonScene2::Update()
 		TorchLightBarDecrease();
 		SetSceneSize();
 	}
-
-	else if (dungeonMode == DUNGEONMODE::BATTLE)
-	{
-
-	}
-
-	else
-	{
-
-	}
 }
 
 void DungeonScene2::Render(HDC _hdc)
@@ -119,9 +109,6 @@ void DungeonScene2::Render(HDC _hdc)
 	else if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
 		ShowDungeonInfo(_hdc);
-	
-
-		//m_roadObj->Render(_hdc);
 	}
 
 	else
@@ -137,8 +124,11 @@ void DungeonScene2::ActivateRoom()
 	m_dungeonState = DUNGEONSTATE::ROOM;
 	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));
 
-	dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
-	m_pBattleSystem->BattleSystemInitiate();
+	//if (mapsys)
+	//{
+	//	m_pBattleSystem->BattleSystemInitiate();
+	//}
+	
 
 }
 

@@ -14,12 +14,14 @@ DummySlot::~DummySlot()
 
 HRESULT DummySlot::Init()
 {
+	m_transform->m_pivot = Vector2(0, 0);
 	AddSpriteRenderer();
 	return S_OK;
 }
 
 void DummySlot::Update(float deltaTime, float worldTime)
 {
+
 	m_transform->m_pos = m_ptMouse;
 }
 

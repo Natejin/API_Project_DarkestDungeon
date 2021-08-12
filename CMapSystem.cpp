@@ -73,7 +73,7 @@ void CMapSystem::Release()
 void CMapSystem::SetRandomCreateValue()
 {
 
-	randRoomEnemy = 50;
+	randRoomEnemy = 100;
 	randRoomCurio = 15;
 	randomRoadEnemy = 15;
 	randomRoadCurio = 15;

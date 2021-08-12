@@ -11,8 +11,19 @@ void CBattleSystem::BattleSystemInitiate()
 	CreateHeroesParty();
 	CreateEnemyParty();
 	Compare_P_E_Speed_ReArray();
+	scene->dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
+}
+void CBattleSystem::BattleSystemEnd()
+{
+	scene->dungeonMode = DUNGEONMODE::WALK;
+	heroParty.clear();
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+
+	}
+	Unable();
 }
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
 void CBattleSystem::CreateEnemyParty()
@@ -85,7 +96,10 @@ HRESULT CBattleSystem::Init()
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
-
+	if (MG_INPUT->isOnceKeyDown('P'))
+	{
+		BattleSystemEnd();
+	}
 }
 
 void CBattleSystem::LateUpdate()

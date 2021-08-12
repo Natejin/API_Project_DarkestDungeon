@@ -22,7 +22,7 @@ HRESULT CDragButtonMinimapBG::Init()
 
 void CDragButtonMinimapBG::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->rect.CheckCollisionWithPoint(m_ptMouse))
+	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_RBUTTON))
 		{
@@ -63,7 +63,10 @@ void CDragButtonMinimapBG::Render(HDC _hdc)
 
 void CDragButtonMinimapBG::FrontRender(HDC _hdc)
 {
-	//m_spriteRenderer->RenderUI(_hdc);
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+	}
 }
 
 void CDragButtonMinimapBG::SetMapSystem(CMapSystem* _mapSystem)

@@ -26,12 +26,7 @@ public:
 	//===================================
 
 
-	template <typename T>
-	void SetTriggerWhenDrag(T* pObj, void(T::* func)())
-	{
-		canTriggerDrag = true;
-		m_triggerWhenDrag = bind(func, pObj);
-	}
+
 
 	void SetMapSystem(class CMapSystem* _mapSystem);
 };

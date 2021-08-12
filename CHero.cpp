@@ -5,6 +5,8 @@
 
 CHero::CHero() {
 	unitType = UNITTYPE::Hero;
+	speedFront = 8;
+	speedBack = 4;
 }
 CHero::~CHero() {}
 
@@ -107,8 +109,8 @@ void CHero::Move()
 		{
 			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)
 			{
-				m_transform->m_pos.x += 4;
-				m_DIST += 4;
+				m_transform->m_pos.x += speedFront;
+				m_DIST += speedFront;
 			}
 		}
 
@@ -116,9 +118,9 @@ void CHero::Move()
 		{
 			if (m_transform->m_pos.x > 0)
 			{
-				m_transform->m_pos.x -= 2;
+				m_transform->m_pos.x -= speedBack;
 				m_DIST += 2;
-				m_DIST_retreat += 2;
+				m_DIST_retreat += speedBack;
 				
 				if (m_DIST_retreat > limit && m_DIST_retreat > 300)
 				{

@@ -73,17 +73,7 @@ void dungeonUI::SetUIIMG()
 	CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
 
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
-	//invenPanel->UseBackRender();
-
-	//mapPanel1 = new CDragButtonMinimapBG();
-	//mapPanel1->SetMapSystem(m_pMapSystem);
-
-
-	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
-	//mapPanel2->UseBackRender();
-
-
-
+	
 
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
 	mapPanel1->UseFrontRender();

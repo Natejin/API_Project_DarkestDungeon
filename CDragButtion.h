@@ -6,7 +6,6 @@
 class CDragButton : public CButton
 {
 protected:
-	Vector2 buttonSize;
 	function<void()> m_triggerWhenDrag;
 
 	bool canTriggerDrag;
@@ -29,8 +28,6 @@ public:
 
 	//===================================
 
-	void SetButtonSize(float width, float height);
-	void Mouse_Move();
 
 
 	template <typename T>

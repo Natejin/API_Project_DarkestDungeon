@@ -27,6 +27,9 @@ public:
 	bool isSelected;
 	bool isBattle;
 
+	float speedFront;
+	float speedBack;
+
 	//always
 	ImageData HPbar_front;
 	ImageData HPbar_back;

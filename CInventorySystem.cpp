@@ -23,7 +23,7 @@ HRESULT CInventorySystem::Init()
 	nowMouseOnSlot = 0;
 	filledSlot = 0;
 	dummySlot = new DummySlot();
-	dummySlot->AddSpriteRenderer();
+	dummySlot->Init();
 	dummySlot->Unable();
 	MG_GMOBJ->RegisterObj("dummySlot", dummySlot);
 	return S_OK;

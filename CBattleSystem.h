@@ -10,7 +10,7 @@ class CBattleSystem : public GameObject
 
 	};
 
-	class DungeonScene* scene;
+
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
 	queue<TurnSpeedOfUnit> speedQueue;
@@ -22,6 +22,8 @@ class CBattleSystem : public GameObject
 	int curTurn;
 
 public:
+	class DungeonScene* scene;
+
 	CBattleSystem();
 	~CBattleSystem();
 
@@ -38,6 +40,7 @@ public:
 
 
 	void BattleSystemInitiate();
+	void BattleSystemEnd();
 
 
 

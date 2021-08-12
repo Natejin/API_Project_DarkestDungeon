@@ -85,7 +85,11 @@ void DungeonScene::Update()
 		m_party->decreaseBright_movement();
 
 		CheckDoor();
-		setRoadNum();
+		if (true)
+		{
+			setRoadNum();
+		}
+
 	}
 	else if (dungeonMode == DUNGEONMODE::BATTLE)
 	{
@@ -198,6 +202,7 @@ void DungeonScene::CreateRoad()
 void DungeonScene::CreateBattleSystem()
 {
 	m_pBattleSystem = new CBattleSystem();
+	m_pBattleSystem->scene = this;
 	m_pBattleSystem->isActive = false;
 	MG_GMOBJ->RegisterObj("battleSystem", m_pBattleSystem);
 }
@@ -207,35 +212,39 @@ void DungeonScene::CreateBattleSystem()
 #pragma region Road
 void DungeonScene::setRoadNum()
 {
-	for (size_t i = 0; i < 6; i++)
+	if (m_dungeonState == DUNGEONSTATE::ROAD)
 	{
-		if (i * ROOMSIZE < m_party->GetHero(0)->m_transform->m_pos.x)
+		for (size_t i = 0; i < 6; i++)
 		{
-			m_roadNum = i + 1;
+			if (i * ROOMSIZE < m_party->GetHero(0)->m_transform->m_pos.x)
+			{
+				m_roadNum = i + 1;
+			}
+		}
+		if (m_previousRoadMap != m_roadNum)
+		{
+			if (m_previousRoadMap == 2 && m_roadNum == 3)
+			{
+				m_pMapSystem->UseKeyBoardToMoveCurPoint();
+			}
+
+			if (m_previousRoadMap == 3 && m_roadNum == 2)
+			{
+				m_pMapSystem->UseKeyBoardToReverseMoveCurPoint();
+			}
+
+			if (m_previousRoadMap == 4 && m_roadNum == 5)
+			{
+				m_pMapSystem->UseKeyBoardToMoveCurPoint();
+			}
+			if (m_previousRoadMap == 5 && m_roadNum == 4)
+			{
+				m_pMapSystem->UseKeyBoardToReverseMoveCurPoint();
+			}
+			m_previousRoadMap = m_roadNum;
 		}
 	}
-	if (m_previousRoadMap != m_roadNum)
-	{
-		if (m_previousRoadMap == 2 && m_roadNum == 3)
-		{
-			m_pMapSystem->UseKeyBoardToMoveCurPoint();
-		}
-
-		if (m_previousRoadMap == 3 && m_roadNum == 2)
-		{
-			m_pMapSystem->UseKeyBoardToReverseMoveCurPoint();
-		}
-
-		if (m_previousRoadMap == 4 && m_roadNum == 5)
-		{
-			m_pMapSystem->UseKeyBoardToMoveCurPoint();
-		}
-		if (m_previousRoadMap == 5 && m_roadNum == 4)
-		{
-			m_pMapSystem->UseKeyBoardToReverseMoveCurPoint();
-		}
-		m_previousRoadMap = m_roadNum;
-	}
+	
 	
 }
 
@@ -346,8 +355,8 @@ void DungeonScene::ActivateRoom()
 		}
 		break;
 	case DUNGEONMAPSTATE::Room_Enemy:
-		dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
 		m_pBattleSystem->BattleSystemInitiate();
+
 		break;
 	case DUNGEONMAPSTATE::Room_Trasure:
 		for (int i = 0; i < party.size(); i++)
@@ -356,7 +365,6 @@ void DungeonScene::ActivateRoom()
 		}
 		break;
 	case DUNGEONMAPSTATE::Room_Boss:
-		dungeonMode = DUNGEONMODE::BATTLE; //TODO 나중에는 방에 들어갈때 상태체크에서 몬스터일경우 변경
 		m_pBattleSystem->BattleSystemInitiate();
 		break;
 	default:
