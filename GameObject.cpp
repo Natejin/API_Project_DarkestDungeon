@@ -22,7 +22,7 @@ GameObject::~GameObject() {}
 
 HRESULT GameObject::Init()
 {
-
+	
 	return S_OK;
 }
 
@@ -60,44 +60,19 @@ void GameObject::Release()
 	SAFE_DELETE(m_spriteRenderer);
 }
 
-void GameObject::AddColliderBox(Vector2 pos,
+void GameObject::AddColliderBox(Vector2 pos, 
 	float l,
-	float t,
-	float r,
+	float t, 
+	float r, 
 	float b)
 {
 	m_collider = new CCollider(m_transform);
 	m_collider->m_pos = pos;
-	m_collider->rect.l = l;
-	m_collider->rect.t = t;
-	m_collider->rect.r = r;
-	m_collider->rect.b = b;
+	m_collider->rect.l = pos.x + l;
+	m_collider->rect.t = pos.y + t;
+	m_collider->rect.r = pos.x + r;
+	m_collider->rect.b = pos.y + b;
 	m_collider->m_colliderType = COLLIDERTYPE::BOX;
-}
-
-void GameObject::AddColliderBox(float width, float height)
-{
-	AddColliderBox(Vector2(0, 0),
-		-width * m_transform->m_pivot.x,
-		-height * m_transform->m_pivot.y,
-		width * (1 - m_transform->m_pivot.x),
-		height * (1 - m_transform->m_pivot.y)
-	);
-}
-
-void GameObject::AddColliderBox()
-{
-	if (m_spriteRenderer)
-	{
-		Vector2 imageSize = m_spriteRenderer->GetImageSize();
-
-		AddColliderBox(Vector2(0, 0),
-			-imageSize.x * m_transform->m_pivot.x,
-			-imageSize.y * m_transform->m_pivot.y,
-			+imageSize.x * (1 - m_transform->m_pivot.x),
-			+imageSize.y * (1 - m_transform->m_pivot.y)
-		);
-	}
 }
 
 void GameObject::AddAnimator(string imageName)
@@ -137,15 +112,5 @@ void GameObject::AddSpriteRenderer(string imageName)
 	m_spriteRenderer = new CSpriteRenderer();
 	m_spriteRenderer->SetTrans(m_transform);
 	m_spriteRenderer->SetImage(imageName);
-}
-
-void GameObject::Enable()
-{
-	isActive = true;
-}
-
-void GameObject::Unable()
-{
-	isActive = false;
 }
 

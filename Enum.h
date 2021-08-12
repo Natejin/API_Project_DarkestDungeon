@@ -176,15 +176,6 @@ enum class IMAGE
 	trap,
 	enemy,
 	nothing,
-
-
-		//Item
-		torch,
-		food1,
-		food2,
-		food3,
-		food4,
-		bandage,
 };
 
 enum class RACE

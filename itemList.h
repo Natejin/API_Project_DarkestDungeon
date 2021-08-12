@@ -4,7 +4,7 @@
 class itemList
 {
 public:
-	class CButton_SlotItem* empty;
+	class slot* empty;
 	
 public:
 	

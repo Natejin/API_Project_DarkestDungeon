@@ -25,8 +25,8 @@ protected:
 public:
 	CSpriteRenderer(IMAGE imageName, CTransform* _trans);
 	~CSpriteRenderer();
-
 	void SetTrans(class CTransform* _trans) { m_trans = _trans; }
+
 	void SetImage(string imageName);
 	void SetImage(IMAGE imageName);
 
@@ -36,7 +36,6 @@ public:
 	void RenderUI(HDC _hdc);
 
 	Vector2 GetImageSize();
-	bool HasImage();
 
 	
 	

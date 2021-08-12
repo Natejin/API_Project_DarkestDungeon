@@ -279,12 +279,12 @@ HRESULT imageManager::init()
 
 
 	//item
-	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food1	, "images/item/inv_provision+_0.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food2	, "images/item/inv_provision+_1.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food3	, "images/item/inv_provision+_2.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food4	, "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::bandage	, "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("torch", "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food1", "images/item/inv_provision+_0.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food2", "images/item/inv_provision+_1.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food3", "images/item/inv_provision+_2.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("food4", "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("bandage", "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
 
 	//check
 	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));

@@ -1,77 +1,39 @@
 #include "framework.h"
 #include "slot.h"
-#include "CSpriteRenderer.h"
-#include "itemInfo.h"
-CButton_SlotItem::CButton_SlotItem() {}
-CButton_SlotItem::~CButton_SlotItem() {}
 
-HRESULT CButton_SlotItem::Init()
+slot::slot() {}
+slot::~slot() {}
+
+HRESULT slot::Init()
 {
 	LAYER::UIButton;
-	m_transform->m_pivot = Vector2(0, 0);
-	AddSpriteRenderer();
-	AddColliderBox(70,125);
 
-	itemInfo = nullptr;
+	//setButton();
+
 	return S_OK;
 }
 
-void CButton_SlotItem::Update(float deltaTime, float worldTime)
+void slot::Update(float deltaTime, float worldTime)
 {
 }
 
-void CButton_SlotItem::LateUpdate()
+void slot::LateUpdate()
 {
 }
 
-void CButton_SlotItem::BackRender(HDC _hdc)
+void slot::BackRender(HDC _hdc)
 {
-
 }
 
-void CButton_SlotItem::Render(HDC _hdc)
+void slot::Render(HDC _hdc)
 {
-
 }
 
-void CButton_SlotItem::FrontRender(HDC _hdc)
+void slot::FrontRender(HDC _hdc)
 {
-
-	if (MG_INPUT->isToggleKey(VK_TAB))
-	{
-		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
-	}
-	if (m_spriteRenderer->HasImage())
-	{
-		m_spriteRenderer->RenderUI(_hdc);
-
-
-		int k = 0;
-		char str[256];
-		string strFrame;
-		SetBkMode(_hdc, RGB(0, 0, 0));
-		SetTextColor(_hdc, RGB(255, 255, 255));
-
-		sprintf_s(str, "%d", itemInfo->m_count);
-		TextOut(_hdc, 990 + 70 * slotID.x, 730 + 140 * slotID.y, str, strlen(str));
-
-		/*int quotient;
-		quotient = MG_GAME->GetParty()->getTorch() / torchLimit + 1;
-		sprintf_s(str, "quotient : %d", quotient);
-		TextOut(_hdc, 0, 400, str, strlen(str));
-
-		int remainder;
-		remainder = MG_GAME->GetParty()->getTorch() % torchLimit;
-		sprintf_s(str, "remainder : %d", remainder);
-		TextOut(_hdc, 0, 420, str, strlen(str));
-
-		sprintf_s(str, "filledSlot : %d", filledSlot);
-		TextOut(_hdc, 0, 440, str, strlen(str));*/
-
-	}
 }
 
-void CButton_SlotItem::setButton()
+void slot::setButton()
 {
 	//CHeroList_button* dragButton = new CHeroList_button();
 	//dragButton->Init();
@@ -95,15 +57,4 @@ void CButton_SlotItem::setButton()
 	//MG_GMOBJ->RegisterObj("bt_inven_dragButton", bt_slot);
 
 
-}
-
-void CButton_SlotItem::AddItem(CItemInfo* _iteminfo)
-{
-	itemInfo = _iteminfo;
-	m_spriteRenderer->SetImage(_iteminfo->m_imgData);
-}
-
-void CButton_SlotItem::RemoveItem()
-{
-	itemInfo = nullptr;
 }
