@@ -8,6 +8,7 @@ protected:
 	 class CButton* m_quick;
 
 	 class CSpriteRenderer* m_windowPanelBG;
+
 	 class CSpriteRenderer* m_windowPanelChar;
 
 public:

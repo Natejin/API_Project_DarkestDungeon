@@ -154,7 +154,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Abbey.h" />
+    <ClInclude Include="CBuilding_PanelButton.h" />
+    <ClInclude Include="CUIPanel_Abbey.h" />
     <ClInclude Include="Activity_log.h" />
     <ClInclude Include="airHockey.h" />
     <ClInclude Include="animation.h" />
@@ -162,8 +163,8 @@
     <ClInclude Include="animationTest.h" />
     <ClInclude Include="API_FrameWork.h" />
     <ClInclude Include="Astar.h" />
-    <ClInclude Include="BlackSmith.h" />
-    <ClInclude Include="CampingTrainer.h" />
+    <ClInclude Include="CUIPanel_BlackSmith.h" />
+    <ClInclude Include="CUIPanel_CampingTrainer.h" />
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CBattleSystem.h" />
     <ClInclude Include="CBackground.h" />
@@ -215,8 +216,8 @@
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="globalTank.h" />
-    <ClInclude Include="GraveYard.h" />
-    <ClInclude Include="Guild.h" />
+    <ClInclude Include="CUIPanel_GraveYard.h" />
+    <ClInclude Include="CUIPanel_Guild.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
@@ -227,7 +228,7 @@
     <ClInclude Include="mapTool.h" />
     <ClInclude Include="minimap.h" />
     <ClInclude Include="minion.h" />
-    <ClInclude Include="NomadWagon.h" />
+    <ClInclude Include="CUIPanel_NomadWagon.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="pixelCollision.h" />
     <ClInclude Include="CHero.h" />
@@ -237,7 +238,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="rocket.h" />
     <ClInclude Include="RoomScene.h" />
-    <ClInclude Include="Sanitarium.h" />
+    <ClInclude Include="CUIPanel_Sanitarium.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scene1.h" />
     <ClInclude Include="scene2.h" />
@@ -245,13 +246,13 @@
     <ClInclude Include="singleton.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="soundTest.h" />
-    <ClInclude Include="StageCoach.h" />
-    <ClInclude Include="Statue.h" />
+    <ClInclude Include="CUIPanel_StageCoach.h" />
+    <ClInclude Include="CUIPanel_Statue.h" />
     <ClInclude Include="tank.h" />
     <ClInclude Include="tankGameScene.h" />
     <ClInclude Include="tankMap.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Tavern.h" />
+    <ClInclude Include="CUIPanel_Tavern.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
@@ -263,7 +264,8 @@
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Abbey.cpp" />
+    <ClCompile Include="CBuilding_PanelButton.cpp" />
+    <ClCompile Include="CUIPanel_Abbey.cpp" />
     <ClCompile Include="Activity_log.cpp" />
     <ClCompile Include="airHockey.cpp" />
     <ClCompile Include="animation.cpp" />
@@ -273,8 +275,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Astar.cpp" />
-    <ClCompile Include="BlackSmith.cpp" />
-    <ClCompile Include="CampingTrainer.cpp" />
+    <ClCompile Include="CUIPanel_BlackSmith.cpp" />
+    <ClCompile Include="CUIPanel_CampingTrainer.cpp" />
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CBattleSystem.cpp" />
     <ClCompile Include="CBackground.cpp" />
@@ -322,8 +324,8 @@
     <ClCompile Include="enemyManager.cpp" />
     <ClCompile Include="gameNode.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GraveYard.cpp" />
-    <ClCompile Include="Guild.cpp" />
+    <ClCompile Include="CUIPanel_GraveYard.cpp" />
+    <ClCompile Include="CUIPanel_Guild.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
@@ -334,7 +336,7 @@
     <ClCompile Include="mapTool.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="minion.cpp" />
-    <ClCompile Include="NomadWagon.cpp" />
+    <ClCompile Include="CUIPanel_NomadWagon.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="CHero.cpp" />
@@ -342,19 +344,19 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rocket.cpp" />
     <ClCompile Include="RoomScene.cpp" />
-    <ClCompile Include="Sanitarium.cpp" />
+    <ClCompile Include="CUIPanel_Sanitarium.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene1.cpp" />
     <ClCompile Include="scene2.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="soundTest.cpp" />
-    <ClCompile Include="StageCoach.cpp" />
-    <ClCompile Include="Statue.cpp" />
+    <ClCompile Include="CUIPanel_StageCoach.cpp" />
+    <ClCompile Include="CUIPanel_Statue.cpp" />
     <ClCompile Include="tank.cpp" />
     <ClCompile Include="tankGameScene.cpp" />
     <ClCompile Include="tankMap.cpp" />
-    <ClCompile Include="Tavern.cpp" />
+    <ClCompile Include="CUIPanel_Tavern.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />

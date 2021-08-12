@@ -3,22 +3,22 @@
 class TownScene : public Scene
 {
 protected:
-	class Abbey* m_abbey;
-	class BlackSmith* m_blacksmith ;
-	class CampingTrainer* m_campingTrainer;
-	class GraveYard* m_graveyard;
-	class Guild* m_guild;
-	class Sanitarium* m_sanitarium ;
-	class StageCoach* m_stage_coach ;
-	class Statue* m_statue ;
-	class NomadWagon* m_nomad_wagon;
-	class Tavern* m_tavern;
+	class CUIPanel_Abbey* m_abbey;
+	class CUIPanel_BlackSmith* m_blacksmith ;
+	class CUIPanel_CampingTrainer* m_campingTrainer;
+	class CUIPanel_GraveYard* m_graveyard;
+	class CUIPanel_Guild* m_guild;
+	class CUIPanel_Sanitarium* m_sanitarium ;
+	class CUIPanel_StageCoach* m_stage_coach ;
+	class CUIPanel_Statue* m_statue ;
+	class CUIPanel_NomadWagon* m_nomad_wagon;
+	class CUIPanel_Tavern* m_tavern;
 	vector<class CDragButton*> m_dragButton;
 
 private:
 	class CHeroList_button* dragButton;
 	vector<class CBuilding*> buildingVec;
-
+	
 public:
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
@@ -27,6 +27,7 @@ public:
 public:
 	void SetEst_ui(); //건물셋팅
 	void SetEst_Img();//버튼.
+
 public:
 	void SetDeactiveWhenClick(GameObject* object);
 	void Show_abeey();//수도원
