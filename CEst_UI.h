@@ -5,6 +5,7 @@ class CEst_UI :public GameObject
 {
 protected:
 	 class CSpriteRenderer* m_windowPanelBG;
+
 	 class CSpriteRenderer* m_windowPanelChar;
 
 public:
