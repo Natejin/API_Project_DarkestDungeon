@@ -81,6 +81,7 @@ void CObjectManager::LateUpdate()
 	{
 		objectVec.push_back(g);
 	}
+	objsToRegister.clear();
 }
 
 void CObjectManager::BackRender(HDC _hdc)
@@ -138,7 +139,7 @@ void CObjectManager::RegisterObj(string name, GameObject* gameObj)
 {
 	gameObj->SetId(_instance_id++);
 	gameObj->SetName(name);
-	objectVec.push_back(gameObj);
+	objsToRegister.push_back(gameObj);
 	objectRender[gameObj->m_layer].push_back(gameObj);
 }
 

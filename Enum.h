@@ -176,6 +176,7 @@ enum class IMAGE
 	plague_doctor_roster,
 	vestal_roster,
 
+	check,
 
 	//panel
 	banner,

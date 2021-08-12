@@ -88,18 +88,16 @@ HRESULT imageManager::init()
 	//���� �� ���
 	MG_IMAGE->addImage("ruins_bg", "images/ruins/crypts_corridor_bg.bmp", 720, 720, false, RGB(255, 0, 255));
 
-	//��� ��
 	MG_IMAGE->addImage("ruins_wall0", "images/ruins/crypts_corridor_door_basic.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall1", "images/ruins/crypts_corridor_wall_00.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall3", "images/ruins/crypts_corridor_wall_02.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall4", "images/ruins/crypts_corridor_wall_03.bmp", 720, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall7", "images/ruins/crypts_corridor_wall_06.bmp", 720, 720, false, RGB(255, 0, 255));
-	//�ո� ��
+
 	MG_IMAGE->addImage("ruins_wall2", "images/ruins/transperant/crypts_corridor_wall_01.bmp", 720, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall5", "images/ruins/transperant/crypts.corridor_wall_04.bmp", 720, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_wall6", "images/ruins/transperant/crypts_corridor_wall_05.bmp", 720, 720, true, RGB(255, 0, 255));
 
-	//��
 	MG_IMAGE->addImage(IMAGE::Ruins_room1, "images/ruins/crypts_room_wall_empty.bmp", 1920, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Ruins_room2, "images/ruins/crypts_room_wall_library.bmp", 1920, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Ruins_room3, "images/ruins/crypts_room_wall_entrance.bmp", 1920, 720, false, RGB(255, 0, 255));
@@ -110,11 +108,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Ruins_room8, "images/ruins/crypts_entrance_room_wall.bmp", 1920, 720, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Ruins_room9, "images/ruins/crypts_room_wall_torture.bmp", 1920, 720, false, RGB(255, 0, 255));
 
-	//��Ÿ
 	MG_IMAGE->addImage("ruins_endhall", "images/ruins/transperant/crypts_endhall_01.bmp", 720, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_mid", "images/ruins/transperant/crypts_corridor_mid.bmp", 720, 720, true, RGB(255, 0, 255));
 
-	//���� �� ���
 	MG_IMAGE->addImage("ruins_bottom", "images/ruins/transperant/crypts_foreground_bottom_01.bmp", 720, 101, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ruins_top", "images/ruins/transperant/crypts_foreground_top_01.bmp", 720, 330, true, RGB(255, 0, 255));
 
@@ -290,6 +286,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::food4	, "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::bandage	, "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
 
+	//check
+	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));
+
 	return S_OK;
 }
 
@@ -300,9 +299,7 @@ void imageManager::release()
 
 Image* imageManager::addImage(string strKey, const int width, const int height)
 {
-	//�߰��Ϸ��� Ű������ �̹��� �����ϴ��� Ȯ��
 	Image* img = findImage(strKey);
-	//�߰��Ϸ��� �̹����� �̹� ������ ����
 	if (img)return img;
 
 	img = new Image;

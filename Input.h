@@ -43,23 +43,22 @@ public:
 
 	void Update(float deltaTime, float worldTime);
 	
-	//ÇÑ¹ø¸¸ ´­·¶³Ä
+	//ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool isOnceKeyDown(int key);
-	//´­·¶´Ù°¡ ¶Â³Ä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½Â³ï¿½
 	bool isOnceKeyUp(int key);
-	//´©¸£°í ÀÖ³Ä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö³ï¿½
 	bool isStayKeyDown(int key);
-	//Åä±ÛÅ°³Ä
+	//ï¿½ï¿½ï¿½Å°ï¿½ï¿½
 	bool isToggleKey(int key);
 
-	//ÇÑ¹ø¸¸ ´­·¶³Ä
+	//ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	bool isOnceKeyClick(int key);
 
 
 	bool IsDownLMB() { return isDownLMB && !wasDownLMB; }
 	bool IsStayLMB() { return isDownLMB && wasDownLMB; }
 	bool IsUpLMB() { return !isDownLMB && wasDownLMB; }
-
 	bool WasDownLMB() { return wasDownLMB; }
 
 

@@ -43,6 +43,13 @@ void CButton::Update(float deltaTime, float worldTime)
 			}
 			
 		}
+		if (MG_INPUT->IsUpLMB())
+		{
+			if (canTriggerUp)
+			{
+				m_triggerWhenUp();
+			}
+		}
 	}
 }
 
