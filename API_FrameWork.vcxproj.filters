@@ -202,6 +202,9 @@
     <Filter Include="Object\inventory">
       <UniqueIdentifier>{c6f6bf16-0430-43b1-920a-969b086cd62c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Database">
+      <UniqueIdentifier>{4130c326-f3a3-4ba9-b65f-44d9672c2414}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -537,6 +540,12 @@
     <ClInclude Include="itemList.h">
       <Filter>Object\inventory</Filter>
     </ClInclude>
+    <ClInclude Include="CObjOnRoad.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDataBase.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -844,6 +853,12 @@
     </ClCompile>
     <ClCompile Include="itemList.cpp">
       <Filter>Object\inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoad.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDataBase.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

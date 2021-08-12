@@ -2,6 +2,8 @@
 #include "slot.h"
 #include "CSpriteRenderer.h"
 #include "itemInfo.h"
+#include "CInventorySystem.h"
+
 CButton_SlotItem::CButton_SlotItem() {}
 CButton_SlotItem::~CButton_SlotItem() {}
 
@@ -18,6 +20,19 @@ HRESULT CButton_SlotItem::Init()
 
 void CButton_SlotItem::Update(float deltaTime, float worldTime)
 {
+	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	{
+		if (MG_INPUT->IsDownLMB())
+		{
+			if (itemInfo != nullptr && m_invenSys->dummySlot->m_spriteRenderer->GetImage() == nullptr)
+			{
+				m_invenSys->dummySlot->m_spriteRenderer->SetImage(m_spriteRenderer->GetImage());
+				m_invenSys->dummySlot->Enable();
+			}
+		}
+	}
+
+
 }
 
 void CButton_SlotItem::LateUpdate()

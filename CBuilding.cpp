@@ -29,7 +29,7 @@ void CBuilding::Render(HDC _hdc)
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		RectangleMake(_hdc, m_rect);
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
 	}
 
 #endif // _DEBUG
@@ -40,10 +40,3 @@ void CBuilding::FrontRender(HDC _hdc)
 
 }
 
-void CBuilding::SetButtonSize(float width, float height)
-{
-	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
-	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
-	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
-	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
-}

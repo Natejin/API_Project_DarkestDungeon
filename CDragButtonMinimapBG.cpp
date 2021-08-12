@@ -22,7 +22,7 @@ HRESULT CDragButtonMinimapBG::Init()
 
 void CDragButtonMinimapBG::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (m_collider->rect.CheckCollisionWithPoint(m_ptMouse))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_RBUTTON))
 		{

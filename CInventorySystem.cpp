@@ -20,14 +20,39 @@ HRESULT CInventorySystem::Init()
 
 	nowMouseOnSlot = 0;
 	filledSlot = 0;
-
-
+	dummySlot = new CButton_SlotItem();
+	dummySlot->Init();
+	dummySlot->Unable();
+	MG_GMOBJ->RegisterObj("dummySlot", dummySlot);
 	return S_OK;
 }
 
 void CInventorySystem::Update(float deltaTime, float worldTime)
 {
-	
+	if (MG_INPUT->isOnceKeyDown('Z'))
+	{
+		int count = 1;
+		AddItem(ITEM::Torch, count);
+	}
+	if (MG_INPUT->isOnceKeyDown('X'))
+	{
+		int count = 1;
+		AddItem(ITEM::Food, count);
+	}
+	if (MG_INPUT->isOnceKeyDown('C'))
+	{
+		int count = 1;
+		AddItem(ITEM::Bandage, count);
+	}
+
+	if (MG_INPUT->IsStayLMB())
+	{
+		if (dummySlot->isActive)
+		{
+			dummySlot->m_transform->m_pos = MG_INPUT->GetptMouse();
+		}
+	}
+
 }
 
 void CInventorySystem::LateUpdate()
@@ -89,6 +114,7 @@ void CInventorySystem::setInvenSlot()
 			temp->Init();
 			temp->m_transform->m_pos = (i * 8 + j, Vector2(982 + 70 * j, 725 + 120 * i));
 			temp->slotID = Vector2Int(j,i);
+			temp->m_invenSys = this;
 			MG_GMOBJ->RegisterObj("Slot", temp);
 		}
 	}
@@ -98,29 +124,17 @@ void CInventorySystem::setInvenSlot()
 
 void CInventorySystem::setConsumableSlot()
 {
-	CItemInfo* temp = new CItemInfo();
-	temp->m_itemKind = ITEMKIND::ITEM_CONSUMABLE;
-	temp->m_name = "torch";
-	temp->m_description = "+20 brightness";
-	temp->m_count = MG_GAME->GetParty()->getTorch();
-	temp->m_imgData = IMAGE::torch;
-	m_invenSlots[0]->AddItem(temp);
+	auto torch = DB_ITEM->CallItem(ITEM::Torch);
+	torch->m_count = 7;
+	m_invenSlots[0]->AddItem(torch);
 
-	CItemInfo* temp1 = new CItemInfo();
-	temp1->m_itemKind = ITEMKIND::ITEM_CONSUMABLE;
-	temp1->m_name = "food";
-	temp1->m_description = "+ (1~3) HP";
-	temp1->m_count = MG_GAME->GetParty()->getFood();
-	temp1->m_imgData = IMAGE::food1;
-	m_invenSlots[1]->AddItem(temp);
+	auto food = DB_ITEM->CallItem(ITEM::Food);
+	food->m_count = 2;
+	m_invenSlots[1]->AddItem(food);
 
-	CItemInfo* temp2 = new CItemInfo();
-	temp2->m_itemKind = ITEMKIND::ITEM_CONSUMABLE;
-	temp2->m_name = "bandage";
-	temp2->m_description = "heals bleeding.";
-	temp2->m_count = MG_GAME->GetParty()->getBandage();
-	temp2->m_imgData = IMAGE::bandage;
-	m_invenSlots[2]->AddItem(temp);
+	auto bandage = DB_ITEM->CallItem(ITEM::Bandage);
+	bandage->m_count = 5;
+	m_invenSlots[2]->AddItem(bandage);
 }
 
 void CInventorySystem::changeSlot()
@@ -143,10 +157,64 @@ void CInventorySystem::showSlotMouseOn(HDC _hdc)
 			TextOut(_hdc, 0, 300, str, strlen(str));
 			if (m_invenSlots[i]->itemInfo !=nullptr)
 			{
-				sprintf_s(str, "SlotKind : %d", m_invenSlots[i]->itemInfo->m_itemKind);
+				sprintf_s(str, "SlotKind : %d", m_invenSlots[i]->itemInfo->m_item);
 				TextOut(_hdc, 0, 320, str, strlen(str));
 			}
-
 		}
 	}
+}
+
+bool CInventorySystem::AddItem(ITEM itemInfo, int& count)
+{
+	int curCount = count;
+
+
+	for (int i = 0; i < m_invenSlots.size(); i++)
+	{
+		if (m_invenSlots[i]->itemInfo == nullptr)
+		{
+			continue;
+		}
+		else {
+			if (m_invenSlots[i]->itemInfo->m_item == itemInfo
+				&& m_invenSlots[i]->itemInfo->isStockable
+				&& !m_invenSlots[i]->itemInfo->IsFull())
+			{
+				if (m_invenSlots[i]->itemInfo->maxCount > curCount + m_invenSlots[i]->itemInfo->m_count)
+				{
+					m_invenSlots[i]->itemInfo->m_count += curCount;
+					return true;
+				}
+				else {
+					curCount -= m_invenSlots[i]->itemInfo->maxCount - m_invenSlots[i]->itemInfo->m_count;
+					m_invenSlots[i]->itemInfo->m_count = m_invenSlots[i]->itemInfo->maxCount;
+				}
+			}
+		}
+	}
+	if (curCount == 0)
+	{
+		return true;
+	}
+	for (int i = 0; i < m_invenSlots.size(); i++)
+	{
+		if (m_invenSlots[i]->itemInfo == nullptr)
+		{
+			auto item = DB_ITEM->CallItem(itemInfo);
+			item->m_count = curCount;
+			m_invenSlots[i]->AddItem(item);
+			return true;
+		}
+	}
+	return false;
+}
+
+void CInventorySystem::RemoveItem(Vector2Int pos)
+{
+
+}
+
+void CInventorySystem::SwapItem(Vector2Int originPos, Vector2Int swapPos)
+{
+
 }

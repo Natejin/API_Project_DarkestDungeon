@@ -20,6 +20,11 @@ CSpriteRenderer::~CSpriteRenderer()
 
 }
 
+void CSpriteRenderer::SetImage(Image* image)
+{
+	m_image = image;
+	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
+}
 
 
 void CSpriteRenderer::SetImage(string imageName)
@@ -33,6 +38,8 @@ void CSpriteRenderer::SetImage(IMAGE imageName)
 	m_image = MG_IMAGE->findImage(imageName);
 	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
 }
+
+
 
 Image* CSpriteRenderer::GetImage()
 {

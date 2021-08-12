@@ -1,20 +1,11 @@
 #pragma once
 
-enum class ITEMKIND
-{
-	ITEM_EMPTY, 
-	ITEM_CONSUMABLE,
-	ITEM_TREASURE,
-	ITEM_NOINTERACTION,
-	ITEM_MONEY,
-	ITEM_TRINKET_DROP,
-	ITEM_TRINKET_EQUIP
-};
+
 
 class CItemInfo
 {
 public:
-	ITEMKIND m_itemKind;
+	ITEM m_item;
 	IMAGE m_imgData;
 	string m_name;
 	string m_description;
@@ -23,7 +14,25 @@ public:
 	int m_price;
 	int m_count;
 	
+	bool isStockable;
+	int maxCount;
 public:
-	CItemInfo() {};
-	~CItemInfo() {};
+	CItemInfo() {
+	
+	};
+	~CItemInfo() {
+	
+	};
+
+	bool IsFull() {
+		if (m_count < maxCount)
+		{
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+
 };

@@ -29,6 +29,7 @@ public:
 	void SetTrans(class CTransform* _trans) { m_trans = _trans; }
 	void SetImage(string imageName);
 	void SetImage(IMAGE imageName);
+	void SetImage(Image* image);
 
 	class Image* GetImage();
 

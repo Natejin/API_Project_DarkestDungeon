@@ -24,10 +24,9 @@ public:
 	//fakeImageSlot?
 	CButton_SlotItem* dummySlot;
 
-	//CButton_SlotItem empty;
-	//CButton_SlotItem torch;
-
 	int filledSlot;
+
+
 
 public:
 	CInventorySystem();
@@ -53,7 +52,9 @@ public:
 	void changeSlot(); 
 	void showSlotMouseOn(HDC _hdc);
 
-
+	bool AddItem(ITEM itemInfo, int& count);
+	void RemoveItem(Vector2Int pos);
+	void SwapItem(Vector2Int originPos, Vector2Int swapPos);
 
 
 };

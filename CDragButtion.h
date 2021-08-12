@@ -1,5 +1,8 @@
 #pragma once
 #include "CButton.h"
+
+
+
 class CDragButton : public CButton
 {
 protected:
@@ -7,8 +10,11 @@ protected:
 	function<void()> m_triggerWhenDrag;
 
 	bool canTriggerDrag;
-
+	bool isDragging;
 public:
+	static CDragButton* selDragButton;
+	static int selKeyIndex;
+
 	CDragButton();
 	~CDragButton();
 
@@ -25,7 +31,7 @@ public:
 
 	void SetButtonSize(float width, float height);
 	void Mouse_Move();
-	void SetButtonSize();
+
 
 	template <typename T>
 	void SetTriggerWhenDrag(T* pObj, void(T::* func)())

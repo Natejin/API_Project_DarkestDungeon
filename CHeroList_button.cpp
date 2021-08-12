@@ -24,28 +24,35 @@ HRESULT CHeroList_button::Init()
 
 void CHeroList_button::Update(float deltaTime, float worldTime)
 {
-	if (m_rect.CheckCollisionWithPoint(m_ptMouse))
+	if (!selDragButton)
 	{
-		if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
+		if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
 		{
-			if (canTriggerDrag)
+			if (MG_INPUT->IsDownLMB())
 			{
-				//드래그 중일때 이동해야 한다.
-				m_transform->m_pos = m_ptMouse;
-				m_rect.l = m_ptMouse.x - buttonSize.x * m_transform->m_pivot.x;
-				m_rect.t = m_ptMouse.y - buttonSize.y * m_transform->m_pivot.y;
-				m_rect.r = m_ptMouse.x + buttonSize.x * (1 - m_transform->m_pivot.x);
-				m_rect.b = m_ptMouse.y + buttonSize.y * (1 - m_transform->m_pivot.y);
+				selDragButton = this;
+				selKeyIndex = VK_LBUTTON;
+				originPos = m_transform->m_pos;
+				if (canTriggerDown)
+				{
+					m_triggerWhenDown();
+				}
 			}
 		}
 
-		if (MG_INPUT->isOnceKeyUp(VK_LBUTTON))
+	}
+	else if (selDragButton == this)
+		//else
+	{
+		if (MG_INPUT->IsUpLMB())
 		{
-			if (canTriggerClick)
-			{	//놓았을때 그 위치에 애가 둬야 한다.
-				m_triggerWhenOnceUp();
+			m_transform->m_pos = originPos;
+			if (canTriggerUp)
+			{
+				m_triggerWhenUp();
 			}
-
+			selDragButton = nullptr;
+			selKeyIndex = -1;
 		}
 	}
 }
@@ -66,13 +73,4 @@ void CHeroList_button::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
 	m_heroBG->RenderUI(_hdc);
-}
-
-void CHeroList_button::SetButtonSize(float width, float height)
-{
-	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
-	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
-	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
-	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
-	buttonSize = Vector2(width, height);
 }

@@ -16,6 +16,7 @@ mainGame::~mainGame() {}
 HRESULT mainGame::init()
 {
 	gameNode::init(true);
+	DB_ITEM->Init();
 	MG_GAME->Init();
 	MG_CAMERA->Init();
 	MG_SCENE->init();

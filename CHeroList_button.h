@@ -6,7 +6,7 @@ class CHeroList_button : public CDragButton
 	function<void()> m_triggerWhenDrag;
 
 	class CSpriteRenderer* m_heroBG;
-
+	Vector2 originPos;
 
 public:
 	CHeroList_button();
@@ -20,8 +20,6 @@ public:
 	virtual void BackRender(HDC _hdc);
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
-	
-	void SetButtonSize(float width, float height);
 	
 	template <typename T>
 	void SetTriggerWhenDrag(T* pObj, void(T::* func)())

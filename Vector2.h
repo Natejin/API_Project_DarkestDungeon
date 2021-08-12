@@ -216,14 +216,14 @@ typedef struct Vector2Int
     Vector2Int operator -(const Vector2Int& rhs) const
     {
         return Vector2Int(x - rhs.x, y - rhs.y);
-    }   
-    
-    Vector2Int operator -(const int& rhs) 
+    }
+
+    Vector2Int operator -(const int& rhs)
     {
         return Vector2Int(x - rhs, y - rhs);
     }
 
-    Vector2Int operator +(const int& rhs) 
+    Vector2Int operator +(const int& rhs)
     {
         return Vector2Int(x + rhs, y + rhs);
     }

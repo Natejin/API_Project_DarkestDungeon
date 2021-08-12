@@ -17,7 +17,7 @@ HRESULT Abbey::Init()
 
 	m_quick = new CButton();
 	m_quick->m_transform->m_pos = Vector2(WINSIZEX - 550, 100);
-	m_quick->SetButtonSize(200, 200);
+	m_quick->AddColliderBox(200, 200);
 	m_quick->AddSpriteRenderer("quick");
 	MG_GMOBJ->RegisterObj("quick", m_quick);
 	m_quick->isActive = false;
@@ -73,7 +73,7 @@ void Abbey::Setquick()
 {
 	//나가기버튼	
 	
-	m_quick->SetTriggerWhenClick(this, &Abbey::FinishUI);
+	m_quick->SetTriggerWhenUp(this, &Abbey::FinishUI);
 
 }
 

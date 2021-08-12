@@ -20,6 +20,22 @@ enum class LAYER
 	UIButton
 };
 
+enum class ITEM
+{
+	ITEM_EMPTY,
+		ITEM_CONSUMABLE,
+		ITEM_TREASURE,
+		ITEM_MONEY,
+		ITEM_TRINKET_DROP,
+		ITEM_TRINKET_EQUIP,
+
+		Torch,
+		Food,
+		Bandage
+
+
+};
+
 enum class JOB
 {
 	Crusader,

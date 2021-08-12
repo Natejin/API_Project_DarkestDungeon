@@ -222,6 +222,7 @@
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="ItemDataBase.h" />
     <ClInclude Include="itemInfo.h" />
     <ClInclude Include="itemList.h" />
     <ClInclude Include="loadiingTest.h" />
@@ -333,6 +334,7 @@
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="ItemDataBase.cpp" />
     <ClCompile Include="itemList.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />

@@ -8,6 +8,8 @@ class CButton_SlotItem : public CDragButton
 public:
 	CItemInfo* itemInfo;
 	//ImageData slotItemImg;
+	class CInventorySystem* m_invenSys;
+
 	Vector2Int slotID; 
 
 	CDragButton* bt_slot;

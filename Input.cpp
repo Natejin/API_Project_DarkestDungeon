@@ -22,14 +22,18 @@ void CInputManager::release() {}
 
 void CInputManager::Update(float deltaTime, float worldTime)
 {
-	if (curClickKeyCode > -1)
-	{
-		if (clickCurTime < worldTime)
-		{
-			_keyClick.set(curClickKeyCode, false);
-			curClickKeyCode = -1;
-		}
+	wasDownLMB = isDownLMB ? true : false;
+
+	isDownLMB = false;
+	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
+
+		isDownLMB = true;
 	}
+
+	m_Mouse = Vector2(m_ptMouse);
+	m_ptDeltaMouse = m_Mouse - m_OldptMouse;
+	m_OldptMouse = m_Mouse;
+	//OutputDebugString(TEXT("1234"));
 }
 
 
