@@ -7,7 +7,8 @@
 CBuilding_PanelButton::CBuilding_PanelButton()
 {
 	m_layer = LAYER::UIButton;
-
+	
+	
 }
 CBuilding_PanelButton::~CBuilding_PanelButton()
 {
@@ -15,7 +16,7 @@ CBuilding_PanelButton::~CBuilding_PanelButton()
 
 HRESULT CBuilding_PanelButton::Init()
 {
-	isResist = true; //등록 다해주고 나서 bool값을 트루로 변경.
+	
 	return S_OK;
 }
 
@@ -28,7 +29,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 			if (hero == nullptr && CHeroList_button::selDragButton != nullptr)
 			{
 				hero = ((CHeroList_button*)CHeroList_button::selDragButton)->m_hero;
-
+				CHeroList_button::selDragButton = nullptr;
 				MG_GAME->RemoveHero(hero->ownIndex);
 				townScene->SetHerolist();
 				

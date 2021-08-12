@@ -21,7 +21,7 @@ HRESULT CUIPanel_BlackSmith::Init()
     m_windowPanelChar = new CSpriteRenderer(IMAGE::blacksmith_char, m_transform);
     m_transform->m_pivot = Vector2(-0.095, -0.095);
 
-    m_heroButton = new CHeroList_button();
+ //   m_heroButton = new CHeroList_button();
     return S_OK;
 }
 void CUIPanel_BlackSmith::Update(float deltaTime, float worldTime)

@@ -14,7 +14,6 @@ CHeroList_button::~CHeroList_button()
 HRESULT CHeroList_button::Init()
 {
 	m_transform->m_pivot = Vector2(0.5, 0.5);
-	
 	m_heroBG = new CSpriteRenderer(IMAGE::rosterelement_res, m_transform);
 	m_heroBG->useCustomPos = true;
 	m_heroBG->pos = Vector2(130, 0);

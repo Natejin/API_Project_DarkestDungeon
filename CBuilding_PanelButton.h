@@ -1,6 +1,6 @@
 #pragma once
-#include"CButton.h"
-class CBuilding_PanelButton : public CButton
+#include"CEst_UI.h"
+class CBuilding_PanelButton : public CEst_UI
 {
 public:
 	class TownScene* townScene;
@@ -20,6 +20,5 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
-	bool isResist; //등록 되었니.
 };
 

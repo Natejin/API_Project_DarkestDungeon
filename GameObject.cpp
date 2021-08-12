@@ -131,4 +131,12 @@ void GameObject::AddSpriteRenderer(string imageName)
 	m_spriteRenderer->SetTrans(m_transform);
 	m_spriteRenderer->SetImage(imageName);
 }
+void GameObject::Enable()
+{
+	isActive = true;
+}
 
+void GameObject::Unable()
+{
+	isActive = false;
+}

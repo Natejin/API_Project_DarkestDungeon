@@ -6,20 +6,21 @@ class CUIPanel_Abbey :public CEst_UI
 private:
 	class CHeroList_button* m_HeroList_button;
 
-	class CBuilding_PanelButton* m_empty1;
-	class CBuilding_PanelButton* m_empty2;
-	class CBuilding_PanelButton* m_empty3;
-	class CBuilding_PanelButton* m_empty4;
-	class CBuilding_PanelButton* m_empty5;
-	class CBuilding_PanelButton* m_empty6;
-	class CBuilding_PanelButton* m_empty7;
-	class CBuilding_PanelButton* m_empty8;
-	class CBuilding_PanelButton* m_empty9;
+	class CBuilding_PanelButton* m_room1;
+	class CBuilding_PanelButton* m_room2;
+	class CBuilding_PanelButton* m_room3;
+	class CBuilding_PanelButton* m_room4;
+	class CBuilding_PanelButton* m_room5;
+	class CBuilding_PanelButton* m_room6;
+	class CBuilding_PanelButton* m_room7;
+	class CBuilding_PanelButton* m_room8;
+	class CBuilding_PanelButton* m_room9;
 
 public:
 
-	class CButton* m_smallx1;
+	class CButton* m_check;
 	class CBuilding_PanelButton* panelbutton;
+	vector<class CBuilding_PanelButton*> panelVec;
 
 	CUIPanel_Abbey();
 	~CUIPanel_Abbey();
@@ -35,6 +36,8 @@ public:
 
 	virtual void Release();
 	void CreateRooms();
-	void CreatsmallX();
-	
+	void Creatchecks();
+
+	virtual void Enable();
+    virtual void Unable();
 };

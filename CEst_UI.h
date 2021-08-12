@@ -5,11 +5,13 @@ class CEst_UI :public GameObject
 {
 protected:
 
-	 class CButton* m_quick;
+	class CButton* m_quick;
 
-	 class CSpriteRenderer* m_windowPanelBG;
+	class CSpriteRenderer* m_windowPanelBG;
 
-	 class CSpriteRenderer* m_windowPanelChar;
+	class CSpriteRenderer* m_windowPanelChar;
+
+	//class CUIPanel_Abbey* abbey;
 
 public:
 
@@ -30,5 +32,6 @@ public:
 	virtual void Release();
 
 	void FinishUI();
-
+	virtual void Enable();
+	virtual void Unable();
 };

@@ -221,9 +221,9 @@ void TownScene::ActivateBuildings() {
 }
 void TownScene::Show_abeey()
 {	
-	m_abbey->isActive = true;
-	
+
 	DeactivateBuildings();
+	m_abbey->Enable();
 }
 void TownScene::Show_blacksmith( )
 {
@@ -283,12 +283,7 @@ void TownScene::SetHerolist()
 
 		for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 		{
-		   /*
-		   ImageData m_roster;
-			m_roster.m_img = MG_IMAGE->findImage(IMAGE::rosterelement_res);
-			m_roster.m_trans.m_pos = Vector2(WINSIZEX / 2+510 , WINSIZEY - 930 + i*100);
-			v_roster.push_back(m_roster);
-			*/
+		 
 			CHeroList_button* dragButton = new CHeroList_button();
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);

@@ -13,13 +13,13 @@ protected:
 	class CUIPanel_Statue* m_statue ;
 	class CUIPanel_NomadWagon* m_nomad_wagon;
 	class CUIPanel_Tavern* m_tavern;
-	vector<class CDragButton*> m_dragButtonVec;
-
-public:
-	class CHeroList_button* m_dragButton;
+	vector<class CHeroList_button*> m_dragButtonVec;
+	
+	
 	vector<class CBuilding*> buildingVec;
 	
 public:
+	//class CHeroList_button* m_dragButton;
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
 	bool isHold; // 들고있냐.

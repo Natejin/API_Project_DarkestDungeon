@@ -46,4 +46,6 @@ public:
 	
 	virtual void AddSpriteRenderer(IMAGE imageName);
 	virtual void AddSpriteRenderer(string imageName);
+	virtual void Enable();
+	virtual void Unable();
 };

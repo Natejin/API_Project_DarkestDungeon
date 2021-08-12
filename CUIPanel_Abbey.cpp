@@ -16,39 +16,21 @@ CUIPanel_Abbey::~CUIPanel_Abbey()
 HRESULT CUIPanel_Abbey::Init()
 {
 	CEst_UI::Init();
-	isActive = false;
-
+	
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::abbey_bg, m_transform);
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095,-0.095);
 	CreateRooms();
-	CreatsmallX();
-
+	Creatchecks();
+	
 	panelbutton = new CBuilding_PanelButton();
-
+	Unable();
 	return S_OK;
 }
 
 void CUIPanel_Abbey::Update(float deltaTime, float worldTime)
 {
-	if (isActive == true)
-	{
-		m_empty1->isActive = true;
-		m_empty2->isActive = true;
-		m_empty3->isActive = true;
-		m_empty4->isActive = true;
-		m_empty5->isActive = true;
-		m_empty6->isActive = true;
-		m_empty7->isActive = true;
-		m_empty8->isActive = true;
-		m_empty9->isActive = true;
-
-		
-	}
-	if (true)
-	{
-		m_smallx1->isActive = true;
-	}
+	
 }
 
 void CUIPanel_Abbey::LateUpdate()
@@ -68,8 +50,6 @@ void CUIPanel_Abbey::FrontRender(HDC _hdc)
 	m_windowPanelBG->Render(_hdc);
 	m_windowPanelChar->Render(_hdc);
 	m_quick->isActive = true;
-
-	
 }
 
 void CUIPanel_Abbey::Release()
@@ -77,91 +57,54 @@ void CUIPanel_Abbey::Release()
 	
 }
 
-void CUIPanel_Abbey::CreateRooms()
+void CUIPanel_Abbey::CreateRooms() //panel버튼
 {
-	m_empty1 = new CBuilding_PanelButton();
-	m_empty1->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240);
-	m_empty1->AddColliderBox(100, 100);
-	m_empty1->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty1->isActive = false;
-	m_empty1->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty1);
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
+			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i *135 , WINSIZEY / 2 - 240 + j * 225);
+			m_room->AddSpriteRenderer(IMAGE::hero_slot_bg);
+			m_room->AddColliderBox();
+			m_room->isActive = false;
+			m_room->townScene = townScene;
+			panelVec.push_back(m_room);
+			MG_GMOBJ->RegisterObj("emptyroom", m_room);
+		}
+	}
+}
 
-	m_empty2 = new CBuilding_PanelButton();
-	m_empty2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+135, WINSIZEY / 2 - 240);
-	m_empty2->AddColliderBox(100, 100);
-	m_empty2->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty2->isActive = false;
-	m_empty2->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty2);
-
-	m_empty3 = new CBuilding_PanelButton();
-	m_empty3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+270, WINSIZEY / 2 - 240);
-	m_empty3->AddColliderBox(100, 100);
-	m_empty3->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty3->isActive = false;
-	m_empty3->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty3);
-
-	m_empty4 = new CBuilding_PanelButton();
-	m_empty4->m_transform->m_pos = Vector2(WINSIZEX / 2+180, WINSIZEY / 2-15);
-	m_empty4->AddColliderBox(100, 100);
-	m_empty4->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty4->isActive = false;
-	m_empty4->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty4);
-
-	m_empty5 = new CBuilding_PanelButton();
-	m_empty5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+135, WINSIZEY / 2 - 15);
-	m_empty5->AddColliderBox(100, 100);
-	m_empty5->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty5->isActive = false;
-	m_empty5->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty5);
-
-	m_empty6 = new CBuilding_PanelButton();
-	m_empty6->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+270, WINSIZEY / 2 - 15);
-	m_empty6->AddColliderBox(100, 100);
-	m_empty6->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty6->isActive = false;
-	m_empty6->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty6);
-
-	m_empty7 = new CBuilding_PanelButton();
-	m_empty7->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 +210);
-	m_empty7->AddColliderBox(100, 100);
-	m_empty7->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty7->isActive = false;
-	m_empty7->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty7);
-
-	m_empty8 = new CBuilding_PanelButton();
-	m_empty8->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+135, WINSIZEY / 2 + 210);
-	m_empty8->AddColliderBox(100, 100);
-	m_empty8->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty8->isActive = false;
-	m_empty8->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty8);
-
-	m_empty9 = new CBuilding_PanelButton();
-	m_empty9->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+270, WINSIZEY / 2 + 210);
-	m_empty9->AddColliderBox(100, 100);
-	m_empty9->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_empty9->isActive = false;
-	m_empty9->townScene = townScene;
-	MG_GMOBJ->RegisterObj("emptyroom", m_empty9);
+void CUIPanel_Abbey::Creatchecks()
+{
+	m_check = new CButton();
+	m_check->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240 + 50);
+	
+	m_check->AddSpriteRenderer(IMAGE::check);
+	m_check->AddColliderBox();
+	m_check->isActive = false;
+	MG_GMOBJ->RegisterObj("smallx", m_check);
 
 }
 
-void CUIPanel_Abbey::CreatsmallX()
+void CUIPanel_Abbey::Enable()
 {
-	m_smallx1 = new CButton();
-	m_smallx1->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240 + 50);
-	m_smallx1->AddColliderBox(100, 25);
-	m_smallx1->AddSpriteRenderer(IMAGE::check);
-	m_smallx1->isActive = false;
-	MG_GMOBJ->RegisterObj("smallx", m_smallx1);
-
+	CEst_UI::Enable();
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		panelVec[i]->isActive = true;
+	}
+	isActive = true;
+	m_check->isActive = true;	//얘도 활성화 조건 바꿔야 한다.
 }
 
-
+void CUIPanel_Abbey::Unable()
+{
+	CEst_UI::Unable();
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		panelVec[i]->isActive = false;
+	}
+	isActive = false;
+	m_check->isActive = false;
+}
