@@ -22,7 +22,6 @@ GameObject::~GameObject() {}
 
 HRESULT GameObject::Init()
 {
-
 	return S_OK;
 }
 
@@ -60,11 +59,7 @@ void GameObject::Release()
 	SAFE_DELETE(m_spriteRenderer);
 }
 
-void GameObject::AddColliderBox(Vector2 pos,
-	float l,
-	float t,
-	float r,
-	float b)
+void GameObject::AddColliderBox(Vector2 pos, float l, float t, float r, float b)
 {
 	m_collider = new CCollider(m_transform);
 	m_collider->m_pos = pos;
@@ -81,8 +76,7 @@ void GameObject::AddColliderBox(float width, float height)
 		-width * m_transform->m_pivot.x,
 		-height * m_transform->m_pivot.y,
 		width * (1 - m_transform->m_pivot.x),
-		height * (1 - m_transform->m_pivot.y)
-	);
+		height * (1 - m_transform->m_pivot.y));
 }
 
 void GameObject::AddColliderBox()
@@ -95,8 +89,7 @@ void GameObject::AddColliderBox()
 			-imageSize.x * m_transform->m_pivot.x,
 			-imageSize.y * m_transform->m_pivot.y,
 			+imageSize.x * (1 - m_transform->m_pivot.x),
-			+imageSize.y * (1 - m_transform->m_pivot.y)
-		);
+			+imageSize.y * (1 - m_transform->m_pivot.y));
 	}
 }
 
@@ -129,7 +122,6 @@ void GameObject::AddSpriteRenderer(IMAGE imageName)
 		m_spriteRenderer->SetTrans(m_transform);
 		m_spriteRenderer->SetImage(imageName);
 	}
-
 }
 
 void GameObject::AddSpriteRenderer(string imageName)

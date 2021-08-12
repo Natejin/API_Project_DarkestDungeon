@@ -5,11 +5,11 @@
 //Hero안에 ItemVector를 하나 더 만들 것 
 
 //dungeonInven 기준으로만 만들어 보기
-class CButton_SlotItem;
+class CSlotItemButton;
 class CInventorySystem : public GameObject
 {
 public:
-	vector<CButton_SlotItem*> m_invenSlots;
+	vector<CSlotItemButton*> m_invenSlots;
 
 
 	int foodLimit = 13;
@@ -18,15 +18,15 @@ public:
 	int nowMouseOnSlot;
 
 	//drag to change pos
-	CButton_SlotItem* swap_slotB;
-	CButton_SlotItem* swap_slotA;
+	CSlotItemButton* swap_slotB;
+	CSlotItemButton* swap_slotA;
 
 	//fakeImageSlot?
 	class DummySlot* dummySlot;
 
 	int filledSlot;
 
-	CButton_SlotItem* dragSlot;
+	CSlotItemButton* dragSlot;
 	Vector2Int originPos;
 	bool isDragging;
 
@@ -58,8 +58,8 @@ public:
 	void RemoveItem(Vector2Int pos);
 	//void SwapItem(Vector2Int originPos, Vector2Int swapPos);
 
-	void StartDragItem(class CButton_SlotItem* slot);
-	void EndDragItem(class CButton_SlotItem* slot);
+	void StartDragItem(class CSlotItemButton* slot);
+	void EndDragItem(class CSlotItemButton* slot);
 
 
 };

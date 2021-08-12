@@ -3,7 +3,6 @@
 #include "CParty.h"
 #include "CHero.h"
 #include "ImageData.h"
-
 #include "CButton.h"
 
 CRoadObject::CRoadObject() {}
@@ -12,20 +11,18 @@ CRoadObject::~CRoadObject() {}
 HRESULT CRoadObject::Init()
 {
     m_layer = LAYER::BackGround;
+    
+    isCollision = false;
 
     setRoadObjIMG();
     setButton();
-
-    isCollision = false;
 
     return S_OK;
 }
 
 void CRoadObject::Update(float deltaTime, float worldTime)
 {
-    Interaction_collision(); 
-
-    
+    Interaction_collision();
 }
 
 void CRoadObject::LateUpdate()
@@ -105,7 +102,6 @@ void CRoadObject::setRoadObjIMG()
 
 void CRoadObject::getMapInfo(int a1, int a2, int a3)
 {
-
 }
 
 void CRoadObject::setRoadObj()
@@ -247,7 +243,7 @@ void CRoadObject::Interaction_trap_success()
 
 void CRoadObject::Interaction_battle()
 {
-	m_roadObj[2].m_img = MG_IMAGE->findImage("�ϸ�");
-	m_roadObj[2].m_img->setWidth(100);
-	m_roadObj[2].m_img->setHeight(100);
+	//m_roadObj[2].m_img = MG_IMAGE->findImage("�ϸ�");
+	//m_roadObj[2].m_img->setWidth(100);
+	//m_roadObj[2].m_img->setHeight(100);
 }

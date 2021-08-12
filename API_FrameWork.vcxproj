@@ -227,7 +227,6 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="ItemDataBase.h" />
     <ClInclude Include="itemInfo.h" />
-    <ClInclude Include="itemList.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
@@ -250,7 +249,7 @@
     <ClInclude Include="scene2.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="singleton.h" />
-    <ClInclude Include="slot.h" />
+    <ClInclude Include="CSlotItemButton.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="soundTest.h" />
     <ClInclude Include="CUIPanel_StageCoach.h" />
@@ -341,7 +340,7 @@
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="ItemDataBase.cpp" />
-    <ClCompile Include="itemList.cpp" />
+    <ClCompile Include="itemInfo.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />
@@ -361,7 +360,7 @@
     <ClCompile Include="scene1.cpp" />
     <ClCompile Include="scene2.cpp" />
     <ClCompile Include="sceneManager.cpp" />
-    <ClCompile Include="slot.cpp" />
+    <ClCompile Include="CSlotItemButton.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="soundTest.cpp" />
     <ClCompile Include="CUIPanel_StageCoach.cpp" />

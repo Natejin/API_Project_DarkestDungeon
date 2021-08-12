@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CHeroList_button.h"
 #include"CHero.h"
+
 CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;

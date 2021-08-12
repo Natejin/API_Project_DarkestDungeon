@@ -19,7 +19,6 @@ private:
 	ImageData armor;
 	ImageData weapon;
 
-
 	int selectedHeroIndex;
 
 public:

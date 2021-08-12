@@ -11,7 +11,8 @@ CCollider::CCollider()
 	m_colliderType = COLLIDERTYPE::BOX;
 }
 
-CCollider::CCollider(CTransform* transform) {
+CCollider::CCollider(CTransform* transform) 
+{
 	m_transform = transform;
 	rect.l = 0;
 	rect.t = 0;
@@ -23,15 +24,12 @@ CCollider::CCollider(CTransform* transform) {
 
 CCollider::~CCollider()
 {
-	
 }
 
 void CCollider::SetRect(float l, float t, float r, float b)
 {
 	rect.SetRect(l, t, r, b);
 }
-
-
 
 bool CCollider::CheckXCollision(int x)
 {
@@ -53,8 +51,6 @@ bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos)
 	}
 	else return false;
 }
-
-
 
 bool CCollider::CheckColliderBoxWithPoint(POINT _pos) 
 {

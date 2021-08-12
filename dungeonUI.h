@@ -8,9 +8,7 @@ class dungeonUI : public GameObject
 public:
 	vector<ImageData> vUI;
 
-
 	int m_sceneSize;
-	bool showMap;
 
 	CButton* bt_inven;
 	CButton* bt_map;
@@ -23,7 +21,7 @@ public:
 	CButton* bt_changePos;
 	
 	class CMapSystem* m_pMapSystem;
-	class CInventorySystem* m_inven;
+	class CInventorySystem* m_invenSystem;
 
 	CUIPanel* invenPanel;
 	//class CDragButtonMinimapBG* mapPanel1;
@@ -48,17 +46,16 @@ public:
 
 	void SetUIIMG();
 	void SetButton();
-	void SetTorchUI();
+	void SetTorchUIimg();
 	void SetInven();
 	void SetSkillButton();
 
 	void TorchLightBarDecrease();
+
 	void ShowInven();
 	void ShowMap();
 
 	void ShowUI(HDC _hdc);
-	void ShowUIMap(HDC _hdc);
-	void ShowUIUInven(HDC _hdc);
 
 	//CUIPanel* CreatePanel(string name, Vector2 pos);
 	CUIPanel* CreatePanel(string name, Vector2 pos, LAYER layer);

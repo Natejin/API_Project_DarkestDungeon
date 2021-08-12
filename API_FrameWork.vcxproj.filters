@@ -49,20 +49,11 @@
     <Filter Include="Reference\loading">
       <UniqueIdentifier>{4340957f-7eb6-4d06-a697-1d8d3df4894d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\UTIL">
-      <UniqueIdentifier>{693a5e0e-cac8-4d85-bbd8-7c6f50294b06}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Struct">
-      <UniqueIdentifier>{11ba7997-29cd-4377-9f11-5991315c57cd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Concept">
       <UniqueIdentifier>{cb2dd22d-41b1-4c2d-8e7c-b0944fe2b254}</UniqueIdentifier>
     </Filter>
     <Filter Include="Concept\image">
       <UniqueIdentifier>{f246c95e-8530-4564-a361-9e48ca56eb83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Enum">
-      <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Concept\animation">
       <UniqueIdentifier>{f76728bc-10bf-45ed-82bd-a7a8932a210f}</UniqueIdentifier>
@@ -76,26 +67,8 @@
     <Filter Include="Manager\Animation_M">
       <UniqueIdentifier>{0ef76b0c-dfa5-49d9-b9ae-139323476691}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Manager\Effect_M">
-      <UniqueIdentifier>{0f9f4697-a229-4889-9d75-51379cbbfa9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\Sound_M">
-      <UniqueIdentifier>{00c9edf7-d146-41fd-9753-33088564d08f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Manager\Input_M">
       <UniqueIdentifier>{375916ee-f020-4016-9fda-15168fd3f3dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\Time_M">
-      <UniqueIdentifier>{85727489-aef9-4224-8a5a-a08cf56470cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\txtData_M">
-      <UniqueIdentifier>{92f693a0-550f-41a8-a65a-6d81b123b502}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\Image_M">
-      <UniqueIdentifier>{1152c167-f5d9-454b-b3c1-4d807f26f46a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Manager\Scene_M">
-      <UniqueIdentifier>{0e12064d-ac55-4e92-8997-300defd5f957}</UniqueIdentifier>
     </Filter>
     <Filter Include="Reference\mapTool">
       <UniqueIdentifier>{df97f2cb-c56a-4c60-a425-efb3ced4b31e}</UniqueIdentifier>
@@ -151,23 +124,11 @@
     <Filter Include="Scene\Test">
       <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Struct\NewFilter1">
-      <UniqueIdentifier>{1ad2d0a1-248c-4acd-a1df-8c44f047a010}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\DungeonUI">
       <UniqueIdentifier>{efb3261e-002f-4b2f-8fb1-b22095ed1229}</UniqueIdentifier>
     </Filter>
-    <Filter Include="System\ProtoType">
-      <UniqueIdentifier>{4a67bdcb-21e9-4736-8702-e189b8000343}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\Minimap">
-      <UniqueIdentifier>{3a813a6e-cae3-4be8-98df-f1fb90ecb57b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\EST_Button">
-      <UniqueIdentifier>{a4603b8e-dcd0-403a-8f29-a2e1eb9cbeb8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\UI\CUIPanel_Building">
       <UniqueIdentifier>{db4d9074-c7a3-4160-80d8-1d94258ff23b}</UniqueIdentifier>
@@ -202,31 +163,112 @@
     <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Abbey">
       <UniqueIdentifier>{86f7c843-c08c-4b20-badc-ebb203b6eff1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager\Camera_M">
+      <UniqueIdentifier>{e723bdd1-faa4-44ed-b788-b4a512e971f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\GObject_M">
+      <UniqueIdentifier>{ea60cd20-d922-4633-af0b-054b9b5583d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ect">
+      <UniqueIdentifier>{f6d4b45c-a250-4bba-ac57-21cfd9b21a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ect\Effect_M">
+      <UniqueIdentifier>{0f9f4697-a229-4889-9d75-51379cbbfa9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ect\Sound_M">
+      <UniqueIdentifier>{00c9edf7-d146-41fd-9753-33088564d08f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ect\Time_M">
+      <UniqueIdentifier>{85727489-aef9-4224-8a5a-a08cf56470cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ect\txtData_M">
+      <UniqueIdentifier>{92f693a0-550f-41a8-a65a-6d81b123b502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ect\Scene_M">
+      <UniqueIdentifier>{0e12064d-ac55-4e92-8997-300defd5f957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Background\Road">
+      <UniqueIdentifier>{ddfbc948-b459-4d6e-bbfd-af822671283e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Background\Town">
+      <UniqueIdentifier>{e4592cd2-e2dd-43ad-8ae7-ed3a0638afcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Background\Room">
+      <UniqueIdentifier>{229c59a0-ae4b-4711-834c-1175528b3762}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Collider">
+      <UniqueIdentifier>{2e20b540-91a6-4a64-8a9a-3f3a1d08d1fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Animator">
+      <UniqueIdentifier>{d4592c56-8318-4cc6-a445-4ac2a894d9e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Transform">
+      <UniqueIdentifier>{71a4995f-520b-4320-83f4-e47421f5cbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\SpriteRender">
+      <UniqueIdentifier>{fb5b43eb-dcf9-4b80-867a-a1df25b815c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons">
+      <UniqueIdentifier>{d9eaa80b-627a-46e9-bcb2-d93804d67467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_Minimap">
+      <UniqueIdentifier>{3a813a6e-cae3-4be8-98df-f1fb90ecb57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_EST">
+      <UniqueIdentifier>{a4603b8e-dcd0-403a-8f29-a2e1eb9cbeb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_BgMove">
+      <UniqueIdentifier>{db064f88-fe05-4a74-a269-bca6cd3e539e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_Drag">
+      <UniqueIdentifier>{3d4ad626-4bc2-4b94-9800-689a5a331f03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_PosMove">
+      <UniqueIdentifier>{f4729db5-7dae-4c15-9f90-d45ac75b2fd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_dragMiniMap">
+      <UniqueIdentifier>{b6b7482c-76f5-4a3f-8c09-86871f4bc9ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Battle">
+      <UniqueIdentifier>{c7be98a5-5111-45c9-9dc1-5f52d5f7b7d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Inventory">
+      <UniqueIdentifier>{c7487c2c-b336-4b94-8d25-4183c39eb5bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Map">
+      <UniqueIdentifier>{d3367895-89de-489d-985c-4c9fb3f54731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_Inventory">
+      <UniqueIdentifier>{8abc1215-f2a7-4467-bcb0-d5ca115211df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\ect">
+      <UniqueIdentifier>{d1d99b89-66e1-4214-8844-a53a4e347ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\DungeonUI\Inventory">
+      <UniqueIdentifier>{37cc75ee-1b76-41bf-b1ce-5c22cac40eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonInfo">
+      <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonInfo\Image_M">
+      <UniqueIdentifier>{1152c167-f5d9-454b-b3c1-4d807f26f46a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\ect\UTIL">
+      <UniqueIdentifier>{693a5e0e-cac8-4d85-bbd8-7c6f50294b06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonInfo\Struct">
+      <UniqueIdentifier>{11ba7997-29cd-4377-9f11-5991315c57cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonInfo\DB">
+      <UniqueIdentifier>{d37d24bb-a20c-40ae-8606-2ff0e4582b9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="API_FrameWork.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="commonMacroFunction.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="gameNode.h">
       <Filter>gameNode</Filter>
     </ClInclude>
-    <ClInclude Include="randomFunction.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="utils.h">
-      <Filter>헤더 파일\UTIL</Filter>
+      <Filter>헤더 파일\ect\UTIL</Filter>
     </ClInclude>
     <ClInclude Include="image.h">
       <Filter>Concept\image</Filter>
@@ -310,7 +352,7 @@
       <Filter>Reference\A%2a</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
-      <Filter>헤더 파일\Struct</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
       <Filter>Scene</Filter>
@@ -324,9 +366,6 @@
     <ClInclude Include="Object.h">
       <Filter>Object\Prototype</Filter>
     </ClInclude>
-    <ClInclude Include="CObjectManager.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Scene\Prototype</Filter>
     </ClInclude>
@@ -336,17 +375,8 @@
     <ClInclude Include="CHero.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="CTransform.h">
-      <Filter>Object\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="singleton.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CCameraManager.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
     <ClInclude Include="Enum.h">
-      <Filter>Enum</Filter>
+      <Filter>CommonInfo</Filter>
     </ClInclude>
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
@@ -355,34 +385,31 @@
       <Filter>Manager\Animation_M</Filter>
     </ClInclude>
     <ClInclude Include="effectManager.h">
-      <Filter>Manager\Effect_M</Filter>
+      <Filter>Manager\ect\Effect_M</Filter>
     </ClInclude>
     <ClInclude Include="soundManager.h">
-      <Filter>Manager\Sound_M</Filter>
+      <Filter>Manager\ect\Sound_M</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Manager\Input_M</Filter>
     </ClInclude>
     <ClInclude Include="timeManager.h">
-      <Filter>Manager\Time_M</Filter>
+      <Filter>Manager\ect\Time_M</Filter>
     </ClInclude>
     <ClInclude Include="txtData.h">
-      <Filter>Manager\txtData_M</Filter>
+      <Filter>Manager\ect\txtData_M</Filter>
     </ClInclude>
     <ClInclude Include="imageManager.h">
-      <Filter>Manager\Image_M</Filter>
+      <Filter>CommonInfo\Image_M</Filter>
     </ClInclude>
     <ClInclude Include="sceneManager.h">
-      <Filter>Manager\Scene_M</Filter>
-    </ClInclude>
-    <ClInclude Include="CCollider.h">
-      <Filter>Object\Component</Filter>
+      <Filter>Manager\ect\Scene_M</Filter>
     </ClInclude>
     <ClInclude Include="CComponent.h">
       <Filter>Object\Component\Prototype</Filter>
     </ClInclude>
     <ClInclude Include="Rect.h">
-      <Filter>헤더 파일\Struct</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
     <ClInclude Include="CButton.h">
       <Filter>Object\UI</Filter>
@@ -390,17 +417,8 @@
     <ClInclude Include="CParty.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="CBattleSystem.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="CVestal.h">
       <Filter>Object\Hero</Filter>
-    </ClInclude>
-    <ClInclude Include="CBG_Road.h">
-      <Filter>Object\Background</Filter>
-    </ClInclude>
-    <ClInclude Include="CBG_Room.h">
-      <Filter>Object\Background</Filter>
     </ClInclude>
     <ClInclude Include="CBackground.h">
       <Filter>Object\Background</Filter>
@@ -409,7 +427,7 @@
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="ImageData.h">
-      <Filter>헤더 파일\Struct</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
     <ClInclude Include="CBoneArbalest.h">
       <Filter>Object\Enemy</Filter>
@@ -432,23 +450,11 @@
     <ClInclude Include="CRoadObject.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
-    <ClInclude Include="CInventorySystem.h">
-      <Filter>System</Filter>
-    </ClInclude>
-    <ClInclude Include="CBG_Town.h">
-      <Filter>Object\Background</Filter>
-    </ClInclude>
     <ClInclude Include="DungeonScene2.h">
       <Filter>Scene\Test</Filter>
     </ClInclude>
     <ClInclude Include="DungeonData.h">
-      <Filter>헤더 파일\Struct</Filter>
-    </ClInclude>
-    <ClInclude Include="CAnimator.h">
-      <Filter>Object\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="CSpriteRenderer.h">
-      <Filter>Object\Component</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_Abbey.h">
       <Filter>Object\UI\CUIPanel_Building\CUIPanel_Abbey</Filter>
@@ -489,12 +495,6 @@
     <ClInclude Include="dungeonUI.h">
       <Filter>Object\DungeonUI</Filter>
     </ClInclude>
-    <ClInclude Include="CButton_move.h">
-      <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CMapSystem.h">
-      <Filter>System</Filter>
-    </ClInclude>
     <ClInclude Include="Activity_log.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -505,22 +505,13 @@
       <Filter>Scene\Test</Filter>
     </ClInclude>
     <ClInclude Include="CMinimapButton.h">
-      <Filter>Object\UI\Minimap</Filter>
-    </ClInclude>
-    <ClInclude Include="CDragButtion.h">
-      <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CDragButtonMinimapBG.h">
-      <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CButton_buttonPosMove.h">
-      <Filter>Object\UI</Filter>
+      <Filter>Object\UI\Buttons\bt_Minimap</Filter>
     </ClInclude>
     <ClInclude Include="CBuilding.h">
-      <Filter>Object\UI\EST_Button</Filter>
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClInclude>
     <ClInclude Include="CHeroList_button.h">
-      <Filter>Object\UI\EST_Button</Filter>
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClInclude>
     <ClInclude Include="CHeroList_ui.h">
       <Filter>Object\UI\CUIPanel_Building</Filter>
@@ -529,10 +520,94 @@
       <Filter>Object\UI\EST_Button</Filter>
     </ClInclude>
     <ClInclude Include="CBuilding_PanelButton.h">
-      <Filter>Object\UI\EST_Button</Filter>
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClInclude>
     <ClInclude Include="CBTN_Skill.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CCameraManager.h">
+      <Filter>Manager\Camera_M</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectManager.h">
+      <Filter>Manager\GObject_M</Filter>
+    </ClInclude>
+    <ClInclude Include="CBG_Road.h">
+      <Filter>Object\Background\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="CBG_Town.h">
+      <Filter>Object\Background\Town</Filter>
+    </ClInclude>
+    <ClInclude Include="CBG_Room.h">
+      <Filter>Object\Background\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Object\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Object\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CTransform.h">
+      <Filter>Object\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpriteRenderer.h">
+      <Filter>Object\Component\SpriteRender</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_buttonPosMove.h">
+      <Filter>Object\UI\Buttons\bt_PosMove</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton_move.h">
+      <Filter>Object\UI\Buttons\bt_BgMove</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtion.h">
+      <Filter>Object\UI\Buttons\bt_Drag</Filter>
+    </ClInclude>
+    <ClInclude Include="CDragButtonMinimapBG.h">
+      <Filter>Object\UI\Buttons\bt_dragMiniMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CBattleSystem.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CInventorySystem.h">
+      <Filter>System\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="CMapSystem.h">
+      <Filter>System\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjOnRoad.h">
+      <Filter>Object\RoadObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CSlotItemButton.h">
+      <Filter>Object\UI\Buttons\bt_Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일\ect</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>헤더 파일\ect</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일\ect</Filter>
+    </ClInclude>
+    <ClInclude Include="randomFunction.h">
+      <Filter>헤더 파일\ect</Filter>
+    </ClInclude>
+    <ClInclude Include="commonMacroFunction.h">
+      <Filter>헤더 파일\ect</Filter>
+    </ClInclude>
+    <ClInclude Include="API_FrameWork.h">
+      <Filter>헤더 파일\ect</Filter>
+    </ClInclude>
+    <ClInclude Include="DummySlot.h">
+      <Filter>Object\DungeonUI\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="itemInfo.h">
+      <Filter>Object\DungeonUI\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>CommonInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDataBase.h">
+      <Filter>CommonInfo\DB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -543,7 +618,7 @@
       <Filter>gameNode</Filter>
     </ClCompile>
     <ClCompile Include="utils.cpp">
-      <Filter>헤더 파일\UTIL</Filter>
+      <Filter>헤더 파일\ect\UTIL</Filter>
     </ClCompile>
     <ClCompile Include="image.cpp">
       <Filter>Concept\image</Filter>
@@ -624,7 +699,7 @@
       <Filter>Reference\A%2a</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
-      <Filter>헤더 파일\Struct</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>Scene</Filter>
@@ -638,9 +713,6 @@
     <ClCompile Include="Object.cpp">
       <Filter>Object\Prototype</Filter>
     </ClCompile>
-    <ClCompile Include="CObjectManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Scene\Prototype</Filter>
     </ClCompile>
@@ -650,12 +722,6 @@
     <ClCompile Include="CHero.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="CTransform.cpp">
-      <Filter>Object\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="CCameraManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
     <ClCompile Include="DungeonScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -663,34 +729,31 @@
       <Filter>Manager\Animation_M</Filter>
     </ClCompile>
     <ClCompile Include="effectManager.cpp">
-      <Filter>Manager\Effect_M</Filter>
+      <Filter>Manager\ect\Effect_M</Filter>
     </ClCompile>
     <ClCompile Include="soundManager.cpp">
-      <Filter>Manager\Sound_M</Filter>
+      <Filter>Manager\ect\Sound_M</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Manager\Input_M</Filter>
     </ClCompile>
     <ClCompile Include="timeManager.cpp">
-      <Filter>Manager\Time_M</Filter>
+      <Filter>Manager\ect\Time_M</Filter>
     </ClCompile>
     <ClCompile Include="txtData.cpp">
-      <Filter>Manager\txtData_M</Filter>
+      <Filter>Manager\ect\txtData_M</Filter>
     </ClCompile>
     <ClCompile Include="imageManager.cpp">
-      <Filter>Manager\Image_M</Filter>
+      <Filter>CommonInfo\Image_M</Filter>
     </ClCompile>
     <ClCompile Include="sceneManager.cpp">
-      <Filter>Manager\Scene_M</Filter>
-    </ClCompile>
-    <ClCompile Include="CCollider.cpp">
-      <Filter>Object\Component</Filter>
+      <Filter>Manager\ect\Scene_M</Filter>
     </ClCompile>
     <ClCompile Include="CComponent.cpp">
       <Filter>Object\Component\Prototype</Filter>
     </ClCompile>
     <ClCompile Include="Rect.cpp">
-      <Filter>헤더 파일\Struct</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
     <ClCompile Include="CButton.cpp">
       <Filter>Object\UI</Filter>
@@ -698,17 +761,8 @@
     <ClCompile Include="CParty.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="CBattleSystem.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
     <ClCompile Include="CVestal.cpp">
       <Filter>Object\Hero</Filter>
-    </ClCompile>
-    <ClCompile Include="CBG_Road.cpp">
-      <Filter>Object\Background</Filter>
-    </ClCompile>
-    <ClCompile Include="CBG_Room.cpp">
-      <Filter>Object\Background</Filter>
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>Object\Background</Filter>
@@ -717,7 +771,7 @@
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="ImageData.cpp">
-      <Filter>헤더 파일\Struct</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
     <ClCompile Include="CBoneArbalest.cpp">
       <Filter>Object\Enemy</Filter>
@@ -740,23 +794,11 @@
     <ClCompile Include="CRoadObject.cpp">
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
-    <ClCompile Include="CInventorySystem.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
-    <ClCompile Include="CBG_Town.cpp">
-      <Filter>Object\Background</Filter>
-    </ClCompile>
     <ClCompile Include="DungeonScene2.cpp">
       <Filter>Scene\Test</Filter>
     </ClCompile>
     <ClCompile Include="DungeonData.cpp">
-      <Filter>헤더 파일\Struct</Filter>
-    </ClCompile>
-    <ClCompile Include="CAnimator.cpp">
-      <Filter>Object\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="CSpriteRenderer.cpp">
-      <Filter>Object\Component</Filter>
+      <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_Abbey.cpp">
       <Filter>Object\UI\CUIPanel_Building\CUIPanel_Abbey</Filter>
@@ -797,12 +839,6 @@
     <ClCompile Include="dungeonUI_HeroInfo.cpp">
       <Filter>Object\DungeonUI</Filter>
     </ClCompile>
-    <ClCompile Include="CButton_move.cpp">
-      <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="CMapSystem.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
     <ClCompile Include="Activity_log.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -813,22 +849,13 @@
       <Filter>Scene\Test</Filter>
     </ClCompile>
     <ClCompile Include="CMinimapButton.cpp">
-      <Filter>Object\UI\Minimap</Filter>
-    </ClCompile>
-    <ClCompile Include="CDragButtion.cpp">
-      <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="CDragButtonMinimapBG.cpp">
-      <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="CButton_buttonPosMove.cpp">
-      <Filter>Object\UI</Filter>
+      <Filter>Object\UI\Buttons\bt_Minimap</Filter>
     </ClCompile>
     <ClCompile Include="CBuilding.cpp">
-      <Filter>Object\UI\EST_Button</Filter>
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClCompile>
     <ClCompile Include="CHeroList_button.cpp">
-      <Filter>Object\UI\EST_Button</Filter>
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClCompile>
     <ClCompile Include="CHeroList_ui.cpp">
       <Filter>Object\UI\CUIPanel_Building</Filter>
@@ -837,9 +864,72 @@
       <Filter>Object\UI\EST_Button</Filter>
     </ClCompile>
     <ClCompile Include="CBuilding_PanelButton.cpp">
-      <Filter>Object\UI\EST_Button</Filter>
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClCompile>
     <ClCompile Include="CBTN_Skill.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CCameraManager.cpp">
+      <Filter>Manager\Camera_M</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectManager.cpp">
+      <Filter>Manager\GObject_M</Filter>
+    </ClCompile>
+    <ClCompile Include="CBG_Road.cpp">
+      <Filter>Object\Background\Road</Filter>
+    </ClCompile>
+    <ClCompile Include="CBG_Town.cpp">
+      <Filter>Object\Background\Town</Filter>
+    </ClCompile>
+    <ClCompile Include="CBG_Room.cpp">
+      <Filter>Object\Background\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Object\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Object\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CTransform.cpp">
+      <Filter>Object\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpriteRenderer.cpp">
+      <Filter>Object\Component\SpriteRender</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_buttonPosMove.cpp">
+      <Filter>Object\UI\Buttons\bt_PosMove</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton_move.cpp">
+      <Filter>Object\UI\Buttons\bt_BgMove</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtion.cpp">
+      <Filter>Object\UI\Buttons\bt_Drag</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragButtonMinimapBG.cpp">
+      <Filter>Object\UI\Buttons\bt_dragMiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CBattleSystem.cpp">
+      <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CInventorySystem.cpp">
+      <Filter>System\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="CMapSystem.cpp">
+      <Filter>System\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoad.cpp">
+      <Filter>Object\RoadObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CSlotItemButton.cpp">
+      <Filter>Object\UI\Buttons\bt_Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="DummySlot.cpp">
+      <Filter>Object\DungeonUI\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDataBase.cpp">
+      <Filter>CommonInfo\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="itemInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

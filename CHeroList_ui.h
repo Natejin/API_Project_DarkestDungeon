@@ -1,8 +1,11 @@
 #pragma once
 #include"CEst_UI.h"
+
 class CHeroList_ui : public CEst_UI
 {
+private:
 	vector<ImageData> v_roster;
+
 public:
 	
 	CHeroList_ui();
@@ -20,4 +23,3 @@ public:
 	virtual void Release();
 
 };
-

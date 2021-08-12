@@ -9,9 +9,10 @@ enum class LAYER
 	UIMinimapRoad,
 	UIMinimapTouch,
 	BackGround,
+
 	Building,
-	Player,
 	Enemy,
+	Player,
 	AllinceProjectile,
 	EnemyProjectile,
 	EffectFrontword,
@@ -23,18 +24,15 @@ enum class LAYER
 
 enum class ITEM
 {
-	ITEM_EMPTY,
-		ITEM_CONSUMABLE,
-		ITEM_TREASURE,
-		ITEM_MONEY,
-		ITEM_TRINKET_DROP,
-		ITEM_TRINKET_EQUIP,
+	ITEM_CONSUMABLE,
+	ITEM_TREASURE,
+	ITEM_MONEY,
+	ITEM_TRINKET_DROP,
+	ITEM_TRINKET_EQUIP,
 
-		Torch,
-		Food,
-		Bandage
-
-
+	Torch,
+	Food,
+	Bandage
 };
 
 enum class JOB
@@ -45,12 +43,12 @@ enum class JOB
 	Highwayman
 };
 
-enum class DIR {
+enum class DIR 
+{
 	Left,
 	Up,
 	Right,
 	Down
-
 };
 
 enum class IMAGE
@@ -62,18 +60,17 @@ enum class IMAGE
 	Crusader_Idle,
 	Crusader_Walk,
 	Crusader_Combat,
+
 	//Enemy
 	Skeleton_Defender,
 
 	//IMG_DUNGEON
 	ruins_bg,
-
 	ruins_wall0,
 	ruins_wall2,
 	ruins_wall3,
 	ruins_wall6,
 	ruins_wall_basic,
-
 	ruins_wall1,
 	ruins_wall4,
 	ruins_wall5,
@@ -88,33 +85,30 @@ enum class IMAGE
 	Ruins_room8,
 	Ruins_room9,
 
+	ruins_endhall,
+	ruins_mid,
+	ruins_bottom,
+	ruins_top,
+
+	//IMG-TOWN
 	abbey_bg,
 	abbey_char,
-
 	blacksmith_bg,
 	blacksmith_char,
-
 	camping_trainer_bg,
 	camping_trainer_char,
-
 	graveyard_bg,
 	graveyard_char,
-
 	guild_bg,
 	guild_char,
-
 	nomad_wagon_bg,
 	nomad_wagon_char,
-
 	sanitarium_bg,
 	sanitarium_char,
-
 	stage_coach_bg,
 	stage_coach_char,
-
 	statue_bg,
 	statue_char,
-
 	tavern_bg,
 	tavern_char,
 
@@ -130,18 +124,6 @@ enum class IMAGE
 	roster_downframe,
 	rosterelement_res,
 	roster_bggrad,
-
-	ruins_endhall,
-	ruins_mid,
-
-	ruins_bottom,
-	ruins_top,
-
-	//IMG_PLAYABLECHARACTER
-	crusader,
-	highwayman,
-	plague_doctor,
-	vestal,
 
 	//Minimap Button
 	hall_clear,
@@ -170,6 +152,7 @@ enum class IMAGE
 	room_entrance,
 	room_treasure,
 	room_unknown,
+
 	//Hero_roster
 	crusader_roster,
 	highwayman_roster,
@@ -194,21 +177,13 @@ enum class IMAGE
 	enemy,
 	nothing,
 
-
-		//Item
-		torch,
-		food1,
-		food2,
-		food3,
-		food4,
-		bandage,
-};
-
-enum class RACE
-{
-	Human,
-	Undying,
-	Worm
+	//Item
+	torch,
+	food1,
+	food2,
+	food3,
+	food4,
+	bandage,
 };
 
 enum class Resistance
@@ -228,9 +203,9 @@ enum class Combat_Skill
 
 enum class Camping_Skill
 {
-	//�߽�����
+
 	Night_Attack_Prevention,
-	//���� ��ȭ
+
 	Reconnaissance,
 	Stress_Down,
 	Cure_disease,
@@ -240,7 +215,6 @@ enum class Camping_Skill
 
 enum class BATTLETURN
 {
-	//�߽�����
 	EnemyTurn,
 	PlayerTurn
 };
@@ -266,16 +240,12 @@ enum class COLLIDERTYPE
 	PIXEL
 };
 
-
 enum class ANIMATIONTYPE
 {
 	Stop,
 	Play,
 	Pause
-
 };
-
-
 
 enum class DUNGEONMAPSTATE
 {
@@ -298,17 +268,17 @@ enum class SCENETYPE
 	Town
 };
 
-enum class UNITTYPE {
+enum class UNITTYPE 
+{
 	NONE,
 	Hero,
 	Enemy
-
 };
 
-enum class RoadObjType {
+enum class RoadObjType 
+{
 	Empty,
 	Trap,
 	Tresure,
 	Enemy
-
 };

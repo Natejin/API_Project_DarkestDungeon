@@ -13,4 +13,3 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 };
-

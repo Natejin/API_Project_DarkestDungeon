@@ -4,6 +4,7 @@
 #include "CButton.h"
 #include "TownScene.h"
 #include"CUIPanel_Abbey.h"
+
 CEst_UI::CEst_UI()
 {
     m_layer = LAYER::UI;
@@ -30,7 +31,6 @@ HRESULT CEst_UI::Init()
 
 void CEst_UI::Update(float deltaTime, float worldTime)
 {
-	
 }
 
 void CEst_UI::LateUpdate()
@@ -51,7 +51,6 @@ void CEst_UI::FrontRender(HDC _hdc)
 {
 	//assert(m_image != nullptr);
 	//m_image->renderUI(_hdc, m_transform);
-
 }
 
 void CEst_UI::Release()
@@ -64,7 +63,6 @@ void CEst_UI::Release()
 
 void CEst_UI::FinishUI()
 {
-	
 }
 
 void CEst_UI::Enable()
@@ -76,5 +74,4 @@ void CEst_UI::Unable()
 	m_quick->isActive = false;
 	isActive = false;
 	townScene->ActivateBuildings();
-
 }

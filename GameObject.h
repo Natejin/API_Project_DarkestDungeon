@@ -1,7 +1,6 @@
 #pragma once
 #include "Object.h"
 
-
 class GameObject : public Object
 {
 public:
@@ -28,6 +27,7 @@ public:
 
 	virtual void Release();
 
+	//==================================
 
 	void AddColliderBox(Vector2 pos,
 		float l,
@@ -36,8 +36,6 @@ public:
 		float b);
 	void AddColliderBox(float width, float height);
 	void AddColliderBox();
-
-
 
 	void AddAnimator(string imageName);
 	void AddAnimator(IMAGE imageName);

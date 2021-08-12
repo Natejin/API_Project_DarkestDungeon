@@ -4,19 +4,18 @@
 #include "CHeroList_button.h"
 #include "CHero.h"	
 #include"CUIPanel_Abbey.h"
+
 CBuilding_PanelButton::CBuilding_PanelButton()
 {
-	m_layer = LAYER::UIButton;
-	
-	
+	m_layer = LAYER::UIButton;	
 }
+
 CBuilding_PanelButton::~CBuilding_PanelButton()
 {
 }
 
 HRESULT CBuilding_PanelButton::Init()
 {
-	
 	return S_OK;
 }
 
@@ -74,7 +73,6 @@ void CBuilding_PanelButton::Render(HDC _hdc)
 
 void CBuilding_PanelButton::FrontRender(HDC _hdc)
 {
-
 	m_spriteRenderer->Render(_hdc);
 
 #ifdef _DEBUG

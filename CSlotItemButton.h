@@ -3,7 +3,7 @@
 #include "CDragButtion.h"
 
 class CItemInfo;
-class CButton_SlotItem : public CDragButton
+class CSlotItemButton : public CDragButton
 {
 public:
 	CItemInfo* m_itemInfo;
@@ -15,8 +15,8 @@ public:
 	CDragButton* bt_slot;
 
 public:
-	CButton_SlotItem();
-	~CButton_SlotItem();
+	CSlotItemButton();
+	~CSlotItemButton();
 
 	HRESULT Init();
 
@@ -32,6 +32,6 @@ public:
 	void SetButton(CItemInfo* _iteminfo);
 
 	void AddItem(CItemInfo* _iteminfo);
-	void SwapItem(CButton_SlotItem* _iteminfo);
+	void SwapItem(CSlotItemButton* _iteminfo);
 	void RemoveItem();
 };

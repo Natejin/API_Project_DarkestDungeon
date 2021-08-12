@@ -52,8 +52,6 @@ HRESULT CHeroList_ui::Init()
 
 void CHeroList_ui::Update(float deltaTime, float worldTime)
 {
-	
-
 }
 
 void CHeroList_ui::LateUpdate()

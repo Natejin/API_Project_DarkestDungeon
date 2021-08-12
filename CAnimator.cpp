@@ -14,10 +14,7 @@ CAnimator::CAnimator()
 	 m_curAnimeFrame = 1;
 	 trans = nullptr;
 }
-
-CAnimator::~CAnimator()
-{
-}
+CAnimator::~CAnimator() {}
 
 void CAnimator::FrameRender(HDC _hdc)
 {
@@ -30,7 +27,8 @@ void CAnimator::FrameRender(HDC _hdc)
 			{
 				curFrameX = 0;
 			}
-			else {
+			else 
+			{
 				curFrameX++;
 			}
 
@@ -40,19 +38,18 @@ void CAnimator::FrameRender(HDC _hdc)
 		m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
 		//m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
 	}
-
 }
 
-void CAnimator::ResetAnimation() {
-	curFrameX = 0;
-	m_curAnimeFrame = 0;
+void CAnimator::SetIndex(int index) 
+{
+	curImageIndex = index;
 }
 
 void CAnimator::AddImageFrame(string imageName)
 {
 	m_imageVec.push_back(MG_IMAGE->findImage(imageName));
-	maxFrameX.push_back( MG_IMAGE->findImage(imageName)->getMaxFrameX());
-	m_imageSize.push_back( Vector2(MG_IMAGE->findImage(imageName)->getFrameWidth(), MG_IMAGE->findImage(imageName)->getFrameHeight()));
+	maxFrameX.push_back(MG_IMAGE->findImage(imageName)->getMaxFrameX());
+	m_imageSize.push_back(Vector2(MG_IMAGE->findImage(imageName)->getFrameWidth(), MG_IMAGE->findImage(imageName)->getFrameHeight()));
 }
 
 void CAnimator::AddImageFrame(IMAGE imageName)
@@ -62,13 +59,15 @@ void CAnimator::AddImageFrame(IMAGE imageName)
 	m_imageSize.push_back(Vector2(MG_IMAGE->findImage(imageName)->getFrameWidth(), MG_IMAGE->findImage(imageName)->getFrameHeight()));
 }
 
+void CAnimator::ResetAnimation() 
+{
+	curFrameX = 0;
+	m_curAnimeFrame = 0;
+}
+
 Image* CAnimator::GetCurImage()
 {
 	return m_imageVec[curImageIndex];
-}
-
-void CAnimator::SetIndex(int index) {
-	curImageIndex = index;
 }
 
 Vector2 CAnimator::GetFrameSize()
