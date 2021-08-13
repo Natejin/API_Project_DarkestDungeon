@@ -2,6 +2,7 @@
 #include"singleton.h"
 #include<bitset>
 #include "Vector2.h"
+
 using namespace std;
 #define KEYMAX 256
 
@@ -27,6 +28,7 @@ private:
 
 
 	bool isDownRMB;
+	bool wasDownRMB;
 
 	Vector2 m_OldptMouse;
 	Vector2 m_Mouse;
@@ -59,7 +61,10 @@ public:
 	bool IsDownLMB() { return isDownLMB && !wasDownLMB; }
 	bool IsStayLMB() { return isDownLMB && wasDownLMB; }
 	bool IsUpLMB() { return !isDownLMB && wasDownLMB; }
-	bool WasDownLMB() { return wasDownLMB; }
+
+	bool IsDownRMB() { return isDownRMB && !wasDownRMB; }
+	bool IsStayRMB() { return isDownRMB && wasDownRMB; }
+	bool IsUpRMB() { return !isDownRMB && wasDownRMB; }
 
 
 

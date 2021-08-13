@@ -268,7 +268,7 @@
     <Filter Include="CommonInfo\DB\Prototype">
       <UniqueIdentifier>{0fb75e87-519e-49fb-aa63-719841f81c86}</UniqueIdentifier>
     </Filter>
-    <Filter Include="System\Inventory\Battle">
+    <Filter Include="System\Battle">
       <UniqueIdentifier>{c7be98a5-5111-45c9-9dc1-5f52d5f7b7d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -568,7 +568,7 @@
       <Filter>Object\UI\Buttons\bt_dragMiniMap</Filter>
     </ClInclude>
     <ClInclude Include="CBattleSystem.h">
-      <Filter>System\Inventory\Battle</Filter>
+      <Filter>System\Battle</Filter>
     </ClInclude>
     <ClInclude Include="CInventorySystem.h">
       <Filter>System\Inventory</Filter>
@@ -924,7 +924,7 @@
       <Filter>Object\UI\Buttons\bt_dragMiniMap</Filter>
     </ClCompile>
     <ClCompile Include="CBattleSystem.cpp">
-      <Filter>System\Inventory\Battle</Filter>
+      <Filter>System\Battle</Filter>
     </ClCompile>
     <ClCompile Include="CInventorySystem.cpp">
       <Filter>System\Inventory</Filter>

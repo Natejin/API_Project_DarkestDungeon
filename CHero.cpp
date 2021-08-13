@@ -12,6 +12,7 @@ CHero::~CHero() {}
 
 HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
 {
+	canTriggerDown = false;
 	m_layer = LAYER::Player;
 	
 	this->job = job;
@@ -45,19 +46,28 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	m_DIST = 0;
 	isActive = false;
 	m_transform->m_pivot = Vector2(0.5, 1);
-	//m_image = MG_IMAGE->findImage(img);
 
 	isSelected = false; 
 	isBattle = false;
 	
 	setMemberOverlay();
+	AddColliderBox(120, 300);
 
 	return S_OK;
 }
 
 void CHero::Update(float deltaTime, float worldTime)
 {
-	
+	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	{
+		if (MG_INPUT->IsDownLMB())
+		{
+			if (canTriggerDown)
+			{
+				m_triggerWhenDown();
+			}
+		}
+	}
 }
 
 void CHero::LateUpdate()
@@ -83,7 +93,10 @@ void CHero::FrontRender(HDC _hdc)
 		showSelMember(_hdc);
 	}
 	showHpStrsBar(_hdc);
-
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+	}
 	////for test collision
 	//ImageData temp;
 	//temp.m_img = MG_IMAGE->findImage("memberRect");
@@ -134,7 +147,6 @@ void CHero::Move()
 		}
 		m_animator->SetIndex(1);
 	}
-
 	else 
 	{
 		m_animator->SetIndex(0);

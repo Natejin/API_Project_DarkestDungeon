@@ -100,7 +100,6 @@ void dungeonUI::SetButton()
 void dungeonUI::SetTorchUIimg()
 {
 	ImageData UIimg;
-
 	UIimg.m_img = MG_IMAGE->findImage("torchBackBar");
 	UIimg.m_trans.m_pos = Vector2(524, 100); //decrese according to distance
 	vUI.push_back(UIimg); //[6] torchBackBar

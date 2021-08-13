@@ -547,14 +547,14 @@ void DungeonScene2::ShowMapOrInven(HDC _hdc)
 		vUI[4].m_img->renderUI(_hdc, &vUI[4].m_trans);
 	}
 
-	if (rc_inven.CheckCollisionWithPoint(m_ptMouse))
+	if (rc_inven.CheckCollisionWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 		{
 			showMap = false;
 		}
 	}
-	if (rc_map.CheckCollisionWithPoint(m_ptMouse))
+	if (rc_map.CheckCollisionWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 		{

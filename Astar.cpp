@@ -164,13 +164,13 @@ void Astar::tileComposition()
 	typeColor(_selectType);
 
 
-	if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
+	/*if (MG_INPUT->isStayKeyDown(VK_LBUTTON))
 	{
 		for (size_t i = 0; i < TILE_Y; i++)
 		{
 			for (size_t j = 0; j < TILE_X; j++)
 			{
-				if (PtInRect(&_tile[i][j].rc, m_ptMouse))
+				if (PtInRect(&_tile[i][j].rc, g_ptMouse))
 				{
 					if (_tile[i][j].type == TILE_TYPE::TILE_TYPE_START)_startPointSet = false;
 					if (_tile[i][j].type == TILE_TYPE::TILE_TYPE_END)_endPointSet = false;
@@ -204,7 +204,7 @@ void Astar::tileComposition()
 				}
 			}
 		}
-	}
+	}*/
 }
 
 void Astar::tileInitializing()

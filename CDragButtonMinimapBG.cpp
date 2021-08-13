@@ -22,18 +22,18 @@ HRESULT CDragButtonMinimapBG::Init()
 
 void CDragButtonMinimapBG::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_RBUTTON))
 		{
-			previousMousePoint = m_ptMouse;
+			previousMousePoint = g_ptMouse;
 		}
 
 		if (MG_INPUT->isStayKeyDown(VK_RBUTTON))
 		{
 			m_pMapSystem->DragMinimap(previousMousePoint);
 			moveOriginPosCurTime = moveOriginPosCoolTime + worldTime;
-			previousMousePoint = m_ptMouse;
+			previousMousePoint = g_ptMouse;
 			isDraged = true;
 		}
 

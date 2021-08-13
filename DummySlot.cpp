@@ -22,7 +22,7 @@ HRESULT DummySlot::Init()
 void DummySlot::Update(float deltaTime, float worldTime)
 {
 
-	m_transform->m_pos = m_ptMouse;
+	m_transform->m_pos = g_ptMouse;
 }
 
 void DummySlot::LateUpdate()

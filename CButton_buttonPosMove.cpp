@@ -16,7 +16,7 @@ HRESULT CButton_buttonPosMove::Init()
 void CButton_buttonPosMove::Update(float deltaTime, float worldTime)
 {
 	//마우스좌표 변환
-	Vector2 PointToVector = Vector2(m_ptMouse) + MG_CAMERA->getCameraPos();
+	Vector2 PointToVector = Vector2(g_ptMouse) + MG_CAMERA->getCameraPos();
 
 	//화면상 버튼의 좌표 변화 반영
 	if (go != NULL)

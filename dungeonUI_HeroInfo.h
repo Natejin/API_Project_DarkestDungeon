@@ -51,7 +51,7 @@ public:
 	void setSkillIcon(); //버튼과 스킬함수를 연결
 
 	void setButton(); 
-	void showHeroState(HDC _hdc);
+	void ShowHeroState(HDC _hdc);
 	void showHeroSkill(HDC _hdc);
 	void showHeroEquip(HDC _hdc);
 
