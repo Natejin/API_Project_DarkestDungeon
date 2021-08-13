@@ -116,10 +116,6 @@ void CParty::SetCamera()
 void CParty::SetParty(vector<CHero*> party)
 {
 	m_member = party;
-	for (size_t i = 0; i < m_member.size(); i++)
-	{
-		m_member[i]->isActive = true;
-	}
 }
 
 CHero* CParty::GetHero(int index)

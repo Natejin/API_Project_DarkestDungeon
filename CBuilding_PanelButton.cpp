@@ -29,7 +29,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 			{
 				hero = ((CHeroList_button*)CHeroList_button::selDragButton)->m_hero;
 				CHeroList_button::selDragButton = nullptr;
-				MG_GAME->RemoveHero(hero->ownIndex);
+				MG_GAME->RemoveHeroFromOwnList(hero->heroID);
 				townScene->SetHerolist();
 				
 				switch (hero->job)

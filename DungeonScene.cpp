@@ -148,6 +148,7 @@ void DungeonScene::CreateParty()
 	for (int i = 0; i < party.size(); i++)
 	{
 		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		party[i]->Enable();
 	}
 	m_party->SetParty(party);
 

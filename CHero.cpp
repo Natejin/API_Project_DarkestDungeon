@@ -53,6 +53,8 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	setMemberOverlay();
 	AddColliderBox(120, 300);
 
+	
+
 	return S_OK;
 }
 
@@ -76,14 +78,14 @@ void CHero::LateUpdate()
 
 void CHero::BackRender(HDC _hdc)
 {
-	m_animator->FrameRender(_hdc);
+	//m_animator->FrameRender(_hdc);
 }
 
 void CHero::Render(HDC _hdc)
 {
 	//m_image->frameRender(_hdc, m_transform);
 
-
+	m_animator->FrameRender(_hdc);
 }
 
 void CHero::FrontRender(HDC _hdc)
@@ -95,7 +97,7 @@ void CHero::FrontRender(HDC _hdc)
 	showHpStrsBar(_hdc);
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos - MG_CAMERA->GetPos());
 	}
 	////for test collision
 	//ImageData temp;

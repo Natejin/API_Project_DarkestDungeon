@@ -6,6 +6,8 @@ class DungeonScene;
 class CHero : public Unit
 {
 public:
+	int heroID;
+
 	JOB job;
 	int ownIndex;
 	int m_DMG; //skill에서 값 넣어주기
@@ -35,6 +37,7 @@ public:
 	//Skill skill1;
 	//Skill skill1;
 
+	vector<SKILL> ownSkill;
 
 	//always
 	ImageData HPbar_front;
