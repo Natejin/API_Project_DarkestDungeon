@@ -13,6 +13,7 @@ public:
 	int m_count;
 	
 	bool isStockable;
+	bool isUsable;
 	int maxCount;
 
 public:
