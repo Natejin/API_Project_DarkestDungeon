@@ -41,7 +41,7 @@ void dungeonUI_HeroInfo::FrontRender(HDC _hdc)
 {
     showHeroSkill(_hdc);
     showHeroEquip(_hdc);
-    showHeroState(_hdc);
+    ShowHeroState(_hdc);
 }
 
 void dungeonUI_HeroInfo::Release()
@@ -141,7 +141,11 @@ void dungeonUI_HeroInfo::setInfoImage()
 
 void dungeonUI_HeroInfo::setButton()
 {
-    CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
+    MG_GAME->GetHero(0)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero1);
+    MG_GAME->GetHero(1)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero2);
+    MG_GAME->GetHero(2)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero3);
+    MG_GAME->GetHero(3)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
+   /* CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
     bt_hero1->setBtTarget(MG_GAME->GetHero(0));
     bt_hero1->SetButtonSize(100, 285);
     bt_hero1->AddSpriteRenderer("button");
@@ -167,10 +171,10 @@ void dungeonUI_HeroInfo::setButton()
     bt_hero4->SetButtonSize(100, 285);
     bt_hero4->AddSpriteRenderer("button");
     bt_hero4->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
-    MG_GMOBJ->RegisterObj("selHero4", bt_hero4);
+    MG_GMOBJ->RegisterObj("selHero4", bt_hero4);*/
 }
 
-void dungeonUI_HeroInfo::showHeroState(HDC _hdc)
+void dungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
 {
     char str[256];
     string strFrame;
@@ -243,15 +247,8 @@ void dungeonUI_HeroInfo::showHeroState(HDC _hdc)
 void dungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
 {
     portrait.m_img->renderUI(_hdc, &portrait.m_trans);
-    //skill1.m_img->renderUI(_hdc, &skill1.m_trans);
-    //skill2.m_img->renderUI(_hdc, &skill2.m_trans);
-    //skill3.m_img->renderUI(_hdc, &skill3.m_trans);
-    //skill4.m_img->renderUI(_hdc, &skill4.m_trans);
 
-    //for (int i = 0; i < 2; i++)
-    //{
-    //    m_heroInfoImage[i].m_img->renderUI(_hdc, &m_heroInfoImage[i].m_trans);
-    //}
+
 }
 
 void dungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
@@ -287,7 +284,7 @@ void dungeonUI_HeroInfo::selHero3()
     {
         if (i == 2) {
             MG_GAME->GetHero(i)->isSelected = true;
-            scene->m_party->SelectHero(21   );
+            scene->m_party->SelectHero(2);
         }
         else MG_GAME->GetHero(i)->isSelected = false;
     }

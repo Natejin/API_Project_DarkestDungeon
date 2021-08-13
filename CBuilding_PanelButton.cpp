@@ -21,7 +21,7 @@ HRESULT CBuilding_PanelButton::Init()
 
 void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsUpLMB())
 		{

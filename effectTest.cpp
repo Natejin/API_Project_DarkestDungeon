@@ -43,12 +43,12 @@ void effectTest::update()
 	if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 	{
 		//_effect->startEffect(m_ptMouse.x, m_ptMouse.y);
-		MG_EFFECT->play("气惯", m_ptMouse.x, m_ptMouse.y);
+		MG_EFFECT->play("气惯", g_ptMouse.x, g_ptMouse.y);
 	}
 	if (MG_INPUT->isOnceKeyDown(VK_RBUTTON))
 	{
 		//_effect1->startEffect(m_ptMouse.x, m_ptMouse.y);
-		MG_EFFECT->play("气惯1", m_ptMouse.x, m_ptMouse.y);
+		MG_EFFECT->play("气惯1", g_ptMouse.x, g_ptMouse.y);
 	}
 
 

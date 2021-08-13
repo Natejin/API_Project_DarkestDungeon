@@ -73,7 +73,7 @@ void CMapSystem::Release()
 void CMapSystem::SetRandomCreateValue()
 {
 
-	randRoomEnemy = 15;
+	randRoomEnemy = 100;
 	randRoomCurio = 15;
 	randomRoadEnemy = 15;
 	randomRoadCurio = 15;
@@ -366,9 +366,9 @@ void CMapSystem::DragMinimap(Vector2 deltaMove)
 {
 	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
 	{
-		dungeonMapCreate[i]->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
+		dungeonMapCreate[i]->m_transform->m_pos += Vector2(g_ptMouse) - deltaMove;
 	}
-	curPosPanel->m_transform->m_pos += Vector2(m_ptMouse) - deltaMove;
+	curPosPanel->m_transform->m_pos += Vector2(g_ptMouse) - deltaMove;
 }
 
 

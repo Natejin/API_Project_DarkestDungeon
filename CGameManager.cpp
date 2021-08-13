@@ -13,8 +13,8 @@ HRESULT CGameManager::Init()
 	RegisterHero(CreateHero("member2", JOB::Vestal));
 	RegisterHero(CreateHero("member3", JOB::Crusader));
 	RegisterHero(CreateHero("member4", JOB::Vestal));
-	//RegisterHero(CreateHero("member5", JOB::Highwayman));
-	//RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
+	RegisterHero(CreateHero("member5", JOB::Highwayman));
+	RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
 
 	return S_OK;
 }

@@ -41,10 +41,19 @@ public:
 	ImageData HPbar_back;
 	vector<ImageData> STRSbar;
 	ImageData selectedMem; 
-
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 
 
+protected:
+	function<void()> m_triggerWhenDown;
+	bool canTriggerDown;
+public:
+	template <typename T>
+	void SetTriggerWhenClick(T* pObj, void(T::* func)())
+	{
+		canTriggerDown = true;
+		m_triggerWhenDown = bind(func, pObj);
+	}
 public:
 	CHero();
 	~CHero();
