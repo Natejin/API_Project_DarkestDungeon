@@ -32,11 +32,6 @@ public:
 	float speedFront;
 	float speedBack;
 
-	//Skill skill1;
-	//Skill skill1;
-	//Skill skill1;
-	//Skill skill1;
-
 	vector<SKILL> ownSkill;
 
 	//always
@@ -50,6 +45,7 @@ public:
 protected:
 	function<void()> m_triggerWhenDown;
 	bool canTriggerDown;
+
 public:
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)())
@@ -57,6 +53,7 @@ public:
 		canTriggerDown = true;
 		m_triggerWhenDown = bind(func, pObj);
 	}
+
 public:
 	CHero();
 	~CHero();
@@ -104,7 +101,4 @@ public:
 	void setSelectedMem();
 	void setTargetedMem();
 
-	//얘를 CVestal에서 오버라이드??하라는 말씀이신가요
-	//아아
-	//네네 bind& func
 };

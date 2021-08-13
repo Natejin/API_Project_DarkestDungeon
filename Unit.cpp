@@ -8,7 +8,6 @@ Unit::~Unit() {}
 
 HRESULT Unit::Init()
 {
-
     return S_OK;
 }
 

@@ -41,17 +41,20 @@ class BandageEffect : public CItemEffect
 public:
 	virtual bool ItemEffect()
 	{
-		//for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-		//{
-		//	if (MG_GAME->GetHero(i)->isSelected)
-		//	{
-		//		bool attribute[8]; //stun, blight, bleed, debuff, buff, move, marked, death
-		//		//index 2만 0으로 바꿀 수 있도록 setAttribute 수정
-		//		//MG_GAME->GetHero(i)->setAttribute();
-		//	}
-		//}
-		return true;
+		for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+		{
+			if (MG_GAME->GetHero(i)->isSelected)
+			{
+				if (MG_GAME->GetHero(i)->getAttribute(2))
+				{
+					MG_GAME->GetHero(i)->setAttribute(2, 0);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
+
 	virtual void DumpItem(int dumpCount)
 	{
 		//have to get how much going to dump

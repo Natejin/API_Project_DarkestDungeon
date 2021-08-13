@@ -53,6 +53,7 @@ public:
 	void SetHero(CHero* member);
 	void SetCamera();
 	int GetPartySize() { return m_member.size(); }
+
 	vector<CHero*> GetParty() { return m_member; }
 	CHero* GetHero(int index);
 
@@ -76,7 +77,4 @@ public:
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
 
-
-
-	
 };
