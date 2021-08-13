@@ -25,6 +25,7 @@ private:
 	int WB_btwHeroes = 125;
 
 	int limit;
+	int selectedHeroIndex;
 
 	DUNGEONSTATE nowScene;
 
@@ -45,6 +46,8 @@ public:
 	virtual void Release();
 
 	//==================================
+	void SelectHero(int index) { selectedHeroIndex = index; };
+
 
 	void SetParty(vector<CHero*> member);
 	void SetHero(CHero* member);
@@ -72,6 +75,8 @@ public:
 	void showMemberInfo(HDC _hdc);
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
+
+
 
 	
 };

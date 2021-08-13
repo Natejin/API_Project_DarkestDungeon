@@ -11,17 +11,26 @@ private:
 	vector<ImageData> m_invenOrMapImage; 
 
 	ImageData portrait;
-	ImageData skill1;
-	ImageData skill2;
-	ImageData skill3;
-	ImageData skill4;
+
+	//ImageData skill1;
+	//ImageData skill2;
+	//ImageData skill3;
+	//ImageData skill4;
 
 	ImageData armor;
 	ImageData weapon;
 
+
+
+
+
+
 	int selectedHeroIndex;
 
 public:
+
+	class DungeonScene* scene;
+
 	dungeonUI_HeroInfo();
 	~dungeonUI_HeroInfo();
 

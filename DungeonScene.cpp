@@ -27,7 +27,7 @@ DungeonScene::~DungeonScene() {}
 HRESULT DungeonScene::Init()
 {
 	m_dungeonState = DUNGEONSTATE::ROAD;
-	dungeonMode = DUNGEONMODE::WALK;
+	m_dungeonMode = DUNGEONMODE::WALK;
 
 
 
@@ -48,13 +48,17 @@ HRESULT DungeonScene::Init()
 
 void DungeonScene::CreateDungeonUI()
 {
+
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->m_pMapSystem = m_pMapSystem;
+	m_dungeonUI->scene = this;
 	m_dungeonUI->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 
 	m_dungeonUIinfo = new dungeonUI_HeroInfo;
+	m_dungeonUIinfo->scene = this;
 	m_dungeonUIinfo->Init();
+
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
 }
 
@@ -78,7 +82,7 @@ void DungeonScene::Release()
 
 void DungeonScene::Update()
 {
-	if (dungeonMode == DUNGEONMODE::WALK)
+	if (m_dungeonMode == DUNGEONMODE::WALK)
 	{
 		m_party->FormationMove();
 		m_party->getStress_movement();
@@ -91,7 +95,7 @@ void DungeonScene::Update()
 		}
 
 	}
-	else if (dungeonMode == DUNGEONMODE::BATTLE)
+	else if (m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
 
 

@@ -6,7 +6,7 @@
 #include "CCollider.h"
 #include "CSlotItemButton.h"
 #include "CTransform.h"
-#include "iteminfo.h"
+#include "Info_Item.h"
 #include "DummySlot.h"
 
 

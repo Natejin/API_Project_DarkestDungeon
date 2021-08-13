@@ -9,7 +9,7 @@ class DungeonScene : public Scene
 public:
 	vector<IMAGE> roomRandom;
 	DUNGEONSTATE m_dungeonState;
-	DUNGEONMODE dungeonMode;
+	DUNGEONMODE m_dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
 	DungeonData curDunheonMap;
 

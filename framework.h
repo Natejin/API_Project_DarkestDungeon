@@ -50,7 +50,8 @@
 #include "CCameraManager.h"
 #include "CObjectManager.h"
 #include "CGameManager.h"
-#include "ItemDataBase.h"
+#include "DB_Item.h"
+#include "DB_Skill.h"
 #include "utils.h"
 #include "txtData.h"
 
@@ -87,7 +88,12 @@
 #define MG_GMOBJ		CObjectManager::getSingleton()
 #define MG_CAMERA		CCameraManager::getSingleton()
 #define MG_GAME			CGameManager::getSingleton()
-#define DB_ITEM			CItemDB::getSingleton()
+
+//======================================
+//##			데이터베이스		  ##
+//======================================
+#define DB_ITEM			CDB_Item::getSingleton()
+#define DB_SKILL		CDB_Skill::getSingleton()
 
 //==========================================
 //				 매크로 설정

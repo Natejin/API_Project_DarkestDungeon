@@ -33,15 +33,16 @@ public:
 	template <typename T>
 	void SetTriggerWhenDown(T* pObj, void(T::* func)())
 	{
-		canTriggerUp = true;
-		m_triggerWhenUp = bind(func, pObj);
+		canTriggerDown = true;
+		m_triggerWhenDown = bind(func, pObj);
 	}
 
 	template <typename T>
 	void SetTriggerWhenUp(T* pObj, void(T::* func)())
 	{
-		canTriggerDown = true;
-		m_triggerWhenDown = bind(func, pObj);
+
+		canTriggerUp = true;
+		m_triggerWhenUp = bind(func, pObj);
 	}
 
 };

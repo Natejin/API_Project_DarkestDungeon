@@ -42,7 +42,10 @@ public:
 	void BattleSystemInitiate();
 	void BattleSystemEnd();
 
-
+	void UseSkill1();
+	void UseSkill2();
+	void UseSkill3();
+	void UseSkill4();
 
 private:
 	void CreateEnemyParty();

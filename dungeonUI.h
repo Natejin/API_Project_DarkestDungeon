@@ -19,6 +19,11 @@ public:
 	CButton* bt_skill4;
 	CButton* bt_passTurn;
 	CButton* bt_changePos;
+
+	vector<class CBTN_Skill*> skillBTNs;
+
+	class DungeonScene* scene;
+
 	
 	class CMapSystem* m_pMapSystem;
 	class CInventorySystem* m_invenSystem;

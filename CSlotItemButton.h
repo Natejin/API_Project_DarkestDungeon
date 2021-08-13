@@ -2,11 +2,11 @@
 #include "GameObject.h"
 #include "CDragButtion.h"
 
-class CItemInfo;
+class CInfo_Item;
 class CSlotItemButton : public CDragButton
 {
 public:
-	CItemInfo* m_itemInfo;
+	CInfo_Item* m_itemInfo;
 	//ImageData slotItemImg;
 	class CInventorySystem* m_invenSys;
 
@@ -29,9 +29,9 @@ public:
 
 	//===================================
 
-	void SetButton(CItemInfo* _iteminfo);
+	void SetButton(CInfo_Item* _iteminfo);
 
-	void AddItem(CItemInfo* _iteminfo);
+	void AddItem(CInfo_Item* _iteminfo);
 	void SwapItem(CSlotItemButton* _iteminfo);
 	void RemoveItem();
 };

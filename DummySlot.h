@@ -5,7 +5,7 @@ class DummySlot : public GameObject
 {
 private:
 	Vector2Int originSlotID;
-	CItemInfo* itemInfo;
+	CInfo_Item* itemInfo;
 	bool hasItem;
 
 public:
@@ -23,7 +23,7 @@ public:
 
 	virtual void Release();
 
-	void SetDummySlot(Vector2Int originslotID, CItemInfo* item);
+	void SetDummySlot(Vector2Int originslotID, CInfo_Item* item);
 	virtual void Unable();
 
 };

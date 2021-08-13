@@ -22,6 +22,41 @@ enum class LAYER
 	DummySlot
 };
 
+enum class SKILLTARGET
+{
+	Enemy,
+	Enemies,
+	Self,
+	Ally,
+	Allies
+};
+
+enum class EFFECTTYPE
+{
+	NONE,
+	Stun,
+	PROT
+};
+
+enum class SKILL
+{
+	Crusader_Combat_Smite,
+	Crusader_Combat_ZealousAccusation,
+	Crusader_Combat_StunningBlow,
+	Crusader_BuffAllie_BulwarkofFaith,
+	Crusader_Heal_BattleHeal,
+	Crusader_Combat_HolyLance,
+
+	Vestal_Combat_MaceBash,
+	Vestal_Combat_Judgement,
+	Vestal_Combat_DazzlingLight,
+	Vestal_Heal_DivineGrace,
+	Vestal_Heal_DivineComfort,
+	Vestal_Combat_Illumination,
+	Vestal_Combat_HandofLight,
+
+};
+
 enum class ITEM
 {
 	ITEM_CONSUMABLE,
@@ -43,7 +78,7 @@ enum class JOB
 	Highwayman
 };
 
-enum class DIR 
+enum class DIR
 {
 	Left,
 	Up,
@@ -184,6 +219,31 @@ enum class IMAGE
 	food3,
 	food4,
 	bandage,
+
+	//portrit
+
+	Crusader_portrait,
+	Vestal_portrait,
+
+
+	//Skill
+	//crusader
+	Crusader_Skill_Smite,
+	Crusader_Skill_ZealousAccusation,
+	Crusader_Skill_StunningBlow,
+	Crusader_Skill_BulwarkofFaith,
+	Crusader_Skill_BattleHeal,
+	Crusader_Skill_HolyLance,
+	Crusader_Skill_InspiringCry,
+
+	//vestal
+	Vestal_Skill_MaceBash,
+	Vestal_Skill_Judgement,
+	Vestal_Skill_DazzlingLight,
+	Vestal_Skill_DivineGrace,
+	Vestal_Skill_DivineComfort,
+	Vestal_Skill_Illumination,
+	Vestal_Skill_HandofLight,
 };
 
 enum class Resistance
@@ -268,14 +328,14 @@ enum class SCENETYPE
 	Town
 };
 
-enum class UNITTYPE 
+enum class UNITTYPE
 {
 	NONE,
 	Hero,
 	Enemy
 };
 
-enum class RoadObjType 
+enum class RoadObjType
 {
 	Empty,
 	Trap,

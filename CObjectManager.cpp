@@ -147,3 +147,8 @@ void CObjectManager::RemoveObj(int id)
 {
 	objsToErase.push_back(id);
 }
+
+void CObjectManager::RemoveObj(GameObject* gameObj)
+{
+	objsToErase.push_back(gameObj->GetId());
+}

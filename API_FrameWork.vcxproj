@@ -156,6 +156,8 @@
   <ItemGroup>
     <ClInclude Include="CBTN_Skill.h" />
     <ClInclude Include="CBuilding_PanelButton.h" />
+    <ClInclude Include="CSaveable.h" />
+    <ClInclude Include="Info_Skill.h" />
     <ClInclude Include="CUIPanel_Abbey.h" />
     <ClInclude Include="Activity_log.h" />
     <ClInclude Include="airHockey.h" />
@@ -225,8 +227,8 @@
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="ItemDataBase.h" />
-    <ClInclude Include="itemInfo.h" />
+    <ClInclude Include="DB_Item.h" />
+    <ClInclude Include="Info_Item.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
@@ -250,6 +252,7 @@
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="CSlotItemButton.h" />
+    <ClInclude Include="DB_Skill.h" />
     <ClInclude Include="soundManager.h" />
     <ClInclude Include="soundTest.h" />
     <ClInclude Include="CUIPanel_StageCoach.h" />
@@ -272,6 +275,8 @@
   <ItemGroup>
     <ClCompile Include="CBTN_Skill.cpp" />
     <ClCompile Include="CBuilding_PanelButton.cpp" />
+    <ClCompile Include="CSaveable.cpp" />
+    <ClCompile Include="Info_Skill.cpp" />
     <ClCompile Include="CUIPanel_Abbey.cpp" />
     <ClCompile Include="Activity_log.cpp" />
     <ClCompile Include="airHockey.cpp" />
@@ -339,8 +344,8 @@
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="ItemDataBase.cpp" />
-    <ClCompile Include="itemInfo.cpp" />
+    <ClCompile Include="DB_Item.cpp" />
+    <ClCompile Include="Info_Item.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />
@@ -361,6 +366,7 @@
     <ClCompile Include="scene2.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="CSlotItemButton.cpp" />
+    <ClCompile Include="DB_Skill.cpp" />
     <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="soundTest.cpp" />
     <ClCompile Include="CUIPanel_StageCoach.cpp" />

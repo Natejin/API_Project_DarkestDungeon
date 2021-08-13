@@ -2,6 +2,8 @@
 #include "dungeonUI_HeroInfo.h"
 #include "CHero.h"
 #include "CParty.h"
+#include "CBTN_Skill.h"
+#include "DungeonScene.h"
 
 dungeonUI_HeroInfo::dungeonUI_HeroInfo() {}
 dungeonUI_HeroInfo::~dungeonUI_HeroInfo() {}
@@ -20,7 +22,7 @@ HRESULT dungeonUI_HeroInfo::Init()
 
 void dungeonUI_HeroInfo::Update(float deltaTime, float worldTime)
 {
-    setInfoImage();
+    //setInfoImage();
 }
 
 void dungeonUI_HeroInfo::LateUpdate()
@@ -53,59 +55,63 @@ void dungeonUI_HeroInfo::Release()
 void dungeonUI_HeroInfo::setInfoImage()
 {
     //portrait and skill
-    switch (MG_GAME->GetHero(selectedHeroIndex)->job)
-    {
-    case JOB::Crusader:
-        portrait.m_img = MG_IMAGE->findImage("crusader_portrait");
-        portrait.m_trans.m_pos = Vector2(364, 732);
+    portrait.m_img = MG_IMAGE->findImage(IMAGE::Crusader_portrait);
+    portrait.m_trans.m_pos = Vector2(364, 732);
 
-        skill1.m_img = MG_IMAGE->findImage("crusader_skill1");
-        skill1.m_trans.m_pos = Vector2(585, 732);
+ 
 
-        skill2.m_img = MG_IMAGE->findImage("crusader_skill2");
-        skill2.m_trans.m_pos = Vector2(655, 732);
+ //   switch (MG_GAME->GetHero(selectedHeroIndex)->job)
+ //   {
+ //   case JOB::Crusader:
+ //       portrait.m_img = MG_IMAGE->findImage("crusader_portrait");
+ //       portrait.m_trans.m_pos = Vector2(364, 732);
 
-        skill3.m_img = MG_IMAGE->findImage("crusader_skill3");
-        skill3.m_trans.m_pos = Vector2(725, 732);
+ //       //skill1.m_img = MG_IMAGE->findImage("crusader_skill1");
+ //       //skill1.m_trans.m_pos = Vector2(585, 732);
 
-        skill4.m_img = MG_IMAGE->findImage("crusader_skill4");
-        skill4.m_trans.m_pos = Vector2(795, 732);
-        break;
+ //       //skill2.m_img = MG_IMAGE->findImage("crusader_skill2");
+ //       //skill2.m_trans.m_pos = Vector2(655, 732);
 
-    case JOB::Highwayman:
-        break;
+ //       //skill3.m_img = MG_IMAGE->findImage("crusader_skill3");
+ //       //skill3.m_trans.m_pos = Vector2(725, 732);
 
-    case JOB::PlagueDoctor:
-        break;
+ //       //skill4.m_img = MG_IMAGE->findImage("crusader_skill4");
+ //       //skill4.m_trans.m_pos = Vector2(795, 732);
+ //       break;
 
-	case JOB::Vestal:
-        portrait.m_img = MG_IMAGE->findImage("vestal_portrait");
-        portrait.m_trans.m_pos = Vector2(364, 732);
+ //   case JOB::Highwayman:
+ //       break;
 
-        skill1.m_img = MG_IMAGE->findImage("vestal_skill1");
-        skill1.m_trans.m_pos = Vector2(585, 732);
+ //   case JOB::PlagueDoctor:
+ //       break;
 
-		skill2.m_img = MG_IMAGE->findImage("vestal_skill2");
-		skill2.m_trans.m_pos = Vector2(655, 732);
+	//case JOB::Vestal:
+ //       portrait.m_img = MG_IMAGE->findImage("vestal_portrait");
+ //       portrait.m_trans.m_pos = Vector2(364, 732);
 
-		skill3.m_img = MG_IMAGE->findImage("vestal_skill3");
-		skill3.m_trans.m_pos = Vector2(725, 732);
+ //       /*skill1.m_img = MG_IMAGE->findImage("vestal_skill1");
+ //       skill1.m_trans.m_pos = Vector2(585, 732);
 
-		skill4.m_img = MG_IMAGE->findImage("vestal_skill4");
-		skill4.m_trans.m_pos = Vector2(795, 732);
-		break;
-    }
+	//	skill2.m_img = MG_IMAGE->findImage("vestal_skill2");
+	//	skill2.m_trans.m_pos = Vector2(655, 732);
 
-    ImageData temp;
-    //move
-    temp.m_img = MG_IMAGE->findImage("ability_move");
-    temp.m_trans.m_pos = Vector2(865, 732);
-    m_heroInfoImage.push_back(temp);
+	//	skill3.m_img = MG_IMAGE->findImage("vestal_skill3");
+	//	skill3.m_trans.m_pos = Vector2(725, 732);
 
-    //pass
-    temp.m_img = MG_IMAGE->findImage("ability_pass");
-    temp.m_trans.m_pos = Vector2(935, 732);
-    m_heroInfoImage.push_back(temp);
+	//	skill4.m_img = MG_IMAGE->findImage("vestal_skill4");
+	//	skill4.m_trans.m_pos = Vector2(795, 732);*/
+	//	break;
+ //   }
+
+ //   ImageData temp;
+ //   temp.m_img = MG_IMAGE->findImage("ability_move");
+ //   temp.m_trans.m_pos = Vector2(865, 732);
+ //   m_heroInfoImage.push_back(temp);
+
+ //   //pass
+ //   temp.m_img = MG_IMAGE->findImage("ability_pass");
+ //   temp.m_trans.m_pos = Vector2(935, 732);
+ //   m_heroInfoImage.push_back(temp);
 
     //equip
     switch (MG_GAME->GetHero(selectedHeroIndex)->job)
@@ -237,15 +243,15 @@ void dungeonUI_HeroInfo::showHeroState(HDC _hdc)
 void dungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
 {
     portrait.m_img->renderUI(_hdc, &portrait.m_trans);
-    skill1.m_img->renderUI(_hdc, &skill1.m_trans);
-    skill2.m_img->renderUI(_hdc, &skill2.m_trans);
-    skill3.m_img->renderUI(_hdc, &skill3.m_trans);
-    skill4.m_img->renderUI(_hdc, &skill4.m_trans);
+    //skill1.m_img->renderUI(_hdc, &skill1.m_trans);
+    //skill2.m_img->renderUI(_hdc, &skill2.m_trans);
+    //skill3.m_img->renderUI(_hdc, &skill3.m_trans);
+    //skill4.m_img->renderUI(_hdc, &skill4.m_trans);
 
-    for (int i = 0; i < 2; i++)
-    {
-        m_heroInfoImage[i].m_img->renderUI(_hdc, &m_heroInfoImage[i].m_trans);
-    }
+    //for (int i = 0; i < 2; i++)
+    //{
+    //    m_heroInfoImage[i].m_img->renderUI(_hdc, &m_heroInfoImage[i].m_trans);
+    //}
 }
 
 void dungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
@@ -267,7 +273,10 @@ void dungeonUI_HeroInfo::selHero2()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
-        if (i == 1) MG_GAME->GetHero(i)->isSelected = true;
+        if (i == 1) {
+            MG_GAME->GetHero(i)->isSelected = true;
+            scene->m_party->SelectHero(1);
+        }
         else MG_GAME->GetHero(i)->isSelected = false;
     }
 }
@@ -276,7 +285,10 @@ void dungeonUI_HeroInfo::selHero3()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
-        if (i == 2) MG_GAME->GetHero(i)->isSelected = true;
+        if (i == 2) {
+            MG_GAME->GetHero(i)->isSelected = true;
+            scene->m_party->SelectHero(21   );
+        }
         else MG_GAME->GetHero(i)->isSelected = false;
     }
 }
@@ -285,7 +297,10 @@ void dungeonUI_HeroInfo::selHero4()
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
-        if (i == 3) MG_GAME->GetHero(i)->isSelected = true;
+        if (i == 3) {
+            MG_GAME->GetHero(i)->isSelected = true;
+            scene->m_party->SelectHero(3);
+    }
         else MG_GAME->GetHero(i)->isSelected = false;
     }
 }

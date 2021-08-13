@@ -5,7 +5,9 @@
 #include "CInventorySystem.h"
 #include "CUIPanel.h"
 #include "CDragButtonMinimapBG.h"
-
+#include "CBTN_Skill.h";
+#include "DungeonScene.h"
+#include "CBattleSystem.h"
 HRESULT dungeonUI::Init()
 {
 	m_layer = LAYER::UI;
@@ -14,6 +16,7 @@ HRESULT dungeonUI::Init()
 	SetButton();
 	SetInven();
 	ShowInven();
+	SetSkillButton();
 	return S_OK;
 }
 
@@ -48,40 +51,35 @@ void dungeonUI::SetUIIMG()
 	ImageData UIimg;
 	SetTorchUIimg();
 
+	//왼쪽아래 UI
 	CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
+	//오른쪽아래 UI
 	CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
+	//영웅 로스터 아이콘 + 스킬아이콘 뒷배경
 	CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
+	//영웅 아이템 +장신구 뒷 배경
 	CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
 
+	//인벤토리 패널
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
-	
-	//invenPanel->UseBackRender();
 
-	//mapPanel1 = new CDragButtonMinimapBG();
-	//mapPanel1->SetMapSystem(m_pMapSystem);
-
-	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
-	//mapPanel2->UseBackRender();
-
+	//맵패널
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
 	mapPanel1->UseFrontRender();
 
+	//맵 뒤 그리드 배경
 	mapPanel2 = new CDragButtonMinimapBG();
 	mapPanel2->Init();
 	mapPanel2->m_transform->m_pos = Vector2(965, 700);
 	mapPanel2->AddSpriteRenderer(IMAGE::map2);
-
 	mapPanel2->SetMapSystem(m_pMapSystem);
 	mapPanel2->AddColliderBox();
-
 	MG_GMOBJ->RegisterObj("minimapBG", mapPanel2);
-
-	//mapPanel2 = CreatePanel(IMAGE::map2, Vector2(965, 700), LAYER::MinimapBackground);
-	//mapPanel2->UseBackRender();
 }
 
 void dungeonUI::SetButton()
 {	
+	//클릭시 인벤토리 보이기
 	bt_inven = new CButton();
 	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
 	bt_inven->AddColliderBox(50, 65);
@@ -89,6 +87,7 @@ void dungeonUI::SetButton()
 	bt_inven->SetTriggerWhenDown(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
+	//클릭시 맵 보이기
 	bt_map = new CButton();
 	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
 	bt_map->AddColliderBox(50, 65);
@@ -96,6 +95,7 @@ void dungeonUI::SetButton()
 	bt_map->SetTriggerWhenDown(this, &dungeonUI::ShowMap);
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
+
 
 void dungeonUI::SetTorchUIimg()
 {
@@ -127,7 +127,38 @@ void dungeonUI::SetInven()
 
 void dungeonUI::SetSkillButton()
 {
-	//only active on battleState
+	CBTN_Skill* temp = new CBTN_Skill();
+	temp->scene = scene;
+	temp->Init();
+	temp->m_transform->m_pos = Vector2(585, 732);
+	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill1);
+	skillBTNs.push_back(temp);
+	MG_GMOBJ->RegisterObj("SkillBTN 1", temp);
+
+	temp = new CBTN_Skill();
+	temp->scene = scene;
+	temp->Init();
+	temp->m_transform->m_pos = Vector2(655, 732);
+	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill2);
+	skillBTNs.push_back(temp);
+	MG_GMOBJ->RegisterObj("SkillBTN 2", temp);
+
+	temp = new CBTN_Skill();
+	temp->scene = scene;
+	temp->Init();
+	temp->m_transform->m_pos = Vector2(725, 732);
+	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
+	skillBTNs.push_back(temp);
+	
+	MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
+
+	temp = new CBTN_Skill();
+	temp->scene = scene;
+	temp->Init();
+	temp->m_transform->m_pos = Vector2(795, 732);
+	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill4);
+	skillBTNs.push_back(temp);
+	MG_GMOBJ->RegisterObj("SkillBTN 4", temp);
 }
 
 void dungeonUI::TorchLightBarDecrease()

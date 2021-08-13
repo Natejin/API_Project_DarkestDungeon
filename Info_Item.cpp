@@ -1,6 +1,7 @@
 #include "framework.h"
+#include "Info_Item.h"
 
-bool CItemInfo::IsFull()
+bool CInfo_Item::IsFull()
 {
 	if (m_count < maxCount)
 	{

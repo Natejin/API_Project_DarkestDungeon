@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "CSlotItemButton.h"
 #include "CSpriteRenderer.h"
-#include "itemInfo.h"
+#include "Info_Item.h"
 #include "CInventorySystem.h"
 
 CSlotItemButton::CSlotItemButton() {}
@@ -98,7 +98,7 @@ void CSlotItemButton::FrontRender(HDC _hdc)
 
 
 
-void CSlotItemButton::AddItem(CItemInfo* _iteminfo)
+void CSlotItemButton::AddItem(CInfo_Item* _iteminfo)
 {
 	m_itemInfo = _iteminfo;
 	m_spriteRenderer->SetImage(_iteminfo->m_imgData);

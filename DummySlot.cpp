@@ -46,7 +46,7 @@ void DummySlot::Release()
 {
 }
 
-void DummySlot::SetDummySlot(Vector2Int slotID, CItemInfo* item)
+void DummySlot::SetDummySlot(Vector2Int slotID, CInfo_Item* item)
 {
 	originSlotID = slotID;
 	hasItem = true;

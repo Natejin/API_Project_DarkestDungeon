@@ -17,10 +17,13 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 	DB_ITEM->Init();
+	DB_SKILL->Init();
+
 	MG_GAME->Init();
 	MG_CAMERA->Init();
 	MG_SCENE->init();
 	MG_GMOBJ->Init();
+
 
 	return S_OK;
 }

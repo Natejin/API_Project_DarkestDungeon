@@ -30,6 +30,12 @@ public:
 	float speedFront;
 	float speedBack;
 
+	//Skill skill1;
+	//Skill skill1;
+	//Skill skill1;
+	//Skill skill1;
+
+
 	//always
 	ImageData HPbar_front;
 	ImageData HPbar_back;

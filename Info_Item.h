@@ -1,6 +1,6 @@
 #pragma once
 
-class CItemInfo
+class CInfo_Item
 {
 public:
 	ITEM m_item;
@@ -16,8 +16,8 @@ public:
 	int maxCount;
 
 public:
-	CItemInfo() {};
-	~CItemInfo() {};
+	CInfo_Item() {};
+	~CInfo_Item() {};
 
 	bool IsFull();
 };

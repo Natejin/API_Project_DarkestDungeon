@@ -11,19 +11,37 @@ void CBattleSystem::BattleSystemInitiate()
 	CreateHeroesParty();
 	CreateEnemyParty();
 	Compare_P_E_Speed_ReArray();
-	scene->dungeonMode = DUNGEONMODE::BATTLE;
+	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
 }
 void CBattleSystem::BattleSystemEnd()
 {
-	scene->dungeonMode = DUNGEONMODE::WALK;
+	scene->m_dungeonMode = DUNGEONMODE::WALK;
 	heroParty.clear();
 	for (size_t i = 0; i < enemyParty.size(); i++)
 	{
-
+		enemyParty[i]->Unable();
+		MG_GMOBJ->RemoveObj(enemyParty[i]);
 	}
+	enemyParty.clear();
 	Unable();
+}
+void CBattleSystem::UseSkill1()
+{
+
+}
+void CBattleSystem::UseSkill2()
+{
+
+}
+void CBattleSystem::UseSkill3()
+{
+
+}
+void CBattleSystem::UseSkill4()
+{
+
 }
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
 void CBattleSystem::CreateEnemyParty()

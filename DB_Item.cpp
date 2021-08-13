@@ -1,19 +1,19 @@
 #include "framework.h"
-#include "ItemDataBase.h"
+#include "DB_Item.h"
 
-CItemDB::CItemDB()
+CDB_Item::CDB_Item()
 {
 }
 
-CItemDB::~CItemDB()
+CDB_Item::~CDB_Item()
 {
 }
 
-void CItemDB::Init()
+void CDB_Item::Init()
 {
 	id = 0;
 
-	CItemInfo* temp = new CItemInfo();
+	CInfo_Item* temp = new CInfo_Item();
 	temp->m_name = "torch";
 	temp->m_description = "+20 brightness";
 	temp->m_item = ITEM::Torch;
@@ -25,7 +25,7 @@ void CItemDB::Init()
 	temp->m_ID = id++;
 	itemDB.insert(make_pair(ITEM::Torch, temp));
 
-	temp = new CItemInfo();
+	temp = new CInfo_Item();
 	temp->m_name = "food";
 	temp->m_description = "+20 brightness";
 	temp->m_item = ITEM::Food;
@@ -37,7 +37,7 @@ void CItemDB::Init()
 	temp->m_ID = id++;
 	itemDB.insert(make_pair(ITEM::Food, temp));
 
-	temp = new CItemInfo();
+	temp = new CInfo_Item();
 	temp->m_name = "bandage";
 	temp->m_description = "heals bleeding.";
 	temp->m_item = ITEM::Bandage;
@@ -51,9 +51,9 @@ void CItemDB::Init()
 
 }
 
-CItemInfo* CItemDB::CallItem(ITEM item)
+CInfo_Item* CDB_Item::CallItem(ITEM item)
 {
-	CItemInfo* itemInfo = new CItemInfo();
+	CInfo_Item* itemInfo = new CInfo_Item();
 	itemInfo->m_name = itemDB[item]->m_name;
 	itemInfo->m_description = itemDB[item]->m_description;
 	itemInfo->m_item = itemDB[item]->m_item;
@@ -66,10 +66,10 @@ CItemInfo* CItemDB::CallItem(ITEM item)
 	return itemInfo;
 }
 
-void CItemDB::Save()
+void CDB_Item::Save()
 {
 }
 
-void CItemDB::Load()
+void CDB_Item::Load()
 {
 }
