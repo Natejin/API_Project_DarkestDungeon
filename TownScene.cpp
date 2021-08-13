@@ -262,13 +262,15 @@ void TownScene::Show_town_statue()
 }
 void TownScene::Show_sanitarium()
 {
-	m_sanitarium->isActive = true;
+	//m_sanitarium->isActive = true;
 	DeactivateBuildings();
+	m_sanitarium->Enable();
 }
 void TownScene::Show_tavern()
 {
-	m_tavern->isActive = true;
+	//m_tavern->isActive = true;
 	DeactivateBuildings();
+	m_tavern->Enable();
 }
 void TownScene::Show_Activity_log()
 {
@@ -308,6 +310,8 @@ void TownScene::SetHerolist()
 				break;
 			}
 			m_dragButtonVec.push_back(dragButton);
+			/*CHero* m_hero = new CHero();
+			m_heroVec.push_back(m_hero);*/
 			MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
 		}
 }

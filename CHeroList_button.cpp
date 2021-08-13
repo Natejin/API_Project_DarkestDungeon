@@ -21,7 +21,7 @@ HRESULT CHeroList_button::Init()
 	originPos = Vector2(0, 0);
 	SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
 
-	m_hero = new CHero();
+	//m_hero = new CHero();
 	return S_OK;
 
 }
@@ -101,12 +101,3 @@ void CHeroList_button::DragHeroList()
 {
 	m_transform->m_pos += CInputManager::getSingleton()->GetptDeltaMouse();
 }
-
-//void CHeroList_button::AddColliderBox(float width, float height)
-//{
-//	m_rect.l = m_transform->m_pos.x - width * m_transform->m_pivot.x;
-//	m_rect.t = m_transform->m_pos.y - height * m_transform->m_pivot.y;
-//	m_rect.r = m_transform->m_pos.x + width * (1 - m_transform->m_pivot.x);
-//	m_rect.b = m_transform->m_pos.y + height * (1 - m_transform->m_pivot.y);
-//	buttonSize = Vector2(width, height);
-//}

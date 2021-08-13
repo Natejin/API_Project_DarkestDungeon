@@ -57,59 +57,20 @@ void CUIPanel_Sanitarium::Release()
 
 void CUIPanel_Sanitarium::CreateRooms() //panel¹öÆ°
 {
-	m_room1 = new CBuilding_PanelButton();
-	m_room1->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240);
-	m_room1->AddColliderBox(100, 100);
-	m_room1->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room1->isActive = false;
-	m_room1->townScene = townScene;
-	panelVec.push_back(m_room1);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room1);
-
-	m_room2 = new CBuilding_PanelButton();
-	m_room2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 135, WINSIZEY / 2 - 240);
-	m_room2->AddColliderBox(100, 100);
-	m_room2->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room2->isActive = false;
-	m_room2->townScene = townScene;
-	panelVec.push_back(m_room2);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room2);
-
-	m_room3 = new CBuilding_PanelButton();
-	m_room3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 270, WINSIZEY / 2 - 240);
-	m_room3->AddColliderBox(100, 100);
-	m_room3->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room3->isActive = false;
-	m_room3->townScene = townScene;
-	panelVec.push_back(m_room3);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room3);
-
-	m_room4 = new CBuilding_PanelButton();
-	m_room4->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 15);
-	m_room4->AddColliderBox(100, 100);
-	m_room4->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room4->isActive = false;
-	m_room4->townScene = townScene;
-	panelVec.push_back(m_room4);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room4);
-
-	m_room5 = new CBuilding_PanelButton();
-	m_room5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 135, WINSIZEY / 2 - 15);
-	m_room5->AddColliderBox(100, 100);
-	m_room5->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room5->isActive = false;
-	m_room5->townScene = townScene;
-	panelVec.push_back(m_room5);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room5);
-
-	m_room6 = new CBuilding_PanelButton();
-	m_room6->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 270, WINSIZEY / 2 - 15);
-	m_room6->AddColliderBox(100, 100);
-	m_room6->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room6->isActive = false;
-	m_room6->townScene = townScene;
-	panelVec.push_back(m_room6);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room6);
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
+			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i * 135, WINSIZEY / 2 - 280 + j * 225);
+			m_room->AddSpriteRenderer(IMAGE::hero_slot_bg);
+			m_room->AddColliderBox();
+			m_room->isActive = false;
+			m_room->townScene = townScene;
+			panelVec.push_back(m_room);
+			MG_GMOBJ->RegisterObj("emptyroom", m_room);
+		}
+	}
 
 }
 

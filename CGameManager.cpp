@@ -63,6 +63,7 @@ void CGameManager::RegisterHero(CHero* hero)
 
 		MG_GMOBJ->RegisterObj(hero->GetName(), hero);
 	}
+
 }
 
 void CGameManager::RemoveHero(int id)

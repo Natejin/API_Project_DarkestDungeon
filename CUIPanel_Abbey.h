@@ -21,6 +21,8 @@ public:
 	class CButton* m_check;
 	class CBuilding_PanelButton* panelbutton;
 	vector<class CBuilding_PanelButton*> panelVec;
+	class CHero* hero;
+	vector<class CHero*> stressVec;
 
 	CUIPanel_Abbey();
 	~CUIPanel_Abbey();
@@ -40,4 +42,7 @@ public:
 
 	virtual void Enable();
     virtual void Unable();
+
+	void CheckStress(HDC _hdc);
+	void ReduceStress();
 };

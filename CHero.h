@@ -92,7 +92,4 @@ public:
 	void setSelectedMem();
 	void setTargetedMem();
 
-	//얘를 CVestal에서 오버라이드??하라는 말씀이신가요
-	//아아
-	//네네 bind& func
 };
