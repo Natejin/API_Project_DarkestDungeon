@@ -19,8 +19,11 @@ private:
 public:
 
 	class CButton* m_check;
+	class CButton* m_roomcheck;
 	class CBuilding_PanelButton* panelbutton;
+	
 	vector<class CBuilding_PanelButton*> panelVec;
+	vector<class CButton*>checkVec;
 	class CHero* hero;
 	vector<class CHero*> stressVec;
 

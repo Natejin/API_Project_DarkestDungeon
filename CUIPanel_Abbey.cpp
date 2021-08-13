@@ -24,18 +24,35 @@ HRESULT CUIPanel_Abbey::Init()
 	panelbutton = new CBuilding_PanelButton();
 
 	CreateRooms();
-	Creatchecks();
+	//Creatchecks();
 	Unable();
-
+	
 	hero = new CHero();	
 	return S_OK;
 }
 
 void CUIPanel_Abbey::Update(float deltaTime, float worldTime)
 {
-	
-}
+	if (MG_INPUT->IsUpLMB())
+	{
+		if (true)
+		{	//나중에 타운씬에서 회차가 넘어갈때 실행하게끔 변경해야한다.
+			ReduceStress();
 
+			
+		}
+	}
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		if (panelVec[i]->hero != nullptr)
+		{
+
+			checkVec[i]->isActive = true;
+		}
+
+	}
+
+}
 void CUIPanel_Abbey::LateUpdate()
 {
 }
@@ -67,6 +84,7 @@ void CUIPanel_Abbey::CreateRooms() //panel
 		for (size_t j = 0; j < 3; j++)
 		{
 			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
+			
 			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i *135 , WINSIZEY / 2 - 280 + j * 225);
 			m_room->AddSpriteRenderer(IMAGE::hero_slot_bg);
 			m_room->AddColliderBox();
@@ -74,19 +92,22 @@ void CUIPanel_Abbey::CreateRooms() //panel
 			m_room->townScene = townScene;
 			panelVec.push_back(m_room);
 			MG_GMOBJ->RegisterObj("emptyroom", m_room);
+
+			m_roomcheck = new CButton();
+			m_roomcheck->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+i*135, WINSIZEY / 2 - 240 + 50+j*225);
+			m_roomcheck->AddSpriteRenderer(IMAGE::check);
+			m_roomcheck->AddColliderBox();
+			m_roomcheck->Unable();
+			checkVec.push_back(m_roomcheck);
+			MG_GMOBJ->RegisterObj("check", m_roomcheck);
 		}
 	}
 }
 
 void CUIPanel_Abbey::Creatchecks() // check Button
 {
-	m_check = new CButton();
-	m_check->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240 + 50);
 	
-	m_check->AddSpriteRenderer(IMAGE::check);
-	m_check->AddColliderBox();
-	m_check->isActive = false;
-	MG_GMOBJ->RegisterObj("smallx", m_check);
+
 
 }
 
@@ -98,7 +119,6 @@ void CUIPanel_Abbey::Enable()
 		panelVec[i]->isActive = true;
 	}
 	isActive = true;
-	//m_check->isActive = true;
 	
 }
 
@@ -119,14 +139,22 @@ void CUIPanel_Abbey::CheckStress(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
-	sprintf_s(strCount, "stress");
-	TextOut(_hdc, 100, 100, strCount, strlen(strCount));
-	for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++) 
+	
+	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++) 
 	{	
-		//stressVec[i]->getStress();
 		sprintf_s(strCount, "stress : %d", hero->getStress());
 		TextOut(_hdc, 100, 100 + i * 20, strCount, strlen(strCount));
 	};
+
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		if (panelVec[i]->hero!=nullptr)
+		{
+			sprintf_s(strCount, "stress : %d", panelVec[i]->hero->getStress());
+			TextOut(_hdc, 200, 100 + i * 20, strCount, strlen(strCount));
+		}
+
+	}
 }
 
 void CUIPanel_Abbey::ReduceStress()
@@ -135,12 +163,15 @@ void CUIPanel_Abbey::ReduceStress()
 	//작동시점은 영웅이 그자리칸에 등록이되었을때
 	//panelbutton에 영웅이 등록되었을때 '그' 용병의 스트레스가 감소해야 한다.
 	//들어간 용병의 스트레스만 줄여야 하니깐. 들어간 용병이 누구인지도 알아야함.
-	
-	if (panelVec.size() != 0)
+
+	for (size_t i = 0; i < panelVec.size(); i++)
 	{
-		for (size_t i = 0; i < panelVec.size(); i++)
-		{	//스트레스를 15줄여준다.
-			//hero->getStress() -= 15;
+		if (panelVec[i]->hero != nullptr)
+		{
+			
+			panelVec[i]->hero->setStress(panelVec[i]->hero->getStress() - 15);
+			
 		}
+
 	}
 }

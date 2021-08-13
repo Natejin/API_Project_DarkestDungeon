@@ -310,8 +310,6 @@ void TownScene::SetHerolist()
 				break;
 			}
 			m_dragButtonVec.push_back(dragButton);
-			/*CHero* m_hero = new CHero();
-			m_heroVec.push_back(m_hero);*/
 			MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
 		}
 }
