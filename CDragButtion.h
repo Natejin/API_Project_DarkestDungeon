@@ -28,6 +28,9 @@ public:
 
 	//===================================
 
+	bool CanTriggerDrag() { return canTriggerDrag; }
+	void TriggerWhenDrag() { m_triggerWhenDrag(); }
+	bool GetDrag()const { return isDragging; }
 
 
 	template <typename T>
