@@ -53,6 +53,8 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	setMemberOverlay();
 	AddColliderBox(120, 300);
 
+	
+
 	return S_OK;
 }
 
