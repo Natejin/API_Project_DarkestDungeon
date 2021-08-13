@@ -7,13 +7,12 @@ class CGameManager : public Singleton<CGameManager>
 {
 public:
 	//map<int,class GameObject*> objectMap;
-	vector<CHero*> m_partyOrigin;
-	vector<CHero*> m_ownHeroes;
 
-	CParty* m_party;
 public:
 	CGameManager();
 	~CGameManager();
+
+	int heroID;
 
 	HRESULT Init();
 
@@ -27,16 +26,17 @@ public:
 	virtual void Release();
 
 	//==================================
+	vector<CHero*> m_partyOrigin;
+	vector<CHero*> m_ownHeroes;
+	CParty* m_party;
 
-	void RegisterHero(CHero* hero);
-	void RemoveHero(int id);
+	bool RegisterHeroToParty(CHero* hero);
+	bool RegisterHeroToParty(int ownIndex);
+	void RegisterHeroToOwnList(CHero* hero);
+	bool RemoveHeroFromParty(int id);
+	bool RemoveHeroFromOwnList(int heroId);
 	vector<CHero*> GetHeroes();
 	CHero* GetHero(int index);
-
-
-
-
-	
 
 	void setParty();
 	CParty* GetParty();
@@ -44,4 +44,11 @@ public:
 	class CHero* CreateHero(string name, JOB job);
 
 	int GetHeroPartySize() { return m_partyOrigin.size(); }
+	//=======================================
+
+	
+
+	
+
+
 };

@@ -23,14 +23,21 @@ void CInputManager::release() {}
 void CInputManager::Update(float deltaTime, float worldTime)
 {
 	wasDownLMB = isDownLMB ? true : false;
+	wasDownRMB = isDownRMB ? true : false;
 
 	isDownLMB = false;
+	isDownRMB = false;
 	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
 
 		isDownLMB = true;
 	}
 
-	m_Mouse = Vector2(m_ptMouse);
+	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
+
+		isDownRMB = true;
+	}
+
+	m_Mouse = Vector2(g_ptMouse);
 	m_ptDeltaMouse = m_Mouse - m_OldptMouse;
 	m_OldptMouse = m_Mouse;
 	//OutputDebugString(TEXT("1234"));

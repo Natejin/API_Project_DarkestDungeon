@@ -148,6 +148,7 @@ void DungeonScene::CreateParty()
 	for (int i = 0; i < party.size(); i++)
 	{
 		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		party[i]->Enable();
 	}
 	m_party->SetParty(party);
 
@@ -399,7 +400,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
 
-	sprintf_s(str, "mousePos : %d, %d", (int)m_ptMouse.x, (int)m_ptMouse.y);
+	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
 	TextOut(_hdc, 0, 180, str, strlen(str));
 
 	switch (curDunheonMap.dungeonMapState)

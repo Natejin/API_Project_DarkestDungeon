@@ -151,7 +151,7 @@ void CInventorySystem::showSlotMouseOn(HDC _hdc)
 
 	for (int i = 0; i < m_invenSlots.size(); i++)
 	{
-		if (m_invenSlots[i]->m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+		if (m_invenSlots[i]->m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
 		{
 			sprintf_s(str, "nowMouseOnSlot : %d", i);
 			TextOut(_hdc, 0, 300, str, strlen(str));

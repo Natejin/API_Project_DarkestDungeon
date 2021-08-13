@@ -9,13 +9,19 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
-	RegisterHero(CreateHero("member1", JOB::Crusader));
-	RegisterHero(CreateHero("member2", JOB::Vestal));
-	RegisterHero(CreateHero("member3", JOB::Crusader));
-	RegisterHero(CreateHero("member4", JOB::Vestal));
-	//RegisterHero(CreateHero("member5", JOB::Highwayman));
-	//RegisterHero(CreateHero("member6", JOB::PlagueDoctor));
+	heroID = 0;
+	RegisterHeroToOwnList(CreateHero("member1", JOB::Crusader));
+	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
+	RegisterHeroToOwnList(CreateHero("member3", JOB::Crusader));
+	RegisterHeroToOwnList(CreateHero("member4", JOB::Vestal));
+	RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
+	RegisterHeroToOwnList(CreateHero("member6", JOB::PlagueDoctor));
 
+
+	RegisterHeroToParty(0);
+	RegisterHeroToParty(1);
+	RegisterHeroToParty(2);
+	RegisterHeroToParty(3);
 	return S_OK;
 }
 
@@ -55,30 +61,48 @@ void CGameManager::Release()
 	m_ownHeroes.clear();
 }
 
-void CGameManager::RegisterHero(CHero* hero)
+bool CGameManager::RegisterHeroToParty(CHero* hero)
 {
 	if (m_partyOrigin.size() < 4)
 	{
 		m_partyOrigin.push_back(hero);
+		return true;
+	}return false;
+}
 
-		MG_GMOBJ->RegisterObj(hero->GetName(), hero);
+bool CGameManager::RegisterHeroToParty(int ownIndex)
+{
+	return RegisterHeroToParty(m_ownHeroes[ownIndex]);
+}
+
+void CGameManager::RegisterHeroToOwnList(CHero* hero)
+{
+	m_ownHeroes.push_back(hero);
+}
+
+bool CGameManager::RemoveHeroFromParty(int id)
+{
+	if (id < m_partyOrigin.size())
+	{
+		m_partyOrigin.erase(m_partyOrigin.begin() + id);
+		return true;
 	}
-
+	return false;
 }
 
-void CGameManager::RemoveHero(int id)
+bool CGameManager::RemoveHeroFromOwnList(int heroId)
 {
-	m_partyOrigin.erase(m_partyOrigin.begin() + id);
-}
-
-vector<CHero*> CGameManager::GetHeroes()
-{
-	return m_partyOrigin;
-}
-
-CHero* CGameManager::GetHero(int index)
-{
-	return index < m_partyOrigin.size() ? m_partyOrigin[index] : nullptr;
+	for (size_t i = 0; i < m_ownHeroes.size(); i++)
+	{
+		if (heroId == m_ownHeroes[i]->heroID)
+		{
+			m_ownHeroes[i]->Unable();
+			MG_GMOBJ->RemoveObj(m_ownHeroes[i]);
+			m_ownHeroes.erase(m_ownHeroes.begin() + i);
+			return true;
+		}
+	}
+	return false;
 }
 
 void CGameManager::setParty()
@@ -92,33 +116,49 @@ CParty* CGameManager::GetParty()
 	return m_party;
 }
 
+vector<CHero*> CGameManager::GetHeroes()
+{
+	return m_partyOrigin;
+}
 
+CHero* CGameManager::GetHero(int index)
+{
+	return index < m_ownHeroes.size() ? m_ownHeroes[index] : nullptr;
+}
 
 
 CHero* CGameManager::CreateHero(string name, JOB job)
 {
-	CHero* vestal = new CHero();
+	CHero* hero = new CHero();
 
 	int resist[5] = { 30, 30, 30, 30, 30 };
 	//stun, blight, bleed, debuff, move
-
+	hero->heroID = heroID++;
 	switch (job)
 	{
 	case JOB::Crusader:
 		resist[0] = 40;
 		resist[4] = 40;
-		vestal->Init(JOB::Crusader, resist, 33, 1, 1, 9, 0, 3, 0, 5);
-		vestal->AddAnimator(IMAGE::Crusader_Idle);
-		vestal->m_animator->SetAnimeSpeed(5);
-		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
-		vestal->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
+		hero->Init(JOB::Crusader, resist, 33, 1, 1, 9, 0, 3, 0, 5);
+		hero->AddAnimator(IMAGE::Crusader_Idle);
+		hero->m_animator->SetAnimeSpeed(5);
+		hero->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
+		hero->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
+		hero->ownSkill.push_back(SKILL::Crusader_Combat_Smite);
+		hero->ownSkill.push_back(SKILL::Crusader_Combat_ZealousAccusation);
+		hero->ownSkill.push_back(SKILL::Crusader_Combat_StunningBlow);
+		hero->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
 		break;
 	case JOB::Vestal:
-		vestal->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
-		vestal->AddAnimator(IMAGE::Vestal_Idle);
-		vestal->m_animator->SetAnimeSpeed(5);
-		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
-		vestal->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
+		hero->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		hero->AddAnimator(IMAGE::Vestal_Idle);
+		hero->m_animator->SetAnimeSpeed(5);
+		hero->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
+		hero->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
+		hero->ownSkill.push_back(SKILL::Vestal_Combat_MaceBash);
+		hero->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
+		hero->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
+		hero->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 		break;
 	case JOB::PlagueDoctor:
 		break;
@@ -128,10 +168,7 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		break;
 	}
 
-	//pos�� ���Ƿ� 1�� ��ġ, ���ݷ��� 4-9�� �߰�������.
-
-	//member1->m_transform->m_pos = Vector2(210, 360);
-	//���������� ��ǥ�� �����ϴ� ��ġ
-
-	return vestal;
+	hero->Unable();
+	MG_GMOBJ->RegisterObj(hero->GetName(), hero);
+	return hero;
 }

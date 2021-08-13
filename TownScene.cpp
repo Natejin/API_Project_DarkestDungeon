@@ -283,7 +283,7 @@ void TownScene::SetHerolist()
 	}
 	m_dragButtonVec.clear();
 
-		for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
+		for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
 		{
 		 
 			CHeroList_button* dragButton = new CHeroList_button();

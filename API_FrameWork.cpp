@@ -3,7 +3,7 @@
 #include"mainGame.h"
 HINSTANCE m_hInstance;
 HWND m_hWnd;
-POINT m_ptMouse = { 0,0 };
+Vector2 g_ptMouse = Vector2(0,0);
 
 
 //메인게임

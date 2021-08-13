@@ -15,7 +15,7 @@ HRESULT CButton_move::Init()
 
 void CButton_move::Update(float deltaTime, float worldTime)
 {
-	Vector2 PointToVector = Vector2(m_ptMouse) + MG_CAMERA->getCameraPos();
+	Vector2 PointToVector = Vector2(g_ptMouse) + MG_CAMERA->getCameraPos();
 
 	if (m_rect.CheckCollisionWithPoint(PointToVector))
 	{

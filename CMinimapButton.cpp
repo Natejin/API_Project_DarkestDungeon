@@ -19,7 +19,7 @@ HRESULT CMinimapButton::Init()
 
 void CMinimapButton::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(m_ptMouse))
+	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (m_transform->m_scale.x < 1.5)
 		{
