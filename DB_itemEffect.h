@@ -28,10 +28,10 @@ public:
 		}
 	}
 
-	virtual void DumpItem()
+	virtual void DumpItem(int dumpCount)
 	{
 		//have to get how much going to dump
-		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch());
+		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() - dumpCount);
 		return;
 	}
 };
@@ -52,6 +52,12 @@ public:
 		//}
 		return true;
 	}
+	virtual void DumpItem(int dumpCount)
+	{
+		//have to get how much going to dump
+		MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() - dumpCount);
+		return;
+	}
 };
 
 class FoodEffect : public CItemEffect
@@ -70,5 +76,11 @@ public:
 			}
 		}
 		return false;
+	}
+	virtual void DumpItem(int dumpCount)
+	{
+		//have to get how much going to dump
+		MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() - dumpCount);
+		return;
 	}
 };

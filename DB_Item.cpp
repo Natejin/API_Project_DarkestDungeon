@@ -3,13 +3,8 @@
 #include "CItemEffect.h"
 #include "DB_itemEffect.h"
 
-CDB_Item::CDB_Item()
-{
-}
-
-CDB_Item::~CDB_Item()
-{
-}
+CDB_Item::CDB_Item() {}
+CDB_Item::~CDB_Item() {}
 
 void CDB_Item::Init()
 {

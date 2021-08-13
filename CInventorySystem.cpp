@@ -20,7 +20,6 @@ HRESULT CInventorySystem::Init()
 	setInvenSlot();
 
 	nowMouseOnSlot = 0;
-	filledSlot = 0;
 	dummySlot = new DummySlot();
 	dummySlot->Init();
 	dummySlot->Unable();
@@ -48,6 +47,14 @@ void CInventorySystem::Update(float deltaTime, float worldTime)
 		AddItem(ITEM::Bandage, count);
 		MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + 1);
 	}
+
+	if (MG_INPUT->isOnceKeyDown('Y'))
+	{
+		int count = 1;
+		decreaseItem(ITEM::Bandage, count);
+		MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() - 1);
+	}
+
 
 	if (MG_INPUT->IsStayLMB())
 	{
@@ -81,8 +88,6 @@ void CInventorySystem::FrontRender(HDC _hdc)
 void CInventorySystem::Release()
 {
 }
-
-
 
 void CInventorySystem::Enable()
 {
@@ -250,10 +255,57 @@ void CInventorySystem::EndDragItem(CSlotItemButton* _slot)
 	dummySlot->Unable();
 }
 
-void CInventorySystem::decreaseItem(ITEM itemInfo, int& count)
+bool CInventorySystem::decreaseItem(ITEM itemInfo, int& count)
 {
-}
+	int curCount = count;
+	int TotalCount = 0;
 
-void CInventorySystem::mergeSameItem(ITEM itemInfo1, ITEM itemInfo2)
-{
+	for (int i = 0; i < m_invenSlots.size(); i++)
+	{
+		if (m_invenSlots[i]->m_itemInfo == nullptr)
+		{
+			continue;
+		}
+		else 
+		{
+			if (m_invenSlots[i]->m_itemInfo->m_item == itemInfo)
+			{
+				TotalCount += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+		}
+	}
+
+	if (TotalCount >= curCount)
+	{
+		for (int i = 0; i < m_invenSlots.size(); i++)
+		{
+			if (curCount == 0)
+			{
+				return true;
+			}
+		
+			if (m_invenSlots[i]->m_itemInfo == nullptr)
+			{
+				continue;
+			}
+
+			if (m_invenSlots[i]->m_itemInfo->m_item == itemInfo)
+			{
+				if (m_invenSlots[i]->m_itemInfo->m_count >= curCount)
+				{
+					m_invenSlots[i]->m_itemInfo->m_count -= curCount;
+					return true;
+				}
+				else
+				{
+					curCount -= m_invenSlots[i]->m_itemInfo->m_count;
+					m_invenSlots[i]->m_itemInfo->m_count = 0;
+				}
+			}
+		}
+	}
+	else
+	{
+		return false;
+	}
 }

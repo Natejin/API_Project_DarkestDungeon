@@ -38,12 +38,12 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 		{
 			if (MG_INPUT->IsDownLMB())
 			{
-				//dumpItem();
-				m_itemInfo->dumpItem();
+				dumpSlotItem();
 			}
 		}
 	}
 
+	//drag
 	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsDownLMB())
@@ -76,12 +76,10 @@ void CSlotItemButton::LateUpdate()
 
 void CSlotItemButton::BackRender(HDC _hdc)
 {
-
 }
 
 void CSlotItemButton::Render(HDC _hdc)
 {
-
 }
 
 void CSlotItemButton::FrontRender(HDC _hdc)
@@ -127,7 +125,17 @@ void CSlotItemButton::SwapItem(CSlotItemButton* _slot)
 		_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
 		m_spriteRenderer->SetImage();
 	}
-	else {
+	else if (m_itemInfo->m_item == _slot->m_itemInfo->m_item)
+	{
+		if (m_itemInfo->m_count + _slot->m_itemInfo->m_count < m_itemInfo->maxCount)
+		{
+			_slot->m_itemInfo->m_count += m_itemInfo->m_count;
+			m_itemInfo = nullptr;
+			_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
+		}
+	}
+	else 
+	{
 		auto itemInfo = m_itemInfo;
 		m_itemInfo = _slot->m_itemInfo;
 		_slot->m_itemInfo = itemInfo;
@@ -159,7 +167,8 @@ void CSlotItemButton::dumpSlotItem()
 	if (m_itemInfo == nullptr) return;
 	else
 	{
-		m_itemInfo->dumpItem();
+		m_itemInfo->DumpItem(m_itemInfo->m_count);
+		RemoveItem();
 	}
 }
 

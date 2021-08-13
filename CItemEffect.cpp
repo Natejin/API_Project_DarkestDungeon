@@ -6,6 +6,7 @@ bool CItemEffect::ItemEffect()
 	return false;
 }
 
-void CItemEffect::DumpItem()
+void CItemEffect::DumpItem(int dumpCount)
 {
+
 }

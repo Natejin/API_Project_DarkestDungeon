@@ -22,7 +22,7 @@ bool CInfo_Item::useItem()
 	else return false;
 }
 
-void CInfo_Item::dumpItem()
+void CInfo_Item::DumpItem(int dumpCount)
 {
-
+	m_itemEffect->DumpItem(dumpCount);
 }

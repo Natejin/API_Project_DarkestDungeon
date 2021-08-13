@@ -26,5 +26,5 @@ public:
 
 	bool IsFull();
 	bool useItem();
-	void dumpItem();
+	void DumpItem(int dumpCount);
 };
