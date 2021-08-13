@@ -253,3 +253,7 @@ void CInventorySystem::EndDragItem(CSlotItemButton* _slot)
 void CInventorySystem::decreaseItem(ITEM itemInfo, int& count)
 {
 }
+
+void CInventorySystem::mergeSameItem(ITEM itemInfo1, ITEM itemInfo2)
+{
+}

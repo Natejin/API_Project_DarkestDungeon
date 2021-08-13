@@ -1,4 +1,5 @@
 #pragma once
+#include "framework.h"
 #include "CItemEffect.h"
 #include "CHero.h"
 #include "CParty.h"
@@ -25,6 +26,13 @@ public:
 		{
 			return false;
 		}
+	}
+
+	virtual void DumpItem()
+	{
+		//have to get how much going to dump
+		MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch());
+		return;
 	}
 };
 

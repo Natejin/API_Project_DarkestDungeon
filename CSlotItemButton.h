@@ -33,5 +33,6 @@ public:
 	void RemoveItem();
 
 	void useSlotItem();
+	void dumpSlotItem();
 	void checkCount();
 };

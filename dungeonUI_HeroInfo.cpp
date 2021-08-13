@@ -141,11 +141,12 @@ void dungeonUI_HeroInfo::setInfoImage()
 
 void dungeonUI_HeroInfo::setButton()
 {
-    MG_GAME->GetHero(0)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero1);
-    MG_GAME->GetHero(1)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero2);
-    MG_GAME->GetHero(2)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero3);
-    MG_GAME->GetHero(3)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
-   /* CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
+    //MG_GAME->GetHero(0)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero1);
+    //MG_GAME->GetHero(1)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero2);
+    //MG_GAME->GetHero(2)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero3);
+    //MG_GAME->GetHero(3)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
+    
+    CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
     bt_hero1->setBtTarget(MG_GAME->GetHero(0));
     bt_hero1->SetButtonSize(100, 285);
     bt_hero1->AddSpriteRenderer("button");
@@ -171,7 +172,7 @@ void dungeonUI_HeroInfo::setButton()
     bt_hero4->SetButtonSize(100, 285);
     bt_hero4->AddSpriteRenderer("button");
     bt_hero4->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
-    MG_GMOBJ->RegisterObj("selHero4", bt_hero4);*/
+    MG_GMOBJ->RegisterObj("selHero4", bt_hero4);
 }
 
 void dungeonUI_HeroInfo::ShowHeroState(HDC _hdc)

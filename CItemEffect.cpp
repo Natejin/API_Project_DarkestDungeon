@@ -5,3 +5,7 @@ bool CItemEffect::ItemEffect()
 {
 	return false;
 }
+
+void CItemEffect::DumpItem()
+{
+}

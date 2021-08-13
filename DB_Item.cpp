@@ -73,6 +73,7 @@ CInfo_Item* CDB_Item::CallItem(ITEM item)
 	itemInfo->m_imgData = itemDB[item]->m_imgData;
 	itemInfo->m_ID = itemDB[item]->m_ID;
 	itemInfo->m_itemEffect = itemDB[item]->m_itemEffect;
+	
 	return itemInfo;
 }
 

@@ -21,3 +21,8 @@ bool CInfo_Item::useItem()
 	}
 	else return false;
 }
+
+void CInfo_Item::dumpItem()
+{
+
+}

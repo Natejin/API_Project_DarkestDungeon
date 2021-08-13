@@ -19,10 +19,12 @@ public:
 
 	CItemEffect* m_itemEffect;
 
+
 public:
 	CInfo_Item() {};
 	~CInfo_Item() {};
 
 	bool IsFull();
 	bool useItem();
+	void dumpItem();
 };

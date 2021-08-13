@@ -38,7 +38,8 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 		{
 			if (MG_INPUT->IsDownLMB())
 			{
-				RemoveItem();
+				//dumpItem();
+				m_itemInfo->dumpItem();
 			}
 		}
 	}
@@ -150,6 +151,15 @@ void CSlotItemButton::useSlotItem()
 		{
 			m_itemInfo->m_count--;
 		}
+	}
+}
+
+void CSlotItemButton::dumpSlotItem()
+{
+	if (m_itemInfo == nullptr) return;
+	else
+	{
+		m_itemInfo->dumpItem();
 	}
 }
 
