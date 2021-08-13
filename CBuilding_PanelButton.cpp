@@ -16,6 +16,17 @@ CBuilding_PanelButton::~CBuilding_PanelButton()
 
 HRESULT CBuilding_PanelButton::Init()
 {
+	checkBTN = new CButton();
+	checkBTN->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + buttonID/3 * 135, WINSIZEY / 2 - 240 + 50 + buttonID % 3 * 225);
+	checkBTN->AddSpriteRenderer(IMAGE::check);
+	checkBTN->AddColliderBox();
+	checkBTN->Unable();
+	checkBTN->SetTriggerWhenDown(this, &CBuilding_PanelButton::PressCheckButton);
+	MG_GMOBJ->RegisterObj("check", checkBTN);
+
+	AddSpriteRenderer(IMAGE::hero_slot_bg);
+	AddColliderBox();
+	MG_GMOBJ->RegisterObj("emptyroom", this);
 	return S_OK;
 }
 
@@ -31,7 +42,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 				CHeroList_button::selDragButton = nullptr;
 				MG_GAME->RemoveHeroFromOwnList(hero->heroID);
 				townScene->SetHerolist();
-				
+				checkBTN->Enable();
 				switch (hero->job)
 				{
 				case JOB::Crusader:
@@ -82,4 +93,23 @@ void CBuilding_PanelButton::FrontRender(HDC _hdc)
 	}
 
 #endif // _DEBUG
+}
+
+void CBuilding_PanelButton::PressCheckButton()
+{
+	switch (buttonID % 3)
+	{
+	case 0:
+		m_spriteRenderer->SetImage(IMAGE::abbey_flagellation);
+		break;
+	case 1:
+		m_spriteRenderer->SetImage(IMAGE::abbey_pray);
+		break;
+	case 2:
+		m_spriteRenderer->SetImage(IMAGE::abbey_meditation);
+		break;
+	default:
+		break;
+	}
+	checkBTN->Unable();
 }

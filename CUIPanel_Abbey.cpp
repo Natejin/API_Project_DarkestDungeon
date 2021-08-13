@@ -24,9 +24,8 @@ HRESULT CUIPanel_Abbey::Init()
 	panelbutton = new CBuilding_PanelButton();
 
 	CreateRooms();
-	//Creatchecks();
 	Unable();
-	
+
 	hero = new CHero();	
 	return S_OK;
 }
@@ -42,16 +41,17 @@ void CUIPanel_Abbey::Update(float deltaTime, float worldTime)
 			
 		}
 	}
-	for (size_t i = 0; i < panelVec.size(); i++)
-	{
-		if (panelVec[i]->hero != nullptr)
-		{
+	//for (size_t i = 0; i < panelVec.size(); i++)
+	//{
+	//	if (panelVec[i]->hero != nullptr)
+	//	{
 
-			checkVec[i]->isActive = true;
-		}
+	//		checkVec[i]->isActive = true;
+	//		//panelVec[i]->hero = nullptr;
+	//	}
 
-	}
-
+	//}
+	
 }
 void CUIPanel_Abbey::LateUpdate()
 {
@@ -79,35 +79,58 @@ void CUIPanel_Abbey::Release()
 }
 void CUIPanel_Abbey::CreateRooms() //panel
 {
+	int k = 0;
 	for (size_t i = 0; i < 3; i++)
 	{
 		for (size_t j = 0; j < 3; j++)
 		{
-			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
-			
+			m_room = new CBuilding_PanelButton();
 			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i *135 , WINSIZEY / 2 - 280 + j * 225);
-			m_room->AddSpriteRenderer(IMAGE::hero_slot_bg);
-			m_room->AddColliderBox();
-			m_room->isActive = false;
+			m_room->buttonID = k;
 			m_room->townScene = townScene;
+			m_room->Init();
 			panelVec.push_back(m_room);
-			MG_GMOBJ->RegisterObj("emptyroom", m_room);
-
-			m_roomcheck = new CButton();
-			m_roomcheck->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+i*135, WINSIZEY / 2 - 240 + 50+j*225);
-			m_roomcheck->AddSpriteRenderer(IMAGE::check);
-			m_roomcheck->AddColliderBox();
-			m_roomcheck->Unable();
-			checkVec.push_back(m_roomcheck);
-			MG_GMOBJ->RegisterObj("check", m_roomcheck);
+			k++;
+			//m_roomcheck = new CButton();
+			//m_roomcheck->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+i*135, WINSIZEY / 2 - 240 + 50+j*225);
+			//m_roomcheck->AddSpriteRenderer(IMAGE::check);
+			//m_roomcheck->AddColliderBox();
+			//m_roomcheck->Unable();
+			//checkVec.push_back(m_roomcheck);
+			//m_roomcheck->SetTriggerWhenDown(this, &CUIPanel_Abbey::SetcloseRoom);
+			//m_roomcheck->isActive = false;
+			//MG_GMOBJ->RegisterObj("check", m_roomcheck);
 		}
 	}
 }
 
-void CUIPanel_Abbey::Creatchecks() // check Button
+void CUIPanel_Abbey::SetcloseRoom()
 {
-	
+	//채찍질 ::abbey_flagellation
+	//기도	 ::abbey_pray
+	//치료	 ::abbey_meditation
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+				if (i % 3 == 0)
+				{
+					panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_flagellation);
+					
+				}
+				if (i % 3 == 1)
+				{
+					panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_pray);
+				}
+				if (i % 3 == 2)
+				{
+					panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_meditation);
 
+				}
+				
+			
+		}
+	}
 
 }
 
@@ -168,10 +191,7 @@ void CUIPanel_Abbey::ReduceStress()
 	{
 		if (panelVec[i]->hero != nullptr)
 		{
-			
 			panelVec[i]->hero->setStress(panelVec[i]->hero->getStress() - 15);
-			
 		}
-
 	}
 }

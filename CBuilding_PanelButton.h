@@ -4,11 +4,14 @@
 class CBuilding_PanelButton : public CEst_UI
 {
 public:
+	int buttonID;
+
 	class TownScene* townScene;
 	class CHeroList_button* listbutton;
 
 	class CHero* hero;
 	class CUIPanel_Abbey* abbey;
+	class CButton* checkBTN;
 	CBuilding_PanelButton();
 	~CBuilding_PanelButton();
 
@@ -21,4 +24,5 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
+	void PressCheckButton();
 };

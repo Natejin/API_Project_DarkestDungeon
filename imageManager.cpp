@@ -154,7 +154,10 @@ HRESULT imageManager::init()
 	//Abbey
 	MG_IMAGE->addImage(IMAGE::abbey_char, "images/Town/abbey/abbey.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::abbey_bg, "images/Town/abbey/abbey.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	
+	MG_IMAGE->addImage(IMAGE::abbey_flagellation, "images/Town/abbey/abbey_flagellation.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::abbey_meditation, "images/Town/abbey/abbey_meditation.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::abbey_pray, "images/Town/abbey/abbey_pray.bmp", 72, 72, true, RGB(255, 0, 255));
+
 	//Blacksmith
 	MG_IMAGE->addImage(IMAGE::blacksmith_char, "images/Town/blacksmith/blacksmith.character.bmp", 865, 760, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::blacksmith_bg, "images/Town/blacksmith/blacksmith.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
