@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "CObjectManager.h"
 #include "GameObject.h"
-
+#include "CDragButtion.h"
 CObjectManager::CObjectManager() {}
 CObjectManager::~CObjectManager() {}
 
@@ -74,6 +74,14 @@ void CObjectManager::LateUpdate()
 
 				break;
 			}
+		}
+	}
+
+	if (CDragButton::selDragButton && MG_INPUT->isStayKeyDown(VK_LBUTTON))
+	{
+		if (CDragButton::selDragButton->CanTriggerDrag())
+		{
+			CDragButton::selDragButton->TriggerWhenDrag();
 		}
 	}
 
