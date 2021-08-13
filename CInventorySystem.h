@@ -61,8 +61,8 @@ public:
 	void StartDragItem(class CSlotItemButton* slot);
 	void EndDragItem(class CSlotItemButton* slot);
 
-	bool useItem(class CSlotItemButton* slot, int& count); //dcrease
-	void throwItem(class CSlotItemButton* slot); //remove
+	void decreaseItem(ITEM itemInfo, int& count);
 
+	void mergeSameItem(ITEM itemInfo1, ITEM itemInfo2);
 
 };

@@ -32,5 +32,6 @@ public:
 	void SwapItem(CSlotItemButton* _iteminfo);
 	void RemoveItem();
 
-
+	void useSlotItem();
+	void checkCount();
 };

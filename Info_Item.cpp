@@ -12,3 +12,12 @@ bool CInfo_Item::IsFull()
 		return true;
 	}
 }
+
+bool CInfo_Item::useItem()
+{
+	if (isUsable)
+	{
+		return m_itemEffect->ItemEffect();
+	}
+	else return false;
+}

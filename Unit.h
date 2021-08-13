@@ -73,7 +73,7 @@ public:
 			resist[i] = _resist[i];
 		}
 	}
-	void setAttribute(int _attribute[])
+	void setAttribute(bool _attribute[])
 	{
 		for (int i = 0; i < 8; i++)
 		{
