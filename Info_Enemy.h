@@ -1,5 +1,7 @@
 #pragma once
-class Info_Enemy
+#include "Info_Unit.h"
+class Info_Enemy :public Info_Unit
 {
+
 };
 

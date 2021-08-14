@@ -4,8 +4,7 @@
 class CEnemy : public Unit
 {
 public:
-	int m_DEF;
-	int m_DODGE;
+
 	//스킬
 	//스킬 Info에 accuracy, critical, DMG, changeAttribute 가 포함됨
 

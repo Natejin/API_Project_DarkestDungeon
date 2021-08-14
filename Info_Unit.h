@@ -1,6 +1,7 @@
 #pragma once
 class Info_Unit
 {
+public:
 	int m_HP;
 	int m_SPD;
 	int m_POS; //(파티에서의 위치)
