@@ -7,6 +7,7 @@ class DungeonScene;
 class CHero : public Unit
 {
 	int heroID;
+	int ownIndex;
 
 	int limit;
 	bool isBattle;
@@ -60,8 +61,6 @@ public:
 	void setSelectedMem();
 	void setTargetedMem();
 
-	virtual void SetMemberOverlay();
-
 	//GetStatus;
 	virtual UNITTYPE GetUnitType();
 	virtual int GetSpeed();
@@ -78,10 +77,26 @@ public:
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
 	virtual void SetMemberOverlay();
-	int getMoveDis()const { return m_DIST; }
-	int getMoveDis_reteat()const { return m_DIST_retreat; }
-	int getStress()const { return m_STRS; }
-	void setStress(int strs) { m_STRS = strs; }
-	void addStress(int strs) { m_STRS += strs; }
-
+	int getMoveDis()const;
+	int getMoveDis_reteat()const; 
+	int getStress()const; 
+	void setStress(int strs); 
+	void addStress(int strs);
+	vector<SKILL>GetOwnSkill();
+	void SetHeroID(int id);
+	int GetHeroID();
+	void SetHeroJob(JOB job);
+	JOB GetJob();
+	void SetOwnIndex(int _ownindex);
+	int GetOwnIndex();
+	void SetAcry(int _acry);
+	int GetAcry();
+	void SetCri(int _cri);
+	int GetCri();
+	void SetDmg(int _dmg);
+	int GetDmg();
+	void SetDodge(int _dodge);
+	int GetDodge();
+	void SetDef(int _def);
+	int GetDef();
 };

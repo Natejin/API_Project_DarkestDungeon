@@ -4,7 +4,7 @@
 #include "DungeonScene.h"
 
 CHero::CHero() {
-	unitType = UNITTYPE::Hero;
+	info->unitType = UNITTYPE::Hero;
 	m_layer = LAYER::Player;
 	speedFront = 8;
 	speedBack = 4;
@@ -15,35 +15,35 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 {
 	canTriggerDown = false;
 	
-	this->job = job;
-	m_HP = HP;
-	m_SPD = SPD;
-	m_POS = POS;
+	this->info->job = job;
+	info->m_HP = HP;
+	info->m_SPD = SPD;
+	info->m_POS = POS;
 	//skill
 
-	m_DMG = DMG;
-	m_ACRY = ACRY;
-	m_CRI = CRI;
-	m_DEF = DEF;
-	m_DODGE = DODGE;
+	info->m_DMG = DMG;
+	info->m_ACRY = ACRY;
+	info->m_CRI = CRI;
+	info->m_DEF = DEF;
+	info->m_DODGE = DODGE;
 
-	m_LVL = 1;
-	m_EXP = 0;
-	m_STRS = 0;
-	m_STRSLVL = 0;
+	info->m_LVL = 1;
+	info->m_EXP = 0;
+	info->m_STRS = 0;
+	info->m_STRSLVL = 0;
 
 	limit = 0;
 
 	for (size_t i = 0; i < 5; i++)
 	{
-		this->resist[i] = resist[i];
+		this->info->resist[i] = resist[i];
 	}
 	for (size_t i = 0; i < 8; i++)
 	{
-		attribute[i] = false;
+		info->attribute[i] = false;
 	}
 
-	m_DIST = 0;
+	info->m_DIST = 0;
 	isActive = false;
 	m_transform->m_pivot = Vector2(0.5, 1);
 
@@ -111,7 +111,7 @@ void CHero::Move()
 			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)
 			{
 				m_transform->m_pos.x += speedFront;
-				m_DIST += speedFront;
+				info->m_DIST += speedFront;
 			}
 		}
 
@@ -120,10 +120,10 @@ void CHero::Move()
 			if (m_transform->m_pos.x > 0)
 			{
 				m_transform->m_pos.x -= speedBack;
-				m_DIST += 2;
-				m_DIST_retreat += speedBack;
+				info->m_DIST += 2;
+				info->m_DIST_retreat += speedBack;
 				
-				if (m_DIST_retreat > limit && m_DIST_retreat > 300)
+				if (info->m_DIST_retreat > limit && info->m_DIST_retreat > 300)
 				{
 					if (MG_RND->getInt(4) > 2)
 					{
@@ -219,6 +219,117 @@ void CHero::SetMemberOverlay()
 	}
 }
 
+int CHero::getMoveDis() const
+{
+	return info->m_DIST;
+}
+
+int CHero::getMoveDis_reteat() const
+{
+	return info->m_DIST_retreat;
+}
+
+int CHero::getStress() const
+{
+	return info->m_STRS;
+}
+
+void CHero::setStress(int strs)
+{
+	info->m_STRS = strs;
+}
+
+void CHero::addStress(int strs)
+{
+	info->m_STRS += strs;
+}
+
+vector<SKILL> CHero::GetOwnSkill()
+{
+	return info->ownSkill;
+}
+
+void CHero::SetHeroID(int id)
+{
+	heroID = id;
+}
+
+int CHero::GetHeroID()
+{
+	return heroID;
+}
+
+void CHero::SetHeroJob(JOB job)
+{
+	info->job = job;
+}
+
+JOB CHero::GetJob()
+{
+	return info->job;
+}
+
+void CHero::SetOwnIndex(int _ownindex)
+{
+	ownIndex = _ownindex;
+}
+
+int CHero::GetOwnIndex()
+{
+	return ownIndex;
+}
+
+void CHero::SetAcry(int _acry)
+{
+	info->m_ACRY = _acry;
+}
+
+int CHero::GetAcry()
+{
+	return info->m_ACRY;
+}
+
+void CHero::SetCri(int _cri)
+{
+	info->m_CRI = _cri;
+}
+
+int CHero::GetCri()
+{
+	return info->m_CRI;
+}
+
+void CHero::SetDmg(int _dmg)
+{
+	info->m_DMG = _dmg;
+}
+
+int CHero::GetDmg()
+{
+	return info->m_DMG;
+}
+
+void CHero::SetDodge(int _dodge)
+{	
+	info->m_DODGE = _dodge;
+}
+
+int CHero::GetDodge()
+{
+	return info->m_DODGE;
+}
+
+void CHero::SetDef(int _def)
+{
+	info->m_DEF = _def;
+}
+
+int CHero::GetDef()
+{
+	return info->m_DEF;
+}
+
+
 
 UNITTYPE CHero::GetUnitType()
 {
@@ -226,53 +337,53 @@ UNITTYPE CHero::GetUnitType()
 }
 int CHero::GetSpeed()
 {
-	return m_SPD;
+	return info->m_SPD;
 }
 void CHero::SetPosition(int pos)
 {
-	m_POS = pos;
+	info->m_POS = pos;
 }
 int CHero::GetPosition()
 {
-	return m_POS;
+	return  info->m_POS;
 }
 int CHero::getPartyPos()
 {
-	return m_POS;
+	return  info->m_POS;
 }
 int CHero::getResist(int index)
 {
-	return resist[index];
+	return  info->resist[index];
 }
 bool CHero::getAttribute(int index)
 {
-	return attribute[index];
+	return  info->attribute[index];
 }
 void CHero::setHP(int hp)
 {
-	m_HP = hp;
+	info->m_HP = hp;
 }
 void CHero::setSPD(int spd)
 {
-	m_SPD = spd;
+	info->m_SPD = spd;
 }
 void CHero::setPartyPos(int pos)
 {
-	m_POS = pos;
+	info->m_POS = pos;
 }
 void CHero::setResist(int index, bool val)
 {
-	resist[index] = val;
+	info->resist[index] = val;
 }
 void CHero::setAttribute(int index, bool val)
 {
-	attribute[index] = val;
+	info->attribute[index] = val;
 }
 int CHero::getSPD()
 {
-	return m_SPD;
+	return  info->m_SPD;
 }
 int CHero::getHP()
 {
-	return m_HP;
+	return  info->m_HP;
 }

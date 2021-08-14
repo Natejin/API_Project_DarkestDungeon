@@ -92,3 +92,67 @@ void Unit::showHpBar(HDC _hdc)
 	HPbar_back.m_img->render(_hdc, &HPbar_back.m_trans);
 	HPbar_front.m_img->render(_hdc, &HPbar_front.m_trans);
 }
+
+UNITTYPE Unit::GetUnitType()
+{
+    return UNITTYPE();
+}
+
+int Unit::GetSpeed()
+{
+    return 0;
+}
+
+void Unit::SetPosition(int pos)
+{
+}
+
+int Unit::getHP()
+{
+    return 0;
+}
+
+int Unit::getSPD()
+{
+    return 0;
+}
+
+int Unit::GetPosition()
+{
+    return 0;
+}
+
+int Unit::getPartyPos()
+{
+    return 0;
+}
+
+int Unit::getResist(int index)
+{
+    return 0;
+}
+
+bool Unit::getAttribute(int index)
+{
+    return false;
+}
+
+void Unit::setHP(int hp)
+{
+}
+
+void Unit::setSPD(int spd)
+{
+}
+
+void Unit::setPartyPos(int pos)
+{
+}
+
+void Unit::setResist(int index, bool val)
+{
+}
+
+void Unit::setAttribute(int index, bool val)
+{
+}
