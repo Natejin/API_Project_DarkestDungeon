@@ -32,7 +32,7 @@ void CInputManager::Update(float deltaTime, float worldTime)
 		isDownLMB = true;
 	}
 
-	if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
+	if (GetAsyncKeyState(VK_RBUTTON) & 0x8000) {
 
 		isDownRMB = true;
 	}

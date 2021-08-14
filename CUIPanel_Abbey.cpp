@@ -37,20 +37,8 @@ void CUIPanel_Abbey::Update(float deltaTime, float worldTime)
 		if (true)
 		{	//나중에 타운씬에서 회차가 넘어갈때 실행하게끔 변경해야한다.
 			ReduceStress();
-
-			
 		}
 	}
-	//for (size_t i = 0; i < panelVec.size(); i++)
-	//{
-	//	if (panelVec[i]->hero != nullptr)
-	//	{
-
-	//		checkVec[i]->isActive = true;
-	//		//panelVec[i]->hero = nullptr;
-	//	}
-
-	//}
 	
 }
 void CUIPanel_Abbey::LateUpdate()
@@ -91,15 +79,6 @@ void CUIPanel_Abbey::CreateRooms() //panel
 			m_room->Init();
 			panelVec.push_back(m_room);
 			k++;
-			//m_roomcheck = new CButton();
-			//m_roomcheck->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180+i*135, WINSIZEY / 2 - 240 + 50+j*225);
-			//m_roomcheck->AddSpriteRenderer(IMAGE::check);
-			//m_roomcheck->AddColliderBox();
-			//m_roomcheck->Unable();
-			//checkVec.push_back(m_roomcheck);
-			//m_roomcheck->SetTriggerWhenDown(this, &CUIPanel_Abbey::SetcloseRoom);
-			//m_roomcheck->isActive = false;
-			//MG_GMOBJ->RegisterObj("check", m_roomcheck);
 		}
 	}
 }
@@ -153,7 +132,6 @@ void CUIPanel_Abbey::Unable()
 		panelVec[i]->isActive = false;
 	}
 	isActive = false;
-	//m_check->isActive = false;
 }
 
 void CUIPanel_Abbey::CheckStress(HDC _hdc)
@@ -182,11 +160,6 @@ void CUIPanel_Abbey::CheckStress(HDC _hdc)
 
 void CUIPanel_Abbey::ReduceStress()
 {
-	//스트레스를 줄이자.
-	//작동시점은 영웅이 그자리칸에 등록이되었을때
-	//panelbutton에 영웅이 등록되었을때 '그' 용병의 스트레스가 감소해야 한다.
-	//들어간 용병의 스트레스만 줄여야 하니깐. 들어간 용병이 누구인지도 알아야함.
-
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{
 		if (panelVec[i]->hero != nullptr)

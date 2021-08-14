@@ -18,6 +18,7 @@ protected:
 	vector<class CHeroList_button*> m_dragButtonVec;
 	vector<class CBuilding*> buildingVec;
 	vector<class CHero*> m_heroVec;
+	class Hero_Roster* m_Roster_ButtonVec;
 public:
 	//class CHeroList_button* m_dragButton;
 	int curDragHeroIndex;
@@ -43,7 +44,7 @@ public:
 public:
 	void Show_Activity_log();
 	void SetHerolist();
-	void Mouse();
+	void Dummy_Roster();
 
 public:
 	TownScene();

@@ -627,6 +627,9 @@
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Hero_Roster.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -958,6 +961,9 @@
     </ClCompile>
     <ClCompile Include="CSaveable.cpp">
       <Filter>CommonInfo\DB\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero_Roster.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

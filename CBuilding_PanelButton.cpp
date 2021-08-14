@@ -64,6 +64,15 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 			}
 		
 		}
+		if (hero != nullptr)
+		{
+			if (MG_INPUT->IsDownRMB())
+			{	
+				MG_GAME->RegisterHeroToOwnList(hero);
+				hero = nullptr;
+				
+			}
+		}
 
 	}
 	

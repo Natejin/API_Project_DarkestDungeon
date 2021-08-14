@@ -5,6 +5,7 @@
 #include"CDragButtion.h"
 #include"CHeroList_button.h"
 #include"CBuilding.h"
+#include"Hero_Roster.h"
 //===========================
 #include"CHero.h"
 //===========================
@@ -285,13 +286,13 @@ void TownScene::SetHerolist()
 
 		for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
 		{
-		 
 			CHeroList_button* dragButton = new CHeroList_button();
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 			dragButton->AddColliderBox(50, 50);
 			MG_GAME->GetHero(i)->ownIndex = i;
 			dragButton->m_hero = MG_GAME->GetHero(i);
+
 			switch (dragButton->m_hero->job)
 			{
 			case JOB::Crusader:
@@ -314,7 +315,7 @@ void TownScene::SetHerolist()
 		}
 }
 
-void TownScene::Mouse()
+void TownScene::Dummy_Roster()
 {
-
+	
 }

@@ -14,14 +14,14 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member3", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member4", JOB::Vestal));
-	RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
+	/*RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member6", JOB::PlagueDoctor));
 	RegisterHeroToOwnList(CreateHero("member7", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member8", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member9", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member10", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
-	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));
+	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 
 	RegisterHeroToParty(0);
 	RegisterHeroToParty(1);

@@ -1,17 +1,12 @@
 #pragma once
 #include"CDragButtion.h"
-
-class CHeroList_button : public CDragButton
+class Hero_Roster : public CDragButton
 {
-	class CSpriteRenderer* m_heroBG;
-	Vector2 originPos;
-
+	int index;
 public:
-	class CHero* m_hero;
-	class Hero_Roster* dummy_Roster;
-	CHeroList_button();
-	~CHeroList_button();
-
+	
+	Hero_Roster();
+	~Hero_Roster();
 
 	HRESULT Init();
 
@@ -21,7 +16,5 @@ public:
 	virtual void BackRender(HDC _hdc);
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
-
-	void DragHeroList();
-	
 };
+
