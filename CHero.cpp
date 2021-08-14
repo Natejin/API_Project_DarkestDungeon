@@ -183,12 +183,12 @@ void CHero::setMemberOverlay()
 void CHero::showSelMember(HDC _hdc)
 {
 	selectedMem.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 10,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() /2 + 70 );
+		m_transform->m_pos.x - 87,
+		m_transform->m_pos.y - 78);
 
 	targeted_h_Mem.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight()/ 2 - 300);
+		m_transform->m_pos.x - 87,
+		m_transform->m_pos.y - 78);
 
 	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
 	//targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
@@ -198,11 +198,11 @@ void CHero::showHpStrsBar(HDC _hdc)
 {
 	//Hp, strs bar
 	HPbar_back.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 46,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 161);
+		m_transform->m_pos.x - 50,
+		m_transform->m_pos.y + 15);
 	HPbar_front.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 46,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 161);
+		m_transform->m_pos.x - 50,
+		m_transform->m_pos.y + 15);
 
 	HPbar_back.m_img->render(_hdc, &HPbar_back.m_trans);
 	HPbar_front.m_img->render(_hdc, &HPbar_front.m_trans);
@@ -216,8 +216,8 @@ void CHero::showHpStrsBar(HDC _hdc)
 			STRSbar[i].m_img = MG_IMAGE->findImage("STRS_full");
 		}
 		STRSbar[i].m_trans.m_pos = Vector2(
-			m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 47 + 10 * i,
-			m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 173);
+			m_transform->m_pos.x - 50 + 10 * i,
+			m_transform->m_pos.y + 30);
 		STRSbar[i].m_img->render(_hdc, &STRSbar[i].m_trans);
 	}
 }

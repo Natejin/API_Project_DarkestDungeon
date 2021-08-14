@@ -9,6 +9,8 @@ private:
 
 public:
 	Rect m_rect;
+	
+	CCollider* m_collider;
 
 	CButton_move();
 	~CButton_move();

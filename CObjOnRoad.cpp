@@ -2,24 +2,21 @@
 #include "CObjOnRoad.h"
 #include "DungeonScene.h"
 #include "CTransform.h"
-CObjOnRoad::CObjOnRoad()
-{
-}
 
-CObjOnRoad::~CObjOnRoad()
-{
-}
+CObjOnRoad::CObjOnRoad() {}
+CObjOnRoad::~CObjOnRoad() {}
 
 HRESULT CObjOnRoad::Init()
 {
-	AddSpriteRenderer();
-	AddColliderBox(200, 200);
-
 	return S_OK;
 }
 
 HRESULT CObjOnRoad::Init(RoadObjType type, int index)
 {
+	m_layer = LAYER::BackGround;
+
+	AddSpriteRenderer();
+
     objType = type;
 
 	switch (objType)
@@ -33,11 +30,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index)
 	case RoadObjType::Tresure:
 		m_spriteRenderer->SetImage(IMAGE::treasure);
 		break;
-	default:
-		m_spriteRenderer->SetImage(IMAGE::enemy);
-		break;
 	}
-
 
 	m_transform->m_pos.y = 600;
 
@@ -53,10 +46,9 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index)
 	case 2:
 		m_transform->m_pos.x = MG_RND->getFromIntTo(ROOMSIZE * 4 + limitDistance, ROOMSIZE * 5);
 		break;
-	default:
-		break;
 	}
 
+	setCollider();
 
     return S_OK;
 }
@@ -64,7 +56,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index)
 
 void CObjOnRoad::Update(float deltaTime, float worldTime)
 {
-
+	Interaction_collision();
 }
 
 void CObjOnRoad::LateUpdate()
@@ -92,10 +84,42 @@ void CObjOnRoad::FrontRender(HDC _hdc)
 	{
 		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
 	}
-	
 }
 
 void CObjOnRoad::Release()
 {
 
+}
+
+void CObjOnRoad::setCollider()
+{
+	AddColliderBox();
+}
+
+void CObjOnRoad::setRoadObj()
+{
+}
+
+void CObjOnRoad::Interaction_collision()
+{
+}
+
+void CObjOnRoad::Interaction_treassure()
+{
+}
+
+void CObjOnRoad::Interaction_trap()
+{
+}
+
+void CObjOnRoad::Interaction_trap_fail()
+{
+}
+
+void CObjOnRoad::Interaction_trap_success()
+{
+}
+
+void CObjOnRoad::Interaction_battle()
+{
 }
