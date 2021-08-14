@@ -14,14 +14,13 @@ DummySlot::~DummySlot()
 
 HRESULT DummySlot::Init()
 {
-	m_transform->m_pivot = Vector2(0, 0);
+	m_transform->m_pivot = Vector2(0.5, 0.5);
 	AddSpriteRenderer();
 	return S_OK;
 }
 
 void DummySlot::Update(float deltaTime, float worldTime)
 {
-
 	m_transform->m_pos = g_ptMouse;
 }
 
@@ -48,12 +47,11 @@ void DummySlot::Release()
 
 void DummySlot::SetDummySlot(Vector2Int slotID, CInfo_Item* item)
 {
-	originSlotID = slotID;
-	hasItem = true;
 	itemInfo = item;
+	originSlotID = slotID;
 	m_spriteRenderer->SetImage(itemInfo->m_imgData);
+	hasItem = true;
 	isActive = true;
-
 }
 
 void DummySlot::Unable()
@@ -63,4 +61,3 @@ void DummySlot::Unable()
 	hasItem = false;
 	isActive = false;
 }
-

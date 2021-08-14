@@ -229,6 +229,8 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="DB_Item.h" />
     <ClInclude Include="Info_Item.h" />
+    <ClInclude Include="CItemEffect.h" />
+    <ClInclude Include="DB_itemEffect.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
@@ -346,6 +348,8 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="DB_Item.cpp" />
     <ClCompile Include="Info_Item.cpp" />
+    <ClCompile Include="CItemEffect.cpp" />
+    <ClCompile Include="DB_itemEffect.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />

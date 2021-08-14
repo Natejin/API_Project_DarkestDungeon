@@ -49,6 +49,7 @@ void CBattleSystem::UseSkill4()
 {
 
 }
+
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
 void CBattleSystem::CreateEnemyParty()
 {

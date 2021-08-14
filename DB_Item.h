@@ -2,7 +2,6 @@
 #include "singleton.h"
 #include "Info_Item.h"
 
-
 class CDB_Item : public Singleton<CDB_Item>
 {
 private:
