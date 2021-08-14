@@ -14,8 +14,7 @@ void CBattleSystem::BattleSystemInitiate()
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
-
-
+	StartTurn();
 }
 void CBattleSystem::BattleSystemEnd()
 {
@@ -29,6 +28,9 @@ void CBattleSystem::BattleSystemEnd()
 	enemyParty.clear();
 	Unable();
 }
+
+
+
 void CBattleSystem::StartTurn()
 {
 
@@ -61,12 +63,15 @@ void CBattleSystem::CreateEnemyParty()
 		CBoneDefender* enemy = new CBoneDefender();
 		enemy->Init(); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
+		enemy->SetPosition(i);
+		enemy->SetPartyIndex(i);
+		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+		enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
 		enemyParty.push_back(enemy);
-		enemyParty[i]->SetPosition(i);
-		enemyParty[i]->SetPartyIndex(i);
-		enemyParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
 	}
+
+
 }
 
 void CBattleSystem::CreateHeroesParty()
@@ -167,4 +172,40 @@ void CBattleSystem::FrontRender(HDC _hdc)
 void CBattleSystem::Release()
 {
 
+}
+
+
+CEnemy* CBattleSystem::GetEnemy(int index)
+{
+	return index < enemyParty.size() ? enemyParty[index] : nullptr;
+}
+
+void CBattleSystem::SelectEnemy(int index)
+{
+	for (int i = 0; i < enemyParty.size(); i++)
+	{
+		if (i == index) GetEnemy(i)->isSelected = true;
+		else GetEnemy(i)->isSelected = false;
+	}
+}
+
+void CBattleSystem::SelectEnemy1()
+{
+	SelectEnemy(0);
+}
+
+
+void CBattleSystem::SelectEnemy2()
+{
+	SelectEnemy(1);
+}
+
+void CBattleSystem::SelectEnemy3()
+{
+	SelectEnemy(2);
+}
+
+void CBattleSystem::SelectEnemy4()
+{
+	SelectEnemy(3);
 }

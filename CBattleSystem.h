@@ -55,6 +55,17 @@ public:
 	void UseSkill3();
 	void UseSkill4();
 
+
+private:
+	CEnemy* GetEnemy(int i);
+
+	void SelectEnemy1();
+	void SelectEnemy(int index);
+	void SelectEnemy2();
+	void SelectEnemy3();
+	void SelectEnemy4();
+
+
 private:
 	void CreateEnemyParty();
 	void CreateHeroesParty();

@@ -22,7 +22,7 @@ HRESULT CBoneDefender::Init()
 
 
 	m_animator->AddImageFrame(IMAGE::Skeleton_Defender);
-
+	AddColliderBox();
 	return S_OK;
 }
 

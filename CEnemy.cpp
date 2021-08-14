@@ -9,9 +9,11 @@ CEnemy::~CEnemy() {}
 
 HRESULT CEnemy::Init()
 {
+	m_transform->m_pivot = Vector2(0.5, 1);
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->SetAnimeSpeed(5);
+	
 	//mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
 	return S_OK;
 }
@@ -57,12 +59,13 @@ void CEnemy::BackRender(HDC _hdc)
 
 void CEnemy::Render(HDC _hdc)
 {
-	//m_image->frameRender(_hdc, m_transform);
 	m_animator->FrameRender(_hdc);
 }
 
 void CEnemy::FrontRender(HDC _hdc)
 {
+	Unit::FrontRender(_hdc);
+	
 }
 
 void CEnemy::Release()

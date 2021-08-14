@@ -91,6 +91,15 @@ void GameObject::AddColliderBox()
 			+imageSize.x * (1 - m_transform->m_pivot.x),
 			+imageSize.y * (1 - m_transform->m_pivot.y));
 	}
+	else if (m_animator) {
+		Vector2 imageSize = m_animator->GetFrameSize();
+
+		AddColliderBox(Vector2(0, 0),
+			-imageSize.x * m_transform->m_pivot.x,
+			-imageSize.y * m_transform->m_pivot.y,
+			+imageSize.x * (1 - m_transform->m_pivot.x),
+			+imageSize.y * (1 - m_transform->m_pivot.y));
+	}
 }
 
 void GameObject::AddAnimator(string imageName)

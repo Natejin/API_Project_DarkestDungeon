@@ -141,38 +141,10 @@ void dungeonUI_HeroInfo::setInfoImage()
 
 void dungeonUI_HeroInfo::setButton()
 {
-    //MG_GAME->GetHero(0)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero1);
-    //MG_GAME->GetHero(1)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero2);
-    //MG_GAME->GetHero(2)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero3);
-    //MG_GAME->GetHero(3)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
-    
-    CButton_buttonPosMove* bt_hero1 = new CButton_buttonPosMove;
-    bt_hero1->setBtTarget(MG_GAME->GetHero(0));
-    bt_hero1->SetButtonSize(100, 285);
-    bt_hero1->AddSpriteRenderer("button");
-    bt_hero1->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero1);
-    MG_GMOBJ->RegisterObj("selHero1", bt_hero1);
-
-    CButton_buttonPosMove* bt_hero2 = new CButton_buttonPosMove;
-    bt_hero2->setBtTarget(MG_GAME->GetHero(1));
-    bt_hero2->SetButtonSize(100, 285);
-    bt_hero2->AddSpriteRenderer("button");
-    bt_hero2->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero2);
-    MG_GMOBJ->RegisterObj("selHero2", bt_hero2);
-
-    CButton_buttonPosMove* bt_hero3 = new CButton_buttonPosMove;
-    bt_hero3->setBtTarget(MG_GAME->GetHero(2)); 
-    bt_hero3->SetButtonSize(100, 285);
-    bt_hero3->AddSpriteRenderer("button");
-    bt_hero3->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero3);
-    MG_GMOBJ->RegisterObj("selHero3", bt_hero3);
-
-    CButton_buttonPosMove* bt_hero4 = new CButton_buttonPosMove;
-    bt_hero4->setBtTarget(MG_GAME->GetHero(3));
-    bt_hero4->SetButtonSize(100, 285);
-    bt_hero4->AddSpriteRenderer("button");
-    bt_hero4->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::selHero4);
-    MG_GMOBJ->RegisterObj("selHero4", bt_hero4);
+    MG_GAME->GetHero(0)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
+    MG_GAME->GetHero(1)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
+    MG_GAME->GetHero(2)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
+    MG_GAME->GetHero(3)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
 }
 
 void dungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
@@ -258,47 +230,56 @@ void dungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
     weapon.m_img->renderUI(_hdc, &weapon.m_trans);
 }
 
-void dungeonUI_HeroInfo::selHero1()
+void dungeonUI_HeroInfo::SelectHero(int index)
 {
     for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
     {
-        if (i == 0) MG_GAME->GetHero(i)->isSelected = true;
-        else MG_GAME->GetHero(i)->isSelected = false;
+        if (i == index)  MG_GAME->GetHero(i)->isSelected = true;
+        else  MG_GAME->GetHero(i)->isSelected = false;
     }
 }
 
-void dungeonUI_HeroInfo::selHero2()
-{
-    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-    {
-        if (i == 1) {
-            MG_GAME->GetHero(i)->isSelected = true;
-            scene->m_party->SelectHero(1);
-        }
-        else MG_GAME->GetHero(i)->isSelected = false;
-    }
-}
-
-void dungeonUI_HeroInfo::selHero3()
-{
-    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-    {
-        if (i == 2) {
-            MG_GAME->GetHero(i)->isSelected = true;
-            scene->m_party->SelectHero(2);
-        }
-        else MG_GAME->GetHero(i)->isSelected = false;
-    }
-}
-
-void dungeonUI_HeroInfo::selHero4()
-{
-    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-    {
-        if (i == 3) {
-            MG_GAME->GetHero(i)->isSelected = true;
-            scene->m_party->SelectHero(3);
-    }
-        else MG_GAME->GetHero(i)->isSelected = false;
-    }
-}
+//void dungeonUI_HeroInfo::selHero1()
+//{
+//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+//    {
+//        if (i == 0) MG_GAME->GetHero(i)->isSelected = true;
+//        else MG_GAME->GetHero(i)->isSelected = false;
+//    }
+//}
+//
+//void dungeonUI_HeroInfo::selHero2()
+//{
+//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+//    {
+//        if (i == 1) {
+//            MG_GAME->GetHero(i)->isSelected = true;
+//            scene->m_party->SelectHero(1);
+//        }
+//        else MG_GAME->GetHero(i)->isSelected = false;
+//    }
+//}
+//
+//void dungeonUI_HeroInfo::selHero3()
+//{
+//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+//    {
+//        if (i == 2) {
+//            MG_GAME->GetHero(i)->isSelected = true;
+//            scene->m_party->SelectHero(2);
+//        }
+//        else MG_GAME->GetHero(i)->isSelected = false;
+//    }
+//}
+//
+//void dungeonUI_HeroInfo::selHero4()
+//{
+//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+//    {
+//        if (i == 3) {
+//            MG_GAME->GetHero(i)->isSelected = true;
+//            scene->m_party->SelectHero(3);
+//    }
+//        else MG_GAME->GetHero(i)->isSelected = false;
+//    }
+//}

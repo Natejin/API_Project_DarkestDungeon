@@ -15,7 +15,24 @@ public:
 
 	UNITTYPE unitType;
 	int m_partyIndex = -1;
+	bool isSelected;
 
+	ImageData HPbar_front;
+	ImageData HPbar_back;
+	ImageData selectedMem;
+
+protected:
+	function<void(int i)> m_triggerWhenDown;
+	bool canTriggerDown;
+
+public:
+	template <typename T>
+	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))
+	{
+		canTriggerDown = true;
+		//int index = i;
+		m_triggerWhenDown = bind(func, pObj, std::placeholders::_1);
+	}
 public:
 	Unit();
 	~Unit();

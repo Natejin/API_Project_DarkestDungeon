@@ -55,9 +55,11 @@ public:
 	void showHeroSkill(HDC _hdc);
 	void showHeroEquip(HDC _hdc);
 
-	void selHero1();
-	void selHero2();
-	void selHero3();
-	void selHero4();
+
+	void SelectHero(int i);
+	//void selHero1();
+	//void selHero2();
+	//void selHero3();
+	//void selHero4();
 
 };
