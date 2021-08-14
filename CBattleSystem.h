@@ -7,9 +7,15 @@ class CBattleSystem : public GameObject
 	struct TurnSpeedOfUnit {
 		Unit* unit;
 		int turnSpeed;
-
 	};
 
+	enum class TURN
+	{
+		Player,
+		enemy
+	};
+
+	TURN turn;
 
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
@@ -41,6 +47,8 @@ public:
 
 	void BattleSystemInitiate();
 	void BattleSystemEnd();
+
+	void StartTurn();
 
 	void UseSkill1();
 	void UseSkill2();

@@ -45,7 +45,7 @@ public:
 	vector<ImageData> STRSbar;
 	ImageData selectedMem; 
 	ImageData targeted_h_Mem; //appear when some member using healSkill
-
+	
 
 protected:
 	function<void()> m_triggerWhenDown;

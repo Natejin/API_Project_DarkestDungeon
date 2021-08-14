@@ -28,6 +28,6 @@ public:
 	bool CheckColliderBoxWithPoint(Vector2 pos);
 	bool CheckColliderBoxWithPoint(POINT pos);
 
-	bool new_CheckColliderBoxWithPoint(Vector2 pos);
-	bool new_CheckColliderBoxWithPoint(POINT pos);
+	bool UICheckColliderBoxWithPoint(Vector2 pos);
+	bool UICheckColliderBoxWithPoint(POINT pos);
 };

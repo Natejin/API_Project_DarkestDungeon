@@ -22,7 +22,7 @@ HRESULT CDragButtonMinimapBG::Init()
 
 void CDragButtonMinimapBG::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->isOnceKeyDown(VK_RBUTTON))
 		{

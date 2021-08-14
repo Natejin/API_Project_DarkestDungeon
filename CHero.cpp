@@ -60,7 +60,7 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 
 void CHero::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsDownLMB())
 		{
