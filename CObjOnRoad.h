@@ -9,6 +9,8 @@ class CObjOnRoad :public CButton
 private:
 	RoadObjType objType;
 
+	bool isOpen;
+
 public:
 	CObjOnRoad();
 	~CObjOnRoad();
@@ -33,8 +35,6 @@ public:
 
 
 	void setCollider();
-
-	void setRoadObj();
 
 	void Interaction_collision();
 
