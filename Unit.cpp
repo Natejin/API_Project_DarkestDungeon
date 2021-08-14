@@ -2,7 +2,7 @@
 #include "Unit.h"
 
 Unit::Unit() {
-    unitType = UNITTYPE::NONE;
+    m_transform->m_pivot = Vector2(0.5, 1);
 }
 Unit::~Unit() {}
 
@@ -13,6 +13,7 @@ HRESULT Unit::Init()
 
 void Unit::Update(float deltaTime, float worldTime)
 {
+
     if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
     {
         if (MG_INPUT->IsDownLMB())
@@ -39,7 +40,7 @@ void Unit::Render(HDC _hdc)
 
 void Unit::FrontRender(HDC _hdc)
 {
-    if (isSelected == true)
+    if (isSelected)
     {
         showSelMember(_hdc);
     }
@@ -58,6 +59,7 @@ void Unit::Release()
 {
     GameObject::Release();
 }
+
 
 void Unit::SetMemberOverlay()
 {
@@ -90,4 +92,68 @@ void Unit::showHpBar(HDC _hdc)
 
 	HPbar_back.m_img->render(_hdc, &HPbar_back.m_trans);
 	HPbar_front.m_img->render(_hdc, &HPbar_front.m_trans);
+}
+
+UNITTYPE Unit::GetUnitType()
+{
+    return UNITTYPE();
+}
+
+int Unit::GetSpeed()
+{
+    return 0;
+}
+
+void Unit::SetPosition(int pos)
+{
+}
+
+int Unit::getHP()
+{
+    return 0;
+}
+
+int Unit::getSPD()
+{
+    return 0;
+}
+
+int Unit::GetPosition()
+{
+    return 0;
+}
+
+int Unit::getPartyPos()
+{
+    return 0;
+}
+
+int Unit::getResist(int index)
+{
+    return 0;
+}
+
+bool Unit::getAttribute(int index)
+{
+    return false;
+}
+
+void Unit::setHP(int hp)
+{
+}
+
+void Unit::setSPD(int spd)
+{
+}
+
+void Unit::setPartyPos(int pos)
+{
+}
+
+void Unit::setResist(int index, bool val)
+{
+}
+
+void Unit::setAttribute(int index, bool val)
+{
 }

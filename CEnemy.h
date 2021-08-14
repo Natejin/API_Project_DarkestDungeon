@@ -1,14 +1,13 @@
 #pragma once
 #include "Unit.h"
-
+#include "Info_Enemy.h"
 class CEnemy : public Unit
 {
-public:
-	int m_DEF;
-	int m_DODGE;
+private:
+
 	//스킬
 	//스킬 Info에 accuracy, critical, DMG, changeAttribute 가 포함됨
-
+	Info_Enemy* info;
 public:
 	CEnemy();
 	~CEnemy();

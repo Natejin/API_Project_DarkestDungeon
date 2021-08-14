@@ -14,17 +14,15 @@ protected:
 	class CUIPanel_NomadWagon* m_nomad_wagon;
 	class CUIPanel_Tavern* m_tavern;
 
-
-
 	vector<class CBuilding*> buildingVec;
 	vector<class CHero*> m_heroVec;
 	class Hero_Roster* m_Roster_ButtonVec;
+	class CUI_Panel_Hero* m_hero_panel;
 public:
 
-
+	
 	vector<class CHeroList_button*> m_heroListButtonVec;
 
-	//class CHeroList_button* m_dragButton;
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
 
@@ -34,7 +32,8 @@ public:
 public:
 	void SetEst_ui(); //건물셋팅
 	void SetEst_Img();//버튼.
-
+	void SetRoster();
+	void SetHeroPanel();
 public:
 	void Show_abeey();//수도원
 	void Show_blacksmith(); //대장간
@@ -50,7 +49,6 @@ public:
 public:
 	void Show_Activity_log();
 	void SetHerolist();
-	void Dummy_Roster();
 
 public:
 	TownScene();
@@ -64,9 +62,12 @@ public:
 	virtual void Render();
 	virtual void Render(HDC _hdc);
 
-
 	void DeactivateBuildings();
 	void ActivateBuildings();
 
 	void ShowDummyHeroList();
+	void ShowHeroPanel();
+
+	
+	class CUI_Panel_Hero* GetHeroPanel();
 };

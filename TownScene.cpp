@@ -6,6 +6,7 @@
 #include"CHeroList_button.h"
 #include"CBuilding.h"
 #include"Hero_Roster.h"
+#include"CUI_Panel_Hero.h"
 //===========================
 #include"CHero.h"
 //===========================
@@ -30,16 +31,12 @@ HRESULT TownScene::Init()
 	CBG_Town* m_town = new CBG_Town();
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
-
+	SetEst_Img();
 	SetEst_ui();  
-	SetEst_Img(); 
+
 	SetHerolist(); 
- 
-	m_Roster_ButtonVec = new Hero_Roster();
-	m_Roster_ButtonVec->Init();
-	m_Roster_ButtonVec->scene = this;
-	m_Roster_ButtonVec->Unable();
-	MG_GMOBJ->RegisterObj(m_Roster_ButtonVec);
+	SetRoster();
+	SetHeroPanel();
 	return S_OK;
 }
 HRESULT TownScene::Init(bool managerInit)
@@ -151,6 +148,21 @@ void TownScene::SetEst_Img()
 	buildingVec.push_back(stage_coach);
 	MG_GMOBJ->RegisterObj("Stage_coach", stage_coach);
 
+}
+void TownScene::SetRoster()
+{
+	m_Roster_ButtonVec = new Hero_Roster();
+	m_Roster_ButtonVec->Init();
+	m_Roster_ButtonVec->scene = this;
+	m_Roster_ButtonVec->Unable();
+	MG_GMOBJ->RegisterObj(m_Roster_ButtonVec);
+}
+void TownScene::SetHeroPanel()
+{
+	m_hero_panel = new CUI_Panel_Hero();
+	m_hero_panel->townScene = this;
+	m_hero_panel->Init();
+	MG_GMOBJ->RegisterObj(m_hero_panel);
 }
 //
 void TownScene::SetEst_ui()
@@ -297,12 +309,13 @@ void TownScene::SetHerolist()
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 			dragButton->AddColliderBox(50, 50);
 			dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
+			dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
 			dragButton->index = i;
 			dragButton->townScene = this;
-			MG_GAME->GetHero(i)->ownIndex = i;
+			MG_GAME->GetHero(i)->SetOwnIndex(i);
 			dragButton->m_hero = MG_GAME->GetHero(i);
 
-			switch (dragButton->m_hero->job)
+			switch (dragButton->m_hero->GetJob())
 			{
 			case JOB::Crusader:
 				dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
@@ -326,12 +339,18 @@ void TownScene::SetHerolist()
 
 void TownScene::ShowDummyHeroList()
 {
-
 	m_Roster_ButtonVec->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
 	m_Roster_ButtonVec->Enable();
 }
 
-void TownScene::Dummy_Roster()
+void TownScene::ShowHeroPanel()
 {
-	
+	m_hero_panel->Enable();
 }
+
+CUI_Panel_Hero* TownScene::GetHeroPanel()
+{
+	return m_hero_panel;
+}
+
+

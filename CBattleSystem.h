@@ -12,7 +12,7 @@ class CBattleSystem : public GameObject
 	enum class TURN
 	{
 		Player,
-		enemy
+		Enemy
 	};
 
 	TURN turn;
@@ -24,11 +24,12 @@ class CBattleSystem : public GameObject
 	vector<pair<int, Unit*>> speedVec;
 
 	int randomDice6 = 6;
+	int randomDice100 = 100;
 
 	int curTurn;
 
-	//class CHero* curHero;
-	//class CEnemy* curHero;
+	class CHero* curHero;
+	class CEnemy* curEnemy;
 
 public:
 	class DungeonScene* scene;
@@ -52,6 +53,8 @@ public:
 	void BattleSystemEnd();
 
 	void StartTurn();
+	void HeroTurn();
+	void EnemyTurn();
 	void EndTurn();
 
 	void UseSkill1();

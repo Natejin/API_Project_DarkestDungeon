@@ -52,6 +52,7 @@
 #include "CGameManager.h"
 #include "DB_Item.h"
 #include "DB_Skill.h"
+#include "DB_UnitInfo.h"
 #include "utils.h"
 #include "txtData.h"
 
@@ -93,6 +94,8 @@
 //##			데이터베이스		  ##
 //======================================
 #define DB_ITEM			CDB_Item::getSingleton()
+#define DB_SKILL		CDB_Skill::getSingleton()
+#define DB_UNIT			DB_UnitInfo::getSingleton()
 #define DB_SKILL		CDB_Skill::getSingleton()
 
 //==========================================

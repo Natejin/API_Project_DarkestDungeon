@@ -1,21 +1,11 @@
 #pragma once
 #include "Unit.h"
+#include "Info_Hero.h"
 
 class Cplayer;
 class DungeonScene;
 class CHero : public Unit
 {
-public:
-	int heroID;
-
-	JOB job;
-	int ownIndex;
-	int m_DMG; //skill에서 값 넣어주기
-	int m_ACRY; //명중률
-	int m_CRI;
-	int m_DEF;
-	int m_DODGE; //회피율
-
 	int m_LVL; //stress에서 기인?
 	int m_EXP;
 	int m_STRS;
@@ -24,32 +14,30 @@ public:
 	int m_DIST; //이동한 거리
 	int m_DIST_retreat; //후퇴한 거리
 
+
+	int heroID;
+	int ownIndex;
+	int m_partyPos;
+	int m_partyIndex;
+
 	int limit;
-
-
 	bool isBattle;
-
 	float speedFront;
 	float speedBack;
-
-	vector<SKILL> ownSkill;
-
-	//always
-
 	vector<ImageData> STRSbar;
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
-
+	Info_Hero* info;
 
 
 public:
 	CHero();
 	~CHero();
 
-	HRESULT Init(JOB job,  int resist[],
-		int HP, int SPD, int POS, int DMG,
-		int ACRY, int CRI, int DEF, int DODGE);
-
+	//HRESULT Init(JOB job,  int resist[],
+	//	int HP, int SPD, int POS, int DMG,
+	//	int ACRY, int CRI, int DEF, int DODGE);
+	HRESULT Init(Info_Hero* _info);
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
 
@@ -63,12 +51,8 @@ public:
 	//=====================================
 
 
-	int getMoveDis()const { return m_DIST; }
-	int getMoveDis_reteat()const { return m_DIST_retreat; }
+	
 
-	int getStress()const { return m_STRS; }
-	void setStress(int strs) { m_STRS = strs; }
-	void addStress(int strs) { m_STRS += strs; }
 
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);
@@ -88,6 +72,47 @@ public:
 	void setSelectedMem();
 	void setTargetedMem();
 
-	virtual void SetMemberOverlay();
+	//GetStatus;
+	virtual UNITTYPE GetUnitType();
+	virtual int GetSpeed();
 
+	virtual int getHP();
+	virtual int getSPD();
+
+	virtual int GetPartyIndex();
+	virtual void SetPartyIndex(int pos);
+
+	virtual int getPartyPos();
+	virtual void setPartyPos(int pos);
+
+	virtual int getResist(int index);
+	virtual bool getAttribute(int index);
+	virtual void setHP(int hp);
+	virtual void setSPD(int spd);
+
+	virtual void setResist(int index, bool val);
+	virtual void setAttribute(int index, bool val);
+	virtual void SetMemberOverlay();
+	int getMoveDis()const;
+	int getMoveDis_reteat()const; 
+	int getStress()const; 
+	void setStress(int strs); 
+	void addStress(int strs);
+	vector<SKILL>GetOwnSkill();
+	void SetHeroID(int id);
+	int GetHeroID();
+	void SetHeroJob(JOB job);
+	JOB GetJob();
+	void SetOwnIndex(int _ownindex);
+	int GetOwnIndex();
+	void SetAcry(int _acry);
+	int GetAcry();
+	void SetCri(int _cri);
+	int GetCri();
+	void SetDmg(int _dmg);
+	int GetDmg();
+	void SetDodge(int _dodge);
+	int GetDodge();
+	void SetDef(int _def);
+	int GetDef();
 };

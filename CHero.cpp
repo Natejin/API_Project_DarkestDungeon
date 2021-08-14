@@ -4,57 +4,104 @@
 #include "DungeonScene.h"
 
 CHero::CHero() {
-	unitType = UNITTYPE::Hero;
+
+	m_layer = LAYER::Player;
 	speedFront = 8;
 	speedBack = 4;
 }
 CHero::~CHero() {}
 
-HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
+//HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
+//{
+//	canTriggerDown = false;
+//	
+//	this->info->job = job;
+//	info->m_HP = HP;
+//	info->m_SPD = SPD;
+//
+//	//skill
+//
+//	info->m_DMG = DMG;
+//	info->m_ACRY = ACRY;
+//	info->m_CRI = CRI;
+//	info->m_DEF = DEF;
+//	info->m_DODGE = DODGE;
+//
+//	info->m_LVL = 1;
+//	info->m_EXP = 0;
+//	info->m_STRS = 0;
+//	info->m_STRSLVL = 0;
+//
+//	limit = 0;
+//
+//	for (size_t i = 0; i < 5; i++)
+//	{
+//		this->info->resist[i] = resist[i];
+//	}
+//	for (size_t i = 0; i < 8; i++)
+//	{
+//		info->attribute[i] = false;
+//	}
+//
+//	info->m_DIST = 0;
+//	isActive = false;
+//	m_transform->m_pivot = Vector2(0.5, 1);
+//
+//	isSelected = false; 
+//	isBattle = false;
+//	
+//	SetMemberOverlay();
+//	AddColliderBox(120, 300);
+//
+//	
+//
+//	return S_OK;
+//}
+
+HRESULT CHero::Init(Info_Hero* _info)
 {
 	canTriggerDown = false;
-	m_layer = LAYER::Player;
-	
-	this->job = job;
-	m_HP = HP;
-	m_SPD = SPD;
-	m_POS = POS;
-	//skill
 
-	m_DMG = DMG;
-	m_ACRY = ACRY;
-	m_CRI = CRI;
-	m_DEF = DEF;
-	m_DODGE = DODGE;
+	
+	info = new Info_Hero();
+	info->unitType = _info->unitType;
+	info->m_HP = _info->m_HP;
+	info->m_SPD = _info->m_SPD;
+	for (size_t i = 0; i < 5; i++)
+	{
+		this->info->resist[i] = _info->resist[i];
+	}
+	for (size_t i = 0; i < 8; i++)
+	{
+		info->attribute[i] = false;
+	}
+	
+	AddAnimator(_info->imageIdle);
+	m_animator->SetAnimeSpeed(5);
+	m_animator->AddImageFrame(_info->imageWalk);
+	m_animator->AddImageFrame(_info->imageCombat);
+	for (size_t i = 0; i < _info->ownSkill.size(); i++)
+	{
+		info->ownSkill.push_back(_info->ownSkill[i]);
+	}
+
+
+	//hero
+	info->job = _info->job;
+	info->m_DMG = _info->m_DMG;
+	info->m_ACRY = _info->m_ACRY;
+	info->m_CRI = _info->m_CRI;
+	info->m_DEF = _info->m_DEF;
+	info->m_DODGE = _info->m_DODGE;
+	info->ownSkill = _info->ownSkill;
+
 
 	m_LVL = 1;
 	m_EXP = 0;
 	m_STRS = 0;
 	m_STRSLVL = 0;
-
-	limit = 0;
-
-	for (size_t i = 0; i < 5; i++)
-	{
-		this->resist[i] = resist[i];
-	}
-	for (size_t i = 0; i < 8; i++)
-	{
-		attribute[i] = false;
-	}
-
-	m_DIST = 0;
-	isActive = false;
-	m_transform->m_pivot = Vector2(0.5, 1);
-
-	isSelected = false; 
-	isBattle = false;
-	
 	SetMemberOverlay();
 	AddColliderBox(120, 300);
-
-	
-
 	return S_OK;
 }
 
@@ -217,4 +264,173 @@ void CHero::SetMemberOverlay()
 	{
 		STRSbar.push_back(temp);
 	}
+}
+
+int CHero::getMoveDis() const
+{
+	return m_DIST;
+}
+
+int CHero::getMoveDis_reteat() const
+{
+	return m_DIST_retreat;
+}
+
+int CHero::getStress() const
+{
+	return m_STRS;
+}
+
+void CHero::setStress(int strs)
+{
+	m_STRS = strs;
+}
+
+void CHero::addStress(int strs)
+{
+	m_STRS += strs;
+}
+
+vector<SKILL> CHero::GetOwnSkill()
+{
+	return info->ownSkill;
+}
+
+void CHero::SetHeroID(int id)
+{
+	heroID = id;
+}
+
+int CHero::GetHeroID()
+{
+	return heroID;
+}
+
+void CHero::SetHeroJob(JOB job)
+{
+	info->job = job;
+}
+
+JOB CHero::GetJob()
+{
+	return info->job;
+}
+
+void CHero::SetOwnIndex(int _ownindex)
+{
+	ownIndex = _ownindex;
+}
+
+int CHero::GetOwnIndex()
+{
+	return ownIndex;
+}
+
+void CHero::SetAcry(int _acry)
+{
+	info->m_ACRY = _acry;
+}
+
+int CHero::GetAcry()
+{
+	return info->m_ACRY;
+}
+
+void CHero::SetCri(int _cri)
+{
+	info->m_CRI = _cri;
+}
+
+int CHero::GetCri()
+{
+	return info->m_CRI;
+}
+
+void CHero::SetDmg(int _dmg)
+{
+	info->m_DMG = _dmg;
+}
+
+int CHero::GetDmg()
+{
+	return info->m_DMG;
+}
+
+void CHero::SetDodge(int _dodge)
+{	
+	info->m_DODGE = _dodge;
+}
+
+int CHero::GetDodge()
+{
+	return info->m_DODGE;
+}
+
+void CHero::SetDef(int _def)
+{
+	info->m_DEF = _def;
+}
+
+int CHero::GetDef()
+{
+	return info->m_DEF;
+}
+
+
+
+UNITTYPE CHero::GetUnitType()
+{
+	return info->unitType;
+}
+int CHero::GetSpeed()
+{
+	return info->m_SPD;
+}
+void CHero::SetPartyIndex(int pos)
+{
+	m_partyIndex = pos;
+}
+int CHero::GetPartyIndex()
+{
+	return  m_partyIndex;
+}
+int CHero::getPartyPos()
+{
+	return  m_partyPos;
+}
+int CHero::getResist(int index)
+{
+	return  info->resist[index];
+}
+bool CHero::getAttribute(int index)
+{
+	return  info->attribute[index];
+}
+void CHero::setHP(int hp)
+{
+	info->m_HP = hp;
+}
+void CHero::setSPD(int spd)
+{
+	info->m_SPD = spd;
+}
+void CHero::setPartyPos(int pos)
+{
+	m_partyPos = pos;
+}
+void CHero::setResist(int index, bool val)
+{
+	info->resist[index] = val;
+}
+void CHero::setAttribute(int index, bool val)
+{
+	info->attribute[index] = val;
+}
+int CHero::getSPD()
+{
+	return  info->m_SPD;
+}
+int CHero::getHP()
+{
+	return  info->m_HP;
 }

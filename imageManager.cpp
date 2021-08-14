@@ -24,6 +24,11 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::highwayman_roster, "images/Heroes/highwayman_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::vestal_roster, "images/Heroes/vestal_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::plague_doctor_roster, "images/Heroes/plague_doctor_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage(IMAGE::crusader_header, "images/Heroes/crusader_header.bmp", 715,630,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_header, "images/Heroes/highwayman_header.bmp", 715,630,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_header.bmp", 715,630,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_header.bmp", 715,630,true, RGB(255, 0, 255));
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
@@ -53,6 +58,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 325, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395,776, true, RGB(255, 0, 255));
 
 	//Icon_Map
 	MG_IMAGE->addImage(IMAGE::hall_clear, "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));

@@ -26,6 +26,7 @@ void CBattleSystem::BattleSystemEnd()
 		MG_GMOBJ->RemoveObj(enemyParty[i]);
 	}
 	enemyParty.clear();
+	speedVec.clear();
 	Unable();
 }
 
@@ -34,14 +35,52 @@ void CBattleSystem::BattleSystemEnd()
 void CBattleSystem::StartTurn()
 {
 	
+	if (speedVec.size() > 0)
+	{
+		Unit* unit = speedVec[speedVec.size() - 1].second;
+		if (unit->GetUnitType()== UNITTYPE::Hero)
+		{
+			curHero = (CHero*)unit;
+			turn = TURN::Player;
+		}
+		else if (unit->GetUnitType() == UNITTYPE::Enemy)
+		{
+			curEnemy = (CEnemy*)unit;
+			turn = TURN::Enemy;
+		}
+		else {
+			assert(true);
+		}
+	}
+	speedVec.pop_back();
+	if (turn == TURN::Player)
+	{
+		HeroTurn();
+	}
+	else {
+		EnemyTurn();
+	}
+}
+
+void CBattleSystem::HeroTurn()
+{
+	SelectHero(curHero->GetPartyIndex());
+
+
+}
+
+void CBattleSystem::EnemyTurn()
+{
+	SelectEnemy(curEnemy->GetPartyIndex());
+
+
+
 }
 
 void CBattleSystem::EndTurn()
 {
-	if (speedVec.size() > 0)
-	{
-
-	}
+	curHero = nullptr;
+	curEnemy = nullptr;
 }
 
 void CBattleSystem::UseSkill1()
@@ -68,7 +107,6 @@ void CBattleSystem::CreateEnemyParty()
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	for (size_t i = 0; i < random; i++)
 	{
-
 		CBoneDefender* enemy = new CBoneDefender();
 		enemy->Init(); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
@@ -90,7 +128,7 @@ void CBattleSystem::CreateHeroesParty()
 	for (int i = 0; i < playerPartySize; i++)
 	{
 		heroParty.push_back(MG_GAME->GetHero(i));
-		heroParty[i]->SetPosition(i);
+		heroParty[i]->SetPartyIndex(i);
 		heroParty[i]->SetPartyIndex(i);
 		heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, 560);
 		heroParty[i]->m_animator->SetIndex(2);
@@ -102,7 +140,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 	//플레이어 영웅들을 speed turn에 추가
 	for (int i = 0; i < heroParty.size(); i++)
 	{
-		speedVec.push_back(make_pair(heroParty[i]->GetSpeed() + MG_RND->getInt(randomDice6), heroParty[i]));
+		speedVec.push_back(make_pair(heroParty[i]->GetSpeed() + MG_RND->getInt(randomDice6) , heroParty[i]));
 	}
 
 	//플레이어 영웅들을 speed turn에 추가
@@ -210,7 +248,7 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::SelectHero(int index)
 {
-	for (int i = 0; i < enemyParty.size(); i++)
+	for (int i = 0; i < heroParty.size(); i++)
 	{
 		if (i == index) GetHero(i)->isSelected = true;
 		else GetHero(i)->isSelected = false;

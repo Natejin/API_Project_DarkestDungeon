@@ -355,13 +355,13 @@ void CParty::showMemberInfo(HDC _hdc)
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 255, 255));
 
-	sprintf_s(str, "Hero1Stress : %d  POS: %d", GetHero(0)->getStress(), GetHero(0)->GetPosition());
+	sprintf_s(str, "Hero1Stress : %d  POS: %d", GetHero(0)->getStress(), GetHero(0)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 10, str, strlen(str));
-	sprintf_s(str, "Hero2Stress : %d  POS: %d", GetHero(1)->getStress(), GetHero(1)->GetPosition());
+	sprintf_s(str, "Hero2Stress : %d  POS: %d", GetHero(1)->getStress(), GetHero(1)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 30, str, strlen(str));
-	sprintf_s(str, "Hero3Stress : %d  POS: %d", GetHero(2)->getStress(), GetHero(2)->GetPosition());
+	sprintf_s(str, "Hero3Stress : %d  POS: %d", GetHero(2)->getStress(), GetHero(2)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 50, str, strlen(str));
-	sprintf_s(str, "Hero4Stress : %d  POS: %d", GetHero(3)->getStress(), GetHero(3)->GetPosition());
+	sprintf_s(str, "Hero4Stress : %d  POS: %d", GetHero(3)->getStress(), GetHero(3)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 70, str, strlen(str));
 
 	for (int i = 0; i < m_member.size(); i++)

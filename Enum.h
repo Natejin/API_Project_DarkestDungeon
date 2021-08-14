@@ -78,6 +78,11 @@ enum class JOB
 	Highwayman
 };
 
+enum class ENEMYTYPE {
+	Skeleton
+
+};
+
 enum class DIR
 {
 	Left,
@@ -209,7 +214,11 @@ enum class IMAGE
 	map2,
 	monster,
 	scouting,
-
+	characterpanel_bg,
+	crusader_header,
+	highwayman_header,
+	plague_doctor_header,
+	vestal_header,
 	treasure,
 	trap,
 	enemy,
