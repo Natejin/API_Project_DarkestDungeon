@@ -128,6 +128,9 @@ enum class IMAGE
 	//IMG-TOWN
 	abbey_bg,
 	abbey_char,
+	abbey_flagellation,
+	abbey_meditation,
+	abbey_pray,
 	blacksmith_bg,
 	blacksmith_char,
 	camping_trainer_bg,

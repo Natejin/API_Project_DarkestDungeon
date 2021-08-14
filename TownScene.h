@@ -13,11 +13,12 @@ protected:
 	class CUIPanel_Statue* m_statue ;
 	class CUIPanel_NomadWagon* m_nomad_wagon;
 	class CUIPanel_Tavern* m_tavern;
+
+
 	vector<class CHeroList_button*> m_dragButtonVec;
-	
-	
 	vector<class CBuilding*> buildingVec;
-	
+	vector<class CHero*> m_heroVec;
+	class Hero_Roster* m_Roster_ButtonVec;
 public:
 	//class CHeroList_button* m_dragButton;
 	int curDragHeroIndex;
@@ -29,7 +30,6 @@ public:
 	void SetEst_Img();//버튼.
 
 public:
-	void SetDeactiveWhenClick(GameObject* object);
 	void Show_abeey();//수도원
 	void Show_blacksmith(); //대장간
 	void Show_campingTrainer(); //생존기술 배우는곳
@@ -44,7 +44,7 @@ public:
 public:
 	void Show_Activity_log();
 	void SetHerolist();
-	void Mouse();
+	void Dummy_Roster();
 
 public:
 	TownScene();

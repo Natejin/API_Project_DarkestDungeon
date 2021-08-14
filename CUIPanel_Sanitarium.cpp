@@ -4,6 +4,7 @@
 #include"CHeroList_button.h"
 #include"TownScene.h"
 #include"CBuilding_PanelButton.h"
+#include"CHero.h"
 CUIPanel_Sanitarium::CUIPanel_Sanitarium()
 {
 }
@@ -19,16 +20,32 @@ HRESULT CUIPanel_Sanitarium::Init()
     m_transform->m_pivot = Vector2(-0.095, -0.095);
 
     m_HeroList_button = new CHeroList_button();
-
 	CreateRooms();
-	Creatchecks();
 	Unable();
     return S_OK;
 }
 
 void CUIPanel_Sanitarium::Update(float deltaTime, float worldTime)
 {
+	if (MG_INPUT->IsUpLMB())
+	{
+		if (true)
+		{	//나중에 타운씬에서 회차가 넘어갈때 실행하게끔 변경해야한다.
+			ReduceStress();
 
+
+		}
+	}
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		if (panelVec[i]->hero != nullptr)
+		{
+
+			checkVec[i]->isActive = true;
+			//panelVec[i]->hero = nullptr;
+		}
+
+	}
 }
 
 void CUIPanel_Sanitarium::LateUpdate()
@@ -57,72 +74,32 @@ void CUIPanel_Sanitarium::Release()
 
 void CUIPanel_Sanitarium::CreateRooms() //panel버튼
 {
-	m_room1 = new CBuilding_PanelButton();
-	m_room1->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240);
-	m_room1->AddColliderBox(100, 100);
-	m_room1->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room1->isActive = false;
-	m_room1->townScene = townScene;
-	panelVec.push_back(m_room1);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room1);
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
+			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i * 135, WINSIZEY / 2 - 280 + j * 225);
+			m_room->AddSpriteRenderer(IMAGE::hero_slot_bg);
+			m_room->AddColliderBox();
+			m_room->isActive = false;
+			m_room->townScene = townScene;
+			panelVec.push_back(m_room);
+			MG_GMOBJ->RegisterObj("emptyroom", m_room);
 
-	m_room2 = new CBuilding_PanelButton();
-	m_room2->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 135, WINSIZEY / 2 - 240);
-	m_room2->AddColliderBox(100, 100);
-	m_room2->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room2->isActive = false;
-	m_room2->townScene = townScene;
-	panelVec.push_back(m_room2);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room2);
-
-	m_room3 = new CBuilding_PanelButton();
-	m_room3->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 270, WINSIZEY / 2 - 240);
-	m_room3->AddColliderBox(100, 100);
-	m_room3->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room3->isActive = false;
-	m_room3->townScene = townScene;
-	panelVec.push_back(m_room3);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room3);
-
-	m_room4 = new CBuilding_PanelButton();
-	m_room4->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 15);
-	m_room4->AddColliderBox(100, 100);
-	m_room4->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room4->isActive = false;
-	m_room4->townScene = townScene;
-	panelVec.push_back(m_room4);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room4);
-
-	m_room5 = new CBuilding_PanelButton();
-	m_room5->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 135, WINSIZEY / 2 - 15);
-	m_room5->AddColliderBox(100, 100);
-	m_room5->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room5->isActive = false;
-	m_room5->townScene = townScene;
-	panelVec.push_back(m_room5);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room5);
-
-	m_room6 = new CBuilding_PanelButton();
-	m_room6->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + 270, WINSIZEY / 2 - 15);
-	m_room6->AddColliderBox(100, 100);
-	m_room6->AddSpriteRenderer(IMAGE::hero_slot_bg);
-	m_room6->isActive = false;
-	m_room6->townScene = townScene;
-	panelVec.push_back(m_room6);
-	MG_GMOBJ->RegisterObj("emptyroom", m_room6);
+			m_roomcheck = new CButton();
+			m_roomcheck->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i * 135, WINSIZEY / 2 - 240 + 50 + j * 225);
+			m_roomcheck->AddSpriteRenderer(IMAGE::check);
+			m_roomcheck->AddColliderBox();
+			m_roomcheck->isActive =false;
+			checkVec.push_back(m_roomcheck);
+			m_roomcheck->SetTriggerWhenDown(this, &CUIPanel_Sanitarium::closeRoom);
+			MG_GMOBJ->RegisterObj("check", m_roomcheck);
+		}
+	}
 
 }
 
-void CUIPanel_Sanitarium::Creatchecks()
-{
-	m_check = new CButton();
-	m_check->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180, WINSIZEY / 2 - 240 + 50);
-	m_check->AddColliderBox(100, 25);
-	m_check->AddSpriteRenderer(IMAGE::check);
-	m_check->isActive = false;
-	MG_GMOBJ->RegisterObj("smallx", m_check);
-
-}
 
 void CUIPanel_Sanitarium::Enable()
 {
@@ -132,7 +109,7 @@ void CUIPanel_Sanitarium::Enable()
 		panelVec[i]->isActive = true;
 	}
 	isActive = true;
-	m_check->isActive = true;	//얘도 활성화 조건 바꿔야 한다.
+	
 }
 
 void CUIPanel_Sanitarium::Unable()
@@ -143,5 +120,52 @@ void CUIPanel_Sanitarium::Unable()
 		panelVec[i]->isActive = false;
 	}
 	isActive = false;
-	m_check->isActive = false;
+	//m_roomcheck->isActive = false;
+}
+
+void CUIPanel_Sanitarium::closeRoom()
+{
+}
+
+void CUIPanel_Sanitarium::CheckStress(HDC _hdc)
+{
+	char strCount[64];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(255, 0, 255));
+
+	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
+	{
+		sprintf_s(strCount, "stress : %d", hero->getStress());
+		TextOut(_hdc, 100, 100 + i * 20, strCount, strlen(strCount));
+	};
+
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		if (panelVec[i]->hero != nullptr)
+		{
+			sprintf_s(strCount, "stress : %d", panelVec[i]->hero->getStress());
+			TextOut(_hdc, 200, 100 + i * 20, strCount, strlen(strCount));
+		}
+
+	}
+}
+
+void CUIPanel_Sanitarium::ReduceStress()
+{
+	//스트레스를 줄이자.
+	//작동시점은 영웅이 그자리칸에 등록이되었을때
+	//panelbutton에 영웅이 등록되었을때 '그' 용병의 스트레스가 감소해야 한다.
+	//들어간 용병의 스트레스만 줄여야 하니깐. 들어간 용병이 누구인지도 알아야함.
+
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		if (panelVec[i]->hero != nullptr)
+		{
+
+			panelVec[i]->hero->setStress(panelVec[i]->hero->getStress() - 15);
+
+		}
+
+	}
 }

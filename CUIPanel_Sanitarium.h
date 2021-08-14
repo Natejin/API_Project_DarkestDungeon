@@ -12,11 +12,13 @@ private:
 	class CBuilding_PanelButton* m_room5;
 	class CBuilding_PanelButton* m_room6;
 
-	class CButton* m_check;
+	class CButton* m_roomcheck;
 
 public:
 	vector<class CBuilding_PanelButton*> panelVec;
-
+	vector<class CButton*>checkVec;
+	vector<class CButton*>closedVec;
+	class CHero* hero;
 	CUIPanel_Sanitarium();
 	~CUIPanel_Sanitarium();
 
@@ -35,5 +37,9 @@ public:
 
 	virtual void Enable();
 	virtual void Unable();
+
+	void CheckStress(HDC _hdc);
+	void ReduceStress();
+	void closeRoom();
 };
 

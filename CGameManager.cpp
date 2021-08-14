@@ -14,9 +14,14 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member3", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member4", JOB::Vestal));
-	RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
+	/*RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member6", JOB::PlagueDoctor));
-
+	RegisterHeroToOwnList(CreateHero("member7", JOB::Crusader));
+	RegisterHeroToOwnList(CreateHero("member8", JOB::Vestal));
+	RegisterHeroToOwnList(CreateHero("member9", JOB::Crusader));
+	RegisterHeroToOwnList(CreateHero("member10", JOB::Vestal));
+	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
+	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 
 	RegisterHeroToParty(0);
 	RegisterHeroToParty(1);
@@ -97,7 +102,6 @@ bool CGameManager::RemoveHeroFromOwnList(int heroId)
 		if (heroId == m_ownHeroes[i]->heroID)
 		{
 			m_ownHeroes[i]->Unable();
-			MG_GMOBJ->RemoveObj(m_ownHeroes[i]);
 			m_ownHeroes.erase(m_ownHeroes.begin() + i);
 			return true;
 		}
@@ -161,8 +165,10 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 		break;
 	case JOB::PlagueDoctor:
+		hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	case JOB::Highwayman:
+		hero->Init(JOB::Highwayman, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	default:
 		break;
