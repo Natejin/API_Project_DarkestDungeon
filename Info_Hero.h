@@ -7,8 +7,7 @@ public:
 
 
 	JOB job;
-	int ownIndex;
-
+	
 	int m_DMG; //skill에서 값 넣어주기
 	int m_ACRY; //명중률
 	int m_CRI;

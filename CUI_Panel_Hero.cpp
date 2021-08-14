@@ -67,7 +67,7 @@ void CUI_Panel_Hero::SetHeroPanel()
 {
 	//m_spriteRenderer->SetImage(MG_GAME->GetHero(townScene->curDragHeroIndex)->m_spriteRenderer)
 
-	switch (MG_GAME->GetHero(townScene->curDragHeroIndex)->job)
+	switch (MG_GAME->GetHero(townScene->curDragHeroIndex)->GetJob())
 	{
 	case JOB::Crusader:
 		m_windowPanelChar->SetImage(IMAGE::crusader_header);

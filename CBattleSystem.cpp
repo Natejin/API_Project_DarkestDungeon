@@ -38,12 +38,12 @@ void CBattleSystem::StartTurn()
 	if (speedVec.size() > 0)
 	{
 		Unit* unit = speedVec[speedVec.size() - 1].second;
-		if (unit->unitType == UNITTYPE::Hero)
+		if (unit->GetUnitType()== UNITTYPE::Hero)
 		{
 			curHero = (CHero*)unit;
 			turn = TURN::Player;
 		}
-		else if (unit->unitType == UNITTYPE::Enemy)
+		else if (unit->GetUnitType() == UNITTYPE::Enemy)
 		{
 			curEnemy = (CEnemy*)unit;
 			turn = TURN::Enemy;

@@ -312,10 +312,10 @@ void TownScene::SetHerolist()
 			dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
 			dragButton->index = i;
 			dragButton->townScene = this;
-			MG_GAME->GetHero(i)->ownIndex = i;
+			MG_GAME->GetHero(i)->SetOwnIndex(i);
 			dragButton->m_hero = MG_GAME->GetHero(i);
 
-			switch (dragButton->m_hero->job)
+			switch (dragButton->m_hero->GetJob())
 			{
 			case JOB::Crusader:
 				dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
@@ -346,6 +346,11 @@ void TownScene::ShowDummyHeroList()
 void TownScene::ShowHeroPanel()
 {
 	m_hero_panel->Enable();
+}
+
+CUI_Panel_Hero* TownScene::GetHeroPanel()
+{
+	return m_hero_panel;
 }
 
 

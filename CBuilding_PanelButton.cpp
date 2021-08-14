@@ -39,10 +39,10 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 			if (hero == nullptr && scene->isDrag)
 			{
 				hero = scene->m_heroListButtonVec[scene->curDragHeroIndex]->m_hero; 
-				MG_GAME->RemoveHeroFromOwnList(hero->heroID);
+				MG_GAME->RemoveHeroFromOwnList(hero->GetHeroID());
 				scene->SetHerolist();
 				checkBTN->Enable();
-				switch (hero->job)
+				switch (hero->GetJob())
 				{
 				case JOB::Crusader:
 					m_spriteRenderer->SetImage(IMAGE::crusader_roster);

@@ -99,7 +99,7 @@ bool CGameManager::RemoveHeroFromOwnList(int heroId)
 {
 	for (size_t i = 0; i < m_ownHeroes.size(); i++)
 	{
-		if (heroId == m_ownHeroes[i]->heroID)
+		if (heroId == m_ownHeroes[i]->GetHeroID())
 		{
 			m_ownHeroes[i]->Unable();
 			m_ownHeroes.erase(m_ownHeroes.begin() + i);
@@ -137,7 +137,7 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 
 	int resist[5] = { 30, 30, 30, 30, 30 };
 	//stun, blight, bleed, debuff, move
-	hero->heroID = heroID++;
+	hero->SetHeroID(heroID++);
 	switch (job)
 	{
 	case JOB::Crusader:
@@ -148,10 +148,10 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->m_animator->SetAnimeSpeed(5);
 		hero->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
 		hero->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
-		hero->ownSkill.push_back(SKILL::Crusader_Combat_Smite);
-		hero->ownSkill.push_back(SKILL::Crusader_Combat_ZealousAccusation);
-		hero->ownSkill.push_back(SKILL::Crusader_Combat_StunningBlow);
-		hero->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
+		hero->GetOwnSkill().push_back(SKILL::Crusader_Combat_Smite);
+		hero->GetOwnSkill().push_back(SKILL::Crusader_Combat_ZealousAccusation);
+		hero->GetOwnSkill().push_back(SKILL::Crusader_Combat_StunningBlow);
+		hero->GetOwnSkill().push_back(SKILL::Crusader_Heal_BattleHeal);
 		break;
 	case JOB::Vestal:
 		hero->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
@@ -159,10 +159,10 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->m_animator->SetAnimeSpeed(5);
 		hero->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
 		hero->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
-		hero->ownSkill.push_back(SKILL::Vestal_Combat_MaceBash);
-		hero->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
-		hero->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
-		hero->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
+		hero->GetOwnSkill().push_back(SKILL::Vestal_Combat_MaceBash);
+		hero->GetOwnSkill().push_back(SKILL::Vestal_Combat_Judgement);
+		hero->GetOwnSkill().push_back(SKILL::Vestal_Combat_DazzlingLight);
+		hero->GetOwnSkill().push_back(SKILL::Vestal_Heal_DivineComfort);
 		break;
 	case JOB::PlagueDoctor:
 		hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);

@@ -17,9 +17,10 @@ protected:
 	vector<class CBuilding*> buildingVec;
 	vector<class CHero*> m_heroVec;
 	class Hero_Roster* m_Roster_ButtonVec;
+	class CUI_Panel_Hero* m_hero_panel;
 public:
 
-	class CUI_Panel_Hero* m_hero_panel;
+	
 	vector<class CHeroList_button*> m_heroListButtonVec;
 
 	int curDragHeroIndex;
@@ -66,4 +67,7 @@ public:
 
 	void ShowDummyHeroList();
 	void ShowHeroPanel();
+
+	
+	class CUI_Panel_Hero* GetHeroPanel();
 };
