@@ -14,6 +14,8 @@ void CBattleSystem::BattleSystemInitiate()
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
+
+
 }
 void CBattleSystem::BattleSystemEnd()
 {
@@ -26,6 +28,10 @@ void CBattleSystem::BattleSystemEnd()
 	}
 	enemyParty.clear();
 	Unable();
+}
+void CBattleSystem::StartTurn()
+{
+
 }
 void CBattleSystem::UseSkill1()
 {
@@ -141,18 +147,18 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(0, 0, 0));
+	SetTextColor(_hdc, RGB(0, 255, 255));
 
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
 		{
 			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first );
-			TextOut(_hdc, 0, 100 + 20 * i, str, strlen(str));
+			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
 		}
 		else {
 			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
-			TextOut(_hdc, 0, 100 + 20 * i, str, strlen(str));
+			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
 		}
 
 	}

@@ -30,7 +30,7 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 {
 	if (!selDragButton)
 	{
-		if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 		{
 			if (MG_INPUT->IsDownLMB())
 			{
