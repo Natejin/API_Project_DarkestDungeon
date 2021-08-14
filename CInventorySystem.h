@@ -44,7 +44,6 @@ public:
 
 	void setInvenSlot(); //set dungeonInventory according to party info
 	void setConsumableSlot(); 
-	void changeSlot(); 
 	void showSlotMouseOn(HDC _hdc);
 
 	bool AddItem(ITEM itemInfo, int& count);

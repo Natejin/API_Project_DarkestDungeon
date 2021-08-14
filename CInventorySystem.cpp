@@ -148,10 +148,6 @@ void CInventorySystem::setConsumableSlot()
 	m_invenSlots[2]->AddItem(bandage);
 }
 
-void CInventorySystem::changeSlot()
-{
-}
-
 void CInventorySystem::showSlotMouseOn(HDC _hdc)
 {
 	int k = 0;

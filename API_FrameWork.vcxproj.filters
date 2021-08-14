@@ -636,6 +636,12 @@
     <ClInclude Include="CItemEffect.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Hero_Roster.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TreasureEventPanel.h">
+      <Filter>Object\RoadObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -973,6 +979,12 @@
     </ClCompile>
     <ClCompile Include="CItemEffect.cpp">
       <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero_Roster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TreasureEventPanel.cpp">
+      <Filter>Object\RoadObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
