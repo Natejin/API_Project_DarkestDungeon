@@ -19,7 +19,7 @@ HRESULT CHeroList_button::Init()
 	m_heroBG->useCustomPos = true;
 	m_heroBG->pos = Vector2(130, 0);
 	originPos = Vector2(0, 0);
-	//SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
+	SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
 	/*dummy_Roster = new Hero_Roster();
 	dummy_Roster->SetTriggerWhenDrag(dummy_Roster, &Hero_Roster::DragHeroList);*/
 	//m_hero = new CHero();
