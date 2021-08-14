@@ -7,7 +7,7 @@ class Unit :public GameObject
 public:
 	int m_partyIndex = -1;
 	bool isSelected;
-	Info_Unit* info;
+
 	ImageData HPbar_front;
 	ImageData HPbar_back;
 	ImageData selectedMem;
@@ -42,6 +42,11 @@ public:
 	void SetPartyIndex(int index) { m_partyIndex = index; }
 	int GetPartyIndex() { return m_partyIndex; }
 
+	void showSelMember(HDC _hdc);
+	void showHpBar(HDC _hdc);
+
+
+//GetStatus;
 	virtual UNITTYPE GetUnitType();
 	virtual int GetSpeed();
 	virtual void SetPosition(int pos);
@@ -53,12 +58,9 @@ public:
 	virtual bool getAttribute(int index);
 	virtual void setHP(int hp);
 	virtual void setSPD(int spd);
-	virtual void setPartyPos(int pos); 
+	virtual void setPartyPos(int pos);
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
-
 	virtual void SetMemberOverlay();
-	void showSelMember(HDC _hdc);
-	void showHpBar(HDC _hdc);
 
 };

@@ -2,7 +2,7 @@
 #include "Unit.h"
 
 Unit::Unit() {
-    unitType = UNITTYPE::NONE;
+  
 }
 Unit::~Unit() {}
 
@@ -59,62 +59,7 @@ void Unit::Release()
     GameObject::Release();
 }
 
-UNITTYPE Unit::GetUnitType()
-{
-    return unitType;
-}
-int Unit::GetSpeed()
-{
-    return m_SPD;
-}
-void Unit::SetPosition(int pos)
-{
-    m_POS = pos;
-}
-int Unit::GetPosition()
-{
-    return m_POS;
-}
-int Unit::getPartyPos()
-{
-    return m_POS;
-}
-int Unit::getResist(int index)
-{
-    return resist[index];
-}
-bool Unit::getAttribute(int index)
-{
-    return attribute[index];
-}
-void Unit::setHP(int hp)
-{
-    m_HP = hp;
-}
-void Unit::setSPD(int spd)
-{
-    m_SPD = spd;
-}
-void Unit::setPartyPos(int pos)
-{
-    m_POS = pos;
-}
-void Unit::setResist(int index, bool val)
-{
-    resist[index] = val;
-}
-void Unit::setAttribute(int index, bool val)
-{
-    attribute[index] = val;
-}
-int Unit::getSPD()
-{
-    return m_SPD;
-}
-int Unit::getHP()
-{
-    return m_HP;
-}
+
 void Unit::SetMemberOverlay()
 {
 

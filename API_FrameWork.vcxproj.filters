@@ -648,6 +648,15 @@
     <ClInclude Include="Info_Unit.h">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
+    <ClInclude Include="CHeroOnStage_coach.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI_Panel_Hero.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DB_UnitInfo.h">
+      <Filter>CommonInfo\DB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -997,6 +1006,15 @@
     </ClCompile>
     <ClCompile Include="Info_Unit.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroOnStage_coach.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI_Panel_Hero.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DB_UnitInfo.cpp">
+      <Filter>CommonInfo\DB</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

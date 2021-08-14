@@ -1,5 +1,6 @@
 #pragma once
 #include "Unit.h"
+#include "Info_Hero.h"
 
 class Cplayer;
 class DungeonScene;
@@ -14,7 +15,7 @@ class CHero : public Unit
 	vector<ImageData> STRSbar;
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
-
+	Info_Hero* info;
 
 
 public:
@@ -38,12 +39,8 @@ public:
 	//=====================================
 
 
-	int getMoveDis()const { return m_DIST; }
-	int getMoveDis_reteat()const { return m_DIST_retreat; }
+	
 
-	int getStress()const { return m_STRS; }
-	void setStress(int strs) { m_STRS = strs; }
-	void addStress(int strs) { m_STRS += strs; }
 
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);
@@ -64,5 +61,27 @@ public:
 	void setTargetedMem();
 
 	virtual void SetMemberOverlay();
+
+	//GetStatus;
+	virtual UNITTYPE GetUnitType();
+	virtual int GetSpeed();
+	virtual void SetPosition(int pos);
+	virtual int getHP();
+	virtual int getSPD();
+	virtual int GetPosition();
+	virtual int getPartyPos();
+	virtual int getResist(int index);
+	virtual bool getAttribute(int index);
+	virtual void setHP(int hp);
+	virtual void setSPD(int spd);
+	virtual void setPartyPos(int pos);
+	virtual void setResist(int index, bool val);
+	virtual void setAttribute(int index, bool val);
+	virtual void SetMemberOverlay();
+	int getMoveDis()const { return m_DIST; }
+	int getMoveDis_reteat()const { return m_DIST_retreat; }
+	int getStress()const { return m_STRS; }
+	void setStress(int strs) { m_STRS = strs; }
+	void addStress(int strs) { m_STRS += strs; }
 
 };

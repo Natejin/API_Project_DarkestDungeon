@@ -153,9 +153,9 @@ void CHero::showStrsBar(HDC _hdc)
 {
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_STRS >= (i + 1) * 10)
+		if (info->m_STRS >= (i + 1) * 10)
 		{
-			if (m_STRS == 0) continue;
+			if (info->m_STRS == 0) continue;
 			STRSbar[i].m_img = MG_IMAGE->findImage("STRS_full");
 		}
 		STRSbar[i].m_trans.m_pos = Vector2(
@@ -217,4 +217,62 @@ void CHero::SetMemberOverlay()
 	{
 		STRSbar.push_back(temp);
 	}
+}
+
+
+UNITTYPE CHero::GetUnitType()
+{
+	return info->unitType;
+}
+int CHero::GetSpeed()
+{
+	return m_SPD;
+}
+void CHero::SetPosition(int pos)
+{
+	m_POS = pos;
+}
+int CHero::GetPosition()
+{
+	return m_POS;
+}
+int CHero::getPartyPos()
+{
+	return m_POS;
+}
+int CHero::getResist(int index)
+{
+	return resist[index];
+}
+bool CHero::getAttribute(int index)
+{
+	return attribute[index];
+}
+void CHero::setHP(int hp)
+{
+	m_HP = hp;
+}
+void CHero::setSPD(int spd)
+{
+	m_SPD = spd;
+}
+void CHero::setPartyPos(int pos)
+{
+	m_POS = pos;
+}
+void CHero::setResist(int index, bool val)
+{
+	resist[index] = val;
+}
+void CHero::setAttribute(int index, bool val)
+{
+	attribute[index] = val;
+}
+int CHero::getSPD()
+{
+	return m_SPD;
+}
+int CHero::getHP()
+{
+	return m_HP;
 }
