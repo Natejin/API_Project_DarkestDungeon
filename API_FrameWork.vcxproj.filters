@@ -274,12 +274,6 @@
     <Filter Include="Object\Component\ItemEffect">
       <UniqueIdentifier>{4a9a0865-777d-4787-bb2e-0b27eeea7942}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\OnCoach_Hero">
-      <UniqueIdentifier>{f8f6d32d-3643-46dc-a317-10a1f02fa940}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Hero">
-      <UniqueIdentifier>{467c70cd-572d-4922-ad0a-49b83e6fcb3d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameNode.h">
@@ -643,13 +637,16 @@
       <Filter>Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="Hero_Roster.h">
-      <Filter>Object\UI\Buttons\bt_EST</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CHeroOnStage_coach.h">
-      <Filter>Object\OnCoach_Hero</Filter>
+    <ClInclude Include="Info_Hero.h">
+      <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
-    <ClInclude Include="CUI_Panel_Hero.h">
-      <Filter>Object\UI\CUIPanel_Hero</Filter>
+    <ClInclude Include="Info_Enemy.h">
+      <Filter>CommonInfo\DB\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Info_Unit.h">
+      <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -990,13 +987,16 @@
       <Filter>Object\Component</Filter>
     </ClCompile>
     <ClCompile Include="Hero_Roster.cpp">
-      <Filter>Object\UI\Buttons\bt_EST</Filter>
+      <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CHeroOnStage_coach.cpp">
-      <Filter>Object\OnCoach_Hero</Filter>
+    <ClCompile Include="Info_Hero.cpp">
+      <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
-    <ClCompile Include="CUI_Panel_Hero.cpp">
-      <Filter>Object\UI\CUIPanel_Hero</Filter>
+    <ClCompile Include="Info_Enemy.cpp">
+      <Filter>CommonInfo\DB\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="Info_Unit.cpp">
+      <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

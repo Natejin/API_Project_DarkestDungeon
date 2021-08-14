@@ -14,25 +14,32 @@ HRESULT CObjOnRoad::Init()
 	return S_OK;
 }
 
-HRESULT CObjOnRoad::Init(RoadObjType type, int index)
+HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool isPassed)
 {
 	m_layer = LAYER::BackGround;
     objType = type;
-	isOpen = false;
+	isOpen = isPassed;
 
 	AddSpriteRenderer();
 
-	switch (objType)
+	if (!isOpen)
 	{
-	case RoadObjType::Trap:
-		m_spriteRenderer->SetImage(IMAGE::trap);
-		break;
-	case RoadObjType::Enemy:
-		m_spriteRenderer->SetImage(IMAGE::enemy);
-		break;
-	case RoadObjType::Tresure:
-		m_spriteRenderer->SetImage(IMAGE::treasure);
-		break;
+		switch (objType)
+		{
+		case RoadObjType::Trap:
+			m_spriteRenderer->SetImage(IMAGE::trap);
+			break;
+		case RoadObjType::Enemy:
+			m_spriteRenderer->SetImage(IMAGE::enemy);
+			break;
+		case RoadObjType::Tresure:
+			m_spriteRenderer->SetImage(IMAGE::treasure);
+			break;
+		}
+
+	}
+	else {
+		m_spriteRenderer->SetImage(IMAGE::nothing);
 	}
 
 	m_transform->m_pos.y = 600;
@@ -59,8 +66,17 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index)
 
 void CObjOnRoad::Update(float deltaTime, float worldTime)
 {
-	Interaction_collision();
-}
+	if (!isOpen)
+	{
+		Interaction_collision();
+
+		if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
+		{
+			Interaction_trap_fail();
+		}
+	}
+	}
+	
 
 void CObjOnRoad::LateUpdate()
 {
@@ -122,9 +138,9 @@ void CObjOnRoad::Interaction_treassure()
 	//treasure
 	//touchable when it's collision with Hero(0)
 
-	Vector2 PointToVector = Vector2(g_ptMouse) + MG_CAMERA->getCameraPos();
+
 	
-	if (m_collider->CheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos))
+	if (m_collider->CheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos - MG_CAMERA->GetPos()))
 	{		
 		m_spriteRenderer->SetImage(IMAGE::nothing);
 		//if (m_collider->CheckColliderBoxWithPoint(PointToVector))
@@ -160,8 +176,8 @@ void CObjOnRoad::Interaction_treassure()
 
 void CObjOnRoad::Interaction_trap()
 {
-	Vector2 PointToVector = Vector2(g_ptMouse) + MG_CAMERA->getCameraPos();
-	if (m_collider->CheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos + 100))
+	//Vector2 PointToVector = Vector2(g_ptMouse) + MG_CAMERA->getCameraPos();
+	if (m_collider->CheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos - MG_CAMERA->GetPos()))
 	{
 		if (isOpen) return;
 	//	else
@@ -184,7 +200,7 @@ void CObjOnRoad::Interaction_trap()
 	}
 	
 	if (isOpen) return;
-	if (m_collider->CheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos))
+	if (m_collider->CheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos - MG_CAMERA->GetPos()))
 	{
 		Interaction_trap_fail();
 	}
@@ -205,5 +221,9 @@ void CObjOnRoad::Interaction_trap_success()
 
 void CObjOnRoad::Interaction_battle()
 {
+	m_spriteRenderer->SetImage(IMAGE::nothing);
+	MG_GAME->GetParty()->GetHero(MG_RND->getInt(3))->setStress(MG_GAME->GetParty()->GetHero(0)->getStress() + MG_RND->getFromIntTo(10, 20));
+	isOpen = true;
+
 	m_spriteRenderer->SetImage(IMAGE::nothing);
 }

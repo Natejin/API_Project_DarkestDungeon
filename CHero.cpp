@@ -5,6 +5,7 @@
 
 CHero::CHero() {
 	unitType = UNITTYPE::Hero;
+	m_layer = LAYER::Player;
 	speedFront = 8;
 	speedBack = 4;
 }
@@ -13,7 +14,6 @@ CHero::~CHero() {}
 HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
 {
 	canTriggerDown = false;
-	m_layer = LAYER::Player;
 	
 	this->job = job;
 	m_HP = HP;

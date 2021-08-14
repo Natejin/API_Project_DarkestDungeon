@@ -1,22 +1,13 @@
 #pragma once
 #include "GameObject.h"
+#include "Info_Unit.h"
 
 class Unit :public GameObject
 {
 public:
-	int m_HP;
-	int m_SPD;
-	int m_POS; //(파티에서의 위치)
-
-	//저항
-	int resist[5]; //stun, blight, bleed, debuff, move
-	//상태
-	bool attribute[8]; //stun, blight, bleed, debuff, buff, move, marked, death
-
-	UNITTYPE unitType;
 	int m_partyIndex = -1;
 	bool isSelected;
-
+	Info_Unit* info;
 	ImageData HPbar_front;
 	ImageData HPbar_back;
 	ImageData selectedMem;
@@ -48,16 +39,14 @@ public:
 
 	virtual void Release();
 
-	UNITTYPE GetUnitType() { return unitType; }
-	int GetSpeed() { return m_SPD; }
-
 	void SetPartyIndex(int index) { m_partyIndex = index; }
 	int GetPartyIndex() { return m_partyIndex; }
 
+	UNITTYPE GetUnitType() { return unitType; }
+	int GetSpeed() { return m_SPD; }
+
 	void SetPosition(int pos) { m_POS = pos; }
 	int GetPosition() { return m_POS; }
-	
-	//==============================
 
 	int getHP() { return m_HP; }
 	int getSPD() { return m_SPD; }

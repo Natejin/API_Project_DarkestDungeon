@@ -323,7 +323,8 @@ void DungeonScene::ActivateRoad()
 void DungeonScene::SetRoadObject(int i)
 {
 	DungeonData dungeonData = m_pMapSystem->GetCurDungeonData(i);
-	m_roadObjs[i]->Init(dungeonData.m_roadObjType, i);
+	m_roadObjs[i]->Init(dungeonData.m_roadObjType, i, dungeonData.isPassed);
+	m_pMapSystem->SetIsPassed(i);
 }
 
 #pragma endregion
@@ -332,6 +333,7 @@ void DungeonScene::SetRoadObject(int i)
 #pragma region Room
 void DungeonScene::ActivateRoom()
 {
+	m_pMapSystem->SetIsPassed();
 	m_roadBG->isActive = false;
 	m_roomBG->isActive = true;
 

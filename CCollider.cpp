@@ -53,9 +53,10 @@ bool CCollider::CheckColliderBoxWithPoint(Vector2 pos)
 	else return false;
 }
 
-bool CCollider::CheckColliderBoxWithPoint(POINT pos)
+bool CCollider::CheckColliderBoxWithPoint(POINT _pos)
 {
-
+	Vector2 pos = _pos;
+	pos += MG_CAMERA->GetPos();
 	if (m_transform->m_pos.x + rect.l < pos.x &&
 		m_transform->m_pos.x + rect.r > pos.x &&
 		m_transform->m_pos.y + rect.t < pos.y &&

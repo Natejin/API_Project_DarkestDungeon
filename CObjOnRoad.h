@@ -19,7 +19,7 @@ public:
 	
 	//will be created according to the number of road
 	HRESULT Init();
-	HRESULT Init(RoadObjType type, int index);
+	HRESULT Init(RoadObjType type, int index, bool isPassed);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();

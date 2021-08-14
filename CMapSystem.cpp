@@ -495,6 +495,16 @@ DungeonData CMapSystem::GetCurDungeonData()
 	return dungeonMap[curPos.x][curPos.y];
 }
 
+void CMapSystem::SetIsPassed()
+{
+	dungeonMap[curPos.x][curPos.y].isPassed = true;
+}
+
+void CMapSystem::SetIsPassed(int i)
+{
+	dungeonMap[curPos.x + curDir.x * i][curPos.y + curDir.y * i].isPassed = true;
+}
+
 void CMapSystem::UseKeyBoardToMoveCurPoint()
 {
 	MoveCurPoint(curDir);

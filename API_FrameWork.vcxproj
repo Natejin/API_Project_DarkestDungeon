@@ -160,6 +160,8 @@
     <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="Hero_Roster.h" />
+    <ClInclude Include="Info_Enemy.h" />
+    <ClInclude Include="Info_Hero.h" />
     <ClInclude Include="Info_Skill.h" />
     <ClInclude Include="CUIPanel_Abbey.h" />
     <ClInclude Include="Activity_log.h" />
@@ -229,6 +231,7 @@
     <ClInclude Include="image.h" />
     <ClInclude Include="ImageData.h" />
     <ClInclude Include="imageManager.h" />
+    <ClInclude Include="Info_Unit.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="DB_Item.h" />
     <ClInclude Include="Info_Item.h" />
@@ -284,6 +287,8 @@
     <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="Hero_Roster.cpp" />
+    <ClCompile Include="Info_Enemy.cpp" />
+    <ClCompile Include="Info_Hero.cpp" />
     <ClCompile Include="Info_Skill.cpp" />
     <ClCompile Include="CUIPanel_Abbey.cpp" />
     <ClCompile Include="Activity_log.cpp" />
@@ -351,6 +356,7 @@
     <ClCompile Include="image.cpp" />
     <ClCompile Include="ImageData.cpp" />
     <ClCompile Include="imageManager.cpp" />
+    <ClCompile Include="Info_Unit.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="DB_Item.cpp" />
     <ClCompile Include="Info_Item.cpp" />

@@ -11,4 +11,5 @@ public:
 	bool isRoom = false;
 	bool isSearched = false;
 	bool isHorizontal = false;
+	bool isPassed = false;
 };

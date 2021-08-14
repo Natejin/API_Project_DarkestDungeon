@@ -39,7 +39,7 @@ void Unit::Render(HDC _hdc)
 
 void Unit::FrontRender(HDC _hdc)
 {
-    if (isSelected == true)
+    if (isSelected)
     {
         showSelMember(_hdc);
     }
