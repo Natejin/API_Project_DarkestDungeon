@@ -70,12 +70,12 @@ void CUI_Panel_Hero::SetHeroPanel()
 	switch (MG_GAME->GetHero(townScene->curDragHeroIndex)->job)
 	{
 	case JOB::Crusader:
-		m_windowPanelChar->SetImage(IMAGE::crusader_roster);
+		m_windowPanelChar->SetImage(IMAGE::crusader_header);
 	//	m_windowPanelChar = new CSpriteRenderer(IMAGE::crusader_roster, m_transform);
 		break;
 	case JOB::Vestal:
 		//m_windowPanelChar = new CSpriteRenderer(IMAGE::vestal_roster, m_transform);
-		m_spriteRenderer->SetImage(IMAGE::vestal_roster);
+		m_spriteRenderer->SetImage(IMAGE::vestal_header);
 	default:
 		break;
 	}

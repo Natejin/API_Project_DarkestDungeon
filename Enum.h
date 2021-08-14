@@ -210,7 +210,10 @@ enum class IMAGE
 	monster,
 	scouting,
 	characterpanel_bg,
-
+	crusader_header,
+	highwayman_header,
+	plague_doctor_header,
+	vestal_header,
 	treasure,
 	trap,
 	enemy,
