@@ -42,38 +42,20 @@ public:
 	void SetPartyIndex(int index) { m_partyIndex = index; }
 	int GetPartyIndex() { return m_partyIndex; }
 
-	UNITTYPE GetUnitType() { return unitType; }
-	int GetSpeed() { return m_SPD; }
-
-	void SetPosition(int pos) { m_POS = pos; }
-	int GetPosition() { return m_POS; }
-
-	int getHP() { return m_HP; }
-	int getSPD() { return m_SPD; }
-	int getPartyPos() { return m_POS; }
-
-	int getResist(int index) 
-	{ 
-		return resist[index];
-	}
-	bool getAttribute(int index)
-	{
-		return attribute[index];
-	}
-
-	void setHP(int hp) { m_HP = hp; }
-	void setSPD(int spd) { m_SPD = spd; }
-	void setPartyPos(int pos) { m_POS = pos; }
-
-	void setResist(int index, bool val)
-	{
-		resist[index] = val;
-	}
-	void setAttribute(int index, bool val)
-	{
-		attribute[index] = val;
-	}
-
+	virtual UNITTYPE GetUnitType();
+	virtual int GetSpeed();
+	virtual void SetPosition(int pos);
+	virtual int getHP();
+	virtual int getSPD();
+	virtual int GetPosition();
+	virtual int getPartyPos();
+	virtual int getResist(int index);
+	virtual bool getAttribute(int index);
+	virtual void setHP(int hp);
+	virtual void setSPD(int spd);
+	virtual void setPartyPos(int pos); 
+	virtual void setResist(int index, bool val);
+	virtual void setAttribute(int index, bool val);
 
 	virtual void SetMemberOverlay();
 	void showSelMember(HDC _hdc);
