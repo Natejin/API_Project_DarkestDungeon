@@ -27,4 +27,6 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	virtual void SetMemberOverlay();
 };

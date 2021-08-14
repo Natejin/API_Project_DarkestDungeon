@@ -33,8 +33,17 @@ void CBattleSystem::BattleSystemEnd()
 
 void CBattleSystem::StartTurn()
 {
-
+	
 }
+
+void CBattleSystem::EndTurn()
+{
+	if (speedVec.size() > 0)
+	{
+
+	}
+}
+
 void CBattleSystem::UseSkill1()
 {
 
@@ -130,6 +139,11 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 	{
 		BattleSystemEnd();
 	}
+
+	if (MG_INPUT->isOnceKeyDown('N'))
+	{
+		EndTurn();
+	}
 }
 
 void CBattleSystem::LateUpdate()
@@ -189,23 +203,37 @@ void CBattleSystem::SelectEnemy(int index)
 	}
 }
 
-void CBattleSystem::SelectEnemy1()
+CHero* CBattleSystem::GetHero(int index)
 {
-	SelectEnemy(0);
+	return index < heroParty.size() ? heroParty[index] : nullptr;
 }
 
-
-void CBattleSystem::SelectEnemy2()
+void CBattleSystem::SelectHero(int index)
 {
-	SelectEnemy(1);
+	for (int i = 0; i < enemyParty.size(); i++)
+	{
+		if (i == index) GetHero(i)->isSelected = true;
+		else GetHero(i)->isSelected = false;
+	}
 }
-
-void CBattleSystem::SelectEnemy3()
-{
-	SelectEnemy(2);
-}
-
-void CBattleSystem::SelectEnemy4()
-{
-	SelectEnemy(3);
-}
+//
+//void CBattleSystem::SelectEnemy1()
+//{
+//	SelectEnemy(0);
+//}
+//
+//
+//void CBattleSystem::SelectEnemy2()
+//{
+//	SelectEnemy(1);
+//}
+//
+//void CBattleSystem::SelectEnemy3()
+//{
+//	SelectEnemy(2);
+//}
+//
+//void CBattleSystem::SelectEnemy4()
+//{
+//	SelectEnemy(3);
+//}

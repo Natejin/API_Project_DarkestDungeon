@@ -73,9 +73,8 @@ public:
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);
 
-	void setMemberOverlay();
-	void showSelMember(HDC _hdc);
-	void showHpStrsBar(HDC _hdc);
+
+	void showStrsBar(HDC _hdc);
 
 	void useSkill1();
 	void useSkill2();
@@ -88,5 +87,7 @@ public:
 	void setSTRSbar();
 	void setSelectedMem();
 	void setTargetedMem();
+
+	virtual void SetMemberOverlay();
 
 };

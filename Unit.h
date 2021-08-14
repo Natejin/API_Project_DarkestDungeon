@@ -85,4 +85,9 @@ public:
 		attribute[index] = val;
 	}
 
+
+	virtual void SetMemberOverlay();
+	void showSelMember(HDC _hdc);
+	void showHpBar(HDC _hdc);
+
 };

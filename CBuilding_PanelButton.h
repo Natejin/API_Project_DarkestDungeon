@@ -6,7 +6,7 @@ class CBuilding_PanelButton : public CEst_UI
 public:
 	int buttonID;
 
-	class TownScene* townScene;
+	class TownScene* scene;
 	class CHeroList_button* listbutton;
 
 	class CHero* hero;

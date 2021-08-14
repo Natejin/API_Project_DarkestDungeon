@@ -13,7 +13,6 @@ HRESULT CEnemy::Init()
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->SetAnimeSpeed(5);
-	
 	//mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
 	return S_OK;
 }
@@ -39,14 +38,15 @@ HRESULT CEnemy::Init(string img, int resist[], int HP, int SPD, int POS, int DEF
 	m_animator->SetTrans(m_transform);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(img);
-	//m_image = MG_IMAGE->findImage(img);
+
+
 
 	return S_OK;
 }
 
 void CEnemy::Update(float deltaTime, float worldTime)
 {
-	
+	Unit::Update(deltaTime, worldTime);
 }
 
 void CEnemy::LateUpdate()
@@ -71,4 +71,10 @@ void CEnemy::FrontRender(HDC _hdc)
 void CEnemy::Release()
 {
 	Unit::Release();
+}
+
+void CEnemy::SetMemberOverlay()
+{
+	Unit::SetMemberOverlay();
+	selectedMem.m_img = MG_IMAGE->findImage("target1");
 }

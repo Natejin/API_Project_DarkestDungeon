@@ -75,7 +75,7 @@ void CUIPanel_Abbey::CreateRooms() //panel
 			m_room = new CBuilding_PanelButton();
 			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i *135 , WINSIZEY / 2 - 280 + j * 225);
 			m_room->buttonID = k;
-			m_room->townScene = townScene;
+			m_room->scene = townScene;
 			m_room->Init();
 			panelVec.push_back(m_room);
 			k++;

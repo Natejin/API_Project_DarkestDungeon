@@ -232,11 +232,15 @@ void dungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
 
 void dungeonUI_HeroInfo::SelectHero(int index)
 {
-    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+    if (scene->m_dungeonMode == DUNGEONMODE::WALK)
     {
-        if (i == index)  MG_GAME->GetHero(i)->isSelected = true;
-        else  MG_GAME->GetHero(i)->isSelected = false;
+        for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+        {
+            if (i == index)  MG_GAME->GetHero(i)->isSelected = true;
+            else  MG_GAME->GetHero(i)->isSelected = false;
+        }
     }
+   
 }
 
 //void dungeonUI_HeroInfo::selHero1()

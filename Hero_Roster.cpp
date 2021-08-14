@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "Hero_Roster.h"
 #include"CHero.h"
+#include "TownScene.h"
 Hero_Roster::Hero_Roster()
 {
 	m_layer = LAYER::UIButton;
@@ -26,6 +27,12 @@ void Hero_Roster::Update(float deltaTime, float worldTime)
 
 void Hero_Roster::LateUpdate()
 {
+	if (MG_INPUT->IsUpLMB())
+	{
+		scene->isDrag = false;
+		scene->curDragHeroIndex = -1;
+		Unable();
+	}
 }
 
 void Hero_Roster::BackRender(HDC _hdc)
@@ -39,8 +46,4 @@ void Hero_Roster::Render(HDC _hdc)
 void Hero_Roster::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
-	if (MG_INPUT->isToggleKey(VK_TAB))
-	{
-		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
-	}
 }

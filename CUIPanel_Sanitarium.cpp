@@ -83,7 +83,7 @@ void CUIPanel_Sanitarium::CreateRooms() //panel¹öÆ°
 			m_room->AddSpriteRenderer(IMAGE::hero_slot_bg);
 			m_room->AddColliderBox();
 			m_room->isActive = false;
-			m_room->townScene = townScene;
+			m_room->scene = townScene;
 			panelVec.push_back(m_room);
 			MG_GMOBJ->RegisterObj("emptyroom", m_room);
 

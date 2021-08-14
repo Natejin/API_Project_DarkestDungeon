@@ -36,6 +36,49 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 	{
 		if (MG_INPUT->IsUpLMB())
 		{
+			if (hero == nullptr && scene->isDrag)
+			{
+				hero = scene->m_heroListButtonVec[scene->curDragHeroIndex]->m_hero; 
+				MG_GAME->RemoveHeroFromOwnList(hero->heroID);
+				scene->SetHerolist();
+				checkBTN->Enable();
+				switch (hero->job)
+				{
+				case JOB::Crusader:
+					m_spriteRenderer->SetImage(IMAGE::crusader_roster);
+					break;
+				case JOB::Vestal:
+					m_spriteRenderer->SetImage(IMAGE::vestal_roster);
+					break;
+				case JOB::PlagueDoctor:
+					m_spriteRenderer->SetImage(IMAGE::plague_doctor_roster);
+					break;
+				case JOB::Highwayman:
+					m_spriteRenderer->SetImage(IMAGE::highwayman_roster);
+					break;
+				default:
+					break;
+				}
+
+			}
+
+		}
+		if (hero != nullptr)
+		{
+			if (MG_INPUT->IsDownRMB())
+			{
+				MG_GAME->RegisterHeroToOwnList(hero);
+				hero = nullptr;
+
+			}
+		}
+
+	}
+
+	/*if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+	{
+		if (MG_INPUT->IsUpLMB())
+		{
 			if (hero == nullptr && CHeroList_button::selDragButton != nullptr)
 			{
 				hero = ((CHeroList_button*)CHeroList_button::selDragButton)->m_hero;
@@ -74,7 +117,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 			}
 		}
 
-	}
+	}*/
 	
 }
 

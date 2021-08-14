@@ -34,6 +34,7 @@ public:
 	//==================================
 
 	void RegisterObj(string name, GameObject* gameObj);
+	void RegisterObj( GameObject* gameObj);
 	void RemoveObj(int id);
 	void RemoveObj(GameObject* gameObj);
 };

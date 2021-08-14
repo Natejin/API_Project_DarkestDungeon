@@ -21,11 +21,14 @@ class CBattleSystem : public GameObject
 	vector<class CEnemy*> enemyParty;
 	queue<TurnSpeedOfUnit> speedQueue;
 
-	vector<pair <int, Unit*> > speedVec;
+	vector<pair<int, Unit*>> speedVec;
 
 	int randomDice6 = 6;
 
 	int curTurn;
+
+	//class CHero* curHero;
+	//class CEnemy* curHero;
 
 public:
 	class DungeonScene* scene;
@@ -49,6 +52,7 @@ public:
 	void BattleSystemEnd();
 
 	void StartTurn();
+	void EndTurn();
 
 	void UseSkill1();
 	void UseSkill2();
@@ -58,12 +62,10 @@ public:
 
 private:
 	CEnemy* GetEnemy(int i);
-
-	void SelectEnemy1();
 	void SelectEnemy(int index);
-	void SelectEnemy2();
-	void SelectEnemy3();
-	void SelectEnemy4();
+
+	CHero* GetHero(int i);
+	void SelectHero(int index);
 
 
 private:

@@ -50,7 +50,7 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	isSelected = false; 
 	isBattle = false;
 	
-	setMemberOverlay();
+	SetMemberOverlay();
 	AddColliderBox(120, 300);
 
 	
@@ -82,11 +82,8 @@ void CHero::Render(HDC _hdc)
 void CHero::FrontRender(HDC _hdc)
 {
 	Unit::FrontRender(_hdc);
-	if (isSelected == true)
-	{
-		showSelMember(_hdc);
-	}
-	showHpStrsBar(_hdc);
+
+	showStrsBar(_hdc);
 
 	////for test collision
 	//ImageData temp;
@@ -152,51 +149,8 @@ bool CHero::PreventGetOutBg(int startX, int endX)
 		return false;
 }
 
-void CHero::setMemberOverlay()
+void CHero::showStrsBar(HDC _hdc)
 {
-	selectedMem.m_img = MG_IMAGE->findImage("selected1");
-	targeted_h_Mem.m_img = MG_IMAGE->findImage("target1");
-
-	HPbar_back.m_img = MG_IMAGE->findImage("HP_empty");
-	HPbar_front.m_img = MG_IMAGE->findImage("HP_full");
-
-	ImageData temp;
-	temp.m_img = MG_IMAGE->findImage("STRS_empty");
-	for (int i = 0; i < 10; i++)
-	{
-		STRSbar.push_back(temp);
-	}
-
-}
-
-void CHero::showSelMember(HDC _hdc)
-{
-	selectedMem.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - 87,
-		m_transform->m_pos.y - 78);
-
-	targeted_h_Mem.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - 87,
-		m_transform->m_pos.y - 78);
-
-	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
-	//targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
-}
-
-void CHero::showHpStrsBar(HDC _hdc)
-{
-	//Hp, strs bar
-	HPbar_back.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - 50,
-		m_transform->m_pos.y + 15);
-	HPbar_front.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - 50,
-		m_transform->m_pos.y + 15);
-
-	HPbar_back.m_img->render(_hdc, &HPbar_back.m_trans);
-	HPbar_front.m_img->render(_hdc, &HPbar_front.m_trans);
-
-
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_STRS >= (i + 1) * 10)
@@ -251,4 +205,16 @@ void CHero::setSelectedMem()
 
 void CHero::setTargetedMem()
 {
+}
+
+void CHero::SetMemberOverlay()
+{
+	Unit::SetMemberOverlay();
+	selectedMem.m_img = MG_IMAGE->findImage("selected1");
+	ImageData temp;
+	temp.m_img = MG_IMAGE->findImage("STRS_empty");
+	for (int i = 0; i < 10; i++)
+	{
+		STRSbar.push_back(temp);
+	}
 }
