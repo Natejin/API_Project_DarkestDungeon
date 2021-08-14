@@ -42,7 +42,7 @@ public:
 	CParty* GetParty();
 
 	class CHero* CreateHero(string name, JOB job);
-
+	
 	int GetHeroPartySize() { return m_partyOrigin.size(); }
 	//=======================================
 

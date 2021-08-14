@@ -1,14 +1,20 @@
 #pragma once
 #include"CDragButtion.h"
+#include <functional>
+
 
 class CHeroList_button : public CDragButton
 {
 	class CSpriteRenderer* m_heroBG;
+	class CSpriteRenderer* m_characterBG;
 	Vector2 originPos;
-	
+	function<void()> m_triggerWhenDownRightButton;
+	bool canTriggerDownRightButton;
+
 
 public:
-	class	TownScene* townScene;
+	class TownScene* townScene;
+	class CUI_Panel_Hero* hero_panel;
 	int index;
 
 	class CHero* m_hero;
@@ -27,5 +33,12 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	void DragHeroList();
-	
+	void SetHeroPanel();
+	template <typename T>
+	void SetTriggerWhenDownRightButton(T* pObj, void(T::* func)())
+	{
+		canTriggerDownRightButton = true;
+		m_triggerWhenDownRightButton = bind(func, pObj);
+	}
+
 };

@@ -33,6 +33,7 @@ public:
 	bool GetDrag()const { return isDragging; }
 
 
+
 	template <typename T>
 	void SetTriggerWhenDrag(T* pObj, void(T::* func)())
 	{

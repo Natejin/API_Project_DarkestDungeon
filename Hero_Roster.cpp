@@ -14,7 +14,7 @@ Hero_Roster::~Hero_Roster()
 
 HRESULT Hero_Roster::Init()
 {
-	m_transform->m_pivot = Vector2(0, 0);
+	m_transform->m_pivot = Vector2(0.5, 0.5);
 	AddSpriteRenderer();
 
     return S_OK;

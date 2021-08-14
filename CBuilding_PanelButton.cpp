@@ -68,6 +68,9 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 			if (MG_INPUT->IsDownRMB())
 			{
 				MG_GAME->RegisterHeroToOwnList(hero);
+				scene->SetHerolist();
+				m_spriteRenderer->SetImage(IMAGE::hero_slot_bg);
+				checkBTN->Unable();
 				hero = nullptr;
 
 			}

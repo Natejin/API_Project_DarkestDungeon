@@ -156,7 +156,9 @@
   <ItemGroup>
     <ClInclude Include="CBTN_Skill.h" />
     <ClInclude Include="CBuilding_PanelButton.h" />
+    <ClInclude Include="CHeroOnStage_coach.h" />
     <ClInclude Include="CSaveable.h" />
+    <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="Hero_Roster.h" />
     <ClInclude Include="Info_Enemy.h" />
     <ClInclude Include="Info_Hero.h" />
@@ -281,7 +283,9 @@
   <ItemGroup>
     <ClCompile Include="CBTN_Skill.cpp" />
     <ClCompile Include="CBuilding_PanelButton.cpp" />
+    <ClCompile Include="CHeroOnStage_coach.cpp" />
     <ClCompile Include="CSaveable.cpp" />
+    <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="Hero_Roster.cpp" />
     <ClCompile Include="Info_Enemy.cpp" />
     <ClCompile Include="Info_Hero.cpp" />
