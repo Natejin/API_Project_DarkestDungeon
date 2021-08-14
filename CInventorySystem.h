@@ -11,20 +11,13 @@ class CInventorySystem : public GameObject
 public:
 	vector<CSlotItemButton*> m_invenSlots;
 
-
 	int foodLimit = 13;
 	int torchLimit = 9;
 
 	int nowMouseOnSlot;
 
-	//drag to change pos
-	CSlotItemButton* swap_slotB;
-	CSlotItemButton* swap_slotA;
-
 	//fakeImageSlot?
 	class DummySlot* dummySlot;
-
-	int filledSlot;
 
 	CSlotItemButton* dragSlot;
 	Vector2Int originPos;
@@ -61,5 +54,6 @@ public:
 	void StartDragItem(class CSlotItemButton* slot);
 	void EndDragItem(class CSlotItemButton* slot);
 
+	bool decreaseItem(ITEM itemInfo, int& count);
 
 };

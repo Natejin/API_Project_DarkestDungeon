@@ -12,7 +12,7 @@ HRESULT CSlotItemButton::Init()
 	LAYER::UIButton;
 	m_transform->m_pivot = Vector2(0, 0);
 	AddSpriteRenderer();
-	AddColliderBox(70,125);
+	AddColliderBox(70, 125);
 
 	m_itemInfo = nullptr;
 	return S_OK;
@@ -20,7 +20,32 @@ HRESULT CSlotItemButton::Init()
 
 void CSlotItemButton::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	checkCount();
+
+
+	//use item
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+	{
+		if (MG_INPUT->IsDownRMB())
+		{
+			useSlotItem();
+		}
+	}
+
+	//burida
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+	{
+		if (MG_INPUT->isStayKeyDown(VK_SHIFT))
+		{
+			if (MG_INPUT->IsDownLMB())
+			{
+				dumpSlotItem();
+			}
+		}
+	}
+
+	//drag
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsDownLMB())
 		{
@@ -32,7 +57,7 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 		}
 	}
 
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsUpLMB())
 		{
@@ -43,6 +68,7 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 			}
 		}
 	}
+
 }
 
 void CSlotItemButton::LateUpdate()
@@ -51,51 +77,38 @@ void CSlotItemButton::LateUpdate()
 
 void CSlotItemButton::BackRender(HDC _hdc)
 {
-
 }
 
 void CSlotItemButton::Render(HDC _hdc)
 {
-
 }
 
 void CSlotItemButton::FrontRender(HDC _hdc)
 {
-
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
 		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
 	}
-	if (m_spriteRenderer->HasImage())
+	if (m_itemInfo != nullptr)
 	{
-		m_spriteRenderer->RenderUI(_hdc);
+		if (m_spriteRenderer->HasImage())
+		{
+			m_spriteRenderer->RenderUI(_hdc);
 
+			int k = 0;
+			char str[256];
+			string strFrame;
+			SetBkMode(_hdc, RGB(0, 0, 0));
+			SetTextColor(_hdc, RGB(255, 255, 255));
 
-		int k = 0;
-		char str[256];
-		string strFrame;
-		SetBkMode(_hdc, RGB(0, 0, 0));
-		SetTextColor(_hdc, RGB(255, 255, 255));
-
-		sprintf_s(str, "%d", m_itemInfo->m_count);
-		TextOut(_hdc, 990 + 70 * slotID.x, 730 + 140 * slotID.y, str, strlen(str));
-
-		/*int quotient;
-		quotient = MG_GAME->GetParty()->getTorch() / torchLimit + 1;
-		sprintf_s(str, "quotient : %d", quotient);
-		TextOut(_hdc, 0, 400, str, strlen(str));
-
-		int remainder;
-		remainder = MG_GAME->GetParty()->getTorch() % torchLimit;
-		sprintf_s(str, "remainder : %d", remainder);
-		TextOut(_hdc, 0, 420, str, strlen(str));
-
-		sprintf_s(str, "filledSlot : %d", filledSlot);
-		TextOut(_hdc, 0, 440, str, strlen(str));*/
-
+			sprintf_s(str, "%d", m_itemInfo->m_count);
+			TextOut(_hdc, 990 + 70 * slotID.x, 730 + 140 * slotID.y, str, strlen(str));
+		}
 	}
 }
 
+
+//==================================
 
 
 void CSlotItemButton::AddItem(CInfo_Item* _iteminfo)
@@ -113,11 +126,20 @@ void CSlotItemButton::SwapItem(CSlotItemButton* _slot)
 		_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
 		m_spriteRenderer->SetImage();
 	}
-	else {
+	else if (m_itemInfo->m_item == _slot->m_itemInfo->m_item)
+	{
+		if (m_itemInfo->m_count + _slot->m_itemInfo->m_count < m_itemInfo->maxCount)
+		{
+			_slot->m_itemInfo->m_count += m_itemInfo->m_count;
+			m_itemInfo = nullptr;
+			_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
+		}
+	}
+	else 
+	{
 		auto itemInfo = m_itemInfo;
 		m_itemInfo = _slot->m_itemInfo;
 		_slot->m_itemInfo = itemInfo;
-
 
 		_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
 		m_spriteRenderer->SetImage(m_itemInfo->m_imgData);
@@ -127,4 +149,35 @@ void CSlotItemButton::SwapItem(CSlotItemButton* _slot)
 void CSlotItemButton::RemoveItem()
 {
 	m_itemInfo = nullptr;
+}
+
+void CSlotItemButton::useSlotItem()
+{
+	if (m_itemInfo == nullptr) return;
+	else
+	{
+		if (m_itemInfo->useItem())
+		{
+			m_itemInfo->m_count--;
+		}
+	}
+}
+
+void CSlotItemButton::dumpSlotItem()
+{
+	if (m_itemInfo == nullptr) return;
+	else
+	{
+		m_itemInfo->DumpItem(m_itemInfo->m_count);
+		RemoveItem();
+	}
+}
+
+void CSlotItemButton::checkCount()
+{
+	if (m_itemInfo == nullptr) return;
+	if (m_itemInfo->m_count == 0)
+	{
+		RemoveItem();
+	}
 }

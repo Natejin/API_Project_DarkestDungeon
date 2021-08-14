@@ -21,7 +21,7 @@ HRESULT CButton::Init()
 
 void CButton::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsDownLMB())
 		{
@@ -33,7 +33,7 @@ void CButton::Update(float deltaTime, float worldTime)
 		}
 	}
 
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->IsUpLMB())
 		{

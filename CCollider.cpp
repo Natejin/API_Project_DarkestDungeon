@@ -40,32 +40,9 @@ bool CCollider::CheckXCollision(int x)
 	else return false;
 }
 
-bool CCollider::CheckColliderBoxWithPoint(Vector2 _pos) 
+bool CCollider::CheckColliderBoxWithPoint(Vector2 pos) 
 {
-	if (rect.l < _pos.x &&
-		rect.r > _pos.x &&
-		rect.t < _pos.y &&
-		rect.b > _pos.y)
-	{
-		return true;
-	}
-	else return false;
-}
-
-bool CCollider::CheckColliderBoxWithPoint(POINT _pos) 
-{
-	if (rect.l < _pos.x &&
-		rect.r > _pos.x &&
-		rect.t < _pos.y &&
-		rect.b > _pos.y)
-	{
-		return true;
-	}
-	else return false;
-}
-
-bool CCollider::new_CheckColliderBoxWithPoint(Vector2 pos)
-{
+	pos += MG_CAMERA->GetPos();
 	if (m_transform->m_pos.x + rect.l < pos.x &&
 		m_transform->m_pos.x + rect.r > pos.x &&
 		m_transform->m_pos.y + rect.t < pos.y &&
@@ -76,7 +53,33 @@ bool CCollider::new_CheckColliderBoxWithPoint(Vector2 pos)
 	else return false;
 }
 
-bool CCollider::new_CheckColliderBoxWithPoint(POINT pos)
+bool CCollider::CheckColliderBoxWithPoint(POINT pos)
+{
+
+	if (m_transform->m_pos.x + rect.l < pos.x &&
+		m_transform->m_pos.x + rect.r > pos.x &&
+		m_transform->m_pos.y + rect.t < pos.y &&
+		m_transform->m_pos.y + rect.b > pos.y)
+	{
+		return true;
+	}
+	else return false;
+}
+
+bool CCollider::UICheckColliderBoxWithPoint(Vector2 pos)
+{
+
+	if (m_transform->m_pos.x + rect.l < pos.x &&
+		m_transform->m_pos.x + rect.r > pos.x &&
+		m_transform->m_pos.y + rect.t < pos.y &&
+		m_transform->m_pos.y + rect.b > pos.y)
+	{
+		return true;
+	}
+	else return false;
+}
+
+bool CCollider::UICheckColliderBoxWithPoint(POINT pos)
 {
 	if (m_transform->m_pos.x + rect.l < pos.x &&
 		m_transform->m_pos.x + rect.r > pos.x &&

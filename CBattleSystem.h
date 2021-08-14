@@ -7,19 +7,28 @@ class CBattleSystem : public GameObject
 	struct TurnSpeedOfUnit {
 		Unit* unit;
 		int turnSpeed;
-
 	};
 
+	enum class TURN
+	{
+		Player,
+		enemy
+	};
+
+	TURN turn;
 
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
 	queue<TurnSpeedOfUnit> speedQueue;
 
-	vector<pair <int, Unit*> > speedVec;
+	vector<pair<int, Unit*>> speedVec;
 
 	int randomDice6 = 6;
 
 	int curTurn;
+
+	//class CHero* curHero;
+	//class CEnemy* curHero;
 
 public:
 	class DungeonScene* scene;
@@ -42,10 +51,22 @@ public:
 	void BattleSystemInitiate();
 	void BattleSystemEnd();
 
+	void StartTurn();
+	void EndTurn();
+
 	void UseSkill1();
 	void UseSkill2();
 	void UseSkill3();
 	void UseSkill4();
+
+
+private:
+	CEnemy* GetEnemy(int i);
+	void SelectEnemy(int index);
+
+	CHero* GetHero(int i);
+	void SelectHero(int index);
+
 
 private:
 	void CreateEnemyParty();

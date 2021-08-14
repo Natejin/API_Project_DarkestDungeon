@@ -15,7 +15,24 @@ public:
 
 	UNITTYPE unitType;
 	int m_partyIndex = -1;
+	bool isSelected;
 
+	ImageData HPbar_front;
+	ImageData HPbar_back;
+	ImageData selectedMem;
+
+protected:
+	function<void(int i)> m_triggerWhenDown;
+	bool canTriggerDown;
+
+public:
+	template <typename T>
+	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))
+	{
+		canTriggerDown = true;
+		//int index = i;
+		m_triggerWhenDown = bind(func, pObj, std::placeholders::_1);
+	}
 public:
 	Unit();
 	~Unit();
@@ -41,44 +58,36 @@ public:
 	int GetPosition() { return m_POS; }
 	
 	//==============================
-	//int m_HP;
-	//int m_SPD;
-	//int m_POS; //(파티에서의 위치)
-
-	////저항
-	//int resist[5]; //stun, blight, bleed, debuff, move
-	////상태
-	//bool attribute[8];
 
 	int getHP() { return m_HP; }
 	int getSPD() { return m_SPD; }
 	int getPartyPos() { return m_POS; }
-	//배열을 반환하는 다른 방법을 확인해 볼 것
-	int getResist() 
+
+	int getResist(int index) 
 	{ 
-		return resist[0], resist[1], resist[2], resist[3], resist[4];
+		return resist[index];
 	}
-	bool getAttribute()
+	bool getAttribute(int index)
 	{
-		return attribute[0];
+		return attribute[index];
 	}
 
 	void setHP(int hp) { m_HP = hp; }
 	void setSPD(int spd) { m_SPD = spd; }
 	void setPartyPos(int pos) { m_POS = pos; }
-	void setResist(int _resist[])
+
+	void setResist(int index, bool val)
 	{
-		for (int i; i < 5; i++)
-		{
-			resist[i] = _resist[i];
-		}
+		resist[index] = val;
 	}
-	void setAttribute(int _attribute[])
+	void setAttribute(int index, bool val)
 	{
-		for (int i = 0; i < 8; i++)
-		{
-			attribute[i] = _attribute[i];
-		}
+		attribute[index] = val;
 	}
+
+
+	virtual void SetMemberOverlay();
+	void showSelMember(HDC _hdc);
+	void showHpBar(HDC _hdc);
 
 };

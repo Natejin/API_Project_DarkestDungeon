@@ -48,6 +48,7 @@ inline void RectangleMake(HDC hdc, Rect rect)
 
 inline void RectangleMake(HDC hdc, Rect rect, Vector2 pos)
 {
+
 	Rectangle(hdc, rect.l + pos.x, rect.t + pos.y, rect.r + pos.x, rect.b + pos.y);
 }
 

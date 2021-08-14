@@ -1,4 +1,5 @@
 #pragma once
+#include "CItemEffect.h"
 
 class CInfo_Item
 {
@@ -13,11 +14,17 @@ public:
 	int m_count;
 	
 	bool isStockable;
+	bool isUsable;
 	int maxCount;
+
+	CItemEffect* m_itemEffect;
+
 
 public:
 	CInfo_Item() {};
 	~CInfo_Item() {};
 
 	bool IsFull();
+	bool useItem();
+	void DumpItem(int dumpCount);
 };

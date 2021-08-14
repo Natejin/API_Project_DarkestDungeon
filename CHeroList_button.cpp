@@ -2,10 +2,12 @@
 #include "CHeroList_button.h"
 #include"CHero.h"
 #include"Hero_Roster.h"
+#include "TownScene.h"
 CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;
 	canTriggerDrag = false;
+	index = -1;
 }
 
 CHeroList_button::~CHeroList_button()
@@ -14,6 +16,7 @@ CHeroList_button::~CHeroList_button()
 
 HRESULT CHeroList_button::Init()
 {
+
 	m_transform->m_pivot = Vector2(0.5, 0.5);
 	m_heroBG = new CSpriteRenderer(IMAGE::rosterelement_res, m_transform);
 	m_heroBG->useCustomPos = true;
@@ -29,41 +32,62 @@ HRESULT CHeroList_button::Init()
 
 void CHeroList_button::Update(float deltaTime, float worldTime)
 {
-	if (!selDragButton)
+	if (!townScene->isDrag)
 	{
-		if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 		{
 			if (MG_INPUT->IsDownLMB())
 			{
-				selDragButton = this;
-				selKeyIndex = VK_LBUTTON;
-				originPos = m_transform->m_pos;
-				//if (canTriggerDown)
-				//{
-				//	m_triggerWhenDown();
-				//}
+				/*selDragButton = this;
+				selKeyIndex = VK_LBUTTON;*/
+				//originPos = m_transform->m_pos;
+				if (canTriggerDown)
+				{
+					townScene->isDrag = true;
+					townScene->curDragHeroIndex = index;
+					m_triggerWhenDown();
+				}
 			}
 		}
-		
 	}
-	else if (selDragButton == this)
-	//else
-	{
-		if (MG_INPUT->IsUpLMB())
-		{
-			if (canTriggerUp)
-			{
-				m_triggerWhenUp();
-			}
-			else
-			{
-				m_transform->m_pos = originPos;
-				selDragButton = nullptr;
-				selKeyIndex = -1;
-			}
-			
-		}
-	}
+	
+
+
+	//if (!selDragButton)
+	//{
+	//	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+	//	{
+	//		if (MG_INPUT->IsDownLMB())
+	//		{
+	//			selDragButton = this;
+	//			selKeyIndex = VK_LBUTTON;
+	//			originPos = m_transform->m_pos;
+	//			if (canTriggerDown)
+	//			{
+	//				m_triggerWhenDown();
+	//			}
+	//		}
+	//	}
+	//	
+	//}
+	//else if (selDragButton == this)
+	////else
+	//{
+	//	if (MG_INPUT->IsUpLMB())
+	//	{
+	//		if (canTriggerUp)
+	//		{
+	//			m_triggerWhenUp();
+	//		}
+	//		else
+	//		{
+	//			m_transform->m_pos = originPos;
+	//			selDragButton = nullptr;
+	//			selKeyIndex = -1;
+	//		}
+	//		
+	//	}
+	//}
 
 }
 
@@ -84,10 +108,10 @@ void CHeroList_button::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
 	m_heroBG->RenderUI(_hdc);
-	/*if (MG_INPUT->isToggleKey(VK_TAB))
+	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
 		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
-	}*/
+	}
 	//for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 	//{
 	//	char str[256];

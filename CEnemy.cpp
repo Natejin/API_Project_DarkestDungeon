@@ -9,6 +9,7 @@ CEnemy::~CEnemy() {}
 
 HRESULT CEnemy::Init()
 {
+	m_transform->m_pivot = Vector2(0.5, 1);
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->SetAnimeSpeed(5);
@@ -37,14 +38,15 @@ HRESULT CEnemy::Init(string img, int resist[], int HP, int SPD, int POS, int DEF
 	m_animator->SetTrans(m_transform);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(img);
-	//m_image = MG_IMAGE->findImage(img);
+
+
 
 	return S_OK;
 }
 
 void CEnemy::Update(float deltaTime, float worldTime)
 {
-	
+	Unit::Update(deltaTime, worldTime);
 }
 
 void CEnemy::LateUpdate()
@@ -57,15 +59,22 @@ void CEnemy::BackRender(HDC _hdc)
 
 void CEnemy::Render(HDC _hdc)
 {
-	//m_image->frameRender(_hdc, m_transform);
 	m_animator->FrameRender(_hdc);
 }
 
 void CEnemy::FrontRender(HDC _hdc)
 {
+	Unit::FrontRender(_hdc);
+	
 }
 
 void CEnemy::Release()
 {
 	Unit::Release();
+}
+
+void CEnemy::SetMemberOverlay()
+{
+	Unit::SetMemberOverlay();
+	selectedMem.m_img = MG_IMAGE->findImage("target1");
 }

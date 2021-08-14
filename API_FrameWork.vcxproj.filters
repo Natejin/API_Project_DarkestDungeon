@@ -271,6 +271,9 @@
     <Filter Include="System\Battle">
       <UniqueIdentifier>{c7be98a5-5111-45c9-9dc1-5f52d5f7b7d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Component\ItemEffect">
+      <UniqueIdentifier>{4a9a0865-777d-4787-bb2e-0b27eeea7942}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameNode.h">
@@ -627,8 +630,11 @@
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Hero_Roster.h">
-      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    <ClInclude Include="DB_itemEffect.h">
+      <Filter>CommonInfo\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="CItemEffect.h">
+      <Filter>Object\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -962,8 +968,11 @@
     <ClCompile Include="CSaveable.cpp">
       <Filter>CommonInfo\DB\Prototype</Filter>
     </ClCompile>
-    <ClCompile Include="Hero_Roster.cpp">
-      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    <ClCompile Include="DB_itemEffect.cpp">
+      <Filter>CommonInfo\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="CItemEffect.cpp">
+      <Filter>Object\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

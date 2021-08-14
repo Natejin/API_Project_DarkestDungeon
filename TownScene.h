@@ -15,14 +15,20 @@ protected:
 	class CUIPanel_Tavern* m_tavern;
 
 
-	vector<class CHeroList_button*> m_dragButtonVec;
+
 	vector<class CBuilding*> buildingVec;
 	vector<class CHero*> m_heroVec;
 	class Hero_Roster* m_Roster_ButtonVec;
 public:
+
+
+	vector<class CHeroList_button*> m_heroListButtonVec;
+
 	//class CHeroList_button* m_dragButton;
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
+
+
 	bool isHold; // 들고있냐.
 
 public:
@@ -61,4 +67,6 @@ public:
 
 	void DeactivateBuildings();
 	void ActivateBuildings();
+
+	void ShowDummyHeroList();
 };

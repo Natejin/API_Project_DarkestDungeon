@@ -14,6 +14,7 @@ void CBattleSystem::BattleSystemInitiate()
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
+	StartTurn();
 }
 void CBattleSystem::BattleSystemEnd()
 {
@@ -27,6 +28,22 @@ void CBattleSystem::BattleSystemEnd()
 	enemyParty.clear();
 	Unable();
 }
+
+
+
+void CBattleSystem::StartTurn()
+{
+	
+}
+
+void CBattleSystem::EndTurn()
+{
+	if (speedVec.size() > 0)
+	{
+
+	}
+}
+
 void CBattleSystem::UseSkill1()
 {
 
@@ -43,6 +60,7 @@ void CBattleSystem::UseSkill4()
 {
 
 }
+
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
 void CBattleSystem::CreateEnemyParty()
 {
@@ -54,12 +72,15 @@ void CBattleSystem::CreateEnemyParty()
 		CBoneDefender* enemy = new CBoneDefender();
 		enemy->Init(); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
+		enemy->SetPosition(i);
+		enemy->SetPartyIndex(i);
+		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+		enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
 		enemyParty.push_back(enemy);
-		enemyParty[i]->SetPosition(i);
-		enemyParty[i]->SetPartyIndex(i);
-		enemyParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
 	}
+
+
 }
 
 void CBattleSystem::CreateHeroesParty()
@@ -118,6 +139,11 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 	{
 		BattleSystemEnd();
 	}
+
+	if (MG_INPUT->isOnceKeyDown('N'))
+	{
+		EndTurn();
+	}
 }
 
 void CBattleSystem::LateUpdate()
@@ -140,18 +166,18 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(0, 0, 0));
+	SetTextColor(_hdc, RGB(0, 255, 255));
 
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
 		{
 			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first );
-			TextOut(_hdc, 0, 100 + 20 * i, str, strlen(str));
+			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
 		}
 		else {
 			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
-			TextOut(_hdc, 0, 100 + 20 * i, str, strlen(str));
+			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
 		}
 
 	}
@@ -161,3 +187,53 @@ void CBattleSystem::Release()
 {
 
 }
+
+
+CEnemy* CBattleSystem::GetEnemy(int index)
+{
+	return index < enemyParty.size() ? enemyParty[index] : nullptr;
+}
+
+void CBattleSystem::SelectEnemy(int index)
+{
+	for (int i = 0; i < enemyParty.size(); i++)
+	{
+		if (i == index) GetEnemy(i)->isSelected = true;
+		else GetEnemy(i)->isSelected = false;
+	}
+}
+
+CHero* CBattleSystem::GetHero(int index)
+{
+	return index < heroParty.size() ? heroParty[index] : nullptr;
+}
+
+void CBattleSystem::SelectHero(int index)
+{
+	for (int i = 0; i < enemyParty.size(); i++)
+	{
+		if (i == index) GetHero(i)->isSelected = true;
+		else GetHero(i)->isSelected = false;
+	}
+}
+//
+//void CBattleSystem::SelectEnemy1()
+//{
+//	SelectEnemy(0);
+//}
+//
+//
+//void CBattleSystem::SelectEnemy2()
+//{
+//	SelectEnemy(1);
+//}
+//
+//void CBattleSystem::SelectEnemy3()
+//{
+//	SelectEnemy(2);
+//}
+//
+//void CBattleSystem::SelectEnemy4()
+//{
+//	SelectEnemy(3);
+//}

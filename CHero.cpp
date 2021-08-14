@@ -50,7 +50,7 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 	isSelected = false; 
 	isBattle = false;
 	
-	setMemberOverlay();
+	SetMemberOverlay();
 	AddColliderBox(120, 300);
 
 	
@@ -60,16 +60,7 @@ HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, in
 
 void CHero::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
-	{
-		if (MG_INPUT->IsDownLMB())
-		{
-			if (canTriggerDown)
-			{
-				m_triggerWhenDown();
-			}
-		}
-	}
+	Unit::Update(deltaTime, worldTime);
 }
 
 void CHero::LateUpdate()
@@ -78,27 +69,22 @@ void CHero::LateUpdate()
 
 void CHero::BackRender(HDC _hdc)
 {
-	m_animator->FrameRender(_hdc);
+	//m_animator->FrameRender(_hdc);
 }
 
 void CHero::Render(HDC _hdc)
 {
 	//m_image->frameRender(_hdc, m_transform);
 
-
+	m_animator->FrameRender(_hdc);
 }
 
 void CHero::FrontRender(HDC _hdc)
 {
-	if (isSelected == true)
-	{
-		showSelMember(_hdc);
-	}
-	showHpStrsBar(_hdc);
-	if (MG_INPUT->isToggleKey(VK_TAB))
-	{
-		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
-	}
+	Unit::FrontRender(_hdc);
+
+	showStrsBar(_hdc);
+
 	////for test collision
 	//ImageData temp;
 	//temp.m_img = MG_IMAGE->findImage("memberRect");
@@ -163,51 +149,8 @@ bool CHero::PreventGetOutBg(int startX, int endX)
 		return false;
 }
 
-void CHero::setMemberOverlay()
+void CHero::showStrsBar(HDC _hdc)
 {
-	selectedMem.m_img = MG_IMAGE->findImage("selected1");
-	targeted_h_Mem.m_img = MG_IMAGE->findImage("target1");
-
-	HPbar_back.m_img = MG_IMAGE->findImage("HP_empty");
-	HPbar_front.m_img = MG_IMAGE->findImage("HP_full");
-
-	ImageData temp;
-	temp.m_img = MG_IMAGE->findImage("STRS_empty");
-	for (int i = 0; i < 10; i++)
-	{
-		STRSbar.push_back(temp);
-	}
-
-}
-
-void CHero::showSelMember(HDC _hdc)
-{
-	selectedMem.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 10,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() /2 + 70 );
-
-	targeted_h_Mem.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 20,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight()/ 2 - 300);
-
-	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
-	//targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
-}
-
-void CHero::showHpStrsBar(HDC _hdc)
-{
-	//Hp, strs bar
-	HPbar_back.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 46,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 161);
-	HPbar_front.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 46,
-		m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 161);
-
-	HPbar_back.m_img->render(_hdc, &HPbar_back.m_trans);
-	HPbar_front.m_img->render(_hdc, &HPbar_front.m_trans);
-
-
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_STRS >= (i + 1) * 10)
@@ -216,8 +159,8 @@ void CHero::showHpStrsBar(HDC _hdc)
 			STRSbar[i].m_img = MG_IMAGE->findImage("STRS_full");
 		}
 		STRSbar[i].m_trans.m_pos = Vector2(
-			m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 47 + 10 * i,
-			m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 173);
+			m_transform->m_pos.x - 50 + 10 * i,
+			m_transform->m_pos.y + 30);
 		STRSbar[i].m_img->render(_hdc, &STRSbar[i].m_trans);
 	}
 }
@@ -262,4 +205,16 @@ void CHero::setSelectedMem()
 
 void CHero::setTargetedMem()
 {
+}
+
+void CHero::SetMemberOverlay()
+{
+	Unit::SetMemberOverlay();
+	selectedMem.m_img = MG_IMAGE->findImage("selected1");
+	ImageData temp;
+	temp.m_img = MG_IMAGE->findImage("STRS_empty");
+	for (int i = 0; i < 10; i++)
+	{
+		STRSbar.push_back(temp);
+	}
 }

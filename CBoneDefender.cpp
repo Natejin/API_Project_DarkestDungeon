@@ -18,11 +18,9 @@ CBoneDefender::~CBoneDefender()
 HRESULT CBoneDefender::Init()
 {
 	CEnemy::Init();
-	//m_image = MG_IMAGE->findImage(IMAGE::Skeleton_Defender);
-
-
 	m_animator->AddImageFrame(IMAGE::Skeleton_Defender);
-
+	AddColliderBox();
+	SetMemberOverlay();
 	return S_OK;
 }
 

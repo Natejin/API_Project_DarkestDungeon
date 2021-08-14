@@ -153,6 +153,15 @@ void CObjectManager::RegisterObj(string name, GameObject* gameObj)
 	objectRender[gameObj->m_layer].push_back(gameObj);
 }
 
+void CObjectManager::RegisterObj(GameObject* gameObj)
+{
+	gameObj->SetId(_instance_id++);
+	gameObj->SetName(gameObj->GetName());
+	objsToRegister.push_back(gameObj);
+	objectRender[gameObj->m_layer].push_back(gameObj);
+}
+
+
 void CObjectManager::RemoveObj(int id)
 {
 	objsToErase.push_back(id);

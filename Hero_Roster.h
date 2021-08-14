@@ -3,8 +3,11 @@
 class Hero_Roster : public CDragButton
 {
 	int index;
+
 public:
 	
+	class TownScene* scene;
+
 	Hero_Roster();
 	~Hero_Roster();
 

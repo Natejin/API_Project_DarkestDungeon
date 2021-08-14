@@ -23,7 +23,7 @@ void CBTN_Skill::Update(float deltaTime, float worldTime)
 {
 	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
-		if (m_collider->new_CheckColliderBoxWithPoint(g_ptMouse))
+		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 		{
 			if (MG_INPUT->IsDownLMB())
 			{

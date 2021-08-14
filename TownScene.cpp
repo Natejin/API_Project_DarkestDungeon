@@ -34,7 +34,12 @@ HRESULT TownScene::Init()
 	SetEst_ui();  
 	SetEst_Img(); 
 	SetHerolist(); 
-
+ 
+	m_Roster_ButtonVec = new Hero_Roster();
+	m_Roster_ButtonVec->Init();
+	m_Roster_ButtonVec->scene = this;
+	m_Roster_ButtonVec->Unable();
+	MG_GMOBJ->RegisterObj(m_Roster_ButtonVec);
 	return S_OK;
 }
 HRESULT TownScene::Init(bool managerInit)
@@ -220,6 +225,7 @@ void TownScene::ActivateBuildings() {
 		buildingVec[i]->isActive = true;
 	}
 }
+
 void TownScene::Show_abeey()
 {	
 
@@ -278,11 +284,11 @@ void TownScene::Show_Activity_log()
 }
 void TownScene::SetHerolist()
 {	
-	for (size_t i = 0; i < m_dragButtonVec.size(); i++)
+	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
 	{
-		MG_GMOBJ->RemoveObj(m_dragButtonVec[i]->GetId());
+		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]->GetId());
 	}
-	m_dragButtonVec.clear();
+	m_heroListButtonVec.clear();
 
 		for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
 		{
@@ -290,6 +296,9 @@ void TownScene::SetHerolist()
 			dragButton->Init();
 			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 			dragButton->AddColliderBox(50, 50);
+			dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
+			dragButton->index = i;
+			dragButton->townScene = this;
 			MG_GAME->GetHero(i)->ownIndex = i;
 			dragButton->m_hero = MG_GAME->GetHero(i);
 
@@ -310,9 +319,16 @@ void TownScene::SetHerolist()
 			default:
 				break;
 			}
-			m_dragButtonVec.push_back(dragButton);
+			m_heroListButtonVec.push_back(dragButton);
 			MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
 		}
+}
+
+void TownScene::ShowDummyHeroList()
+{
+
+	m_Roster_ButtonVec->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
+	m_Roster_ButtonVec->Enable();
 }
 
 void TownScene::Dummy_Roster()
