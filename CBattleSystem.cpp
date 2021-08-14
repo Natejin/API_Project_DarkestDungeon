@@ -48,6 +48,9 @@ void CBattleSystem::StartTurn()
 			curEnemy = (CEnemy*)unit;
 			turn = TURN::Enemy;
 		}
+		else {
+			assert(true);
+		}
 	}
 	speedVec.pop_back();
 	if (turn == TURN::Player)
@@ -61,14 +64,14 @@ void CBattleSystem::StartTurn()
 
 void CBattleSystem::HeroTurn()
 {
-	SelectHero(curHero->m_partyIndex);
+	SelectHero(curHero->GetPartyIndex());
 
 
 }
 
 void CBattleSystem::EnemyTurn()
 {
-	SelectEnemy(curEnemy->m_partyIndex);
+	SelectEnemy(curEnemy->GetPartyIndex());
 
 
 
@@ -125,7 +128,7 @@ void CBattleSystem::CreateHeroesParty()
 	for (int i = 0; i < playerPartySize; i++)
 	{
 		heroParty.push_back(MG_GAME->GetHero(i));
-		heroParty[i]->SetPosition(i);
+		heroParty[i]->SetPartyIndex(i);
 		heroParty[i]->SetPartyIndex(i);
 		heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, 560);
 		heroParty[i]->m_animator->SetIndex(2);

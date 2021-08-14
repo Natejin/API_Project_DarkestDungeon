@@ -2,7 +2,7 @@
 #include "Unit.h"
 
 Unit::Unit() {
-  
+    m_transform->m_pivot = Vector2(0.5, 1);
 }
 Unit::~Unit() {}
 
@@ -13,6 +13,7 @@ HRESULT Unit::Init()
 
 void Unit::Update(float deltaTime, float worldTime)
 {
+
     if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
     {
         if (MG_INPUT->IsDownLMB())

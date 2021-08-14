@@ -5,7 +5,7 @@
 class CDB_Item : public Singleton<CDB_Item>
 {
 private:
-	map< ITEM, CInfo_Item*> itemDB;
+	map<ITEM, CInfo_Item*> itemDB;
 	int id;
 
 public:

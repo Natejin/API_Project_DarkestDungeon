@@ -134,41 +134,20 @@ CHero* CGameManager::GetHero(int index)
 CHero* CGameManager::CreateHero(string name, JOB job)
 {
 	CHero* hero = new CHero();
-
-	int resist[5] = { 30, 30, 30, 30, 30 };
-	//stun, blight, bleed, debuff, move
 	hero->SetHeroID(heroID++);
 	switch (job)
 	{
 	case JOB::Crusader:
-		resist[0] = 40;
-		resist[4] = 40;
-		hero->Init(JOB::Crusader, resist, 33, 1, 1, 9, 0, 3, 0, 5);
-		hero->AddAnimator(IMAGE::Crusader_Idle);
-		hero->m_animator->SetAnimeSpeed(5);
-		hero->m_animator->AddImageFrame(IMAGE::Crusader_Walk);
-		hero->m_animator->AddImageFrame(IMAGE::Crusader_Combat);
-		hero->GetOwnSkill().push_back(SKILL::Crusader_Combat_Smite);
-		hero->GetOwnSkill().push_back(SKILL::Crusader_Combat_ZealousAccusation);
-		hero->GetOwnSkill().push_back(SKILL::Crusader_Combat_StunningBlow);
-		hero->GetOwnSkill().push_back(SKILL::Crusader_Heal_BattleHeal);
+		hero->Init(DB_UNIT->CallHero(JOB::Crusader));
 		break;
 	case JOB::Vestal:
-		hero->Init(JOB::Vestal, resist, 24, 4, 1, 6, 0, 1, 0, 0);
-		hero->AddAnimator(IMAGE::Vestal_Idle);
-		hero->m_animator->SetAnimeSpeed(5);
-		hero->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
-		hero->m_animator->AddImageFrame(IMAGE::Vestal_Idle);
-		hero->GetOwnSkill().push_back(SKILL::Vestal_Combat_MaceBash);
-		hero->GetOwnSkill().push_back(SKILL::Vestal_Combat_Judgement);
-		hero->GetOwnSkill().push_back(SKILL::Vestal_Combat_DazzlingLight);
-		hero->GetOwnSkill().push_back(SKILL::Vestal_Heal_DivineComfort);
+		hero->Init(DB_UNIT->CallHero(JOB::Vestal));
 		break;
 	case JOB::PlagueDoctor:
-		hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		//hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	case JOB::Highwayman:
-		hero->Init(JOB::Highwayman, resist, 24, 4, 1, 6, 0, 1, 0, 0);
+		//hero->Init(JOB::Highwayman, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	default:
 		break;

@@ -78,6 +78,11 @@ enum class JOB
 	Highwayman
 };
 
+enum class ENEMYTYPE {
+	Skeleton
+
+};
+
 enum class DIR
 {
 	Left,

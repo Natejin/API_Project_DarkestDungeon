@@ -2,13 +2,14 @@
 #include "CEnemy.h"
 
 CEnemy::CEnemy() {
- 	info->unitType = UNITTYPE::Enemy;
 	m_layer = LAYER::Enemy;
 }
 CEnemy::~CEnemy() {}
 
 HRESULT CEnemy::Init()
 {
+	info = new Info_Enemy();
+	info->unitType = UNITTYPE::Enemy;
 	m_transform->m_pivot = Vector2(0.5, 1);
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);

@@ -6,17 +6,21 @@ class DB_UnitInfo : public Singleton<DB_UnitInfo>
 {
 private:
 	map<JOB, Info_Hero*> heroDB;
-	map<JOB, Info_Enemy*> enemyDB;
+	map<ENEMYTYPE, Info_Enemy*> enemyDB;
 	int heroID;
 	int enemyID;
 
+	void SetHero();
+	void SetEnemy();
 public:
 	DB_UnitInfo();
 	~DB_UnitInfo();
 
 	void Init();
 
-	CInfo_Item* CallItem(ITEM item);
+
+	Info_Hero* CallHero(JOB item);
+	Info_Enemy* CallEnemy(ENEMYTYPE item);
 
 	void Save();
 	void Load();
