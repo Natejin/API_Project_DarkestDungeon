@@ -84,6 +84,8 @@ public:
 	void SetMinimapPosOrigin();
 
 	DungeonData GetCurDungeonData();
+	void SetIsPassed();
+	void SetIsPassed(int i);
 	DungeonData GetCurDungeonData(int i);
 
 
