@@ -22,6 +22,7 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 {
 	checkCount();
 
+
 	//use item
 	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
@@ -32,7 +33,7 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 	}
 
 	//burida
-	if (m_collider->UICheckColliderBoxWithPoint (g_ptMouse))
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
 		if (MG_INPUT->isStayKeyDown(VK_SHIFT))
 		{
