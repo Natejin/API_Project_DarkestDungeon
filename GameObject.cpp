@@ -102,6 +102,34 @@ void GameObject::AddColliderBox()
 	}
 }
 
+void GameObject::AddColliderBoxBigger()
+{
+	if (m_spriteRenderer)
+	{
+		Vector2 imageSize = m_spriteRenderer->GetImageSize();
+
+		AddColliderBox(m_spriteRenderer->pos,
+			-imageSize.x * m_transform->m_pivot.x - 50,
+			-imageSize.y * m_transform->m_pivot.y - 50,
+			+imageSize.x * (1 - m_transform->m_pivot.x) +50,
+			+imageSize.y * (1 - m_transform->m_pivot.y) + 50);
+	}
+}
+
+void GameObject::AddColliderBoxSmaller()
+{
+	if (m_spriteRenderer)
+	{
+		Vector2 imageSize = m_spriteRenderer->GetImageSize();
+
+		AddColliderBox(m_spriteRenderer->pos,
+			-imageSize.x * m_transform->m_pivot.x +50,
+			-imageSize.y * m_transform->m_pivot.y +50,
+			+imageSize.x * (1 - m_transform->m_pivot.x) - 50,
+			+imageSize.y * (1 - m_transform->m_pivot.y) - 50);
+	}
+}
+
 void GameObject::AddAnimator(string imageName)
 {
 	m_animator = new CAnimator();

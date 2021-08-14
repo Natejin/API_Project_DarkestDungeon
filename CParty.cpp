@@ -328,6 +328,7 @@ void CParty::decreaseBright_movement()
 		if (m_member[0]->getMoveDis() > limit && m_member[0]->getMoveDis() > 200)
 		{
 			limit += 200;
+			if (getBrightness() > 0)
 			setBrightness(getBrightness() - 1);
 		}
 	}
