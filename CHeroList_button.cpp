@@ -3,6 +3,7 @@
 #include"CHero.h"
 #include"Hero_Roster.h"
 #include "TownScene.h"
+#include"CUI_Panel_Hero.h"
 CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;
@@ -22,10 +23,8 @@ HRESULT CHeroList_button::Init()
 	m_heroBG->useCustomPos = true;
 	m_heroBG->pos = Vector2(130, 0);
 	originPos = Vector2(0, 0);
-	SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
-	/*dummy_Roster = new Hero_Roster();
-	dummy_Roster->SetTriggerWhenDrag(dummy_Roster, &Hero_Roster::DragHeroList);*/
-	//m_hero = new CHero();
+	//SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
+	
 	return S_OK;
 
 }
@@ -48,8 +47,19 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 					m_triggerWhenDown();
 				}
 			}
+		
+			if (MG_INPUT->IsDownRMB())
+			{
+				if (canTriggerDownRightButton)
+				{
+					townScene->curDragHeroIndex = index;
+					m_triggerWhenDownRightButton();
+				}
+
+			}
 		}
 	}
+
 	
 
 

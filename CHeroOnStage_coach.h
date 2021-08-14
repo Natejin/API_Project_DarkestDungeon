@@ -1,16 +1,10 @@
 #pragma once
-#include"CDragButtion.h"
-
-class Hero_Roster : public CDragButton
+#include"CHero.h"
+class CHeroOnStage_coach : public CHero
 {
-	int index;
-
 public:
-	
-	class TownScene* scene;
-
-	Hero_Roster();
-	~Hero_Roster();
+	CHeroOnStage_coach();
+	~CHeroOnStage_coach();
 
 	HRESULT Init();
 
@@ -20,6 +14,11 @@ public:
 	virtual void BackRender(HDC _hdc);
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
+
+	virtual void Release();
+
+	void SetHero();
+	class CHero* CreateHero(string name, JOB job);
 
 };
 

@@ -209,6 +209,7 @@ enum class IMAGE
 	map2,
 	monster,
 	scouting,
+	characterpanel_bg,
 
 	treasure,
 	trap,

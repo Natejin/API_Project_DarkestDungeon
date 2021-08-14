@@ -274,6 +274,12 @@
     <Filter Include="Object\Component\ItemEffect">
       <UniqueIdentifier>{4a9a0865-777d-4787-bb2e-0b27eeea7942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\OnCoach_Hero">
+      <UniqueIdentifier>{f8f6d32d-3643-46dc-a317-10a1f02fa940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\CUIPanel_Hero">
+      <UniqueIdentifier>{467c70cd-572d-4922-ad0a-49b83e6fcb3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameNode.h">
@@ -636,6 +642,15 @@
     <ClInclude Include="CItemEffect.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Hero_Roster.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroOnStage_coach.h">
+      <Filter>Object\OnCoach_Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI_Panel_Hero.h">
+      <Filter>Object\UI\CUIPanel_Hero</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -973,6 +988,15 @@
     </ClCompile>
     <ClCompile Include="CItemEffect.cpp">
       <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero_Roster.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroOnStage_coach.cpp">
+      <Filter>Object\OnCoach_Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI_Panel_Hero.cpp">
+      <Filter>Object\UI\CUIPanel_Hero</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
