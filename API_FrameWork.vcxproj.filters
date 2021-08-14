@@ -657,6 +657,9 @@
     <ClInclude Include="DB_UnitInfo.h">
       <Filter>CommonInfo\DB</Filter>
     </ClInclude>
+    <ClInclude Include="TreasureEventPanel.h">
+      <Filter>Object\RoadObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1015,6 +1018,9 @@
     </ClCompile>
     <ClCompile Include="DB_UnitInfo.cpp">
       <Filter>CommonInfo\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="TreasureEventPanel.cpp">
+      <Filter>Object\RoadObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

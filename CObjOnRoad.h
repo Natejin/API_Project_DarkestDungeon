@@ -10,14 +10,7 @@ class CObjOnRoad :public CButton
 {
 private:
 	RoadObjType objType;
-	Vector2 PointToVector;
 	bool isOpen;
-
-	vector<CSlotItemButton*> m_TreasureSlot;
-	DummySlot* dummySlot;
-	CSlotItemButton* dragSlot;
-	Vector2Int originPos;
-	bool isDragging;
 
 public:
 	CObjOnRoad();
@@ -43,11 +36,6 @@ public:
 
 
 	void setCollider();
-	void setDummySlot();
-	void setTreasureSlot();
-
-	void StartDragItem(class CSlotItemButton* slot);
-	void EndDragItem(class CSlotItemButton* slot);
 
 	void Interaction_collision();
 

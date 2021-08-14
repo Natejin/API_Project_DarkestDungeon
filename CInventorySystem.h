@@ -38,9 +38,10 @@ public:
 
 	virtual void Release();
 
+	//==================================
+
 	virtual  void Enable();
 	virtual void Unable();
-	//==================================
 
 	void setInvenSlot(); //set dungeonInventory according to party info
 	void setConsumableSlot(); 

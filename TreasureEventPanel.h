@@ -1,13 +1,18 @@
 #pragma once
 #include "GameObject.h"
+#include "CSlotItemButton.h"
 
+class CInventorySystem;
 class TreasureEventPanel : public GameObject
 {
 private:
+	vector<CSlotItemButton*> m_treasureSlots;
 	class CButton* m_quick;
 
 	class CSpriteRenderer* m_windowPanelBG;
 	class CSpriteRenderer* m_windowPanelChar;
+
+	int nowMouseOn;
 
 public :
 	TreasureEventPanel();
@@ -23,6 +28,8 @@ public :
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	//==================================
 
 	void FinishUI();
 	virtual void Enable();
