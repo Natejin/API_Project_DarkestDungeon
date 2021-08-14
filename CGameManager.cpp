@@ -3,6 +3,9 @@
 #include "CHero.h"
 #include "CParty.h"
 #include "CVestal.h"
+#include "DungeonScene.h"
+#include "CBTN_Skill.h"
+#include "dungeonUI.h"
 
 CGameManager::CGameManager() {}
 CGameManager::~CGameManager() {}
@@ -27,6 +30,9 @@ HRESULT CGameManager::Init()
 	RegisterHeroToParty(1);
 	RegisterHeroToParty(2);
 	RegisterHeroToParty(3);
+	m_dungeonScene = MG_SCENE->dungeonScene;
+	m_townScene = MG_SCENE->townScene;
+	setParty();
 	return S_OK;
 }
 
@@ -113,6 +119,8 @@ void CGameManager::setParty()
 {
 	m_party = new CParty;
 	m_party->Init(1, 1, 1);
+	m_party->Unable();
+	MG_GMOBJ->RegisterObj("Party", m_party);
 }
 
 CParty* CGameManager::GetParty()
@@ -128,6 +136,11 @@ vector<CHero*> CGameManager::GetHeroes()
 CHero* CGameManager::GetHero(int index)
 {
 	return index < m_ownHeroes.size() ? m_ownHeroes[index] : nullptr;
+}
+
+CHero* CGameManager::GetHeroFromParty(int index)
+{
+	return index < m_partyOrigin.size() ? m_partyOrigin[index]: nullptr;
 }
 
 
@@ -152,8 +165,36 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 	default:
 		break;
 	}
-
 	hero->Unable();
 	MG_GMOBJ->RegisterObj(hero->GetName(), hero);
 	return hero;
 }
+
+CHero* CGameManager::GetCurSelHero()
+{
+	return m_CurSelHero;
+}
+
+void CGameManager::SetCurSelHero(int i)
+{
+	m_CurSelHero = m_party->GetHero(i);
+	for (size_t i = 0; i < m_party->GetPartySize(); i++)
+	{
+		m_party->GetHero(i)->isSelected = false;
+
+
+
+	}
+	m_party->GetHero(i)->isSelected = true;
+
+
+	m_dungeonScene->m_dungeonUI->;
+
+
+	vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
+	for (size_t j = 0; j < temp.size(); j++)
+	{
+		m_dungeonScene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+	}
+}
+

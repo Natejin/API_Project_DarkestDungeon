@@ -4,7 +4,7 @@
 
 class CHero;
 class CParty;
-class dungeonUI_HeroInfo : public GameObject
+class CDungeonUI_HeroInfo : public GameObject
 {
 private:
 	vector<ImageData> m_heroInfoImage; //장비, 히어로 아이콘, 스킬 이미지
@@ -12,27 +12,16 @@ private:
 
 	ImageData portrait;
 
-	//ImageData skill1;
-	//ImageData skill2;
-	//ImageData skill3;
-	//ImageData skill4;
-
 	ImageData armor;
 	ImageData weapon;
-
-
-
-
-
 
 	int selectedHeroIndex;
 
 public:
-
 	class DungeonScene* scene;
 
-	dungeonUI_HeroInfo();
-	~dungeonUI_HeroInfo();
+	CDungeonUI_HeroInfo();
+	~CDungeonUI_HeroInfo();
 
 	HRESULT Init();
 
@@ -57,9 +46,10 @@ public:
 
 
 	void SelectHero(int i);
-	//void selHero1();
-	//void selHero2();
-	//void selHero3();
-	//void selHero4();
+
+	void SetPortrait(IMAGE _image);
+	void SetWeapon(IMAGE _image);
+	void SetArmor(IMAGE _image);
+
 
 };

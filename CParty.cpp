@@ -3,7 +3,9 @@
 #include "CHero.h"
 #include "CVestal.h"
 
-CParty::CParty() {}
+CParty::CParty() {
+	maxPartyMember = 4;
+}
 CParty::~CParty() {}
 
 HRESULT CParty::Init()
@@ -31,7 +33,7 @@ HRESULT CParty::Init(int food, int bandage, int torch)
 
 void CParty::Update(float deltaTime, float worldTime)
 {
-	if (MG_INPUT->isStayKeyDown(VK_NUMPAD2))
+	/*if (MG_INPUT->isStayKeyDown(VK_NUMPAD2))
 	{
 		for (size_t i = 0; i < m_member.size(); i++)
 		{
@@ -40,7 +42,7 @@ void CParty::Update(float deltaTime, float worldTime)
 	}
 	if (MG_INPUT->isStayKeyDown(VK_NUMPAD8))
 	{
-		for (size_t i = 0; i < m_member.size(); i++)
+		for (size_t i = 0; i < m_member->size(); i++)
 		{
 			m_member[i]->m_transform->m_scale += Vector2(0.01);
 		}
@@ -60,7 +62,7 @@ void CParty::Update(float deltaTime, float worldTime)
 		{
 			m_member[i]->m_transform->angle -= 0.1;
 		}
-	}
+	}*/
 }
 
 void CParty::LateUpdate()
@@ -86,14 +88,14 @@ void CParty::FrontRender(HDC _hdc)
 
 void CParty::Release()
 {
-	//TODO 추후 영웅들 데이터 저장 추가 예정
-	for (size_t i = 0; i < m_member.size(); i++)
-	{
-		//MG_GMOBJ->RemoveObj(m_member[i]->GetId());
-		//SAFE_DELETE(m_member[i]);
-		m_member[i] = nullptr;
-	}
-	m_member.clear();
+	////TODO 추후 영웅들 데이터 저장 추가 예정
+	//for (size_t i = 0; i < m_member.size(); i++)
+	//{
+	//	//MG_GMOBJ->RemoveObj(m_member[i]->GetId());
+	//	//SAFE_DELETE(m_member[i]);
+	//	m_member[i] = nullptr;
+	//}
+	//m_member.clear();
 	GameObject::Release();
 }
 
@@ -113,7 +115,7 @@ void CParty::SetCamera()
 	}
 }
 
-void CParty::SetParty(vector<CHero*> party)
+void CParty::SetPartyMember(vector<CHero*> party)
 {
 	m_member = party;
 }

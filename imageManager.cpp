@@ -266,9 +266,13 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("vestal_armor", "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_weapon", "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
-	
+
+	//Weapon&Armor
+	MG_IMAGE->addImage(IMAGE::Vestal_Armor_0, "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Weapon_0, "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Armor_0, "images/icons_equip_Crusader/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Weapon_0, "images/icons_equip_Crusader/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+
 	//UIovelay
 	MG_IMAGE->addImage("selected1", "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("selected2", "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));

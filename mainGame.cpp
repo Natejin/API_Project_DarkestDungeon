@@ -19,9 +19,11 @@ HRESULT mainGame::init()
 	DB_ITEM->Init();
 	DB_SKILL->Init();
 	DB_UNIT->Init();
+
+
+	MG_SCENE->init();
 	MG_GAME->Init();
 	MG_CAMERA->Init();
-	MG_SCENE->init();
 	MG_GMOBJ->Init();
 
 

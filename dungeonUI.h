@@ -13,10 +13,10 @@ public:
 	CButton* bt_inven;
 	CButton* bt_map;
 
-	CButton* bt_skill1;
-	CButton* bt_skill2;
-	CButton* bt_skill3;
-	CButton* bt_skill4;
+	//CButton* bt_skill1;
+	//CButton* bt_skill2;
+	//CButton* bt_skill3;
+	//CButton* bt_skill4;
 	CButton* bt_passTurn;
 	CButton* bt_changePos;
 

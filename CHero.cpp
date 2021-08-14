@@ -96,10 +96,10 @@ HRESULT CHero::Init(Info_Hero* _info)
 	info->ownSkill = _info->ownSkill;
 
 
-	m_LVL = 1;
-	m_EXP = 0;
-	m_STRS = 0;
-	m_STRSLVL = 0;
+	info->m_LVL = 1;
+	info->m_EXP = 0;
+	info->m_STRS = 0;
+
 	SetMemberOverlay();
 	AddColliderBox(120, 300);
 	return S_OK;
@@ -200,9 +200,9 @@ void CHero::showStrsBar(HDC _hdc)
 {
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_STRS >= (i + 1) * 10)
+		if (info->m_STRS >= (i + 1) * 10)
 		{
-			if (m_STRS == 0) continue;
+			if (info->m_STRS == 0) continue;
 			STRSbar[i].m_img = MG_IMAGE->findImage("STRS_full");
 		}
 		STRSbar[i].m_trans.m_pos = Vector2(
@@ -266,6 +266,11 @@ void CHero::SetMemberOverlay()
 	}
 }
 
+Info_Hero* CHero::GetInfo()
+{
+	return info;
+}
+
 int CHero::getMoveDis() const
 {
 	return m_DIST;
@@ -278,17 +283,17 @@ int CHero::getMoveDis_reteat() const
 
 int CHero::getStress() const
 {
-	return m_STRS;
+	return info->m_STRS;
 }
 
 void CHero::setStress(int strs)
 {
-	m_STRS = strs;
+	info->m_STRS = strs;
 }
 
 void CHero::addStress(int strs)
 {
-	m_STRS += strs;
+	info->m_STRS += strs;
 }
 
 vector<SKILL> CHero::GetOwnSkill()
@@ -394,7 +399,7 @@ int CHero::GetPartyIndex()
 {
 	return  m_partyIndex;
 }
-int CHero::getPartyPos()
+int CHero::GetPartyPos()
 {
 	return  m_partyPos;
 }
@@ -414,7 +419,7 @@ void CHero::setSPD(int spd)
 {
 	info->m_SPD = spd;
 }
-void CHero::setPartyPos(int pos)
+void CHero::SetPartyPos(int pos)
 {
 	m_partyPos = pos;
 }

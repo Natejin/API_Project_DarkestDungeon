@@ -19,8 +19,11 @@ private:
 
 	class Astar* m_astar;
 	class TestScene* m_testScene;
-
+	SCENETYPE curScene;
 public:
+	class DungeonScene* dungeonScene;
+	class TownScene* townScene;
+
 	SceneManager();
 	~SceneManager();
 
@@ -29,9 +32,10 @@ public:
 	void update();
 	void Render(HDC _hdc);
 
-	Scene* addScene(string sceneName, Scene* scene);
-	HRESULT changeScene(string sceneName);
+	//Scene* addScene(string sceneName, Scene* scene);
+	//HRESULT changeScene(string sceneName);
 
 	Scene* addScene(SCENETYPE sceneName, Scene* scene);
 	HRESULT changeScene(SCENETYPE sceneName);
+	SCENETYPE CurScene();
 };

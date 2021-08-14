@@ -23,8 +23,6 @@ HRESULT CMapSystem::Init()
 	moveDistance = 12;
 	SetRandomCreateValue();
 	CreateDungeon();
-
-
 	return S_OK;
 }
 
@@ -90,7 +88,6 @@ void CMapSystem::SetRandomCreateValue()
 	rndRoad.push_back(_rndRoadEnemy < 100 ? _rndRoadEnemy : 100);
 	rndRoad.push_back(_rndRoadCurio < 100 ? _rndRoadCurio : 100);
 	rndRoad.push_back(_rndRoadTrap < 100 ? _rndRoadTrap : 100);
-
 }
 
 

@@ -104,6 +104,12 @@ enum class IMAGE
 	//Enemy
 	Skeleton_Defender,
 
+	//WeaponArmor
+	Vestal_Armor_0 ,
+	Vestal_Weapon_0,
+	Crusader_Armor_0 ,
+	Crusader_Weapon_0,
+
 	//IMG_DUNGEON
 	ruins_bg,
 	ruins_wall0,

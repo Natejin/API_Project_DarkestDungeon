@@ -5,10 +5,10 @@
 #include "CBTN_Skill.h"
 #include "DungeonScene.h"
 
-dungeonUI_HeroInfo::dungeonUI_HeroInfo() {}
-dungeonUI_HeroInfo::~dungeonUI_HeroInfo() {}
+CDungeonUI_HeroInfo::CDungeonUI_HeroInfo() {}
+CDungeonUI_HeroInfo::~CDungeonUI_HeroInfo() {}
 
-HRESULT dungeonUI_HeroInfo::Init()
+HRESULT CDungeonUI_HeroInfo::Init()
 {
     m_layer = LAYER::UI;
 
@@ -20,31 +20,31 @@ HRESULT dungeonUI_HeroInfo::Init()
     return S_OK;
 }
 
-void dungeonUI_HeroInfo::Update(float deltaTime, float worldTime)
+void CDungeonUI_HeroInfo::Update(float deltaTime, float worldTime)
 {
     //setInfoImage();
 }
 
-void dungeonUI_HeroInfo::LateUpdate()
+void CDungeonUI_HeroInfo::LateUpdate()
 {
 }
 
-void dungeonUI_HeroInfo::BackRender(HDC _hdc)
+void CDungeonUI_HeroInfo::BackRender(HDC _hdc)
 {
 }
 
-void dungeonUI_HeroInfo::Render(HDC _hdc)
+void CDungeonUI_HeroInfo::Render(HDC _hdc)
 {
 }
 
-void dungeonUI_HeroInfo::FrontRender(HDC _hdc)
+void CDungeonUI_HeroInfo::FrontRender(HDC _hdc)
 {
     showHeroSkill(_hdc);
     showHeroEquip(_hdc);
     ShowHeroState(_hdc);
 }
 
-void dungeonUI_HeroInfo::Release()
+void CDungeonUI_HeroInfo::Release()
 {
 }
 
@@ -52,10 +52,10 @@ void dungeonUI_HeroInfo::Release()
 //==================================
 
 
-void dungeonUI_HeroInfo::setInfoImage()
+void CDungeonUI_HeroInfo::setInfoImage()
 {
     //portrait and skill
-    portrait.m_img = MG_IMAGE->findImage(IMAGE::Crusader_portrait);
+    portrait.m_img = MG_IMAGE->findImage(IMAGE::enemy);
     portrait.m_trans.m_pos = Vector2(364, 732);
 
  
@@ -117,9 +117,9 @@ void dungeonUI_HeroInfo::setInfoImage()
     switch (MG_GAME->GetHero(selectedHeroIndex)->GetJob())
     {
     case JOB::Crusader:
-        armor.m_img = MG_IMAGE->findImage("vestal_armor");
+        armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
         armor.m_trans.m_pos = Vector2(575, 868);
-        weapon.m_img = MG_IMAGE->findImage("vestal_weapon");
+        weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
         weapon.m_trans.m_pos = Vector2(658, 868);
         break;
 
@@ -130,24 +130,24 @@ void dungeonUI_HeroInfo::setInfoImage()
         break;
 
     case JOB::Vestal:
-        armor.m_img = MG_IMAGE->findImage("vestal_armor");
+        armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
         armor.m_trans.m_pos = Vector2(575, 868);
-        weapon.m_img = MG_IMAGE->findImage("vestal_weapon");
+		weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
         weapon.m_trans.m_pos = Vector2(658, 868);
         break;
     }
 
 }
 
-void dungeonUI_HeroInfo::setButton()
+void CDungeonUI_HeroInfo::setButton()
 {
-    MG_GAME->GetHero(0)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
-    MG_GAME->GetHero(1)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
-    MG_GAME->GetHero(2)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
-    MG_GAME->GetHero(3)->SetTriggerWhenClick(this, &dungeonUI_HeroInfo::SelectHero);
+    for (size_t i = 0; i < MG_GAME->GetHeroPartySize(); i++)
+    {
+        MG_GAME->GetHero(i)->SetTriggerWhenClick(this, &CDungeonUI_HeroInfo::SelectHero);
+    }
 }
 
-void dungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
+void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
 {
     char str[256];
     string strFrame;
@@ -217,30 +217,39 @@ void dungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
     TextOut(_hdc, 380, 985, str, strlen(str));
 }
 
-void dungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
+void CDungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
 {
     portrait.m_img->renderUI(_hdc, &portrait.m_trans);
-
-
 }
 
-void dungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
+void CDungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
 {
     armor.m_img->renderUI(_hdc, &armor.m_trans);
     weapon.m_img->renderUI(_hdc, &weapon.m_trans);
 }
 
-void dungeonUI_HeroInfo::SelectHero(int index)
+void CDungeonUI_HeroInfo::SelectHero(int index)
 {
     if (scene->m_dungeonMode == DUNGEONMODE::WALK)
     {
-        for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-        {
-            if (i == index)  MG_GAME->GetHero(i)->isSelected = true;
-            else  MG_GAME->GetHero(i)->isSelected = false;
-        }
+        MG_GAME->SetCurSelHero(index);
     }
    
+}
+
+void CDungeonUI_HeroInfo::SetPortrait(IMAGE _image)
+{
+    portrait.m_img = MG_IMAGE->findImage(_image);
+}
+
+void CDungeonUI_HeroInfo::SetWeapon(IMAGE _image)
+{
+    portrait.m_img = MG_IMAGE->findImage(_image);
+}
+
+void CDungeonUI_HeroInfo::SetArmor(IMAGE _image)
+{
+
 }
 
 //void dungeonUI_HeroInfo::selHero1()

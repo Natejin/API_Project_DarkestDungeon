@@ -301,7 +301,7 @@ void DungeonScene2::CreateParty()
 	{
 		party[i]->m_transform->m_pos = Vector2(210 + 20 * i, 520);
 	}
-	m_party->SetParty(party);
+	m_party->SetPartyMember(party);
 	MG_GMOBJ->RegisterObj("Party", m_party);
 
 }

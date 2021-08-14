@@ -54,6 +54,10 @@ void DB_UnitInfo::SetHero()
 	info->ownSkill.push_back(SKILL::Crusader_Combat_ZealousAccusation);
 	info->ownSkill.push_back(SKILL::Crusader_Combat_StunningBlow);
 	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
+
+	info->portrait = IMAGE::Crusader_portrait;
+	info->weapon.push_back( IMAGE::Crusader_Weapon_0);
+	info->armor.push_back( IMAGE::Crusader_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
 
 
@@ -68,7 +72,7 @@ void DB_UnitInfo::SetHero()
 	info->m_ACRY = 4;
 	info->m_CRI = 2;
 	info->m_DEF = 5;
-	info->m_DODGE =2;
+	info->m_DODGE = 2;
 	info->m_LVL = 1;
 	info->m_EXP = 0;
 	info->m_STRS = 0;
@@ -85,6 +89,10 @@ void DB_UnitInfo::SetHero()
 	info->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
 	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
+
+	info->portrait = IMAGE::Vestal_portrait;
+	info->weapon.push_back(IMAGE::Vestal_Weapon_0);
+	info->armor.push_back(IMAGE::Vestal_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
 }
 

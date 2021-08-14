@@ -49,12 +49,13 @@ public:
 	void SelectHero(int index) { selectedHeroIndex = index; };
 
 
-	void SetParty(vector<CHero*> member);
+	void SetPartyMember(vector<CHero*> member);
 	void SetHero(CHero* member);
 	void SetCamera();
-	int GetPartySize() { return m_member.size(); }
+	//int GetPartySize() { return MG_GAME->GetHeroPartySizeber.size(); }
 
 	vector<CHero*> GetParty() { return m_member; }
+	int GetPartySize() { return m_member.size(); }
 	CHero* GetHero(int index);
 
 	void FormationMove();
