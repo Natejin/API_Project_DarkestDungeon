@@ -5,7 +5,7 @@ class CEst_UI :public GameObject
 {
 protected:
 
-	class CButton* m_quick;
+	class CButton* m_quit;
 
 	class CSpriteRenderer* m_windowPanelBG;
 	class CSpriteRenderer* m_windowPanelChar;

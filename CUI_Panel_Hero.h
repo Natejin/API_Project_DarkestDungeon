@@ -25,9 +25,6 @@ public:
 	virtual void Unable();
 	
 	void SetHeroPanel();
-	
-
-
 
 };
 

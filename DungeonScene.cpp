@@ -29,8 +29,6 @@ HRESULT DungeonScene::Init()
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
 
-
-
 	//SetUIIMG();
 	CreateBattleSystem();
 	CreateParty();
@@ -48,7 +46,6 @@ HRESULT DungeonScene::Init()
 
 void DungeonScene::CreateDungeonUI()
 {
-
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->m_pMapSystem = m_pMapSystem;
 	m_dungeonUI->scene = this;

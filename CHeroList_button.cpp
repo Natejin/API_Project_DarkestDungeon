@@ -8,7 +8,7 @@ CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;
 	canTriggerDrag = false;
-	index = -1;
+	m_index = -1;
 }
 
 CHeroList_button::~CHeroList_button()
@@ -23,8 +23,7 @@ HRESULT CHeroList_button::Init()
 	m_heroBG->useCustomPos = true;
 	m_heroBG->pos = Vector2(130, 0);
 	originPos = Vector2(0, 0);
-	//SetTriggerWhenDrag(this, &CHeroList_button::DragHeroList);
-	
+
 	return S_OK;
 
 }
@@ -43,7 +42,7 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 				if (canTriggerDown)
 				{
 					townScene->isDrag = true;
-					townScene->curDragHeroIndex = index;
+					townScene->curDragHeroIndex = m_index;
 					m_triggerWhenDown();
 				}
 			}
@@ -52,53 +51,13 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 			{
 				if (canTriggerDownRightButton)
 				{
-					townScene->curDragHeroIndex = index;
+					townScene->curDragHeroIndex = m_index;
 					m_triggerWhenDownRightButton();
 				}
 
 			}
 		}
 	}
-
-	
-
-
-	//if (!selDragButton)
-	//{
-	//	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
-	//	{
-	//		if (MG_INPUT->IsDownLMB())
-	//		{
-	//			selDragButton = this;
-	//			selKeyIndex = VK_LBUTTON;
-	//			originPos = m_transform->m_pos;
-	//			if (canTriggerDown)
-	//			{
-	//				m_triggerWhenDown();
-	//			}
-	//		}
-	//	}
-	//	
-	//}
-	//else if (selDragButton == this)
-	////else
-	//{
-	//	if (MG_INPUT->IsUpLMB())
-	//	{
-	//		if (canTriggerUp)
-	//		{
-	//			m_triggerWhenUp();
-	//		}
-	//		else
-	//		{
-	//			m_transform->m_pos = originPos;
-	//			selDragButton = nullptr;
-	//			selKeyIndex = -1;
-	//		}
-	//		
-	//	}
-	//}
-
 }
 
 void CHeroList_button::LateUpdate()

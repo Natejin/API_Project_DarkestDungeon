@@ -57,7 +57,7 @@ void CUIPanel_Abbey::FrontRender(HDC _hdc)
 {
 	m_windowPanelBG->Render(_hdc);
 	m_windowPanelChar->Render(_hdc);
-	m_quick->isActive = true;
+	m_quit->isActive = true;
 	CheckStress(_hdc);
 }
 
@@ -115,13 +115,11 @@ void CUIPanel_Abbey::SetcloseRoom()
 
 void CUIPanel_Abbey::Enable()
 {
-	CEst_UI::Enable();
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{
 		panelVec[i]->isActive = true;
 	}
-	isActive = true;
-	
+	CEst_UI::Enable();
 }
 
 void CUIPanel_Abbey::Unable()
@@ -131,7 +129,6 @@ void CUIPanel_Abbey::Unable()
 	{
 		panelVec[i]->isActive = false;
 	}
-	isActive = false;
 }
 
 void CUIPanel_Abbey::CheckStress(HDC _hdc)

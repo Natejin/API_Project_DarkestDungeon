@@ -636,9 +636,6 @@
     <ClInclude Include="CItemEffect.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Hero_Roster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Info_Hero.h">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
@@ -651,11 +648,14 @@
     <ClInclude Include="CHeroOnStage_coach.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CUI_Panel_Hero.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="DB_UnitInfo.h">
       <Filter>CommonInfo\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI_Panel_Hero.h">
+      <Filter>Object\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero_Roster.h">
+      <Filter>Object\UI\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -995,9 +995,6 @@
     <ClCompile Include="CItemEffect.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Hero_Roster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Info_Hero.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
@@ -1010,11 +1007,14 @@
     <ClCompile Include="CHeroOnStage_coach.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CUI_Panel_Hero.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="DB_UnitInfo.cpp">
       <Filter>CommonInfo\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI_Panel_Hero.cpp">
+      <Filter>Object\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero_Roster.cpp">
+      <Filter>Object\UI\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
