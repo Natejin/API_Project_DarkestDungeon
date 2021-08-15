@@ -221,6 +221,7 @@ void DungeonScene::CreateBattleSystem()
 {
 	m_pBattleSystem = new CBattleSystem();
 	m_pBattleSystem->scene = this;
+	m_pBattleSystem->Init();
 	m_pBattleSystem->dungeonUI = m_dungeonUI;
 	m_pBattleSystem->dungeonUIHeroinfo = m_dungeonUIinfo;
 	m_pBattleSystem->isActive = false;

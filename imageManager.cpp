@@ -114,7 +114,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::room_boss, "images/icons_map/room_boss.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_curio, "images/icons_map/room_curio.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_empty, "images/icons_map/room_empty.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::room_entrance, "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::room_entrance, "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_treasure, "images/icons_map/room_treasure.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_unknown, "images/icons_map/room_unknown.bmp", 64, 64, true, RGB(255, 0, 255));
 
@@ -320,7 +320,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DazzlingLight , "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineGrace , "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort , "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight , "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -340,10 +340,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 100, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/dungeonUI/panel_monster_indicator_valid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/dungeonUI/panel_monster_indicator_invalid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::panel_monster_Red, "images/dungeonUI/panel_monster_indicator_valid_Red.bmp", 147, 76, true, RGB(255, 0, 255));
 	
 	MG_IMAGE->addImage(IMAGE::Target_Monster1, "images/dungeonUI/target_1.bmp", 175, 206, true, RGB(255, 0, 255));

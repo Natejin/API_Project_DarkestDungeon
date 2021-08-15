@@ -123,9 +123,9 @@ void CDungeonUI_HeroInfo::setInfoImage()
     //     m_armor.m_trans.m_pos = Vector2(658, 868);
     //     break;
 
-    m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+    m_weapon.m_img = MG_IMAGE->findImage(IMAGE::NONE);
 
-    m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+    m_armor.m_img = MG_IMAGE->findImage(IMAGE::NONE);
     m_weapon.m_trans.m_pos = Vector2(575, 868);
     m_armor.m_trans.m_pos = Vector2(658, 868);
 

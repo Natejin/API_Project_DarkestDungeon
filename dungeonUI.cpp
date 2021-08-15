@@ -130,7 +130,6 @@ void dungeonUI::SetSkillButton()
 	for (size_t i = 0; i < 5; i++)
 	{
 		CBTN_Skill* temp = new CBTN_Skill();
-
 		temp->scene = scene;
 		temp->Init();
 		temp->m_transform->m_pos = Vector2(620 + 70 * i, 764);

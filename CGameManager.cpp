@@ -158,10 +158,8 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->Init(DB_UNIT->CallHero(JOB::Vestal));
 		break;
 	case JOB::PlagueDoctor:
-		//hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	case JOB::Highwayman:
-		//hero->Init(JOB::Highwayman, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	default:
 		break;

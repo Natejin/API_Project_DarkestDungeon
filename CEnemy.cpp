@@ -48,7 +48,23 @@ HRESULT CEnemy::Init()
 
 void CEnemy::Update(float deltaTime, float worldTime)
 {
-	Unit::Update(deltaTime, worldTime);
+	if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
+	{
+		if (MG_INPUT->IsDownLMB())
+		{
+			if (canTriggerDown)
+			{
+				m_triggerWhenDown(m_partyIndex);
+			}
+		}
+
+		if (canTriggerStay)
+		{
+			m_triggerWhenStay(m_partyIndex);
+		}
+	}
+
+
 }
 
 void CEnemy::LateUpdate()
@@ -71,8 +87,7 @@ void CEnemy::FrontRender(HDC _hdc)
 	{
 		targetSkillMem.m_trans.m_pos = Vector2(
 			m_transform->m_pos.x - 87,
-			m_transform->m_pos.y - 78);
-
+			m_transform->m_pos.y - 100);
 		targetSkillMem.Render(_hdc);
 	}
 }

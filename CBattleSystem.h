@@ -22,7 +22,8 @@ class CBattleSystem : public GameObject
 	queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 
-
+	ImageData mouseOnEnemy;
+	ImageData mouseOnEnemyRed;
 
 	int randomDice6 = 6;
 	int randomDice100 = 100;
@@ -31,6 +32,11 @@ class CBattleSystem : public GameObject
 
 	class CHero* curHero;
 	class CEnemy* curEnemy;
+
+	vector< Vector2> targetEnemyPosVec;
+	int enemyPosIndex;
+	int currentSkill;
+
 
 public:
 	class DungeonScene* scene;
@@ -65,7 +71,9 @@ public:
 private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
-	void SelectEnemyTarget(SKILL skill, int index);
+
+	void SetEnemyIndicator(int index);
+	void SelectEnemyTarget(SKILL skill);
 
 	CHero* GetHero(int i);
 	void SelectHero(int index);

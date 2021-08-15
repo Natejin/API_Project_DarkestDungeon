@@ -14,6 +14,7 @@
 CBattleSystem::CBattleSystem()
 {
 	m_layer = LAYER::UI;
+	enemyPosIndex = 0;
 }
 
 CBattleSystem::~CBattleSystem()
@@ -23,8 +24,15 @@ CBattleSystem::~CBattleSystem()
 
 HRESULT CBattleSystem::Init()
 {
+	mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Black);
+	//mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
 
-
+	targetEnemyPosVec.push_back(Vector2(1160, 640));
+	targetEnemyPosVec.push_back(Vector2(1360, 640));
+	targetEnemyPosVec.push_back(Vector2(1560, 640));
+	targetEnemyPosVec.push_back(Vector2(1760, 640));
+	mouseOnEnemy.m_trans.m_pivot = Vector2(0.5, 0.5);
+	mouseOnEnemy.m_trans.m_pos = targetEnemyPosVec[0];
 	return S_OK;
 }
 
@@ -39,6 +47,7 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 	{
 		EndTurn();
 	}
+	mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 20;
 }
 
 void CBattleSystem::LateUpdate()
@@ -62,7 +71,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(0, 255, 255));
-
+	mouseOnEnemy.RenderUI(_hdc);
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
@@ -74,22 +83,14 @@ void CBattleSystem::FrontRender(HDC _hdc)
 			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
 			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
 		}
-
 	}
+
 }
 
 void CBattleSystem::Release()
 {
 
 }
-
-
-
-
-
-
-
-
 
 void CBattleSystem::BattleSystemInitiate()
 {
@@ -101,6 +102,7 @@ void CBattleSystem::BattleSystemInitiate()
 	isActive = true;
 	StartTurn();
 }
+
 void CBattleSystem::BattleSystemEnd()
 {
 	scene->m_dungeonMode = DUNGEONMODE::WALK;
@@ -150,16 +152,11 @@ void CBattleSystem::StartTurn()
 void CBattleSystem::HeroTurn()
 {
 	SelectHero(curHero->GetPartyIndex());
-
-
 }
 
 void CBattleSystem::EnemyTurn()
 {
 	SelectEnemy(curEnemy->GetPartyIndex());
-
-
-
 }
 
 void CBattleSystem::EndTurn()
@@ -175,12 +172,11 @@ void CBattleSystem::UseSkill(int _index)
 		dungeonUI->skillBTNs[i]->selected = false;
 	}
 	dungeonUI->skillBTNs[_index]->selected = true;
-
-	
+	currentSkill = _index;
 
 	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
-		SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index], _index);
+		SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
 	}
 }
 
@@ -217,7 +213,7 @@ void CBattleSystem::UseSkill(int _index)
 //	dungeonUI->skillBTNs[3]->selected = true;
 //}
 
-//enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
+
 void CBattleSystem::CreateEnemyParty()
 {
 	int random = MG_RND->getInt(2) + 2;
@@ -230,12 +226,11 @@ void CBattleSystem::CreateEnemyParty()
 		enemy->SetPosition(i);
 		enemy->SetPartyIndex(i);
 		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
 		enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
 		enemyParty.push_back(enemy);
 	}
-
-
 }
 
 void CBattleSystem::CreateHeroesParty()
@@ -268,12 +263,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 
 	//알고리즘을 이용한 정렬
 	sort(speedVec.begin(), speedVec.end());
-
 }
-
-
-
-
 
 CEnemy* CBattleSystem::GetEnemy(int index)
 {
@@ -284,26 +274,38 @@ CEnemy* CBattleSystem::GetEnemy(int index)
 void CBattleSystem::SelectEnemy(int index)
 {
 
-	for (int i = 0; i < enemyParty.size(); i++)
+	//auto tempSkill = DB_SKILL->CallSkill(skill);
+	//for (int i = 0; i < enemyParty.size(); i++)
+	//{
+	//	enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(i) ? true : false;
+	//}
+
+	/*for (int i = 0; i < enemyParty.size(); i++)
 	{
 		if (i == index) GetEnemy(i)->isSelected = true;
 		else GetEnemy(i)->isSelected = false;
+	}*/
+}
+
+
+void CBattleSystem::SetEnemyIndicator(int index)
+{
+	enemyPosIndex = index;
+	if (enemyParty[index]->isTargetSkill)
+	{
+		mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
+	}
+	else {
+		mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Black);
 	}
 }
 
-void CBattleSystem::SelectEnemyTarget(SKILL skill, int index)
+void CBattleSystem::SelectEnemyTarget(SKILL skill)
 {
 	auto tempSkill = DB_SKILL->CallSkill(skill);
-	for (size_t i = 0; i < enemyParty.size(); i++)
+	for (int i = 0; i < enemyParty.size(); i++)
 	{
-		if (tempSkill->CheckTarget(i))
-		{
-			enemyParty[i]->isSelected = true;
-		}
-		else {
-			enemyParty[i]->isSelected = false;
-		}
-		
+		enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(i) ? true : false;
 	}
 }
 
@@ -319,4 +321,11 @@ void CBattleSystem::SelectHero(int index)
 
 void CBattleSystem::ShowTargetBySkill(int index)
 {
+
 }
+
+
+
+
+
+
