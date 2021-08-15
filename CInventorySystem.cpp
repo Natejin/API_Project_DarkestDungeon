@@ -64,6 +64,8 @@ void CInventorySystem::Update(float deltaTime, float worldTime)
 		}
 	}
 
+	setPartyInvenInfo();
+
 }
 
 void CInventorySystem::LateUpdate()
@@ -304,4 +306,33 @@ bool CInventorySystem::decreaseItem(ITEM itemInfo, int& count)
 	{
 		return false;
 	}
+}
+
+void CInventorySystem::setPartyInvenInfo()
+{
+	int TotalTorch = 0;
+	int TotalFood = 0;
+	int TotalBandage = 0;
+
+	for (int i = 0; i < m_invenSlots.size(); i++)
+	{
+		if (m_invenSlots[i]->m_itemInfo != nullptr)
+		{
+			if (m_invenSlots[i]->m_itemInfo->m_item == ITEM::Torch)
+			{
+				TotalTorch += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+			else if (m_invenSlots[i]->m_itemInfo->m_item == ITEM::Food)
+			{
+				TotalFood += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+			else if (m_invenSlots[i]->m_itemInfo->m_item == ITEM::Bandage)
+			{
+				TotalBandage += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+		}
+	}
+	MG_GAME->GetParty()->setTorch(TotalTorch);
+	MG_GAME->GetParty()->setFood(TotalFood);
+	MG_GAME->GetParty()->setBandage(TotalBandage);
 }
