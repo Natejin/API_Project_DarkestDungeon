@@ -6,6 +6,7 @@
 #include "DungeonScene.h"
 #include "CBTN_Skill.h"
 #include "dungeonUI.h"
+#include "dungeonUI_HeroInfo.h"
 
 CGameManager::CGameManager() {}
 CGameManager::~CGameManager() {}
@@ -181,20 +182,29 @@ void CGameManager::SetCurSelHero(int i)
 	for (size_t i = 0; i < m_party->GetPartySize(); i++)
 	{
 		m_party->GetHero(i)->isSelected = false;
-
-
-
 	}
 	m_party->GetHero(i)->isSelected = true;
 
 
-	m_dungeonScene->m_dungeonUI->;
+	m_dungeonScene->m_dungeonUIinfo->SetPortrait(m_CurSelHero->GetInfo()->portrait);
+	m_dungeonScene->m_dungeonUIinfo->SetWeapon(m_CurSelHero->GetInfo()->weapon[0]);
+	m_dungeonScene->m_dungeonUIinfo->SetArmor(m_CurSelHero->GetInfo()->armor[0]);
 
 
 	vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
-	for (size_t j = 0; j < temp.size(); j++)
+	
+	
+	for (size_t j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
 	{
-		m_dungeonScene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+		if (temp.size() > j)
+		{
+			m_dungeonScene->m_dungeonUI->skillBTNs[j]->Enable();
+			m_dungeonScene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+		}
+		else {
+			m_dungeonScene->m_dungeonUI->skillBTNs[j]->Unable();
+		}
+	
 	}
 }
 

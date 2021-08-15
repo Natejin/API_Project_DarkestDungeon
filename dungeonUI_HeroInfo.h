@@ -12,8 +12,8 @@ private:
 
 	ImageData portrait;
 
-	ImageData armor;
-	ImageData weapon;
+	ImageData m_weapon;
+	ImageData m_armor;
 
 	int selectedHeroIndex;
 

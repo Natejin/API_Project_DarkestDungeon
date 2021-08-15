@@ -1,4 +1,4 @@
-#include "framework.h"
+#include  "framework.h"
 #include "dungeonUI_HeroInfo.h"
 #include "CHero.h"
 #include "CParty.h"
@@ -117,10 +117,10 @@ void CDungeonUI_HeroInfo::setInfoImage()
     switch (MG_GAME->GetHero(selectedHeroIndex)->GetJob())
     {
     case JOB::Crusader:
-        armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        armor.m_trans.m_pos = Vector2(575, 868);
-        weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        weapon.m_trans.m_pos = Vector2(658, 868);
+        m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+        m_weapon.m_trans.m_pos = Vector2(575, 868);
+        m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+        m_armor.m_trans.m_pos = Vector2(658, 868);
         break;
 
     case JOB::Highwayman:
@@ -130,10 +130,10 @@ void CDungeonUI_HeroInfo::setInfoImage()
         break;
 
     case JOB::Vestal:
-        armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        armor.m_trans.m_pos = Vector2(575, 868);
-		weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        weapon.m_trans.m_pos = Vector2(658, 868);
+        m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+        m_weapon.m_trans.m_pos = Vector2(575, 868);
+		m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+        m_armor.m_trans.m_pos = Vector2(658, 868);
         break;
     }
 
@@ -224,8 +224,8 @@ void CDungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
 
 void CDungeonUI_HeroInfo::showHeroEquip(HDC _hdc)
 {
-    armor.m_img->renderUI(_hdc, &armor.m_trans);
-    weapon.m_img->renderUI(_hdc, &weapon.m_trans);
+    m_weapon.m_img->renderUI(_hdc, &m_weapon.m_trans);
+    m_armor.m_img->renderUI(_hdc, &m_armor.m_trans);
 }
 
 void CDungeonUI_HeroInfo::SelectHero(int index)
@@ -244,12 +244,13 @@ void CDungeonUI_HeroInfo::SetPortrait(IMAGE _image)
 
 void CDungeonUI_HeroInfo::SetWeapon(IMAGE _image)
 {
-    portrait.m_img = MG_IMAGE->findImage(_image);
+    m_weapon.m_img = MG_IMAGE->findImage(_image);
+
 }
 
 void CDungeonUI_HeroInfo::SetArmor(IMAGE _image)
 {
-
+    m_armor.m_img = MG_IMAGE->findImage(_image);
 }
 
 //void dungeonUI_HeroInfo::selHero1()

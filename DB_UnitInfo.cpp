@@ -17,7 +17,59 @@ void DB_UnitInfo::Init()
 
 Info_Hero* DB_UnitInfo::CallHero(JOB job)
 {
-	return heroDB[job];
+	auto _info = heroDB[job];
+	auto info = new Info_Hero();
+	info->unitType = _info->unitType;
+	info->m_HP = _info->m_HP;
+	info->m_SPD = _info->m_SPD;
+	for (size_t i = 0; i < 5; i++)
+	{
+		info->resist[i] = _info->resist[i];
+	}
+	for (size_t i = 0; i < 8; i++)
+	{
+		info->attribute[i] = false;
+	}
+
+	//hero
+	info->job = _info->job;
+	info->m_DMG = _info->m_DMG;
+	info->m_ACRY = _info->m_ACRY;
+	info->m_CRI = _info->m_CRI;
+	info->m_DEF = _info->m_DEF;
+	info->m_DODGE = _info->m_DODGE;
+	info->ownSkill = _info->ownSkill;
+
+	info->imageIdle = _info->imageIdle;
+	info->imageWalk = _info->imageWalk;
+	info->imageCombat = _info->imageCombat;
+
+
+
+	info->m_LVL = 1;
+	info->m_EXP = 0;
+	info->m_STRS = 0;
+	info->portrait = _info->portrait;
+	info->weapon = _info->weapon;
+	info->armor = _info->armor;
+
+
+
+	for (size_t i = 0; i < _info->ownSkill.size(); i++)
+	{
+		info->ownSkill.push_back(_info->ownSkill[i]);
+	}
+
+
+
+
+
+
+
+
+
+
+	return info;
 }
 
 Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
