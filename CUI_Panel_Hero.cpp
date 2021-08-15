@@ -25,9 +25,15 @@ HRESULT CUI_Panel_Hero::Init()
 	m_HeroPanel = new CSpriteRenderer(IMAGE::hero, m_transform);
 	m_HeroPanel->useCustomPos = true;
 	m_HeroPanel->pos = Vector2(150, 600);
+	
+	m_HeroImg = new CSpriteRenderer(IMAGE::Crusader_sword, m_transform);
+	m_HeroImg->useCustomPos = true;
+	m_HeroImg->pos = Vector2(120, 300);
+	m_HeroImg->useCustomScale = true;
+	m_HeroImg->scale = Vector2(0.5, 0.5);
+
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
 
-	//m_HeroImg = new CSpriteRenderer(IMAGE::Crusader_sword, m_transform);
 	Unable();
 	return S_OK; 
 }
@@ -79,14 +85,11 @@ void CUI_Panel_Hero::SetHeroPanel()
 	{
 	case JOB::Crusader:
 		m_windowPanelChar->SetImage(IMAGE::crusader_header);
-
-		//m_HeroImg->SetImage(IMAGE::Crusader_Idle);
-		//m_HeroImg->SetImage(IMAGE::enemy);
-		//m_HeroImg->SetImage(IMAGE::Crusader_sword);
+		m_HeroImg->SetImage(IMAGE::Crusader_sword);
 		break;
 	case JOB::Vestal:
 		m_windowPanelChar->SetImage(IMAGE::vestal_header);
-		//m_HeroImg->SetImage(IMAGE::Vestal_Idle);
+		m_HeroImg->SetImage(IMAGE::Vestal_mace);
 		break;
 	case JOB::Highwayman:
 		m_windowPanelChar->SetImage(IMAGE::highwayman_header);
