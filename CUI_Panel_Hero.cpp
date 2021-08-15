@@ -5,6 +5,8 @@
 #include"CHeroList_button.h"
 #include"TownScene.h"
 #include"CHero.h"
+#include"Info_Skill.h"
+
 CUI_Panel_Hero::CUI_Panel_Hero()
 {
 }
@@ -24,7 +26,7 @@ HRESULT CUI_Panel_Hero::Init()
 	
 	m_HeroPanel = new CSpriteRenderer(IMAGE::hero, m_transform);
 	m_HeroPanel->useCustomPos = true;
-	m_HeroPanel->pos = Vector2(150, 600);
+	m_HeroPanel->pos = Vector2(100, 600);
 	
 	m_HeroImg = new CSpriteRenderer(IMAGE::Crusader_sword, m_transform);
 	m_HeroImg->useCustomPos = true;
@@ -62,6 +64,7 @@ void CUI_Panel_Hero::FrontRender(HDC _hdc)
 	m_HeroPanel->Render(_hdc);
 	m_HeroImg->Render(_hdc);
     ShowHeroInfo(_hdc);
+	ShowHeroSkill();
 }
 
 void CUI_Panel_Hero::Release()
@@ -114,26 +117,50 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
     TextOut(_hdc, 380, 400, str, strlen(str));
 
     SetTextColor(_hdc, RGB(255, 0, 0));
-    sprintf_s(str, "HP :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getHP());
+
+	sprintf_s(str, "HP :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getHP());
     TextOut(_hdc, 380, 435, str, strlen(str));
 
     SetTextColor(_hdc, RGB(255, 255, 255));
 
-    sprintf_s(str, "ACC :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetAcry());
+    sprintf_s(str, "Acc :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetAcry());
+    TextOut(_hdc, 380, 455, str, strlen(str));
+
+    sprintf_s(str, "Crit :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetCri());
+    TextOut(_hdc, 480, 455, str, strlen(str));
+
+    sprintf_s(str, "Dmg :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDmg());
+    TextOut(_hdc, 380, 470, str, strlen(str));
+
+    sprintf_s(str, "Dodge :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDodge());
+    TextOut(_hdc, 480, 470, str, strlen(str));
+
+    sprintf_s(str, "Prot :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDef());
     TextOut(_hdc, 380, 485, str, strlen(str));
 
-    sprintf_s(str, "CRIT :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetCri());
-    TextOut(_hdc, 380, 505, str, strlen(str));
+    sprintf_s(str, "Spd :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getSPD());
+    TextOut(_hdc, 480, 485, str, strlen(str));
 
-    sprintf_s(str, "DMG :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDmg());
-    TextOut(_hdc, 380, 525, str, strlen(str));
+	//stun, blight, bleed, debuff, move
+	sprintf_s(str, "Stun :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(0));
+	TextOut(_hdc, 1000, 455, str, strlen(str));
 
-    sprintf_s(str, "DODGE :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDodge());
-    TextOut(_hdc, 380, 545, str, strlen(str));
+	sprintf_s(str, "Blight :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(1));
+	TextOut(_hdc, 1100, 455, str, strlen(str));
 
-    sprintf_s(str, "PROT :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDef());
-    TextOut(_hdc, 380, 565, str, strlen(str));
+	sprintf_s(str, "Bleed :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(2));
+	TextOut(_hdc, 1000, 470, str, strlen(str));
 
-    sprintf_s(str, "SPD :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getSPD());
-    TextOut(_hdc, 380, 585, str, strlen(str));
+	sprintf_s(str, "Debuff :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(3));
+	TextOut(_hdc, 1100, 470, str, strlen(str));
+
+	sprintf_s(str, "Move :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(4));
+	TextOut(_hdc, 1000, 485, str, strlen(str));
+
+}
+
+void CUI_Panel_Hero::ShowHeroSkill()
+{
+	MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
+	
 }

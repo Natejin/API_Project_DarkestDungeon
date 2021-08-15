@@ -1,6 +1,6 @@
 #pragma once
 #include"CEst_UI.h"
-
+#include"CBTN_Skill.h"
 class CUI_Panel_Hero : public CEst_UI
 {
 	
@@ -26,5 +26,7 @@ public:
 	
 	void SetHeroPanel();
 	void ShowHeroInfo(HDC _hdc);
+	void ShowHeroSkill();
+	
 };
 
