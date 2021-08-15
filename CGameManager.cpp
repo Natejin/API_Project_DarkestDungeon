@@ -158,16 +158,13 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->Init(DB_UNIT->CallHero(JOB::Vestal));
 		break;
 	case JOB::PlagueDoctor:
-		//hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	case JOB::Highwayman:
-		//hero->Init(JOB::Highwayman, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	default:
 		break;
 	}
 	hero->Unable();
-	MG_GMOBJ->RegisterObj(hero->GetName(), hero);
 	return hero;
 }
 
@@ -194,7 +191,7 @@ void CGameManager::SetCurSelHero(int i)
 	vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
 	
 	
-	for (size_t j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
+	for (int j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
 	{
 		if (temp.size() > j)
 		{

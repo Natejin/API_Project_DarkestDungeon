@@ -4,6 +4,9 @@
 CSpriteRenderer::CSpriteRenderer()
 {
 	useCustomPos = false;
+	useCustomScale = false;
+	scale = Vector2(1, 1);
+	pos = Vector2(0,0);
 	m_image = nullptr;
 }
 
@@ -53,7 +56,14 @@ void CSpriteRenderer::Render(HDC _hdc)
 {
 	if (useCustomPos)
 	{
-		m_image->render(_hdc, m_trans, m_imageSize, pos);
+
+		if (useCustomScale)
+		{
+			m_image->render(_hdc, m_trans, m_imageSize, pos, scale);
+		}
+		else {
+			m_image->render(_hdc, m_trans, m_imageSize, pos);
+		}
 	}
 	else
 	{
@@ -63,9 +73,17 @@ void CSpriteRenderer::Render(HDC _hdc)
 
 void CSpriteRenderer::RenderUI(HDC _hdc)
 {
+
+
 	if (useCustomPos)
 	{
-		m_image->renderUI(_hdc, m_trans, pos);
+		if (useCustomScale)
+		{
+			m_image->renderUI(_hdc, m_trans, pos, scale);
+		}
+		else {
+			m_image->renderUI(_hdc, m_trans, pos);
+		}
 	}
 	else {
 

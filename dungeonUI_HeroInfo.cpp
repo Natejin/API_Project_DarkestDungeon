@@ -55,7 +55,7 @@ void CDungeonUI_HeroInfo::Release()
 void CDungeonUI_HeroInfo::setInfoImage()
 {
     //portrait and skill
-    portrait.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+    portrait.m_img = MG_IMAGE->findImage(IMAGE::NONE);
     portrait.m_trans.m_pos = Vector2(364, 732);
 
  
@@ -114,28 +114,44 @@ void CDungeonUI_HeroInfo::setInfoImage()
  //   m_heroInfoImage.push_back(temp);
 
     //equip
-    switch (MG_GAME->GetHero(selectedHeroIndex)->GetJob())
-    {
-    case JOB::Crusader:
-        m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        m_weapon.m_trans.m_pos = Vector2(575, 868);
-        m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        m_armor.m_trans.m_pos = Vector2(658, 868);
-        break;
+    // switch (MG_GAME->GetHero(selectedHeroIndex)->GetJob())
+    // {
+    // case JOB::Crusader:
+    //     m_weapon.m_img = MG_IMAGE->findImage(IMAGE::NONE);
+    //     m_weapon.m_trans.m_pos = Vector2(575, 868);
+    //     m_armor.m_img = MG_IMAGE->findImage(IMAGE::NONE);
+    //     m_armor.m_trans.m_pos = Vector2(658, 868);
+    //     break;
 
-    case JOB::Highwayman:
-        break;
+    m_weapon.m_img = MG_IMAGE->findImage(IMAGE::NONE);
 
-    case JOB::PlagueDoctor:
-        break;
+    m_armor.m_img = MG_IMAGE->findImage(IMAGE::NONE);
+    m_weapon.m_trans.m_pos = Vector2(575, 868);
+    m_armor.m_trans.m_pos = Vector2(658, 868);
 
-    case JOB::Vestal:
-        m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        m_weapon.m_trans.m_pos = Vector2(575, 868);
-		m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
-        m_armor.m_trans.m_pos = Vector2(658, 868);
-        break;
-    }
+  //  //equip
+  //  switch (MG_GAME->GetHero(selectedHeroIndex)->GetJob())
+  //  {
+  //  case JOB::Crusader:
+  //      m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+  //     
+  //      m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+ 
+  //      break;
+
+  //  case JOB::Highwayman:
+  //      break;
+
+  //  case JOB::PlagueDoctor:
+  //      break;
+
+  //  case JOB::Vestal:
+  //      m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+  //      m_weapon.m_trans.m_pos = Vector2(575, 868);
+		//m_armor.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+  //      m_armor.m_trans.m_pos = Vector2(658, 868);
+  //      break;
+  //  }
 
 }
 
@@ -252,48 +268,3 @@ void CDungeonUI_HeroInfo::SetArmor(IMAGE _image)
 {
     m_armor.m_img = MG_IMAGE->findImage(_image);
 }
-
-//void dungeonUI_HeroInfo::selHero1()
-//{
-//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-//    {
-//        if (i == 0) MG_GAME->GetHero(i)->isSelected = true;
-//        else MG_GAME->GetHero(i)->isSelected = false;
-//    }
-//}
-//
-//void dungeonUI_HeroInfo::selHero2()
-//{
-//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-//    {
-//        if (i == 1) {
-//            MG_GAME->GetHero(i)->isSelected = true;
-//            scene->m_party->SelectHero(1);
-//        }
-//        else MG_GAME->GetHero(i)->isSelected = false;
-//    }
-//}
-//
-//void dungeonUI_HeroInfo::selHero3()
-//{
-//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-//    {
-//        if (i == 2) {
-//            MG_GAME->GetHero(i)->isSelected = true;
-//            scene->m_party->SelectHero(2);
-//        }
-//        else MG_GAME->GetHero(i)->isSelected = false;
-//    }
-//}
-//
-//void dungeonUI_HeroInfo::selHero4()
-//{
-//    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
-//    {
-//        if (i == 3) {
-//            MG_GAME->GetHero(i)->isSelected = true;
-//            scene->m_party->SelectHero(3);
-//    }
-//        else MG_GAME->GetHero(i)->isSelected = false;
-//    }
-//}

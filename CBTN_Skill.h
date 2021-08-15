@@ -7,12 +7,13 @@ protected:
 	class CInfo_Skill* skillInfo;
 	class CSpriteRenderer* m_spriteSelected;
 	class CHero* hero;
-	//class 
 
 public:
 	bool selected;
-	class DungeonScene* scene;
+	int index = -1;
 
+	class DungeonScene* scene;
+	class CBattleSystem* m_pBattleSystem;
 	CBTN_Skill();
 	~CBTN_Skill();
 

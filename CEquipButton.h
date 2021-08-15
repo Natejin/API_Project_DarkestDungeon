@@ -1,15 +1,11 @@
 #pragma once
-#include"CDragButtion.h"
+#include "CBTN_Skill.h"
 
-class Hero_Roster : public CDragButton
+class CEquipButton : public CBTN_Skill
 {
-	int index;
 public:
-	
-	class TownScene* scene;
-
-	Hero_Roster();
-	~Hero_Roster();
+	CEquipButton();
+	~CEquipButton();
 
 	HRESULT Init();
 
@@ -19,6 +15,8 @@ public:
 	virtual void BackRender(HDC _hdc);
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
+	
 
+	void SetEquip(IMAGE image);
 };
 

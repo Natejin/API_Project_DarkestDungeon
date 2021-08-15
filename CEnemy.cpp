@@ -14,6 +14,7 @@ HRESULT CEnemy::Init()
 	m_animator = new CAnimator();
 	m_animator->SetTrans(m_transform);
 	m_animator->SetAnimeSpeed(5);
+	SetMemberOverlay();
 	//mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
 	return S_OK;
 }
@@ -47,7 +48,23 @@ HRESULT CEnemy::Init()
 
 void CEnemy::Update(float deltaTime, float worldTime)
 {
-	Unit::Update(deltaTime, worldTime);
+	if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
+	{
+		if (MG_INPUT->IsDownLMB())
+		{
+			if (canTriggerDown)
+			{
+				m_triggerWhenDown(m_partyIndex);
+			}
+		}
+
+		if (canTriggerStay)
+		{
+			m_triggerWhenStay(m_partyIndex);
+		}
+	}
+
+
 }
 
 void CEnemy::LateUpdate()
@@ -66,7 +83,13 @@ void CEnemy::Render(HDC _hdc)
 void CEnemy::FrontRender(HDC _hdc)
 {
 	Unit::FrontRender(_hdc);
-	
+	if (isTargetSkill)
+	{
+		targetSkillMem.m_trans.m_pos = Vector2(
+			m_transform->m_pos.x - 87,
+			m_transform->m_pos.y - 100);
+		targetSkillMem.Render(_hdc);
+	}
 }
 
 void CEnemy::Release()
@@ -77,5 +100,5 @@ void CEnemy::Release()
 void CEnemy::SetMemberOverlay()
 {
 	Unit::SetMemberOverlay();
-	selectedMem.m_img = MG_IMAGE->findImage("target1");
+	targetSkillMem.m_img = MG_IMAGE->findImage(IMAGE::Target_Monster1);
 }

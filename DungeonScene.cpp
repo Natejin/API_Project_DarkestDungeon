@@ -127,7 +127,6 @@ void DungeonScene::CreateDungeonMap()
 void DungeonScene::CreateParty()
 {
 	m_party = MG_GAME->GetParty();
-
 	for (int i = 0; i < MG_GAME->GetHeroPartySize(); i++)
 	{
 		MG_GAME->GetHeroFromParty(i)->m_transform->m_pos = Vector2(500 - 120 * i, 640);
@@ -135,6 +134,7 @@ void DungeonScene::CreateParty()
 		MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
 		MG_GAME->GetHeroFromParty(i)->Enable();
 		m_party->SetHero(MG_GAME->GetHeroFromParty(i));
+		MG_GMOBJ->RegisterObj(m_party->GetHero(i));
 	}
 
 	MG_GAME->SetCurSelHero(0);
@@ -198,7 +198,7 @@ void DungeonScene::CreateRoad()
 
 void DungeonScene::CreateDoor()
 {
-	//Road, Room¿¡ µû¸¥ doorÀ§Ä¡ ¼³Á¤°ú È®ÀÎ
+	//Road, Roomï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ doorï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 }
 
 void DungeonScene::CreateInvenSystem()
@@ -212,9 +212,12 @@ void DungeonScene::CreateBattleSystem()
 {
 	m_pBattleSystem = new CBattleSystem();
 	m_pBattleSystem->scene = this;
+	m_pBattleSystem->Init();
 	m_pBattleSystem->dungeonUI = m_dungeonUI;
 	m_pBattleSystem->dungeonUIHeroinfo = m_dungeonUIinfo;
 	m_pBattleSystem->isActive = false;
+	m_dungeonUI->m_pBattleSystem = m_pBattleSystem;
+	m_dungeonUI->SetSkillButton();
 	MG_GMOBJ->RegisterObj("battleSystem", m_pBattleSystem);
 }
 

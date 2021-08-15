@@ -20,33 +20,33 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
 	
-	MG_IMAGE->addImage(IMAGE::Crusader_banner, "images/Heros/crusader/crusader_banner.bmp", 529, 975, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_charge, "images/Heros/crusader/crusader_charge.bmp", 838, 465, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_defend, "images/Heros/crusader/crusader_defend.bmp", 341, 650, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_investigate, "images/Heros/crusader/crusader_investigate.bmp", 413, 569, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_scroll, "images/Heros/crusader/crusader_scroll.bmp", 466, 611, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_sword, "images/Heros/crusader/crusader_sword.bmp", 619, 580, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_banner, "images/Heroes/crusader/crusader_banner.bmp", 529, 975, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_charge, "images/Heroes/crusader/crusader_charge.bmp", 838, 465, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_defend, "images/Heroes/crusader/crusader_defend.bmp", 341, 650, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_investigate, "images/Heroes/crusader/crusader_investigate.bmp", 413, 569, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_scroll, "images/Heroes/crusader/crusader_scroll.bmp", 466, 611, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_sword, "images/Heroes/crusader/crusader_sword.bmp", 619, 580, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage(IMAGE::Highwayman_defend, "images/Heros/highwayman/highwayman_defend.bmp", 336, 563, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Highwayman_hipshot, "images/Heros/highwayman/highwayman_hipshot.bmp", 397, 542, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Highwayman_investigate, "images/Heros/highwayman/highwayman_investigate.bmp", 384, 585, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Highwayman_lunge, "images/Heros/highwayman/highwayman_lunge.bmp", 625, 470, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Highwayman_pistol, "images/Heros/highwayman/highwayman_pistol.bmp", 634, 600, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Highwayman_slice, "images/Heros/highwayman/highwayman_slice.bmp", 577, 535, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_defend, "images/Heroes/highwayman/highwayman_defend.bmp", 336, 563, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_hipshot, "images/Heroes/highwayman/highwayman_hipshot.bmp", 397, 542, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_investigate, "images/Heroes/highwayman/highwayman_investigate.bmp", 384, 585, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_lunge, "images/Heroes/highwayman/highwayman_lunge.bmp", 625, 470, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_pistol, "images/Heroes/highwayman/highwayman_pistol.bmp", 634, 600, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_slice, "images/Heroes/highwayman/highwayman_slice.bmp", 577, 535, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage(IMAGE::Plague_doctor_blast, "images/Heros/plague_doctor/plague_doctor_blast.bmp", 451, 537, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Plague_doctor_buff, "images/Heros/plague_doctor/plague_doctor_buff.bmp", 394, 566, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Plague_doctor_dagger, "images/Heros/plague_doctor/plague_doctor_dagger.bmp", 446, 626, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Plague_doctor_defend, "images/Heros/plague_doctor/plague_doctor_defend.bmp", 420, 525, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Plague_doctor_grenade, "images/Heros/plague_doctor/plague_doctor_grenade.bmp", 597, 574, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Plague_doctor_investigate, "images/Heros/plague_doctor/plague_doctor_investigate.bmp", 415, 548, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_blast, "images/Heroes/plague_doctor/plague_doctor_blast.bmp", 451, 537, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_buff, "images/Heroes/plague_doctor/plague_doctor_buff.bmp", 394, 566, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_dagger, "images/Heroes/plague_doctor/plague_doctor_dagger.bmp", 446, 626, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_defend, "images/Heroes/plague_doctor/plague_doctor_defend.bmp", 420, 525, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_grenade, "images/Heroes/plague_doctor/plague_doctor_grenade.bmp", 597, 574, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_investigate, "images/Heroes/plague_doctor/plague_doctor_investigate.bmp", 415, 548, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage(IMAGE::Vestal_defend, "images/Heros/vestal/vestal_defend.bmp", 371, 559, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_heal, "images/Heros/vestal/vestal_heal.bmp", 339, 618, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_investigate, "images/Heros/vestal/vestal_investigate.bmp", 375, 555, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_lectionary, "images/Heros/vestal/vestal_lectionary.bmp", 390, 728, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_mace, "images/Heros/vestal/vestal_mace.bmp", 625, 539, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_miracle, "images/Heros/vestal/vestal_miracle.bmp", 357, 753, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_defend, "images/Heroes/vestal/vestal_defend.bmp", 371, 559, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_heal, "images/Heroes/vestal/vestal_heal.bmp", 339, 618, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_investigate, "images/Heroes/vestal/vestal_investigate.bmp", 375, 555, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_lectionary, "images/Heroes/vestal/vestal_lectionary.bmp", 390, 728, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_mace, "images/Heroes/vestal/vestal_mace.bmp", 625, 539, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_miracle, "images/Heroes/vestal/vestal_miracle.bmp", 357, 753, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::crusader_roster, "images/Heroes/crusader_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::highwayman_roster, "images/Heroes/highwayman_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
@@ -60,9 +60,7 @@ HRESULT imageManager::init()
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/Enemys/panel_monster_indicator_valid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::panel_monster_Red, "images/Enemys/panel_monster_indicator_valid_Red.bmp", 147, 76, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::monster_target, "images/Enemys/target_1.bmp", 175,206, true, RGB(255, 0, 255));
+
 
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
@@ -116,7 +114,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::room_boss, "images/icons_map/room_boss.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_curio, "images/icons_map/room_curio.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_empty, "images/icons_map/room_empty.bmp", 64, 64, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::room_entrance, "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::room_entrance, "images/icons_map/room_entrance.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_treasure, "images/icons_map/room_treasure.bmp", 64, 64, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::room_unknown, "images/icons_map/room_unknown.bmp", 64, 64, true, RGB(255, 0, 255));
 
@@ -255,7 +253,7 @@ HRESULT imageManager::init()
 
 	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::enemy, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::nothing, "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::obj_crate1, "images/dungeonOBJ/Crate1.bmp", 248, 140, true, RGB(255, 0, 255));
@@ -286,7 +284,7 @@ HRESULT imageManager::init()
 
 	//skill
 
-	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, true, RGB(255, 0, 255));
 
 	//
 	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
@@ -322,7 +320,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DazzlingLight , "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineGrace , "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort , "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight , "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -336,22 +334,29 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Crusader_Weapon_0, "images/icons_equip_Crusader/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 
 	//UIovelay
-	MG_IMAGE->addImage("selected1", "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("selected2", "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target1", "images/dungeonUI/target_2.bmp", 246, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target2", "images/dungeonUI/target_3.bmp", 328, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target3", "images/dungeonUI/target_4.bmp", 436, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target_h_1", "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target_h_2", "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
+
 
 	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 100, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 100, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/dungeonUI/panel_monster_indicator_invalid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::panel_monster_Red, "images/dungeonUI/panel_monster_indicator_valid_Red.bmp", 147, 76, true, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage(IMAGE::Target_Monster1, "images/dungeonUI/target_1.bmp", 175, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Monster2, "images/dungeonUI/target_2.bmp", 246, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Monster3, "images/dungeonUI/target_3.bmp", 328, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Monster4, "images/dungeonUI/target_4.bmp", 436, 206, true, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage(IMAGE::Target_Selected1, "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Selected2, "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage(IMAGE::Target_Heal1, "images/dungeonUI/target_h_1.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Heal2, "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Heal3, "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
 
 	//item
 	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
@@ -606,6 +611,8 @@ Image* imageManager::addImage(IMAGE strKey, const char* fileName, const int widt
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
+		strKey;
+		assert(false);
 		return NULL;
 	}
 

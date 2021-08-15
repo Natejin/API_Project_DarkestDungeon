@@ -38,7 +38,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 			break;
 
 		case RoadObjType::Enemy:
-			m_spriteRenderer->SetImage(IMAGE::enemy);
+			m_spriteRenderer->SetImage(IMAGE::NONE);
 			break;
 		
 		case RoadObjType::Treasure:
@@ -60,7 +60,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 			break;
 
 		case RoadObjType::Enemy:
-			m_spriteRenderer->SetImage(IMAGE::enemy);
+			m_spriteRenderer->SetImage(IMAGE::NONE);
 			break;
 
 		case RoadObjType::Treasure:

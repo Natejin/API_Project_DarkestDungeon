@@ -8,7 +8,25 @@ private:
 	//스킬
 	//스킬 Info에 accuracy, critical, DMG, changeAttribute 가 포함됨
 	Info_Enemy* info;
+
+
+	ImageData targetSkillMem; //appear when some member using healSkill
+
+
+	function<void(int i)> m_triggerWhenStay;
+	bool canTriggerStay;
 public:
+	template <typename T>
+	void SetTriggerWhenStay(T* pObj, void(T::* func)(int i))
+	{
+		canTriggerStay = true;
+		//int index = i;
+		m_triggerWhenStay = bind(func, pObj, std::placeholders::_1);
+	}
+public:
+	
+	bool isTargetSkill;
+
 	CEnemy();
 	~CEnemy();
 
@@ -28,4 +46,6 @@ public:
 	virtual void Release();
 
 	virtual void SetMemberOverlay();
+
+
 };

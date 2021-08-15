@@ -16,8 +16,7 @@ HRESULT dungeonUI::Init()
 	SetUIIMG();
 	SetButton();
 	ShowInven();
-	SetSkillButton();
-
+	//SetSkillButton();
 	return S_OK;
 }
 
@@ -54,23 +53,23 @@ void dungeonUI::SetUIIMG()
 	ImageData UIimg;
 	SetTorchUIimg();
 
-	//¿ÞÂÊ¾Æ·¡ UI
+	//ï¿½ï¿½ï¿½Ê¾Æ·ï¿½ UI
 	CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
-	//¿À¸¥ÂÊ¾Æ·¡ UI
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Æ·ï¿½ UI
 	CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
-	//¿µ¿õ ·Î½ºÅÍ ¾ÆÀÌÄÜ + ½ºÅ³¾ÆÀÌÄÜ µÞ¹è°æ
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¹ï¿½ï¿½
 	CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
-	//¿µ¿õ ¾ÆÀÌÅÛ +Àå½Å±¸ µÞ ¹è°æ
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ +ï¿½ï¿½Å±ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
 
-	//ÀÎº¥Åä¸® ÆÐ³Î
+	//ï¿½Îºï¿½ï¿½ä¸® ï¿½Ð³ï¿½
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
 
-	//¸ÊÆÐ³Î
+	//ï¿½ï¿½ï¿½Ð³ï¿½
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
 	mapPanel1->UseFrontRender();
 
-	//¸Ê µÚ ±×¸®µå ¹è°æ
+	//ï¿½ï¿½ ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	mapPanel2 = new CDragButtonMinimapBG();
 	mapPanel2->Init();
 	mapPanel2->m_transform->m_pos = Vector2(965, 700);
@@ -82,7 +81,7 @@ void dungeonUI::SetUIIMG()
 
 void dungeonUI::SetButton()
 {	
-	//Å¬¸¯½Ã ÀÎº¥Åä¸® º¸ÀÌ±â
+	//Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½Ì±ï¿½
 	bt_inven = new CButton();
 	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
 	bt_inven->AddColliderBox(50, 65);
@@ -90,7 +89,7 @@ void dungeonUI::SetButton()
 	bt_inven->SetTriggerWhenDown(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
-	//Å¬¸¯½Ã ¸Ê º¸ÀÌ±â
+	//Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
 	bt_map = new CButton();
 	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
 	bt_map->AddColliderBox(50, 65);
@@ -121,37 +120,73 @@ void dungeonUI::SetTorchUIimg()
 
 void dungeonUI::SetSkillButton()
 {
-	CBTN_Skill* temp = new CBTN_Skill();
-	temp->scene = scene;
-	temp->Init();
-	temp->m_transform->m_pos = Vector2(585, 732);
-	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill1);
-	skillBTNs.push_back(temp);
-	MG_GMOBJ->RegisterObj("SkillBTN 1", temp);
+	// CBTN_Skill* temp = new CBTN_Skill();
+	// temp->scene = scene;
+	// temp->Init();
+	// temp->m_transform->m_pos = Vector2(585, 732);
+	// temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill1);
+	// skillBTNs.push_back(temp);
+	// MG_GMOBJ->RegisterObj("SkillBTN 1", temp);
 
-	temp = new CBTN_Skill();
-	temp->scene = scene;
-	temp->Init();
-	temp->m_transform->m_pos = Vector2(655, 732);
-	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill2);
-	skillBTNs.push_back(temp);
-	MG_GMOBJ->RegisterObj("SkillBTN 2", temp);
+	// temp = new CBTN_Skill();
+	// temp->scene = scene;
+	// temp->Init();
+	// temp->m_transform->m_pos = Vector2(655, 732);
+	// temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill2);
+	// skillBTNs.push_back(temp);
+	// MG_GMOBJ->RegisterObj("SkillBTN 2", temp);
 
-	temp = new CBTN_Skill();
-	temp->scene = scene;
-	temp->Init();
-	temp->m_transform->m_pos = Vector2(725, 732);
-	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
-	skillBTNs.push_back(temp);
-	MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
+	// temp = new CBTN_Skill();
+	// temp->scene = scene;
+	// temp->Init();
+	// temp->m_transform->m_pos = Vector2(725, 732);
+	// temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
+	// skillBTNs.push_back(temp);
+	// MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
 
-	temp = new CBTN_Skill();
-	temp->scene = scene;
-	temp->Init();
-	temp->m_transform->m_pos = Vector2(795, 732);
-	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill4);
-	skillBTNs.push_back(temp);
-	MG_GMOBJ->RegisterObj("SkillBTN 4", temp);
+	for (size_t i = 0; i < 5; i++)
+	{
+		CBTN_Skill* temp = new CBTN_Skill();
+		temp->scene = scene;
+		temp->Init();
+		temp->m_transform->m_pos = Vector2(620 + 70 * i, 764);
+		temp->m_pBattleSystem = m_pBattleSystem;
+		temp->index = i;
+		string tempStr = "SkillBTN";
+		tempStr += i;
+		temp->SetName(tempStr);
+		skillBTNs.push_back(temp);
+		MG_GMOBJ->RegisterObj(temp);
+	}
+	
+
+	
+
+
+	//temp = new CBTN_Skill();
+	//temp->scene = scene;
+	//temp->Init();
+	//temp->m_transform->m_pos = Vector2(655, 732);
+	//temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill2);
+	//skillBTNs.push_back(temp);
+	//MG_GMOBJ->RegisterObj("SkillBTN 2", temp);
+
+	//temp = new CBTN_Skill();
+	//temp->scene = scene;
+	//temp->Init();
+	//temp->m_transform->m_pos = Vector2(725, 732);
+	//temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
+	//skillBTNs.push_back(temp);
+	//
+	//MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
+
+	//temp = new CBTN_Skill();
+	//temp->scene = scene;
+	//temp->Init();
+	//temp->m_transform->m_pos = Vector2(795, 732);
+	//temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill4);
+	//skillBTNs.push_back(temp);
+	//MG_GMOBJ->RegisterObj("SkillBTN 4", temp);
 }
 
 void dungeonUI::SelectSkillButton()
@@ -207,7 +242,7 @@ CUIPanel* dungeonUI::CreatePanel(string name, Vector2 pos, LAYER layer)
 	uiPanel->AddSpriteRenderer(name);
 	uiPanel->m_transform->m_pos = pos;
 	uiPanel->m_layer = layer;
-	uiPanel->UseFrontRender();
+	uiPanel->UseRender();
 	MG_GMOBJ->RegisterObj(name, uiPanel);
 	return uiPanel;
 }
@@ -219,7 +254,7 @@ CUIPanel* dungeonUI::CreatePanel(IMAGE image, Vector2 pos, LAYER layer)
 	uiPanel->AddSpriteRenderer(image);
 	uiPanel->m_transform->m_pos = pos;
 	uiPanel->m_layer = layer;
-	uiPanel->UseFrontRender();
+	uiPanel->UseRender();
 	MG_GMOBJ->RegisterObj("panel", uiPanel);
 	return uiPanel;
 }

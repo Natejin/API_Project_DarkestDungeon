@@ -3,6 +3,8 @@
 #include "DungeonScene.h"
 #include "Info_Skill.h"
 #include "CSpriteRenderer.h"
+#include "CBattleSystem.h"
+
 CBTN_Skill::CBTN_Skill()
 {
 	m_spriteSelected = nullptr;
@@ -25,18 +27,12 @@ HRESULT CBTN_Skill::Init()
 
 void CBTN_Skill::Update(float deltaTime, float worldTime)
 {
-	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
+	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
-		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+		if (MG_INPUT->IsDownLMB())
 		{
-			if (MG_INPUT->IsDownLMB())
-			{
-				if (canTriggerDown)
-				{
-					m_triggerWhenDown();
-				}
+			m_pBattleSystem->UseSkill(index);
 
-			}
 		}
 	}
 }
@@ -53,7 +49,7 @@ void CBTN_Skill::BackRender(HDC _hdc)
 
 void CBTN_Skill::Render(HDC _hdc)
 {
-
+	
 }
 
 void CBTN_Skill::FrontRender(HDC _hdc)

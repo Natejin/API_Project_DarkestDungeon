@@ -51,7 +51,6 @@ void CObjectManager::LateUpdate()
 	for (size_t i = 0; i < objsToErase.size(); i++)
 	{
 		int eraseID = objsToErase[i];
-
 		for (size_t j = 0; j < objectVec.size(); ++j)
 		{
 			if (objectVec[j]->GetId() == eraseID) {
@@ -70,7 +69,6 @@ void CObjectManager::LateUpdate()
 				objectVec[j]->Release();
 				delete 	objectVec[j];
 				objectVec.erase(objectVec.begin() + j);
-
 				break;
 			}
 		}

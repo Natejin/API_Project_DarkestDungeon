@@ -481,6 +481,34 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale, Ve
 	}
 }
 
+void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale, Vector2 customPos, Vector2 customSize)
+{
+	Vector2 pos = transform->m_pos + customPos - _imageScale * transform->m_pivot * transform->m_scale * customSize - MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,						//복삳될 장소의 DC
+			pos.x,						//복사될 좌표의 시작점X
+			pos.y,						//복사될 좌표의 시작점Y
+			_imageInfo->width * customSize.x,			//복사될 이미지 가로크기
+			_imageInfo->height * customSize.y,			//복사될 이미지 세로크기
+			_imageInfo->hMemDC,			//복사될 대상DC
+			0,							//복사시작 지점 X
+			0,							//복사시작 지점 Y
+			_imageInfo->width,			//복사영역 가로크기
+			_imageInfo->height,			//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, SRCCOPY);
+	}
+}
+
 
 
 void Image::renderUI(HDC hdc, const CTransform* transform)
@@ -523,8 +551,37 @@ void Image::renderUI(HDC hdc, const CTransform* transform, Vector2 customPos)
 			hdc,						//복삳될 장소의 DC
 			pos.x,							//복사될 좌표의 시작점X
 			pos.y,							//복사될 좌표의 시작점Y
-			_imageInfo->width,			//복사될 이미지 가로크기
-			_imageInfo->height,			//복사될 이미지 세로크기
+			_imageInfo->width * transform->m_scale.x,			//복사될 이미지 가로크기
+			_imageInfo->height * transform->m_scale.y,			//복사될 이미지 세로크기
+			_imageInfo->hMemDC,			//복사될 대상DC
+			0,							//복사시작 지점 X
+			0,							//복사시작 지점 Y
+			_imageInfo->width,			//복사영역 가로크기
+			_imageInfo->height,			//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, SRCCOPY);
+	}
+}
+
+void Image::renderUI(HDC hdc, const CTransform* transform, Vector2 customPos, Vector2 customSize)
+{
+	Vector2 _imageScale = Vector2(_imageInfo->width, _imageInfo->height);
+	Vector2 pos = transform->m_pos + customPos - _imageScale * transform->m_pivot * transform->m_scale;
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,						//복삳될 장소의 DC
+			pos.x,							//복사될 좌표의 시작점X
+			pos.y,							//복사될 좌표의 시작점Y
+			_imageInfo->width * customSize.x,			//복사될 이미지 가로크기
+			_imageInfo->height * customSize.y,			//복사될 이미지 세로크기
 			_imageInfo->hMemDC,			//복사될 대상DC
 			0,							//복사시작 지점 X
 			0,							//복사시작 지점 Y

@@ -20,6 +20,10 @@ public:
 	bool useCustomPos;
 	int GetCustomPos()const { return useCustomPos; }
 
+	Vector2 scale;
+	bool useCustomScale;
+	int GetCustomScale()const { return useCustomScale; }
+
 
 protected:
 	CSpriteRenderer();

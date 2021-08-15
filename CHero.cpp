@@ -8,6 +8,8 @@ CHero::CHero() {
 	m_layer = LAYER::Player;
 	speedFront = 8;
 	speedBack = 4;
+	weaponLvl = 0;
+	armorLvl = 0;
 }
 CHero::~CHero() {}
 
@@ -129,7 +131,18 @@ void CHero::FrontRender(HDC _hdc)
 {
 	Unit::FrontRender(_hdc);
 
+	if (isTargetHeal)
+	{
+		targeted_h_Mem.m_trans.m_pos = Vector2(
+			m_transform->m_pos.x - 87,
+			m_transform->m_pos.y - 78);
+
+		targeted_h_Mem.Render(_hdc);
+	}
+
 	showStrsBar(_hdc);
+
+
 
 	////for test collision
 	//ImageData temp;
@@ -143,6 +156,26 @@ void CHero::FrontRender(HDC _hdc)
 void CHero::Release()
 {
 	Unit::Release();
+}
+
+IMAGE CHero::GetArmor()
+{
+	return info->GetArmor(armorLvl);
+}
+
+IMAGE CHero::GetWeapon()
+{
+	return info->GetWeapon(weaponLvl);
+}
+
+Image* CHero::GetTrinketL()
+{
+	return nullptr;
+}
+
+Image* CHero::GetTrinketR()
+{
+	return nullptr;
 }
 
 void CHero::Move()
@@ -256,7 +289,7 @@ void CHero::setTargetedMem()
 void CHero::SetMemberOverlay()
 {
 	Unit::SetMemberOverlay();
-	selectedMem.m_img = MG_IMAGE->findImage("selected1");
+	targeted_h_Mem.m_img = MG_IMAGE->findImage(IMAGE::Target_Heal1);
 	ImageData temp;
 	temp.m_img = MG_IMAGE->findImage("STRS_empty");
 	for (int i = 0; i < 10; i++)
@@ -267,6 +300,7 @@ void CHero::SetMemberOverlay()
 
 Info_Hero* CHero::GetInfo()
 {
+
 	return info;
 }
 

@@ -20,9 +20,15 @@ class CHero : public Unit
 	float speedFront;
 	float speedBack;
 	vector<ImageData> STRSbar;
+
+	bool isTargetHeal;
+
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
 	Info_Hero* info;
+
+	int weaponLvl;
+	int armorLvl;
 
 
 public:
@@ -41,6 +47,12 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	virtual IMAGE GetArmor();
+	virtual IMAGE GetWeapon();
+
+	virtual class Image* GetTrinketL();
+	virtual class Image* GetTrinketR();
 
 
 	//=====================================
