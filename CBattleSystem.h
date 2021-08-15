@@ -20,8 +20,9 @@ class CBattleSystem : public GameObject
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
 	queue<TurnSpeedOfUnit> speedQueue;
-
 	vector<pair<int, Unit*>> speedVec;
+
+
 
 	int randomDice6 = 6;
 	int randomDice100 = 100;
@@ -33,7 +34,8 @@ class CBattleSystem : public GameObject
 
 public:
 	class DungeonScene* scene;
-
+	class dungeonUI* dungeonUI;
+	class CDungeonUI_HeroInfo* dungeonUIHeroinfo;
 	CBattleSystem();
 	~CBattleSystem();
 

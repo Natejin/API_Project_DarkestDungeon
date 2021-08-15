@@ -2,9 +2,10 @@
 #include "CBTN_Skill.h"
 #include "DungeonScene.h"
 #include "Info_Skill.h"
-
+#include "CSpriteRenderer.h"
 CBTN_Skill::CBTN_Skill()
 {
+	m_spriteSelected = nullptr;
 }
 
 CBTN_Skill::~CBTN_Skill()
@@ -13,7 +14,10 @@ CBTN_Skill::~CBTN_Skill()
 
 HRESULT CBTN_Skill::Init()
 {
-	m_transform->m_pivot = Vector2(0, 0);
+	selected = false;
+	m_transform->m_pivot = Vector2(0.5, 0.5);
+	m_spriteSelected = new CSpriteRenderer(IMAGE::SelectedSkill, m_transform);
+
 	AddSpriteRenderer(IMAGE::Crusader_Skill_BattleHeal);
 	AddColliderBox();
     return S_OK;
@@ -55,6 +59,10 @@ void CBTN_Skill::Render(HDC _hdc)
 void CBTN_Skill::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
+	if (selected)
+	{
+		m_spriteSelected->RenderUI(_hdc);
+	}
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
@@ -68,6 +76,13 @@ void CBTN_Skill::SetSkill(SKILL skill)
 {
 	skillInfo = DB_SKILL->CallSkill(skill);
 	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
+}
+
+void CBTN_Skill::Release()
+{
+	CDragButton::Release();
+	SAFE_DELETE(m_spriteSelected);
+	
 }
 
 

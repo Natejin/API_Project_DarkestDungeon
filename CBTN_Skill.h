@@ -5,10 +5,12 @@ class CBTN_Skill :public CDragButton
 {
 protected:
 	class CInfo_Skill* skillInfo;
+	class CSpriteRenderer* m_spriteSelected;
 	class CHero* hero;
 	//class 
 
 public:
+	bool selected;
 	class DungeonScene* scene;
 
 	CBTN_Skill();
@@ -24,4 +26,5 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void SetSkill(SKILL skill);
+	virtual void Release();
 };

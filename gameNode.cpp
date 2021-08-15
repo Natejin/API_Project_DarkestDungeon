@@ -35,7 +35,7 @@ HRESULT gameNode::init(bool managerInit)
 		MG_SOUND->init();
 
 	}
-	return E_NOTIMPL;
+	return S_OK;
 }
 
 //void gameNode::setBackBuffer()
@@ -52,6 +52,16 @@ void gameNode::release()
 		//해제를 안하면 종료를 해도 메모리가 줄줄줄~
 		KillTimer(m_hWnd, 1);
 		//매니저 해제
+
+
+		MG_SCENE->release();
+		MG_IMAGE->release();
+		MG_TIME->release();
+		MG_SOUND->release();
+		MG_ANIMATION->release();
+		MG_EFFECT->release();
+		MG_INFO->Release();
+
 		MG_INPUT->releaseSingleton();
 		MG_IMAGE->releaseSingleton();
 		MG_TIME->releaseSingleton();
@@ -61,13 +71,6 @@ void gameNode::release()
 		MG_SOUND->releaseSingleton();
 		MG_ANIMATION->releaseSingleton();
 		MG_EFFECT->releaseSingleton();
-
-		MG_SCENE->release();
-		MG_IMAGE->release();
-		MG_TIME->release();
-		MG_SOUND->release();
-		MG_ANIMATION->release();
-		MG_EFFECT->release();
 	}
 
 	ReleaseDC(m_hWnd, _hdc);

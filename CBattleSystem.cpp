@@ -5,6 +5,8 @@
 #include "CHero.h"
 #include "CEnemy.h"
 #include "CBoneDefender.h"
+#include "dungeonUI.h";
+#include "dungeonUI_HeroInfo.h"
 
 
 
@@ -21,6 +23,8 @@ CBattleSystem::~CBattleSystem()
 
 HRESULT CBattleSystem::Init()
 {
+
+
 	return S_OK;
 }
 
@@ -166,7 +170,11 @@ void CBattleSystem::EndTurn()
 
 void CBattleSystem::UseSkill1()
 {
-
+	//for (size_t i = 0; i < dungeonUIHeroinfo->->GetPartySize(); i++)
+	//{
+	//	m_party->GetHero(i)->isSelected = false;
+	//}
+	//m_party->GetHero(i)->isSelected = true;
 }
 void CBattleSystem::UseSkill2()
 {

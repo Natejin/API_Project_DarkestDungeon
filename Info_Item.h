@@ -22,7 +22,9 @@ public:
 
 
 public:
-	CInfo_Item() {};
+	CInfo_Item() {
+		m_itemEffect = nullptr;
+	};
 	~CInfo_Item() {};
 
 	bool IsFull();

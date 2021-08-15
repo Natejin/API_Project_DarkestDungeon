@@ -276,6 +276,8 @@ enum class IMAGE
 
 
 	//Skill
+	SelectedSkill,
+	// 
 	//crusader
 	Crusader_Skill_Smite,
 	Crusader_Skill_ZealousAccusation,

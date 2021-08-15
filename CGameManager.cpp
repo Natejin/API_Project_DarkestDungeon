@@ -179,7 +179,7 @@ CHero* CGameManager::GetCurSelHero()
 void CGameManager::SetCurSelHero(int i)
 {
 	m_CurSelHero = m_party->GetHero(i);
-	for (size_t i = 0; i < m_party->GetPartySize(); i++)
+	for (int i = 0; i < m_party->GetPartySize(); i++)
 	{
 		m_party->GetHero(i)->isSelected = false;
 	}

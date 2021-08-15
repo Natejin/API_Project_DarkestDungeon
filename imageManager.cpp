@@ -284,7 +284,11 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::eve_scroll_loot, "images/dungeonOBJ/event_scroll_loot.bmp", 456, 475, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::eve_scroll_side, "images/dungeonOBJ/event_scroll_sidebar.bmp", 456, 400, true, RGB(255, 0, 255));
 
-	//����� ������
+	//skill
+
+	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, false, RGB(255, 0, 255));
+
+	//
 	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Skill_Smite, "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Skill_ZealousAccusation, "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));

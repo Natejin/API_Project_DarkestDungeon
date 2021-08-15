@@ -33,6 +33,7 @@ HRESULT mainGame::init()
 void mainGame::release()
 {
 	gameNode::release();
+
 	//SCENE->release();
 	//SAFE_DELETE(_astar);
 }
