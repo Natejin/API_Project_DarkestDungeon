@@ -225,6 +225,8 @@ void DungeonScene::CreateBattleSystem()
 	m_pBattleSystem->dungeonUI = m_dungeonUI;
 	m_pBattleSystem->dungeonUIHeroinfo = m_dungeonUIinfo;
 	m_pBattleSystem->isActive = false;
+	m_dungeonUI->m_pBattleSystem = m_pBattleSystem;
+	m_dungeonUI->SetSkillButton();
 	MG_GMOBJ->RegisterObj("battleSystem", m_pBattleSystem);
 }
 #pragma endregion
