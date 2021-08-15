@@ -24,6 +24,9 @@ class CHero : public Unit
 	
 	Info_Hero* info;
 
+	int weaponLvl;
+	int armorLvl;
+
 
 public:
 	CHero();
@@ -41,6 +44,12 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
+
+	virtual IMAGE GetArmor();
+	virtual IMAGE GetWeapon();
+
+	virtual class Image* GetTrinketL();
+	virtual class Image* GetTrinketR();
 
 
 	//=====================================

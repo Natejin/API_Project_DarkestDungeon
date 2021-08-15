@@ -5,8 +5,8 @@
 #include"CHeroList_button.h"
 #include"TownScene.h"
 #include"CHero.h"
-#include"Info_Skill.h"
-
+#include"CBTN_Skill.h"
+#include"CEquipButton.h"
 CUI_Panel_Hero::CUI_Panel_Hero()
 {
 }
@@ -35,14 +35,15 @@ HRESULT CUI_Panel_Hero::Init()
 	m_HeroImg->scale = Vector2(0.5, 0.5);
 
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
-
+	CreateHeroSkill();
+	CreateHeroEquip();
 	Unable();
 	return S_OK; 
 }
 
 void CUI_Panel_Hero::Update(float deltaTime, float worldTime)
 {
-	
+
 }
 
 void CUI_Panel_Hero::LateUpdate()
@@ -64,7 +65,6 @@ void CUI_Panel_Hero::FrontRender(HDC _hdc)
 	m_HeroPanel->Render(_hdc);
 	m_HeroImg->Render(_hdc);
     ShowHeroInfo(_hdc);
-	ShowHeroSkill();
 }
 
 void CUI_Panel_Hero::Release()
@@ -73,13 +73,19 @@ void CUI_Panel_Hero::Release()
 
 void CUI_Panel_Hero::Enable()
 {
+	CloseHeroSkill();
+	CloseHeroEquip();
 	SetHeroPanel();
+	SetHeroSkill();
+	SetHeroEquip();
 	CEst_UI::Enable();
 }
 
 void CUI_Panel_Hero::Unable()
 {
 	CEst_UI::Unable();
+	CloseHeroSkill();
+	CloseHeroEquip();
 }
 
 void CUI_Panel_Hero::SetHeroPanel()
@@ -159,8 +165,68 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 
 }
 
-void CUI_Panel_Hero::ShowHeroSkill()
+void CUI_Panel_Hero::CreateHeroSkill()
 {
-	MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
+	for (size_t i = 0; i < 8; i++)
+	{
+		CBTN_Skill* m_skill = new CBTN_Skill();
+		m_skill->Init();
+		m_skill->m_transform->m_pos = Vector2(900 + 70 * i, 150);
+		m_skill->Unable();
+		MG_GMOBJ->RegisterObj(m_skill);
+		m_skillbuttonVec.push_back(m_skill);
+	}
+
+}
+
+void CUI_Panel_Hero::SetHeroSkill()
+{
+	auto tempVec = MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
+	for (size_t i = 0; i < tempVec.size(); i++)
+	{
+		m_skillbuttonVec[i]->SetSkill(tempVec[i]);
+		m_skillbuttonVec[i]->Enable();
+	}
+	
+}
+
+void CUI_Panel_Hero::CloseHeroSkill()
+{
+	for (size_t i = 0; i < m_skillbuttonVec.size(); i++)
+	{
+		m_skillbuttonVec[i]->Unable();
+	}
+	
+}
+
+void CUI_Panel_Hero::CreateHeroEquip()
+{
+	m_weapon = new CEquipButton();
+	m_weapon->m_transform->m_pos = Vector2(450, 730);
+	m_weapon->Init();
+	m_weapon->Unable();
+	MG_GMOBJ->RegisterObj(m_weapon);
+
+	m_armor = new CEquipButton();
+	m_armor->m_transform->m_pos = Vector2(530, 730);
+	m_armor->Init();
+	m_armor->Unable();
+	MG_GMOBJ->RegisterObj(m_armor);
+}
+
+void CUI_Panel_Hero::SetHeroEquip()
+{
+	m_weapon->SetEquip(MG_GAME->GetHero(townScene->curDragHeroIndex)->GetWeapon());
+	m_weapon->Enable();
+
+	m_armor->SetEquip(MG_GAME->GetHero(townScene->curDragHeroIndex)->GetArmor());
+	m_armor->Enable();
+
+}
+
+void CUI_Panel_Hero::CloseHeroEquip()
+{
+	m_weapon->Unable();
+	m_armor->Unable();
 	
 }

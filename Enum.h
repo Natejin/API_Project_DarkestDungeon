@@ -38,6 +38,15 @@ enum class EFFECTTYPE
 	PROT
 };
 
+enum class TRINKET {
+	NONE,
+	Item1,
+	Item2,
+	Item3,
+	Item4,
+
+};
+
 enum class SKILL
 {
 	Crusader_Combat_Smite,
@@ -93,6 +102,8 @@ enum class DIR
 
 enum class IMAGE
 {
+	NONE,
+
 	//Hero
 	Vestal_Idle,
 	Vestal_Walk,
@@ -230,7 +241,6 @@ enum class IMAGE
 	vestal_header,
 	treasure,
 	trap,
-	enemy,
 	nothing,
 
 

@@ -255,7 +255,7 @@ HRESULT imageManager::init()
 
 	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::enemy, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::nothing, "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::obj_crate1, "images/dungeonOBJ/Crate1.bmp", 248, 140, true, RGB(255, 0, 255));

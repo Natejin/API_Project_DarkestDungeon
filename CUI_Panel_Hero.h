@@ -8,6 +8,13 @@ public:
 
 	class CHeroList_button* hero_List;
 	class CHero* hero;
+	class CEquipButton* m_armor;
+	class CEquipButton* m_weapon;
+
+	vector<class CBTN_Skill*> m_skillbuttonVec;
+	vector<class CEquipButton*> m_armorbuttonVec;
+	vector<class CEquipButton*> m_weaponbuttonVec;
+	
 	CUI_Panel_Hero();
 	~CUI_Panel_Hero();
 
@@ -26,7 +33,13 @@ public:
 	
 	void SetHeroPanel();
 	void ShowHeroInfo(HDC _hdc);
-	void ShowHeroSkill();
-	
+
+	void CreateHeroSkill();
+	void SetHeroSkill();
+	void CloseHeroSkill();
+
+	void CreateHeroEquip();
+	void SetHeroEquip();
+	void CloseHeroEquip();
 };
 

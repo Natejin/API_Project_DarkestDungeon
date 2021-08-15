@@ -49,12 +49,12 @@ void CBTN_Skill::BackRender(HDC _hdc)
 
 void CBTN_Skill::Render(HDC _hdc)
 {
-	m_spriteRenderer->RenderUI(_hdc);
+	
 }
 
 void CBTN_Skill::FrontRender(HDC _hdc)
 {
-
+	m_spriteRenderer->RenderUI(_hdc);
 	if (selected)
 	{
 		m_spriteSelected->RenderUI(_hdc);
