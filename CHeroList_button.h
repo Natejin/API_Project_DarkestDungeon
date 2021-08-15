@@ -15,7 +15,7 @@ class CHeroList_button : public CDragButton
 public:
 	class TownScene* townScene;
 	class CUI_Panel_Hero* hero_panel;
-	int index;
+	int m_index;
 
 	class CHero* m_hero;
 	class Hero_Roster* dummy_Roster;

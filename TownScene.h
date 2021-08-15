@@ -20,13 +20,10 @@ protected:
 	class CUI_Panel_Hero* m_hero_panel;
 public:
 
-	
 	vector<class CHeroList_button*> m_heroListButtonVec;
 
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
-
-
 	bool isHold; // 들고있냐.
 
 public:
@@ -68,6 +65,5 @@ public:
 	void ShowDummyHeroList();
 	void ShowHeroPanel();
 
-	
 	class CUI_Panel_Hero* GetHeroPanel();
 };

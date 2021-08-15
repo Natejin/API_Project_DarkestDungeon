@@ -240,55 +240,42 @@ void TownScene::ActivateBuildings() {
 
 void TownScene::Show_abeey()
 {	
-
-	DeactivateBuildings();
 	m_abbey->Enable();
 }
 void TownScene::Show_blacksmith( )
 {
-	m_blacksmith->isActive = true;
-	DeactivateBuildings();
+	m_blacksmith->Enable();
 }
 void TownScene::Show_campingTrainer( )
 {
-	m_campingTrainer->isActive = true;
-	DeactivateBuildings();
+	m_campingTrainer->Enable();
 }
 void TownScene::Show_graveyard()
 {
-	m_graveyard->isActive = true;
-	DeactivateBuildings();
+	m_graveyard->Enable();
 }
 void TownScene::Show_guild()
 {
-	m_guild->isActive = true;
-	DeactivateBuildings();
+	m_guild->Enable();
 }
 void TownScene::Show_nomad_wagon( )
 {
-	m_nomad_wagon->isActive = true;
-	DeactivateBuildings();
+	m_nomad_wagon->Enable();
 }
 void TownScene::Show_stage_coach( )
 {
-	m_stage_coach->isActive = true;
-	DeactivateBuildings();
+	m_stage_coach->Enable();
 }
 void TownScene::Show_town_statue()
 {
-	m_statue->isActive = true;
-	DeactivateBuildings();
+	m_statue->Enable();
 }
 void TownScene::Show_sanitarium()
 {
-	//m_sanitarium->isActive = true;
-	DeactivateBuildings();
 	m_sanitarium->Enable();
 }
 void TownScene::Show_tavern()
 {
-	//m_tavern->isActive = true;
-	DeactivateBuildings();
 	m_tavern->Enable();
 }
 void TownScene::Show_Activity_log()
@@ -310,7 +297,7 @@ void TownScene::SetHerolist()
 			dragButton->AddColliderBox(50, 50);
 			dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
 			dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
-			dragButton->index = i;
+			dragButton->m_index = i;
 			dragButton->townScene = this;
 			MG_GAME->GetHero(i)->SetOwnIndex(i);
 			dragButton->m_hero = MG_GAME->GetHero(i);

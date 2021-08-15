@@ -45,7 +45,7 @@ void CUIPanel_Guild::FrontRender(HDC _hdc)
 {
        m_windowPanelBG->Render(_hdc);
        m_windowPanelChar->Render(_hdc);
-       m_quick->isActive = true;
+       m_quit->isActive = true;
 }
 
 void CUIPanel_Guild::Release()

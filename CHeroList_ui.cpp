@@ -25,7 +25,6 @@ HRESULT CHeroList_ui::Init()
 	ImageData m_rosterbg;
 	m_rosterbg.m_img = MG_IMAGE->findImage(IMAGE::roster_bggrad);
 	m_rosterbg.m_trans.m_pos = Vector2(WINSIZEX / 2 + 520, WINSIZEY - 950);
-	//m_rosterbg.m_trans.m_pos = Vector2(WINSIZEX / 2 + 520, WINSIZEY - 550);
 	v_roster.push_back(m_rosterbg);
 
 	ImageData m_nameplate;
