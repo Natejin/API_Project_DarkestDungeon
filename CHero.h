@@ -20,6 +20,9 @@ class CHero : public Unit
 	float speedFront;
 	float speedBack;
 	vector<ImageData> STRSbar;
+
+	bool isTargetHeal;
+
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
 	Info_Hero* info;

@@ -38,7 +38,7 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	info->m_CRI = _info->m_CRI;
 	info->m_DEF = _info->m_DEF;
 	info->m_DODGE = _info->m_DODGE;
-	info->ownSkill = _info->ownSkill;
+	//info->ownSkill = _info->ownSkill;
 
 	info->imageIdle = _info->imageIdle;
 	info->imageWalk = _info->imageWalk;
@@ -127,7 +127,7 @@ void DB_UnitInfo::SetHero()
 	info->resist[4] = 40;
 	info->ownSkill.push_back(SKILL::Vestal_Combat_MaceBash);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
-	info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
+	//info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
 	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 
 	info->portrait = IMAGE::Vestal_portrait;

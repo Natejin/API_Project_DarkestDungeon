@@ -143,9 +143,7 @@ void DungeonScene::CreateDungeonMap()
 
 void DungeonScene::CreateParty()
 {
-	//MG_GAME->setParty();
 	m_party = MG_GAME->GetParty();
-	//auto party = MG_GAME->GetHero(i);
 	for (int i = 0; i < MG_GAME->GetHeroPartySize(); i++)
 	{
 		MG_GAME->GetHeroFromParty(i)->m_transform->m_pos = Vector2(500 - 120 * i, 640);
@@ -153,6 +151,7 @@ void DungeonScene::CreateParty()
 		MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
 		MG_GAME->GetHeroFromParty(i)->Enable();
 		m_party->SetHero(MG_GAME->GetHeroFromParty(i));
+		MG_GMOBJ->RegisterObj(m_party->GetHero(i));
 	}
 
 	MG_GAME->SetCurSelHero(0);

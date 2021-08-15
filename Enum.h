@@ -105,7 +105,19 @@ enum class IMAGE
 	Skeleton_Defender,
 	panel_monster_Red,
 	panel_monster_Black,
-	monster_target,
+
+	Target_Selected1,
+	Target_Selected2,
+	Target_Selected3,
+
+	Target_Monster1,
+	Target_Monster2,
+	Target_Monster3,
+	Target_Monster4,
+
+	Target_Heal1,
+	Target_Heal2,
+	Target_Heal3,
 
 	//WeaponArmor
 	Vestal_Armor_0 ,

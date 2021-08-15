@@ -66,7 +66,7 @@ void Unit::Release()
 void Unit::SetMemberOverlay()
 {
 
-
+    selectedMem.m_img = MG_IMAGE->findImage(IMAGE::Target_Selected1);
 	HPbar_back.m_img = MG_IMAGE->findImage("HP_empty");
 	HPbar_front.m_img = MG_IMAGE->findImage("HP_full");
 
@@ -79,7 +79,6 @@ void Unit::showSelMember(HDC _hdc)
 		m_transform->m_pos.y - 78);
 
 	selectedMem.m_img->render(_hdc, &selectedMem.m_trans);
-	//targetedMem.m_img->render(_hdc, &targetedMem.m_trans);
 }
 
 void Unit::showHpBar(HDC _hdc)

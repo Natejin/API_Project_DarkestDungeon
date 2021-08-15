@@ -167,7 +167,6 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		break;
 	}
 	hero->Unable();
-	MG_GMOBJ->RegisterObj(hero->GetName(), hero);
 	return hero;
 }
 

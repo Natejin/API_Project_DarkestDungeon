@@ -129,7 +129,18 @@ void CHero::FrontRender(HDC _hdc)
 {
 	Unit::FrontRender(_hdc);
 
+	if (isTargetHeal)
+	{
+		targeted_h_Mem.m_trans.m_pos = Vector2(
+			m_transform->m_pos.x - 87,
+			m_transform->m_pos.y - 78);
+
+		targeted_h_Mem.Render(_hdc);
+	}
+
 	showStrsBar(_hdc);
+
+
 
 	////for test collision
 	//ImageData temp;
@@ -256,7 +267,7 @@ void CHero::setTargetedMem()
 void CHero::SetMemberOverlay()
 {
 	Unit::SetMemberOverlay();
-	selectedMem.m_img = MG_IMAGE->findImage("selected1");
+	targeted_h_Mem.m_img = MG_IMAGE->findImage(IMAGE::Target_Heal1);
 	ImageData temp;
 	temp.m_img = MG_IMAGE->findImage("STRS_empty");
 	for (int i = 0; i < 10; i++)

@@ -60,9 +60,7 @@ HRESULT imageManager::init()
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/Enemys/panel_monster_indicator_valid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::panel_monster_Red, "images/Enemys/panel_monster_indicator_valid_Red.bmp", 147, 76, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::monster_target, "images/Enemys/target_1.bmp", 175,206, true, RGB(255, 0, 255));
+
 
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
@@ -336,13 +334,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Crusader_Weapon_0, "images/icons_equip_Crusader/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 
 	//UIovelay
-	MG_IMAGE->addImage("selected1", "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("selected2", "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target1", "images/dungeonUI/target_2.bmp", 246, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target2", "images/dungeonUI/target_3.bmp", 328, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target3", "images/dungeonUI/target_4.bmp", 436, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target_h_1", "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("target_h_2", "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
+
 
 	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 100, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 100, 10, true, RGB(255, 0, 255));
@@ -351,7 +343,20 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("memberRect", "images/test/memberRect.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/dungeonUI/panel_monster_indicator_valid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::panel_monster_Red, "images/dungeonUI/panel_monster_indicator_valid_Red.bmp", 147, 76, true, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage(IMAGE::Target_Monster1, "images/dungeonUI/target_1.bmp", 175, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Monster2, "images/dungeonUI/target_2.bmp", 246, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Monster3, "images/dungeonUI/target_3.bmp", 328, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Monster4, "images/dungeonUI/target_4.bmp", 436, 206, true, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage(IMAGE::Target_Selected1, "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Selected2, "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage(IMAGE::Target_Heal1, "images/dungeonUI/target_h_1.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Heal2, "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Heal3, "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
 
 	//item
 	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
@@ -606,6 +611,8 @@ Image* imageManager::addImage(IMAGE strKey, const char* fileName, const int widt
 	if (FAILED(img->init(fileName, width, height, trans, transColor)))
 	{
 		SAFE_DELETE(img);
+		strKey;
+		assert(false);
 		return NULL;
 	}
 

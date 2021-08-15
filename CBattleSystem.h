@@ -60,15 +60,12 @@ public:
 	void EndTurn();
 
 	void UseSkill(int _index);
-	void UseSkill1();
-	void UseSkill2();
-	void UseSkill3();
-	void UseSkill4();
 
 
 private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
+	void SelectEnemyTarget(SKILL skill, int index);
 
 	CHero* GetHero(int i);
 	void SelectHero(int index);

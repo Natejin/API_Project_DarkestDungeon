@@ -8,6 +8,10 @@ private:
 	//스킬
 	//스킬 Info에 accuracy, critical, DMG, changeAttribute 가 포함됨
 	Info_Enemy* info;
+
+	bool isTargetSkill;
+	ImageData targetSkillMem; //appear when some member using healSkill
+
 public:
 	CEnemy();
 	~CEnemy();

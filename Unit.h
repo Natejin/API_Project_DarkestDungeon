@@ -11,6 +11,7 @@ public:
 
 	ImageData HPbar_front;
 	ImageData HPbar_back;
+
 	ImageData selectedMem;
 
 protected:

@@ -8,7 +8,7 @@
 #include "dungeonUI.h";
 #include "dungeonUI_HeroInfo.h"
 #include "CBTN_Skill.h"
-
+#include "Info_Skill.h"
 
 
 CBattleSystem::CBattleSystem()
@@ -170,46 +170,52 @@ void CBattleSystem::EndTurn()
 
 void CBattleSystem::UseSkill(int _index)
 {
-	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+	for (int i = 0; i < dungeonUI->skillBTNs.size() - 1; i++)
 	{
 		dungeonUI->skillBTNs[i]->selected = false;
 	}
 	dungeonUI->skillBTNs[_index]->selected = true;
 
+	
+
+	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
+	{
+		SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index], _index);
+	}
 }
 
-void CBattleSystem::UseSkill1()
-{
-	for (int i = 0; i < dungeonUI->skillBTNs.size() ; i++)
-	{
-		dungeonUI->skillBTNs[i]->selected = false;
-	}
-	dungeonUI->skillBTNs[0]->selected = true;
-}
-void CBattleSystem::UseSkill2()
-{
-	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
-	{
-		dungeonUI->skillBTNs[i]->selected = false;
-	}
-	dungeonUI->skillBTNs[1]->selected = true;
-}
-void CBattleSystem::UseSkill3()
-{
-	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
-	{
-		dungeonUI->skillBTNs[i]->selected = false;
-	}
-	dungeonUI->skillBTNs[2]->selected = true;
-}
-void CBattleSystem::UseSkill4()
-{
-	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
-	{
-		dungeonUI->skillBTNs[i]->selected = false;
-	}
-	dungeonUI->skillBTNs[3]->selected = true;
-}
+//void CBattleSystem::UseSkill1()
+//{
+//	for (int i = 0; i < dungeonUI->skillBTNs.size() ; i++)
+//	{
+//		dungeonUI->skillBTNs[i]->selected = false;
+//	}
+//	dungeonUI->skillBTNs[0]->selected = true;
+//}
+//void CBattleSystem::UseSkill2()
+//{
+//	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+//	{
+//		dungeonUI->skillBTNs[i]->selected = false;
+//	}
+//	dungeonUI->skillBTNs[1]->selected = true;
+//}
+//void CBattleSystem::UseSkill3()
+//{
+//	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+//	{
+//		dungeonUI->skillBTNs[i]->selected = false;
+//	}
+//	dungeonUI->skillBTNs[2]->selected = true;
+//}
+//void CBattleSystem::UseSkill4()
+//{
+//	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+//	{
+//		dungeonUI->skillBTNs[i]->selected = false;
+//	}
+//	dungeonUI->skillBTNs[3]->selected = true;
+//}
 
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
 void CBattleSystem::CreateEnemyParty()
@@ -277,10 +283,27 @@ CEnemy* CBattleSystem::GetEnemy(int index)
 
 void CBattleSystem::SelectEnemy(int index)
 {
+
 	for (int i = 0; i < enemyParty.size(); i++)
 	{
 		if (i == index) GetEnemy(i)->isSelected = true;
 		else GetEnemy(i)->isSelected = false;
+	}
+}
+
+void CBattleSystem::SelectEnemyTarget(SKILL skill, int index)
+{
+	auto tempSkill = DB_SKILL->CallSkill(skill);
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+		if (tempSkill->CheckTarget(i))
+		{
+			enemyParty[i]->isSelected = true;
+		}
+		else {
+			enemyParty[i]->isSelected = false;
+		}
+		
 	}
 }
 
