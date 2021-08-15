@@ -231,3 +231,8 @@ CUIPanel* dungeonUI::CreatePanel(IMAGE image, Vector2 pos, LAYER layer)
 	MG_GMOBJ->RegisterObj("panel", uiPanel);
 	return uiPanel;
 }
+
+CInventorySystem* dungeonUI::getInven()
+{
+	return m_invenSystem;
+}

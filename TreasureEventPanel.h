@@ -14,10 +14,13 @@ private:
 
 	int nowMouseOn;
 
+	GameObject* m_invenSys;
+
 public :
 	TreasureEventPanel();
 	~TreasureEventPanel();
 
+	HRESULT Init(int torch, int food, int bandage);
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);
@@ -30,6 +33,10 @@ public :
 	virtual void Release();
 
 	//==================================
+
+	void setTreasureItem(int torch, int food, int bandage);
+
+	void setTreasureSlot();
 
 	void FinishUI();
 	virtual void Enable();

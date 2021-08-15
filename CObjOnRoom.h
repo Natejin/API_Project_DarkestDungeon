@@ -5,20 +5,21 @@
 
 class CParty;
 class CHero;
-class CObjOnRoad :public CButton
+class CObjOnRoom : public CButton
 {
 private:
 	RoadObjType objType;
 	bool isOpened;
+	bool isPassed;
 
 public:
-	CObjOnRoad();
-	~CObjOnRoad();
+	CObjOnRoom();
+	~CObjOnRoom();
 
 	class DungeonScene* dungeonScene;
-	
+
 	HRESULT Init();
-	HRESULT Init(RoadObjType type, int index, bool _isPassed);
+	HRESULT Init(RoadObjType type, int index, bool isPassed);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -39,14 +40,6 @@ public:
 	void Interaction_collision();
 
 	void Interaction_treassure();
-	void Interaction_trap();
-	void Interaction_trap_fail();
-	void Interaction_trap_success();
 	void Interaction_battle(); //change the scene
-
-	bool getisOpened()
-	{
-		return isOpened;
-	}
 
 };

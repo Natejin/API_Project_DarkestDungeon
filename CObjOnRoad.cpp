@@ -14,16 +14,16 @@ HRESULT CObjOnRoad::Init()
 	return S_OK;
 }
 
-HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool isPassed)
+HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed)
 {
 	m_layer = LAYER::BackGround;
     objType = type;
-	isOpen = isPassed;
+	isOpened = _isPassed;
 	m_transform->m_pivot = Vector2(0.5, 1);
 
 	AddSpriteRenderer();
 
-	if (!isOpen)
+	if (!isOpened)
 	{
 		switch (objType)
 		{
@@ -41,14 +41,20 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool isPassed)
 			break;
 		}
 	}
-	else 
+	else //passed
 	{
 		switch (objType)
 		{
 		case RoadObjType::Trap:
+			m_spriteRenderer->SetImage(IMAGE::obj_trap1);
+			break;
+
 		case RoadObjType::Enemy:
+			m_spriteRenderer->SetImage(IMAGE::enemy);
+			break;
+
 		case RoadObjType::Tresure:
-			m_spriteRenderer->SetImage(IMAGE::nothing);
+			m_spriteRenderer->SetImage(IMAGE::obj_treasure1);
 			break;
 
 		default:
@@ -80,7 +86,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool isPassed)
 
 void CObjOnRoad::Update(float deltaTime, float worldTime)
 {
-	if (!isOpen)
+	if (!isOpened)
 	{
 		Interaction_collision();
 	}
@@ -122,6 +128,11 @@ void CObjOnRoad::setCollider()
 	AddColliderBoxBigger();
 }
 
+void CObjOnRoad::setTreasureSlots()
+{
+
+}
+
 void CObjOnRoad::Interaction_collision()
 {
 	switch (objType)
@@ -150,7 +161,7 @@ void CObjOnRoad::Interaction_treassure()
 		{
 			if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 			{
-				if (isOpen) return;
+				if (isOpened) return;
 				else
 				{
 					if (MG_RND->getInt(10) > 0)
@@ -164,12 +175,12 @@ void CObjOnRoad::Interaction_treassure()
 						MG_GAME->GetParty()->setBandage(MG_GAME->GetParty()->getBandage() + band);
 						MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() + food);
 						MG_GAME->GetParty()->setTorch(MG_GAME->GetParty()->getTorch() + torch);
-						isOpen = true;
+						isOpened = true;
 					}
 					else
 					{
 						m_spriteRenderer->SetImage(IMAGE::nothing);
-						isOpen = true;
+						isOpened = true;
 					}
 				}
 			}
@@ -223,13 +234,13 @@ void CObjOnRoad::Interaction_trap_fail()
 			MG_GAME->GetHero(i)->setStress(MG_GAME->GetParty()->GetHero(0)->getStress() + MG_RND->getFromIntTo(10, 25));
 		}
 	}
-	isOpen = true;
+	isOpened = true;
 }
 
 void CObjOnRoad::Interaction_trap_success()
 {
 	m_spriteRenderer->SetImage(IMAGE::obj_trap1);
-	isOpen = true;
+	isOpened = true;
 }
 
 void CObjOnRoad::Interaction_battle()

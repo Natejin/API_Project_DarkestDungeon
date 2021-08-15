@@ -37,4 +37,27 @@ public:
 	void RegisterObj( GameObject* gameObj);
 	void RemoveObj(int id);
 	void RemoveObj(GameObject* gameObj);
+
+	template<typename T>
+	T getObj(string name);
 };
+
+template<typename T>
+inline T CObjectManager::getObj(string name)
+{
+	for (size_t i = 0; i < objectVec.size(); i++)
+	{
+		if (objectVec[i]->GetName == name)
+		{
+			int toFindID = objectVec[i]->GetId();
+		}
+
+		for (size_t j = 0; j < objectVec.size(); ++j)
+		{
+			if (objectVec[j]->GetId() == toFindID)
+			{
+				return *objectVec[j];
+			}
+		}
+	}
+}
