@@ -1,6 +1,6 @@
 #pragma once
 #define MAXSKILLLVL 5
-class CInfo_Skill
+class CInfo_Skill : public Info
 {
 	
 public:
@@ -37,5 +37,7 @@ public:
 
 	bool CheckUseable(int pos);
 	bool CheckTarget(int pos);
+
+	virtual void Release();
 };
 

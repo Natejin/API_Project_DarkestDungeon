@@ -52,23 +52,11 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	info->portrait = _info->portrait;
 	info->weapon = _info->weapon;
 	info->armor = _info->armor;
-
-
-
 	for (size_t i = 0; i < _info->ownSkill.size(); i++)
 	{
 		info->ownSkill.push_back(_info->ownSkill[i]);
 	}
-
-
-
-
-
-
-
-
-
-
+	MG_INFO->RegisterInfo(info);
 	return info;
 }
 
@@ -111,7 +99,7 @@ void DB_UnitInfo::SetHero()
 	info->weapon.push_back( IMAGE::Crusader_Weapon_0);
 	info->armor.push_back( IMAGE::Crusader_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
-
+	MG_INFO->RegisterInfo(info);
 
 	info = new Info_Hero();
 	info->unitType = UNITTYPE::Hero;
@@ -146,18 +134,22 @@ void DB_UnitInfo::SetHero()
 	info->weapon.push_back(IMAGE::Vestal_Weapon_0);
 	info->armor.push_back(IMAGE::Vestal_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
+	MG_INFO->RegisterInfo(info);
 }
 
 void DB_UnitInfo::SetEnemy()
 {
+
 }
 
 
 
 void DB_UnitInfo::Save()
 {
+
 }
 
 void DB_UnitInfo::Load()
 {
+
 }

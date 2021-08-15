@@ -17,8 +17,13 @@ public:
 	int m_STRS;
 
 	vector<SKILL> ownSkill;
+	vector<int> skillLvl;
 	IMAGE portrait;
 	vector<IMAGE> weapon;
+	int weaponLvl;
 	vector<IMAGE> armor;
+	int armorLvl;
+
+	virtual void Release();
 };
 

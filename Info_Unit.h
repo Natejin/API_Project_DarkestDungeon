@@ -1,5 +1,7 @@
 #pragma once
-class Info_Unit
+#include "Info.h"
+
+class Info_Unit : public Info
 {
 public:
 	int m_HP;
@@ -15,5 +17,7 @@ public:
 	IMAGE imageIdle;
 	IMAGE imageWalk;
 	IMAGE imageCombat;
+
+	virtual void Release();
 };
 

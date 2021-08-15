@@ -70,6 +70,8 @@ private:
 	CHero* GetHero(int i);
 	void SelectHero(int index);
 
+	void ShowTargetBySkill(int index);
+
 
 private:
 	void CreateEnemyParty();

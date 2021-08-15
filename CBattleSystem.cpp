@@ -244,6 +244,7 @@ CEnemy* CBattleSystem::GetEnemy(int index)
 	return index < enemyParty.size() ? enemyParty[index] : nullptr;
 }
 
+
 void CBattleSystem::SelectEnemy(int index)
 {
 	for (int i = 0; i < enemyParty.size(); i++)
@@ -261,4 +262,8 @@ CHero* CBattleSystem::GetHero(int index)
 void CBattleSystem::SelectHero(int index)
 {
 	MG_GAME->SetCurSelHero(index);
+}
+
+void CBattleSystem::ShowTargetBySkill(int index)
+{
 }

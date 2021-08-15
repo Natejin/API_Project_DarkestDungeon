@@ -5,8 +5,8 @@ class CBTN_Skill :public CDragButton
 {
 protected:
 	class CInfo_Skill* skillInfo;
-
 	class CHero* hero;
+	//class 
 
 public:
 	class DungeonScene* scene;

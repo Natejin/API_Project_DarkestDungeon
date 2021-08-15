@@ -11,3 +11,7 @@ bool CInfo_Skill::CheckTarget(int pos)
 {
 	return targetPos & (2 << pos) ? true : false;
 }
+
+void CInfo_Skill::Release()
+{
+}

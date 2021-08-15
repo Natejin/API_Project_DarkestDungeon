@@ -160,6 +160,11 @@ void dungeonUI::SetSkillButton()
 	MG_GMOBJ->RegisterObj("SkillBTN 4", temp);
 }
 
+void dungeonUI::SelectSkillButton()
+{
+
+}
+
 void dungeonUI::TorchLightBarDecrease()
 {
 	vUI[1].m_img->setWidth(20);

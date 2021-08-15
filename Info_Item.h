@@ -1,7 +1,8 @@
 #pragma once
 #include "CItemEffect.h"
+#include "Info.h"
 
-class CInfo_Item
+class CInfo_Item : public Info
 {
 public:
 	ITEM m_item;
@@ -27,4 +28,5 @@ public:
 	bool IsFull();
 	bool useItem();
 	void DumpItem(int dumpCount);
+	virtual void Release();
 };

@@ -26,3 +26,8 @@ void CInfo_Item::DumpItem(int dumpCount)
 {
 	m_itemEffect->DumpItem(dumpCount);
 }
+
+void CInfo_Item::Release()
+{
+	SAFE_DELETE(m_itemEffect);
+}

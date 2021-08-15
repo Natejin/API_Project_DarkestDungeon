@@ -53,7 +53,9 @@ public:
 	void SetButton();
 	void SetTorchUIimg();
 	void SetInven();
+
 	void SetSkillButton();
+	void SelectSkillButton();
 
 	void TorchLightBarDecrease();
 

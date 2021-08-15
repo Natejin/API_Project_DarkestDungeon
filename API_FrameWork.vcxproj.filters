@@ -274,6 +274,9 @@
     <Filter Include="Object\Component\ItemEffect">
       <UniqueIdentifier>{4a9a0865-777d-4787-bb2e-0b27eeea7942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommonInfo\Colletion">
+      <UniqueIdentifier>{8c299ed5-0138-4058-9789-8d288a50c2c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameNode.h">
@@ -630,9 +633,6 @@
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="DB_itemEffect.h">
-      <Filter>CommonInfo\DB</Filter>
-    </ClInclude>
     <ClInclude Include="CItemEffect.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
@@ -658,7 +658,16 @@
       <Filter>CommonInfo\DB</Filter>
     </ClInclude>
     <ClInclude Include="TreasureEventPanel.h">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InfomationManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Info.h">
+      <Filter>CommonInfo\DB\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemEffect_Colletion.h">
+      <Filter>CommonInfo\Colletion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -992,9 +1001,6 @@
     <ClCompile Include="CSaveable.cpp">
       <Filter>CommonInfo\DB\Prototype</Filter>
     </ClCompile>
-    <ClCompile Include="DB_itemEffect.cpp">
-      <Filter>CommonInfo\DB</Filter>
-    </ClCompile>
     <ClCompile Include="CItemEffect.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
@@ -1020,7 +1026,16 @@
       <Filter>CommonInfo\DB</Filter>
     </ClCompile>
     <ClCompile Include="TreasureEventPanel.cpp">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InfomationManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Info.cpp">
+      <Filter>CommonInfo\DB\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemEffect_Colletion.cpp">
+      <Filter>CommonInfo\Colletion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
