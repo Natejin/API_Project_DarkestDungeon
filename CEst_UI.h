@@ -9,7 +9,7 @@ protected:
 
 	class CSpriteRenderer* m_windowPanelBG;
 	class CSpriteRenderer* m_windowPanelChar;
-
+	class CSpriteRenderer* m_CharPanel;
 	//class CUIPanel_Abbey* abbey;
 
 public:

@@ -25,6 +25,6 @@ public:
 	virtual void Unable();
 	
 	void SetHeroPanel();
-
+	void ShowHeroInfo(HDC _hdc);
 };
 
