@@ -13,6 +13,7 @@ private:
 	ImageData targetSkillMem; //appear when some member using healSkill
 
 
+
 	function<void(int i)> m_triggerWhenStay;
 	bool canTriggerStay;
 public:
@@ -30,11 +31,8 @@ public:
 	CEnemy();
 	~CEnemy();
 
-	HRESULT Init();
-
-	HRESULT Init(string img, int resist[],
-		int HP, int SPD, int POS,
-		int DEF, int DODGE);
+	//HRESULT Init();
+	HRESULT Init(Info_Enemy* _info);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -46,6 +44,12 @@ public:
 	virtual void Release();
 
 	virtual void SetMemberOverlay();
+	virtual UNITTYPE GetUnitType();
 
+	virtual Info_Enemy* GetInfo();
+	virtual int getHP();
+	virtual void setHP(int hp);
+	virtual int getSPD();
+	virtual void setSPD(int spd);
 
 };

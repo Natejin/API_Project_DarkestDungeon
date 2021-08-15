@@ -11,13 +11,13 @@ public:
 
 	ImageData HPbar_front;
 	ImageData HPbar_back;
-
+	
 	ImageData selectedMem;
 
 protected:
 	function<void(int i)> m_triggerWhenDown;
 	bool canTriggerDown;
-
+	UNITTYPE m_unitType;
 public:
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))

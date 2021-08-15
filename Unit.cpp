@@ -97,7 +97,7 @@ void Unit::showHpBar(HDC _hdc)
 
 UNITTYPE Unit::GetUnitType()
 {
-    return UNITTYPE();
+    return m_unitType;
 }
 
 int Unit::GetSpeed()

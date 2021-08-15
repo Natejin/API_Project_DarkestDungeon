@@ -9,6 +9,7 @@
 #include "dungeonUI_HeroInfo.h"
 #include "CBTN_Skill.h"
 #include "Info_Skill.h"
+#include "Info_Enemy.h"
 
 
 CBattleSystem::CBattleSystem()
@@ -31,6 +32,8 @@ HRESULT CBattleSystem::Init()
 	targetEnemyPosVec.push_back(Vector2(1360, 640));
 	targetEnemyPosVec.push_back(Vector2(1560, 640));
 	targetEnemyPosVec.push_back(Vector2(1760, 640));
+	heroZoomImage.m_trans.m_pos = Vector2(700, 300);
+	enemyZoomImage.m_trans.m_pos = Vector2(1100, 300);
 	mouseOnEnemy.m_trans.m_pivot = Vector2(0.5, 0.5);
 	mouseOnEnemy.m_trans.m_pos = targetEnemyPosVec[0];
 	return S_OK;
@@ -45,7 +48,7 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 
 	if (MG_INPUT->isOnceKeyDown('N'))
 	{
-		EndTurn();
+		StartTurn();
 	}
 	float x = abs(mouseOnEnemy.m_trans.m_pos.x - targetEnemyPosVec[enemyPosIndex].x);
 	if (x > 60)
@@ -59,6 +62,12 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 1;
 	}
 	
+
+	if (startNextTurn && worldTime > startTriggerTime)
+	{
+		startNextTurn = false;
+		StartTurn();
+	}
 }
 
 void CBattleSystem::LateUpdate()
@@ -83,6 +92,17 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(0, 255, 255));
 	mouseOnEnemy.RenderWithPivot(_hdc);
+
+	if (showHeroZoom)
+	{
+		heroZoomImage.RenderUI(_hdc);
+	}
+
+	if (showEnemyZoom)
+	{
+		enemyZoomImage.RenderUI(_hdc);
+	}
+
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
@@ -133,25 +153,42 @@ void CBattleSystem::BattleSystemEnd()
 
 void CBattleSystem::StartTurn()
 {
-	
+	DeselectAll();
+	if (speedVec.size() == 0)
+	{
+		Compare_P_E_Speed_ReArray();
+		curTurn++;
+	}
+	showHeroZoom = showEnemyZoom = false;
 	if (speedVec.size() > 0)
 	{
 		Unit* unit = speedVec[speedVec.size() - 1].second;
-		if (unit->GetUnitType()== UNITTYPE::Hero)
+		if (unit->getHP() > 0)
 		{
-			curHero = (CHero*)unit;
-			turn = TURN::Player;
-		}
-		else if (unit->GetUnitType() == UNITTYPE::Enemy)
-		{
-			curEnemy = (CEnemy*)unit;
-			turn = TURN::Enemy;
+			if (unit->GetUnitType() == UNITTYPE::Hero)
+			{
+				curHero = (CHero*)unit;
+				curHero->isSelected = true;
+				turn = TURN::Player;
+				speedVec.pop_back();
+			}
+			else if (unit->GetUnitType() == UNITTYPE::Enemy)
+			{
+				curEnemy = (CEnemy*)unit;
+				curEnemy->isSelected = true;
+				turn = TURN::Enemy;
+				speedVec.pop_back();
+			}
+			else {
+				assert(true);
+			}
 		}
 		else {
-			assert(true);
+			StartTurn();
 		}
+		
 	}
-	speedVec.pop_back();
+
 	if (turn == TURN::Player)
 	{
 		HeroTurn();
@@ -163,12 +200,13 @@ void CBattleSystem::StartTurn()
 
 void CBattleSystem::HeroTurn()
 {
-	SelectHero(curHero->GetPartyIndex());
+	StartHeroTrun(curHero->GetPartyIndex());
 }
 
 void CBattleSystem::EnemyTurn()
 {
-	SelectEnemy(curEnemy->GetPartyIndex());
+	StartEnemyTrun(curEnemy->GetPartyIndex());
+
 }
 
 void CBattleSystem::EndTurn()
@@ -192,38 +230,6 @@ void CBattleSystem::UseSkill(int _index)
 	}
 }
 
-//void CBattleSystem::UseSkill1()
-//{
-//	for (int i = 0; i < dungeonUI->skillBTNs.size() ; i++)
-//	{
-//		dungeonUI->skillBTNs[i]->selected = false;
-//	}
-//	dungeonUI->skillBTNs[0]->selected = true;
-//}
-//void CBattleSystem::UseSkill2()
-//{
-//	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
-//	{
-//		dungeonUI->skillBTNs[i]->selected = false;
-//	}
-//	dungeonUI->skillBTNs[1]->selected = true;
-//}
-//void CBattleSystem::UseSkill3()
-//{
-//	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
-//	{
-//		dungeonUI->skillBTNs[i]->selected = false;
-//	}
-//	dungeonUI->skillBTNs[2]->selected = true;
-//}
-//void CBattleSystem::UseSkill4()
-//{
-//	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
-//	{
-//		dungeonUI->skillBTNs[i]->selected = false;
-//	}
-//	dungeonUI->skillBTNs[3]->selected = true;
-//}
 
 
 void CBattleSystem::CreateEnemyParty()
@@ -234,8 +240,8 @@ void CBattleSystem::CreateEnemyParty()
 	Vector2 heroPos = MG_GAME->GetHero(0)->m_transform->m_pos;
 	for (size_t i = 0; i < random; i++)
 	{
-		CBoneDefender* enemy = new CBoneDefender();
-		enemy->Init(); //TODO 추후 적 세팅 변경하기
+		CEnemy* enemy = new CEnemy();
+		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::BoneDefender)); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		enemy->SetPosition(i);
 		enemy->SetPartyIndex(i);
@@ -283,12 +289,14 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 	//플레이어 영웅들을 speed turn에 추가
 	for (int i = 0; i < heroParty.size(); i++)
 	{
+		if (heroParty[i]->getHP() < 1) continue;
 		speedVec.push_back(make_pair(heroParty[i]->GetSpeed() + MG_RND->getInt(randomDice6) , heroParty[i]));
 	}
 
 	//플레이어 영웅들을 speed turn에 추가
 	for (int i = 0; i < enemyParty.size(); i++)
 	{
+		if (enemyParty[i]->getHP() < 1) continue;
 		speedVec.push_back(make_pair(enemyParty[i]->GetSpeed() + MG_RND->getInt(randomDice6), enemyParty[i]));
 	}
 
@@ -304,19 +312,38 @@ CEnemy* CBattleSystem::GetEnemy(int index)
 
 void CBattleSystem::SelectEnemy(int index)
 {
-
-	//auto tempSkill = DB_SKILL->CallSkill(skill);
-	//for (int i = 0; i < enemyParty.size(); i++)
-	//{
-	//	enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(i) ? true : false;
-	//}
-
-	/*for (int i = 0; i < enemyParty.size(); i++)
+	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE && turn == TURN::Player)
 	{
-		if (i == index) GetEnemy(i)->isSelected = true;
-		else GetEnemy(i)->isSelected = false;
-	}*/
+		SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
+		if (tempSkill->CheckTarget(index))
+		{
+			heroZoomImage.m_img = MG_IMAGE->findImage(tempSkill->m_skillMotion);
+			showHeroZoom = showEnemyZoom = true;
+			enemyZoomImage.m_img = MG_IMAGE->findImage(enemyParty[index]->GetInfo()->imageDefend);
+			startTriggerTime = MG_TIME->getWorldTime() + 5;
+			startNextTurn = true;
+		}
+	}
+	
 }
+
+void CBattleSystem::DeselectAll()
+{
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+		enemyParty[i]->isSelected = false;
+		enemyParty[i]->isTargetSkill = false;
+	}
+
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		heroParty[i]->isSelected = false;
+		heroParty[i]->isTargetHeal = false;
+	}
+}
+
+
 
 
 void CBattleSystem::SetEnemyIndicator(int index)
@@ -333,11 +360,15 @@ void CBattleSystem::SetEnemyIndicator(int index)
 
 void CBattleSystem::SelectEnemyTarget(SKILL skill)
 {
-	auto tempSkill = DB_SKILL->CallSkill(skill);
-	for (int i = 0; i < enemyParty.size(); i++)
+	if (turn == TURN::Player)
 	{
-		enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(i) ? true : false;
+		auto tempSkill = DB_SKILL->CallSkill(skill);
+		for (int i = 0; i < enemyParty.size(); i++)
+		{
+			enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(i) ? true : false;
+		}
 	}
+
 }
 
 CHero* CBattleSystem::GetHero(int index)
@@ -345,9 +376,13 @@ CHero* CBattleSystem::GetHero(int index)
 	return index < heroParty.size() ? heroParty[index] : nullptr;
 }
 
-void CBattleSystem::SelectHero(int index)
+void CBattleSystem::StartHeroTrun(int index)
 {
 	MG_GAME->SetCurSelHero(index);
+}
+
+void CBattleSystem::StartEnemyTrun(int index)
+{
 }
 
 void CBattleSystem::ShowTargetBySkill(int index)

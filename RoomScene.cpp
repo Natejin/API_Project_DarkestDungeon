@@ -112,7 +112,7 @@ void RoomScene::Create_Enermy_Party()
 	{
 		CEnemy* enemy = new CEnemy();
 
-		enemy->Init();
+		//enemy->Init();
 		enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
 		MG_GMOBJ->RegisterObj("enemy1", enemy);
 

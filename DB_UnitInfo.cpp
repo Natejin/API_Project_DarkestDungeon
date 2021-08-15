@@ -43,6 +43,12 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	info->imageIdle = _info->imageIdle;
 	info->imageWalk = _info->imageWalk;
 	info->imageCombat = _info->imageCombat;
+	info->imageInvestigate = _info->imageInvestigate;
+	info->imageDefend = _info->imageDefend;
+	info->imageAttack = _info->imageAttack;
+	info->imageCharge = _info->imageCharge;
+	info->imageBuff = _info->imageBuff;
+	info->imageDebuff = _info->imageDebuff;
 
 
 
@@ -62,7 +68,48 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 
 Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 {
-	return enemyDB[enemyType];
+	auto _info = enemyDB[enemyType];
+	auto info = new Info_Enemy();
+	info->unitType = _info->unitType;
+	info->m_HP = _info->m_HP;
+	info->m_SPD = _info->m_SPD;
+	for (size_t i = 0; i < 5; i++)
+	{
+		info->resist[i] = _info->resist[i];
+	}
+	for (size_t i = 0; i < 8; i++)
+	{
+		info->attribute[i] = false;
+	}
+
+	//hero
+	info->enemyType = _info->enemyType;
+	info->m_DMG = _info->m_DMG;
+	info->m_ACRY = _info->m_ACRY;
+	info->m_CRI = _info->m_CRI;
+	info->m_DEF = _info->m_DEF;
+	info->m_DODGE = _info->m_DODGE;
+	//info->ownSkill = _info->ownSkill;
+
+	info->imageIdle = _info->imageIdle;
+	info->imageWalk = _info->imageWalk;
+	info->imageCombat = _info->imageCombat;
+	info->imageInvestigate = _info->imageInvestigate;
+	info->imageDefend = _info->imageDefend;
+	info->imageAttack = _info->imageAttack;
+	info->imageCharge = _info->imageCharge;
+	info->imageBuff = _info->imageBuff;
+	info->imageDebuff = _info->imageDebuff;
+
+
+
+	info->portrait = _info->portrait;
+	for (size_t i = 0; i < _info->ownSkill.size(); i++)
+	{
+		info->ownSkill.push_back(_info->ownSkill[i]);
+	}
+	MG_INFO->RegisterInfo(info);
+	return info;
 }
 
 void DB_UnitInfo::SetHero()
@@ -85,16 +132,25 @@ void DB_UnitInfo::SetHero()
 	info->imageIdle = IMAGE::Crusader_Idle;
 	info->imageCombat = IMAGE::Crusader_Combat;
 	info->imageWalk = IMAGE::Crusader_Walk;
+	info->imageAttack = IMAGE::Crusader_sword;
+	info->imageCharge = IMAGE::Crusader_charge;
+	info->imageInvestigate = IMAGE::Crusader_investigate;
+	info->imageDefend = IMAGE::Crusader_defend;
+	info->imageBuff = IMAGE::Crusader_banner;
+	info->imageDebuff = IMAGE::Crusader_scroll;
 	info->resist[0] = 40;
 	info->resist[1] = 30;
 	info->resist[2] = 30;
 	info->resist[3] = 30;
 	info->resist[4] = 40;
 	info->ownSkill.push_back(SKILL::Crusader_Combat_Smite);
+	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Combat_ZealousAccusation);
+	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Combat_StunningBlow);
+	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
-
+	info->skillLvl.push_back(0);
 	info->portrait = IMAGE::Crusader_portrait;
 	info->weapon.push_back( IMAGE::Crusader_Weapon_0);
 	info->armor.push_back( IMAGE::Crusader_Armor_0);
@@ -120,14 +176,24 @@ void DB_UnitInfo::SetHero()
 	info->imageIdle = IMAGE::Vestal_Idle;
 	info->imageCombat = IMAGE::Vestal_Idle;
 	info->imageWalk = IMAGE::Vestal_Idle;
+	info->imageAttack = IMAGE::Vestal_mace;
+	info->imageCharge = IMAGE::Vestal_miracle;
+	info->imageInvestigate = IMAGE::Vestal_investigate;
+	info->imageDefend = IMAGE::Vestal_defend;
+	info->imageBuff = IMAGE::Vestal_heal;
+	info->imageDebuff = IMAGE::Vestal_lectionary;
+
 	info->resist[0] = 40;
 	info->resist[1] = 30;
 	info->resist[2] = 30;
 	info->resist[3] = 30;
 	info->resist[4] = 40;
 	info->ownSkill.push_back(SKILL::Vestal_Combat_MaceBash);
+	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
+	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
+	info->skillLvl.push_back(0);
 //	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 
 	info->portrait = IMAGE::Vestal_portrait;
@@ -139,7 +205,37 @@ void DB_UnitInfo::SetHero()
 
 void DB_UnitInfo::SetEnemy()
 {
+	Info_Enemy* info = new Info_Enemy();
+	info->unitType = UNITTYPE::Enemy;
+	info->m_HP = 20;
+	info->m_SPD = 3;
 
+	info->enemyType = ENEMYTYPE::BoneDefender;
+	info->m_DMG = 3;
+	info->m_ACRY = 9;
+	info->m_CRI = 0;
+	info->m_DEF = 3;
+	info->m_DODGE = 0;
+
+	info->imageIdle = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageCombat = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageWalk = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageAttack = IMAGE::Enemy_SkeletonDefender_Attack;
+	info->imageCharge = IMAGE::Enemy_SkeletonDefender_Attack;
+	info->imageDefend = IMAGE::Enemy_SkeletonDefender_Defender;
+	info->imageBuff = IMAGE::Enemy_SkeletonDefender_Shield;
+	info->imageDebuff = IMAGE::Enemy_SkeletonDefender_Shield;
+
+	info->resist[0] = 40;
+	info->resist[1] = 30;
+	info->resist[2] = 30;
+	info->resist[3] = 30;
+	info->resist[4] = 40;
+	info->ownSkill.push_back(SKILL::BoneDefender_Combat_1);
+	info->skillLvl.push_back(0);
+	info->portrait = IMAGE::Crusader_portrait;
+	enemyDB.insert(make_pair(info->enemyType, info));
+	MG_INFO->RegisterInfo(info);
 }
 
 

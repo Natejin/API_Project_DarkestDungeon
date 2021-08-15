@@ -5,6 +5,7 @@
 
 CHero::CHero() {
 
+	m_unitType = UNITTYPE::Hero;
 	m_layer = LAYER::Player;
 	speedFront = 8;
 	speedBack = 4;
@@ -13,93 +14,16 @@ CHero::CHero() {
 }
 CHero::~CHero() {}
 
-//HRESULT CHero::Init(JOB job, int resist[], int HP, int SPD, int POS, int DMG, int ACRY, int CRI, int DEF, int DODGE)
-//{
-//	canTriggerDown = false;
-//	
-//	this->info->job = job;
-//	info->m_HP = HP;
-//	info->m_SPD = SPD;
-//
-//	//skill
-//
-//	info->m_DMG = DMG;
-//	info->m_ACRY = ACRY;
-//	info->m_CRI = CRI;
-//	info->m_DEF = DEF;
-//	info->m_DODGE = DODGE;
-//
-//	info->m_LVL = 1;
-//	info->m_EXP = 0;
-//	info->m_STRS = 0;
-//	info->m_STRSLVL = 0;
-//
-//	limit = 0;
-//
-//	for (size_t i = 0; i < 5; i++)
-//	{
-//		this->info->resist[i] = resist[i];
-//	}
-//	for (size_t i = 0; i < 8; i++)
-//	{
-//		info->attribute[i] = false;
-//	}
-//
-//	info->m_DIST = 0;
-//	isActive = false;
-//	m_transform->m_pivot = Vector2(0.5, 1);
-//
-//	isSelected = false; 
-//	isBattle = false;
-//	
-//	SetMemberOverlay();
-//	AddColliderBox(120, 300);
-//
-//	
-//
-//	return S_OK;
-//}
-
 HRESULT CHero::Init(Info_Hero* _info)
 {
 	canTriggerDown = false;
-
+	m_unitType = _info->unitType;
 	info = _info;
-	//info = new Info_Hero();
-	//info->unitType = _info->unitType;
-	//info->m_HP = _info->m_HP;
-	//info->m_SPD = _info->m_SPD;
-	//for (size_t i = 0; i < 5; i++)
-	//{
-	//	this->info->resist[i] = _info->resist[i];
-	//}
-	//for (size_t i = 0; i < 8; i++)
-	//{
-	//	info->attribute[i] = false;
-	//}
-
-	////hero
-	//info->job = _info->job;
-	//info->m_DMG = _info->m_DMG;
-	//info->m_ACRY = _info->m_ACRY;
-	//info->m_CRI = _info->m_CRI;
-	//info->m_DEF = _info->m_DEF;
-	//info->m_DODGE = _info->m_DODGE;
-	//info->ownSkill = _info->ownSkill;
-
-
-	//info->m_LVL = 1;
-	//info->m_EXP = 0;
-	//info->m_STRS = 0;
 	
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
 	m_animator->AddImageFrame(_info->imageCombat);
-
-
-
-
 
 	SetMemberOverlay();
 	AddColliderBox(120, 300);
@@ -156,6 +80,7 @@ void CHero::FrontRender(HDC _hdc)
 void CHero::Release()
 {
 	Unit::Release();
+	MG_INFO->RemoveInfo(info);
 }
 
 IMAGE CHero::GetArmor()

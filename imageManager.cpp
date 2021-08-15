@@ -15,10 +15,10 @@ HRESULT imageManager::init()
 	//MG_IMAGE->addFrameImage("�ϸ�", "images/�ϸ�.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
 
 	//Hero
-	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/Vestal_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/Crusader_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/vestal/Vestal_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/crusader/Crusader_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/crusader/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/crusader/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
 	
 	MG_IMAGE->addImage(IMAGE::Crusader_banner, "images/Heroes/crusader/crusader_banner.bmp", 529, 975, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_charge, "images/Heroes/crusader/crusader_charge.bmp", 838, 465, true, RGB(255, 0, 255));
@@ -59,7 +59,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_header.bmp", 715,630,true, RGB(255, 0, 255));
 
 	//Enemy
-	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender.sprite.attack_axe.bmp", 775, 580, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Defender, "images/Enemys/skeleton_defender.sprite.defend.bmp", 503, 622, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Shield, "images/Enemys/skeleton_defender.sprite.attack_shield.bmp", 716, 623, true, RGB(255, 0, 255));
 
 
 	//quit

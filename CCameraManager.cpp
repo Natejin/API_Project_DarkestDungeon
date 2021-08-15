@@ -19,6 +19,11 @@ void CCameraManager::Update(float deltaTime, float worldTime)
 	if (m_pTarget != nullptr)
 	{
 		Vector2 fpos = m_pTarget->m_transform->m_pos;
+		if (isBattle)
+		{
+			
+		}
+		fpos.x += 200;
 		Vector2 fpivot = m_pTarget->m_transform->m_pivot;
 		Vector2 fscale = m_pTarget->m_animator->GetFrameSize();
 

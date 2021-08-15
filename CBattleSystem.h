@@ -37,7 +37,17 @@ class CBattleSystem : public GameObject
 	int enemyPosIndex;
 	int currentSkill;
 
+	ImageData heroZoomImage;
+	ImageData enemyZoomImage;
 
+	bool showHeroZoom;
+	bool showEnemyZoom;
+
+
+
+	float startTriggerTime;
+	bool startNextTurn;
+	
 public:
 	class DungeonScene* scene;
 	class dungeonUI* dungeonUI;
@@ -72,11 +82,15 @@ private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
 
+	void DeselectAll();
+
 	void SetEnemyIndicator(int index);
 	void SelectEnemyTarget(SKILL skill);
 
 	CHero* GetHero(int i);
-	void SelectHero(int index);
+	void StartHeroTrun(int index);
+
+	void StartEnemyTrun(int index);
 
 	void ShowTargetBySkill(int index);
 

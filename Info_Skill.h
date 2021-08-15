@@ -18,10 +18,13 @@ public:
 	int targetPos;
 	int allowUseSkillPos;
 
-	IMAGE m_imgData;
+	IMAGE m_skillIcon;
+	IMAGE m_skillMotion;
 	SKILL m_skill;
+	SKILLIMAGETYPE m_skillImageType;
 	SKILLTARGET target;
 	JOB job;
+	ENEMYTYPE enemyType;
 	EFFECTTYPE effect = EFFECTTYPE::NONE;
 public:
 	float damage[5] = {0};

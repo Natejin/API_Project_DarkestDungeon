@@ -12,7 +12,7 @@ private:
 
 	class GameObject* m_pTarget;
 	Vector2 cameraSize;
-
+	bool isBattle;
 public:
 	CCameraManager();
 	~CCameraManager();
