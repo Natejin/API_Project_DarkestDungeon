@@ -118,9 +118,6 @@
     <Filter Include="Object\Enemy\ProtoType">
       <UniqueIdentifier>{8fa8a767-767c-488b-bb65-a5f79da69501}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\RoadObj">
-      <UniqueIdentifier>{d4539373-15a4-472d-b7e1-fdf58a2b1e4f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Test">
       <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
     </Filter>
@@ -273,6 +270,9 @@
     </Filter>
     <Filter Include="Object\Component\ItemEffect">
       <UniqueIdentifier>{4a9a0865-777d-4787-bb2e-0b27eeea7942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\RoomAndRoadObj">
+      <UniqueIdentifier>{d4539373-15a4-472d-b7e1-fdf58a2b1e4f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -457,7 +457,7 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="CRoadObject.h">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>Object\RoomAndRoadObj</Filter>
     </ClInclude>
     <ClInclude Include="DungeonScene2.h">
       <Filter>Scene\Test</Filter>
@@ -580,7 +580,7 @@
       <Filter>System\Map</Filter>
     </ClInclude>
     <ClInclude Include="CObjOnRoad.h">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>Object\RoomAndRoadObj</Filter>
     </ClInclude>
     <ClInclude Include="CSlotItemButton.h">
       <Filter>Object\UI\Buttons\bt_Inventory</Filter>
@@ -658,7 +658,10 @@
       <Filter>CommonInfo\DB</Filter>
     </ClInclude>
     <ClInclude Include="TreasureEventPanel.h">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>Object\RoomAndRoadObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjOnRoom.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -843,7 +846,7 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CRoadObject.cpp">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>Object\RoomAndRoadObj</Filter>
     </ClCompile>
     <ClCompile Include="DungeonScene2.cpp">
       <Filter>Scene\Test</Filter>
@@ -966,7 +969,7 @@
       <Filter>System\Map</Filter>
     </ClCompile>
     <ClCompile Include="CObjOnRoad.cpp">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>Object\RoomAndRoadObj</Filter>
     </ClCompile>
     <ClCompile Include="CSlotItemButton.cpp">
       <Filter>Object\UI\Buttons\bt_Inventory</Filter>
@@ -1020,7 +1023,10 @@
       <Filter>CommonInfo\DB</Filter>
     </ClCompile>
     <ClCompile Include="TreasureEventPanel.cpp">
-      <Filter>Object\RoadObj</Filter>
+      <Filter>Object\RoomAndRoadObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoom.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

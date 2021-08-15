@@ -65,4 +65,6 @@ public:
 	//CUIPanel* CreatePanel(string name, Vector2 pos);
 	CUIPanel* CreatePanel(string name, Vector2 pos, LAYER layer);
 	CUIPanel* CreatePanel(IMAGE image, Vector2 pos, LAYER layer);
+
+	CInventorySystem* getInven();
 };

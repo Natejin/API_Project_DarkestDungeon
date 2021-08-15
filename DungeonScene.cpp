@@ -36,8 +36,6 @@ HRESULT DungeonScene::Init()
 	CreateBattleSystem();
 	CreateParty();
 
-
-
 	CreateRoom();
 	CreateRoad();
 	CreateDoor();
@@ -134,8 +132,6 @@ void DungeonScene::Render(HDC _hdc)
 
 
 #pragma region InitDungeon
-
-
 void DungeonScene::CreateDungeonMap()
 {
 	m_pMapSystem = new CMapSystem();
@@ -158,7 +154,6 @@ void DungeonScene::CreateParty()
 		MG_GAME->GetHeroFromParty(i)->Enable();
 		m_party->SetHero(MG_GAME->GetHeroFromParty(i));
 	}
-
 
 	MG_GAME->SetCurSelHero(0);
 	m_party->Enable();
@@ -184,6 +179,16 @@ void DungeonScene::CreateRoom()
 	roomRandom.push_back(IMAGE::Ruins_room7);
 	roomRandom.push_back(IMAGE::Ruins_room8);
 	roomRandom.push_back(IMAGE::Ruins_room9);
+
+
+	CObjOnRoad* obj = new CObjOnRoad();
+	obj->Init();
+	obj->isActive = false;
+	obj->dungeonScene = this;
+	m_roadObjs.push_back(obj);
+	string name = "roadObj_";
+	MG_GMOBJ->RegisterObj(name, obj);
+
 }
 
 void DungeonScene::CreateDoor()
@@ -258,17 +263,7 @@ void DungeonScene::setRoadNum()
 			m_previousRoadMap = m_roadNum;
 		}
 	}
-	
-	
 }
-
-void DungeonScene::setRoadKind()
-{
-	
-}
-
-
-
 
 void DungeonScene::CheckDoor()
 {
@@ -291,9 +286,9 @@ void DungeonScene::CheckDoor()
 				ActivateRoom();
 			}
 		}
-		else {
+		else 
+		{
 			m_pMapSystem->canMoveAnotherRoom = true;
-		
 		}
 	}
 	else
@@ -315,7 +310,6 @@ void DungeonScene::ActivateRoad()
 		SetRoadObject(i);
 	}
 	
-
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
 
@@ -345,12 +339,10 @@ void DungeonScene::ActivateRoom()
 	m_roadBG->isActive = false;
 	m_roomBG->isActive = true;
 
-
 	for (size_t i = 0; i < 3; i++)
 	{
 		m_roadObjs[i]->isActive = false;
 	}
-
 
 	m_dungeonState = DUNGEONSTATE::ROOM;
 	m_roomBG->m_spriteRenderer->SetImage(roomRandom[MG_RND->getInt(roomRandom.size())]);
@@ -364,15 +356,14 @@ void DungeonScene::ActivateRoom()
 	switch (m_pMapSystem->GetCurDungeonData().dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Room_Empty:
-
 		for (int i = 0; i < party.size(); i++)
 		{
 			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
 		}
 		break;
+
 	case DUNGEONMAPSTATE::Room_Enemy:
 		m_pBattleSystem->BattleSystemInitiate();
-
 		break;
 	case DUNGEONMAPSTATE::Room_Trasure:
 		for (int i = 0; i < party.size(); i++)
@@ -386,12 +377,9 @@ void DungeonScene::ActivateRoom()
 	default:
 		break;
 	}
-
-
 }
 
 #pragma endregion
-
 
 
 #pragma region DebugLog
@@ -445,4 +433,3 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	}
 }
 #pragma endregion
-
