@@ -6,19 +6,14 @@ class Cplayer;
 class DungeonScene;
 class CHero : public Unit
 {
-	int m_LVL; //stress에서 기인?
-	int m_EXP;
-	int m_STRS;
-	int m_STRSLVL; //스트레스의 정도
-
+	
 	int m_DIST; //이동한 거리
 	int m_DIST_retreat; //후퇴한 거리
 
 
 	int heroID;
 	int ownIndex;
-	int m_partyPos;
-	int m_partyIndex;
+
 
 	int limit;
 	bool isBattle;
@@ -82,8 +77,8 @@ public:
 	virtual int GetPartyIndex();
 	virtual void SetPartyIndex(int pos);
 
-	virtual int getPartyPos();
-	virtual void setPartyPos(int pos);
+	virtual int GetPartyPos();
+	virtual void SetPartyPos(int pos);
 
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
@@ -93,6 +88,8 @@ public:
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
 	virtual void SetMemberOverlay();
+	Info_Hero* GetInfo();
+
 	int getMoveDis()const;
 	int getMoveDis_reteat()const; 
 	int getStress()const; 

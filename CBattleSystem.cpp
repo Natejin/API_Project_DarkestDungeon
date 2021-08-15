@@ -6,6 +6,87 @@
 #include "CEnemy.h"
 #include "CBoneDefender.h"
 
+
+
+
+CBattleSystem::CBattleSystem()
+{
+	m_layer = LAYER::UI;
+}
+
+CBattleSystem::~CBattleSystem()
+{
+
+}
+
+HRESULT CBattleSystem::Init()
+{
+	return S_OK;
+}
+
+void CBattleSystem::Update(float deltaTime, float worldTime)
+{
+	if (MG_INPUT->isOnceKeyDown('P'))
+	{
+		BattleSystemEnd();
+	}
+
+	if (MG_INPUT->isOnceKeyDown('N'))
+	{
+		EndTurn();
+	}
+}
+
+void CBattleSystem::LateUpdate()
+{
+
+}
+
+void CBattleSystem::BackRender(HDC _hdc)
+{
+
+}
+
+void CBattleSystem::Render(HDC _hdc)
+{
+
+}
+
+void CBattleSystem::FrontRender(HDC _hdc)
+{
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(0, 255, 255));
+
+	for (size_t i = 0; i < speedVec.size(); i++)
+	{
+		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
+		{
+			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
+			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
+		}
+		else {
+			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
+			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
+		}
+
+	}
+}
+
+void CBattleSystem::Release()
+{
+
+}
+
+
+
+
+
+
+
+
+
 void CBattleSystem::BattleSystemInitiate()
 {
 	CreateHeroesParty();
@@ -156,75 +237,6 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 
 
 
-CBattleSystem::CBattleSystem()
-{
-	m_layer = LAYER::UI;
-}
-
-CBattleSystem::~CBattleSystem()
-{
-	
-}
-
-HRESULT CBattleSystem::Init()
-{
-	return S_OK;
-}
-
-void CBattleSystem::Update(float deltaTime, float worldTime)
-{
-	if (MG_INPUT->isOnceKeyDown('P'))
-	{
-		BattleSystemEnd();
-	}
-
-	if (MG_INPUT->isOnceKeyDown('N'))
-	{
-		EndTurn();
-	}
-}
-
-void CBattleSystem::LateUpdate()
-{
-
-}
-
-void CBattleSystem::BackRender(HDC _hdc)
-{
-
-}
-
-void CBattleSystem::Render(HDC _hdc)
-{
-
-}
-
-void CBattleSystem::FrontRender(HDC _hdc)
-{
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(0, 255, 255));
-
-	for (size_t i = 0; i < speedVec.size(); i++)
-	{
-		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
-		{
-			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first );
-			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
-		}
-		else {
-			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
-			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
-		}
-
-	}
-}
-
-void CBattleSystem::Release()
-{
-
-}
 
 
 CEnemy* CBattleSystem::GetEnemy(int index)
@@ -248,30 +260,5 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::SelectHero(int index)
 {
-	for (int i = 0; i < heroParty.size(); i++)
-	{
-		if (i == index) GetHero(i)->isSelected = true;
-		else GetHero(i)->isSelected = false;
-	}
+	MG_GAME->SetCurSelHero(index);
 }
-//
-//void CBattleSystem::SelectEnemy1()
-//{
-//	SelectEnemy(0);
-//}
-//
-//
-//void CBattleSystem::SelectEnemy2()
-//{
-//	SelectEnemy(1);
-//}
-//
-//void CBattleSystem::SelectEnemy3()
-//{
-//	SelectEnemy(2);
-//}
-//
-//void CBattleSystem::SelectEnemy4()
-//{
-//	SelectEnemy(3);
-//}

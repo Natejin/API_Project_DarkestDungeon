@@ -1,5 +1,7 @@
 #include "framework.h"
 #include "DB_Skill.h"
+#include "image.h"
+#include "Info_Skill.h"
 
 CDB_Skill::CDB_Skill()
 {
@@ -247,5 +249,10 @@ void CDB_Skill::Init()
 
 CInfo_Skill* CDB_Skill::CallSkill(SKILL skill)
 {
-	return nullptr;
+	return skillDB[skill];
+}
+
+Image* CDB_Skill::CallSkillImage(SKILL skill)
+{
+	return MG_IMAGE->findImage(skillDB[skill]->m_imgData);
 }

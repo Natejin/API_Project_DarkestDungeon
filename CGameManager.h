@@ -5,9 +5,10 @@ class CHero;
 class CParty;
 class CGameManager : public Singleton<CGameManager>
 {
-public:
+private:
 	//map<int,class GameObject*> objectMap;
-
+	class DungeonScene* m_dungeonScene;
+	class TownScene* m_townScene;
 public:
 	CGameManager();
 	~CGameManager();
@@ -29,6 +30,7 @@ public:
 	vector<CHero*> m_partyOrigin;
 	vector<CHero*> m_ownHeroes;
 	CParty* m_party;
+	CHero* m_CurSelHero;
 
 	bool RegisterHeroToParty(CHero* hero);
 	bool RegisterHeroToParty(int ownIndex);
@@ -37,12 +39,14 @@ public:
 	bool RemoveHeroFromOwnList(int heroId);
 	vector<CHero*> GetHeroes();
 	CHero* GetHero(int index);
+	CHero* GetHeroFromParty(int index);
 
 	void setParty();
 	CParty* GetParty();
 
 	class CHero* CreateHero(string name, JOB job);
-	
+	CHero* GetCurSelHero();
+	void SetCurSelHero(int i);
 	int GetHeroPartySize() { return m_partyOrigin.size(); }
 	//=======================================
 

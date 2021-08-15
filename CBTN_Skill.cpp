@@ -64,4 +64,10 @@ void CBTN_Skill::FrontRender(HDC _hdc)
 #endif // _DEBUG
 }
 
+void CBTN_Skill::SetSkill(SKILL skill)
+{
+	skillInfo = DB_SKILL->CallSkill(skill);
+	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
+}
+
 

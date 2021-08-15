@@ -4,8 +4,6 @@
 class Info_Hero: public Info_Unit
 {
 public:
-
-
 	JOB job;
 	
 	int m_DMG; //skill에서 값 넣어주기
@@ -19,5 +17,8 @@ public:
 	int m_STRS;
 
 	vector<SKILL> ownSkill;
+	IMAGE portrait;
+	vector<IMAGE> weapon;
+	vector<IMAGE> armor;
 };
 

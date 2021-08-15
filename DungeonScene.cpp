@@ -29,30 +29,34 @@ HRESULT DungeonScene::Init()
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
 
+	CreateDungeonMap();
+	CreateDungeonUI();
+
 	//SetUIIMG();
 	CreateBattleSystem();
 	CreateParty();
 
-	CreateDungeonMap();
-	CreateDungeonUI();
+
 
 	CreateRoom();
 	CreateRoad();
 	CreateDoor();
 
 	ActivateRoom();
+
 	return S_OK;
 }
 
 void DungeonScene::CreateDungeonUI()
 {
+
 	m_dungeonUI = new dungeonUI;
 	m_dungeonUI->m_pMapSystem = m_pMapSystem;
 	m_dungeonUI->scene = this;
 	m_dungeonUI->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUI", m_dungeonUI);
 
-	m_dungeonUIinfo = new dungeonUI_HeroInfo;
+	m_dungeonUIinfo = new CDungeonUI_HeroInfo;
 	m_dungeonUIinfo->scene = this;
 	m_dungeonUIinfo->Init();
 
@@ -89,6 +93,11 @@ void DungeonScene::Update()
 		if (true)
 		{
 			setRoadNum();
+		}
+
+		if (MG_INPUT->isOnceKeyDown('L'))
+		{
+			m_pBattleSystem->BattleSystemInitiate();
 		}
 
 	}
@@ -138,21 +147,23 @@ void DungeonScene::CreateDungeonMap()
 
 void DungeonScene::CreateParty()
 {
-	MG_GAME->setParty();
+	//MG_GAME->setParty();
 	m_party = MG_GAME->GetParty();
-
-	auto party = MG_GAME->GetHeroes();
-	for (int i = 0; i < party.size(); i++)
+	//auto party = MG_GAME->GetHero(i);
+	for (int i = 0; i < MG_GAME->GetHeroPartySize(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
-		party[i]->SetPartyIndex(i);
-		party[i]->Enable();
+		MG_GAME->GetHeroFromParty(i)->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		MG_GAME->GetHeroFromParty(i)->SetPartyIndex(i);
+		MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
+		MG_GAME->GetHeroFromParty(i)->Enable();
+		m_party->SetHero(MG_GAME->GetHeroFromParty(i));
 	}
-	m_party->SetParty(party);
 
-	MG_GMOBJ->RegisterObj("Party", m_party);
+
+	MG_GAME->SetCurSelHero(0);
+	m_party->Enable();
 	MG_CAMERA->SetTarget(m_party->GetHero(0));
-	MG_GAME->GetHero(0)->isSelected = true;
+	
 }
 
 void DungeonScene::CreateRoom()

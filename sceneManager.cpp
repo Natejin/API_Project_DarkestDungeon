@@ -15,14 +15,14 @@ Scene* SceneManager::_currentScene = nullptr;
 
 HRESULT SceneManager::init()
 {
-	DungeonScene* dungeon = new DungeonScene;
-	addScene(SCENETYPE::Dungeon, dungeon);
+	dungeonScene = new DungeonScene;
+	addScene(SCENETYPE::Dungeon, dungeonScene);
 
-	DungeonScene2* dungeon2 = new DungeonScene2;
-	addScene(SCENETYPE::Dungeon2, dungeon2);
+	//DungeonScene2* dungeon2 = new DungeonScene2;
+	//addScene(SCENETYPE::Dungeon2, dungeon2);
 
-	TownScene* town = new TownScene;
-	addScene(SCENETYPE::Town, town);
+	townScene= new TownScene;
+	addScene(SCENETYPE::Town, townScene);
 
 	TestScene* test = new TestScene;
 	addScene(SCENETYPE::Test, test);
@@ -71,37 +71,37 @@ void SceneManager::Render(HDC _hdc)
 	if (_currentScene)_currentScene->Render(_hdc);
 }
 
-Scene* SceneManager::addScene(string sceneName, Scene* scene)
-{
-	if (!scene)return nullptr;
-
-	m_sceneList.insert(make_pair(sceneName, scene));
-
-	return nullptr;
-}
-
-HRESULT SceneManager::changeScene(string sceneName)
-{
-	isceneList find = m_sceneList.find(sceneName);
-
-	//못찾으면E_FAIL
-	if(find==m_sceneList.end())return E_FAIL;
-	//바꾸려는 씬이현재씬이랑같아도  E_FAIL
-	if (find->second == _currentScene)return E_FAIL;
-
-	//여기까지 왔다면 문제가 없다 즉 씬을 초기화 하고  변경하자.
-	if (SUCCEEDED(find->second->Init()))
-	{
-		//혹시 기존에 씬이 있다면 릴리즈
-		if (_currentScene)_currentScene->Release();
-
-		_currentScene = find->second;
-		_currentScene->Init();
-		return  S_OK;
-	}
-
-	return E_FAIL;
-}
+//Scene* SceneManager::addScene(string sceneName, Scene* scene)
+//{
+//	if (!scene)return nullptr;
+//
+//	m_sceneList.insert(make_pair(sceneName, scene));
+//
+//	return nullptr;
+//}
+//
+//HRESULT SceneManager::changeScene(string sceneName)
+//{
+//	isceneList find = m_sceneList.find(sceneName);
+//
+//	//못찾으면E_FAIL
+//	if(find==m_sceneList.end())return E_FAIL;
+//	//바꾸려는 씬이현재씬이랑같아도  E_FAIL
+//	if (find->second == _currentScene)return E_FAIL;
+//
+//	//여기까지 왔다면 문제가 없다 즉 씬을 초기화 하고  변경하자.
+//	if (SUCCEEDED(find->second->Init()))
+//	{
+//		//혹시 기존에 씬이 있다면 릴리즈
+//		if (_currentScene)_currentScene->Release();
+//
+//		_currentScene = find->second;
+//		_currentScene->Init();
+//		return  S_OK;
+//	}
+//
+//	return E_FAIL;
+//}
 
 Scene* SceneManager::addScene(SCENETYPE sceneName, Scene* scene)
 {
@@ -128,8 +128,14 @@ HRESULT SceneManager::changeScene(SCENETYPE sceneName)
 		if (_currentScene)_currentScene->Release();
 
 		_currentScene = find->second;
+		curScene = sceneName;
 		return  S_OK;
 	}
 
 	return E_FAIL;
+}
+
+SCENETYPE SceneManager::CurScene()
+{
+	return curScene;
 }

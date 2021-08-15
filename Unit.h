@@ -5,6 +5,7 @@
 class Unit :public GameObject
 {
 public:
+	int m_partyPos = - 1;
 	int m_partyIndex = -1;
 	bool isSelected;
 
@@ -40,8 +41,8 @@ public:
 
 	virtual void Release();
 
-	void SetPartyIndex(int index) { m_partyIndex = index; }
-	int GetPartyIndex() { return m_partyIndex; }
+	virtual void SetPartyIndex(int index) { m_partyIndex = index; }
+	virtual int GetPartyIndex() { return m_partyIndex; }
 
 	void showSelMember(HDC _hdc);
 	void showHpBar(HDC _hdc);

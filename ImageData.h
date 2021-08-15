@@ -3,7 +3,7 @@
 
 struct ImageData
 {
-	Image* m_img;
+	Image* m_img = nullptr;
 	CTransform m_trans;
 
 	void Render(HDC hdc) 

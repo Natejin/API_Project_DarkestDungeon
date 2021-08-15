@@ -38,13 +38,13 @@ public:
 
 	virtual void Release();
 
+	//==================================
+
 	virtual  void Enable();
 	virtual void Unable();
-	//==================================
 
 	void setInvenSlot(); //set dungeonInventory according to party info
 	void setConsumableSlot(); 
-	void changeSlot(); 
 	void showSlotMouseOn(HDC _hdc);
 
 	bool AddItem(ITEM itemInfo, int& count);

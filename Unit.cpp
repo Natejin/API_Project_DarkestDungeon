@@ -44,7 +44,9 @@ void Unit::FrontRender(HDC _hdc)
     {
         showSelMember(_hdc);
     }
+
     showHpBar(_hdc);
+
     if (m_collider)
     {
         if (MG_INPUT->isToggleKey(VK_TAB))

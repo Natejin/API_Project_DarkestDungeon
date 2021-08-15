@@ -36,6 +36,9 @@ public:
 		float b);
 	void AddColliderBox(float width, float height);
 	void AddColliderBox();
+	
+	void AddColliderBoxBigger();
+	void AddColliderBoxSmaller();
 
 	void AddAnimator(string imageName);
 	void AddAnimator(IMAGE imageName);

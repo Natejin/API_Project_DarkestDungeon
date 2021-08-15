@@ -226,6 +226,32 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::enemy, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::nothing, "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage(IMAGE::obj_crate1, "images/dungeonOBJ/Crate1.bmp", 248, 140, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_crate2, "images/dungeonOBJ/Crate2.bmp", 248, 155, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_pack1, "images/dungeonOBJ/Discarded_Pack1.bmp", 240, 188, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_pack1, "images/dungeonOBJ/Discarded_Pack2.bmp", 240, 188, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_altar1, "images/dungeonOBJ/Eldritch_Altar1.bmp", 245, 480, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_altar2, "images/dungeonOBJ/Eldritch_Altar2.bmp", 245, 480, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_sack1, "images/dungeonOBJ/Sack1.bmp", 450, 320, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_sack2, "images/dungeonOBJ/Sack2.bmp", 450, 320, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_books1, "images/dungeonOBJ/Stack_of_Books1.bmp", 135, 125, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_books2, "images/dungeonOBJ/Stack_of_Books2.bmp", 135, 125, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_treasure1, "images/dungeonOBJ/treasure1.bmp", 275, 210, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_treasure2, "images/dungeonOBJ/treasure2.bmp", 275, 220, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_strongBox1, "images/dungeonOBJ/Unlocked_Strongbox1.bmp", 390, 474, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_strongBox2, "images/dungeonOBJ/Unlocked_Strongbox2.bmp", 400, 474, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_trap1, "images/dungeonOBJ/spikes_front.bmp", 300, 60, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_trap2, "images/dungeonOBJ/spikes_front2.bmp", 300, 220, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::obj_trap3, "images/dungeonOBJ/spikes_back.bmp", 310, 70, true, RGB(255, 0, 255));
+
+
+	MG_IMAGE->addImage(IMAGE::eve_byHand, "images/dungeonOBJ/byhand.bmp", 124, 69, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::eve_eat, "images/dungeonOBJ/eat.bmp", 124, 69, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::eve_pass, "images/dungeonOBJ/pass.bmp", 124, 69, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::eve_startve, "images/dungeonOBJ/starve.bmp", 124, 69, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::eve_scroll_loot, "images/dungeonOBJ/event_scroll_loot.bmp", 456, 475, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::eve_scroll_side, "images/dungeonOBJ/event_scroll_sidebar.bmp", 456, 400, true, RGB(255, 0, 255));
+
 	//����� ������
 	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Skill_Smite, "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
@@ -266,9 +292,13 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("vestal_armor", "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("vestal_weapon", "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
-	
+
+	//Weapon&Armor
+	MG_IMAGE->addImage(IMAGE::Vestal_Armor_0, "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Weapon_0, "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Armor_0, "images/icons_equip_Crusader/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Weapon_0, "images/icons_equip_Crusader/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+
 	//UIovelay
 	MG_IMAGE->addImage("selected1", "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("selected2", "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));

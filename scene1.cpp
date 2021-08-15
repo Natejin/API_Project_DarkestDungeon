@@ -25,7 +25,7 @@ void scene1::update()
 	if (MG_INPUT->isOnceKeyDown('2'))
 	{
 		//¾ÀÃ¼ÀÎÁö
-		MG_SCENE->changeScene("scene2");
+		//MG_SCENE->changeScene("scene2");
 	}
 }
 

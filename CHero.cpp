@@ -62,44 +62,43 @@ HRESULT CHero::Init(Info_Hero* _info)
 {
 	canTriggerDown = false;
 
-	
-	info = new Info_Hero();
-	info->unitType = _info->unitType;
-	info->m_HP = _info->m_HP;
-	info->m_SPD = _info->m_SPD;
-	for (size_t i = 0; i < 5; i++)
-	{
-		this->info->resist[i] = _info->resist[i];
-	}
-	for (size_t i = 0; i < 8; i++)
-	{
-		info->attribute[i] = false;
-	}
+	info = _info;
+	//info = new Info_Hero();
+	//info->unitType = _info->unitType;
+	//info->m_HP = _info->m_HP;
+	//info->m_SPD = _info->m_SPD;
+	//for (size_t i = 0; i < 5; i++)
+	//{
+	//	this->info->resist[i] = _info->resist[i];
+	//}
+	//for (size_t i = 0; i < 8; i++)
+	//{
+	//	info->attribute[i] = false;
+	//}
+
+	////hero
+	//info->job = _info->job;
+	//info->m_DMG = _info->m_DMG;
+	//info->m_ACRY = _info->m_ACRY;
+	//info->m_CRI = _info->m_CRI;
+	//info->m_DEF = _info->m_DEF;
+	//info->m_DODGE = _info->m_DODGE;
+	//info->ownSkill = _info->ownSkill;
+
+
+	//info->m_LVL = 1;
+	//info->m_EXP = 0;
+	//info->m_STRS = 0;
 	
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
 	m_animator->AddImageFrame(_info->imageCombat);
-	for (size_t i = 0; i < _info->ownSkill.size(); i++)
-	{
-		info->ownSkill.push_back(_info->ownSkill[i]);
-	}
 
 
-	//hero
-	info->job = _info->job;
-	info->m_DMG = _info->m_DMG;
-	info->m_ACRY = _info->m_ACRY;
-	info->m_CRI = _info->m_CRI;
-	info->m_DEF = _info->m_DEF;
-	info->m_DODGE = _info->m_DODGE;
-	info->ownSkill = _info->ownSkill;
 
 
-	m_LVL = 1;
-	m_EXP = 0;
-	m_STRS = 0;
-	m_STRSLVL = 0;
+
 	SetMemberOverlay();
 	AddColliderBox(120, 300);
 	return S_OK;
@@ -200,9 +199,9 @@ void CHero::showStrsBar(HDC _hdc)
 {
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_STRS >= (i + 1) * 10)
+		if (info->m_STRS >= (i + 1) * 10)
 		{
-			if (m_STRS == 0) continue;
+			if (info->m_STRS == 0) continue;
 			STRSbar[i].m_img = MG_IMAGE->findImage("STRS_full");
 		}
 		STRSbar[i].m_trans.m_pos = Vector2(
@@ -266,6 +265,11 @@ void CHero::SetMemberOverlay()
 	}
 }
 
+Info_Hero* CHero::GetInfo()
+{
+	return info;
+}
+
 int CHero::getMoveDis() const
 {
 	return m_DIST;
@@ -278,17 +282,17 @@ int CHero::getMoveDis_reteat() const
 
 int CHero::getStress() const
 {
-	return m_STRS;
+	return info->m_STRS;
 }
 
 void CHero::setStress(int strs)
 {
-	m_STRS = strs;
+	info->m_STRS = strs;
 }
 
 void CHero::addStress(int strs)
 {
-	m_STRS += strs;
+	info->m_STRS += strs;
 }
 
 vector<SKILL> CHero::GetOwnSkill()
@@ -394,7 +398,7 @@ int CHero::GetPartyIndex()
 {
 	return  m_partyIndex;
 }
-int CHero::getPartyPos()
+int CHero::GetPartyPos()
 {
 	return  m_partyPos;
 }
@@ -414,7 +418,7 @@ void CHero::setSPD(int spd)
 {
 	info->m_SPD = spd;
 }
-void CHero::setPartyPos(int pos)
+void CHero::SetPartyPos(int pos)
 {
 	m_partyPos = pos;
 }

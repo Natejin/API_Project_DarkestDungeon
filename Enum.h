@@ -104,6 +104,12 @@ enum class IMAGE
 	//Enemy
 	Skeleton_Defender,
 
+	//WeaponArmor
+	Vestal_Armor_0 ,
+	Vestal_Weapon_0,
+	Crusader_Armor_0 ,
+	Crusader_Weapon_0,
+
 	//IMG_DUNGEON
 	ruins_bg,
 	ruins_wall0,
@@ -224,6 +230,34 @@ enum class IMAGE
 	enemy,
 	nothing,
 
+
+	//dungeonOBJ
+	obj_crate1,
+	obj_crate2,
+	obj_pack1,
+	obj_pack2,
+	obj_altar1,
+	obj_altar2,
+	obj_sack1,
+	obj_sack2,
+	obj_books1,
+	obj_books2,
+	obj_treasure1,
+	obj_treasure2,
+	obj_strongBox1,
+	obj_strongBox2,
+	obj_trap1,
+	obj_trap2,
+	obj_trap3,
+
+	//dungeonEvent
+	eve_byHand,
+	eve_eat,
+	eve_pass,
+	eve_startve,
+	eve_scroll_loot,
+	eve_scroll_side,
+
 	//Item
 	torch,
 	food1,
@@ -232,8 +266,8 @@ enum class IMAGE
 	food4,
 	bandage,
 
-	//portrit
 
+	//portrit
 	Crusader_portrait,
 	Vestal_portrait,
 

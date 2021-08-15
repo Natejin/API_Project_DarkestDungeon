@@ -1,6 +1,8 @@
 #pragma once
 #include "CButton.h"
 #include "CButton_move.h"
+#include "CSlotItemButton.h"
+#include "DummySlot.h"
 
 class CParty;
 class CHero;
@@ -8,7 +10,6 @@ class CObjOnRoad :public CButton
 {
 private:
 	RoadObjType objType;
-
 	bool isOpen;
 
 public:

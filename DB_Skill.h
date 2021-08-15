@@ -1,7 +1,8 @@
 #pragma once
 #include "CSaveable.h"
-#include "Info_Skill.h"
 
+
+class CInfo_Skill;
 class CDB_Skill : public CSaveable<CDB_Skill>
 {
 private:
@@ -15,4 +16,5 @@ public:
 	void Init();
 
 	CInfo_Skill* CallSkill(SKILL skill);
+	class Image* CallSkillImage(SKILL skill);
 };
