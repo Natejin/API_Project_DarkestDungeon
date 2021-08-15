@@ -55,7 +55,7 @@ void CDungeonUI_HeroInfo::Release()
 void CDungeonUI_HeroInfo::setInfoImage()
 {
     //portrait and skill
-    portrait.m_img = MG_IMAGE->findImage(IMAGE::enemy);
+    portrait.m_img = MG_IMAGE->findImage(IMAGE::NONE);
     portrait.m_trans.m_pos = Vector2(364, 732);
 
  
@@ -113,6 +113,15 @@ void CDungeonUI_HeroInfo::setInfoImage()
  //   temp.m_trans.m_pos = Vector2(935, 732);
  //   m_heroInfoImage.push_back(temp);
 
+    //equip
+    // switch (MG_GAME->GetHero(selectedHeroIndex)->GetJob())
+    // {
+    // case JOB::Crusader:
+    //     m_weapon.m_img = MG_IMAGE->findImage(IMAGE::NONE);
+    //     m_weapon.m_trans.m_pos = Vector2(575, 868);
+    //     m_armor.m_img = MG_IMAGE->findImage(IMAGE::NONE);
+    //     m_armor.m_trans.m_pos = Vector2(658, 868);
+    //     break;
 
     m_weapon.m_img = MG_IMAGE->findImage(IMAGE::enemy);
 

@@ -8,6 +8,8 @@ CHero::CHero() {
 	m_layer = LAYER::Player;
 	speedFront = 8;
 	speedBack = 4;
+	weaponLvl = 0;
+	armorLvl = 0;
 }
 CHero::~CHero() {}
 
@@ -156,6 +158,26 @@ void CHero::Release()
 	Unit::Release();
 }
 
+IMAGE CHero::GetArmor()
+{
+	return info->GetArmor(armorLvl);
+}
+
+IMAGE CHero::GetWeapon()
+{
+	return info->GetWeapon(weaponLvl);
+}
+
+Image* CHero::GetTrinketL()
+{
+	return nullptr;
+}
+
+Image* CHero::GetTrinketR()
+{
+	return nullptr;
+}
+
 void CHero::Move()
 {
 	int ran;
@@ -278,6 +300,7 @@ void CHero::SetMemberOverlay()
 
 Info_Hero* CHero::GetInfo()
 {
+
 	return info;
 }
 

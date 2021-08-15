@@ -127,8 +127,8 @@ void DB_UnitInfo::SetHero()
 	info->resist[4] = 40;
 	info->ownSkill.push_back(SKILL::Vestal_Combat_MaceBash);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
-	//info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
-	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
+	info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
+//	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 
 	info->portrait = IMAGE::Vestal_portrait;
 	info->weapon.push_back(IMAGE::Vestal_Weapon_0);
