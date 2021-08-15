@@ -24,8 +24,10 @@ public:
 
 	class DungeonScene* scene;
 
+
 	
 	class CMapSystem* m_pMapSystem;
+	class CBattleSystem* m_pBattleSystem;
 	class CInventorySystem* m_invenSystem;
 
 	CUIPanel* invenPanel;

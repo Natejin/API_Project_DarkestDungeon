@@ -25,7 +25,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Crusader_defend, "images/Heros/crusader/crusader_defend.bmp", 341, 650, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_investigate, "images/Heros/crusader/crusader_investigate.bmp", 413, 569, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_scroll, "images/Heros/crusader/crusader_scroll.bmp", 466, 611, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_sword, "images/Heros/crusader/crusader_sword.bmp", 619, 580, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_sword, "images/Heroes/crusader/crusader_sword.bmp", 619, 580, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::Highwayman_defend, "images/Heros/highwayman/highwayman_defend.bmp", 336, 563, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Highwayman_hipshot, "images/Heros/highwayman/highwayman_hipshot.bmp", 397, 542, true, RGB(255, 0, 255));
@@ -286,7 +286,7 @@ HRESULT imageManager::init()
 
 	//skill
 
-	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, true, RGB(255, 0, 255));
 
 	//
 	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));

@@ -194,7 +194,7 @@ void CGameManager::SetCurSelHero(int i)
 	vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
 	
 	
-	for (size_t j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
+	for (int j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
 	{
 		if (temp.size() > j)
 		{

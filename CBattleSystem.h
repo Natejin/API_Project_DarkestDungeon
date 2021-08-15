@@ -59,6 +59,7 @@ public:
 	void EnemyTurn();
 	void EndTurn();
 
+	void UseSkill(int _index);
 	void UseSkill1();
 	void UseSkill2();
 	void UseSkill3();

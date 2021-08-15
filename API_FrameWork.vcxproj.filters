@@ -121,9 +121,6 @@
     <Filter Include="Object\RoadObj">
       <UniqueIdentifier>{d4539373-15a4-472d-b7e1-fdf58a2b1e4f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Test">
-      <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\DungeonUI">
       <UniqueIdentifier>{efb3261e-002f-4b2f-8fb1-b22095ed1229}</UniqueIdentifier>
     </Filter>
@@ -276,6 +273,9 @@
     </Filter>
     <Filter Include="CommonInfo\Colletion">
       <UniqueIdentifier>{8c299ed5-0138-4058-9789-8d288a50c2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Prototype\Test">
+      <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -463,7 +463,7 @@
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
     <ClInclude Include="DungeonScene2.h">
-      <Filter>Scene\Test</Filter>
+      <Filter>Scene\Prototype\Test</Filter>
     </ClInclude>
     <ClInclude Include="DungeonData.h">
       <Filter>CommonInfo\Struct</Filter>
@@ -514,7 +514,7 @@
       <Filter>Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="RoomScene.h">
-      <Filter>Scene\Test</Filter>
+      <Filter>Scene\Prototype\Test</Filter>
     </ClInclude>
     <ClInclude Include="CMinimapButton.h">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
@@ -668,6 +668,9 @@
     </ClInclude>
     <ClInclude Include="ItemEffect_Colletion.h">
       <Filter>CommonInfo\Colletion</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjOnRoom.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -855,7 +858,7 @@
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
     <ClCompile Include="DungeonScene2.cpp">
-      <Filter>Scene\Test</Filter>
+      <Filter>Scene\Prototype\Test</Filter>
     </ClCompile>
     <ClCompile Include="DungeonData.cpp">
       <Filter>CommonInfo\Struct</Filter>
@@ -906,7 +909,7 @@
       <Filter>Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="RoomScene.cpp">
-      <Filter>Scene\Test</Filter>
+      <Filter>Scene\Prototype\Test</Filter>
     </ClCompile>
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
@@ -1036,6 +1039,9 @@
     </ClCompile>
     <ClCompile Include="ItemEffect_Colletion.cpp">
       <Filter>CommonInfo\Colletion</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoom.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

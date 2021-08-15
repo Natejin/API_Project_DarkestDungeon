@@ -7,7 +7,7 @@
 #include "CBoneDefender.h"
 #include "dungeonUI.h";
 #include "dungeonUI_HeroInfo.h"
-
+#include "CBTN_Skill.h"
 
 
 
@@ -168,25 +168,47 @@ void CBattleSystem::EndTurn()
 	curEnemy = nullptr;
 }
 
+void CBattleSystem::UseSkill(int _index)
+{
+	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+	{
+		dungeonUI->skillBTNs[i]->selected = false;
+	}
+	dungeonUI->skillBTNs[_index]->selected = true;
+
+}
+
 void CBattleSystem::UseSkill1()
 {
-	//for (size_t i = 0; i < dungeonUIHeroinfo->->GetPartySize(); i++)
-	//{
-	//	m_party->GetHero(i)->isSelected = false;
-	//}
-	//m_party->GetHero(i)->isSelected = true;
+	for (int i = 0; i < dungeonUI->skillBTNs.size() ; i++)
+	{
+		dungeonUI->skillBTNs[i]->selected = false;
+	}
+	dungeonUI->skillBTNs[0]->selected = true;
 }
 void CBattleSystem::UseSkill2()
 {
-
+	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+	{
+		dungeonUI->skillBTNs[i]->selected = false;
+	}
+	dungeonUI->skillBTNs[1]->selected = true;
 }
 void CBattleSystem::UseSkill3()
 {
-
+	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+	{
+		dungeonUI->skillBTNs[i]->selected = false;
+	}
+	dungeonUI->skillBTNs[2]->selected = true;
 }
 void CBattleSystem::UseSkill4()
 {
-
+	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+	{
+		dungeonUI->skillBTNs[i]->selected = false;
+	}
+	dungeonUI->skillBTNs[3]->selected = true;
 }
 
 //enemy->m_transform->m_pos = Vector2(WINSIZEX / 2 + i * 100, WINSIZEY);
