@@ -19,12 +19,40 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/Crusader_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage(IMAGE::Crusader_banner, "images/Heros/crusader/crusader_banner.bmp", 529, 975, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_charge, "images/Heros/crusader/crusader_charge.bmp", 838, 465, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_defend, "images/Heros/crusader/crusader_defend.bmp", 341, 650, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_investigate, "images/Heros/crusader/crusader_investigate.bmp", 413, 569, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_scroll, "images/Heros/crusader/crusader_scroll.bmp", 466, 611, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_sword, "images/Heros/crusader/crusader_sword.bmp", 619, 580, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage(IMAGE::Highwayman_defend, "images/Heros/highwayman/highwayman_defend.bmp", 336, 563, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_hipshot, "images/Heros/highwayman/highwayman_hipshot.bmp", 397, 542, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_investigate, "images/Heros/highwayman/highwayman_investigate.bmp", 384, 585, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_lunge, "images/Heros/highwayman/highwayman_lunge.bmp", 625, 470, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_pistol, "images/Heros/highwayman/highwayman_pistol.bmp", 634, 600, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_slice, "images/Heros/highwayman/highwayman_slice.bmp", 577, 535, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_blast, "images/Heros/plague_doctor/plague_doctor_blast.bmp", 451, 537, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_buff, "images/Heros/plague_doctor/plague_doctor_buff.bmp", 394, 566, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_dagger, "images/Heros/plague_doctor/plague_doctor_dagger.bmp", 446, 626, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_defend, "images/Heros/plague_doctor/plague_doctor_defend.bmp", 420, 525, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_grenade, "images/Heros/plague_doctor/plague_doctor_grenade.bmp", 597, 574, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_investigate, "images/Heros/plague_doctor/plague_doctor_investigate.bmp", 415, 548, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage(IMAGE::Vestal_defend, "images/Heros/vestal/vestal_defend.bmp", 371, 559, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_heal, "images/Heros/vestal/vestal_heal.bmp", 339, 618, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_investigate, "images/Heros/vestal/vestal_investigate.bmp", 375, 555, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_lectionary, "images/Heros/vestal/vestal_lectionary.bmp", 390, 728, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_mace, "images/Heros/vestal/vestal_mace.bmp", 625, 539, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_miracle, "images/Heros/vestal/vestal_miracle.bmp", 357, 753, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::crusader_roster, "images/Heroes/crusader_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::highwayman_roster, "images/Heroes/highwayman_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::vestal_roster, "images/Heroes/vestal_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::plague_doctor_roster, "images/Heroes/plague_doctor_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
-	
+
 	MG_IMAGE->addImage(IMAGE::crusader_header, "images/Heroes/crusader_header.bmp", 715,630,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::highwayman_header, "images/Heroes/highwayman_header.bmp", 715,630,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_header.bmp", 715,630,true, RGB(255, 0, 255));
@@ -32,7 +60,11 @@ HRESULT imageManager::init()
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Skeleton_Defender, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
-	//quick
+	MG_IMAGE->addImage(IMAGE::panel_monster_Black, "images/Enemys/panel_monster_indicator_valid_Black.bmp", 147, 76, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::panel_monster_Red, "images/Enemys/panel_monster_indicator_valid_Red.bmp", 147, 76, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::monster_target, "images/Enemys/target_1.bmp", 175,206, true, RGB(255, 0, 255));
+
+	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
 
 	//resistance

@@ -9,7 +9,9 @@ protected:
 
 	class CSpriteRenderer* m_windowPanelBG;
 	class CSpriteRenderer* m_windowPanelChar;
-	class CSpriteRenderer* m_CharPanel;
+	class CSpriteRenderer* m_HeroPanel;
+	class CSpriteRenderer* m_HeroImg;
+	
 	//class CUIPanel_Abbey* abbey;
 
 public:

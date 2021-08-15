@@ -103,6 +103,9 @@ enum class IMAGE
 
 	//Enemy
 	Skeleton_Defender,
+	panel_monster_Red,
+	panel_monster_Black,
+	monster_target,
 
 	//WeaponArmor
 	Vestal_Armor_0 ,
@@ -290,6 +293,40 @@ enum class IMAGE
 	Vestal_Skill_DivineComfort,
 	Vestal_Skill_Illumination,
 	Vestal_Skill_HandofLight,
+
+	//HeroMotion
+	//Crusader
+	Crusader_banner,
+	Crusader_charge,
+	Crusader_defend,
+	Crusader_investigate,
+	Crusader_scroll,
+	Crusader_sword,
+	
+	//Highwayman
+	Highwayman_defend,
+	Highwayman_hipshot,
+	Highwayman_investigate,
+	Highwayman_lunge,
+	Highwayman_pistol,
+	Highwayman_slice,
+
+	//Plague_doctor
+	Plague_doctor_blast,
+	Plague_doctor_buff,
+	Plague_doctor_dagger,
+	Plague_doctor_defend,
+	Plague_doctor_grenade,
+	Plague_doctor_investigate,
+
+    //Vestal
+	Vestal_defend,
+	Vestal_heal,
+	Vestal_investigate,
+	Vestal_lectionary,
+	Vestal_mace,
+	Vestal_miracle
+
 };
 
 enum class Resistance

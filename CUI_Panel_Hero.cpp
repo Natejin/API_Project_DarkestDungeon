@@ -17,13 +17,17 @@ HRESULT CUI_Panel_Hero::Init()
 {
 	CEst_UI::Init();
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::characterpanel_bg, m_transform);
+	
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform); //임의 이미지
 	m_windowPanelChar->useCustomPos = true;
 	m_windowPanelChar->pos = Vector2(100, 50);
-	m_CharPanel = new CSpriteRenderer(IMAGE::hero, m_transform);
-	m_CharPanel->useCustomPos = true;
-	m_CharPanel->pos = Vector2(150, 600);
+	
+	m_HeroPanel = new CSpriteRenderer(IMAGE::hero, m_transform);
+	m_HeroPanel->useCustomPos = true;
+	m_HeroPanel->pos = Vector2(150, 600);
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
+
+	//m_HeroImg = new CSpriteRenderer(IMAGE::Crusader_sword, m_transform);
 	Unable();
 	return S_OK; 
 }
@@ -49,7 +53,8 @@ void CUI_Panel_Hero::FrontRender(HDC _hdc)
 {
 	m_windowPanelBG->Render(_hdc);
 	m_windowPanelChar->Render(_hdc);
-	m_CharPanel->Render(_hdc);
+	m_HeroPanel->Render(_hdc);
+	m_HeroImg->Render(_hdc);
     ShowHeroInfo(_hdc);
 }
 
@@ -74,9 +79,14 @@ void CUI_Panel_Hero::SetHeroPanel()
 	{
 	case JOB::Crusader:
 		m_windowPanelChar->SetImage(IMAGE::crusader_header);
+
+		//m_HeroImg->SetImage(IMAGE::Crusader_Idle);
+		//m_HeroImg->SetImage(IMAGE::enemy);
+		//m_HeroImg->SetImage(IMAGE::Crusader_sword);
 		break;
 	case JOB::Vestal:
 		m_windowPanelChar->SetImage(IMAGE::vestal_header);
+		//m_HeroImg->SetImage(IMAGE::Vestal_Idle);
 		break;
 	case JOB::Highwayman:
 		m_windowPanelChar->SetImage(IMAGE::highwayman_header);
@@ -98,11 +108,11 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 
     SetTextColor(_hdc, RGB(202, 201, 155));
     sprintf_s(str, "%s", "Name");
-    TextOut(_hdc, 450, 340, str, strlen(str));
+    TextOut(_hdc, 380, 400, str, strlen(str));
 
     SetTextColor(_hdc, RGB(255, 0, 0));
     sprintf_s(str, "HP :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getHP());
-    TextOut(_hdc, 400, 435, str, strlen(str));
+    TextOut(_hdc, 380, 435, str, strlen(str));
 
     SetTextColor(_hdc, RGB(255, 255, 255));
 
