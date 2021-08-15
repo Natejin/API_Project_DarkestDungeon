@@ -60,7 +60,7 @@ void CInventorySystem::Update(float deltaTime, float worldTime)
 	{
 		if (dummySlot->isActive)
 		{
-			dummySlot->m_transform->m_pos = MG_INPUT->GetptMouse();
+			dummySlot->m_transform->m_pos = g_ptMouse;
 		}
 	}
 

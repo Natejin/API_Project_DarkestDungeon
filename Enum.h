@@ -424,6 +424,6 @@ enum class RoadObjType
 {
 	Empty,
 	Trap,
-	Tresure,
+	Treasure,
 	Enemy
 };

@@ -7,7 +7,7 @@ class CParty;
 class CHero;
 class CObjOnRoad :public CButton
 {
-private:
+public:
 	RoadObjType objType;
 	bool isOpened;
 
@@ -15,10 +15,10 @@ public:
 	CObjOnRoad();
 	~CObjOnRoad();
 
-	class DungeonScene* dungeonScene;
+	class DungeonScene* m_dungeonScene;
 	
 	HRESULT Init();
-	HRESULT Init(RoadObjType type, int index, bool _isPassed);
+	HRESULT Init(RoadObjType type, int index, bool _isPassed, bool _isOpened);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -34,7 +34,8 @@ public:
 
 
 	void setCollider();
-	void setTreasureSlots();
+	void setTreasureEventPanel();
+	void setTreasureEventItem();
 
 	void Interaction_collision();
 

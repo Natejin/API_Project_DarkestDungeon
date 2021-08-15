@@ -21,7 +21,7 @@ HRESULT DummySlot::Init()
 
 void DummySlot::Update(float deltaTime, float worldTime)
 {
-	m_transform->m_pos = g_ptMouse;
+	m_transform->m_pos = g_ptMouse + MG_CAMERA->getCameraPos();
 }
 
 void DummySlot::LateUpdate()
@@ -38,7 +38,7 @@ void DummySlot::Render(HDC _hdc)
 
 void DummySlot::FrontRender(HDC _hdc)
 {
-	m_spriteRenderer->Render(_hdc);
+	m_spriteRenderer->RenderUI(_hdc);
 }
 
 void DummySlot::Release()

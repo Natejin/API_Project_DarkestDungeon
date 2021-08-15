@@ -657,17 +657,20 @@
     <ClInclude Include="DB_UnitInfo.h">
       <Filter>CommonInfo\DB</Filter>
     </ClInclude>
-    <ClInclude Include="TreasureEventPanel.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="InfomationManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Info.h">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
     <ClInclude Include="ItemEffect_Colletion.h">
       <Filter>CommonInfo\Colletion</Filter>
+    </ClInclude>
+    <ClInclude Include="InfomationManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TreasureEventPanel.h">
+      <Filter>Object\RoadObj</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjOnRoom.h">
+      <Filter>Object\RoadObj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1025,17 +1028,20 @@
     <ClCompile Include="DB_UnitInfo.cpp">
       <Filter>CommonInfo\DB</Filter>
     </ClCompile>
-    <ClCompile Include="TreasureEventPanel.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="InfomationManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Info.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
     <ClCompile Include="ItemEffect_Colletion.cpp">
       <Filter>CommonInfo\Colletion</Filter>
+    </ClCompile>
+    <ClCompile Include="InfomationManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TreasureEventPanel.cpp">
+      <Filter>Object\RoadObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjOnRoom.cpp">
+      <Filter>Object\RoadObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

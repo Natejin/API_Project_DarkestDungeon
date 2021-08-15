@@ -3,17 +3,14 @@
 #include "CMapSystem.h"
 #include "CUIPanel.h"
 #include "DungeonScene.h"
+
 CMapSystem::CMapSystem()
 {
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 10;
 }
-
-CMapSystem::~CMapSystem()
-{
-
-}
+CMapSystem::~CMapSystem() {}
 
 HRESULT CMapSystem::Init()
 {
@@ -32,6 +29,7 @@ void CMapSystem::Update(float deltaTime, float worldTime)
 	{
 		MoveCurPoint(Vector2Int(0, -1));
 	}
+	
 	if (MG_INPUT->isOnceKeyDown('A'))
 	{
 		MoveCurPoint(Vector2Int(-1, 0));
@@ -73,9 +71,9 @@ void CMapSystem::SetRandomCreateValue()
 
 	randRoomEnemy = 100;
 	randRoomCurio = 0;
-	randomRoadEnemy = 5;
-	randomRoadCurio = 45;
-	randomRoadTrap = 50;
+	randomRoadEnemy = 30;
+	randomRoadCurio = 40;
+	randomRoadTrap = 30;
 
 	int _rndRoomEnemy = randRoomEnemy;
 	int _rndRoomCurio = randRoomEnemy + randRoomCurio;
@@ -158,7 +156,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		}
 		else if (random < rndRoad[1]) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trasure;
-			dungeonMap[i][j].m_roadObjType = RoadObjType::Tresure;
+			dungeonMap[i][j].m_roadObjType = RoadObjType::Treasure;
 		}
 		else if (random < rndRoad[2]) {
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trap;
@@ -495,6 +493,11 @@ DungeonData CMapSystem::GetCurDungeonData()
 void CMapSystem::SetIsPassed()
 {
 	dungeonMap[curPos.x][curPos.y].isPassed = true;
+}
+
+void CMapSystem::SetIsOpened()
+{
+	dungeonMap[curPos.x][curPos.y].isOpenedTreasure = true;
 }
 
 void CMapSystem::SetIsPassed(int i)

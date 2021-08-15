@@ -8,15 +8,16 @@
 #include "CBTN_Skill.h";
 #include "DungeonScene.h"
 #include "CBattleSystem.h"
+
 HRESULT dungeonUI::Init()
 {
 	m_layer = LAYER::UI;
 
 	SetUIIMG();
 	SetButton();
-	SetInven();
 	ShowInven();
 	SetSkillButton();
+
 	return S_OK;
 }
 
@@ -45,6 +46,8 @@ void dungeonUI::FrontRender(HDC _hdc)
 void dungeonUI::Release()
 {
 }
+
+//==================================
 
 void dungeonUI::SetUIIMG()
 {
@@ -96,7 +99,6 @@ void dungeonUI::SetButton()
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
 }
 
-
 void dungeonUI::SetTorchUIimg()
 {
 	ImageData UIimg;
@@ -115,13 +117,6 @@ void dungeonUI::SetTorchUIimg()
 	UIimg.m_img = MG_IMAGE->findImage("torchFrontBar");
 	UIimg.m_trans.m_pos = Vector2(520, 19);
 	vUI.push_back(UIimg);
-}
-
-void dungeonUI::SetInven()
-{
-	m_invenSystem = new CInventorySystem();
-	m_invenSystem->Init();
-	MG_GMOBJ->RegisterObj("inventory", m_invenSystem);
 }
 
 void dungeonUI::SetSkillButton()
@@ -148,7 +143,6 @@ void dungeonUI::SetSkillButton()
 	temp->m_transform->m_pos = Vector2(725, 732);
 	temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
 	skillBTNs.push_back(temp);
-	
 	MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
 
 	temp = new CBTN_Skill();
@@ -181,7 +175,6 @@ void dungeonUI::ShowInven()
 	m_pMapSystem->MapButtonOnOff(false);
 
 	invenPanel->isActive = true;
-	m_invenSystem->isActive = true;
 	m_invenSystem->Enable();
 
 	mapPanel1->isActive = false;
@@ -193,7 +186,6 @@ void dungeonUI::ShowMap()
 	m_pMapSystem->MapButtonOnOff(true);
 
 	invenPanel->isActive = false;
-	m_invenSystem->isActive = false;
 	m_invenSystem->Unable();
 
 	mapPanel1->isActive = true;
@@ -230,9 +222,4 @@ CUIPanel* dungeonUI::CreatePanel(IMAGE image, Vector2 pos, LAYER layer)
 	uiPanel->UseFrontRender();
 	MG_GMOBJ->RegisterObj("panel", uiPanel);
 	return uiPanel;
-}
-
-CInventorySystem* dungeonUI::getInven()
-{
-	return m_invenSystem;
 }

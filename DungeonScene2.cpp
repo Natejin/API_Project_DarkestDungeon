@@ -87,7 +87,8 @@ void DungeonScene2::Update()
 {
 	if (dungeonMode == DUNGEONMODE::WALK)
 	{
-		m_party->FormationMove();
+
+
 		m_party->getStress_movement();
 		m_party->decreaseBright_movement();
 

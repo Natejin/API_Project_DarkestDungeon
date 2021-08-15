@@ -15,13 +15,12 @@ public:
 
 	class CParty* m_party;
 
-
+	class TreasureEventPanel* treasurePanel;
 
 //==================================
 //Room
 public:
 	class CBG_Room* m_roomBG;
-
 
 //==================================
 //Road
@@ -38,7 +37,6 @@ public:
 	int imageCount;
 	int torchLight;
 
-
 	vector<class CObjOnRoad*> m_roadObjs;
 
 	//앞으로 이동할때 최대 간격
@@ -48,7 +46,6 @@ public:
 
 	int getRoadCount()const { return m_roadNum; } //좌표인덱스
 	void setRoadNum();
-	void setRoadKind();
 
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
@@ -68,17 +65,22 @@ public:
 	class CBattleSystem* m_pBattleSystem;
 
 //==================================
+//inventory SYstem
+public:
+	class CInventorySystem* m_pInvenSystem;
+	class TreasureEventPanel* m_treasurePanel;
+	bool isOpenedPanel;
+//==================================
 //UI
 public:
 	dungeonUI* m_dungeonUI;
 	CDungeonUI_HeroInfo* m_dungeonUIinfo;
-
+	
 //==================================
 public:
 	DungeonScene();
-	virtual~DungeonScene();
+	virtual ~DungeonScene();
 
-public:
 	void CreateDungeonMap();
 
 	void CreateParty();
@@ -87,16 +89,20 @@ public:
 	void CreateRoad();
 	void CreateDoor();
 
+	void CreateInvenSystem();
 	void CreateBattleSystem();
+
+	void CreateDungeonUI();
 
 public:
 	virtual HRESULT Init();
-	void CreateDungeonUI();
 	virtual HRESULT Init(bool managerInit);
+
 	virtual void Release();
 	virtual void Update();
 	virtual void Render(HDC _hdc);
 
+	//room and road changeScene
 	void ActivateRoom();
 	void ActivateRoad();
 	void SetRoadObject(int i);

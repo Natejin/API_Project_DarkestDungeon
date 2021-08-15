@@ -12,4 +12,5 @@ public:
 	bool isSearched = false;
 	bool isHorizontal = false;
 	bool isPassed = false;
+	bool isOpenedTreasure = false;
 };
