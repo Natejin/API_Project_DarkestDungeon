@@ -38,5 +38,6 @@ public:
 	Vector2 getSCPV()const { return screenSize.x * targetPivot.x; }
 	void SetWorldSize(Vector2 size);
 	Vector2 GetWorldSize();
+	Vector2 GetCenterPos();
 
 };

@@ -117,3 +117,8 @@ Vector2 CCameraManager::GetWorldSize()
 {
 	return worldSize;
 }
+
+Vector2 CCameraManager::GetCenterPos()
+{
+	return pos + screenSize / 2;
+}

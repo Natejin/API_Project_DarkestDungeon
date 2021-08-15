@@ -161,13 +161,13 @@ void DungeonScene::CreateRoom()
 	roomRandom.push_back(IMAGE::Ruins_room8);
 	roomRandom.push_back(IMAGE::Ruins_room9);
 
-	CObjOnRoad* obj = new CObjOnRoad();
-	obj->Init();
-	obj->isActive = false;
-	obj->m_dungeonScene = this;
-	m_roadObjs.push_back(obj);
-	string name = "roadObj_";
-	MG_GMOBJ->RegisterObj(name, obj);
+	//CObjOnRoad* obj = new CObjOnRoad();
+	//obj->Init();
+	//obj->isActive = false;
+	//obj->m_dungeonScene = this;
+	//m_roadObjs.push_back(obj);
+	//string name = "roadObj_";
+	//MG_GMOBJ->RegisterObj(name, obj);
 }
 
 void DungeonScene::CreateRoad()
@@ -179,10 +179,12 @@ void DungeonScene::CreateRoad()
 	MG_GMOBJ->RegisterObj("RoadBG", road);
 	m_roadBG = road;
 
-	CObjOnRoad* obj = new CObjOnRoad();
+
 	for (size_t i = 0; i < 3; i++)
 	{
-		obj->isActive = false;
+		CObjOnRoad* obj = new CObjOnRoad();
+		obj->Init();
+		obj->Unable();
 		obj->m_dungeonScene = this;
 		m_roadObjs.push_back(obj);
 		MG_GMOBJ->RegisterObj("roadObj_", obj);
@@ -340,7 +342,6 @@ void DungeonScene::ActivateRoad()
 void DungeonScene::SetRoadObject(int i)
 {
 	DungeonData dungeonData = m_pMapSystem->GetCurDungeonData(i);
-
 	m_roadObjs[i]->Init(dungeonData.m_roadObjType, i, dungeonData.isPassed, dungeonData.isOpenedTreasure);
 	m_pMapSystem->SetIsPassed(i);
 }

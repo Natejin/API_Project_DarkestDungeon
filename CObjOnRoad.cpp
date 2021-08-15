@@ -14,6 +14,10 @@ CObjOnRoad::~CObjOnRoad() {}
 
 HRESULT CObjOnRoad::Init()
 {
+
+	AddSpriteRenderer();
+	AddColliderBox(200,300);
+	m_collider->SetColliderBox(Vector2(0, 0), Vector2(100,200));
 	return S_OK;
 }
 
@@ -24,11 +28,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 	isOpened = _isPassed;
 	m_transform->m_pivot = Vector2(0.5, 1);
 
-	AddSpriteRenderer();
 	
-
-
-
 	if (!isOpened)
 	{
 		switch (objType)
@@ -89,7 +89,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 		break;
 	}
 
-	setCollider();
+
 
     return S_OK;
 }

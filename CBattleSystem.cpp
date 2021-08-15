@@ -47,7 +47,18 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 	{
 		EndTurn();
 	}
-	mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 20;
+	float x = abs(mouseOnEnemy.m_trans.m_pos.x - targetEnemyPosVec[enemyPosIndex].x);
+	if (x > 60)
+	{
+		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 20;
+	}
+	else if (x > 20) {
+		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 3;
+	}
+	else if (x > 1) {
+		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 1;
+	}
+	
 }
 
 void CBattleSystem::LateUpdate()
@@ -71,7 +82,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(0, 255, 255));
-	mouseOnEnemy.RenderUI(_hdc);
+	mouseOnEnemy.RenderWithPivot(_hdc);
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
@@ -94,12 +105,13 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
-	CreateHeroesParty();
 	CreateEnemyParty();
+	CreateHeroesParty();
 	Compare_P_E_Speed_ReArray();
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
+	mouseOnEnemy.m_trans.m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
 }
 
@@ -218,6 +230,8 @@ void CBattleSystem::CreateEnemyParty()
 {
 	int random = MG_RND->getInt(2) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
+	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+	Vector2 heroPos = MG_GAME->GetHero(0)->m_transform->m_pos;
 	for (size_t i = 0; i < random; i++)
 	{
 		CBoneDefender* enemy = new CBoneDefender();
@@ -227,7 +241,16 @@ void CBattleSystem::CreateEnemyParty()
 		enemy->SetPartyIndex(i);
 		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
 		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
-		enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, 560);
+
+		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+		{
+			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, heroPos.y);
+			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+		}
+		else {
+			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, heroPos.y);
+			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+		}
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
 		enemyParty.push_back(enemy);
 	}
@@ -237,12 +260,20 @@ void CBattleSystem::CreateHeroesParty()
 {
 	int playerPartySize = MG_GAME->GetHeroPartySize();
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
+	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+	Vector2 heroPos = MG_GAME->GetHero(0)->m_transform->m_pos;
 	for (int i = 0; i < playerPartySize; i++)
 	{
 		heroParty.push_back(MG_GAME->GetHero(i));
 		heroParty[i]->SetPartyIndex(i);
-		heroParty[i]->SetPartyIndex(i);
-		heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, 560);
+		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+		{
+			heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, heroPos.y);
+		}
+		else {
+			heroParty[i]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * i, heroPos.y);
+		}
+		
 		heroParty[i]->m_animator->SetIndex(2);
 	}
 }

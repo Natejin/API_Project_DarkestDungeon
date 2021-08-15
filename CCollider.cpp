@@ -31,6 +31,16 @@ void CCollider::SetRect(float l, float t, float r, float b)
 	rect.SetRect(l, t, r, b);
 }
 
+void CCollider::SetColliderBox(Vector2 pos, Vector2 size)
+{
+	m_pos = pos;
+	rect.SetRect(
+		pos.x - size.x, 
+		pos.y - size.y, 
+		pos.x + size.x, 
+		pos.y + size.y);
+}
+
 bool CCollider::CheckXCollision(int x)
 {
 	if (rect.l < x && rect.r > x)

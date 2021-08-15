@@ -32,7 +32,8 @@ public:
 
 	//==================================
 
-
+	
+	
 	void setCollider();
 	void setTreasureEventPanel();
 	void setTreasureEventItem();
