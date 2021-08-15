@@ -1,12 +1,15 @@
 #pragma once
 #include"CHero.h"
+#include"Info_Hero.h"
+
 class CHeroOnStage_coach : public CHero
 {
+	
 public:
 	CHeroOnStage_coach();
 	~CHeroOnStage_coach();
 
-	HRESULT Init();
+	HRESULT Init(Info_Hero* coach_info);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
