@@ -26,7 +26,7 @@ HRESULT CUIPanel_Abbey::Init()
 	CreateRooms();
 	Unable();
 
-	hero = new CHero();	
+	//hero = new CHero();	
 	return S_OK;
 }
 
@@ -137,12 +137,12 @@ void CUIPanel_Abbey::CheckStress(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
-	
-	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++) 
-	{	
-		sprintf_s(strCount, "stress : %d", hero->getStress());
-		TextOut(_hdc, 100, 100 + i * 20, strCount, strlen(strCount));
-	};
+	//
+	//for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++) 
+	//{	
+	//	sprintf_s(strCount, "stress : %d", hero->getStress());
+	//	TextOut(_hdc, 100, 100 + i * 20, strCount, strlen(strCount));
+	//};
 
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{

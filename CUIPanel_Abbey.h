@@ -13,7 +13,7 @@ public:
 	class CButton* m_closedroom;
 	class CBuilding_PanelButton* panelbutton;
 	class CBuilding_PanelButton* m_room;
-	class CHero* hero;
+	//class CHero* hero;
 
 	vector<class CBuilding_PanelButton*> panelVec;
 	vector<class CButton*>checkVec;
