@@ -56,4 +56,6 @@ public:
 
 	bool decreaseItem(ITEM itemInfo, int& count);
 
+	void setPartyInvenInfo();
+
 };

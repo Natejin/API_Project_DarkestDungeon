@@ -10,10 +10,17 @@ public:
 	class CInventorySystem* m_invenSys;
 	class CButton* m_quit;
 
+	class CButton* m_pass;
+	class CButton* m_getAll;
+
 	vector<CSlotItemButton*> m_treasureSlots;
 
 	int nowMouseOn;
 	bool isOpend;
+
+	bool isNothing;
+
+	int TimerCount;
 
 public :
 	TreasureEventPanel();
@@ -36,6 +43,8 @@ public :
 	void setTreasureItem();
 	void setTreasureSlot();
 	void setPanelImg();
+
+	void getAll();
 
 	virtual void Enable();
 	virtual void Unable();

@@ -307,6 +307,7 @@ void DungeonScene::CheckDoor()
 			m_pMapSystem->canMoveAnotherRoom = true;
 		}
 	}
+
 	else
 	{
 		m_pMapSystem->canMoveAnotherRoom = false;

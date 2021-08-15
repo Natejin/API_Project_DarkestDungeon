@@ -9,6 +9,8 @@ class CObjOnRoad :public CButton
 {
 public:
 	RoadObjType objType;
+
+	bool isPassed;
 	bool isOpened;
 
 public:
@@ -33,10 +35,7 @@ public:
 	//==================================
 
 	
-	
 	void setCollider();
-	void setTreasureEventPanel();
-	void setTreasureEventItem();
 
 	void Interaction_collision();
 
