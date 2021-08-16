@@ -18,7 +18,7 @@ HRESULT soundManager::init()
 	memset(m_sound, 0, sizeof(FMOD::Sound*) * (TOTALSOUNDBUFFER));
 	memset(m_channel, 0, sizeof(FMOD::Channel*) * (TOTALSOUNDBUFFER));
 
-	addSound(SOUND::SOUND1, "assets/SoundEffect/swd_hit_01.ogg");
+	addSound(SOUND::SOUND1, "sound/SoundEffect/swd_hit_01.ogg");
 
 	return S_OK;
 }
