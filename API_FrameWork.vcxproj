@@ -161,6 +161,8 @@
     <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="DB_UnitInfo.h" />
+    <ClInclude Include="Embark.h" />
+    <ClInclude Include="EmbarkPartySlot.h" />
     <ClInclude Include="Hero_Roster.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="Info.h" />
@@ -295,6 +297,8 @@
     <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="DB_UnitInfo.cpp" />
+    <ClCompile Include="Embark.cpp" />
+    <ClCompile Include="EmbarkPartySlot.cpp" />
     <ClCompile Include="Hero_Roster.cpp" />
     <ClCompile Include="ImageObject.cpp" />
     <ClCompile Include="Info.cpp" />

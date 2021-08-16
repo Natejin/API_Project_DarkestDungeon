@@ -10,6 +10,14 @@ CSpriteRenderer::CSpriteRenderer()
 	m_image = nullptr;
 }
 
+CSpriteRenderer::CSpriteRenderer(string imageName, CTransform* _trans)
+{
+	m_trans = _trans;
+	m_image = MG_IMAGE->findImage(imageName);
+	m_imageSize = Vector2(m_image->getWidth(), m_image->getHeight());
+	useCustomPos = false;
+}
+
 CSpriteRenderer::CSpriteRenderer(IMAGE imageName, CTransform* _trans)
 {
 	m_trans = _trans;

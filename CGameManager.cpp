@@ -18,6 +18,9 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member3", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member4", JOB::Vestal));
+
+	RegisterHeroToOwnList(CreateHero("member5", JOB::Crusader));
+	RegisterHeroToOwnList(CreateHero("member6", JOB::Vestal));
 	/*RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member6", JOB::PlagueDoctor));
 	RegisterHeroToOwnList(CreateHero("member7", JOB::Crusader));
@@ -27,10 +30,11 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 
-	RegisterHeroToParty(0);
-	RegisterHeroToParty(1);
-	RegisterHeroToParty(2);
-	RegisterHeroToParty(3);
+	//RegisterHeroToParty(0);
+	//RegisterHeroToParty(1);
+	//RegisterHeroToParty(2);
+	//RegisterHeroToParty(3);
+
 	m_dungeonScene = MG_SCENE->dungeonScene;
 	m_townScene = MG_SCENE->townScene;
 	setParty();
@@ -51,7 +55,6 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
-
 }
 
 void CGameManager::FrontRender(HDC _hdc)
@@ -90,6 +93,7 @@ bool CGameManager::RegisterHeroToParty(int ownIndex)
 void CGameManager::RegisterHeroToOwnList(CHero* hero)
 {
 	m_ownHeroes.push_back(hero);
+
 }
 
 bool CGameManager::RemoveHeroFromParty(int id)
@@ -144,7 +148,6 @@ CHero* CGameManager::GetHeroFromParty(int index)
 	return index < m_partyOrigin.size() ? m_partyOrigin[index]: nullptr;
 }
 
-
 CHero* CGameManager::CreateHero(string name, JOB job)
 {
 	CHero* hero = new CHero();
@@ -182,11 +185,9 @@ void CGameManager::SetCurSelHero(int i)
 	}
 	m_party->GetHero(i)->isSelected = true;
 
-
 	m_dungeonScene->m_dungeonUIinfo->SetPortrait(m_CurSelHero->GetInfo()->portrait);
 	m_dungeonScene->m_dungeonUIinfo->SetWeapon(m_CurSelHero->GetInfo()->weapon[0]);
 	m_dungeonScene->m_dungeonUIinfo->SetArmor(m_CurSelHero->GetInfo()->armor[0]);
-
 
 	vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
 	
@@ -204,4 +205,3 @@ void CGameManager::SetCurSelHero(int i)
 	
 	}
 }
-

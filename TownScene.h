@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+
 class TownScene : public Scene
 {
 protected:
@@ -18,10 +19,9 @@ protected:
 	
 	class Hero_Roster* m_Roster_ButtonVec;
 	class CUI_Panel_Hero* m_hero_panel;
+
 public:
-
 	vector<class CHeroList_button*> m_heroListButtonVec;
-
 
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
@@ -32,6 +32,7 @@ public:
 	void SetEst_Img();//버튼.
 	void SetRoster();
 	void SetHeroPanel();
+
 public:
 	void Show_abeey();//수도원
 	void Show_blacksmith(); //대장간
@@ -67,4 +68,13 @@ public:
 	void ShowHeroPanel();
 
 	class CUI_Panel_Hero* GetHeroPanel();
+
+
+	//==================================
+public:
+	class Embark* m_embark;
+	bool isEmbark;
+
+	void setEmbark();
+
 };

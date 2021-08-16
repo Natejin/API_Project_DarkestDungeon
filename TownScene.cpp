@@ -23,9 +23,12 @@
 #include"CUIPanel_Tavern.h"
 //===========================
 #include"CHeroList_ui.h"
+//===========================
+#include "Embark.h"
 
-TownScene::TownScene(){}
-TownScene::~TownScene(){}
+
+TownScene::TownScene() {}
+TownScene::~TownScene() {}
 HRESULT TownScene::Init()
 {
 	CBG_Town* m_town = new CBG_Town();
@@ -38,24 +41,57 @@ HRESULT TownScene::Init()
 	SetRoster();
 	SetHeroPanel();
 
+	setEmbark();
+
 	return S_OK;
 }
+
 HRESULT TownScene::Init(bool managerInit)
 {
 	return S_OK;
 }
+
 void TownScene::Release()
 {
+	MG_GMOBJ->RemoveObj(m_abbey);
+	MG_GMOBJ->RemoveObj(m_blacksmith);
+	MG_GMOBJ->RemoveObj(m_campingTrainer);
+	MG_GMOBJ->RemoveObj(m_graveyard);
+	MG_GMOBJ->RemoveObj(m_guild);
+	MG_GMOBJ->RemoveObj(m_sanitarium);
+	MG_GMOBJ->RemoveObj(m_stage_coach);
+	MG_GMOBJ->RemoveObj(m_statue);
+	MG_GMOBJ->RemoveObj(m_nomad_wagon);
+	MG_GMOBJ->RemoveObj(m_tavern);
+
+	for (int i = 0; i < buildingVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(buildingVec[i]);
+	}
+	for (int i = 0; i < m_heroListButtonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]);
+	}
+
+	MG_GMOBJ->RemoveObj(m_Roster_ButtonVec);
+	MG_GMOBJ->RemoveObj(m_hero_panel);
+
+	MG_GMOBJ->RemoveObj(m_embark);
+
 }
+
 void TownScene::Update()
 {	
 }
+
 void TownScene::Render()
 {
 }
+
 void TownScene::Render(HDC _hdc)
 {
 }
+
 //Building.
 void TownScene::SetEst_Img()
 {	
@@ -148,8 +184,8 @@ void TownScene::SetEst_Img()
 	stage_coach->SetTriggerWhenDown(this, &TownScene::Show_stage_coach);
 	buildingVec.push_back(stage_coach);
 	MG_GMOBJ->RegisterObj("Stage_coach", stage_coach);
-
 }
+
 void TownScene::SetRoster()
 {
 	m_Roster_ButtonVec = new Hero_Roster();
@@ -158,6 +194,7 @@ void TownScene::SetRoster()
 	m_Roster_ButtonVec->Disable();
 	MG_GMOBJ->RegisterObj(m_Roster_ButtonVec);
 }
+
 void TownScene::SetHeroPanel()
 {
 	m_hero_panel = new CUI_Panel_Hero();
@@ -165,7 +202,7 @@ void TownScene::SetHeroPanel()
 	m_hero_panel->Init();
 	MG_GMOBJ->RegisterObj(m_hero_panel);
 }
-//
+
 void TownScene::SetEst_ui()
 {	
 	CButton* m_activity_log = new CButton();
@@ -224,6 +261,7 @@ void TownScene::SetEst_ui()
 	m_tavern->Init();
 	MG_GMOBJ->RegisterObj("TavernUI", m_tavern);
 }
+
 void TownScene::DeactivateBuildings()
 {
 	for (size_t i = 0; i < buildingVec.size(); i++)
@@ -239,6 +277,7 @@ void TownScene::ActivateBuildings() {
 	}
 }
 
+#pragma region showBilding
 void TownScene::Show_abeey()
 {	
 	m_abbey->Enable();
@@ -266,7 +305,6 @@ void TownScene::Show_nomad_wagon( )
 void TownScene::Show_stage_coach( )
 {	
 	m_stage_coach->Enable();
-
 }
 void TownScene::Show_town_statue()
 {
@@ -280,9 +318,12 @@ void TownScene::Show_tavern()
 {
 	m_tavern->Enable();
 }
+#pragma endregion
+
 void TownScene::Show_Activity_log()
 {
 }
+
 void TownScene::SetHerolist()
 {	
 	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
@@ -342,4 +383,11 @@ CUI_Panel_Hero* TownScene::GetHeroPanel()
 	return m_hero_panel;
 }
 
-
+void TownScene::setEmbark()
+{
+	m_embark = new Embark;
+	m_embark->m_townScene = this;
+	m_embark->Init();
+	m_embark->Disable();
+	MG_GMOBJ->RegisterObj("embarkScene", m_embark);
+}

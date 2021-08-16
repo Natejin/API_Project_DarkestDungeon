@@ -6,6 +6,7 @@
 #include"CHero.h"
 #include"Hero_Roster.h"
 #include"CUI_Panel_Hero.h"
+
 CUIPanel_StageCoach::CUIPanel_StageCoach()
 {
 }
