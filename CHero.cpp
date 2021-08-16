@@ -358,18 +358,25 @@ int CHero::GetSpeed()
 {
 	return info->m_SPD;
 }
-void CHero::SetPartyIndex(int pos)
-{
-	m_partyIndex = pos;
-}
-int CHero::GetPartyIndex()
-{
-	return  m_partyIndex;
-}
-int CHero::GetPartyPos()
-{
-	return  m_partyPos;
-}
+//void CHero::SetPartyIndex(int pos)
+//{
+//	m_partyIndex = pos;
+//}
+//int CHero::GetPartyIndex()
+//{
+//	return  m_partyIndex;
+//}
+//
+//void CHero::SetPartyPos(int pos)
+//{
+//	m_partyPos = pos;
+//}
+//
+//int CHero::GetPartyPos()
+//{
+//	return  m_partyPos;
+//}
+
 int CHero::getResist(int index)
 {
 	return  info->resist[index];
@@ -386,10 +393,7 @@ void CHero::setSPD(int spd)
 {
 	info->m_SPD = spd;
 }
-void CHero::SetPartyPos(int pos)
-{
-	m_partyPos = pos;
-}
+
 void CHero::setResist(int index, bool val)
 {
 	info->resist[index] = val;

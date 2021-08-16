@@ -105,9 +105,6 @@ int Unit::GetSpeed()
     return 0;
 }
 
-void Unit::SetPosition(int pos)
-{
-}
 
 int Unit::getHP()
 {
@@ -128,15 +125,37 @@ int Unit::getSPD()
     return 0;
 }
 
-int Unit::GetPosition()
+int Unit::GetPartyIndex()
 {
-    return 0;
+    return m_partyIndex;
 }
 
-int Unit::getPartyPos()
+void Unit::SetPartyIndex(int pos)
 {
-    return 0;
+    m_partyIndex = pos;
 }
+
+int Unit::GetPartyPos()
+{
+    return m_partyPos;
+}
+
+void Unit::SetPartyPos(int pos)
+{
+    m_partyPos = pos;
+}
+
+
+//virtual void SetPartyIndex(int index) { m_partyIndex = index; }
+//inline int Unit::GetPartyPos()
+//{
+//	return m_partyPos;
+//}
+//inline void Unit::SetPartyPos(int pos)
+//{
+//	m_partyPos = pos;
+//}
+//virtual int GetPartyIndex() { return m_partyIndex; }
 
 int Unit::getResist(int index)
 {

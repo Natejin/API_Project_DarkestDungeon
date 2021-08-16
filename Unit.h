@@ -42,15 +42,16 @@ public:
 
 	virtual void Release();
 
-	virtual void SetPartyIndex(int index) { m_partyIndex = index; }
-	inline int Unit::GetPartyPos()
-	{
-		return 0;
-	}
-	inline void Unit::SetPartyPos(int pos)
-	{
-	}
-	virtual int GetPartyIndex() { return m_partyIndex; }
+	//virtual void SetPartyIndex(int index) { m_partyIndex = index; }
+	//inline int Unit::GetPartyPos()
+	//{
+	//	return m_partyPos;
+	//}
+	//inline void Unit::SetPartyPos(int pos)
+	//{
+	//	m_partyPos = pos;
+	//}
+	//virtual int GetPartyIndex() { return m_partyIndex; }
 
 	void showSelMember(HDC _hdc);
 	void showHpBar(HDC _hdc);

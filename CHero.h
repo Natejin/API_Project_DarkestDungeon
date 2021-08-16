@@ -94,11 +94,11 @@ public:
 	virtual int getSPD();
 	virtual void setSPD(int spd);
 
-	virtual int GetPartyIndex();
-	virtual void SetPartyIndex(int pos);
+	//virtual int GetPartyIndex();
+	//virtual void SetPartyIndex(int pos);
 
-	virtual int GetPartyPos();
-	virtual void SetPartyPos(int pos);
+	//virtual int GetPartyPos();
+	//virtual void SetPartyPos(int pos);
 
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);

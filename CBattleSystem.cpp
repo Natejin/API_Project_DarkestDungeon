@@ -281,7 +281,7 @@ void CBattleSystem::CreateEnemyParty()
 		CEnemy* enemy = new CEnemy();
 		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::BoneDefender)); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
-		enemy->SetPosition(i);
+		enemy->SetPartyPos(i);
 		enemy->SetPartyIndex(i);
 		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
 		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
@@ -510,7 +510,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 	vector<SKILL> ownSkill = enemyParty[index]->GetInfo()->ownSkill;
 	CInfo_Skill* enemySkill = DB_SKILL->CallSkill(ownSkill[MG_RND->getInt(ownSkill.size())]);
 	
-	while (!isFoundTarget)
+	/*while (!isFoundTarget)
 	{
 		for (size_t i = 0; i < heroParty.size(); i++)
 		{
@@ -524,7 +524,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 
 		}
 		
-	}
+	}*/
 
 
 }
