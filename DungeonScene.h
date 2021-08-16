@@ -96,7 +96,6 @@ public:
 
 	void CreateInvenSystem();
 	void CreateBattleSystem();
-
 	void CreateDungeonUI();
 
 public:

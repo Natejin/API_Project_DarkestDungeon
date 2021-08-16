@@ -138,7 +138,7 @@ void DungeonScene::CreateDungeonMap()
 
 	m_pMapSystem->Init();
 	m_pMapSystem->dungeonScene = this;
-	MG_GMOBJ->RegisterObj("Party", m_pMapSystem);
+	MG_GMOBJ->RegisterObj("mapSystem", m_pMapSystem);
 }
 
 void DungeonScene::CreateParty()
