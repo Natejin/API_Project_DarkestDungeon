@@ -6,10 +6,12 @@ class ImageObject : public GameObject
 public:
 	float curTime;
 	float coolTime;
-	Vector2 speed;
+	float speed;
 	Vector2 originPos;
+	Vector2 targetPos;
 
-
+	class CSpriteRenderer* hp1GUI;
+	class CSpriteRenderer* hp10GUI;
 public:
 	ImageObject();
 	~ImageObject();

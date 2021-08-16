@@ -44,14 +44,14 @@ HRESULT CBattleSystem::Init()
 void CBattleSystem::SetZoomImage()
 {
 	heroZoomImage = new ImageObject();
-	heroZoomImage->originPos = Vector2(700, 600);
-	heroZoomImage->speed = Vector2(20, 0);
+	heroZoomImage->originPos = Vector2(700, 800);
+	heroZoomImage->speed = 10;
 	heroZoomImage->Init();
 	MG_GMOBJ->RegisterObj(heroZoomImage);
 
 	enemyZoomImage = new ImageObject();
-	enemyZoomImage->originPos = Vector2(1100, 600);
-	enemyZoomImage->speed = Vector2(-20, 0);
+	enemyZoomImage->originPos = Vector2(1100, 800);
+	enemyZoomImage->speed =10;
 	enemyZoomImage->Init();
 	MG_GMOBJ->RegisterObj(enemyZoomImage);
 }
@@ -361,13 +361,17 @@ void CBattleSystem::SelectEnemy(int index)
 			if (tempSkill->CheckTarget(index))
 			{
 				heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
-				heroZoomImage->speed = Vector2(2, 0);
+				heroZoomImage->targetPos = heroZoomImage->originPos;
+				heroZoomImage->targetPos.x += 400;
+				heroZoomImage->speed = 10;
 				heroZoomImage->Enable();
 
 
 
 				enemyZoomImage->m_spriteRenderer->SetImage(enemyParty[index]->GetInfo()->imageDefend);
-				enemyZoomImage->speed = Vector2(0, 0);
+				enemyZoomImage->targetPos = enemyZoomImage->originPos;
+				enemyZoomImage->targetPos.x +=  100;
+				enemyZoomImage->speed = 2;
 				enemyZoomImage->Enable();
 
 				startTriggerTime = MG_TIME->getWorldTime() + 5;
@@ -392,7 +396,9 @@ void CBattleSystem::SelectHero(int index)
 			if (tempSkill->CheckTarget(index))
 			{
 				heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
-				heroZoomImage->speed = Vector2(2, 0);
+				heroZoomImage->targetPos = heroZoomImage->originPos;
+				heroZoomImage->targetPos.x += 200;
+				heroZoomImage->speed = 10;
 				heroZoomImage->Enable();
 
 
