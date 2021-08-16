@@ -669,9 +669,6 @@
     <ClInclude Include="TreasureEventPanel.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
-    <ClInclude Include="CObjOnRoom.h">
-      <Filter>Object\RoadObj</Filter>
-    </ClInclude>
     <ClInclude Include="CEquipButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -1044,9 +1041,6 @@
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="TreasureEventPanel.cpp">
-      <Filter>Object\RoadObj</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjOnRoom.cpp">
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
     <ClCompile Include="CEquipButton.cpp">

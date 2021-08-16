@@ -12,7 +12,7 @@
 #include "CBattleSystem.h"
 #include "CInventorySystem.h"
 #include "TreasureEventPanel.h"
-#include "CObjOnRoom.h"
+
 
 DungeonScene::DungeonScene()
 {
@@ -164,7 +164,7 @@ void DungeonScene::CreateRoom()
 
 	m_roomObj = new CObjOnRoad();
 	m_roomObj->Init();
-	m_roomObj->Unable();
+	m_roomObj->Disable();
 	m_roomObj->m_dungeonScene = this;
 	MG_GMOBJ->RegisterObj("roomObj_", m_roomObj);
 
@@ -172,7 +172,7 @@ void DungeonScene::CreateRoom()
 	m_treasurePanel = new TreasureEventPanel();
 	m_treasurePanel->m_dungeonScene = this;
 	m_treasurePanel->Init();
-	m_treasurePanel->Unable();
+	m_treasurePanel->Disable();
 	MG_GMOBJ->RegisterObj("treasureEventPanel", m_treasurePanel);
 }
 
@@ -325,7 +325,7 @@ void DungeonScene::ActivateRoad()
 		m_roadObjs[i]->Enable();
 	}
 
-	m_roomObj->Unable();
+	m_roomObj->Disable();
 	
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	MG_CAMERA->SetWorldSize(Vector2(WORLDSIZEX, WORLDSIZEY));
@@ -359,7 +359,7 @@ void DungeonScene::ActivateRoom()
 
 	for (size_t i = 0; i < 3; i++)
 	{
-		m_roadObjs[i]->Unable();
+		m_roadObjs[i]->Disable();
 	}
 
 	SetRoomObject();
