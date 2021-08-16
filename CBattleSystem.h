@@ -22,8 +22,6 @@ class CBattleSystem : public GameObject
 	queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 
-	//ImageData mouseOnEnemy;
-	//ImageData mouseOnEnemyRed;
 
 	int randomDice6 = 6;
 	int randomDice100 = 100;
@@ -44,7 +42,6 @@ class CBattleSystem : public GameObject
 	float startTriggerTime;
 	bool startNextTurn;
 	vector< Vector2> targetEnemyPosVec;
-
 	
 public:
 	class DungeonScene* scene;
@@ -52,6 +49,8 @@ public:
 	class CDungeonUI_HeroInfo* dungeonUIHeroinfo;
 	CBattleSystem();
 	~CBattleSystem();
+
+
 
 	HRESULT Init();
 

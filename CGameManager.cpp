@@ -30,10 +30,10 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 
-	//RegisterHeroToParty(0);
-	//RegisterHeroToParty(1);
-	//RegisterHeroToParty(2);
-	//RegisterHeroToParty(3);
+	RegisterHeroToParty(0);
+	RegisterHeroToParty(1);
+	RegisterHeroToParty(2);
+	RegisterHeroToParty(3);
 
 	m_dungeonScene = MG_SCENE->dungeonScene;
 	m_townScene = MG_SCENE->townScene;
@@ -176,32 +176,35 @@ CHero* CGameManager::GetCurSelHero()
 	return m_CurSelHero;
 }
 
-void CGameManager::SetCurSelHero(int i)
+void CGameManager::SetCurSelHero(int index)
 {
-	m_CurSelHero = m_party->GetHero(i);
-	for (int i = 0; i < m_party->GetPartySize(); i++)
+	m_CurSelHero = m_party->GetHero(index);
+	if (m_CurSelHero)
 	{
-		m_party->GetHero(i)->isSelected = false;
-	}
-	m_party->GetHero(i)->isSelected = true;
-
-	m_dungeonScene->m_dungeonUIinfo->SetPortrait(m_CurSelHero->GetInfo()->portrait);
-	m_dungeonScene->m_dungeonUIinfo->SetWeapon(m_CurSelHero->GetInfo()->weapon[0]);
-	m_dungeonScene->m_dungeonUIinfo->SetArmor(m_CurSelHero->GetInfo()->armor[0]);
-
-	vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
-	
-	
-	for (int j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
-	{
-		if (temp.size() > j)
+		for (int i = 0; i < m_party->GetPartySize(); i++)
 		{
-			m_dungeonScene->m_dungeonUI->skillBTNs[j]->Enable();
-			m_dungeonScene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+			m_party->GetHero(i)->isSelected = false;
 		}
-		else {
-			m_dungeonScene->m_dungeonUI->skillBTNs[j]->Disable();
+		m_party->GetHero(index)->isSelected = true;
+
+		m_dungeonScene->m_dungeonUIinfo->SetPortrait(m_CurSelHero->GetInfo()->portrait);
+		m_dungeonScene->m_dungeonUIinfo->SetWeapon(m_CurSelHero->GetInfo()->weapon[0]);
+		m_dungeonScene->m_dungeonUIinfo->SetArmor(m_CurSelHero->GetInfo()->armor[0]);
+
+		vector<SKILL> temp = m_CurSelHero->GetInfo()->ownSkill;
+
+
+		for (int j = 0; j < m_dungeonScene->m_dungeonUI->skillBTNs.size(); j++)
+		{
+			if (temp.size() > j)
+			{
+				m_dungeonScene->m_dungeonUI->skillBTNs[j]->Enable();
+				m_dungeonScene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+			}
+			else {
+				m_dungeonScene->m_dungeonUI->skillBTNs[j]->Disable();
+			}
+
 		}
-	
 	}
 }
