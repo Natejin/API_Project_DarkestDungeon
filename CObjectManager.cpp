@@ -18,6 +18,7 @@ HRESULT CObjectManager::Init()
 	renderOrder.push_back(LAYER::Player);
 	renderOrder.push_back(LAYER::UI);
 	renderOrder.push_back(LAYER::UIButton);
+	renderOrder.push_back(LAYER::UIIndicator);
 	renderOrder.push_back(LAYER::UIMotion);
 	renderOrder.push_back(LAYER::DummySlot);
 
@@ -166,5 +167,10 @@ void CObjectManager::RemoveObj(int id)
 
 void CObjectManager::RemoveObj(GameObject* gameObj)
 {
-	objsToErase.push_back(gameObj->GetId());
+	if (gameObj)
+	{
+		gameObj->Disable();
+		objsToErase.push_back(gameObj->GetId());
+	}
+	
 }

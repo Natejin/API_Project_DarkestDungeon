@@ -53,20 +53,36 @@ HRESULT DungeonScene::Init(bool managerInit)
 
 void DungeonScene::Release()
 {
-	m_party = nullptr;
-	m_roomBG = nullptr;
-	m_roadBG = nullptr;
 
-	for (size_t i = 0; i < enemyGroup.size(); i++)
+	MG_GMOBJ->RemoveObj(m_roomBG);
+	MG_GMOBJ->RemoveObj(m_roadBG);
+	MG_GMOBJ->RemoveObj(treasurePanel);
+
+	for (size_t i = 0; i < m_roadObjs.size(); i++)
 	{
-		enemyGroup[i] = nullptr;
+		MG_GMOBJ->RemoveObj(m_roadObjs[i]);
 	}
 
-	enemyGroup.clear();
+
+	MG_GMOBJ->RemoveObj(m_pBattleSystem);
+	MG_GMOBJ->RemoveObj(m_pInvenSystem);
+	MG_GMOBJ->RemoveObj(m_treasurePanel);
+	MG_GMOBJ->RemoveObj(m_dungeonUI);
+	MG_GMOBJ->RemoveObj(m_dungeonUIinfo);
+
+
+	MG_GMOBJ->RemoveObj(m_party);
+
 }
 
 void DungeonScene::Update()
 {
+	if (MG_INPUT->isOnceKeyDown('G'))
+	{
+		MG_SCENE->changeScene(SCENETYPE::Town);
+	}
+
+
 	if (m_dungeonMode == DUNGEONMODE::WALK)
 	{
 		if (!isOpenedPanel)

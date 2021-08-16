@@ -44,6 +44,26 @@ void dungeonUI::FrontRender(HDC _hdc)
 
 void dungeonUI::Release()
 {
+	for (size_t i = 0; i < skillBTNs.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(skillBTNs[i]);
+	}
+
+	MG_GMOBJ->RemoveObj(bt_inven);
+	MG_GMOBJ->RemoveObj(bt_map);
+	MG_GMOBJ->RemoveObj(bt_passTurn);
+	MG_GMOBJ->RemoveObj(bt_changePos);
+	scene = nullptr;
+	m_pMapSystem = nullptr;
+	m_pBattleSystem = nullptr;
+	m_invenSystem = nullptr;
+	MG_GMOBJ->RemoveObj(invenPanel);
+	MG_GMOBJ->RemoveObj(mapPanel1);
+	MG_GMOBJ->RemoveObj(mapPanel2);
+	MG_GMOBJ->RemoveObj(panel_bg1);
+	MG_GMOBJ->RemoveObj(panel_bg2);
+	MG_GMOBJ->RemoveObj(banner);
+	MG_GMOBJ->RemoveObj(hero);
 }
 
 //==================================
@@ -54,13 +74,13 @@ void dungeonUI::SetUIIMG()
 	SetTorchUIimg();
 
 	//���ʾƷ� UI
-	CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
+	panel_bg1 = CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
 	//�����ʾƷ� UI
-	CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
+	panel_bg2 = CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
 	//���� �ν��� ������ + ��ų������ �޹��
-	CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
+	banner = CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
 	//���� ������ +��ű� �� ���
-	CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
+	hero = CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
 
 	//�κ��丮 �г�
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);

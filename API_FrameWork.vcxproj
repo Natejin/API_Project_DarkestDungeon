@@ -249,6 +249,7 @@
     <ClInclude Include="minimap.h" />
     <ClInclude Include="minion.h" />
     <ClInclude Include="CUIPanel_NomadWagon.h" />
+    <ClInclude Include="MonsterIndicator.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="pixelCollision.h" />
     <ClInclude Include="CHero.h" />
@@ -380,6 +381,7 @@
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="minion.cpp" />
     <ClCompile Include="CUIPanel_NomadWagon.cpp" />
+    <ClCompile Include="MonsterIndicator.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pixelCollision.cpp" />
     <ClCompile Include="CHero.cpp" />

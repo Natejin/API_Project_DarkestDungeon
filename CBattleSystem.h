@@ -22,8 +22,8 @@ class CBattleSystem : public GameObject
 	queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 
-	ImageData mouseOnEnemy;
-	ImageData mouseOnEnemyRed;
+	//ImageData mouseOnEnemy;
+	//ImageData mouseOnEnemyRed;
 
 	int randomDice6 = 6;
 	int randomDice100 = 100;
@@ -33,17 +33,17 @@ class CBattleSystem : public GameObject
 	class CHero* curHero;
 	class CEnemy* curEnemy;
 
-	vector< Vector2> targetEnemyPosVec;
-	int enemyPosIndex;
+
 	int currentSkill;
 
 	class ImageObject* heroZoomImage;
 	class ImageObject* enemyZoomImage;
-	class ImageObject* indicatorImage;
+	class MonsterIndicator* monsterIndicator;
+
 
 	float startTriggerTime;
 	bool startNextTurn;
-
+	vector< Vector2> targetEnemyPosVec;
 
 	
 public:

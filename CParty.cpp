@@ -89,13 +89,12 @@ void CParty::FrontRender(HDC _hdc)
 void CParty::Release()
 {
 	////TODO 추후 영웅들 데이터 저장 추가 예정
-	//for (size_t i = 0; i < m_member.size(); i++)
-	//{
-	//	//MG_GMOBJ->RemoveObj(m_member[i]->GetId());
-	//	//SAFE_DELETE(m_member[i]);
-	//	m_member[i] = nullptr;
-	//}
-	//m_member.clear();
+	for (size_t i = 0; i < m_member.size(); i++)
+	{
+		MG_GAME->RegisterHeroToOwnList(m_member[i]);
+		m_member[i]->Disable();
+	}
+	m_member.clear();
 	GameObject::Release();
 }
 
@@ -262,42 +261,46 @@ CHero* CParty::GetHero(int index)
 
 void CParty::FormationMove()
 {
-	int substraction[3];
-	substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
-	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
-	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
-
-	m_member[0]->Move();
-	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
-	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
-	for (size_t i = 0; i < 3; i++)
+	for (size_t i = 0; i < m_member.size() > 0; i++)
 	{
-		
-		if (vk_Right | vk_Left)
+		int substraction[3];
+		substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
+		substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
+		substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
+
+		m_member[0]->Move();
+		bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
+		bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+		for (size_t i = 0; i < 3; i++)
 		{
-			if (vk_Left)
+
+			if (vk_Right | vk_Left)
 			{
-				if (WB_btwHeroes > substraction[i])
+				if (vk_Left)
 				{
-					m_member[i + 1]->Move();
-					continue;
+					if (WB_btwHeroes > substraction[i])
+					{
+						m_member[i + 1]->Move();
+						continue;
+					}
+				}
+
+				if (vk_Right)
+				{
+					if (substraction[i] > WF_btwHeroes)
+					{
+						m_member[i + 1]->Move();
+					}
 				}
 			}
-
-			if (vk_Right)
-			{
-				if (substraction[i] > WF_btwHeroes)
-				{
-					m_member[i + 1]->Move();
-				}
+			else {
+				m_member[i + 1]->Move();
 			}
-		}
-		else {
-			m_member[i + 1]->Move();
-		}
-	
 
+
+		}
 	}
+	
 }
 
 void CParty::setTorch(int torch)

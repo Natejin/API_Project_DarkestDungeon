@@ -46,6 +46,7 @@ void CDungeonUI_HeroInfo::FrontRender(HDC _hdc)
 
 void CDungeonUI_HeroInfo::Release()
 {
+
 }
 
 

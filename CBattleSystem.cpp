@@ -11,11 +11,10 @@
 #include "Info_Skill.h"
 #include "Info_Enemy.h"
 #include "ImageObject.h"
-
+#include "MonsterIndicator.h"
 CBattleSystem::CBattleSystem()
 {
-	m_layer = LAYER::UI;
-	enemyPosIndex = 0;
+
 }
 
 CBattleSystem::~CBattleSystem()
@@ -25,19 +24,22 @@ CBattleSystem::~CBattleSystem()
 
 HRESULT CBattleSystem::Init()
 {
-	mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Black);
-	//mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
+	
+	////mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
 
 	targetEnemyPosVec.push_back(Vector2(1160, 700));
 	targetEnemyPosVec.push_back(Vector2(1360, 700));
 	targetEnemyPosVec.push_back(Vector2(1560, 700));
 	targetEnemyPosVec.push_back(Vector2(1760, 700));
 
+	monsterIndicator = new MonsterIndicator();
+	monsterIndicator->Init();
+	monsterIndicator->Disable();
+	MG_GMOBJ->RegisterObj(monsterIndicator);
 
 	SetZoomImage();
 
-	mouseOnEnemy.m_trans.m_pivot = Vector2(0.5, 0.5);
-	mouseOnEnemy.m_trans.m_pos = targetEnemyPosVec[0];
+	
 	return S_OK;
 }
 
@@ -69,17 +71,7 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 	{
 		StartTurn();
 	}
-	float x = abs(mouseOnEnemy.m_trans.m_pos.x - targetEnemyPosVec[enemyPosIndex].x);
-	if (x > 60)
-	{
-		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 20;
-	}
-	else if (x > 20) {
-		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 3;
-	}
-	else if (x > 1) {
-		mouseOnEnemy.m_trans.m_pos += (targetEnemyPosVec[enemyPosIndex] - mouseOnEnemy.m_trans.m_pos).Normalize() * 1;
-	}
+
 	
 
 	if (startNextTurn && worldTime > startTriggerTime)
@@ -101,7 +93,7 @@ void CBattleSystem::BackRender(HDC _hdc)
 
 void CBattleSystem::Render(HDC _hdc)
 {
-	mouseOnEnemy.RenderWithPivot(_hdc);
+	/*mouseOnEnemy.RenderWithPivot(_hdc);*/
 }
 
 void CBattleSystem::FrontRender(HDC _hdc)
@@ -137,15 +129,17 @@ void CBattleSystem::BattleSystemInitiate()
 	CreateEnemyParty();
 	CreateHeroesParty();
 	Compare_P_E_Speed_ReArray();
+	monsterIndicator->Enable();
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
 	isActive = true;
-	mouseOnEnemy.m_trans.m_pos.x = enemyParty[0]->m_transform->m_pos.x;
+	monsterIndicator->m_transform->m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
 }
 
 void CBattleSystem::BattleSystemEnd()
 {
+	monsterIndicator->Disable();
 	scene->m_dungeonMode = DUNGEONMODE::WALK;
 	heroParty.clear();
 	for (size_t i = 0; i < enemyParty.size(); i++)
@@ -484,14 +478,9 @@ void CBattleSystem::DeselectAll()
 
 void CBattleSystem::SetEnemyIndicator(int index)
 {
-	enemyPosIndex = index;
-	if (enemyParty[index]->isTargetSkill)
-	{
-		mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
-	}
-	else {
-		mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Black);
-	}
+
+	monsterIndicator->SetPosIndex(index);
+	monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
 }
 
 void CBattleSystem::SelectEnemyTarget(SKILL skill)

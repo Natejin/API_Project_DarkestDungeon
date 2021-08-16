@@ -675,6 +675,9 @@
     <ClInclude Include="ImageObject.h">
       <Filter>System\Battle</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterIndicator.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1047,6 +1050,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ImageObject.cpp">
+      <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterIndicator.cpp">
       <Filter>System\Battle</Filter>
     </ClCompile>
   </ItemGroup>

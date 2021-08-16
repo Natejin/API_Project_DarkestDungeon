@@ -19,6 +19,7 @@ enum class LAYER
 	Item,
 	UI,
 	UIButton,
+	UIIndicator,
 	UIMotion,
 	DummySlot
 };
