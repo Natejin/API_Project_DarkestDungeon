@@ -636,9 +636,6 @@
     <ClInclude Include="CItemEffect.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Hero_Roster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Info_Hero.h">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
@@ -649,9 +646,6 @@
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
     <ClInclude Include="CHeroOnStage_coach.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CUI_Panel_Hero.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="DB_UnitInfo.h">
@@ -669,11 +663,23 @@
     <ClInclude Include="TreasureEventPanel.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
-    <ClInclude Include="CEquipButton.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="ImageObject.h">
       <Filter>System\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CEquipButton.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClInclude>
+    <ClInclude Include="CBTN_CampSkill.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero_Roster.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI_Panel_Hero.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClInclude>
+    <ClInclude Include="CPosition_Button.h">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1010,9 +1016,6 @@
     <ClCompile Include="CItemEffect.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Hero_Roster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Info_Hero.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
@@ -1023,9 +1026,6 @@
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
     <ClCompile Include="CHeroOnStage_coach.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CUI_Panel_Hero.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DB_UnitInfo.cpp">
@@ -1043,11 +1043,23 @@
     <ClCompile Include="TreasureEventPanel.cpp">
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
-    <ClCompile Include="CEquipButton.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="ImageObject.cpp">
       <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CBTN_CampSkill.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClCompile>
+    <ClCompile Include="CEquipButton.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero_Roster.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI_Panel_Hero.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
+    </ClCompile>
+    <ClCompile Include="CPosition_Button.cpp">
+      <Filter>Object\UI\Buttons\bt_EST</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

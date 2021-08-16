@@ -154,10 +154,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CBTN_CampSkill.h" />
     <ClInclude Include="CBTN_Skill.h" />
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
+    <ClInclude Include="CPosition_Button.h" />
     <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="DB_UnitInfo.h" />
@@ -287,10 +289,12 @@
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CBTN_CampSkill.cpp" />
     <ClCompile Include="CBTN_Skill.cpp" />
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />
+    <ClCompile Include="CPosition_Button.cpp" />
     <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="DB_UnitInfo.cpp" />

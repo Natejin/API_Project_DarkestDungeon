@@ -53,10 +53,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::vestal_roster, "images/Heroes/vestal_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::plague_doctor_roster, "images/Heroes/plague_doctor_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage(IMAGE::crusader_header, "images/Heroes/crusader_header.bmp", 715,630,true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::highwayman_header, "images/Heroes/highwayman_header.bmp", 715,630,true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_header.bmp", 715,630,true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_header.bmp", 715,630,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_header, "images/Heroes/crusader_head.bmp", 715,202,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_header, "images/Heroes/highwayman_head.bmp", 715,202,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_head.bmp", 715,202,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_head.bmp", 715,202,true, RGB(255, 0, 255));
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
@@ -92,6 +92,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395,776, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::characterpanel, "images/panel/characterpanel.bmp", 1395,776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_treatment, "images/panel/quirk_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_disease, "images/panel/disease_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
 	
@@ -398,6 +399,18 @@ HRESULT imageManager::init()
 
 	//check
 	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));
+	//potionbutton
+	MG_IMAGE->addImage(IMAGE::PositionButton_enable, "images/position_enable.bmp", 64, 64, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::PositionButton_unable, "images/position_unable.bmp", 64, 64, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::PositionButton_enable_red, "images/position_unable_red.bmp", 64, 64, false, RGB(255, 0, 255));
+	//pont
+	MG_IMAGE->addImage(IMAGE::Quirk, "images/Quirk.bmp", 80, 40, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::OriginStatus, "images/OriginStatus.bmp", 150, 35, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Equip, "images/Equip.bmp", 70, 32, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::CombatSkill, "images/CombatSkill.bmp", 150, 35, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::CampingSkill, "images/CampingSkill.bmp", 150, 35, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Resistance, "images/Resistance.bmp", 120, 35, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Disease, "images/Disease.bmp", 65, 40, false, RGB(255, 0, 255));
 
 	return S_OK;
 }

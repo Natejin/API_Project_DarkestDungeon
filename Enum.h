@@ -260,6 +260,7 @@ enum class IMAGE
 	monster,
 	scouting,
 	characterpanel_bg,
+	characterpanel,
 	crusader_header,
 	highwayman_header,
 	plague_doctor_header,
@@ -337,9 +338,10 @@ enum class IMAGE
 	//Hero
 
 
-		Crusader_Idle,
-		Crusader_Walk,
-		Crusader_Combat,
+	Crusader_Idle,
+	Crusader_Walk,
+	Crusader_Combat,
+
 	Crusader_banner,
 	Crusader_charge,
 	Crusader_defend,
@@ -364,9 +366,10 @@ enum class IMAGE
 	Plague_doctor_investigate,
 
     //Vestal
-		Vestal_Idle,
-		Vestal_Walk,
-		Vestal_Combat,
+	Vestal_Idle,
+	Vestal_Walk,
+	Vestal_Combat,
+
 	Vestal_defend,
 	Vestal_heal,
 	Vestal_investigate,
@@ -376,6 +379,17 @@ enum class IMAGE
 	//Backdrop
 	Backdrop_treatment,
 	Backdrop_disease,
+	//button
+	PositionButton_enable,
+	PositionButton_unable,
+	//PositionButton_enable_red,
+	Quirk,
+	OriginStatus,
+	Equip,
+	CombatSkill,
+	CampingSkill,
+	Resistance,
+	Disease,
 	//resist
 	bleed,
 	buff,
