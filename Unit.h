@@ -43,6 +43,13 @@ public:
 	virtual void Release();
 
 	virtual void SetPartyIndex(int index) { m_partyIndex = index; }
+	inline int Unit::GetPartyPos()
+	{
+		return 0;
+	}
+	inline void Unit::SetPartyPos(int pos)
+	{
+	}
 	virtual int GetPartyIndex() { return m_partyIndex; }
 
 	void showSelMember(HDC _hdc);
@@ -53,16 +60,28 @@ public:
 	virtual UNITTYPE GetUnitType();
 
 	virtual int getHP();
-	virtual void reduceHP(int hp);
+	virtual bool reduceHP(int hp);
 	virtual void increaseHP(int hp);
 	virtual void setHP(int hp);
 	virtual int getMaxHP();
 
+	virtual bool GetAffliction();
+	virtual bool GetAlive();
+
 	virtual int GetSpeed();
-	virtual void SetPosition(int pos);
+
 	virtual int getSPD();
-	virtual int GetPosition();
-	virtual int getPartyPos();
+
+
+
+	virtual int GetPartyIndex();
+	virtual void SetPartyIndex(int pos);
+
+	virtual int GetPartyPos();
+	virtual void SetPartyPos(int pos);
+
+
+
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
 	virtual void setSPD(int spd);

@@ -120,7 +120,8 @@ void DB_UnitInfo::SetHero()
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 33;
 	info->m_SPD = 1;
-
+	info->isAffliction = false;
+	info->isAlive = true;
 	info->job = JOB::Crusader;
 	info->m_DMG = 1;
 	info->m_ACRY = 9;
@@ -163,7 +164,8 @@ void DB_UnitInfo::SetHero()
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 22;
 	info->m_SPD = 4;
-
+	info->isAffliction = false;
+	info->isAlive = true;
 
 	info->job = JOB::Vestal;
 	info->m_DMG = 3;
@@ -211,6 +213,8 @@ void DB_UnitInfo::SetEnemy()
 	info->unitType = UNITTYPE::Enemy;
 	info->m_maxHP = 20;
 	info->m_SPD = 3;
+	info->isAffliction = false;
+	info->isAlive = true;
 
 	info->enemyType = ENEMYTYPE::BoneDefender;
 	info->m_DMG = 3;

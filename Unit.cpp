@@ -114,8 +114,9 @@ int Unit::getHP()
     return 0;
 }
 
-void Unit::reduceHP(int hp)
+bool Unit::reduceHP(int hp)
 {
+    return false;
 }
 
 void Unit::increaseHP(int hp)
@@ -154,6 +155,16 @@ void Unit::setHP(int hp)
 int Unit::getMaxHP()
 {
     return 0;
+}
+
+bool Unit::GetAffliction()
+{
+    return false;
+}
+
+bool Unit::GetAlive()
+{
+    return false;
 }
 
 void Unit::setSPD(int spd)

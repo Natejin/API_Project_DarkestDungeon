@@ -109,9 +109,18 @@ int CEnemy::getHP()
 	return  info->m_HP;
 }
 
-void CEnemy::reduceHP(int hp)
+bool CEnemy::reduceHP(int hp)
 {
-	info->m_HP -= hp;
+	if (info->m_HP - hp > 0)
+	{
+		info->m_HP -= hp;
+		return true;
+	}
+	else {
+		info->m_HP = 0;
+		info->isAlive = false;
+		return false;
+	}
 }
 
 void CEnemy::increaseHP(int hp)

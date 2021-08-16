@@ -19,7 +19,6 @@ HRESULT CHero::Init(Info_Hero* _info)
 	canTriggerDown = false;
 	m_unitType = _info->unitType;
 	info = _info;
-	
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
@@ -339,6 +338,16 @@ int CHero::GetDef()
 	return info->m_DEF;
 }
 
+bool CHero::GetAffliction()
+{
+	return info->isAffliction;
+}
+
+bool CHero::GetAlive()
+{
+	return info->isAlive;
+}
+
 
 
 UNITTYPE CHero::GetUnitType()
@@ -398,9 +407,19 @@ int CHero::getHP()
 	return  info->m_HP;
 }
 
-void CHero::reduceHP(int hp)
+bool CHero::reduceHP(int hp)
 {
-	info->m_HP -= hp;
+	if (info->m_HP - hp > 0)
+	{
+		info->m_HP -= hp;
+		return true;
+	}
+	else {
+		info->m_HP = 0;
+		info->isAlive = false;
+		return false;
+	}
+
 }
 
 void CHero::increaseHP(int hp)

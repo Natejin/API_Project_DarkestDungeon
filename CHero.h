@@ -86,7 +86,7 @@ public:
 	virtual int GetSpeed();
 
 	virtual int getHP();
-	virtual void reduceHP(int hp);
+	virtual bool reduceHP(int hp);
 	virtual void increaseHP(int hp);
 	virtual void setHP(int hp);
 	virtual int getMaxHP();
@@ -130,5 +130,8 @@ public:
 	virtual int GetDodge();
 	virtual void SetDef(int _def);
 	virtual int GetDef();
-	
+
+	virtual bool GetAffliction();
+	virtual bool GetAlive();
+
 };

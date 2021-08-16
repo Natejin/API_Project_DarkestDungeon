@@ -12,6 +12,8 @@
 #include "Info_Enemy.h"
 #include "ImageObject.h"
 #include "MonsterIndicator.h"
+
+
 CBattleSystem::CBattleSystem()
 {
 
@@ -36,10 +38,7 @@ HRESULT CBattleSystem::Init()
 	monsterIndicator->Init();
 	monsterIndicator->Disable();
 	MG_GMOBJ->RegisterObj(monsterIndicator);
-
 	SetZoomImage();
-
-	
 	return S_OK;
 }
 
@@ -507,6 +506,26 @@ void CBattleSystem::StartHeroTrun(int index)
 
 void CBattleSystem::StartEnemyTrun(int index)
 {
+	bool isFoundTarget = false;
+	vector<SKILL> ownSkill = enemyParty[index]->GetInfo()->ownSkill;
+	CInfo_Skill* enemySkill = DB_SKILL->CallSkill(ownSkill[MG_RND->getInt(ownSkill.size())]);
+	
+	while (!isFoundTarget)
+	{
+		for (size_t i = 0; i < heroParty.size(); i++)
+		{
+			if (heroParty[i] != nullptr && heroParty[i]->GetAlive())
+			{
+				if (enemySkill->CheckTarget(heroParty[i]->GetPosition()))
+				{
+
+				}
+			}
+
+		}
+		
+	}
+
 
 }
 
