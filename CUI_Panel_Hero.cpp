@@ -20,7 +20,7 @@ HRESULT CUI_Panel_Hero::Init()
 	CEst_UI::Init();
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::characterpanel_bg, m_transform);
 	
-	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform); //ÀÓÀÇ ÀÌ¹ÌÁö
+	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
 	m_windowPanelChar->useCustomPos = true;
 	m_windowPanelChar->pos = Vector2(100, 50);
 	
@@ -30,9 +30,39 @@ HRESULT CUI_Panel_Hero::Init()
 	
 	m_HeroImg = new CSpriteRenderer(IMAGE::Crusader_sword, m_transform);
 	m_HeroImg->useCustomPos = true;
-	m_HeroImg->pos = Vector2(120, 300);
+	m_HeroImg->pos = Vector2(120, 500);
 	m_HeroImg->useCustomScale = true;
 	m_HeroImg->scale = Vector2(0.5, 0.5);
+
+	m_treatmentImg = new CSpriteRenderer(IMAGE::Backdrop_treatment,m_transform);
+	m_treatmentImg->useCustomPos = true;
+	m_treatmentImg->pos = Vector2(150, 200);
+	m_treatmentImg->useCustomScale = true;
+	m_treatmentImg->scale = Vector2(1.5, 1);
+
+	m_diseaseImg = new CSpriteRenderer(IMAGE::Backdrop_disease, m_transform);
+	m_diseaseImg->useCustomPos = true;
+	m_diseaseImg->pos = Vector2(900, 550);
+
+	m_stunicon = new CSpriteRenderer(IMAGE::stun, m_transform);
+	m_stunicon->useCustomPos = true;
+	m_stunicon->pos = Vector2(970, 455);
+
+	m_blighicon = new CSpriteRenderer(IMAGE::poison, m_transform);
+	m_blighicon->useCustomPos = true;
+	m_blighicon->pos = Vector2(1120, 455);
+
+	m_bleedicon = new CSpriteRenderer(IMAGE::bleed, m_transform);
+	m_bleedicon->useCustomPos = true;
+	m_bleedicon->pos = Vector2(970, 470);
+
+	m_debufficon = new CSpriteRenderer(IMAGE::debuff, m_transform);
+	m_debufficon->useCustomPos = true;
+	m_debufficon->pos = Vector2(1120, 470);
+
+	m_moveicon = new CSpriteRenderer(IMAGE::move, m_transform);
+	m_moveicon->useCustomPos = true;
+	m_moveicon->pos = Vector2(970, 485);
 
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
 	CreateHeroSkill();
@@ -64,6 +94,13 @@ void CUI_Panel_Hero::FrontRender(HDC _hdc)
 	m_windowPanelChar->Render(_hdc);
 	m_HeroPanel->Render(_hdc);
 	m_HeroImg->Render(_hdc);
+	m_treatmentImg->Render(_hdc);
+	m_diseaseImg->Render(_hdc);
+	m_stunicon	 ->Render(_hdc);
+	m_bleedicon	 ->Render(_hdc);
+	m_moveicon	 ->Render(_hdc);
+	m_blighicon	 ->Render(_hdc);
+	m_debufficon ->Render(_hdc);
     ShowHeroInfo(_hdc);
 }
 
@@ -123,7 +160,6 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
     TextOut(_hdc, 380, 400, str, strlen(str));
 
     SetTextColor(_hdc, RGB(255, 0, 0));
-
 	sprintf_s(str, "HP :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getHP());
     TextOut(_hdc, 380, 435, str, strlen(str));
 
@@ -150,19 +186,19 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 	//stun, blight, bleed, debuff, move
 	sprintf_s(str, "Stun :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(0));
 	TextOut(_hdc, 1000, 455, str, strlen(str));
-
+	
 	sprintf_s(str, "Blight :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(1));
-	TextOut(_hdc, 1100, 455, str, strlen(str));
+	TextOut(_hdc, 1150, 455, str, strlen(str));
 
 	sprintf_s(str, "Bleed :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(2));
 	TextOut(_hdc, 1000, 470, str, strlen(str));
 
 	sprintf_s(str, "Debuff :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(3));
-	TextOut(_hdc, 1100, 470, str, strlen(str));
-
+	TextOut(_hdc, 1150, 470, str, strlen(str));
+	
 	sprintf_s(str, "Move :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(4));
 	TextOut(_hdc, 1000, 485, str, strlen(str));
-
+	
 }
 
 void CUI_Panel_Hero::CreateHeroSkill()

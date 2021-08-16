@@ -37,6 +37,7 @@ HRESULT TownScene::Init()
 	SetHerolist(); 
 	SetRoster();
 	SetHeroPanel();
+
 	return S_OK;
 }
 HRESULT TownScene::Init(bool managerInit)
@@ -263,8 +264,9 @@ void TownScene::Show_nomad_wagon( )
 	m_nomad_wagon->Enable();
 }
 void TownScene::Show_stage_coach( )
-{
+{	
 	m_stage_coach->Enable();
+
 }
 void TownScene::Show_town_statue()
 {
