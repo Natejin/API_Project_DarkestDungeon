@@ -78,7 +78,10 @@ enum class SKILL
 	BoneDefender_Combat_1,
 
 };
-
+enum class Camp_Skill
+{
+	
+};
 enum class ITEM
 {
 	ITEM_CONSUMABLE,
@@ -384,7 +387,35 @@ enum class IMAGE
 	poison,
 	stress,
 	stun,
-	tag
+	tag,
+
+	//Camp_Skill
+	
+	//Common
+	camp_skill_bandage,
+	camp_skill_encourage,
+	camp_skill_pep_talk,
+	//Crusader
+	camp_skill_stand_tall,
+	camp_skill_unshakeable_leader,
+	camp_skill_zealous_speech,
+	camp_skill_zealous_vigil,
+	//Highwayman
+	camp_skill_clean_guns,
+	camp_skill_gallows_humor,
+	camp_skill_perimeter_alarms,
+	camp_skill_uncatchable,
+	//Plague_Doctor
+	camp_skill_experimental_vapours,
+	camp_skill_leeches,
+	camp_skill_preventative_medicine,
+	camp_skill_self_medicate,
+	//Vestal
+	camp_skill_bless,
+	camp_skill_chant,
+	camp_skill_pray,
+	camp_skill_sanctuary
+
 };
 
 enum class Resistance

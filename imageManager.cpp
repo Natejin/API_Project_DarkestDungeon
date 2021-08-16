@@ -330,7 +330,32 @@ HRESULT imageManager::init()
 
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
-
+	//Camp_Skill
+	
+	//Common
+	MG_IMAGE->addImage(IMAGE::camp_skill_bandage, "images/Camp_Common/camp_skill_bandage.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_encourage, "images/Camp_Common/camp_skill_encourage.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_pep_talk, "images/Camp_Common/camp_skill_pep_talk.bmp", 72, 72, false, RGB(255, 0, 255));
+	//Crusader
+	MG_IMAGE->addImage(IMAGE::camp_skill_stand_tall, "images/Camp_Crusader/camp_skill_stand_tall.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_unshakeable_leader, "images/Camp_Crusader/camp_skill_unshakeable_leader.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_zealous_speech, "images/Camp_Crusader/camp_skill_zealous_speech.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_zealous_vigil, "images/Camp_Crusader/camp_skill_zealous_vigil.bmp", 72, 72, false, RGB(255, 0, 255));
+	//Highwayman
+	MG_IMAGE->addImage(IMAGE::camp_skill_clean_guns, "images/Camp_Highwayman/camp_skill_clean_guns.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_gallows_humor, "images/Camp_Highwayman/camp_skill_gallows_humor.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_perimeter_alarms, "images/Camp_Highwayman/camp_skill_perimeter_alarms.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_uncatchable, "images/Camp_Highwayman/camp_skill_uncatchable.bmp", 72, 72, false, RGB(255, 0, 255));
+	//Plague_Doctor
+	MG_IMAGE->addImage(IMAGE::camp_skill_experimental_vapours, "images/Camp_Plague_doctor/camp_skill_experimental_vapours.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_leeches, "images/Camp_Plague_doctor/camp_skill_leeches.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_preventative_medicine, "images/Camp_Plague_doctor/camp_skill_preventative_medicine.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_self_medicate, "images/Camp_Plague_doctor/camp_skill_self_medicate.bmp", 72, 72, false, RGB(255, 0, 255));
+	//Vestal
+	MG_IMAGE->addImage(IMAGE::camp_skill_bless, "images/Camp_Vestal/camp_skill_bless.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_chant, "images/Camp_Vestal/camp_skill_chant.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_pray, "images/Camp_Vestal/camp_skill_pray.bmp", 72, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::camp_skill_sanctuary, "images/Camp_Vestal/camp_skill_sanctuary.bmp", 72, 72, false, RGB(255, 0, 255));
 
 	//Weapon&Armor
 	MG_IMAGE->addImage(IMAGE::Vestal_Armor_0, "images/icons_equip_Vestal/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
