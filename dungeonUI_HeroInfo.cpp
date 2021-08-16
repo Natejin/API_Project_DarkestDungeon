@@ -207,7 +207,7 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
         break;
 
     case JOB::Vestal:
-        sprintf_s(str, "24 / %d", MG_GAME->GetHero(selectedHeroIndex)->getHP());
+        sprintf_s(str, "%d / 24", MG_GAME->GetHero(selectedHeroIndex)->getHP());
         TextOut(_hdc, 400, 835, str, strlen(str));
         SetTextColor(_hdc, RGB(48, 48, 50));
         sprintf_s(str, "Vestal");
@@ -216,7 +216,7 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
     TextOut(_hdc, 450, 780, str, strlen(str));
 
     SetTextColor(_hdc, RGB(255, 255, 255));
-    sprintf_s(str, "200 / %d", MG_GAME->GetHero(selectedHeroIndex)->getStress());
+    sprintf_s(str, "%d / 200", MG_GAME->GetHero(selectedHeroIndex)->getStress());
     TextOut(_hdc, 400, 860, str, strlen(str));
 
     sprintf_s(str, "ACC         %d", MG_GAME->GetHero(selectedHeroIndex)->GetAcry());

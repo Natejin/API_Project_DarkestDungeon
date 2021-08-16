@@ -109,9 +109,24 @@ int CEnemy::getHP()
 	return  info->m_HP;
 }
 
+void CEnemy::reduceHP(int hp)
+{
+	info->m_HP -= hp;
+}
+
+void CEnemy::increaseHP(int hp)
+{
+	info->m_HP += hp;
+}
+
 void CEnemy::setHP(int hp)
 {
 	info->m_HP = hp;
+}
+
+int CEnemy::getMaxHP()
+{
+	return info->m_maxHP;
 }
 
 int CEnemy::getSPD()

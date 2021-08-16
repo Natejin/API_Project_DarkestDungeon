@@ -236,11 +236,11 @@ void CDB_Skill::SetHeroSkill()
 	info->accuracy[2] = 100;
 	info->accuracy[3] = 105;
 	info->accuracy[4] = 110;
-	info->critMod[0] = 5.f;
-	info->critMod[1] = 6.f;
-	info->critMod[2] = 7.f;
-	info->critMod[3] = 8.f;
-	info->critMod[4] = 9.f;
+	info->critMod[0] = 5;
+	info->critMod[1] = 6;
+	info->critMod[2] = 7;
+	info->critMod[3] = 8;
+	info->critMod[4] = 9;
 	info->effectVal[0] = 100.f;
 	info->effectVal[1] = 110.f;
 	info->effectVal[2] = 120.f;

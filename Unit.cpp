@@ -114,6 +114,14 @@ int Unit::getHP()
     return 0;
 }
 
+void Unit::reduceHP(int hp)
+{
+}
+
+void Unit::increaseHP(int hp)
+{
+}
+
 int Unit::getSPD()
 {
     return 0;
@@ -141,6 +149,11 @@ bool Unit::getAttribute(int index)
 
 void Unit::setHP(int hp)
 {
+}
+
+int Unit::getMaxHP()
+{
+    return 0;
 }
 
 void Unit::setSPD(int spd)

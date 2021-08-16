@@ -362,10 +362,6 @@ void DungeonScene::ActivateRoom()
 		m_roadObjs[i]->Disable();
 	}
 
-
-
-
-
 	m_dungeonState = DUNGEONSTATE::ROOM;
 	m_roomBG->m_spriteRenderer->SetImage(roomRandom[MG_RND->getInt(roomRandom.size())]);
 	MG_CAMERA->SetWorldSize(Vector2(WINSIZEX, WINSIZEY));

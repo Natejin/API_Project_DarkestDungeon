@@ -18,6 +18,7 @@ HRESULT CObjectManager::Init()
 	renderOrder.push_back(LAYER::Player);
 	renderOrder.push_back(LAYER::UI);
 	renderOrder.push_back(LAYER::UIButton);
+	renderOrder.push_back(LAYER::UIMotion);
 	renderOrder.push_back(LAYER::DummySlot);
 
 	for (size_t i = 0; i < renderOrder.size(); i++)

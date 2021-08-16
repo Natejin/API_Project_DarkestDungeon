@@ -19,6 +19,7 @@ enum class LAYER
 	Item,
 	UI,
 	UIButton,
+	UIMotion,
 	DummySlot
 };
 
@@ -111,6 +112,12 @@ enum class DIR
 	Up,
 	Right,
 	Down
+};
+
+enum class SOUND {
+	SOUND1,
+	SOUND2,
+
 };
 
 enum class IMAGE

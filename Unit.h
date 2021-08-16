@@ -51,15 +51,20 @@ public:
 
 //GetStatus;
 	virtual UNITTYPE GetUnitType();
+
+	virtual int getHP();
+	virtual void reduceHP(int hp);
+	virtual void increaseHP(int hp);
+	virtual void setHP(int hp);
+	virtual int getMaxHP();
+
 	virtual int GetSpeed();
 	virtual void SetPosition(int pos);
-	virtual int getHP();
 	virtual int getSPD();
 	virtual int GetPosition();
 	virtual int getPartyPos();
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
-	virtual void setHP(int hp);
 	virtual void setSPD(int spd);
 	virtual void setPartyPos(int pos);
 	virtual void setResist(int index, bool val);

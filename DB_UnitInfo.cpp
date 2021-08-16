@@ -20,7 +20,8 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	auto _info = heroDB[job];
 	auto info = new Info_Hero();
 	info->unitType = _info->unitType;
-	info->m_HP = _info->m_HP;
+	info->m_maxHP = _info->m_maxHP;
+	info->m_HP = _info->m_maxHP;
 	info->m_SPD = _info->m_SPD;
 	for (size_t i = 0; i < 5; i++)
 	{
@@ -71,7 +72,8 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	auto _info = enemyDB[enemyType];
 	auto info = new Info_Enemy();
 	info->unitType = _info->unitType;
-	info->m_HP = _info->m_HP;
+	info->m_maxHP = _info->m_maxHP;
+	info->m_HP = _info->m_maxHP;
 	info->m_SPD = _info->m_SPD;
 	for (size_t i = 0; i < 5; i++)
 	{
@@ -116,7 +118,7 @@ void DB_UnitInfo::SetHero()
 {
 	Info_Hero* info = new Info_Hero();
 	info->unitType = UNITTYPE::Hero;
-	info->m_HP = 33;
+	info->m_maxHP = 33;
 	info->m_SPD = 1;
 
 	info->job = JOB::Crusader;
@@ -159,7 +161,7 @@ void DB_UnitInfo::SetHero()
 
 	info = new Info_Hero();
 	info->unitType = UNITTYPE::Hero;
-	info->m_HP = 22;
+	info->m_maxHP = 22;
 	info->m_SPD = 4;
 
 
@@ -207,7 +209,7 @@ void DB_UnitInfo::SetEnemy()
 {
 	Info_Enemy* info = new Info_Enemy();
 	info->unitType = UNITTYPE::Enemy;
-	info->m_HP = 20;
+	info->m_maxHP = 20;
 	info->m_SPD = 3;
 
 	info->enemyType = ENEMYTYPE::BoneDefender;

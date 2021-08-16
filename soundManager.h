@@ -10,8 +10,9 @@
 class soundManager : public Singleton<soundManager>
 {
 private:
-	typedef map<string, FMOD::Sound**>arrSounds;
-	typedef map<string, FMOD::Sound**>::iterator arrSoundIter;
+	typedef map<SOUND, FMOD::Sound**>arrSounds;
+	typedef map<SOUND, FMOD::Sound**>::iterator arrSoundIter;
+
 
 	FMOD::System* m_system;
 	FMOD::Sound** m_sound;
@@ -28,16 +29,15 @@ public:
 	void update();
 	void render();
 
-	void addSound(string keyName, string soundName, bool bgm = FALSE, bool loop = FALSE);
-
-	void play(string keyName, float volume = 1.0f);
-	void stop(string keyName);
-	void pause(string keyName);
-	void resume(string keyName);
+	void addSound(SOUND keyName, string soundName, bool bgm = FALSE, bool loop = FALSE);
+	void play(SOUND keyName, float volume = 1.0f);
+	void stop(SOUND keyName);
+	void pause(SOUND keyName);
+	void resume(SOUND keyName);
 
 	//플레이 중이냐
-	bool isPlaySound(string keyName);
+	bool isPlaySound(SOUND keyName);
 	//일시 정지 중이냐
-	bool isPauseSound(string keyName);
+	bool isPauseSound(SOUND keyName);
 
 };

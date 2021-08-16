@@ -86,7 +86,11 @@ public:
 	virtual int GetSpeed();
 
 	virtual int getHP();
+	virtual void reduceHP(int hp);
+	virtual void increaseHP(int hp);
 	virtual void setHP(int hp);
+	virtual int getMaxHP();
+
 	virtual int getSPD();
 	virtual void setSPD(int spd);
 
@@ -126,4 +130,5 @@ public:
 	virtual int GetDodge();
 	virtual void SetDef(int _def);
 	virtual int GetDef();
+	
 };

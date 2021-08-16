@@ -13,8 +13,12 @@ HRESULT soundManager::init()
 	m_sound = new FMOD::Sound * [TOTALSOUNDBUFFER];
 	m_channel =  new FMOD::Channel* [TOTALSOUNDBUFFER];
 
+
+
 	memset(m_sound, 0, sizeof(FMOD::Sound*) * (TOTALSOUNDBUFFER));
 	memset(m_channel, 0, sizeof(FMOD::Channel*) * (TOTALSOUNDBUFFER));
+
+	addSound(SOUND::SOUND1, "assets/SoundEffect/swd_hit_01.ogg");
 
 	return S_OK;
 }
@@ -56,7 +60,7 @@ void soundManager::render()
 
 }
 
-void soundManager::addSound(string keyName, string soundName, bool bgm, bool loop)
+void soundManager::addSound(SOUND keyName, string soundName, bool bgm, bool loop)
 {
 	if (loop)
 	{
@@ -76,7 +80,8 @@ void soundManager::addSound(string keyName, string soundName, bool bgm, bool loo
 	m_totalSounds.insert(make_pair(keyName, &m_sound[m_totalSounds.size()]));
 }
 
-void soundManager::play(string keyName, float volume)
+
+void soundManager::play(SOUND keyName, float volume)
 {
 	int count = 0;
 
@@ -91,7 +96,7 @@ void soundManager::play(string keyName, float volume)
 	}
 }
 
-void soundManager::stop(string keyName)
+void soundManager::stop(SOUND keyName)
 {
 	int count = 0;
 
@@ -106,7 +111,7 @@ void soundManager::stop(string keyName)
 	}
 }
 
-void soundManager::pause(string keyName)
+void soundManager::pause(SOUND keyName)
 {
 	int count = 0;
 
@@ -121,7 +126,7 @@ void soundManager::pause(string keyName)
 	}
 }
 
-void soundManager::resume(string keyName)
+void soundManager::resume(SOUND keyName)
 {
 	int count = 0;
 
@@ -136,7 +141,7 @@ void soundManager::resume(string keyName)
 	}
 }
 
-bool soundManager::isPlaySound(string keyName)
+bool soundManager::isPlaySound(SOUND keyName)
 {
 	int count = 0;
 	bool isPlay;
@@ -152,7 +157,7 @@ bool soundManager::isPlaySound(string keyName)
 	return  isPlay;
 }
 
-bool soundManager::isPauseSound(string keyName)
+bool soundManager::isPauseSound(SOUND keyName)
 {
 	int count = 0;
 	bool isPause;
