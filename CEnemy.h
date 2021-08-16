@@ -48,8 +48,14 @@ public:
 
 	virtual Info_Enemy* GetInfo();
 	virtual int getHP();
+	virtual bool reduceHP(int hp);
+	virtual void increaseHP(int hp);
 	virtual void setHP(int hp);
+	virtual int getMaxHP();
+
 	virtual int getSPD();
 	virtual void setSPD(int spd);
+
+
 
 };

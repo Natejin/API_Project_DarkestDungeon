@@ -3,7 +3,7 @@
 //#include "CSpriteRenderer.h"
 ImageObject::ImageObject()
 {
-    m_layer = LAYER::UI;
+    m_layer = LAYER::UIMotion;
 }
 
 ImageObject::~ImageObject()
@@ -31,10 +31,10 @@ void ImageObject::Update(float deltaTime, float worldTime)
     Vector2 Normalize = (targetPos - m_transform->m_pos).Normalize();
     if (distance > 200)
     {
-        m_transform->m_pos += Normalize * speed * 10;
+        m_transform->m_pos += Normalize * speed * 3;
     }
     else if (distance > 10) {
-        m_transform->m_pos += Normalize * speed * 5;
+        m_transform->m_pos += Normalize * speed;
     }
     else {
     
@@ -57,12 +57,12 @@ void ImageObject::BackRender(HDC _hdc)
 
 void ImageObject::Render(HDC _hdc)
 {
-    m_spriteRenderer->RenderUI(_hdc);
+    
 }
 
 void ImageObject::FrontRender(HDC _hdc)
 {
-
+    m_spriteRenderer->RenderUI(_hdc);
 }
 
 void ImageObject::Release()

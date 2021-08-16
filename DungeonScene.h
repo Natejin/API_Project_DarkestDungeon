@@ -66,7 +66,7 @@ public:
 public:
 	int curBattleTurnCount;
 	BATTLETURN curBattleTurn;
-	vector<class CEnemy*> enemyGroup;
+	//vector<class CEnemy*> enemyGroup;
 	class CBattleSystem* m_pBattleSystem;
 
 //==================================

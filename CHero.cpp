@@ -19,7 +19,6 @@ HRESULT CHero::Init(Info_Hero* _info)
 	canTriggerDown = false;
 	m_unitType = _info->unitType;
 	info = _info;
-	
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
@@ -339,6 +338,16 @@ int CHero::GetDef()
 	return info->m_DEF;
 }
 
+bool CHero::GetAffliction()
+{
+	return info->isAffliction;
+}
+
+bool CHero::GetAlive()
+{
+	return info->isAlive;
+}
+
 
 
 UNITTYPE CHero::GetUnitType()
@@ -349,18 +358,25 @@ int CHero::GetSpeed()
 {
 	return info->m_SPD;
 }
-void CHero::SetPartyIndex(int pos)
-{
-	m_partyIndex = pos;
-}
-int CHero::GetPartyIndex()
-{
-	return  m_partyIndex;
-}
-int CHero::GetPartyPos()
-{
-	return  m_partyPos;
-}
+//void CHero::SetPartyIndex(int pos)
+//{
+//	m_partyIndex = pos;
+//}
+//int CHero::GetPartyIndex()
+//{
+//	return  m_partyIndex;
+//}
+//
+//void CHero::SetPartyPos(int pos)
+//{
+//	m_partyPos = pos;
+//}
+//
+//int CHero::GetPartyPos()
+//{
+//	return  m_partyPos;
+//}
+
 int CHero::getResist(int index)
 {
 	return  info->resist[index];
@@ -377,10 +393,7 @@ void CHero::setSPD(int spd)
 {
 	info->m_SPD = spd;
 }
-void CHero::SetPartyPos(int pos)
-{
-	m_partyPos = pos;
-}
+
 void CHero::setResist(int index, bool val)
 {
 	info->resist[index] = val;
@@ -396,4 +409,29 @@ int CHero::getSPD()
 int CHero::getHP()
 {
 	return  info->m_HP;
+}
+
+bool CHero::reduceHP(int hp)
+{
+	if (info->m_HP - hp > 0)
+	{
+		info->m_HP -= hp;
+		return true;
+	}
+	else {
+		info->m_HP = 0;
+		info->isAlive = false;
+		return false;
+	}
+
+}
+
+void CHero::increaseHP(int hp)
+{
+	info->m_HP += hp;
+}
+
+int CHero::getMaxHP()
+{
+	return  info->m_maxHP;
 }

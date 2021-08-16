@@ -21,6 +21,13 @@ public:
 	class CMapSystem* m_pMapSystem;
 	class CBattleSystem* m_pBattleSystem;
 	class CInventorySystem* m_invenSystem;
+
+	CUIPanel* panel_bg1;
+	CUIPanel* panel_bg2;
+	CUIPanel* banner;
+	CUIPanel* hero;
+
+
 	CUIPanel* invenPanel;
 	CUIPanel* mapPanel1;
 	class CDragButtonMinimapBG* mapPanel2;

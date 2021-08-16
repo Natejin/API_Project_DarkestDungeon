@@ -109,9 +109,33 @@ int CEnemy::getHP()
 	return  info->m_HP;
 }
 
+bool CEnemy::reduceHP(int hp)
+{
+	if (info->m_HP - hp > 0)
+	{
+		info->m_HP -= hp;
+		return true;
+	}
+	else {
+		info->m_HP = 0;
+		info->isAlive = false;
+		return false;
+	}
+}
+
+void CEnemy::increaseHP(int hp)
+{
+	info->m_HP += hp;
+}
+
 void CEnemy::setHP(int hp)
 {
 	info->m_HP = hp;
+}
+
+int CEnemy::getMaxHP()
+{
+	return info->m_maxHP;
 }
 
 int CEnemy::getSPD()

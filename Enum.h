@@ -19,6 +19,8 @@ enum class LAYER
 	Item,
 	UI,
 	UIButton,
+	UIIndicator,
+	UIMotion,
 	DummySlot
 };
 
@@ -111,6 +113,110 @@ enum class DIR
 	Up,
 	Right,
 	Down
+};
+
+enum class SOUND {
+	//BGM
+	Town,
+	Combat,
+	//Crusader
+	Cru_Battleheal,
+	Cru_holylance,
+	Cru_PowerfulAttack,
+	Cru_PowerfulAttack_miss,
+	Cru_ScrollAttack,
+	Cru_ScrollAttack_miss,
+	Cru_StressDown,
+	Cru_StressDown_miss,
+	Cru_stunningblow,
+	//Highwayman
+	hwy_backshot,
+	hwy_duelistadvance,
+	hwy_grapeshot,
+	hwy_grapeshot_miss,
+	hwy_pistolshot,
+	hwy_pistolshot_miss,
+	hwy_slice,
+	hwy_tracking,
+	hwy_tracking_miss,
+	//Plague_doctor
+	plg_battlemed,
+	plg_battlemed_miss,
+	plg_blindinggas,
+	plg_blindinggas_miss,
+	plg_buff,
+	plg_buff_miss,
+	plg_disorientingblast,
+	plg_disorientingblast_miss,
+	plg_knife,
+	plg_noxiousblast,
+	plg_noxiousblast_miss,
+	plg_plaguegrenade,
+	plg_plaguegrenade_miss,
+	//Vestal
+	vst_dazzlinglight,
+	vst_divinegrace,
+	vst_divinegrace_miss,
+	vst_godscom,
+	vst_godshand,
+	vst_godshand_miss,
+	vst_illum,
+	vst_illum_imp,
+	vst_judgement,
+	vst_macebash,
+	//Shared
+	share_imp_arrow,
+	share_imp_axe,
+	share_imp_explo_big,
+	share_imp_explo_small,
+	share_imp_gas,
+	share_imp_gun,
+	share_imp_hammer,
+	share_imp_knife,
+	share_imp_magic_light,
+	share_imp_shield,
+	share_imp_sword,
+	//UI
+	raid_success,
+	ui_dun_buttonroom,
+	ui_shr_button_click,
+	ui_shr_button_click_enemy,
+	ui_town_button_click,
+	ui_town_button_click_back,
+	ui_town_button_click_locked,
+	ui_town_button_setoff,
+	ui_town_trinket_close,
+	ui_town_trinket_open,
+	//Narration
+ 
+	//Good_cri
+	vo_narr_good_kill_strong_01,
+	vo_narr_good_kill_strong_02,
+	vo_narr_good_kill_strong_03,
+	//Bad_cri
+	vo_narr_bad_crit_01,
+	vo_narr_bad_crit_02,
+	vo_narr_bad_crit_03,
+	//RESIST
+	status_buff,
+	status_guard,
+	status_marked,
+	status_stun_off,
+	status_poison,
+	status_bleed_dot,
+	status_bleed_onset,
+	//
+	door_open,
+	EatFood,
+	//Footstep
+	party_foot_dirt_01,
+	party_foot_dirt_02,
+	party_foot_dirt_03,
+	party_foot_dirt_04,
+	party_foot_dirt_05,
+	party_foot_dirt_06
+
+
 };
 
 enum class IMAGE
@@ -260,6 +366,7 @@ enum class IMAGE
 	monster,
 	scouting,
 	characterpanel_bg,
+	characterpanel,
 	crusader_header,
 	highwayman_header,
 	plague_doctor_header,
@@ -337,9 +444,10 @@ enum class IMAGE
 	//Hero
 
 
-		Crusader_Idle,
-		Crusader_Walk,
-		Crusader_Combat,
+	Crusader_Idle,
+	Crusader_Walk,
+	Crusader_Combat,
+
 	Crusader_banner,
 	Crusader_charge,
 	Crusader_defend,
@@ -364,9 +472,10 @@ enum class IMAGE
 	Plague_doctor_investigate,
 
     //Vestal
-		Vestal_Idle,
-		Vestal_Walk,
-		Vestal_Combat,
+	Vestal_Idle,
+	Vestal_Walk,
+	Vestal_Combat,
+
 	Vestal_defend,
 	Vestal_heal,
 	Vestal_investigate,
@@ -376,6 +485,17 @@ enum class IMAGE
 	//Backdrop
 	Backdrop_treatment,
 	Backdrop_disease,
+	//button
+	PositionButton_enable,
+	PositionButton_unable,
+	//PositionButton_enable_red,
+	Quirk,
+	OriginStatus,
+	Equip,
+	CombatSkill,
+	CampingSkill,
+	Resistance,
+	Disease,
 	//resist
 	bleed,
 	buff,

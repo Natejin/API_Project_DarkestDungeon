@@ -18,6 +18,8 @@ HRESULT CObjectManager::Init()
 	renderOrder.push_back(LAYER::Player);
 	renderOrder.push_back(LAYER::UI);
 	renderOrder.push_back(LAYER::UIButton);
+	renderOrder.push_back(LAYER::UIIndicator);
+	renderOrder.push_back(LAYER::UIMotion);
 	renderOrder.push_back(LAYER::DummySlot);
 
 	for (size_t i = 0; i < renderOrder.size(); i++)
@@ -54,7 +56,7 @@ void CObjectManager::LateUpdate()
 		for (size_t j = 0; j < objectVec.size(); ++j)
 		{
 			if (objectVec[j]->GetId() == eraseID) {
-				//colliderGroup¿¡¼­ ÇØ´ç°´Ã¼¸¦ Á¦°Å
+				//colliderGroupï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ç°´Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				LAYER layer = objectVec[j]->m_layer;
 				int size = objectRender[layer].size();
 				for (size_t k = 0; k < size; k++)
@@ -170,4 +172,5 @@ void CObjectManager::RemoveObj(GameObject* gameObj)
 		gameObj->Disable();
 		objsToErase.push_back(gameObj->GetId());
 	}
+	
 }

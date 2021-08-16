@@ -86,15 +86,19 @@ public:
 	virtual int GetSpeed();
 
 	virtual int getHP();
+	virtual bool reduceHP(int hp);
+	virtual void increaseHP(int hp);
 	virtual void setHP(int hp);
+	virtual int getMaxHP();
+
 	virtual int getSPD();
 	virtual void setSPD(int spd);
 
-	virtual int GetPartyIndex();
-	virtual void SetPartyIndex(int pos);
+	//virtual int GetPartyIndex();
+	//virtual void SetPartyIndex(int pos);
 
-	virtual int GetPartyPos();
-	virtual void SetPartyPos(int pos);
+	//virtual int GetPartyPos();
+	//virtual void SetPartyPos(int pos);
 
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
@@ -126,4 +130,8 @@ public:
 	virtual int GetDodge();
 	virtual void SetDef(int _def);
 	virtual int GetDef();
+
+	virtual bool GetAffliction();
+	virtual bool GetAlive();
+
 };

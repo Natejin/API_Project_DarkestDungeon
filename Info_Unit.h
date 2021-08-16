@@ -5,8 +5,14 @@ class Info_Unit : public Info
 {
 public:
 	int m_HP;
+	int m_maxHP;
 	int m_SPD;
+	bool isAlive;
+	bool isAffliction;
+
 	int m_DMG; //skill에서 값 넣어주기
+
+
 	int m_ACRY; //명중률
 	int m_CRI;
 	int m_DEF;
@@ -33,6 +39,9 @@ public:
 
 	vector<int> skillLvl;
 	vector<SKILL> ownSkill;
+
+	
+	
 	virtual void Release();
 };
 
