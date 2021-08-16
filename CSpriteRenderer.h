@@ -30,6 +30,7 @@ protected:
 
 
 public:
+	CSpriteRenderer(string imageName, CTransform* _trans);
 	CSpriteRenderer(IMAGE imageName, CTransform* _trans);
 	~CSpriteRenderer();
 

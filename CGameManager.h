@@ -28,6 +28,7 @@ public:
 
 	//==================================
 	vector<CHero*> m_partyOrigin;
+
 	vector<CHero*> m_ownHeroes;
 	CParty* m_party;
 	CHero* m_CurSelHero;

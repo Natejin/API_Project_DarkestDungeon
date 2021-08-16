@@ -399,6 +399,20 @@ HRESULT imageManager::init()
 	//check
 	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));
 
+	//embarkBt
+	MG_IMAGE->addImage("embark", "images/Town_UI/embarkBt.bmp", 250, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/dungeonBt.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("partySlot", "images/Town_UI/partySlot.bmp", 100, 100, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("partySlot_", "images/selDungeon/embark_party.background.bmp", 412, 113, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("heroSlot1", "images/selDungeon/hero_slot.backgroundhightlight.bmp", 85, 85, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("heroSlot2", "images/selDungeon/hero_slot.background.bmp", 85, 85, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("heroSlot3", "images/selDungeon/hero_slot.positive_frame.bmp", 85, 85, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("selQuestBg", "images/selDungeon/quest_select_selected.bmp", 192, 192, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("selDungeonBg", "images/selDungeon/quest_select.background.bmp", 1920, 1080, true, RGB(255, 0, 255));
+
+
+
 	return S_OK;
 }
 

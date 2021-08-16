@@ -675,6 +675,12 @@
     <ClInclude Include="ImageObject.h">
       <Filter>System\Battle</Filter>
     </ClInclude>
+    <ClInclude Include="Embark.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EmbarkPartySlot.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1048,6 +1054,12 @@
     </ClCompile>
     <ClCompile Include="ImageObject.cpp">
       <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Embark.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="EmbarkPartySlot.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -59,8 +59,6 @@ void TreasureEventPanel::Render(HDC _hdc)
 	if (!isNothing)
 	{
 		m_TreasurePanel->RenderUI(_hdc);
-		AddSpriteRenderer(IMAGE::eve_byHand);
-		AddSpriteRenderer(IMAGE::eve_pass);
 	}
 }
 

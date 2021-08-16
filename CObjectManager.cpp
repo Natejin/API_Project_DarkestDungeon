@@ -165,5 +165,9 @@ void CObjectManager::RemoveObj(int id)
 
 void CObjectManager::RemoveObj(GameObject* gameObj)
 {
-	objsToErase.push_back(gameObj->GetId());
+	if (gameObj)
+	{
+		gameObj->Disable();
+		objsToErase.push_back(gameObj->GetId());
+	}
 }

@@ -12,6 +12,8 @@ public:
 	class CHero* hero;
 	class CUIPanel_Abbey* abbey;
 	class CButton* checkBTN;
+
+
 	CBuilding_PanelButton();
 	~CBuilding_PanelButton();
 
