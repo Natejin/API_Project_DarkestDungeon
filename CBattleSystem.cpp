@@ -125,8 +125,8 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
-	CreateEnemyParty();
 	CreateHeroesParty();
+	CreateEnemyParty();
 	Compare_P_E_Speed_ReArray();
 	monsterIndicator->Enable();
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
@@ -275,7 +275,7 @@ void CBattleSystem::CreateEnemyParty()
 	int random = MG_RND->getInt(2) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = MG_GAME->GetHero(0)->m_transform->m_pos;
+	Vector2 heroPos = heroParty[0]->m_transform->m_pos;
 	for (size_t i = 0; i < random; i++)
 	{
 		CEnemy* enemy = new CEnemy();
@@ -306,20 +306,28 @@ void CBattleSystem::CreateHeroesParty()
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
 	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
-	for (int i = 0; i < playerPartySize; i++)
+	int k = 0;
+	for (int i = 0; i < playerPartySize; i++, k++)
 	{
-		heroParty.push_back(MG_GAME->GetHeroFromParty(i));
-		heroParty[i]->SetPartyIndex(i);
-		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+		CHero* hero = MG_GAME->GetHeroFromParty(i);
+		if (hero != nullptr)
 		{
-			heroParty[i]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * i, heroPos.y);
+			heroParty.push_back(hero);
+			heroParty[k]->SetPartyIndex(k);
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, heroPos.y);
+			}
+			else {
+				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
+			}
+
+			heroParty[k]->m_animator->SetIndex(2);
+			heroParty[k]->SetTriggerWhenClick(this, &CBattleSystem::SelectHero);
 		}
 		else {
-			heroParty[i]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * i, heroPos.y);
+			k--;
 		}
-		
-		heroParty[i]->m_animator->SetIndex(2);
-		heroParty[i]->SetTriggerWhenClick(this, &CBattleSystem::SelectHero);
 	}
 }
 

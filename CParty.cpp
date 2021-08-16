@@ -262,80 +262,41 @@ CHero* CParty::GetHero(int index)
 void CParty::FormationMove()
 {
 	int substraction[3];
-	substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
-	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
-	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
+	for (size_t i = 1; i < m_member.size(); i++)
+	{
+		substraction[i - 1] = abs(m_member[i - 1]->m_transform->m_pos.x - m_member[i]->m_transform->m_pos.x);
+	}
 
 	m_member[0]->Move();
+
 	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
-	for (size_t i = 0; i < 3; i++)
+	for (size_t i = 1; i < m_member.size(); i++)
 	{
 
 		if (vk_Right | vk_Left)
 		{
 			if (vk_Left)
 			{
-				if (WB_btwHeroes > substraction[i])
+				if (WB_btwHeroes > substraction[i - 1])
 				{
-					m_member[i + 1]->Move();
+					m_member[i]->Move();
 					continue;
 				}
 			}
 
 			if (vk_Right)
 			{
-				if (substraction[i] > WF_btwHeroes)
+				if (substraction[i - 1] > WF_btwHeroes)
 				{
-					m_member[i + 1]->Move();
+					m_member[i]->Move();
 				}
 			}
 		}
 		else {
-			m_member[i + 1]->Move();
+			m_member[i]->Move();
 		}
 	}
-
-
-
-	//for (size_t i = 0; i < m_member.size() > 0; i++)
-	//{
-	//	int substraction[3];
-	//	substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
-	//	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
-	//	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
-
-	//	m_member[0]->Move();
-	//	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
-	//	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
-	//	for (size_t i = 0; i < 3; i++)
-	//	{
-
-	//		if (vk_Right | vk_Left)
-	//		{
-	//			if (vk_Left)
-	//			{
-	//				if (WB_btwHeroes > substraction[i])
-	//				{
-	//					m_member[i + 1]->Move();
-	//					continue;
-	//				}
-	//			}
-
-	//			if (vk_Right)
-	//			{
-	//				if (substraction[i] > WF_btwHeroes)
-	//				{
-	//					m_member[i + 1]->Move();
-	//				}
-	//			}
-	//		}
-	//		else {
-	//			m_member[i + 1]->Move();
-	//		}
-	//	}
-	//}
-	
 }
 
 void CParty::setTorch(int torch)
