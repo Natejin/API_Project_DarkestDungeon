@@ -20,7 +20,7 @@ HRESULT CUI_Panel_Hero::Init()
 	CEst_UI::Init();
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::characterpanel_bg, m_transform);
 	
-	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform); //ÀÓÀÇ ÀÌ¹ÌÁö
+	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
 	m_windowPanelChar->useCustomPos = true;
 	m_windowPanelChar->pos = Vector2(100, 50);
 	
@@ -67,7 +67,7 @@ HRESULT CUI_Panel_Hero::Init()
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
 	CreateHeroSkill();
 	CreateHeroEquip();
-	Unable();
+	Disable();
 	return S_OK; 
 }
 
@@ -118,9 +118,9 @@ void CUI_Panel_Hero::Enable()
 	CEst_UI::Enable();
 }
 
-void CUI_Panel_Hero::Unable()
+void CUI_Panel_Hero::Disable()
 {
-	CEst_UI::Unable();
+	CEst_UI::Disable();
 	CloseHeroSkill();
 	CloseHeroEquip();
 }
@@ -207,8 +207,8 @@ void CUI_Panel_Hero::CreateHeroSkill()
 	{
 		CBTN_Skill* m_skill = new CBTN_Skill();
 		m_skill->Init();
-		m_skill->m_transform->m_pos = Vector2(1000 + 70 * i, 200);
-		m_skill->Unable();
+		m_skill->m_transform->m_pos = Vector2(900 + 70 * i, 150);
+		m_skill->Disable();
 		MG_GMOBJ->RegisterObj(m_skill);
 		m_skillbuttonVec.push_back(m_skill);
 	}
@@ -230,7 +230,7 @@ void CUI_Panel_Hero::CloseHeroSkill()
 {
 	for (size_t i = 0; i < m_skillbuttonVec.size(); i++)
 	{
-		m_skillbuttonVec[i]->Unable();
+		m_skillbuttonVec[i]->Disable();
 	}
 	
 }
@@ -240,13 +240,13 @@ void CUI_Panel_Hero::CreateHeroEquip()
 	m_weapon = new CEquipButton();
 	m_weapon->m_transform->m_pos = Vector2(450, 730);
 	m_weapon->Init();
-	m_weapon->Unable();
+	m_weapon->Disable();
 	MG_GMOBJ->RegisterObj(m_weapon);
 
 	m_armor = new CEquipButton();
 	m_armor->m_transform->m_pos = Vector2(530, 730);
 	m_armor->Init();
-	m_armor->Unable();
+	m_armor->Disable();
 	MG_GMOBJ->RegisterObj(m_armor);
 }
 
@@ -262,7 +262,7 @@ void CUI_Panel_Hero::SetHeroEquip()
 
 void CUI_Panel_Hero::CloseHeroEquip()
 {
-	m_weapon->Unable();
-	m_armor->Unable();
+	m_weapon->Disable();
+	m_armor->Disable();
 	
 }

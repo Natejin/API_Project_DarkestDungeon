@@ -2,25 +2,31 @@
 #include "GameObject.h"
 #include "CSlotItemButton.h"
 
-class CInventorySystem;
 class TreasureEventPanel : public GameObject
 {
-private:
-	vector<CSlotItemButton*> m_treasureSlots;
-	class CButton* m_quick;
+public:
+	class DungeonScene* m_dungeonScene;
+	class CSpriteRenderer* m_TreasurePanel;
+	class CInventorySystem* m_invenSys;
+	class CButton* m_quit;
 
-	class CSpriteRenderer* m_windowPanelBG;
-	class CSpriteRenderer* m_windowPanelChar;
+	class CButton* m_pass;
+	class CButton* m_getAll;
+
+	vector<CSlotItemButton*> m_treasureSlots;
 
 	int nowMouseOn;
+	bool isOpend;
 
-	GameObject* m_invenSys;
+	bool isNothing;
+
+	int TimerCount;
 
 public :
 	TreasureEventPanel();
 	~TreasureEventPanel();
 
-	HRESULT Init(int torch, int food, int bandage);
+
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);
@@ -34,12 +40,13 @@ public :
 
 	//==================================
 
-	void setTreasureItem(int torch, int food, int bandage);
-
+	void setTreasureItem();
 	void setTreasureSlot();
+	void setPanelImg();
 
-	void FinishUI();
+	void getAll();
+
 	virtual void Enable();
-	virtual void Unable();
+	virtual void Disable();
 
 };

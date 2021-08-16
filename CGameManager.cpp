@@ -108,7 +108,7 @@ bool CGameManager::RemoveHeroFromOwnList(int heroId)
 	{
 		if (heroId == m_ownHeroes[i]->GetHeroID())
 		{
-			m_ownHeroes[i]->Unable();
+			m_ownHeroes[i]->Disable();
 			m_ownHeroes.erase(m_ownHeroes.begin() + i);
 			return true;
 		}
@@ -120,7 +120,7 @@ void CGameManager::setParty()
 {
 	m_party = new CParty;
 	m_party->Init(1, 1, 1);
-	m_party->Unable();
+	m_party->Disable();
 	MG_GMOBJ->RegisterObj("Party", m_party);
 }
 
@@ -158,16 +158,13 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->Init(DB_UNIT->CallHero(JOB::Vestal));
 		break;
 	case JOB::PlagueDoctor:
-		//hero->Init(JOB::PlagueDoctor, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	case JOB::Highwayman:
-		//hero->Init(JOB::Highwayman, resist, 24, 4, 1, 6, 0, 1, 0, 0);
 		break;
 	default:
 		break;
 	}
-	hero->Unable();
-	MG_GMOBJ->RegisterObj(hero->GetName(), hero);
+	hero->Disable();
 	return hero;
 }
 
@@ -202,7 +199,7 @@ void CGameManager::SetCurSelHero(int i)
 			m_dungeonScene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
 		}
 		else {
-			m_dungeonScene->m_dungeonUI->skillBTNs[j]->Unable();
+			m_dungeonScene->m_dungeonUI->skillBTNs[j]->Disable();
 		}
 	
 	}

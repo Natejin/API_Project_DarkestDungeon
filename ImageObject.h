@@ -1,16 +1,20 @@
 #pragma once
 #include "GameObject.h"
 
-class DummySlot : public GameObject
+class ImageObject : public GameObject
 {
-private:
-	Vector2Int originSlotID;
-	CInfo_Item* itemInfo;
-	bool hasItem;
-
 public:
-	DummySlot();
-	~DummySlot();
+	float curTime;
+	float coolTime;
+	float speed;
+	Vector2 originPos;
+	Vector2 targetPos;
+
+	class CSpriteRenderer* hp1GUI;
+	class CSpriteRenderer* hp10GUI;
+public:
+	ImageObject();
+	~ImageObject();
 
 	HRESULT Init();
 
@@ -23,7 +27,7 @@ public:
 
 	virtual void Release();
 
-	void SetDummySlot(Vector2Int originslotID, CInfo_Item* item);
+	virtual void Enable();
 	virtual void Disable();
-
 };
+

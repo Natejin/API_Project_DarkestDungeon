@@ -21,7 +21,7 @@ HRESULT CUIPanel_Sanitarium::Init()
 
     m_HeroList_button = new CHeroList_button();
 	CreateRooms();
-	Unable();
+	Disable();
     return S_OK;
 }
 
@@ -112,9 +112,9 @@ void CUIPanel_Sanitarium::Enable()
 	
 }
 
-void CUIPanel_Sanitarium::Unable()
+void CUIPanel_Sanitarium::Disable()
 {
-	CEst_UI::Unable();
+	CEst_UI::Disable();
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{
 		panelVec[i]->isActive = false;

@@ -21,6 +21,7 @@ public:
 	~CCollider();
 
 	void SetRect(float l, float t, float r, float b);
+	void SetColliderBox(Vector2 pos, Vector2 size);
 
 	bool CheckXCollision(int x);
 

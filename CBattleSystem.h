@@ -22,7 +22,8 @@ class CBattleSystem : public GameObject
 	queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 
-
+	ImageData mouseOnEnemy;
+	ImageData mouseOnEnemyRed;
 
 	int randomDice6 = 6;
 	int randomDice100 = 100;
@@ -32,6 +33,18 @@ class CBattleSystem : public GameObject
 	class CHero* curHero;
 	class CEnemy* curEnemy;
 
+	vector< Vector2> targetEnemyPosVec;
+	int enemyPosIndex;
+	int currentSkill;
+
+	class ImageObject* heroZoomImage;
+	class ImageObject* enemyZoomImage;
+
+	float startTriggerTime;
+	bool startNextTurn;
+
+
+	
 public:
 	class DungeonScene* scene;
 	class dungeonUI* dungeonUI;
@@ -40,6 +53,8 @@ public:
 	~CBattleSystem();
 
 	HRESULT Init();
+
+	void SetZoomImage();
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -60,18 +75,24 @@ public:
 	void EndTurn();
 
 	void UseSkill(int _index);
-	void UseSkill1();
-	void UseSkill2();
-	void UseSkill3();
-	void UseSkill4();
 
 
 private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
 
-	CHero* GetHero(int i);
 	void SelectHero(int index);
+	void SelectHeroTarget(SKILL skill);
+
+	void DeselectAll();
+
+	void SetEnemyIndicator(int index);
+	void SelectEnemyTarget(SKILL skill);
+
+	CHero* GetHero(int i);
+	void StartHeroTrun(int index);
+
+	void StartEnemyTrun(int index);
 
 	void ShowTargetBySkill(int index);
 

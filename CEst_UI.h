@@ -40,5 +40,5 @@ public:
 
 	void FinishUI();
 	virtual void Enable();
-	virtual void Unable();
+	virtual void Disable();
 };

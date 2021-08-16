@@ -155,7 +155,7 @@ void TownScene::SetRoster()
 	m_Roster_ButtonVec = new Hero_Roster();
 	m_Roster_ButtonVec->Init();
 	m_Roster_ButtonVec->scene = this;
-	m_Roster_ButtonVec->Unable();
+	m_Roster_ButtonVec->Disable();
 	MG_GMOBJ->RegisterObj(m_Roster_ButtonVec);
 }
 void TownScene::SetHeroPanel()

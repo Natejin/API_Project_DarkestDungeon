@@ -23,7 +23,7 @@ HRESULT CEst_UI::Init()
 	m_quit->AddColliderBox();
 	m_quit->isActive = false;
 
-	m_quit->SetTriggerWhenDown(this, &CEst_UI::Unable);
+	m_quit->SetTriggerWhenDown(this, &CEst_UI::Disable);
 	MG_GMOBJ->RegisterObj("quick", m_quit);
 
     return S_OK;
@@ -72,7 +72,7 @@ void CEst_UI::Enable()
 	townScene->DeactivateBuildings();
 }
 
-void CEst_UI::Unable()
+void CEst_UI::Disable()
 {
 	m_quit->isActive = false;
 	isActive = false;

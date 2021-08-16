@@ -31,7 +31,7 @@ void Hero_Roster::LateUpdate()
 	{
 		scene->isDrag = false;
 		scene->curDragHeroIndex = -1;
-		Unable();
+		Disable();
 	}
 }
 

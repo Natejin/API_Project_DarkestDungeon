@@ -158,11 +158,11 @@
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
-    <ClInclude Include="CObjOnRoom.h" />
     <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="DB_UnitInfo.h" />
     <ClInclude Include="Hero_Roster.h" />
+    <ClInclude Include="ImageObject.h" />
     <ClInclude Include="Info.h" />
     <ClInclude Include="InfomationManager.h" />
     <ClInclude Include="Info_Enemy.h" />
@@ -291,11 +291,11 @@
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />
-    <ClCompile Include="CObjOnRoom.cpp" />
     <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="DB_UnitInfo.cpp" />
     <ClCompile Include="Hero_Roster.cpp" />
+    <ClCompile Include="ImageObject.cpp" />
     <ClCompile Include="Info.cpp" />
     <ClCompile Include="InfomationManager.cpp" />
     <ClCompile Include="Info_Enemy.cpp" />

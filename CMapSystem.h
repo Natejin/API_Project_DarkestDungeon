@@ -5,15 +5,10 @@ class Image;
 class CMapSystem : public GameObject
 {
 public:
-	//DungeonData dungeonMap[MAPSIZE][MAPSIZE];
-	//DungeonData curDunheonMap;
-
-
 	DUNGEONSTATE m_dungeonState;
 	DUNGEONMODE dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
 
-	//vector<vector< DungeonDataButton*>> dungeonMap;
 	DungeonData curDungeonMap;
 
 	vector<class CMinimapButton*> dungeonMapCreate;
@@ -34,10 +29,10 @@ public:
 	int remainRoom;
 
 	float moveDistance;
+
 private:
 	vector<int> rndRoom;
 	vector<int> rndRoad;
-
 
 protected:
 	int randRoomEnemy;
@@ -73,6 +68,7 @@ public:
 
 	void CreateDungeon();
 	void CreateMapPart(int i, int j, int count, Vector2Int lastDir);
+
 	Vector2Int GetDirFromInt(int dir);
 
 	void MapButtonOnOff(bool active);
@@ -85,13 +81,13 @@ public:
 
 	DungeonData GetCurDungeonData();
 	void SetIsPassed();
-	void SetIsPassed(int i);
-	DungeonData GetCurDungeonData(int i);
+	void SetIsOpened();
 
+	DungeonData GetCurDungeonData(int i);
+	void SetIsPassed(int i);
 
 	void UseClickToMoveCurPoint(DungeonData pos);
 	void MoveCurPoint(Vector2Int dir);
 	void UseKeyBoardToMoveCurPoint();
 	void UseKeyBoardToReverseMoveCurPoint();
 };
-

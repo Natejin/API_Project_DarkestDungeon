@@ -22,7 +22,6 @@ void CSlotItemButton::Update(float deltaTime, float worldTime)
 {
 	checkCount();
 
-
 	//use item
 	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 	{
@@ -102,7 +101,7 @@ void CSlotItemButton::FrontRender(HDC _hdc)
 			SetTextColor(_hdc, RGB(255, 255, 255));
 
 			sprintf_s(str, "%d", m_itemInfo->m_count);
-			TextOut(_hdc, 990 + 70 * slotID.x, 730 + 140 * slotID.y, str, strlen(str));
+			TextOut(_hdc, m_transform->m_pos.x + 10, m_transform->m_pos.y + 5, str, strlen(str));
 		}
 	}
 }
@@ -133,6 +132,13 @@ void CSlotItemButton::SwapItem(CSlotItemButton* _slot)
 			_slot->m_itemInfo->m_count += m_itemInfo->m_count;
 			m_itemInfo = nullptr;
 			_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
+		}
+		else 
+		{
+			int temp = 0;
+			temp = _slot->m_itemInfo->m_count;
+			_slot->m_itemInfo->m_count = m_itemInfo->m_count;
+			m_itemInfo->m_count = temp;
 		}
 	}
 	else 

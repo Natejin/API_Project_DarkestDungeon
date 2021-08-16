@@ -41,7 +41,7 @@ public:
 	//==================================
 
 	virtual  void Enable();
-	virtual void Unable();
+	virtual void Disable();
 
 	void setInvenSlot(); //set dungeonInventory according to party info
 	void setConsumableSlot(); 
@@ -55,5 +55,7 @@ public:
 	void EndDragItem(class CSlotItemButton* slot);
 
 	bool decreaseItem(ITEM itemInfo, int& count);
+
+	void setPartyInvenInfo();
 
 };

@@ -47,8 +47,18 @@ enum class TRINKET {
 
 };
 
+enum class SKILLIMAGETYPE {
+	Attack,
+	Charge,
+	Defend,
+	Buff,
+	Debuff,
+
+};
+
 enum class SKILL
 {
+	//HERO
 	Crusader_Combat_Smite,
 	Crusader_Combat_ZealousAccusation,
 	Crusader_Combat_StunningBlow,
@@ -63,6 +73,9 @@ enum class SKILL
 	Vestal_Heal_DivineComfort,
 	Vestal_Combat_Illumination,
 	Vestal_Combat_HandofLight,
+
+	//ENEMY
+	BoneDefender_Combat_1,
 
 };
 enum class Camp_Skill
@@ -90,10 +103,7 @@ enum class JOB
 	Highwayman
 };
 
-enum class ENEMYTYPE {
-	Skeleton
 
-};
 
 enum class DIR
 {
@@ -107,19 +117,31 @@ enum class IMAGE
 {
 	NONE,
 
-	//Hero
-	Vestal_Idle,
-	Vestal_Walk,
-	Vestal_Combat,
-	Crusader_Idle,
-	Crusader_Walk,
-	Crusader_Combat,
 
 	//Enemy
-	Skeleton_Defender,
+	Enemy_SkeletonDefender_Idle,
+	Enemy_SkeletonDefender_Attack,
+	Enemy_SkeletonDefender_Defender,
+	Enemy_SkeletonDefender_Shield,
+
+
+
+	//UI
 	panel_monster_Red,
 	panel_monster_Black,
-	monster_target,
+
+	Target_Selected1,
+	Target_Selected2,
+	Target_Selected3,
+
+	Target_Monster1,
+	Target_Monster2,
+	Target_Monster3,
+	Target_Monster4,
+
+	Target_Heal1,
+	Target_Heal2,
+	Target_Heal3,
 
 	//WeaponArmor
 	Vestal_Armor_0 ,
@@ -311,6 +333,13 @@ enum class IMAGE
 
 	//HeroMotion
 	//Crusader
+
+	//Hero
+
+
+		Crusader_Idle,
+		Crusader_Walk,
+		Crusader_Combat,
 	Crusader_banner,
 	Crusader_charge,
 	Crusader_defend,
@@ -335,6 +364,9 @@ enum class IMAGE
 	Plague_doctor_investigate,
 
     //Vestal
+		Vestal_Idle,
+		Vestal_Walk,
+		Vestal_Combat,
 	Vestal_defend,
 	Vestal_heal,
 	Vestal_investigate,
@@ -479,6 +511,11 @@ enum class RoadObjType
 {
 	Empty,
 	Trap,
-	Tresure,
+	Treasure,
 	Enemy
+};
+
+enum class ENEMYTYPE {
+	BoneDefender,
+
 };

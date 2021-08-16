@@ -50,9 +50,5 @@ public:
 	int GetHeroPartySize() { return m_partyOrigin.size(); }
 	//=======================================
 
-	
-
-	
-
 
 };

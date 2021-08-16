@@ -22,7 +22,7 @@ HRESULT CInventorySystem::Init()
 	nowMouseOnSlot = 0;
 	dummySlot = new DummySlot();
 	dummySlot->Init();
-	dummySlot->Unable();
+	dummySlot->Disable();
 	MG_GMOBJ->RegisterObj("dummySlot", dummySlot);
 	return S_OK;
 }
@@ -60,9 +60,11 @@ void CInventorySystem::Update(float deltaTime, float worldTime)
 	{
 		if (dummySlot->isActive)
 		{
-			dummySlot->m_transform->m_pos = MG_INPUT->GetptMouse();
+			dummySlot->m_transform->m_pos = g_ptMouse;
 		}
 	}
+
+	setPartyInvenInfo();
 
 }
 
@@ -98,13 +100,13 @@ void CInventorySystem::Enable()
 	GameObject::Enable();
 }
 
-void CInventorySystem::Unable()
+void CInventorySystem::Disable()
 {
 	for (size_t i = 0; i < m_invenSlots.size(); i++)
 	{
-		m_invenSlots[i]->Unable();
+		m_invenSlots[i]->Disable();
 	}
-	GameObject::Unable();
+	GameObject::Disable();
 }
 
 
@@ -248,7 +250,7 @@ void CInventorySystem::EndDragItem(CSlotItemButton* _slot)
 
 	isDragging = false;
 	dragSlot = nullptr;
-	dummySlot->Unable();
+	dummySlot->Disable();
 }
 
 bool CInventorySystem::decreaseItem(ITEM itemInfo, int& count)
@@ -304,4 +306,33 @@ bool CInventorySystem::decreaseItem(ITEM itemInfo, int& count)
 	{
 		return false;
 	}
+}
+
+void CInventorySystem::setPartyInvenInfo()
+{
+	int TotalTorch = 0;
+	int TotalFood = 0;
+	int TotalBandage = 0;
+
+	for (int i = 0; i < m_invenSlots.size(); i++)
+	{
+		if (m_invenSlots[i]->m_itemInfo != nullptr)
+		{
+			if (m_invenSlots[i]->m_itemInfo->m_item == ITEM::Torch)
+			{
+				TotalTorch += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+			else if (m_invenSlots[i]->m_itemInfo->m_item == ITEM::Food)
+			{
+				TotalFood += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+			else if (m_invenSlots[i]->m_itemInfo->m_item == ITEM::Bandage)
+			{
+				TotalBandage += m_invenSlots[i]->m_itemInfo->m_count;
+			}
+		}
+	}
+	MG_GAME->GetParty()->setTorch(TotalTorch);
+	MG_GAME->GetParty()->setFood(TotalFood);
+	MG_GAME->GetParty()->setBandage(TotalBandage);
 }

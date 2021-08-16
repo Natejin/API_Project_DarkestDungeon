@@ -20,6 +20,9 @@ class CHero : public Unit
 	float speedFront;
 	float speedBack;
 	vector<ImageData> STRSbar;
+
+
+
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
 	Info_Hero* info;
@@ -29,6 +32,8 @@ class CHero : public Unit
 
 
 public:
+	bool isTargetHeal;
+
 	CHero();
 	~CHero();
 
@@ -81,7 +86,9 @@ public:
 	virtual int GetSpeed();
 
 	virtual int getHP();
+	virtual void setHP(int hp);
 	virtual int getSPD();
+	virtual void setSPD(int spd);
 
 	virtual int GetPartyIndex();
 	virtual void SetPartyIndex(int pos);
@@ -91,34 +98,32 @@ public:
 
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
-	virtual void setHP(int hp);
-	virtual void setSPD(int spd);
 
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
 	virtual void SetMemberOverlay();
 	Info_Hero* GetInfo();
 
-	int getMoveDis()const;
-	int getMoveDis_reteat()const; 
-	int getStress()const; 
-	void setStress(int strs); 
-	void addStress(int strs);
-	vector<SKILL>GetOwnSkill();
-	void SetHeroID(int id);
-	int GetHeroID();
-	void SetHeroJob(JOB job);
-	JOB GetJob();
-	void SetOwnIndex(int _ownindex);
-	int GetOwnIndex();
-	void SetAcry(int _acry);
-	int GetAcry();
-	void SetCri(int _cri);
-	int GetCri();
-	void SetDmg(int _dmg);
-	int GetDmg();
-	void SetDodge(int _dodge);
-	int GetDodge();
-	void SetDef(int _def);
-	int GetDef();
+	virtual int getMoveDis()const;
+	virtual int getMoveDis_reteat()const; 
+	virtual int getStress()const; 
+	virtual void setStress(int strs); 
+	virtual void addStress(int strs);
+	virtual vector<SKILL>GetOwnSkill();
+	virtual void SetHeroID(int id);
+	virtual int GetHeroID();
+	virtual void SetHeroJob(JOB job);
+	virtual JOB GetJob();
+	virtual void SetOwnIndex(int _ownindex);
+	virtual int GetOwnIndex();
+	virtual void SetAcry(int _acry);
+	virtual int GetAcry();
+	virtual void SetCri(int _cri);
+	virtual int GetCri();
+	virtual void SetDmg(int _dmg);
+	virtual int GetDmg();
+	virtual void SetDodge(int _dodge);
+	virtual int GetDodge();
+	virtual void SetDef(int _def);
+	virtual int GetDef();
 };

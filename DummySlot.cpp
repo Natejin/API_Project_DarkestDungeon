@@ -21,7 +21,7 @@ HRESULT DummySlot::Init()
 
 void DummySlot::Update(float deltaTime, float worldTime)
 {
-	m_transform->m_pos = g_ptMouse;
+	m_transform->m_pos = g_ptMouse + MG_CAMERA->getCameraPos();
 }
 
 void DummySlot::LateUpdate()
@@ -38,7 +38,7 @@ void DummySlot::Render(HDC _hdc)
 
 void DummySlot::FrontRender(HDC _hdc)
 {
-	m_spriteRenderer->Render(_hdc);
+	m_spriteRenderer->RenderUI(_hdc);
 }
 
 void DummySlot::Release()
@@ -54,7 +54,7 @@ void DummySlot::SetDummySlot(Vector2Int slotID, CInfo_Item* item)
 	isActive = true;
 }
 
-void DummySlot::Unable()
+void DummySlot::Disable()
 {
 	itemInfo = nullptr;
 	originSlotID = Vector2Int(-1, -1);

@@ -20,7 +20,7 @@ HRESULT CBuilding_PanelButton::Init()
 	checkBTN->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + buttonID/3 * 135, WINSIZEY / 2 - 240 + 50 + buttonID % 3 * 225);
 	checkBTN->AddSpriteRenderer(IMAGE::check);
 	checkBTN->AddColliderBox();
-	checkBTN->Unable();
+	checkBTN->Disable();
 	checkBTN->SetTriggerWhenDown(this, &CBuilding_PanelButton::PressCheckButton);
 	MG_GMOBJ->RegisterObj("check", checkBTN);
 
@@ -70,7 +70,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 				MG_GAME->RegisterHeroToOwnList(hero);
 				scene->SetHerolist();
 				m_spriteRenderer->SetImage(IMAGE::hero_slot_bg);
-				checkBTN->Unable();
+				checkBTN->Disable();
 				hero = nullptr;
 
 			}
@@ -122,5 +122,5 @@ void CBuilding_PanelButton::PressCheckButton()
 	default:
 		break;
 	}
-	checkBTN->Unable();
+	checkBTN->Disable();
 }
