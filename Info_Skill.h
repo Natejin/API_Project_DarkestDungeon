@@ -40,7 +40,9 @@ public:
 
 	bool CheckUseable(int pos);
 	bool CheckTarget(int pos);
-
+	int GetDamage(Info_Hero* info, Info_Enemy* info2);
+	int GetDamage(Info_Enemy* info, Info_Hero* info2);
+	int GetHeal();
 	virtual void Release();
 };
 

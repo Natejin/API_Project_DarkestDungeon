@@ -18,6 +18,9 @@ HRESULT CMapSystem::Init()
 	minimapOriginPos = minimapCenterPos;
 	canMoveAnotherRoom = false;
 	moveDistance = 12;
+	isCreatedEnemyOnRoad = false;
+	isCreatedTrabOnRoad = false;
+	isCreatedTresureOnRoad = false;
 	SetRandomCreateValue();
 	CreateDungeon();
 	return S_OK;
@@ -68,8 +71,8 @@ void CMapSystem::Release()
 
 void CMapSystem::SetRandomCreateValue()
 {
-	randRoomEnemy = 30;
-	randRoomCurio = 30;
+	randRoomEnemy = 50;
+	randRoomCurio = 50;
 	randomRoadEnemy = 20;
 	randomRoadCurio = 40;
 	randomRoadTrap = 20;
@@ -148,15 +151,18 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 	if (count > 0)
 	{
 		count--;
-		if (random < rndRoad[0]) {
+		if (!isCreatedEnemyOnRoad && random < rndRoad[0]) {
+			isCreatedEnemyOnRoad = true;
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Enemy;
 			dungeonMap[i][j].m_roadObjType = RoadObjType::Enemy;
 		}
-		else if (random < rndRoad[1]) {
+		else if (!isCreatedTresureOnRoad && random < rndRoad[1]) {
+			isCreatedTresureOnRoad = true;
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trasure;
 			dungeonMap[i][j].m_roadObjType = RoadObjType::Treasure;
 		}
-		else if (random < rndRoad[2]) {
+		else if (!isCreatedTrabOnRoad && random < rndRoad[2]) {
+			isCreatedTrabOnRoad = true;
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Road_Trap;
 			dungeonMap[i][j].m_roadObjType = RoadObjType::Trap;
 		}
@@ -170,6 +176,9 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
 	}
 	else {
+		isCreatedEnemyOnRoad = false;
+		isCreatedTrabOnRoad = false;
+		isCreatedTresureOnRoad = false;
 		dungeonMap[i][j].isRoom = true;
 		if (_lastDir == Vector2Int(0, 0))
 		{

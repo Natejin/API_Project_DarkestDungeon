@@ -28,6 +28,10 @@ public:
 	int roadCount;
 	int remainRoom;
 
+	bool isCreatedEnemyOnRoad;
+	bool isCreatedTresureOnRoad;
+	bool isCreatedTrabOnRoad;
+
 	float moveDistance;
 
 private:

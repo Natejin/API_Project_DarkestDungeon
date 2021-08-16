@@ -39,6 +39,7 @@ class CBattleSystem : public GameObject
 
 	class ImageObject* heroZoomImage;
 	class ImageObject* enemyZoomImage;
+	class ImageObject* indicatorImage;
 
 	float startTriggerTime;
 	bool startNextTurn;
@@ -81,7 +82,10 @@ private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
 
+	void CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index);
+
 	void SelectHero(int index);
+	void CheckAndHealAlly(CInfo_Skill* tempSkill, int index);
 	void SelectHeroTarget(SKILL skill);
 
 	void DeselectAll();

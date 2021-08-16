@@ -28,10 +28,10 @@ HRESULT CBattleSystem::Init()
 	mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Black);
 	//mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
 
-	targetEnemyPosVec.push_back(Vector2(1160, 640));
-	targetEnemyPosVec.push_back(Vector2(1360, 640));
-	targetEnemyPosVec.push_back(Vector2(1560, 640));
-	targetEnemyPosVec.push_back(Vector2(1760, 640));
+	targetEnemyPosVec.push_back(Vector2(1160, 700));
+	targetEnemyPosVec.push_back(Vector2(1360, 700));
+	targetEnemyPosVec.push_back(Vector2(1560, 700));
+	targetEnemyPosVec.push_back(Vector2(1760, 700));
 
 
 	SetZoomImage();
@@ -43,17 +43,19 @@ HRESULT CBattleSystem::Init()
 
 void CBattleSystem::SetZoomImage()
 {
-	heroZoomImage = new ImageObject();
-	heroZoomImage->originPos = Vector2(700, 800);
-	heroZoomImage->speed = 10;
-	heroZoomImage->Init();
-	MG_GMOBJ->RegisterObj(heroZoomImage);
+
 
 	enemyZoomImage = new ImageObject();
 	enemyZoomImage->originPos = Vector2(1100, 800);
 	enemyZoomImage->speed =10;
 	enemyZoomImage->Init();
 	MG_GMOBJ->RegisterObj(enemyZoomImage);
+
+	heroZoomImage = new ImageObject();
+	heroZoomImage->originPos = Vector2(600, 800);
+	heroZoomImage->speed = 10;
+	heroZoomImage->Init();
+	MG_GMOBJ->RegisterObj(heroZoomImage);
 }
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
@@ -99,7 +101,7 @@ void CBattleSystem::BackRender(HDC _hdc)
 
 void CBattleSystem::Render(HDC _hdc)
 {
-
+	mouseOnEnemy.RenderWithPivot(_hdc);
 }
 
 void CBattleSystem::FrontRender(HDC _hdc)
@@ -108,7 +110,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(0, 255, 255));
-	mouseOnEnemy.RenderWithPivot(_hdc);
+
 
 	for (size_t i = 0; i < speedVec.size(); i++)
 	{
@@ -160,7 +162,7 @@ void CBattleSystem::BattleSystemEnd()
 
 void CBattleSystem::StartTurn()
 {
-
+	DeselectAll();
 	if (speedVec.size() == 0)
 	{
 		Compare_P_E_Speed_ReArray();
@@ -224,47 +226,52 @@ void CBattleSystem::EndTurn()
 
 void CBattleSystem::UseSkill(int _index)
 {
-	if (turn == TURN::Player)
+	for (int i = 0; i < dungeonUI->skillBTNs.size() - 1; i++)
 	{
-		DeselectAll();
-		curHero->isSelected = true;
-		for (int i = 0; i < dungeonUI->skillBTNs.size() - 1; i++)
+		dungeonUI->skillBTNs[i]->selected = false;
+	}
+	dungeonUI->skillBTNs[_index]->selected = true;
+	currentSkill = _index;
+	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
+	{
+		if (turn == TURN::Player)
 		{
-			dungeonUI->skillBTNs[i]->selected = false;
-		}
-		dungeonUI->skillBTNs[_index]->selected = true;
-		currentSkill = _index;
+			DeselectAll();
+			curHero->isSelected = true;
+	
 
-		if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
-		{
-			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
-			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
-
-			switch (tempSkill->target)
+			if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
 			{
-			case SKILLTARGET::Enemy:
-				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			case SKILLTARGET::Enemies:
-				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			case SKILLTARGET::Self:
-				//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
-				//噌形 さげ.....
-				break;
-			case SKILLTARGET::Ally:
-				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			case SKILLTARGET::Allies:
-				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			default:
-				break;
+				SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+				CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
+
+				switch (tempSkill->target)
+				{
+				case SKILLTARGET::Enemy:
+					SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				case SKILLTARGET::Enemies:
+					SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				case SKILLTARGET::Self:
+					//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
+					//噌形 さげ.....
+					break;
+				case SKILLTARGET::Ally:
+					SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				case SKILLTARGET::Allies:
+					SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				default:
+					break;
+				}
+
+
 			}
-
-
 		}
 	}
+	
 	
 }
 
@@ -356,31 +363,46 @@ void CBattleSystem::SelectEnemy(int index)
 		SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
 		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
-		if (tempSkill->target == SKILLTARGET::Enemies || tempSkill->target == SKILLTARGET::Enemy)
+		switch (tempSkill->target)
 		{
-			if (tempSkill->CheckTarget(index))
+		case SKILLTARGET::Enemy:
+			CheckAndDamageEnemy(tempSkill, index);
+			break;
+		case SKILLTARGET::Enemies:
+			for (int i = 0; i < enemyParty.size(); i++)
 			{
-				heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
-				heroZoomImage->targetPos = heroZoomImage->originPos;
-				heroZoomImage->targetPos.x += 400;
-				heroZoomImage->speed = 10;
-				heroZoomImage->Enable();
-
-
-
-				enemyZoomImage->m_spriteRenderer->SetImage(enemyParty[index]->GetInfo()->imageDefend);
-				enemyZoomImage->targetPos = enemyZoomImage->originPos;
-				enemyZoomImage->targetPos.x +=  100;
-				enemyZoomImage->speed = 2;
-				enemyZoomImage->Enable();
-
-				startTriggerTime = MG_TIME->getWorldTime() + 5;
-				startNextTurn = true;
-
-				DeselectAll();
-
+				CheckAndDamageEnemy(tempSkill, i);
 			}
+			break;
+		default:
+			break;
 		}
+	}
+}
+
+void CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
+{
+	if (tempSkill->CheckTarget(index))
+	{
+		heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
+		heroZoomImage->targetPos = heroZoomImage->originPos;
+		heroZoomImage->targetPos.x += 200;
+		heroZoomImage->speed = 5;
+		heroZoomImage->Enable();
+
+
+
+		enemyZoomImage->m_spriteRenderer->SetImage(enemyParty[index]->GetInfo()->imageDefend);
+		enemyZoomImage->targetPos = enemyZoomImage->originPos;
+		enemyZoomImage->targetPos.x += 100;
+		enemyZoomImage->speed = 2;
+		enemyZoomImage->Enable();
+
+		startTriggerTime = MG_TIME->getWorldTime() + 5;
+		startNextTurn = true;
+
+		enemyParty[index]->reduceHP(tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo()));
+		DeselectAll();	
 	}
 }
 
@@ -391,29 +413,42 @@ void CBattleSystem::SelectHero(int index)
 		SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
 		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
-		if (tempSkill->target == SKILLTARGET::Allies || tempSkill->target == SKILLTARGET::Ally)
+		switch (tempSkill->target)
 		{
-			if (tempSkill->CheckTarget(index))
+		case SKILLTARGET::Ally:
+			CheckAndHealAlly(tempSkill, index);
+			break;
+		case SKILLTARGET::Allies:
+			for (int i = 0; i < enemyParty.size(); i++)
 			{
-				heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
-				heroZoomImage->targetPos = heroZoomImage->originPos;
-				heroZoomImage->targetPos.x += 200;
-				heroZoomImage->speed = 10;
-				heroZoomImage->Enable();
-
-
-
-				/*enemyZoomImage->m_spriteRenderer->SetImage(enemyParty[index]->GetInfo()->imageDefend);
-				enemyZoomImage->speed = Vector2(0, 0);
-				enemyZoomImage->Enable();*/
-
-				startTriggerTime = MG_TIME->getWorldTime() + 5;
-				startNextTurn = true;
-
-				DeselectAll();
-
+				CheckAndHealAlly(tempSkill, index);
 			}
+			break;
+		default:
+			break;
 		}
+	}
+}
+
+void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
+{
+	if (tempSkill->CheckTarget(index))
+	{
+		heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
+		heroZoomImage->targetPos = heroZoomImage->originPos;
+		heroZoomImage->targetPos.x += 200;
+		heroZoomImage->speed = 10;
+		heroZoomImage->Enable();
+
+		//enemyParty[index]->increaseHP();
+
+		startTriggerTime = MG_TIME->getWorldTime() + 5;
+		startNextTurn = true;
+
+		enemyParty[index]->increaseHP(tempSkill->GetHeal());
+
+		DeselectAll();
+
 	}
 }
 
@@ -483,6 +518,7 @@ void CBattleSystem::StartHeroTrun(int index)
 
 void CBattleSystem::StartEnemyTrun(int index)
 {
+
 }
 
 void CBattleSystem::ShowTargetBySkill(int index)

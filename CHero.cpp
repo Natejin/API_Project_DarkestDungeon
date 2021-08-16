@@ -397,3 +397,18 @@ int CHero::getHP()
 {
 	return  info->m_HP;
 }
+
+void CHero::reduceHP(int hp)
+{
+	info->m_HP -= hp;
+}
+
+void CHero::increaseHP(int hp)
+{
+	info->m_HP += hp;
+}
+
+int CHero::getMaxHP()
+{
+	return  info->m_maxHP;
+}
