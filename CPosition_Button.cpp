@@ -49,6 +49,10 @@ void CPosition_Button::FrontRender(HDC _hdc)
 	{
 		m_spriteRenderer->RenderUI(_hdc);
 	}
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
+	}
 }
 
 void CPosition_Button::Enable()

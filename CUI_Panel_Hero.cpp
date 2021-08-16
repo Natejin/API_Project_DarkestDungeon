@@ -305,7 +305,6 @@ void CUI_Panel_Hero::CreatPostionButton()
 
 void CUI_Panel_Hero::SetPhrases_Img()
 {
-
 	Quirk_Img = new CSpriteRenderer(IMAGE::Quirk, m_transform);
 	Quirk_Img->useCustomPos = true;
 	Quirk_Img->pos = Vector2(550, 189);
