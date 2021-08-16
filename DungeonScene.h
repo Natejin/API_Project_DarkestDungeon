@@ -21,6 +21,10 @@ public:
 //Room
 public:
 	class CBG_Room* m_roomBG;
+	//class CObjOnRoom* m_roomObj;
+
+	class CObjOnRoad* m_roomObj;
+	void SetRoomObject();
 
 //==================================
 //Road
@@ -49,6 +53,7 @@ public:
 
 	void CheckDoor();
 	void ShowDungeonInfo(HDC _hdc);
+	void SetRoadObject(int i);
 
 //==================================
 //∏ Ω√Ω∫≈€
@@ -105,5 +110,4 @@ public:
 	//room and road changeScene
 	void ActivateRoom();
 	void ActivateRoad();
-	void SetRoadObject(int i);
 };

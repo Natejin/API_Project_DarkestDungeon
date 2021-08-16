@@ -44,10 +44,4 @@ public:
 	void Interaction_trap_fail();
 	void Interaction_trap_success();
 	void Interaction_battle(); //change the scene
-
-	bool getisOpened()
-	{
-		return isOpened;
-	}
-
 };

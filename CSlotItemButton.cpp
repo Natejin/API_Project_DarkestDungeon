@@ -133,6 +133,13 @@ void CSlotItemButton::SwapItem(CSlotItemButton* _slot)
 			m_itemInfo = nullptr;
 			_slot->m_spriteRenderer->SetImage(_slot->m_itemInfo->m_imgData);
 		}
+		else 
+		{
+			int temp = 0;
+			temp = _slot->m_itemInfo->m_count;
+			_slot->m_itemInfo->m_count = m_itemInfo->m_count;
+			m_itemInfo->m_count = temp;
+		}
 	}
 	else 
 	{
