@@ -234,7 +234,7 @@ void GameObject::Enable()
 	isActive = true;
 }
 
-void GameObject::Unable()
+void GameObject::Disable()
 {
 	isActive = false;
 }

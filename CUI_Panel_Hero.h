@@ -29,7 +29,7 @@ public:
 
 	virtual void Release();
 	virtual void Enable();
-	virtual void Unable();
+	virtual void Disable();
 	
 	void SetHeroPanel();
 	void ShowHeroInfo(HDC _hdc);

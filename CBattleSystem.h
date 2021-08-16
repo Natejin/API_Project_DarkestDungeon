@@ -37,16 +37,13 @@ class CBattleSystem : public GameObject
 	int enemyPosIndex;
 	int currentSkill;
 
-	ImageData heroZoomImage;
-	ImageData enemyZoomImage;
-
-	bool showHeroZoom;
-	bool showEnemyZoom;
-
-
+	class ImageObject* heroZoomImage;
+	class ImageObject* enemyZoomImage;
 
 	float startTriggerTime;
 	bool startNextTurn;
+
+
 	
 public:
 	class DungeonScene* scene;
@@ -56,6 +53,8 @@ public:
 	~CBattleSystem();
 
 	HRESULT Init();
+
+	void SetZoomImage();
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -81,6 +80,9 @@ public:
 private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
+
+	void SelectHero(int index);
+	void SelectHeroTarget(SKILL skill);
 
 	void DeselectAll();
 

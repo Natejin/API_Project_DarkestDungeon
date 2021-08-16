@@ -36,7 +36,7 @@ public:
 	void Creatchecks();
 
 	virtual void Enable();
-	virtual void Unable();
+	virtual void Disable();
 
 	void CheckStress(HDC _hdc);
 	void ReduceStress();

@@ -221,7 +221,7 @@ void dungeonUI::ShowMap()
 	m_pMapSystem->MapButtonOnOff(true);
 
 	invenPanel->isActive = false;
-	m_invenSystem->Unable();
+	m_invenSystem->Disable();
 
 	mapPanel1->isActive = true;
 	mapPanel2->isActive = true;

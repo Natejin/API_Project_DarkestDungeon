@@ -22,7 +22,7 @@ HRESULT CInventorySystem::Init()
 	nowMouseOnSlot = 0;
 	dummySlot = new DummySlot();
 	dummySlot->Init();
-	dummySlot->Unable();
+	dummySlot->Disable();
 	MG_GMOBJ->RegisterObj("dummySlot", dummySlot);
 	return S_OK;
 }
@@ -100,13 +100,13 @@ void CInventorySystem::Enable()
 	GameObject::Enable();
 }
 
-void CInventorySystem::Unable()
+void CInventorySystem::Disable()
 {
 	for (size_t i = 0; i < m_invenSlots.size(); i++)
 	{
-		m_invenSlots[i]->Unable();
+		m_invenSlots[i]->Disable();
 	}
-	GameObject::Unable();
+	GameObject::Disable();
 }
 
 
@@ -250,7 +250,7 @@ void CInventorySystem::EndDragItem(CSlotItemButton* _slot)
 
 	isDragging = false;
 	dragSlot = nullptr;
-	dummySlot->Unable();
+	dummySlot->Disable();
 }
 
 bool CInventorySystem::decreaseItem(ITEM itemInfo, int& count)

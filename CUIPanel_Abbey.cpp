@@ -24,7 +24,7 @@ HRESULT CUIPanel_Abbey::Init()
 	panelbutton = new CBuilding_PanelButton();
 
 	CreateRooms();
-	Unable();
+	Disable();
 
 	//hero = new CHero();	
 	return S_OK;
@@ -122,9 +122,9 @@ void CUIPanel_Abbey::Enable()
 	CEst_UI::Enable();
 }
 
-void CUIPanel_Abbey::Unable()
+void CUIPanel_Abbey::Disable()
 {
-	CEst_UI::Unable();
+	CEst_UI::Disable();
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{
 		panelVec[i]->isActive = false;

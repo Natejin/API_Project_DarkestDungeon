@@ -25,7 +25,7 @@ HRESULT CUIPanel_Tavern::Init()
 
     CreateRooms();
     Creatchecks();
-    Unable();
+    Disable();
     return S_OK;
 }
 
@@ -98,9 +98,9 @@ void CUIPanel_Tavern::Enable()
 	m_check->isActive = true;	//얘도 활성화 조건 바꿔야 한다.
 }
 
-void CUIPanel_Tavern::Unable()
+void CUIPanel_Tavern::Disable()
 {
-	CEst_UI::Unable();
+	CEst_UI::Disable();
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{
 		panelVec[i]->isActive = false;

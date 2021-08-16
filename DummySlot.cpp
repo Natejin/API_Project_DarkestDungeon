@@ -54,7 +54,7 @@ void DummySlot::SetDummySlot(Vector2Int slotID, CInfo_Item* item)
 	isActive = true;
 }
 
-void DummySlot::Unable()
+void DummySlot::Disable()
 {
 	itemInfo = nullptr;
 	originSlotID = Vector2Int(-1, -1);

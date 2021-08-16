@@ -27,15 +27,15 @@ HRESULT TreasureEventPanel::Init()
 	m_pass->m_transform->m_pos = Vector2(1320, 535);
 	m_pass->AddSpriteRenderer(IMAGE::eve_pass);
 	m_pass->AddColliderBox();
-	m_pass->Unable();
-	m_pass->SetTriggerWhenDown(this, &TreasureEventPanel::Unable);
+	m_pass->Disable();
+	m_pass->SetTriggerWhenDown(this, &TreasureEventPanel::Disable);
 	MG_GMOBJ->RegisterObj("TreasureEve_pass", m_pass);
 
 	m_getAll = new CButton();
 	m_getAll->m_transform->m_pos = Vector2(1470, 535);
 	m_getAll->AddSpriteRenderer(IMAGE::eve_byHand);
 	m_getAll->AddColliderBox();
-	m_getAll->Unable();
+	m_getAll->Disable();
 	m_getAll->SetTriggerWhenDown(this, &TreasureEventPanel::getAll);
 	MG_GMOBJ->RegisterObj("TreasureEve_getAll", m_getAll);
 
@@ -124,7 +124,7 @@ void TreasureEventPanel::setTreasureSlot()
 		temp->m_transform->m_pos = Vector2(1283 + 80 * i, 350);
 		temp->slotID = Vector2Int(i, 0);
 		temp->m_invenSys = m_dungeonScene->m_pInvenSystem;
-		temp->Unable();
+		temp->Disable();
 		MG_GMOBJ->RegisterObj("TreasureSlot", temp);
 	}
 }
@@ -171,14 +171,14 @@ void TreasureEventPanel::Enable()
 	}
 }
 
-void TreasureEventPanel::Unable()
+void TreasureEventPanel::Disable()
 {
 	m_dungeonScene->isOpenedPanel = false;
 	isActive = false;
-	m_pass->Unable();
-	m_getAll->Unable();
+	m_pass->Disable();
+	m_getAll->Disable();
 	for (size_t i = 0; i < m_treasureSlots.size(); i++)
 	{
-		m_treasureSlots[i]->Unable();
+		m_treasureSlots[i]->Disable();
 	}
 }

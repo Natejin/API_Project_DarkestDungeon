@@ -184,7 +184,7 @@ void DungeonScene::CreateRoad()
 	{
 		CObjOnRoad* obj = new CObjOnRoad();
 		obj->Init();
-		obj->Unable();
+		obj->Disable();
 		obj->m_dungeonScene = this;
 		m_roadObjs.push_back(obj);
 		MG_GMOBJ->RegisterObj("roadObj_", obj);
@@ -194,7 +194,7 @@ void DungeonScene::CreateRoad()
 	m_treasurePanel->m_dungeonScene = this;
 	//m_treasurePanel->setTreasureSlot();
 	m_treasurePanel->Init();
-	m_treasurePanel->Unable();
+	m_treasurePanel->Disable();
 	MG_GMOBJ->RegisterObj("treasureEventPanel", m_treasurePanel);
 }
 

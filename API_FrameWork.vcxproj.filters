@@ -672,6 +672,12 @@
     <ClInclude Include="CObjOnRoom.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
+    <ClInclude Include="CEquipButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageObject.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1042,6 +1048,12 @@
     </ClCompile>
     <ClCompile Include="CObjOnRoom.cpp">
       <Filter>Object\RoadObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CEquipButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageObject.cpp">
+      <Filter>System\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

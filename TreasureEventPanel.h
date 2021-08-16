@@ -47,6 +47,6 @@ public :
 	void getAll();
 
 	virtual void Enable();
-	virtual void Unable();
+	virtual void Disable();
 
 };
