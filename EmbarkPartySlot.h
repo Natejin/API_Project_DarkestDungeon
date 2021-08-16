@@ -34,8 +34,4 @@ public:
 	virtual void Enable();
 	virtual void Disable();
 
-	void SwapHero();
-
-	void enterDungeon();
-
 };

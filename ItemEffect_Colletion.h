@@ -43,11 +43,11 @@ public:
 	{
 		for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
 		{
-			if (MG_GAME->GetHero(i)->isSelected)
+			if (MG_GAME->GetHeroFromParty(i)->isSelected)
 			{
-				if (MG_GAME->GetHero(i)->getAttribute(2))
+				if (MG_GAME->GetHeroFromParty(i)->getAttribute(2))
 				{
-					MG_GAME->GetHero(i)->setAttribute(2, 0);
+					MG_GAME->GetHeroFromParty(i)->setAttribute(2, 0);
 					return true;
 				}
 			}
@@ -71,15 +71,16 @@ public:
 	{
 		for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
 		{
-			if (MG_GAME->GetHero(i)->isSelected)
+			if (MG_GAME->GetHeroFromParty(i)->isSelected)
 			{
-				MG_GAME->GetHero(i)->setHP(MG_GAME->GetHero(i)->getHP() + MG_RND->getFromIntTo(1, 4));
+				MG_GAME->GetHeroFromParty(i)->setHP(MG_GAME->GetHeroFromParty(i)->getHP() + MG_RND->getFromIntTo(1, 4));
 				MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() - 1);
 				return true;
 			}
 		}
 		return false;
 	}
+
 	virtual void DumpItem(int dumpCount)
 	{
 		//have to get how much going to dump

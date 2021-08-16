@@ -14,7 +14,7 @@ protected:
 	class CUIPanel_Statue* m_statue ;
 	class CUIPanel_NomadWagon* m_nomad_wagon;
 	class CUIPanel_Tavern* m_tavern;
-
+	class CBG_Town* m_town;
 	vector<class CBuilding*> buildingVec;
 	
 	class Hero_Roster* m_Roster_ButtonVec;
@@ -46,7 +46,6 @@ public:
 	void Show_tavern(); //¿©°ü
 
 public:
-	void Show_Activity_log();
 	void SetHerolist();
 
 public:

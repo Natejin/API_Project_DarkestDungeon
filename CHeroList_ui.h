@@ -4,10 +4,9 @@
 class CHeroList_ui : public CEst_UI
 {
 private:
-	vector<ImageData> v_roster;
+	vector<ImageData> most_HeroList_UI;
 
 public:
-	
 	CHeroList_ui();
 	~CHeroList_ui();
 

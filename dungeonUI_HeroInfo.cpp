@@ -71,7 +71,10 @@ void CDungeonUI_HeroInfo::setButton()
 {
     for (size_t i = 0; i < MG_GAME->GetHeroPartySize(); i++)
     {
-        MG_GAME->GetHeroFromParty(i)->SetTriggerWhenClick(this, &CDungeonUI_HeroInfo::SelectHero);
+        if (MG_GAME->GetHeroFromParty(i) != nullptr)
+        {
+            MG_GAME->GetHeroFromParty(i)->SetTriggerWhenClick(this, &CDungeonUI_HeroInfo::SelectHero);
+        }
     }
 }
 
@@ -81,12 +84,16 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
     string strFrame;
     SetBkMode(_hdc, TRANSPARENT);
 
-    for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
+    for (int i = 0; i < 4; i++)
     {
-        if (MG_GAME->GetHeroFromParty(i)->isSelected == true)
+        if (MG_GAME->GetHeroFromParty(i) != nullptr)
         {
-            selectedHeroIndex = i;
+            if (MG_GAME->GetHeroFromParty(i)->isSelected == true)
+            {
+                selectedHeroIndex = i;
+            }
         }
+
     }
 
     SetTextColor(_hdc, RGB(202, 201, 155));

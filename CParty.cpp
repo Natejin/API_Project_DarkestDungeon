@@ -261,45 +261,80 @@ CHero* CParty::GetHero(int index)
 
 void CParty::FormationMove()
 {
-	for (size_t i = 0; i < m_member.size() > 0; i++)
+	int substraction[3];
+	substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
+	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
+	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
+
+	m_member[0]->Move();
+	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
+	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+	for (size_t i = 0; i < 3; i++)
 	{
-		int substraction[3];
-		substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
-		substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
-		substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
 
-		m_member[0]->Move();
-		bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
-		bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
-		for (size_t i = 0; i < 3; i++)
+		if (vk_Right | vk_Left)
 		{
-
-			if (vk_Right | vk_Left)
+			if (vk_Left)
 			{
-				if (vk_Left)
+				if (WB_btwHeroes > substraction[i])
 				{
-					if (WB_btwHeroes > substraction[i])
-					{
-						m_member[i + 1]->Move();
-						continue;
-					}
-				}
-
-				if (vk_Right)
-				{
-					if (substraction[i] > WF_btwHeroes)
-					{
-						m_member[i + 1]->Move();
-					}
+					m_member[i + 1]->Move();
+					continue;
 				}
 			}
-			else {
-				m_member[i + 1]->Move();
+
+			if (vk_Right)
+			{
+				if (substraction[i] > WF_btwHeroes)
+				{
+					m_member[i + 1]->Move();
+				}
 			}
-
-
+		}
+		else {
+			m_member[i + 1]->Move();
 		}
 	}
+
+
+
+	//for (size_t i = 0; i < m_member.size() > 0; i++)
+	//{
+	//	int substraction[3];
+	//	substraction[0] = abs(m_member[0]->m_transform->m_pos.x - m_member[1]->m_transform->m_pos.x);
+	//	substraction[1] = abs(m_member[1]->m_transform->m_pos.x - m_member[2]->m_transform->m_pos.x);
+	//	substraction[2] = abs(m_member[2]->m_transform->m_pos.x - m_member[3]->m_transform->m_pos.x);
+
+	//	m_member[0]->Move();
+	//	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
+	//	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+	//	for (size_t i = 0; i < 3; i++)
+	//	{
+
+	//		if (vk_Right | vk_Left)
+	//		{
+	//			if (vk_Left)
+	//			{
+	//				if (WB_btwHeroes > substraction[i])
+	//				{
+	//					m_member[i + 1]->Move();
+	//					continue;
+	//				}
+	//			}
+
+	//			if (vk_Right)
+	//			{
+	//				if (substraction[i] > WF_btwHeroes)
+	//				{
+	//					m_member[i + 1]->Move();
+	//				}
+	//			}
+	//		}
+	//		else {
+	//			m_member[i + 1]->Move();
+	//		}
+	//	}
+	//}
 	
 }
 
@@ -361,14 +396,22 @@ void CParty::showMemberInfo(HDC _hdc)
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 255, 255));
 
-	sprintf_s(str, "Hero1Stress : %d  POS: %d", GetHero(0)->getStress(), GetHero(0)->GetPartyIndex());
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (GetHero(i) != nullptr)
+		{
+			sprintf_s(str, "Hero1Stress : %d  POS: %d", GetHero(i)->getStress(), GetHero(i)->GetPartyIndex());
+			TextOut(_hdc, WINSIZEX - 200, 10 + i * 20, str, strlen(str));
+		}
+	}
+	/*sprintf_s(str, "Hero1Stress : %d  POS: %d", GetHero(0)->getStress(), GetHero(0)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 10, str, strlen(str));
 	sprintf_s(str, "Hero2Stress : %d  POS: %d", GetHero(1)->getStress(), GetHero(1)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 30, str, strlen(str));
 	sprintf_s(str, "Hero3Stress : %d  POS: %d", GetHero(2)->getStress(), GetHero(2)->GetPartyIndex());
 	TextOut(_hdc, WINSIZEX - 200, 50, str, strlen(str));
 	sprintf_s(str, "Hero4Stress : %d  POS: %d", GetHero(3)->getStress(), GetHero(3)->GetPartyIndex());
-	TextOut(_hdc, WINSIZEX - 200, 70, str, strlen(str));
+	TextOut(_hdc, WINSIZEX - 200, 70, str, strlen(str));*/
 
 	for (int i = 0; i < m_member.size(); i++)
 	{

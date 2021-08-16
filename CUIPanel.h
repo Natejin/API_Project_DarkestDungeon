@@ -1,5 +1,4 @@
 #pragma once
-
 #include "GameObject.h"
 
 class CUIPanel : public GameObject
@@ -25,4 +24,3 @@ public:
 	void UseRender();
 	void UseBackRender();
 };
-

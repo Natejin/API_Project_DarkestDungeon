@@ -27,6 +27,10 @@ void Embark::LateUpdate()
 
 void Embark::BackRender(HDC _hdc)
 {
+	for (int i = 0; i < m_images.size(); i++)
+	{
+		m_images[i]->Render(_hdc);
+	}
 }
 
 void Embark::Render(HDC _hdc)
@@ -35,10 +39,7 @@ void Embark::Render(HDC _hdc)
 
 void Embark::FrontRender(HDC _hdc)
 {
-	for (int i = 0; i < m_images.size(); i++)
-	{
-		m_images[i]->Render(_hdc);
-	}
+
 }
 
 void Embark::Release()
@@ -115,12 +116,10 @@ void Embark::setDungeonBt()
 void Embark::setEmbark()
 {
 	m_townScene->DeactivateBuildings();
-	setImg();
-	setPartySlot();
 	bt_selDungeon->Enable();
+	setPartySlot();
+	setImg();
 	Enable();
-	//bt_embark->Enable();
-	//bt_selDungeon->Enable();
 }
 
 void Embark::setPartySlot()
@@ -138,5 +137,9 @@ void Embark::setPartySlot()
 
 void Embark::enterDungeon()
 {
-	MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	if (MG_GAME->GetHeroPartySize() == 4)
+	{
+		MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	}
+	
 }
