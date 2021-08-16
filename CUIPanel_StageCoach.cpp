@@ -69,7 +69,7 @@ void CUIPanel_StageCoach::Enable()
 
 void CUIPanel_StageCoach::Unable()
 {
-	CEst_UI::Unable();
+	CEst_UI::Disable();
 	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
 	{
 		m_OnCoach_heroListButtonVec[i]->isActive =false;
@@ -98,7 +98,7 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 	{
 		CHeroList_button* OnCoach_HeroList_Button = new CHeroList_button();
 		OnCoach_HeroList_Button->Init();
-		OnCoach_HeroList_Button->Unable();
+		OnCoach_HeroList_Button->Disable();
 		OnCoach_HeroList_Button->m_transform->m_pos = Vector2(WINSIZEX / 2 + 270, WINSIZEY - 880 + i * 100);
 		OnCoach_HeroList_Button->AddColliderBox(50, 50);
 		OnCoach_HeroList_Button->townScene = townScene;
