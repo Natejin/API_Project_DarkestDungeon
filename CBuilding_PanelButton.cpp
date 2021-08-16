@@ -37,7 +37,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 		if (MG_INPUT->IsUpLMB())
 		{
 			if (hero == nullptr && scene->isDrag)
-			{
+			{	//히어로리스트버튼의벡터의 몇번째 인덱스의 히어로를 들었냐
 				hero = scene->m_heroListButtonVec[scene->curDragHeroIndex]->m_hero; 
 				MG_GAME->RemoveHeroFromOwnList(hero->GetHeroID());
 				scene->SetHerolist();

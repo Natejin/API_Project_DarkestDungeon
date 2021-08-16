@@ -4,6 +4,7 @@
 #include"Hero_Roster.h"
 #include "TownScene.h"
 #include"CUI_Panel_Hero.h"
+#include"CUIPanel_StageCoach.h"
 CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;
@@ -58,6 +59,44 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 			}
 		}
 	}
+	//if (townScene->isDrag) //고용의 경우 드래그중일테니깐.
+	//{
+	//	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+	//	{
+	//		if (MG_INPUT->IsUpLMB())
+	//		{
+	//			if (m_hero == nullptr) //빈버튼일때
+	//			{	//히어로리스트버튼의벡터의 몇번째 인덱스의 히어로를 들었냐
+	//				hero = scene->m_heroListButtonVec[scene->curDragHeroIndex]->m_hero;
+	//				//역마차의 버튼을 들어야 한다.
+	//				m_hero =
+	//				MG_GAME->RemoveHeroFromOwnList(hero->GetHeroID());
+	//				scene->SetHerolist();
+	//				checkBTN->Enable();
+	//				switch (hero->GetJob())
+	//				{
+	//				case JOB::Crusader:
+	//					m_spriteRenderer->SetImage(IMAGE::crusader_roster);
+	//					break;
+	//				case JOB::Vestal:
+	//					m_spriteRenderer->SetImage(IMAGE::vestal_roster);
+	//					break;
+	//				case JOB::PlagueDoctor:
+	//					m_spriteRenderer->SetImage(IMAGE::plague_doctor_roster);
+	//					break;
+	//				case JOB::Highwayman:
+	//					m_spriteRenderer->SetImage(IMAGE::highwayman_roster);
+	//					break;
+	//				default:
+	//					break;
+	//				}
+
+	//			}
+
+	//		}
+	//	}
+	//}
+	//
 }
 
 void CHeroList_button::LateUpdate()

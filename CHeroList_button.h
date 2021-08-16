@@ -19,6 +19,7 @@ public:
 
 	class CHero* m_hero;
 	class Hero_Roster* dummy_Roster;
+	class CUIPanel_StageCoach* m_coach;
 	CHeroList_button();
 	~CHeroList_button();
 
