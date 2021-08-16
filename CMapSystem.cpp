@@ -68,8 +68,8 @@ void CMapSystem::Release()
 
 void CMapSystem::SetRandomCreateValue()
 {
-	randRoomEnemy = 100;
-	randRoomCurio = 0;
+	randRoomEnemy = 0;
+	randRoomCurio = 100;
 	randomRoadEnemy = 0;
 	randomRoadCurio = 50;
 	randomRoadTrap = 50;
@@ -108,7 +108,6 @@ void CMapSystem::CreateDungeon()
 	while (remainRoom > 0)
 	{
 		CreateMapPart(curPos.x, curPos.y, 0, Vector2Int(0, 0));
-	
 	}
 
 	curDungeonMap = dungeonMap[curPos.x][curPos.y];
@@ -175,18 +174,25 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		if (_lastDir == Vector2Int(0, 0))
 		{
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
+			dungeonMap[i][j].m_roadObjType = RoadObjType::Empty;
+			//dungeonMap[i][j].m_roomObjType = RoomObjType::Empty;
 		}
 		else
 		{
 			if (random < rndRoom[0]) {
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Enemy;
+				dungeonMap[i][j].m_roadObjType = RoadObjType::Enemy;
+				//dungeonMap[i][j].m_roomObjType = RoomObjType::Enemy;
 			}
 			else if (random < rndRoom[1]) {
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Trasure;
+				dungeonMap[i][j].m_roadObjType = RoadObjType::Treasure;
+				//dungeonMap[i][j].m_roomObjType = RoomObjType::Treasure;
 			}
-
 			else {
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
+				dungeonMap[i][j].m_roadObjType = RoadObjType::Empty;
+				//dungeonMap[i][j].m_roomObjType = RoomObjType::Empty;
 			}
 		}
 
@@ -513,4 +519,3 @@ void CMapSystem::UseKeyBoardToReverseMoveCurPoint()
 {
 	MoveCurPoint( curDir * -1);
 }
-

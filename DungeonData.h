@@ -7,6 +7,7 @@ public:
 	Vector2Int pos;
 	Vector2 posFromCenter;
 	RoadObjType m_roadObjType;
+	//RoomObjType m_roomObjType;
 
 	bool isRoom = false;
 	bool isSearched = false;

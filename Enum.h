@@ -449,3 +449,10 @@ enum class RoadObjType
 	Treasure,
 	Enemy
 };
+
+enum class RoomObjType
+{
+	Empty,
+	Treasure,
+	Enemy
+};

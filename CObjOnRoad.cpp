@@ -16,8 +16,8 @@ CObjOnRoad::~CObjOnRoad() {}
 HRESULT CObjOnRoad::Init()
 {
 	AddSpriteRenderer();
-	AddColliderBox(200,300);
-	m_collider->SetColliderBox(Vector2(0, 0), Vector2(100,200));
+	AddColliderBox(300,300);
+	m_collider->SetColliderBox(Vector2(0, 0), Vector2(100, 100));
 	return S_OK;
 }
 
@@ -30,32 +30,11 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 	m_transform->m_pivot = Vector2(0.5, 1);
     objType = type;
 
-	if (!isPassed)
+	if (index != 3)
 	{
-		//all obj is interactable
-		switch (objType)
+		if (!isPassed)
 		{
-		case RoadObjType::Trap:
-			m_spriteRenderer->SetImage(IMAGE::obj_trap1);
-			break;
-
-		case RoadObjType::Enemy:
-			m_spriteRenderer->SetImage(IMAGE::NONE);
-			break;
-
-		case RoadObjType::Treasure:
-			m_spriteRenderer->SetImage(IMAGE::obj_treasure1);
-			break;
-
-		default:
-			m_spriteRenderer->SetImage("button");
-			break;
-		}
-	}
-	else //passedWay
-	{
-		if (!isOpened)
-		{
+			//all obj is interactable
 			switch (objType)
 			{
 			case RoadObjType::Trap:
@@ -71,32 +50,102 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 				break;
 
 			default:
-				m_spriteRenderer->SetImage("button");
+				m_spriteRenderer->SetImage(IMAGE::NONE);
 				break;
 			}
 		}
-		else //opened
+		else //passedWay
 		{
-			switch (objType)
+			if (!isOpened)
 			{
-			case RoadObjType::Trap:
-				m_spriteRenderer->SetImage(IMAGE::obj_trap2);
-				break;
+				switch (objType)
+				{
+				case RoadObjType::Trap:
+					m_spriteRenderer->SetImage(IMAGE::obj_trap1);
+					break;
 
-			case RoadObjType::Enemy:
-				m_spriteRenderer->SetImage(IMAGE::NONE);
-				break;
+				case RoadObjType::Enemy:
+					m_spriteRenderer->SetImage(IMAGE::NONE);
+					break;
 
-			case RoadObjType::Treasure:
-				m_spriteRenderer->SetImage(IMAGE::obj_treasure2);
-				break;
+				case RoadObjType::Treasure:
+					m_spriteRenderer->SetImage(IMAGE::obj_treasure1);
+					break;
 
-			default:
-				m_spriteRenderer->SetImage("button");
-				break;
+				default:
+					m_spriteRenderer->SetImage(IMAGE::NONE);
+					break;
+				}
+			}
+			else //opened
+			{
+				switch (objType)
+				{
+				case RoadObjType::Trap:
+					m_spriteRenderer->SetImage(IMAGE::obj_trap2);
+					break;
+
+				case RoadObjType::Enemy:
+					m_spriteRenderer->SetImage(IMAGE::NONE);
+					break;
+
+				case RoadObjType::Treasure:
+					m_spriteRenderer->SetImage(IMAGE::obj_treasure2);
+					break;
+
+				default:
+					m_spriteRenderer->SetImage(IMAGE::NONE);
+					break;
+				}
 			}
 		}
 	}
+	else {
+		if (!isPassed)
+		{
+			//all obj is interactable
+			switch (objType)
+			{
+			case RoadObjType::Treasure:
+				m_spriteRenderer->SetImage(IMAGE::obj_treasure1);
+				break;
+
+			default:
+				m_spriteRenderer->SetImage(IMAGE::NONE);
+				break;
+			}
+		}
+		else //passedWay
+		{
+			if (!isOpened)
+			{
+				switch (objType)
+				{
+				case RoadObjType::Treasure:
+					m_spriteRenderer->SetImage(IMAGE::obj_treasure1);
+					break;
+
+				default:
+					m_spriteRenderer->SetImage("button");
+					break;
+				}
+			}
+			else //opened
+			{
+				switch (objType)
+				{
+				case RoadObjType::Treasure:
+					m_spriteRenderer->SetImage(IMAGE::obj_treasure2);
+					break;
+
+				default:
+					m_spriteRenderer->SetImage("button");
+					break;
+				}
+			}
+		}
+	}
+	
 
 	m_transform->m_pos.y = 665;
 
@@ -104,6 +153,7 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 
 	switch (index)
 	{
+
 	case 0:
 		m_transform->m_pos.x = MG_RND->getFromIntTo(ROOMSIZE, ROOMSIZE * 2 - limitDistance);
 		break;
@@ -113,6 +163,8 @@ HRESULT CObjOnRoad::Init(RoadObjType type, int index, bool _isPassed, bool _isOp
 	case 2:
 		m_transform->m_pos.x = MG_RND->getFromIntTo(ROOMSIZE * 4 + limitDistance, ROOMSIZE * 5);
 		break;
+	case 3:
+		m_transform->m_pos.x = 990;
 	}
 
     return S_OK;
@@ -183,7 +235,7 @@ void CObjOnRoad::Interaction_treassure()
 {
 	//treasure
 	//touchable when it's collision with Hero(0)
-	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos + 40))
+	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos + 100))
 	{
 		if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 		{
