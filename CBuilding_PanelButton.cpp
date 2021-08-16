@@ -59,10 +59,9 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 				default:
 					break;
 				}
-
 			}
-
 		}
+
 		if (hero != nullptr)
 		{
 			if (MG_INPUT->IsDownRMB())
@@ -75,9 +74,7 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 
 			}
 		}
-
 	}
-
 }
 
 void CBuilding_PanelButton::LateUpdate()
@@ -90,7 +87,6 @@ void CBuilding_PanelButton::BackRender(HDC _hdc)
 
 void CBuilding_PanelButton::Render(HDC _hdc)
 {
-
 }
 
 void CBuilding_PanelButton::FrontRender(HDC _hdc)

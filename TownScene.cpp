@@ -31,7 +31,7 @@ TownScene::TownScene() {}
 TownScene::~TownScene() {}
 HRESULT TownScene::Init()
 {
-	CBG_Town* m_town = new CBG_Town();
+	m_town = new CBG_Town();
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
 	SetEst_Img();
@@ -63,6 +63,7 @@ void TownScene::Release()
 	MG_GMOBJ->RemoveObj(m_statue);
 	MG_GMOBJ->RemoveObj(m_nomad_wagon);
 	MG_GMOBJ->RemoveObj(m_tavern);
+	MG_GMOBJ->RemoveObj(m_town);
 
 	for (int i = 0; i < buildingVec.size(); i++)
 	{
@@ -205,12 +206,6 @@ void TownScene::SetHeroPanel()
 
 void TownScene::SetEst_ui()
 {	
-	CButton* m_activity_log = new CButton();
-	m_activity_log->m_transform->m_pos = Vector2(WINSIZEX / 2+100, WINSIZEY / 2 +450);
-	m_activity_log->AddColliderBox(100, 100);
-	m_activity_log->AddSpriteRenderer(IMAGE::estate_activity_log);
-	MG_GMOBJ->RegisterObj("log", m_activity_log);
-
 	m_abbey = new CUIPanel_Abbey();
 	m_abbey->townScene = this;
 	m_abbey->Init();
@@ -320,51 +315,47 @@ void TownScene::Show_tavern()
 }
 #pragma endregion
 
-void TownScene::Show_Activity_log()
-{
-}
-
 void TownScene::SetHerolist()
-{	
+{
 	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]->GetId());
 	}
 	m_heroListButtonVec.clear();
 
-		for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
-		{
-			CHeroList_button* dragButton = new CHeroList_button();
-			dragButton->Init();
-			dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
-			dragButton->AddColliderBox(50, 50);
-			dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
-			dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
-			dragButton->m_index = i;
-			dragButton->townScene = this;
-			MG_GAME->GetHero(i)->SetOwnIndex(i);
-			dragButton->m_hero = MG_GAME->GetHero(i);
+	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
+	{
+		CHeroList_button* dragButton = new CHeroList_button();
+		dragButton->Init();
+		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
+		dragButton->AddColliderBox(50, 50);
+		dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
+		dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
+		dragButton->m_index = i;
+		dragButton->townScene = this;
+		MG_GAME->GetHero(i)->SetOwnIndex(i);
+		dragButton->m_hero = MG_GAME->GetHero(i);
 
-			switch (dragButton->m_hero->GetJob())
-			{
-			case JOB::Crusader:
-				dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
-				break;
-			case JOB::Vestal:
-				dragButton->AddSpriteRenderer(IMAGE::vestal_roster);
-				break;
-			case JOB::PlagueDoctor:
-				dragButton->AddSpriteRenderer(IMAGE::plague_doctor_roster);
-				break;
-			case JOB::Highwayman:
-				dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
-				break;
-			default:
-				break;
-			}
-			m_heroListButtonVec.push_back(dragButton);
-			MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
+		switch (dragButton->m_hero->GetJob())
+		{
+		case JOB::Crusader:
+			dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
+			break;
+		case JOB::Vestal:
+			dragButton->AddSpriteRenderer(IMAGE::vestal_roster);
+			break;
+		case JOB::PlagueDoctor:
+			dragButton->AddSpriteRenderer(IMAGE::plague_doctor_roster);
+			break;
+		case JOB::Highwayman:
+			dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
+			break;
+		default:
+			break;
 		}
+		m_heroListButtonVec.push_back(dragButton);
+		MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
+	}
 }
 
 void TownScene::ShowDummyHeroList()

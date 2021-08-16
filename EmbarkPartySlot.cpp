@@ -107,7 +107,3 @@ void EmbarkPartySlot::Enable()
 void EmbarkPartySlot::Disable()
 {
 }
-
-void EmbarkPartySlot::SwapHero()
-{
-}

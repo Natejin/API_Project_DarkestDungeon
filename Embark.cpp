@@ -115,12 +115,10 @@ void Embark::setDungeonBt()
 void Embark::setEmbark()
 {
 	m_townScene->DeactivateBuildings();
-	setImg();
-	setPartySlot();
 	bt_selDungeon->Enable();
+	setPartySlot();
+	setImg();
 	Enable();
-	//bt_embark->Enable();
-	//bt_selDungeon->Enable();
 }
 
 void Embark::setPartySlot()
@@ -138,5 +136,9 @@ void Embark::setPartySlot()
 
 void Embark::enterDungeon()
 {
-	MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	if (MG_GAME->GetHeroPartySize() == 4)
+	{
+		MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	}
+	
 }

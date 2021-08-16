@@ -17,7 +17,6 @@ HRESULT CBuilding::Init()
 	return S_OK;
 }
 
-
 void CBuilding::BackRender(HDC _hdc)
 {
 }
@@ -37,5 +36,4 @@ void CBuilding::Render(HDC _hdc)
 
 void CBuilding::FrontRender(HDC _hdc)
 {
-
 }

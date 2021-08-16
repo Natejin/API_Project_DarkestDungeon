@@ -36,7 +36,6 @@ void CBackground::BackRender(HDC _hdc)
 
 void CBackground::Render(HDC _hdc)
 {
-
 	for (size_t i = 0; i < most_TOWN_UI.size(); i++)
 	{
 		
@@ -62,14 +61,13 @@ void CBackground::Release()
 {
 	for (int i = 0; i < mostBG.size(); i++)
 	{
-		mostBG[i].m_img = nullptr;
-		mostFG_Bottom[i].m_img = nullptr;
-		mostFG_Top[i].m_img = nullptr;
-	}
-
-	for (size_t i = 0; i < road.size(); i++)
-	{
-		road[i].m_img = nullptr;
+		//mostBG[i].m_img = nullptr;
+		//mostFG_Bottom[i].m_img = nullptr;
+		//mostFG_Top[i].m_img = nullptr;
+		//
+		//most_HeroList_UI[i].m_img = nullptr;
+		//most_TOWN_UI[i].m_img = nullptr;
+		//most_EST[i].m_img = nullptr;
 	}
 }
 

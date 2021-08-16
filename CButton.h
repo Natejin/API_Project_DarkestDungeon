@@ -4,17 +4,12 @@
 class CButton : public GameObject
 {
 protected:
-	//bool canTriggerClick; //ÀÇµµ
-	//int countNum;
-	//function<void()> m_triggerWhenOnceUp;
-	//function<void()> m_triggerWhenOnceDown;
-	//Rect m_rect;
-
 	bool canTriggerUp;
 	bool canTriggerDown;
 	function<void()> m_triggerWhenUp;
 	function<void()> m_triggerWhenDown;
 	int countNum;
+
 public:
 	CButton();
 	~CButton();
