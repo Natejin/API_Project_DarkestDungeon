@@ -15,12 +15,13 @@ protected:
 	class CUIPanel_Tavern* m_tavern;
 
 	vector<class CBuilding*> buildingVec;
-	vector<class CHero*> m_heroVec;
+	
 	class Hero_Roster* m_Roster_ButtonVec;
 	class CUI_Panel_Hero* m_hero_panel;
 public:
 
 	vector<class CHeroList_button*> m_heroListButtonVec;
+
 
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.

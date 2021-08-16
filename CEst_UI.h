@@ -11,8 +11,14 @@ protected:
 	class CSpriteRenderer* m_windowPanelChar;
 	class CSpriteRenderer* m_HeroPanel;
 	class CSpriteRenderer* m_HeroImg;
-	
-	//class CUIPanel_Abbey* abbey;
+	class CSpriteRenderer* m_treatmentImg;
+	class CSpriteRenderer* m_diseaseImg;
+
+	class CSpriteRenderer* m_stunicon;
+	class CSpriteRenderer* m_bleedicon;
+	class CSpriteRenderer* m_moveicon;
+	class CSpriteRenderer* m_blighicon;
+	class CSpriteRenderer* m_debufficon;
 
 public:
 

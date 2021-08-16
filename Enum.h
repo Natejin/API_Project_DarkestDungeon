@@ -369,8 +369,22 @@ enum class IMAGE
 	Vestal_investigate,
 	Vestal_lectionary,
 	Vestal_mace,
-	Vestal_miracle
-
+	Vestal_miracle,
+	//Backdrop
+	Backdrop_treatment,
+	Backdrop_disease,
+	//resist
+	bleed,
+	buff,
+	debuff,
+	diseade,
+	gaurd,
+	heal,
+	move,
+	poison,
+	stress,
+	stun,
+	tag
 };
 
 enum class Resistance

@@ -69,17 +69,17 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
 
 	//resistance
-	MG_IMAGE->addImage("bleed", "images/resistance/skill_attribute_bleed.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("buff", "images/resistance/skill_attribute_buff.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("debuff", "images/resistance/skill_attribute_debuff.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("diseade", "images/resistance/skill_attribute_disease.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("gaurd", "images/resistance/skill_attribute_guard.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("heal", "images/resistance/skill_attribute_heal.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("move", "images/resistance/skill_attribute_move.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("poison", "images/resistance/skill_attribute_poison.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("stress", "images/resistance/skill_attribute_stress.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("stun", "images/resistance/skill_attribute_stun.bmp", 24, 24, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("tag", "images/resistance/skill_attribute_tag.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::bleed, "images/resistance/skill_attribute_bleed.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::buff, "images/resistance/skill_attribute_buff.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::debuff, "images/resistance/skill_attribute_debuff.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::diseade, "images/resistance/skill_attribute_disease.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::gaurd, "images/resistance/skill_attribute_guard.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::heal, "images/resistance/skill_attribute_heal.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::move, "images/resistance/skill_attribute_move.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::poison, "images/resistance/skill_attribute_poison.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::stress, "images/resistance/skill_attribute_stress.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::stun, "images/resistance/skill_attribute_stun.bmp", 24, 24, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::tag, "images/resistance/skill_attribute_tag.bmp", 24, 24, true, RGB(255, 0, 255));
 
 	//panel
 	MG_IMAGE->addImage(IMAGE::banner, "images/panel/panel_banner.bmp", 685, 123, true, RGB(255, 0, 255));
@@ -92,7 +92,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395,776, true, RGB(255, 0, 255));
-
+	MG_IMAGE->addImage(IMAGE::Backdrop_treatment, "images/panel/quirk_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Backdrop_disease, "images/panel/disease_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
+	
 	//Icon_Map
 	MG_IMAGE->addImage(IMAGE::hall_clear, "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::hall_dark, "images/icons_map/hall_dark.bmp", 24, 24, true, RGB(255, 0, 255));
