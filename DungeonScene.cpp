@@ -362,7 +362,6 @@ void DungeonScene::ActivateRoom()
 		m_roadObjs[i]->Disable();
 	}
 
-	SetRoomObject();
 
 
 
@@ -406,6 +405,8 @@ void DungeonScene::ActivateRoom()
 
 	if (m_pMapSystem->GetCurDungeonData().dungeonMapState == DUNGEONMAPSTATE::Room_Trasure)
 	{
+
+		SetRoomObject();
 		m_roomObj->Enable();
 	}
 }
