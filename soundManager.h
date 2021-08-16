@@ -30,6 +30,7 @@ public:
 	void render();
 
 	void addSound(SOUND keyName, string soundName, bool bgm = FALSE, bool loop = FALSE);
+	void SetSound();
 	void play(SOUND keyName, float volume = 1.0f);
 	void stop(SOUND keyName);
 	void pause(SOUND keyName);

@@ -110,16 +110,17 @@ void CHeroList_button::BackRender(HDC _hdc)
 
 void CHeroList_button::Render(HDC _hdc)
 {
-}
-
-void CHeroList_button::FrontRender(HDC _hdc)
-{
 	m_spriteRenderer->RenderUI(_hdc);
 	m_heroBG->RenderUI(_hdc);
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
 		RectangleMake(_hdc, m_collider->rect, m_transform->m_pos);
 	}
+}
+
+void CHeroList_button::FrontRender(HDC _hdc)
+{
+	
 	//for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 	//{
 	//	char str[256];

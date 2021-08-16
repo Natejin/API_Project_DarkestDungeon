@@ -12,9 +12,10 @@ public:
 	class CEquipButton* m_weapon;
 
 	vector<class CBTN_Skill*> m_skillbuttonVec;
+	vector<class CBTN_CampSkill*> m_campSkillbuttonVec;
 	vector<class CEquipButton*> m_armorbuttonVec;
 	vector<class CEquipButton*> m_weaponbuttonVec;
-	
+	vector<class CPosition_Button*>m_postion_buttonVec;
 	CUI_Panel_Hero();
 	~CUI_Panel_Hero();
 
@@ -41,5 +42,17 @@ public:
 	void CreateHeroEquip();
 	void SetHeroEquip();
 	void CloseHeroEquip();
+
+	void CreateCampSkill();
+	void SetCampSkill();
+	void CloseCampSkill();
+
+	void CreatPostionButton();
+
+	void SetPhrases_Img();
+	void DrawPhrases_Img(HDC _hdc);
+
+	void SetResistanceInfo();
+	void DrawResistanceInfo(HDC _hdc);
 };
 

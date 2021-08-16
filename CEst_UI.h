@@ -8,11 +8,18 @@ protected:
 	class CButton* m_quit;
 
 	class CSpriteRenderer* m_windowPanelBG;
+	class CSpriteRenderer* m_windowPanel;
+
 	class CSpriteRenderer* m_windowPanelChar;
-	class CSpriteRenderer* m_HeroPanel;
 	class CSpriteRenderer* m_HeroImg;
-	class CSpriteRenderer* m_treatmentImg;
-	class CSpriteRenderer* m_diseaseImg;
+
+	class CSpriteRenderer* Quirk_Img;
+	class CSpriteRenderer* OriginStatus_Img;
+	class CSpriteRenderer* Equip_Img;
+	class CSpriteRenderer* CombatSkill_Img;
+	class CSpriteRenderer* CampingSkill_Img;
+	class CSpriteRenderer* Resistance_Img;
+	class CSpriteRenderer* Disease_Img;
 
 	class CSpriteRenderer* m_stunicon;
 	class CSpriteRenderer* m_bleedicon;
