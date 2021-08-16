@@ -9,8 +9,8 @@ public:
 	vector<class CHeroList_button*> m_OnCoach_heroListButtonVec;
 	vector<class CHero*> m_OnCoach_HeroVec;
 
-	class Hero_Roster* m_Roster_ButtonVec;
-	class CUI_Panel_Hero* m_hero_panel;
+	//class Hero_Roster* m_Roster_ButtonVec;
+	//class CUI_Panel_Hero* m_hero_panel;
 
 	void CreateOnCoach_Hero();
 	void CreateCoach_Button();

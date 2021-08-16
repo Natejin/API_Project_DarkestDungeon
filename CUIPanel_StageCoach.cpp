@@ -101,8 +101,9 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 		OnCoach_HeroList_Button->Unable();
 		OnCoach_HeroList_Button->m_transform->m_pos = Vector2(WINSIZEX / 2 + 270, WINSIZEY - 880 + i * 100);
 		OnCoach_HeroList_Button->AddColliderBox(50, 50);
-		OnCoach_HeroList_Button->SetTriggerWhenDown(this, &CUIPanel_StageCoach::ShowDummyHeroList);
-		OnCoach_HeroList_Button->SetTriggerWhenDownRightButton(this, &CUIPanel_StageCoach::ShowHeroPanel);
+		OnCoach_HeroList_Button->townScene = townScene;
+		OnCoach_HeroList_Button->SetTriggerWhenDown(townScene, &TownScene::ShowDummyHeroList);
+		OnCoach_HeroList_Button->SetTriggerWhenDownRightButton(townScene, &TownScene::ShowHeroPanel);
 		OnCoach_HeroList_Button->m_index = i;
 		OnCoach_HeroList_Button->m_hero = m_OnCoach_HeroVec[i];
 
@@ -129,13 +130,3 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 
 }
 
-void CUIPanel_StageCoach::ShowDummyHeroList()
-{
-	m_Roster_ButtonVec->m_spriteRenderer->SetImage(m_OnCoach_heroListButtonVec[ONHeroIndex]->m_spriteRenderer->GetImage());
-	m_Roster_ButtonVec->Enable();
-}
-
-void CUIPanel_StageCoach::ShowHeroPanel()
-{
-	m_hero_panel->Enable();
-}
