@@ -305,7 +305,7 @@ void CBattleSystem::CreateHeroesParty()
 	int playerPartySize = MG_GAME->GetHeroPartySize();
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = MG_GAME->GetHero(0)->m_transform->m_pos;
+	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	for (int i = 0; i < playerPartySize; i++)
 	{
 		heroParty.push_back(MG_GAME->GetHeroFromParty(i));

@@ -27,6 +27,10 @@ void Embark::LateUpdate()
 
 void Embark::BackRender(HDC _hdc)
 {
+	for (int i = 0; i < m_images.size(); i++)
+	{
+		m_images[i]->Render(_hdc);
+	}
 }
 
 void Embark::Render(HDC _hdc)
@@ -35,10 +39,7 @@ void Embark::Render(HDC _hdc)
 
 void Embark::FrontRender(HDC _hdc)
 {
-	for (int i = 0; i < m_images.size(); i++)
-	{
-		m_images[i]->Render(_hdc);
-	}
+
 }
 
 void Embark::Release()

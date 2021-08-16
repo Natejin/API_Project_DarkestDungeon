@@ -17,7 +17,7 @@ HRESULT CObjOnRoad::Init()
 {
 	AddSpriteRenderer();
 	AddColliderBox(300,300);
-	m_collider->SetColliderBox(Vector2(0, 0), Vector2(100, 100));
+	m_collider->SetColliderBox(Vector2(0, 0), Vector2(100, 500));
 	return S_OK;
 }
 
@@ -235,7 +235,7 @@ void CObjOnRoad::Interaction_treassure()
 {
 	//treasure
 	//touchable when it's collision with Hero(0)
-	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos + 100))
+	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHeroFromParty(0)->m_transform->m_pos + 100))
 	{
 		if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 		{
@@ -252,7 +252,7 @@ void CObjOnRoad::Interaction_treassure()
 
 void CObjOnRoad::Interaction_trap()
 {
-	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos + 120))
+	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHeroFromParty(0)->m_transform->m_pos + 120))
 	{
 		if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 		{
@@ -273,7 +273,7 @@ void CObjOnRoad::Interaction_trap()
 		}
 	}
 
-	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos - 50))
+	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHeroFromParty(0)->m_transform->m_pos - 50))
 	{
 		Interaction_trap_fail();
 		m_dungeonScene->m_pMapSystem->SetIsOpened();
@@ -286,9 +286,9 @@ void CObjOnRoad::Interaction_trap_fail()
 	m_spriteRenderer->SetImage(IMAGE::obj_trap2);
 	for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
 	{
-		if (MG_GAME->GetHero(i)->isSelected)
+		if (MG_GAME->GetHeroFromParty(i)->isSelected)
 		{
-			MG_GAME->GetHero(i)->setStress(MG_GAME->GetParty()->GetHero(i)->getStress() + MG_RND->getFromIntTo(10, 25));
+			MG_GAME->GetHeroFromParty(i)->setStress(MG_GAME->GetParty()->GetHero(i)->getStress() + MG_RND->getFromIntTo(10, 25));
 			break;
 		}
 	}
@@ -301,7 +301,7 @@ void CObjOnRoad::Interaction_trap_success()
 
 void CObjOnRoad::Interaction_battle()
 {
-	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHero(0)->m_transform->m_pos))
+	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHeroFromParty(0)->m_transform->m_pos))
 	{
 		m_dungeonScene->m_pBattleSystem->BattleSystemInitiate();
 		m_dungeonScene->m_pMapSystem->SetIsOpened();

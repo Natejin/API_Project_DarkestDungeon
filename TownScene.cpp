@@ -263,6 +263,7 @@ void TownScene::DeactivateBuildings()
 	{
 		buildingVec[i]->isActive = false;
 	}
+	m_town->Disable();
 }
 
 void TownScene::ActivateBuildings() {

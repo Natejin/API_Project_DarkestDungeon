@@ -7,8 +7,8 @@ CHero::CHero() {
 
 	m_unitType = UNITTYPE::Hero;
 	m_layer = LAYER::Player;
-	speedFront = 8;
-	speedBack = 4;
+	speedFront = 8; //8
+	speedBack = 4; //4
 	weaponLvl = 0;
 	armorLvl = 0;
 }
