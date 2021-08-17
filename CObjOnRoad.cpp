@@ -286,11 +286,15 @@ void CObjOnRoad::Interaction_trap_fail()
 	m_spriteRenderer->SetImage(IMAGE::obj_trap2);
 	for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
 	{
-		if (MG_GAME->GetHeroFromParty(i)->isSelected)
+		if (MG_GAME->GetHeroFromParty(i) != nullptr)
 		{
-			MG_GAME->GetHeroFromParty(i)->setStress(MG_GAME->GetParty()->GetHero(i)->getStress() + MG_RND->getFromIntTo(10, 25));
-			break;
+			if (MG_GAME->GetHeroFromParty(i)->isSelected)
+			{
+				MG_GAME->GetHeroFromParty(i)->setStress(MG_GAME->GetParty()->GetHero(i)->getStress() + MG_RND->getFromIntTo(10, 25));
+				break;
+			}
 		}
+		
 	}
 }
 

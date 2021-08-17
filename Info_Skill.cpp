@@ -9,7 +9,6 @@ bool CInfo_Skill::CheckUseable(int pos)
 //비트연산을 활용하여 위치값을 스킬타겟과 비교하기
 bool CInfo_Skill::CheckTarget(int pos)
 {
-	int a = (1 << (pos));
 	return targetPos & ((1 << (pos))) ? true : false;
 }
 

@@ -30,16 +30,16 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 	setParty();
-	RegisterHeroToParty(0);
-	RegisterHeroToParty(1);
-	RegisterHeroToParty(2);
-	RegisterHeroToParty(3);
+	//RegisterHeroToParty(0);
+	//RegisterHeroToParty(1);
+	//RegisterHeroToParty(2);
+	//RegisterHeroToParty(3);
 
 	//파티에 nullptr 채우기
-	//m_partyOrigin.push_back(nullptr);
-	//m_partyOrigin.push_back(nullptr);
-	//m_partyOrigin.push_back(nullptr);
-	//m_partyOrigin.push_back(nullptr);
+	m_partyOrigin.push_back(nullptr);
+	m_partyOrigin.push_back(nullptr);
+	m_partyOrigin.push_back(nullptr);
+	m_partyOrigin.push_back(nullptr);
 
 
 	m_dungeonScene = MG_SCENE->dungeonScene;
@@ -85,21 +85,21 @@ void CGameManager::Release()
 
 bool CGameManager::RegisterHeroToParty(CHero* hero)
 {
-	//for (size_t i = 0; i < m_partyOrigin.size(); i++)
-	//{
-	//	if (m_partyOrigin[i] == nullptr)
-	//	{
-	//		m_partyOrigin[i] = hero;
-	//		return true;
-	//	}
-	//}
-	//return false;
+	for (size_t i = 0; i < m_partyOrigin.size(); i++)
+	{
+		if (m_partyOrigin[i] == nullptr)
+		{
+			m_partyOrigin[i] = hero;
+			return true;
+		}
+	}
+	return false;
 
-	if (m_partyOrigin.size() < 4)
+	/*if (m_partyOrigin.size() < 4)
 	{
 		m_partyOrigin.push_back(hero);
 		return true;
-	}return false;
+	}return false;*/
 }
 
 bool CGameManager::RegisterHeroToParty(int ownIndex)

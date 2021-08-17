@@ -30,7 +30,6 @@ void CInfomationManager::Release()
 
 void CInfomationManager::RemoveInfo(Info* info)
 {
-	map<int, Info*>::iterator it;
 	int id = info->instanceId;
 	auto a = objectVec[id];
 	SAFE_DELETE(a);
