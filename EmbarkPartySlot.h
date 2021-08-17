@@ -6,10 +6,8 @@
 class EmbarkPartySlot : public CEst_UI
 {
 public:
-	class DungeonScene* m_dungeonScene;
 	class TownScene* m_townScene;
 	class CHero* m_hero;
-	class CParty* m_party;
 
 	class CHeroList_button* m_listButton;
 	class CButton* checkBt;

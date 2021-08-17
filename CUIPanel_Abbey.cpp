@@ -39,9 +39,9 @@ void CUIPanel_Abbey::Update(float deltaTime, float worldTime)
 		{	//나중에 타운씬에서 회차가 넘어갈때 실행하게끔 변경해야한다.
 			ReduceStress();
 		}
-	}
-	
+	}	
 }
+
 void CUIPanel_Abbey::LateUpdate()
 {
 }
@@ -52,8 +52,8 @@ void CUIPanel_Abbey::BackRender(HDC _hdc)
 
 void CUIPanel_Abbey::Render(HDC _hdc)
 {
-
 }
+
 void CUIPanel_Abbey::FrontRender(HDC _hdc)
 {
 	m_windowPanelBG->Render(_hdc);
@@ -63,9 +63,9 @@ void CUIPanel_Abbey::FrontRender(HDC _hdc)
 }
 
 void CUIPanel_Abbey::Release()
-{
-	
+{	
 }
+
 void CUIPanel_Abbey::CreateRooms() //panel
 {
 	int k = 0;
@@ -93,22 +93,20 @@ void CUIPanel_Abbey::SetcloseRoom()
 	{
 		for (size_t j = 0; j < 3; j++)
 		{
-				if (i % 3 == 0)
-				{
-					panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_flagellation);
-					
-				}
-				if (i % 3 == 1)
-				{
-					panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_pray);
-				}
-				if (i % 3 == 2)
-				{
-					panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_meditation);
+			if (i % 3 == 0)
+			{
+				panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_flagellation);
 
-				}
-				
-			
+			}
+			if (i % 3 == 1)
+			{
+				panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_pray);
+			}
+			if (i % 3 == 2)
+			{
+				panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_meditation);
+
+			}
 		}
 	}
 

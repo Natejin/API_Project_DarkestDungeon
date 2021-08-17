@@ -17,11 +17,15 @@ protected:
 	class CBG_Town* m_town;
 	vector<class CBuilding*> buildingVec;
 	
-	class Hero_Roster* m_Roster_ButtonVec;
 	class CUI_Panel_Hero* m_hero_panel;
 
+	class COwnHeroListPanel* addMemberCollider;
+
 public:
+	class Hero_Roster* m_DummyRosterButton;
 	vector<class CHeroList_button*> m_heroListButtonVec;
+
+	vector<class CHeroList_button*> m_coachHero;
 
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
@@ -63,8 +67,9 @@ public:
 	void DeactivateBuildings();
 	void ActivateBuildings();
 
-	void ShowDummyHeroList();
+	void ShowDummyHeroList(HeroListBtType type, int index);
 	void ShowHeroPanel();
+	void ShowCoachHeroPanel();
 
 	class CUI_Panel_Hero* GetHeroPanel();
 	class CHeroList_ui* m_heroListUI;
@@ -75,5 +80,8 @@ public:
 	bool isEmbark;
 
 	void setEmbark();
+
+	void addOwnHero();
+	void addMember(HeroListBtType type, int index);
 
 };

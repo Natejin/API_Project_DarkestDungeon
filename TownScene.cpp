@@ -25,6 +25,7 @@
 #include"CHeroList_ui.h"
 //===========================
 #include "Embark.h"
+#include "COwnHeroListPanel.h"
 
 
 TownScene::TownScene() {}
@@ -44,6 +45,11 @@ HRESULT TownScene::Init()
 	SetHeroPanel();
 
 	setEmbark();
+
+	addMemberCollider = new COwnHeroListPanel;
+	addMemberCollider->Init();
+	addMemberCollider->m_townScene = this;
+	MG_GMOBJ->RegisterObj(addMemberCollider);
 
 	m_heroListUI = new CHeroList_ui;
 	m_heroListUI->Init();
@@ -80,7 +86,7 @@ void TownScene::Release()
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]);
 	}
 	MG_GMOBJ->RemoveObj(m_heroListUI);
-	MG_GMOBJ->RemoveObj(m_Roster_ButtonVec);
+	MG_GMOBJ->RemoveObj(m_DummyRosterButton);
 	MG_GMOBJ->RemoveObj(m_hero_panel);
 
 	MG_GMOBJ->RemoveObj(m_embark);
@@ -97,6 +103,12 @@ void TownScene::Render()
 
 void TownScene::Render(HDC _hdc)
 {
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(255, 0, 255));
+	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+	TextOut(_hdc, 0, 180, str, strlen(str));
 }
 
 //Building.
@@ -195,11 +207,11 @@ void TownScene::SetEst_Img()
 
 void TownScene::SetRoster()
 {
-	m_Roster_ButtonVec = new Hero_Roster();
-	m_Roster_ButtonVec->Init();
-	m_Roster_ButtonVec->scene = this;
-	m_Roster_ButtonVec->Disable();
-	MG_GMOBJ->RegisterObj(m_Roster_ButtonVec);
+	m_DummyRosterButton = new Hero_Roster();
+	m_DummyRosterButton->Init();
+	m_DummyRosterButton->scene = this;
+	m_DummyRosterButton->Disable();
+	MG_GMOBJ->RegisterObj(m_DummyRosterButton);
 }
 
 void TownScene::SetHeroPanel()
@@ -245,6 +257,7 @@ void TownScene::SetEst_ui()
 	m_stage_coach = new CUIPanel_StageCoach();
 	m_stage_coach->townScene = this;
 	m_stage_coach->Init();
+	m_coachHero = m_stage_coach->m_OnCoach_heroListButtonVec;
 	MG_GMOBJ->RegisterObj("StageCoachUI", m_stage_coach);
 
 	m_statue = new CUIPanel_Statue();
@@ -269,7 +282,6 @@ void TownScene::DeactivateBuildings()
 	{
 		buildingVec[i]->isActive = false;
 	}
-	m_town->Disable();
 }
 
 void TownScene::ActivateBuildings() {
@@ -324,13 +336,12 @@ void TownScene::Show_tavern()
 
 void TownScene::SetHerolist()
 {
-
-
 	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]->GetId());
 	}
 	m_heroListButtonVec.clear();
+
 
 	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
 	{
@@ -338,9 +349,11 @@ void TownScene::SetHerolist()
 		dragButton->Init();
 		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
 		dragButton->AddColliderBox(50, 50);
-		dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
+		//dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
+		dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
 		dragButton->m_index = i;
+		dragButton->btType = HeroListBtType::ownHero;
 		dragButton->townScene = this;
 		MG_GAME->GetHero(i)->SetOwnIndex(i);
 		dragButton->m_hero = MG_GAME->GetHero(i);
@@ -359,22 +372,29 @@ void TownScene::SetHerolist()
 		case JOB::Highwayman:
 			dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
 			break;
-		default:
-			break;
 		}
 		m_heroListButtonVec.push_back(dragButton);
 		MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
 	}
 }
 
-void TownScene::ShowDummyHeroList()
+void TownScene::ShowDummyHeroList(HeroListBtType type, int index)
 {
-	m_Roster_ButtonVec->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
-	m_Roster_ButtonVec->Enable();
+	m_DummyRosterButton->type = type;
+	m_DummyRosterButton->index = index;
+	m_DummyRosterButton->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
+	m_DummyRosterButton->Enable();
 }
 
 void TownScene::ShowHeroPanel()
 {
+	m_hero_panel->isShowCoachHero = false;
+	m_hero_panel->Enable();
+}
+
+void TownScene::ShowCoachHeroPanel()
+{
+	m_hero_panel->isShowCoachHero = true;
 	m_hero_panel->Enable();
 }
 
@@ -391,3 +411,43 @@ void TownScene::setEmbark()
 	m_embark->Disable();
 	MG_GMOBJ->RegisterObj("embarkScene", m_embark);
 }
+
+void TownScene::addOwnHero()
+{
+	MG_GAME->RegisterHeroToOwnList(m_stage_coach->m_OnCoach_HeroVec[m_DummyRosterButton->index]);
+	m_stage_coach->m_OnCoach_HeroVec.erase(m_stage_coach->m_OnCoach_HeroVec.begin() + m_DummyRosterButton->index);
+	m_stage_coach->CreateCoach_Button();
+
+	SetHerolist();
+	//CHeroList_button* dragButton = new CHeroList_button();
+	//dragButton->Init();
+	//dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
+	//dragButton->AddColliderBox(50, 50);
+	////dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
+	//dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);
+	//dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
+	//dragButton->m_index = i;
+	//dragButton->btType = HeroListBtType::ownHero;
+	//dragButton->townScene = this;
+	//MG_GAME->GetHero(i)->SetOwnIndex(i);
+	//dragButton->m_hero = MG_GAME->GetHero(i);
+
+	//switch (dragButton->m_hero->GetJob())
+	//{
+	//case JOB::Crusader:
+	//	dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
+	//	break;
+	//case JOB::Vestal:
+	//	dragButton->AddSpriteRenderer(IMAGE::vestal_roster);
+	//	break;
+	//case JOB::PlagueDoctor:
+	//	dragButton->AddSpriteRenderer(IMAGE::plague_doctor_roster);
+	//	break;
+	//case JOB::Highwayman:
+	//	dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
+	//	break;
+	//}
+	//m_heroListButtonVec.push_back(dragButton);
+	//MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
+}
+

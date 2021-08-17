@@ -7,8 +7,6 @@ private:
 	class CHeroList_button* m_HeroList_button;
 
 public:
-
-	
 	class CButton* m_roomcheck;
 	class CButton* m_closedroom;
 	class CBuilding_PanelButton* panelbutton;

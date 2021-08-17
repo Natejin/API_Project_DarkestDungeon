@@ -696,8 +696,8 @@
     <ClInclude Include="CBTN_Skill_Swap.h">
       <Filter>Object\UI\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="ImageEffectBG.h">
-      <Filter>System\Battle</Filter>
+    <ClInclude Include="COwnHeroListPanel.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1094,8 +1094,8 @@
     <ClCompile Include="CBTN_Skill_Swap.cpp">
       <Filter>Object\UI\Buttons</Filter>
     </ClCompile>
-    <ClCompile Include="ImageEffectBG.cpp">
-      <Filter>System\Battle</Filter>
+    <ClCompile Include="COwnHeroListPanel.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

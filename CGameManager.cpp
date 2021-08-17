@@ -19,8 +19,8 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member3", JOB::PlagueDoctor));
 	RegisterHeroToOwnList(CreateHero("member4", JOB::Highwayman));
 
-	RegisterHeroToOwnList(CreateHero("member5", JOB::Crusader));
-	RegisterHeroToOwnList(CreateHero("member6", JOB::Vestal));
+	//RegisterHeroToOwnList(CreateHero("member5", JOB::Crusader));
+	//RegisterHeroToOwnList(CreateHero("member6", JOB::Vestal));
 	/*RegisterHeroToOwnList(CreateHero("member5", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member6", JOB::PlagueDoctor));
 	RegisterHeroToOwnList(CreateHero("member7", JOB::Crusader));
