@@ -38,6 +38,7 @@ class CBattleSystem : public GameObject
 
 	class ImageObject* heroZoomImage;
 	class ImageObject* enemyZoomImage;
+	class ImageEffectBG* effectBGImage;
 	class MonsterIndicator* monsterIndicator;
 
 

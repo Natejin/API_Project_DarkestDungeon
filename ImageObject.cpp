@@ -14,7 +14,7 @@ ImageObject::~ImageObject()
 HRESULT ImageObject::Init()
 {
     m_transform->m_pivot = Vector2(0.5, 1);
-    coolTime = 4;
+    coolTime = 3;
     AddSpriteRenderer(IMAGE::NONE);
 
 

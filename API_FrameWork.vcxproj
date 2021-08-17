@@ -168,6 +168,7 @@
     <ClInclude Include="Embark.h" />
     <ClInclude Include="EmbarkPartySlot.h" />
     <ClInclude Include="Hero_Roster.h" />
+    <ClInclude Include="ImageEffectBG.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="Info.h" />
     <ClInclude Include="InfomationManager.h" />
@@ -308,6 +309,7 @@
     <ClCompile Include="Embark.cpp" />
     <ClCompile Include="EmbarkPartySlot.cpp" />
     <ClCompile Include="Hero_Roster.cpp" />
+    <ClCompile Include="ImageEffectBG.cpp" />
     <ClCompile Include="ImageObject.cpp" />
     <ClCompile Include="Info.cpp" />
     <ClCompile Include="InfomationManager.cpp" />

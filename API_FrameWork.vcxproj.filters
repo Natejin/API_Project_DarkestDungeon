@@ -696,6 +696,9 @@
     <ClInclude Include="CBTN_Skill_Swap.h">
       <Filter>Object\UI\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="ImageEffectBG.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1090,6 +1093,9 @@
     </ClCompile>
     <ClCompile Include="CBTN_Skill_Swap.cpp">
       <Filter>Object\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageEffectBG.cpp">
+      <Filter>System\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

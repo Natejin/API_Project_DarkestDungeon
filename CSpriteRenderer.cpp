@@ -94,8 +94,14 @@ void CSpriteRenderer::RenderUI(HDC _hdc)
 		}
 	}
 	else {
-
-		m_image->renderUI(_hdc, m_trans);
+		if (useCustomScale)
+		{
+			m_image->renderUI(_hdc, m_trans, Vector2(0,0), scale);
+		}
+		else {
+			m_image->renderUI(_hdc, m_trans);
+		}
+	
 	}
 }
 
