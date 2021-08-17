@@ -153,7 +153,6 @@ void DungeonScene::CreateParty()
 			MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
 			MG_GAME->GetHeroFromParty(i)->Enable();
 			m_party->SetHero(MG_GAME->GetHeroFromParty(i));
-			MG_GMOBJ->RegisterObj(m_party->GetHero(i));
 		}
 	}
 
@@ -234,7 +233,7 @@ void DungeonScene::CreateBattleSystem()
 	m_pBattleSystem->Init();
 	m_pBattleSystem->dungeonUI = m_dungeonUI;
 	m_pBattleSystem->dungeonUIHeroinfo = m_dungeonUIinfo;
-	m_pBattleSystem->isActive = false;
+	m_pBattleSystem->Disable();
 	m_dungeonUI->m_pBattleSystem = m_pBattleSystem;
 	m_dungeonUI->SetSkillButton();
 	MG_GMOBJ->RegisterObj("battleSystem", m_pBattleSystem);

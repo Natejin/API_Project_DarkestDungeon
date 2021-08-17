@@ -29,22 +29,22 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member10", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
-
-	//RegisterHeroToParty(0);
-	//RegisterHeroToParty(1);
-	//RegisterHeroToParty(2);
-	//RegisterHeroToParty(3);
+	setParty();
+	RegisterHeroToParty(0);
+	RegisterHeroToParty(1);
+	RegisterHeroToParty(2);
+	RegisterHeroToParty(3);
 
 	//파티에 nullptr 채우기
-	m_partyOrigin.push_back(nullptr);
-	m_partyOrigin.push_back(nullptr);
-	m_partyOrigin.push_back(nullptr);
-	m_partyOrigin.push_back(nullptr);
+	//m_partyOrigin.push_back(nullptr);
+	//m_partyOrigin.push_back(nullptr);
+	//m_partyOrigin.push_back(nullptr);
+	//m_partyOrigin.push_back(nullptr);
 
 
 	m_dungeonScene = MG_SCENE->dungeonScene;
 	m_townScene = MG_SCENE->townScene;
-	setParty();
+
 	return S_OK;
 }
 
@@ -85,21 +85,21 @@ void CGameManager::Release()
 
 bool CGameManager::RegisterHeroToParty(CHero* hero)
 {
-	for (size_t i = 0; i < 4; i++)
-	{
-		if (m_partyOrigin[i] == nullptr)
-		{
-			m_partyOrigin[i] = hero;
-			return true;
-		}
-	}
-	return false;
-
-	//if (m_partyOrigin.size() < 4)
+	//for (size_t i = 0; i < m_partyOrigin.size(); i++)
 	//{
-	//	m_partyOrigin.push_back(hero);
-	//	return true;
-	//}return false;
+	//	if (m_partyOrigin[i] == nullptr)
+	//	{
+	//		m_partyOrigin[i] = hero;
+	//		return true;
+	//	}
+	//}
+	//return false;
+
+	if (m_partyOrigin.size() < 4)
+	{
+		m_partyOrigin.push_back(hero);
+		return true;
+	}return false;
 }
 
 bool CGameManager::RegisterHeroToParty(int ownIndex)
@@ -192,6 +192,7 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 	default:
 		break;
 	}
+	MG_GMOBJ->RegisterObj(hero);
 	hero->Disable();
 	return hero;
 }

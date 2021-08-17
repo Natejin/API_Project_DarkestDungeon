@@ -16,7 +16,7 @@
 
 CBattleSystem::CBattleSystem()
 {
-
+	m_layer = LAYER::UIMotion;
 }
 
 CBattleSystem::~CBattleSystem()
@@ -107,11 +107,19 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
 		{
-			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
+			sprintf_s(str, "영웅 : 위치 % d, 속도 : % d, 체력 : %d/ %d", 
+				speedVec[i].second->GetPartyIndex(), 
+				speedVec[i].first,
+				speedVec[i].second->getHP(),
+				speedVec[i].second->getMaxHP());
 			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
 		}
 		else {
-			sprintf_s(str, "적 : 위치 % d, 속도 : % d", speedVec[i].second->GetPartyIndex(), speedVec[i].first);
+			sprintf_s(str, "적 : 위치 %d, 속도 : %d 체력 : %d/ %d", 
+				speedVec[i].second->GetPartyIndex(), 
+				speedVec[i].first, 
+				speedVec[i].second->getHP(),
+				speedVec[i].second->getMaxHP());
 			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
 		}
 	}
@@ -134,6 +142,7 @@ void CBattleSystem::BattleSystemInitiate()
 	isActive = true;
 	monsterIndicator->m_transform->m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
+	Enable();
 }
 
 void CBattleSystem::BattleSystemEnd()
@@ -233,35 +242,31 @@ void CBattleSystem::UseSkill(int _index)
 			curHero->isSelected = true;
 	
 
-			if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
+			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
+
+			switch (tempSkill->target)
 			{
-				SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
-				CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
-
-				switch (tempSkill->target)
-				{
-				case SKILLTARGET::Enemy:
-					SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-					break;
-				case SKILLTARGET::Enemies:
-					SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-					break;
-				case SKILLTARGET::Self:
-					//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
-					//졸려 ㅅㅂ.....
-					break;
-				case SKILLTARGET::Ally:
-					SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-					break;
-				case SKILLTARGET::Allies:
-					SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-					break;
-				default:
-					break;
-				}
-
-
+			case SKILLTARGET::Enemy:
+				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				break;
+			case SKILLTARGET::Enemies:
+				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				break;
+			case SKILLTARGET::Self:
+				//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
+				//졸려 ㅅㅂ.....
+				break;
+			case SKILLTARGET::Ally:
+				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				break;
+			case SKILLTARGET::Allies:
+				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				break;
+			default:
+				break;
 			}
+
 		}
 	}
 	
@@ -272,11 +277,11 @@ void CBattleSystem::UseSkill(int _index)
 
 void CBattleSystem::CreateEnemyParty()
 {
-	int random = MG_RND->getInt(2) + 2;
+	int random = MG_RND->getInt(3) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
 	Vector2 heroPos = heroParty[0]->m_transform->m_pos;
-	for (size_t i = 0; i < random; i++)
+	for (size_t i = 0; i < 4; i++)
 	{
 		CEnemy* enemy = new CEnemy();
 		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::BoneDefender)); //TODO 추후 적 세팅 변경하기
@@ -381,7 +386,7 @@ void CBattleSystem::SelectEnemy(int index)
 	}
 }
 
-void CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
+bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
@@ -391,20 +396,30 @@ void CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 		heroZoomImage->speed = 5;
 		heroZoomImage->Enable();
 
-
-
 		enemyZoomImage->m_spriteRenderer->SetImage(enemyParty[index]->GetInfo()->imageDefend);
 		enemyZoomImage->targetPos = enemyZoomImage->originPos;
 		enemyZoomImage->targetPos.x += 100;
 		enemyZoomImage->speed = 2;
 		enemyZoomImage->Enable();
 
-		startTriggerTime = MG_TIME->getWorldTime() + 5;
-		startNextTurn = true;
-
 		enemyParty[index]->reduceHP(tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo()));
-		DeselectAll();	
+		DelayUntillNextTurn(5);
+		return true;
 	}
+	return false;
+}
+
+void CBattleSystem::DelayUntillNextTurn(int second)
+{
+	startTriggerTime = MG_TIME->getWorldTime() + second;
+	startNextTurn = true;
+	DeselectAll();
+}
+
+bool CBattleSystem::CheckAndDamageHero(CInfo_Skill* tempSkill, int index)
+{
+
+	return false;
 }
 
 void CBattleSystem::SelectHero(int index)
@@ -516,23 +531,81 @@ void CBattleSystem::StartEnemyTrun(int index)
 {
 	bool isFoundTarget = false;
 	vector<SKILL> ownSkill = enemyParty[index]->GetInfo()->ownSkill;
-	CInfo_Skill* enemySkill = DB_SKILL->CallSkill(ownSkill[MG_RND->getInt(ownSkill.size())]);
+
 	
-	/*while (!isFoundTarget)
+	//랜덤으로 가지고있는스킬중 하나를 가져와서
+	//타겟팅(플레이어블 영웅)을 찾은후
+	//타겟이 없을경우 다른스킬로 반복실행
+	while (!isFoundTarget)
 	{
+		int curSkillIndex = MG_RND->getInt(ownSkill.size());
+		CInfo_Skill* enemySkill = DB_SKILL->CallSkill(ownSkill[curSkillIndex]);
+		ownSkill.erase(ownSkill.begin() + curSkillIndex);
+
+		vector<int> order;
 		for (size_t i = 0; i < heroParty.size(); i++)
+		{
+			order.push_back(i);
+		}
+
+		while (order.size() > 0)
+		{
+			int orderIndex = MG_RND->getInt(order.size());
+			order.erase(order.begin() + orderIndex);
+			if (heroParty[orderIndex] != nullptr && heroParty[orderIndex]->GetAlive())
+			{
+				if (enemySkill->CheckTarget(heroParty[orderIndex]->GetPartyPos()))
+				{
+					isFoundTarget = true;
+
+					heroZoomImage->m_spriteRenderer->SetImage(heroParty[orderIndex]->GetInfo()->imageDefend);
+					heroZoomImage->targetPos = heroZoomImage->originPos;
+					heroZoomImage->targetPos.x -= 100;
+					heroZoomImage->speed = 2;
+					heroZoomImage->Enable();
+
+					enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
+					enemyZoomImage->targetPos = enemyZoomImage->originPos;
+					enemyZoomImage->targetPos.x -= 200;
+					enemyZoomImage->speed = 5;
+					enemyZoomImage->Enable();
+
+					heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
+					DelayUntillNextTurn(5);
+					return;
+				}
+			}
+		}
+
+		/*for (size_t i = 0; i < heroParty.size(); i++)
 		{
 			if (heroParty[i] != nullptr && heroParty[i]->GetAlive())
 			{
-				if (enemySkill->CheckTarget(heroParty[i]->GetPosition()))
+				if (enemySkill->CheckTarget(heroParty[i]->GetPartyPos()))
 				{
+					isFoundTarget = true;
 
+					heroZoomImage->m_spriteRenderer->SetImage(heroParty[i]->GetInfo()->imageDefend);
+					heroZoomImage->targetPos = heroZoomImage->originPos;
+					heroZoomImage->targetPos.x -= 100;
+					heroZoomImage->speed = 2;
+					heroZoomImage->Enable();
+
+					enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
+					enemyZoomImage->targetPos = enemyZoomImage->originPos;
+					enemyZoomImage->targetPos.x -= 200;
+					enemyZoomImage->speed = 5;
+					enemyZoomImage->Enable();
+
+					heroParty[i]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[i]->GetInfo()));
+					DelayUntillNextTurn(5);
+					
 				}
 			}
 
-		}
+		}*/
 		
-	}*/
+	}
 
 
 }

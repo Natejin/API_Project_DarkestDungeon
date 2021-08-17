@@ -81,7 +81,9 @@ private:
 	CEnemy* GetEnemy(int i);
 	void SelectEnemy(int index);
 
-	void CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index);
+	bool CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index);
+	void DelayUntillNextTurn(int second);
+	bool CheckAndDamageHero(CInfo_Skill* tempSkill, int index);
 
 	void SelectHero(int index);
 	void CheckAndHealAlly(CInfo_Skill* tempSkill, int index);

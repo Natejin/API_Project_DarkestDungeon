@@ -23,6 +23,7 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	info->m_maxHP = _info->m_maxHP;
 	info->m_HP = _info->m_maxHP;
 	info->m_SPD = _info->m_SPD;
+	info->isAlive = _info->isAlive;
 	for (size_t i = 0; i < 5; i++)
 	{
 		info->resist[i] = _info->resist[i];

@@ -100,10 +100,7 @@ void CParty::Release()
 
 void CParty::SetHero(CHero* member)
 {
-	if (m_member.size() < maxPartyMember)
-	{
-		m_member.push_back(member);
-	}
+	m_member.push_back(member);
 }
 
 void CParty::SetCamera() 
@@ -268,7 +265,6 @@ void CParty::FormationMove()
 	}
 
 	m_member[0]->Move();
-
 	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
 	for (size_t i = 1; i < m_member.size(); i++)
