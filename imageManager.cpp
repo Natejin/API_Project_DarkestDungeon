@@ -405,6 +405,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Vestal_Weapon_0, "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Armor_0, "images/icons_equip_Crusader/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Weapon_0, "images/icons_equip_Crusader/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_Armor_0, "images/icons_equip_Plague_doctor/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_Weapon_0, "images/icons_equip_Plague_doctor/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highway_Armor_0, "images/icons_equip_Highwayman/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highway_Weapon_0, "images/icons_equip_Highwayman/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 
 	//UIovelay
 
