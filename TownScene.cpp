@@ -324,8 +324,6 @@ void TownScene::Show_tavern()
 
 void TownScene::SetHerolist()
 {
-
-
 	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]->GetId());

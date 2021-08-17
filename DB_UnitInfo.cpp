@@ -124,7 +124,7 @@ void DB_UnitInfo::SetHero()
 	info->isAffliction = false;
 	info->isAlive = true;
 	info->job = JOB::Crusader;
-	info->m_DMG = 1;
+	info->m_DMG = 20;
 	info->m_ACRY = 9;
 	info->m_CRI = 0;
 	info->m_DEF = 3;
@@ -178,7 +178,7 @@ void DB_UnitInfo::SetHero()
 	info->isAlive = true;
 
 	info->job = JOB::Vestal;
-	info->m_DMG = 3;
+	info->m_DMG = 50;
 	info->m_ACRY = 4;
 	info->m_CRI = 2;
 	info->m_DEF = 5;

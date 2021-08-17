@@ -1,9 +1,9 @@
 #pragma once
 #include"CEst_UI.h"
 #include"CBTN_Skill.h"
+
 class CUI_Panel_Hero : public CEst_UI
-{
-	
+{	
 public:
 
 	class CHeroList_button* hero_List;
@@ -55,4 +55,3 @@ public:
 	void SetResistanceInfo();
 	void DrawResistanceInfo(HDC _hdc);
 };
-
