@@ -15,7 +15,9 @@ HRESULT imageManager::init()
 	//MG_IMAGE->addFrameImage("�ϸ�", "images/�ϸ�.bmp", 960, 200, 10, 2, true, RGB(255, 0, 255));
 
 	//Hero
-	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/vestal/Vestal_Idle_Frame.bmp", 2400, 300, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/vestal/Vestal_Idle_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
+	//MG_IMAGE->addFrameImage(IMAGE::Vestal_Walk, "images/Heroes/vestal/Vestal_Walk_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Vestal_Combat, "images/Heroes/vestal/Vestal_Combat_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
 	
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/crusader/Crusader_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/crusader/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));

@@ -26,9 +26,9 @@ void TestScene::Release()
 
 void TestScene::Update()
 {
-	//MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	MG_SCENE->changeScene(SCENETYPE::Dungeon);
 	//MG_SCENE->changeScene(SCENETYPE::Dungeon2);
-	MG_SCENE->changeScene(SCENETYPE::Town);
+	//MG_SCENE->changeScene(SCENETYPE::Town);
 	if (MG_INPUT->isOnceKeyDown('P'))
 	{
 		//MG_SOUND->play(SOUND::Town,0.2);

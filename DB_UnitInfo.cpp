@@ -187,7 +187,7 @@ void DB_UnitInfo::SetHero()
 	info->m_STRS = 0;
 
 	info->imageIdle = IMAGE::Vestal_Idle;
-	info->imageCombat = IMAGE::Vestal_Idle;
+	info->imageCombat = IMAGE::Vestal_Combat;
 	info->imageWalk = IMAGE::Vestal_Idle;
 	info->imageAttack = IMAGE::Vestal_mace;
 	info->imageCharge = IMAGE::Vestal_miracle;
@@ -222,6 +222,59 @@ void DB_UnitInfo::SetHero()
 	info->armor.push_back(IMAGE::Vestal_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
 	MG_INFO->RegisterInfo(info);
+
+	/*Info_Hero* info = new Info_Hero();
+	info->unitType = UNITTYPE::Hero;
+	info->m_maxHP = 23;
+	info->m_SPD = 4;
+	info->isAffliction = false;
+	info->isAlive = true;
+	info->job = JOB::Crusader;
+	info->m_DMG = 1;
+	info->m_ACRY = 9;
+	info->m_CRI = 0;
+	info->m_DEF = 3;
+	info->m_DODGE = 0;
+	info->m_LVL = 1;
+	info->m_EXP = 0;
+	info->m_STRS = 0;
+
+	info->imageIdle = IMAGE::Crusader_Idle;
+	info->imageCombat = IMAGE::Crusader_Combat;
+	info->imageWalk = IMAGE::Crusader_Walk;
+	info->imageAttack = IMAGE::Crusader_sword;
+	info->imageCharge = IMAGE::Crusader_charge;
+	info->imageInvestigate = IMAGE::Crusader_investigate;
+	info->imageDefend = IMAGE::Crusader_defend;
+	info->imageBuff = IMAGE::Crusader_banner;
+	info->imageDebuff = IMAGE::Crusader_scroll;
+	info->resist[0] = 40;
+	info->resist[1] = 30;
+	info->resist[2] = 30;
+	info->resist[3] = 30;
+	info->resist[4] = 40;
+	info->ownSkill.push_back(SKILL::Crusader_Combat_Smite);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Crusader_Combat_ZealousAccusation);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Crusader_Combat_StunningBlow);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
+	info->skillLvl.push_back(0);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_stand_tall);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_unshakeable_leader);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_speech);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_vigil);
+
+	info->portrait = IMAGE::Crusader_portrait;
+	info->weapon.push_back(IMAGE::Crusader_Weapon_0);
+	info->armor.push_back(IMAGE::Crusader_Armor_0);
+	heroDB.insert(make_pair(info->job, info));
+	MG_INFO->RegisterInfo(info);*/
+
 
 
 
