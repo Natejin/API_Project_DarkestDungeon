@@ -641,37 +641,61 @@ void CBattleSystem::SwapPosSkill()
 		switch (curIndex)
 		{
 		case 0:
-			if (heroParty.size() > 1 && heroParty[1] != nullptr)
+
+			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				heroParty[1]->isTargetHeal = true;
+				if (heroParty[i]->GetPartyPos() == 1)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
 			}
 			break;
 		case 1:
 
-			if (heroParty.size() > 2 && heroParty[0] != nullptr)
+			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				heroParty[0]->isTargetHeal = true;
+				if (heroParty[i]->GetPartyPos() == 0)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
 			}
-			if (heroParty[2] != nullptr)
+			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				heroParty[2]->isTargetHeal = true;
+				if (heroParty[i]->GetPartyPos() == 2)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
 			}
 			break;
 		case 2:
-			if (heroParty.size() > 3 && heroParty[1] != nullptr)
+			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				heroParty[1]->isTargetHeal = true;
+				if (heroParty[i]->GetPartyPos() ==1)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
 			}
-			if (heroParty[3] != nullptr)
+			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				heroParty[3]->isTargetHeal = true;
+				if (heroParty[i]->GetPartyPos() == 3)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
 			}
-
 			break;
 		case 3:
-			if (heroParty.size() > 4 && heroParty[2] != nullptr)
+			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				heroParty[2]->isTargetHeal = true;
+				if (heroParty[i]->GetPartyPos() == 2)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
 			}
 			break;
 		default:
