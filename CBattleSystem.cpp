@@ -212,6 +212,7 @@ void CBattleSystem::StartTurn()
 				}
 			}
 			else {
+				speedVec.pop_back();
 				StartTurn();
 			}
 
@@ -367,18 +368,31 @@ void CBattleSystem::CreateHeroesParty()
 
 void CBattleSystem::Compare_P_E_Speed_ReArray()
 {	
-	//플레이어 영웅들을 speed turn에 추가
+	//플레이어 영웅들을 speed turn에 
+	bool isAllDead = true;
 	for (int i = 0; i < heroParty.size(); i++)
 	{
 		if (heroParty[i]->getHP() < 1) continue;
+		isAllDead = false;
 		speedVec.push_back(make_pair(heroParty[i]->GetSpeed() + MG_RND->getInt(randomDice6) , heroParty[i]));
 	}
+	if (isAllDead)
+	{
+		HeroTeamAreDead();
+	}
+	isAllDead = true;
 
-	//플레이어 영웅들을 speed turn에 추가
+	//적들을 speed turn에 추가
 	for (int i = 0; i < enemyParty.size(); i++)
 	{
 		if (enemyParty[i]->getHP() < 1) continue;
+		isAllDead = false;
 		speedVec.push_back(make_pair(enemyParty[i]->GetSpeed() + MG_RND->getInt(randomDice6), enemyParty[i]));
+	}
+
+	if (isAllDead)
+	{
+		EnemyTeamAreDead();
 	}
 
 	//알고리즘을 이용한 정렬
@@ -419,16 +433,8 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
-		heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
-		heroZoomImage->targetPos = heroZoomImage->originPos;
-		heroZoomImage->targetPos.x += 200;
-		heroZoomImage->speed = 5;
-		heroZoomImage->Enable();
-
-		enemyZoomImage->m_spriteRenderer->SetImage(enemyParty[index]->GetInfo()->imageDefend);
-		enemyZoomImage->targetPos = enemyZoomImage->originPos;
-		enemyZoomImage->targetPos.x += 100;
-		enemyZoomImage->speed = 2;
+		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 5);
+		SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 		enemyZoomImage->Enable();
 
 		effectBGImage->m_transform->m_pos = Vector2(0, 0);
@@ -496,17 +502,20 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
-		heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
-		heroZoomImage->targetPos = heroZoomImage->originPos;
-		heroZoomImage->targetPos.x += 200;
-		heroZoomImage->speed = 10;
-		heroZoomImage->Enable();
-
-
+		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
 		enemyParty[index]->increaseHP(tempSkill->GetHeal());
 		DelayUntillNextTurn(3);
 
 	}
+}
+
+void CBattleSystem::SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed)
+{
+	zoomImage->m_spriteRenderer->SetImage(skillMotion);
+	zoomImage->targetPos = heroZoomImage->originPos;
+	zoomImage->targetPos.x += distance;
+	zoomImage->speed = speed;
+	zoomImage->Enable();
 }
 
 void CBattleSystem::SelectHeroTarget(SKILL skill)
@@ -616,24 +625,12 @@ void CBattleSystem::StartEnemyTrun(int index)
 				{
 					isFoundTarget = true;
 
-					heroZoomImage->m_spriteRenderer->SetImage(heroParty[orderIndex]->GetInfo()->imageDefend);
-					heroZoomImage->targetPos = heroZoomImage->originPos;
-					heroZoomImage->targetPos.x -= 100;
-					heroZoomImage->speed = 2;
-					heroZoomImage->Enable();
 
-					enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
-					enemyZoomImage->targetPos = enemyZoomImage->originPos;
-					enemyZoomImage->targetPos.x -= 200;
-					enemyZoomImage->speed = 5;
-					enemyZoomImage->Enable();
+					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
+					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
+					SetEffectImage(-400, 10);
 
 
-					effectBGImage->m_transform->m_pos = Vector2(-400, 0);
-					effectBGImage->targetPos = effectBGImage->m_transform->m_pos;
-					effectBGImage->targetPos.x += 400;
-					effectBGImage->speed = 10;
-					effectBGImage->Enable();
 
 					heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
 					DelayUntillNextTurn(5);
@@ -643,13 +640,49 @@ void CBattleSystem::StartEnemyTrun(int index)
 		}
 	}
 }
-
+void CBattleSystem::SetEffectImage(float startPos, float speed)
+{
+	effectBGImage->m_transform->m_pos = Vector2(startPos, 0);
+	effectBGImage->targetPos = effectBGImage->m_transform->m_pos;
+	effectBGImage->targetPos.x -= startPos;
+	effectBGImage->speed = speed;
+	effectBGImage->Enable();
+}
+//
+//void CBattleSystem::SetEnemyZoomImage(CInfo_Skill* enemySkill, float targetPos, float speed)
+//{
+//	enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
+//	enemyZoomImage->targetPos = enemyZoomImage->originPos;
+//	enemyZoomImage->targetPos.x += targetPos;
+//	enemyZoomImage->speed = speed;
+//	enemyZoomImage->Enable();
+//}
+//
+//void CBattleSystem::SetHeroZoomImage(int orderIndex, float targetPos, float speed)
+//{
+//	heroZoomImage->m_spriteRenderer->SetImage(heroParty[orderIndex]->GetInfo()->imageDefend);
+//	heroZoomImage->targetPos = heroZoomImage->originPos;
+//	heroZoomImage->targetPos.x += targetPos;
+//	heroZoomImage->speed = speed;
+//	heroZoomImage->Enable();
+//}
+//
 
 
 
 void CBattleSystem::ShowTargetBySkill(int index)
 {
 
+}
+
+void CBattleSystem::HeroTeamAreDead()
+{
+	BattleSystemEnd();
+}
+
+void CBattleSystem::EnemyTeamAreDead()
+{
+	BattleSystemEnd();
 }
 
 void CBattleSystem::SwapPosSkill()
