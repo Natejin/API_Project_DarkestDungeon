@@ -12,12 +12,16 @@ public:
 	ImageData HPbar_front;
 	ImageData HPbar_back;
 	
+	vector <ImageData> HPbarFront;
+	vector <ImageData> HPbarBack;
+
 	ImageData selectedMem;
 
 protected:
 	function<void(int i)> m_triggerWhenDown;
 	bool canTriggerDown;
 	UNITTYPE m_unitType;
+
 public:
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))
@@ -31,7 +35,6 @@ public:
 	~Unit();
 
 	HRESULT Init();
-
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -56,7 +59,6 @@ public:
 	void showSelMember(HDC _hdc);
 	void showHpBar(HDC _hdc);
 
-
 //GetStatus;
 	virtual UNITTYPE GetUnitType();
 
@@ -73,15 +75,11 @@ public:
 
 	virtual int getSPD();
 
-
-
 	virtual int GetPartyIndex();
 	virtual void SetPartyIndex(int pos);
 
 	virtual int GetPartyPos();
 	virtual void SetPartyPos(int pos);
-
-
 
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);

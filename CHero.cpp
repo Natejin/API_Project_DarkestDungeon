@@ -32,6 +32,7 @@ HRESULT CHero::Init(Info_Hero* _info)
 void CHero::Update(float deltaTime, float worldTime)
 {
 	Unit::Update(deltaTime, worldTime);
+	testHpBar();
 }
 
 void CHero::LateUpdate()
@@ -40,13 +41,10 @@ void CHero::LateUpdate()
 
 void CHero::BackRender(HDC _hdc)
 {
-	//m_animator->FrameRender(_hdc);
 }
 
 void CHero::Render(HDC _hdc)
 {
-	//m_image->frameRender(_hdc, m_transform);
-
 	m_animator->FrameRender(_hdc);
 }
 
@@ -64,16 +62,6 @@ void CHero::FrontRender(HDC _hdc)
 	}
 
 	showStrsBar(_hdc);
-
-
-
-	////for test collision
-	//ImageData temp;
-	//temp.m_img = MG_IMAGE->findImage("memberRect");
-	//temp.m_trans. m_pos = Vector2(
-	//	m_transform->m_pos.x - m_animator->GetCurImage()->getFrameWidth() / 2 + 10,
-	//	m_transform->m_pos.y - m_animator->GetCurImage()->getFrameHeight() / 2 + 70);
-	//temp.m_img->render(_hdc, &temp.m_trans);
 }
 
 void CHero::Release()
@@ -168,52 +156,11 @@ void CHero::showStrsBar(HDC _hdc)
 	}
 }
 
-#pragma region skill
-void CHero::useSkill1()
-{
-}
-
-void CHero::useSkill2()
-{
-}
-
-void CHero::useSkill3()
-{
-}
-
-void CHero::useSkill4()
-{
-}
-
-void CHero::useMoveSkill()
-{
-}
-
-void CHero::usePassTrun()
-{
-}
-#pragma endregion
-
-void CHero::setHpBar()
-{
-}
-
-void CHero::setSTRSbar()
-{
-}
-
-void CHero::setSelectedMem()
-{
-}
-
-void CHero::setTargetedMem()
-{
-}
-
 void CHero::SetMemberOverlay()
 {
 	Unit::SetMemberOverlay();
 	targeted_h_Mem.m_img = MG_IMAGE->findImage(IMAGE::Target_Heal1);
+
 	ImageData temp;
 	temp.m_img = MG_IMAGE->findImage("STRS_empty");
 	for (int i = 0; i < 10; i++)
@@ -224,7 +171,6 @@ void CHero::SetMemberOverlay()
 
 Info_Hero* CHero::GetInfo()
 {
-
 	return info;
 }
 
@@ -348,7 +294,14 @@ bool CHero::GetAlive()
 	return info->isAlive;
 }
 
+void CHero::testHpBar()
+{
 
+	if (MG_INPUT->IsDownLMB())
+	{
+		reduceHP(1);
+	}
+}
 
 UNITTYPE CHero::GetUnitType()
 {
@@ -423,7 +376,6 @@ bool CHero::reduceHP(int hp)
 		info->isAlive = false;
 		return false;
 	}
-
 }
 
 void CHero::increaseHP(int hp)

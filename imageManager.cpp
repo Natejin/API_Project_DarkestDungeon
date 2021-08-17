@@ -367,8 +367,8 @@ HRESULT imageManager::init()
 	//UIovelay
 
 
-	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 100, 10, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 100, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 10, 10, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 10, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_empty", "images/dungeonUI/stress_pip_empty.bmp", 9, 10, true, RGB(255, 0, 255));
 	//MG_IMAGE->addImage("STRS_over", "images/dungeonUI/stress_pip_full_overstressed.bmp", 9, 10, true, RGB(255, 0, 255));
