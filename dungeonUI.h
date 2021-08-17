@@ -9,6 +9,8 @@ public:
 	vector<ImageData> vUI;
 	vector<class CBTN_Skill*> skillBTNs;
 
+	
+
 	int m_sceneSize;
 
 	CButton* bt_inven;
@@ -21,6 +23,9 @@ public:
 	class CMapSystem* m_pMapSystem;
 	class CBattleSystem* m_pBattleSystem;
 	class CInventorySystem* m_invenSystem;
+
+	class CBTN_Skill_Swap* swapBTN;
+	class CBTN_Skill_Endturn* endTurnBTN;
 
 	CUIPanel* panel_bg1;
 	CUIPanel* panel_bg2;

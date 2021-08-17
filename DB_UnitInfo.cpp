@@ -142,6 +142,7 @@ void DB_UnitInfo::SetHero()
 	info->imageDefend = IMAGE::Crusader_defend;
 	info->imageBuff = IMAGE::Crusader_banner;
 	info->imageDebuff = IMAGE::Crusader_scroll;
+
 	info->resist[0] = 40;
 	info->resist[1] = 30;
 	info->resist[2] = 30;

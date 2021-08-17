@@ -8,7 +8,8 @@
 #include "CBTN_Skill.h";
 #include "DungeonScene.h"
 #include "CBattleSystem.h"
-
+#include "CBTN_Skill_Swap.h"
+#include "CBTN_Skill_Endturn.h"
 HRESULT dungeonUI::Init()
 {
 	m_layer = LAYER::UI;
@@ -48,6 +49,9 @@ void dungeonUI::Release()
 	{
 		MG_GMOBJ->RemoveObj(skillBTNs[i]);
 	}
+	MG_GMOBJ->RemoveObj(swapBTN);
+	MG_GMOBJ->RemoveObj(endTurnBTN);
+
 
 	MG_GMOBJ->RemoveObj(bt_inven);
 	MG_GMOBJ->RemoveObj(bt_map);
@@ -140,31 +144,7 @@ void dungeonUI::SetTorchUIimg()
 
 void dungeonUI::SetSkillButton()
 {
-	// CBTN_Skill* temp = new CBTN_Skill();
-	// temp->scene = scene;
-	// temp->Init();
-	// temp->m_transform->m_pos = Vector2(585, 732);
-	// temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill1);
-	// skillBTNs.push_back(temp);
-	// MG_GMOBJ->RegisterObj("SkillBTN 1", temp);
-
-	// temp = new CBTN_Skill();
-	// temp->scene = scene;
-	// temp->Init();
-	// temp->m_transform->m_pos = Vector2(655, 732);
-	// temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill2);
-	// skillBTNs.push_back(temp);
-	// MG_GMOBJ->RegisterObj("SkillBTN 2", temp);
-
-	// temp = new CBTN_Skill();
-	// temp->scene = scene;
-	// temp->Init();
-	// temp->m_transform->m_pos = Vector2(725, 732);
-	// temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
-	// skillBTNs.push_back(temp);
-	// MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
-
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < 4; i++)
 	{
 		CBTN_Skill* temp = new CBTN_Skill();
 		temp->scene = scene;
@@ -178,35 +158,21 @@ void dungeonUI::SetSkillButton()
 		skillBTNs.push_back(temp);
 		MG_GMOBJ->RegisterObj(temp);
 	}
-	
+	swapBTN = new CBTN_Skill_Swap();
+	swapBTN->scene = scene;
+	swapBTN->Init();
+	swapBTN->m_transform->m_pos = Vector2(900, 764);
+	swapBTN->m_pBattleSystem = m_pBattleSystem;
+	swapBTN->SetName("Swap BTN");
+	MG_GMOBJ->RegisterObj(swapBTN);
 
-	
-
-
-	//temp = new CBTN_Skill();
-	//temp->scene = scene;
-	//temp->Init();
-	//temp->m_transform->m_pos = Vector2(655, 732);
-	//temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill2);
-	//skillBTNs.push_back(temp);
-	//MG_GMOBJ->RegisterObj("SkillBTN 2", temp);
-
-	//temp = new CBTN_Skill();
-	//temp->scene = scene;
-	//temp->Init();
-	//temp->m_transform->m_pos = Vector2(725, 732);
-	//temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill3);
-	//skillBTNs.push_back(temp);
-	//
-	//MG_GMOBJ->RegisterObj("SkillBTN 3", temp);
-
-	//temp = new CBTN_Skill();
-	//temp->scene = scene;
-	//temp->Init();
-	//temp->m_transform->m_pos = Vector2(795, 732);
-	//temp->SetTriggerWhenDown(scene->m_pBattleSystem, &CBattleSystem::UseSkill4);
-	//skillBTNs.push_back(temp);
-	//MG_GMOBJ->RegisterObj("SkillBTN 4", temp);
+	endTurnBTN = new CBTN_Skill_Endturn();
+	endTurnBTN->scene = scene;
+	endTurnBTN->Init();
+	endTurnBTN->m_transform->m_pos = Vector2(935, 764);
+	endTurnBTN->m_pBattleSystem = m_pBattleSystem;
+	endTurnBTN->SetName("EndTurn BTN");
+	MG_GMOBJ->RegisterObj(endTurnBTN);
 }
 
 void dungeonUI::SelectSkillButton()

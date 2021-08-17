@@ -8,6 +8,10 @@ Unit::~Unit() {}
 
 HRESULT Unit::Init()
 {
+
+    targetPos = Vector2(0,0);
+    movePosMode = false;;
+    movePosSpeed = 1;
     return S_OK;
 }
 
@@ -23,6 +27,11 @@ void Unit::Update(float deltaTime, float worldTime)
                 m_triggerWhenDown(m_partyIndex);
             }
         }
+    }
+
+    if (movePosMode)
+    {
+        m_transform->m_pos += (targetPos - m_transform->m_pos).Normalize() * movePosSpeed;
     }
 }
 
@@ -190,9 +199,6 @@ void Unit::setSPD(int spd)
 {
 }
 
-void Unit::setPartyPos(int pos)
-{
-}
 
 void Unit::setResist(int index, bool val)
 {

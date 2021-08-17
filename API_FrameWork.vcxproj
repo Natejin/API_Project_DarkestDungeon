@@ -156,6 +156,8 @@
   <ItemGroup>
     <ClInclude Include="CBTN_CampSkill.h" />
     <ClInclude Include="CBTN_Skill.h" />
+    <ClInclude Include="CBTN_Skill_Endturn.h" />
+    <ClInclude Include="CBTN_Skill_Swap.h" />
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
@@ -294,6 +296,8 @@
   <ItemGroup>
     <ClCompile Include="CBTN_CampSkill.cpp" />
     <ClCompile Include="CBTN_Skill.cpp" />
+    <ClCompile Include="CBTN_Skill_Endturn.cpp" />
+    <ClCompile Include="CBTN_Skill_Swap.cpp" />
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />

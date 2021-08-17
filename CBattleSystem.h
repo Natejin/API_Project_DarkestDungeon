@@ -27,6 +27,8 @@ class CBattleSystem : public GameObject
 	int randomDice100 = 100;
 
 	int curTurn;
+	bool isSwapModeOn; 
+	float moveSpeed;
 
 	class CHero* curHero;
 	class CEnemy* curEnemy;
@@ -76,6 +78,7 @@ public:
 
 	void UseSkill(int _index);
 
+	void SwapPosSkill();
 
 private:
 	CEnemy* GetEnemy(int i);
@@ -91,6 +94,8 @@ private:
 
 	void DeselectAll();
 
+	void CheckAndSwapHeroPos(int index);
+
 	void SetEnemyIndicator(int index);
 	void SelectEnemyTarget(SKILL skill);
 
@@ -100,7 +105,6 @@ private:
 	void StartEnemyTrun(int index);
 
 	void ShowTargetBySkill(int index);
-
 
 private:
 	void CreateEnemyParty();

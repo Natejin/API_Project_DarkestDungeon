@@ -149,6 +149,12 @@ void CBattleSystem::BattleSystemEnd()
 {
 	monsterIndicator->Disable();
 	scene->m_dungeonMode = DUNGEONMODE::WALK;
+	
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		heroParty[i]->movePosMode = false;
+	}
+
 	heroParty.clear();
 	for (size_t i = 0; i < enemyParty.size(); i++)
 	{
@@ -157,6 +163,7 @@ void CBattleSystem::BattleSystemEnd()
 	}
 	enemyParty.clear();
 	speedVec.clear();
+	scene->m_dungeonUIinfo->setButton();
 	Disable();
 }
 
@@ -170,43 +177,48 @@ void CBattleSystem::StartTurn()
 		Compare_P_E_Speed_ReArray();
 		curTurn++;
 	}
-
-	if (speedVec.size() > 0)
-	{
-		Unit* unit = speedVec[speedVec.size() - 1].second;
-		if (unit->getHP() > 0)
+	else {
+		if (speedVec.size() > 0)
 		{
-			if (unit->GetUnitType() == UNITTYPE::Hero)
+			Unit* unit = speedVec[speedVec.size() - 1].second;
+			if (unit->getHP() > 0)
 			{
-				curHero = (CHero*)unit;
-				curHero->isSelected = true;
-				turn = TURN::Player;
-				speedVec.pop_back();
-			}
-			else if (unit->GetUnitType() == UNITTYPE::Enemy)
-			{
-				curEnemy = (CEnemy*)unit;
-				curEnemy->isSelected = true;
-				turn = TURN::Enemy;
-				speedVec.pop_back();
+				if (unit->GetUnitType() == UNITTYPE::Hero)
+				{
+					curHero = (CHero*)unit;
+					curHero->isSelected = true;
+					turn = TURN::Player;
+					speedVec.pop_back();
+				}
+				else if (unit->GetUnitType() == UNITTYPE::Enemy)
+				{
+					curEnemy = (CEnemy*)unit;
+					curEnemy->isSelected = true;
+					turn = TURN::Enemy;
+					speedVec.pop_back();
+				}
+				else {
+					assert(true);
+				}
 			}
 			else {
-				assert(true);
+				StartTurn();
 			}
+
+			if (turn == TURN::Player)
+			{
+				HeroTurn();
+			}
+			else {
+				EnemyTurn();
+			}
+
 		}
-		else {
-			StartTurn();
-		}
-		
+
+
 	}
 
-	if (turn == TURN::Player)
-	{
-		HeroTurn();
-	}
-	else {
-		EnemyTurn();
-	}
+
 }
 
 void CBattleSystem::HeroTurn()
@@ -226,9 +238,11 @@ void CBattleSystem::EndTurn()
 	curEnemy = nullptr;
 }
 
+
+
 void CBattleSystem::UseSkill(int _index)
 {
-	for (int i = 0; i < dungeonUI->skillBTNs.size() - 1; i++)
+	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
 	{
 		dungeonUI->skillBTNs[i]->selected = false;
 	}
@@ -300,6 +314,9 @@ void CBattleSystem::CreateEnemyParty()
 			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, heroPos.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
+
+		enemy->targetPos = enemy->m_transform->m_pos;
+		enemy->movePosMode = true;
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
 		enemyParty.push_back(enemy);
 	}
@@ -329,6 +346,8 @@ void CBattleSystem::CreateHeroesParty()
 
 			heroParty[k]->m_animator->SetIndex(2);
 			heroParty[k]->SetTriggerWhenClick(this, &CBattleSystem::SelectHero);
+			heroParty[k]->targetPos = heroParty[k]->m_transform->m_pos;
+			heroParty[k]->movePosMode = true;
 		}
 		else {
 			k--;
@@ -426,23 +445,34 @@ void CBattleSystem::SelectHero(int index)
 {
 	if (!startNextTurn && scene->m_dungeonMode == DUNGEONMODE::BATTLE && turn == TURN::Player)
 	{
-		SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
-		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
-
-		switch (tempSkill->target)
+		if (isSwapModeOn)
 		{
-		case SKILLTARGET::Ally:
-			CheckAndHealAlly(tempSkill, index);
-			break;
-		case SKILLTARGET::Allies:
-			for (int i = 0; i < enemyParty.size(); i++)
+			if (heroParty[index]->isTargetHeal)
 			{
-				CheckAndHealAlly(tempSkill, index);
+				CheckAndSwapHeroPos(index);
 			}
-			break;
-		default:
-			break;
+
 		}
+		else {
+			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
+
+			switch (tempSkill->target)
+			{
+			case SKILLTARGET::Ally:
+				CheckAndHealAlly(tempSkill, index);
+				break;
+			case SKILLTARGET::Allies:
+				for (int i = 0; i < enemyParty.size(); i++)
+				{
+					CheckAndHealAlly(tempSkill, index);
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		
 	}
 }
 
@@ -458,12 +488,9 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 
 		//enemyParty[index]->increaseHP();
 
-		startTriggerTime = MG_TIME->getWorldTime() + 5;
-		startNextTurn = true;
 
 		enemyParty[index]->increaseHP(tempSkill->GetHeal());
-
-		DeselectAll();
+		DelayUntillNextTurn(5);
 
 	}
 }
@@ -482,6 +509,7 @@ void CBattleSystem::SelectHeroTarget(SKILL skill)
 
 void CBattleSystem::DeselectAll()
 {
+	isSwapModeOn = false;
 	for (size_t i = 0; i < enemyParty.size(); i++)
 	{
 		enemyParty[i]->isSelected = false;
@@ -492,6 +520,22 @@ void CBattleSystem::DeselectAll()
 	{
 		heroParty[i]->isSelected = false;
 		heroParty[i]->isTargetHeal = false;
+	}
+}
+
+void CBattleSystem::CheckAndSwapHeroPos(int index)
+{
+	if (curHero->GetPartyPos() != heroParty[index]->GetPartyPos())
+	{
+		
+		int tempPos = curHero->GetPartyPos();
+		curHero->SetPartyPos(heroParty[index]->GetPartyPos());
+		heroParty[index]->SetPartyPos(tempPos);
+
+		Vector2 tempTargetPos = curHero->targetPos;
+		curHero->targetPos = heroParty[index]->targetPos;
+		heroParty[index]->targetPos = tempTargetPos;
+		DelayUntillNextTurn(5);
 	}
 }
 
@@ -576,35 +620,6 @@ void CBattleSystem::StartEnemyTrun(int index)
 				}
 			}
 		}
-
-		/*for (size_t i = 0; i < heroParty.size(); i++)
-		{
-			if (heroParty[i] != nullptr && heroParty[i]->GetAlive())
-			{
-				if (enemySkill->CheckTarget(heroParty[i]->GetPartyPos()))
-				{
-					isFoundTarget = true;
-
-					heroZoomImage->m_spriteRenderer->SetImage(heroParty[i]->GetInfo()->imageDefend);
-					heroZoomImage->targetPos = heroZoomImage->originPos;
-					heroZoomImage->targetPos.x -= 100;
-					heroZoomImage->speed = 2;
-					heroZoomImage->Enable();
-
-					enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
-					enemyZoomImage->targetPos = enemyZoomImage->originPos;
-					enemyZoomImage->targetPos.x -= 200;
-					enemyZoomImage->speed = 5;
-					enemyZoomImage->Enable();
-
-					heroParty[i]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[i]->GetInfo()));
-					DelayUntillNextTurn(5);
-					
-				}
-			}
-
-		}*/
-		
 	}
 
 
@@ -613,6 +628,54 @@ void CBattleSystem::StartEnemyTrun(int index)
 void CBattleSystem::ShowTargetBySkill(int index)
 {
 
+}
+
+void CBattleSystem::SwapPosSkill()
+{
+	DeselectAll();
+	curHero->isSelected = true;
+	int curIndex = curHero->GetPartyPos();
+	isSwapModeOn = true;
+	switch (curIndex)
+	{
+	case 0:
+		if (heroParty.size() > 1 && heroParty[1] != nullptr)
+		{
+			heroParty[1]->isTargetHeal = true;
+		}
+		break;
+	case 1:
+
+		if (heroParty.size() > 2 && heroParty[0] != nullptr)
+		{
+			heroParty[0]->isTargetHeal = true;
+		}
+		if (heroParty[2] != nullptr)
+		{
+			heroParty[2]->isTargetHeal = true;
+		}
+		break;
+	case 2:
+		if (heroParty.size() > 3 && heroParty[1] != nullptr)
+		{
+			heroParty[1]->isTargetHeal = true;
+		}
+		if (heroParty[3] != nullptr)
+		{
+			heroParty[3]->isTargetHeal = true;
+		}
+
+		break;
+	case 3:
+		if (heroParty.size() > 4 && heroParty[2] != nullptr)
+		{
+			heroParty[2]->isTargetHeal = true;
+		}
+		break;
+	default:
+		break;
+	}
+	
 }
 
 

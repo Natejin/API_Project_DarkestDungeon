@@ -152,6 +152,7 @@ void DungeonScene::CreateParty()
 			MG_GAME->GetHeroFromParty(i)->SetPartyIndex(i);
 			MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
 			MG_GAME->GetHeroFromParty(i)->Enable();
+
 			m_party->SetHero(MG_GAME->GetHeroFromParty(i));
 		}
 	}

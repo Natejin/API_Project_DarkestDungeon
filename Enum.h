@@ -419,6 +419,9 @@ enum class IMAGE
 
 	//Skill
 	SelectedSkill,
+
+	Ability_Move,
+	Ability_Pass,
 	// 
 	//crusader
 	Crusader_Skill_Smite,

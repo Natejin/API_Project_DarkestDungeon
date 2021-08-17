@@ -14,6 +14,11 @@ public:
 	
 	ImageData selectedMem;
 
+
+	Vector2 targetPos;
+	bool movePosMode;
+	float movePosSpeed;
+
 protected:
 	function<void(int i)> m_triggerWhenDown;
 	bool canTriggerDown;
@@ -86,7 +91,6 @@ public:
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
 	virtual void setSPD(int spd);
-	virtual void setPartyPos(int pos);
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
 	virtual void SetMemberOverlay();

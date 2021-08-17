@@ -329,8 +329,8 @@ HRESULT imageManager::init()
 	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight , "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ability_Move, "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Ability_Pass, "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
 	//Camp_Skill
 	
 	//Common

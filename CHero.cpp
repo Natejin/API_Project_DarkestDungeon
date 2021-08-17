@@ -23,7 +23,6 @@ HRESULT CHero::Init(Info_Hero* _info)
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
 	m_animator->AddImageFrame(_info->imageCombat);
-
 	SetMemberOverlay();
 	AddColliderBox(120, 300);
 	return S_OK;
@@ -32,6 +31,8 @@ HRESULT CHero::Init(Info_Hero* _info)
 void CHero::Update(float deltaTime, float worldTime)
 {
 	Unit::Update(deltaTime, worldTime);
+
+
 }
 
 void CHero::LateUpdate()

@@ -37,15 +37,9 @@ HRESULT CEnemy::Init(Info_Enemy* _info)
 
 void CEnemy::Update(float deltaTime, float worldTime)
 {
+	Unit::Update(deltaTime, worldTime);
 	if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 	{
-		if (MG_INPUT->IsDownLMB())
-		{
-			if (canTriggerDown)
-			{
-				m_triggerWhenDown(m_partyIndex);
-			}
-		}
 
 		if (canTriggerStay)
 		{
