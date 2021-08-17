@@ -632,49 +632,54 @@ void CBattleSystem::ShowTargetBySkill(int index)
 
 void CBattleSystem::SwapPosSkill()
 {
-	DeselectAll();
-	curHero->isSelected = true;
-	int curIndex = curHero->GetPartyPos();
-	isSwapModeOn = true;
-	switch (curIndex)
+	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
-	case 0:
-		if (heroParty.size() > 1 && heroParty[1] != nullptr)
+		DeselectAll();
+		curHero->isSelected = true;
+		int curIndex = curHero->GetPartyPos();
+		isSwapModeOn = true;
+		switch (curIndex)
 		{
-			heroParty[1]->isTargetHeal = true;
-		}
-		break;
-	case 1:
+		case 0:
+			if (heroParty.size() > 1 && heroParty[1] != nullptr)
+			{
+				heroParty[1]->isTargetHeal = true;
+			}
+			break;
+		case 1:
 
-		if (heroParty.size() > 2 && heroParty[0] != nullptr)
-		{
-			heroParty[0]->isTargetHeal = true;
-		}
-		if (heroParty[2] != nullptr)
-		{
-			heroParty[2]->isTargetHeal = true;
-		}
-		break;
-	case 2:
-		if (heroParty.size() > 3 && heroParty[1] != nullptr)
-		{
-			heroParty[1]->isTargetHeal = true;
-		}
-		if (heroParty[3] != nullptr)
-		{
-			heroParty[3]->isTargetHeal = true;
+			if (heroParty.size() > 2 && heroParty[0] != nullptr)
+			{
+				heroParty[0]->isTargetHeal = true;
+			}
+			if (heroParty[2] != nullptr)
+			{
+				heroParty[2]->isTargetHeal = true;
+			}
+			break;
+		case 2:
+			if (heroParty.size() > 3 && heroParty[1] != nullptr)
+			{
+				heroParty[1]->isTargetHeal = true;
+			}
+			if (heroParty[3] != nullptr)
+			{
+				heroParty[3]->isTargetHeal = true;
+			}
+
+			break;
+		case 3:
+			if (heroParty.size() > 4 && heroParty[2] != nullptr)
+			{
+				heroParty[2]->isTargetHeal = true;
+			}
+			break;
+		default:
+			break;
 		}
 
-		break;
-	case 3:
-		if (heroParty.size() > 4 && heroParty[2] != nullptr)
-		{
-			heroParty[2]->isTargetHeal = true;
-		}
-		break;
-	default:
-		break;
 	}
+	
 	
 }
 

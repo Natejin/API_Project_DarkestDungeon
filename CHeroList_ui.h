@@ -1,7 +1,7 @@
 #pragma once
 #include"CEst_UI.h"
 
-class CHeroList_ui : public CEst_UI
+class CHeroList_ui : public GameObject
 {
 private:
 	vector<ImageData> most_HeroList_UI;

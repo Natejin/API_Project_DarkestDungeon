@@ -45,11 +45,15 @@ HRESULT TownScene::Init()
 
 	setEmbark();
 
+	m_heroListUI = new CHeroList_ui;
+	m_heroListUI->Init();
+	MG_GMOBJ->RegisterObj(m_heroListUI);
 	return S_OK;
 }
 
 HRESULT TownScene::Init(bool managerInit)
 {
+
 	return S_OK;
 }
 
@@ -75,7 +79,7 @@ void TownScene::Release()
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]);
 	}
-
+	MG_GMOBJ->RemoveObj(m_heroListUI);
 	MG_GMOBJ->RemoveObj(m_Roster_ButtonVec);
 	MG_GMOBJ->RemoveObj(m_hero_panel);
 
@@ -320,9 +324,7 @@ void TownScene::Show_tavern()
 
 void TownScene::SetHerolist()
 {
-	m_heroListUI = new CHeroList_ui;
-	m_heroListUI->Init();
-	MG_GMOBJ->RegisterObj(m_heroListUI);
+
 
 	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
 	{

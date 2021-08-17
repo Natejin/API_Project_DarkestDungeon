@@ -64,4 +64,5 @@ void CHeroList_ui::FrontRender(HDC _hdc)
 
 void CHeroList_ui::Release()
 {
+	GameObject::Release();
 }
