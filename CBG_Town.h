@@ -13,5 +13,4 @@ public:
 	HRESULT Init();
 
 	virtual void SetIMG();
-	void SetIMG_UI();
 };

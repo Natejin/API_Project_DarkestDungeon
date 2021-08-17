@@ -15,7 +15,6 @@ HRESULT CBG_Town::Init()
 	bgCount = 10;
 	roadCount = 6;
 	SetIMG();
-	SetIMG_UI();
 	return S_OK;
 }
 
@@ -48,31 +47,6 @@ void CBG_Town::SetIMG()
 	mostBG[3].m_trans.m_pivot = 0;
 	mostBG[3].m_trans.m_scale = Vector2(720, 720);
 	mostBG[3].m_trans.m_pos = Vector2(720 * 0, 0);
-
-}
-
-void CBG_Town::SetIMG_UI()
-{
-	ImageData m_rosterbg;
-	m_rosterbg.m_img = MG_IMAGE->findImage(IMAGE::roster_bggrad);
-	m_rosterbg.m_trans.m_pos = Vector2(WINSIZEX / 2 + 520, WINSIZEY - 950);
-	most_HeroList_UI.push_back(m_rosterbg);
-
-	ImageData m_rostertop;
-	m_rostertop.m_img = MG_IMAGE->findImage(IMAGE::roster_topframe);
-	m_rostertop.m_trans.m_pos = Vector2(WINSIZEX / 2 + 500, WINSIZEY / 2 - 440);
-	most_HeroList_UI.push_back(m_rostertop);
-
-	ImageData m_rosterdown;
-	m_rosterdown.m_img = MG_IMAGE->findImage(IMAGE::roster_downframe);
-	m_rosterdown.m_trans.m_pos = Vector2(WINSIZEX / 2 + 500, WINSIZEY + 0);
-	most_HeroList_UI.push_back(m_rosterdown);
-
-	ImageData m_nameplate;
-	m_nameplate.m_img = MG_IMAGE->findImage(IMAGE::estate_nameplate);
-	m_nameplate.m_trans.m_pos = Vector2(WINSIZEX / 2 - 900, 0);
-	most_HeroList_UI.push_back(m_nameplate);
-
 
 }
 

@@ -67,7 +67,7 @@ public:
 	void ShowHeroPanel();
 
 	class CUI_Panel_Hero* GetHeroPanel();
-
+	class CHeroList_ui* m_heroListUI;
 
 	//==================================
 public:

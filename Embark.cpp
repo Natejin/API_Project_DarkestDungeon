@@ -58,14 +58,6 @@ void Embark::Release()
 	};
 }
 
-void Embark::embarkBg()
-{
-	if (MG_INPUT->isOnceKeyDown('P'))
-	{
-		isEmbark = true;
-	}
-}
-
 void Embark::setImg()
 {
 	class CSpriteRenderer* r_embarkBg = new CSpriteRenderer("selDungeonBg", m_transform);

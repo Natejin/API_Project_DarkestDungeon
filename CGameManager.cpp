@@ -32,16 +32,17 @@ HRESULT CGameManager::Init()
 	setParty();
 
 
-	//ÆÄÆ¼¿¡ nullptr Ã¤¿ì±â
+	//ï¿½ï¿½Æ¼ï¿½ï¿½ nullptr Ã¤ï¿½ï¿½ï¿½
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 
-	RegisterHeroToParty(0);
-	RegisterHeroToParty(1);
-	RegisterHeroToParty(2);
-	RegisterHeroToParty(3);
+
+	//RegisterHeroToParty(0);
+	//RegisterHeroToParty(1);
+	//RegisterHeroToParty(2);
+	//RegisterHeroToParty(3);
 
 
 	m_dungeonScene = MG_SCENE->dungeonScene;

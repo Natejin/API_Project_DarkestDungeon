@@ -320,6 +320,10 @@ void TownScene::Show_tavern()
 
 void TownScene::SetHerolist()
 {
+	m_heroListUI = new CHeroList_ui;
+	m_heroListUI->Init();
+	MG_GMOBJ->RegisterObj(m_heroListUI);
+
 	for (size_t i = 0; i < m_heroListButtonVec.size(); i++)
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]->GetId());

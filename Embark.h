@@ -8,7 +8,7 @@ class Embark : public GameObject
 {
 public:
 	TownScene* m_townScene;
-	bool isEmbark;
+	bool isTown;
 
 	vector<CSpriteRenderer*> m_images;
 	vector<EmbarkPartySlot*> m_slots;
@@ -34,8 +34,6 @@ public:
 
 
 	//==================================
-
-	void embarkBg();
 
 	void setImg();
 

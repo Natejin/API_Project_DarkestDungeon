@@ -74,11 +74,16 @@ void Unit::Release()
 
 void Unit::SetMemberOverlay()
 {
-
     selectedMem.m_img = MG_IMAGE->findImage(IMAGE::Target_Selected1);
-	HPbar_back.m_img = MG_IMAGE->findImage("HP_empty");
-	HPbar_front.m_img = MG_IMAGE->findImage("HP_full");
 
+    ImageData temp;
+    for (int i = 0; i < 10; i++)
+    {
+        temp.m_img = MG_IMAGE->findImage("HP_empty");
+        HPbarBack.push_back(temp);
+        temp.m_img = MG_IMAGE->findImage("HP_full");
+        HPbarFront.push_back(temp);
+    }
 }
 
 void Unit::showSelMember(HDC _hdc)
@@ -92,16 +97,36 @@ void Unit::showSelMember(HDC _hdc)
 
 void Unit::showHpBar(HDC _hdc)
 {
-	//Hp, strs bar
-	HPbar_back.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - 50,
-		m_transform->m_pos.y + 15);
-	HPbar_front.m_trans.m_pos = Vector2(
-		m_transform->m_pos.x - 50,
-		m_transform->m_pos.y + 15);
+    ImageData temp;
+    for (size_t i = 0; i < HPbarBack.size(); i++)
+    {
+        HPbarBack[i].m_trans.m_pos = Vector2(
+            m_transform->m_pos.x - 50 + 10 * i,
+            m_transform->m_pos.y + 15);
+        HPbarBack[i].m_img->render(_hdc, &HPbarBack[i].m_trans);
+    }
 
-	HPbar_back.m_img->render(_hdc, &HPbar_back.m_trans);
-	HPbar_front.m_img->render(_hdc, &HPbar_front.m_trans);
+    float a = ((float)getMaxHP() - (float)getHP()) / (float)getMaxHP();
+    int percent = 0;
+    if (a >= 1.f)
+    {
+        percent = 0;
+    }
+    else if (a == 0.f) {
+        percent = 10;
+    }
+    else {
+        percent = 11 - a * 10;
+    }
+
+    for (size_t i = 0; i < percent; i++)
+    {
+        HPbarFront[i].m_trans.m_pos = Vector2(
+            m_transform->m_pos.x - 50 + 10 * i,
+            m_transform->m_pos.y + 15);
+
+            HPbarFront[i].m_img->render(_hdc, &HPbarFront[i].m_trans);
+    }
 }
 
 UNITTYPE Unit::GetUnitType()

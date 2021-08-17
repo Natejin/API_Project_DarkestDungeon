@@ -6,22 +6,18 @@ class Cplayer;
 class DungeonScene;
 class CHero : public Unit
 {
-	
 	int m_DIST; //이동한 거리
 	int m_DIST_retreat; //후퇴한 거리
 
-
 	int heroID;
 	int ownIndex;
-
 
 	int limit;
 	bool isBattle;
 	float speedFront;
 	float speedBack;
 	vector<ImageData> STRSbar;
-
-
+	vector<ImageData> HPbar;
 
 
 	ImageData targeted_h_Mem; //appear when some member using healSkill
@@ -30,7 +26,6 @@ class CHero : public Unit
 
 	int weaponLvl;
 	int armorLvl;
-
 
 public:
 	bool isTargetHeal;
@@ -57,32 +52,17 @@ public:
 	virtual class Image* GetTrinketL();
 	virtual class Image* GetTrinketR();
 
-
 	//=====================================
-
-
-	
-
 
 	void Move();
 	bool PreventGetOutBg(int startX, int endX);
 
-
 	void showStrsBar(HDC _hdc);
-
-	void useSkill1();
-	void useSkill2();
-	void useSkill3();
-	void useSkill4();
-	void useMoveSkill();
-	void usePassTrun();
-
 	void setHpBar();
-	void setSTRSbar();
-	void setSelectedMem();
-	void setTargetedMem();
 
-	//GetStatus;
+	//=====================================
+	//GetStatus:
+
 	virtual UNITTYPE GetUnitType();
 	virtual int GetSpeed();
 
@@ -95,6 +75,7 @@ public:
 	virtual int getSPD();
 	virtual void setSPD(int spd);
 
+	
 	//virtual int GetPartyIndex();
 	//virtual void SetPartyIndex(int pos);
 
@@ -134,5 +115,7 @@ public:
 
 	virtual bool GetAffliction();
 	virtual bool GetAlive();
+
+	void testHpBar();
 
 };
