@@ -107,6 +107,8 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender_axe.bmp", 710, 580, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Defender, "images/Enemys/skeleton_defender_defend.bmp", 499, 621, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Shield, "images/Enemys/skeleton_defender_shield.bmp", 650, 623, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_defender_dead, "images/Enemys/skeleton_defender_dead.bmp", 287, 298, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_dead, "images/Enemys/skeleton_courtier_dead.bmp", 310, 237, true, RGB(255, 0, 255));
 
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));

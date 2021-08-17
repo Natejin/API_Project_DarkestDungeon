@@ -247,7 +247,8 @@ enum class IMAGE
 	Enemy_SkeletonDefender_Attack,
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
-
+	skeleton_defender_dead,
+	skeleton_courtier_dead,
 	//UI
 	panel_monster_Red,
 	panel_monster_Black,
