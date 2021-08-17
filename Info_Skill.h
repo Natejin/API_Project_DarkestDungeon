@@ -17,7 +17,7 @@ public:
 	//예 9 = 1001 : 맨앞과 뒤가 타겟가능
 	int targetPos;
 	int allowUseSkillPos;
-
+	
 	IMAGE m_skillIcon;
 	IMAGE m_skillMotion;
 	SKILL m_skill;
@@ -33,7 +33,7 @@ public:
 	int healMax[5] = { 0 };
 	float critMod[5] = { 0 };
 	int effectVal[5] = { 0 };
-
+	int MovePos[5] = {0};	
 public:
 	CInfo_Skill() {};
 	~CInfo_Skill() {};

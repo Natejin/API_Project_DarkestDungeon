@@ -58,12 +58,48 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_head.bmp", 715,202,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_head.bmp", 715,202,true, RGB(255, 0, 255));
 
+	//Comabt_Skill
+	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_Smite, "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_ZealousAccusation, "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_StunningBlow, "images/icons_heroes/crusader.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_BulwarkofFaith, "images/icons_heroes/crusader.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_BattleHeal, "images/icons_heroes/crusader.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_HolyLance, "images/icons_heroes/crusader.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Crusader_Skill_InspiringCry, "images/icons_heroes/crusader.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("highwayman_portrait", "images/icons_heroes/highwayman_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill1", "images/icons_heroes/highwayman.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill2", "images/icons_heroes/highwayman.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_Skill_PointBlankShot, "images/icons_heroes/highwayman.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_Skill_GrapeshotBlast, "images/icons_heroes/highwayman.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("highwayman_skill5", "images/icons_heroes/highwayman.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_Skill_Duelists_Advance, "images/icons_heroes/highwayman.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highwayman_Skill_OpenVein, "images/icons_heroes/highwayman.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
+	MG_IMAGE->addImage("plague_doctor_portrait", "images/icons_heroes/plague_doctor_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_Skill_NoxiousBlast, "images/icons_heroes/plague_doctor.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_Skill_PlagueGrenade, "images/icons_heroes/plague_doctor.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_Skill_Incision, "images/icons_heroes/plague_doctor.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_doctor_Skill_BattleFiled_Medicine, "images/icons_heroes/plague_doctor.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill3", "images/icons_heroes/plague_doctor.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill6", "images/icons_heroes/plague_doctor.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage(IMAGE::Vestal_portrait, "images/icons_heroes/vestal_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_MaceBash, "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_Judgement, "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DazzlingLight, "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineGrace, "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort, "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight, "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
+
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender.sprite.attack_axe.bmp", 775, 580, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Defender, "images/Enemys/skeleton_defender.sprite.defend.bmp", 503, 622, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Shield, "images/Enemys/skeleton_defender.sprite.attack_shield.bmp", 716, 623, true, RGB(255, 0, 255));
-
 
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
@@ -289,46 +325,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::eve_scroll_side, "images/dungeonOBJ/event_scroll_sidebar.bmp", 456, 400, true, RGB(255, 0, 255));
 
 	//skill
-
 	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, true, RGB(255, 0, 255));
-
-	//
-	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_Smite, "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_ZealousAccusation, "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_StunningBlow, "images/icons_heroes/crusader.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_BulwarkofFaith, "images/icons_heroes/crusader.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_BattleHeal, "images/icons_heroes/crusader.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_HolyLance, "images/icons_heroes/crusader.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Crusader_Skill_InspiringCry, "images/icons_heroes/crusader.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
-	MG_IMAGE->addImage("highwayman_portrait", "images/icons_heroes/highwayman_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill1", "images/icons_heroes/highwayman.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill2", "images/icons_heroes/highwayman.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill3", "images/icons_heroes/highwayman.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill4", "images/icons_heroes/highwayman.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill5", "images/icons_heroes/highwayman.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill6", "images/icons_heroes/highwayman.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("highwayman_skill7", "images/icons_heroes/highwayman.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-	
-	MG_IMAGE->addImage("plague_doctor_portrait", "images/icons_heroes/plague_doctor_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill1", "images/icons_heroes/plague_doctor.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill2", "images/icons_heroes/plague_doctor.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill3", "images/icons_heroes/plague_doctor.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill4", "images/icons_heroes/plague_doctor.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill5", "images/icons_heroes/plague_doctor.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill6", "images/icons_heroes/plague_doctor.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
-	MG_IMAGE->addImage(IMAGE::Vestal_portrait, "images/icons_heroes/vestal_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_MaceBash, "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_Judgement, "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DazzlingLight , "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineGrace , "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort , "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight , "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
 	MG_IMAGE->addImage("ability_move", "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("ability_pass", "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
 	//Camp_Skill

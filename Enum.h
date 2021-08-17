@@ -37,7 +37,11 @@ enum class EFFECTTYPE
 {
 	NONE,
 	Stun,
-	PROT
+	PROT,
+	Blind,
+	Poison,
+	Bleed,
+	Heal
 };
 
 enum class TRINKET {
@@ -77,10 +81,16 @@ enum class SKILL
 	Vestal_Combat_Illumination,
 	Vestal_Combat_HandofLight,
 	//Plague_doctor
-	NoxiousBlast,
-	PlagueGrenade,
-
+	Plague_doctor_NoxiousBlast,
+	Plague_doctor_PlagueGrenade,
+	Plague_doctor_Incision,
+	Plague_doctor_BattleFiled_Medicine,
 	//Highwayman
+	Highwayman_PointBlankShot,
+	Highwayman_GrapeshotBlast,
+	Highwayman_Duelists_Advance,
+	Highwayman_OpenVein,
+
 
 	//ENEMY
 	BoneDefender_Combat_1,
@@ -446,13 +456,18 @@ enum class IMAGE
 	Vestal_Skill_DivineComfort,
 	Vestal_Skill_Illumination,
 	Vestal_Skill_HandofLight,
+	//Plagued_doctor
+	Plague_doctor_Skill_NoxiousBlast,
+	Plague_doctor_Skill_PlagueGrenade,
+	Plague_doctor_Skill_Incision,
+	Plague_doctor_Skill_BattleFiled_Medicine,
+	//Highwayman
+	Highwayman_Skill_PointBlankShot,
+	Highwayman_Skill_GrapeshotBlast,
+	Highwayman_Skill_Duelists_Advance,
+	Highwayman_Skill_OpenVein,
 
-	//HeroMotion
-	//Crusader
-
-	//Hero
-
-
+	//HeroMotion_Crusader
 	Crusader_Idle,
 	Crusader_Walk,
 	Crusader_Combat,
