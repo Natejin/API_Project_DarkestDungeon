@@ -155,6 +155,14 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
 	info->skillLvl.push_back(0);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_stand_tall);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_unshakeable_leader);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_speech);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_vigil);
+
 	info->portrait = IMAGE::Crusader_portrait;
 	info->weapon.push_back( IMAGE::Crusader_Weapon_0);
 	info->armor.push_back( IMAGE::Crusader_Armor_0);
@@ -199,6 +207,14 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
 	info->skillLvl.push_back(0);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_bless);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_chant);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_pray);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_sanctuary);
+
 //	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 
 	info->portrait = IMAGE::Vestal_portrait;

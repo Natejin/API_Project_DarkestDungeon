@@ -242,14 +242,11 @@ enum class IMAGE
 {
 	NONE,
 
-
 	//Enemy
 	Enemy_SkeletonDefender_Idle,
 	Enemy_SkeletonDefender_Attack,
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
-
-
 
 	//UI
 	panel_monster_Red,
@@ -394,7 +391,6 @@ enum class IMAGE
 	trap,
 	nothing,
 
-
 	//dungeonOBJ
 	obj_crate1,
 	obj_crate2,
@@ -430,11 +426,9 @@ enum class IMAGE
 	food4,
 	bandage,
 
-
 	//portrit
 	Crusader_portrait,
 	Vestal_portrait,
-
 
 	//Skill
 	SelectedSkill,
@@ -488,6 +482,9 @@ enum class IMAGE
 	Highwayman_slice,
 
 	//Plague_doctor
+	Plague_Idle,
+	Plague_Walk,
+	Plague_Combat,
 	Plague_doctor_blast,
 	Plague_doctor_buff,
 	Plague_doctor_dagger,

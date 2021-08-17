@@ -21,7 +21,7 @@ public:
 	int weaponLvl;
 	vector<IMAGE> armor;
 	int armorLvl;
-
+	vector<IMAGE>Camping_Skill;
 
 public:
 	Info_Hero();
