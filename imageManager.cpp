@@ -23,7 +23,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/crusader/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/crusader/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
 	
-	MG_IMAGE->addFrameImage(IMAGE::Plague_Idle, "images/Heroes/plague_doctor/plague_doctor_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Plague_Idle, "images/Heroes/plague_doctor/plague_doctor_Idle_Frame2.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Plague_Walk, "images/Heroes/plague_doctor/plague_doctor_walking_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Plague_Combat, "images/Heroes/plague_doctor/plague_doctor_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
 
