@@ -16,6 +16,7 @@ CHero::~CHero() {}
 
 HRESULT CHero::Init(Info_Hero* _info)
 {
+	Unit::Init();
 	canTriggerDown = false;
 	m_unitType = _info->unitType;
 	info = _info;

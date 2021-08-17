@@ -8,7 +8,6 @@ Unit::~Unit() {}
 
 HRESULT Unit::Init()
 {
-
     targetPos = Vector2(0,0);
     movePosMode = false;;
     movePosSpeed = 1;
