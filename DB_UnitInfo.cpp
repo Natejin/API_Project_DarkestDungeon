@@ -189,7 +189,7 @@ void DB_UnitInfo::SetHero()
 
 	info->imageIdle = IMAGE::Vestal_Idle;
 	info->imageCombat = IMAGE::Vestal_Combat;
-	info->imageWalk = IMAGE::Vestal_Idle;
+	info->imageWalk = IMAGE::Vestal_Walk;
 	info->imageAttack = IMAGE::Vestal_mace;
 	info->imageCharge = IMAGE::Vestal_miracle;
 	info->imageInvestigate = IMAGE::Vestal_investigate;
@@ -293,9 +293,9 @@ void DB_UnitInfo::SetHero()
 	info->m_EXP = 0;
 	info->m_STRS = 0;
 
-	info->imageIdle = IMAGE::Vestal_Idle;
-	info->imageCombat = IMAGE::Vestal_Combat;
-	info->imageWalk = IMAGE::Vestal_Idle;
+	info->imageIdle = IMAGE::Highwayman_Idle;
+	info->imageCombat = IMAGE::Highwayman_Combat;
+	info->imageWalk = IMAGE::Highwayman_Walk;
 	info->imageAttack = IMAGE::Highwayman_slice;
 	info->imageCharge = IMAGE::Highwayman_lunge;
 	info->imageInvestigate = IMAGE::Highwayman_investigate;

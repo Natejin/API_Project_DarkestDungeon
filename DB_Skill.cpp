@@ -35,6 +35,8 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Crusader_Combat_Smite;
 	info->m_skillIcon = IMAGE::Crusader_Skill_Smite;
 	info->m_skillMotion = IMAGE::Crusader_sword;
+	info->sound = SOUND::Cru_PowerfulAttack;
+
 	info->damage[0] = 0.f;
 	info->damage[1] = 0.f;
 	info->damage[2] = 0.f;
@@ -66,6 +68,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Crusader_Combat_ZealousAccusation;
 	info->m_skillIcon = IMAGE::Crusader_Skill_ZealousAccusation;
 	info->m_skillMotion = IMAGE::Crusader_charge;
+	info->sound = SOUND::Cru_ScrollAttack;
 	info->damage[0] = -40.f;
 	info->damage[1] = -40.f;
 	info->damage[2] = -40.f;
@@ -98,6 +101,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Crusader_Skill_StunningBlow;
 	info->m_skillMotion = IMAGE::Crusader_scroll;
 	info->effect = EFFECTTYPE::Stun;
+	info->sound = SOUND::Cru_stunningblow;
 	info->damage[0] = -50.f;
 	info->damage[1] = -50.f;
 	info->damage[2] = -50.f;
@@ -134,6 +138,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Crusader_Heal_BattleHeal;
 	info->m_skillIcon = IMAGE::Crusader_Skill_BattleHeal;
 	info->m_skillMotion = IMAGE::Crusader_banner;
+	info->sound = SOUND::Cru_Battleheal;
 	info->healMin[0] = 2;
 	info->healMin[1] = 3;
 	info->healMin[2] = 3;
@@ -150,7 +155,7 @@ void CDB_Skill::SetHeroSkill()
 
 #pragma region Vestal
 	info = new CInfo_Skill();
-	info->m_name = "Smite";
+	info->m_name = "Mace Bash";
 	info->m_description = "";
 	info->m_ID = id++;
 	info->skillLevel = 0;
@@ -162,6 +167,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Vestal_Combat_MaceBash;
 	info->m_skillIcon = IMAGE::Vestal_Skill_MaceBash;
 	info->m_skillMotion = IMAGE::Vestal_mace;
+	info->sound = SOUND::vst_macebash;
 	info->damage[0] = 0.f;
 	info->damage[1] = 0.f;
 	info->damage[2] = 0.f;
@@ -193,6 +199,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Vestal_Combat_Judgement;
 	info->m_skillIcon = IMAGE::Vestal_Skill_Judgement;
 	info->m_skillMotion = IMAGE::Vestal_miracle;
+	info->sound = SOUND::vst_judgement;
 	info->damage[0] = -25.f;
 	info->damage[1] = -25.f;
 	info->damage[2] = -25.f;
@@ -225,6 +232,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Vestal_Skill_DazzlingLight;
 	info->m_skillMotion = IMAGE::Vestal_lectionary;
 	info->effect = EFFECTTYPE::Stun;
+	info->sound = SOUND::vst_dazzlinglight;
 	info->damage[0] = -75.f;
 	info->damage[1] = -75.f;
 	info->damage[2] = -75.f;
@@ -261,6 +269,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Vestal_Heal_DivineComfort;
 	info->m_skillIcon = IMAGE::Vestal_Skill_DivineComfort;
 	info->m_skillMotion = IMAGE::Vestal_heal;
+	info->sound = SOUND::vst_divinegrace;
 	info->healMin[0] = 1;
 	info->healMin[1] = 2;
 	info->healMin[2] = 3;
@@ -290,6 +299,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Plague_doctor_Skill_NoxiousBlast;
 	info->m_skillMotion = IMAGE::Plague_doctor_blast;
 	info->effect = EFFECTTYPE::Blind;
+	info->sound = SOUND::plg_noxiousblast;
 	info->damage[0] = -80.f;
 	info->damage[1] = -80.f;
 	info->damage[2] = -80.f;
@@ -327,6 +337,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Plague_doctor_Skill_PlagueGrenade;
 	info->m_skillMotion = IMAGE::Plague_doctor_grenade;
 	info->effect = EFFECTTYPE::Poison;
+	info->sound = SOUND::plg_plaguegrenade;
 	info->damage[0] = -90.f;
 	info->damage[1] = -90.f;
 	info->damage[2] = -90.f;
@@ -364,6 +375,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Plague_doctor_Skill_Incision;
 	info->m_skillMotion = IMAGE::Plague_doctor_dagger;
 	info->effect = EFFECTTYPE::Bleed;
+	info->sound = SOUND::plg_knife;
 	info->damage[0] = -0.f;
 	info->damage[1] = -0.f;
 	info->damage[2] = -0.f;
@@ -401,6 +413,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Plague_doctor_Skill_BattleFiled_Medicine;
 	info->m_skillMotion = IMAGE::Plague_doctor_buff;
 	info->effect = EFFECTTYPE::Heal;
+	info->sound = SOUND::plg_battlemed;
 	info->damage[0] = +50.f;
 	info->damage[1] = +50.f;
 	info->damage[2] = +50.f;
@@ -442,7 +455,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Highwayman_Skill_PointBlankShot;
 	info->m_skillMotion = IMAGE::Highwayman_hipshot;
 	info->effect = EFFECTTYPE::NONE;
-
+	info->sound = SOUND::hwy_backshot;
 	info->healMin[0] = 1.f;
 	info->healMax[0] = 1.f;
 	info->healMin[1] = 1.f;
@@ -471,6 +484,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Highwayman_Skill_GrapeshotBlast;
 	info->m_skillMotion = IMAGE::Highwayman_pistol;
 	info->effect = EFFECTTYPE::NONE;
+	info->sound = SOUND::hwy_grapeshot;
 	info->damage[0] = -50.f;
 	info->damage[1] = -50.f;
 	info->damage[2] = -50.f;
@@ -509,6 +523,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Highwayman_Skill_Duelists_Advance;
 	info->m_skillMotion = IMAGE::Highwayman_lunge;
 	info->effect = EFFECTTYPE::NONE;
+	info->sound = SOUND::hwy_duelistadvance;
 	info->damage[0] = -20.f;
 	info->damage[1] = -20.f;
 	info->damage[2] = -20.f;
@@ -548,6 +563,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Highwayman_Skill_OpenVein;
 	info->m_skillMotion = IMAGE::Highwayman_slice;
 	info->effect = EFFECTTYPE::NONE;
+	info->sound = SOUND::hwy_slice;
 	info->damage[0] = -15.f;
 	info->damage[1] = -15.f;
 	info->damage[2] = -15.f;
@@ -590,6 +606,7 @@ void CDB_Skill::SetEnemySkill()
 	info->m_skill = SKILL::BoneDefender_Combat_1;
 	info->m_skillIcon = IMAGE::Enemy_SkeletonDefender_Attack;
 	info->m_skillMotion = IMAGE::Enemy_SkeletonDefender_Attack;
+	info->sound = SOUND::share_imp_axe;
 	info->damage[0] = 0.f;
 	info->damage[1] = 0.f;
 	info->damage[2] = 0.f;

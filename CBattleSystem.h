@@ -104,6 +104,8 @@ private:
 
 	void StartEnemyTrun(int index);
 
+	void CheckAndDamageHero(bool& isFoundTarget, int orderIndex, CInfo_Skill* enemySkill);
+
 	void ShowTargetBySkill(int index);
 
 private:

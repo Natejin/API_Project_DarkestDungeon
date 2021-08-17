@@ -242,6 +242,7 @@ void CBattleSystem::EndTurn()
 
 void CBattleSystem::UseSkill(int _index)
 {
+
 	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
 	{
 		dungeonUI->skillBTNs[i]->selected = false;
@@ -409,6 +410,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
+		MG_SOUND->play(tempSkill->sound);
 		heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
 		heroZoomImage->targetPos = heroZoomImage->originPos;
 		heroZoomImage->targetPos.x += 200;
@@ -478,8 +480,10 @@ void CBattleSystem::SelectHero(int index)
 
 void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 {
+	
 	if (tempSkill->CheckTarget(index))
 	{
+
 		heroZoomImage->m_spriteRenderer->SetImage(tempSkill->m_skillMotion);
 		heroZoomImage->targetPos = heroZoomImage->originPos;
 		heroZoomImage->targetPos.x += 200;
@@ -600,22 +604,8 @@ void CBattleSystem::StartEnemyTrun(int index)
 			{
 				if (enemySkill->CheckTarget(heroParty[orderIndex]->GetPartyPos()))
 				{
-					isFoundTarget = true;
 
-					heroZoomImage->m_spriteRenderer->SetImage(heroParty[orderIndex]->GetInfo()->imageDefend);
-					heroZoomImage->targetPos = heroZoomImage->originPos;
-					heroZoomImage->targetPos.x -= 100;
-					heroZoomImage->speed = 2;
-					heroZoomImage->Enable();
-
-					enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
-					enemyZoomImage->targetPos = enemyZoomImage->originPos;
-					enemyZoomImage->targetPos.x -= 200;
-					enemyZoomImage->speed = 5;
-					enemyZoomImage->Enable();
-
-					heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
-					DelayUntillNextTurn(5);
+					CheckAndDamageHero(isFoundTarget, orderIndex, enemySkill);
 					return;
 				}
 			}
@@ -623,6 +613,28 @@ void CBattleSystem::StartEnemyTrun(int index)
 	}
 
 
+}
+
+void CBattleSystem::CheckAndDamageHero(bool& isFoundTarget, int orderIndex, CInfo_Skill* enemySkill)
+{
+	MG_SOUND->play(enemySkill->sound);
+
+	isFoundTarget = true;
+
+	heroZoomImage->m_spriteRenderer->SetImage(heroParty[orderIndex]->GetInfo()->imageDefend);
+	heroZoomImage->targetPos = heroZoomImage->originPos;
+	heroZoomImage->targetPos.x -= 100;
+	heroZoomImage->speed = 2;
+	heroZoomImage->Enable();
+
+	enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
+	enemyZoomImage->targetPos = enemyZoomImage->originPos;
+	enemyZoomImage->targetPos.x -= 200;
+	enemyZoomImage->speed = 5;
+	enemyZoomImage->Enable();
+
+	heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
+	DelayUntillNextTurn(5);
 }
 
 void CBattleSystem::ShowTargetBySkill(int index)

@@ -249,6 +249,11 @@ enum class IMAGE
 	Enemy_SkeletonDefender_Shield,
 	skeleton_defender_dead,
 	skeleton_courtier_dead,
+	//BOSS
+	necromancer_attack,
+	necromancer_defend,
+	necromancer_retreat,
+
 	//UI
 	panel_monster_Red,
 	panel_monster_Black,
@@ -481,6 +486,10 @@ enum class IMAGE
 	Crusader_sword,
 	
 	//Highwayman
+	Highwayman_Idle,
+	Highwayman_Walk,
+	Highwayman_Combat,
+
 	Highwayman_defend,
 	Highwayman_hipshot,
 	Highwayman_investigate,

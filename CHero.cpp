@@ -93,6 +93,9 @@ Image* CHero::GetTrinketR()
 
 void CHero::Move()
 {
+	/*MG_SOUND->play(SOUND::party_foot_dirt_01);
+	MG_SOUND->play(SOUND::party_foot_dirt_02);
+	MG_SOUND->play(SOUND::party_foot_dirt_03);*/
 	int ran;
 	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
