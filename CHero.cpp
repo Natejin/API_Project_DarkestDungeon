@@ -32,7 +32,7 @@ HRESULT CHero::Init(Info_Hero* _info)
 void CHero::Update(float deltaTime, float worldTime)
 {
 	Unit::Update(deltaTime, worldTime);
-	testHpBar();
+	//testHpBar();
 }
 
 void CHero::LateUpdate()

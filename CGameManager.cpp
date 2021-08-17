@@ -30,10 +30,10 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 	setParty();
-	RegisterHeroToParty(0);
+	/*RegisterHeroToParty(0);
 	RegisterHeroToParty(1);
 	RegisterHeroToParty(2);
-	RegisterHeroToParty(3);
+	RegisterHeroToParty(3);*/
 
 	//파티에 nullptr 채우기
 	//m_partyOrigin.push_back(nullptr);
