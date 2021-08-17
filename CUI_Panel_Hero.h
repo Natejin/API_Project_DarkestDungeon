@@ -11,6 +11,8 @@ public:
 	class CEquipButton* m_armor;
 	class CEquipButton* m_weapon;
 
+	bool isShowCoachHero; 
+
 	vector<class CBTN_Skill*> m_skillbuttonVec;
 	vector<class CBTN_CampSkill*> m_campSkillbuttonVec;
 	vector<class CEquipButton*> m_armorbuttonVec;
@@ -33,18 +35,24 @@ public:
 	virtual void Disable();
 	
 	void SetHeroPanel();
+	void setCoachHeroPanel();
+
 	void ShowHeroInfo(HDC _hdc);
+	void ShowCoachHeroInfo(HDC _hdc);
 
 	void CreateHeroSkill();
 	void SetHeroSkill();
+	void SetCoachHeroSkill();
 	void CloseHeroSkill();
 
 	void CreateHeroEquip();
 	void SetHeroEquip();
+	void SetCoachHeroEquip();
 	void CloseHeroEquip();
 
 	void CreateCampSkill();
 	void SetCampSkill();
+	void SetCoachCampSkill();
 	void CloseCampSkill();
 
 	void CreatPostionButton();

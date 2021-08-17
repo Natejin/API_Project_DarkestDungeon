@@ -25,7 +25,7 @@ HRESULT CUIPanel_StageCoach::Init()
     m_HeroList_button = new CHeroList_button();
 
 	CreateOnCoach_Hero();
-	CreateCoach_Button();
+
     return S_OK;
 }
 
@@ -43,13 +43,14 @@ void CUIPanel_StageCoach::BackRender(HDC _hdc)
 
 void CUIPanel_StageCoach::Render(HDC _hdc)
 {
+	m_windowPanelBG->Render(_hdc);
+    m_windowPanelChar->Render(_hdc);
+    m_quit->isActive = true;
 }
 
 void CUIPanel_StageCoach::FrontRender(HDC _hdc)
 {
-    m_windowPanelBG->Render(_hdc);
-    m_windowPanelChar->Render(_hdc);
-    m_quit->isActive = true;
+
 }
 
 void CUIPanel_StageCoach::Release()
@@ -59,44 +60,19 @@ void CUIPanel_StageCoach::Release()
 
 void CUIPanel_StageCoach::Enable()
 {
-	
-	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
-	{
-		m_OnCoach_heroListButtonVec[i]->isActive=true;
-	}
+	CreateCoach_Button();
 	CEst_UI::Enable();
 }
 
-void CUIPanel_StageCoach::Unable()
+void CUIPanel_StageCoach::Disable()
 {
-	CEst_UI::Disable();
+	m_quit->isActive = false;
+	isActive = false;
+	townScene->ActivateBuildings();
 	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
 	{
-		m_OnCoach_heroListButtonVec[i]->isActive =false;
+		m_OnCoach_heroListButtonVec[i]->isActive = false;
 	}
-	
-}
-
-void CUIPanel_StageCoach::setCoathHero()
-{
-	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
-	{
-		MG_GMOBJ->RemoveObj(m_OnCoach_heroListButtonVec[i]->GetId());
-	}
-	m_OnCoach_heroListButtonVec.clear();
-
-	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
-	{
-		CHeroList_button* OnCoach_HeroList_Button = new CHeroList_button();
-		OnCoach_HeroList_Button->Init();
-		OnCoach_HeroList_Button->m_transform->m_pos = Vector2(100, WINSIZEY - 880 + i * 100);
-		OnCoach_HeroList_Button->AddColliderBox(50, 50);
-		OnCoach_HeroList_Button->SetTriggerWhenDown(townScene, &TownScene::ShowDummyHeroList);
-		OnCoach_HeroList_Button->SetTriggerWhenDownRightButton(townScene, &TownScene::ShowHeroPanel);
-		
-	}
-		
-
 }
 
 void CUIPanel_StageCoach::CreateOnCoach_Hero()
@@ -110,23 +86,26 @@ void CUIPanel_StageCoach::CreateOnCoach_Hero()
 
 void CUIPanel_StageCoach::CreateCoach_Button()
 {
-	for (size_t i = 0; i < m_OnCoach_HeroVec.size(); i++)
+	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
 	{
-		for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
-		{
-			MG_GMOBJ->RemoveObj(m_OnCoach_heroListButtonVec[i]->GetId());
-		}
-		m_OnCoach_heroListButtonVec.clear();
+		MG_GMOBJ->RemoveObj(m_OnCoach_heroListButtonVec[i]->GetId());
+	}
+	m_OnCoach_heroListButtonVec.clear();
+
+
+
 
 		for (size_t i = 0; i <m_OnCoach_HeroVec.size(); i++)
 		{
 			CHeroList_button* OnCoach_HeroList_Button = new CHeroList_button();
 			OnCoach_HeroList_Button->Init();
-			OnCoach_HeroList_Button->m_transform->m_pos = Vector2(100, WINSIZEY - 880 + i * 100);
+			OnCoach_HeroList_Button->m_transform->m_pos = Vector2(900, WINSIZEY - 880 + i * 100);
 			OnCoach_HeroList_Button->AddColliderBox(50, 50);
-			OnCoach_HeroList_Button->SetTriggerWhenDown(townScene, &TownScene::ShowDummyHeroList);
-			OnCoach_HeroList_Button->SetTriggerWhenDownRightButton(townScene, &TownScene::ShowHeroPanel);
+			OnCoach_HeroList_Button->SetTriggerWhenDownForHerolist(townScene, &TownScene::ShowDummyHeroList);
+			OnCoach_HeroList_Button->SetTriggerWhenDownForHerolist(townScene, &TownScene::ShowDummyHeroList);
+			OnCoach_HeroList_Button->SetTriggerWhenDownRightButton(townScene, &TownScene::ShowCoachHeroPanel);
 			OnCoach_HeroList_Button->townScene = townScene;
+			OnCoach_HeroList_Button->btType = HeroListBtType::coach;
 			OnCoach_HeroList_Button->m_index = i;
 
 			OnCoach_HeroList_Button->m_hero = m_OnCoach_HeroVec[i];
@@ -146,8 +125,9 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 				OnCoach_HeroList_Button->AddSpriteRenderer(IMAGE::highwayman_roster);
 				break;
 			}
+			
 			m_OnCoach_heroListButtonVec.push_back(OnCoach_HeroList_Button);
 			MG_GMOBJ->RegisterObj("OnCoach_Hero_roster", OnCoach_HeroList_Button);
 		}
-	}
+	
 }

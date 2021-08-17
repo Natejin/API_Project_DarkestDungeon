@@ -5,12 +5,15 @@
 
 class CHeroList_button : public CDragButton
 {
+	function<void()> m_triggerWhenDownRightButton;
 	class CSpriteRenderer* m_heroBG;
 	class CSpriteRenderer* m_characterBG;
 	Vector2 originPos;
-	function<void()> m_triggerWhenDownRightButton;
-	bool canTriggerDownRightButton;
 
+	bool canTriggerDownRightButton;
+	bool canTriggerDownForHerolist;
+
+	function<void(HeroListBtType type, int index)> m_triggerWhenDownForHeroList;
 
 public:
 	class TownScene* townScene;
@@ -20,6 +23,9 @@ public:
 	class CHero* m_hero;
 	class Hero_Roster* dummy_Roster;
 	class CUIPanel_StageCoach* m_coach;
+
+	HeroListBtType btType;
+
 	CHeroList_button();
 	~CHeroList_button();
 
@@ -33,13 +39,33 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
+
+
 	void DragHeroList();
-	void SetHeroPanel();
 	template <typename T>
+
 	void SetTriggerWhenDownRightButton(T* pObj, void(T::* func)())
 	{
 		canTriggerDownRightButton = true;
 		m_triggerWhenDownRightButton = bind(func, pObj);
 	}
+
+	template <typename T>
+	void SetTriggerWhenDownForHerolist(T* pObj, void(T::* func)(HeroListBtType  type, int index))
+	{
+		canTriggerDownForHerolist = true;
+		m_triggerWhenDownForHeroList = bind(func, pObj, std::placeholders::_1, std::placeholders::_2);
+	}
+
+	//
+	// template <typename T>
+	//template <typename T>
+	//void SetTriggerWhenDownForHerolist(T* pObj, void(T::* func)())
+	//{
+	//	canTriggerDownForHerolist = true;
+	//	m_triggerWhenDownForHeroList = bind(func, pObj, btType, m_index);
+	//}
+
+
 
 };

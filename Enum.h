@@ -673,3 +673,9 @@ enum class ENEMYTYPE {
 	BoneDefender,
 
 };
+
+enum class  HeroListBtType
+{
+	ownHero,
+	coach
+};

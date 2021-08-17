@@ -29,10 +29,9 @@ public:
 
 	virtual void Release();
 	virtual void Enable();
-	virtual void Unable();
+	virtual void Disable();
+
 
 	//===================================
-
-	void setCoathHero();
 
 };

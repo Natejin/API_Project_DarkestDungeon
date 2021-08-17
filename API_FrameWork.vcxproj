@@ -161,6 +161,7 @@
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
+    <ClInclude Include="COwnHeroListPanel.h" />
     <ClInclude Include="CPosition_Button.h" />
     <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
@@ -301,6 +302,7 @@
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />
+    <ClCompile Include="COwnHeroListPanel.cpp" />
     <ClCompile Include="CPosition_Button.cpp" />
     <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />

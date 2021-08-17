@@ -9,6 +9,7 @@ private:
 	//map<int,class GameObject*> objectMap;
 	class DungeonScene* m_dungeonScene;
 	class TownScene* m_townScene;
+
 public:
 	CGameManager();
 	~CGameManager();
@@ -28,8 +29,8 @@ public:
 
 	//==================================
 	vector<CHero*> m_partyOrigin;
-
 	vector<CHero*> m_ownHeroes;
+
 	CParty* m_party;
 	CHero* m_CurSelHero;
 

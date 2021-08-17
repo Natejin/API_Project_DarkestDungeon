@@ -177,7 +177,8 @@ void CBattleSystem::StartTurn()
 		Compare_P_E_Speed_ReArray();
 		curTurn++;
 	}
-	else {
+	else 
+	{
 		if (speedVec.size() > 0)
 		{
 			Unit* unit = speedVec[speedVec.size() - 1].second;
@@ -197,12 +198,13 @@ void CBattleSystem::StartTurn()
 					turn = TURN::Enemy;
 					speedVec.pop_back();
 				}
-				else {
+				else 
+				{
 					assert(true);
 				}
 			}
-			else {
-
+			else 
+			{
 				speedVec.pop_back();
 				StartTurn();
 			}
@@ -211,16 +213,12 @@ void CBattleSystem::StartTurn()
 			{
 				HeroTurn();
 			}
-			else {
+			else 
+			{
 				EnemyTurn();
 			}
-
 		}
-
-
 	}
-
-
 }
 
 void CBattleSystem::HeroTurn()
@@ -231,7 +229,6 @@ void CBattleSystem::HeroTurn()
 void CBattleSystem::EnemyTurn()
 {
 	StartEnemyTrun(curEnemy->GetPartyIndex());
-
 }
 
 void CBattleSystem::EndTurn()
@@ -239,8 +236,6 @@ void CBattleSystem::EndTurn()
 	curHero = nullptr;
 	curEnemy = nullptr;
 }
-
-
 
 void CBattleSystem::UseSkill(int _index)
 {
@@ -257,7 +252,6 @@ void CBattleSystem::UseSkill(int _index)
 			DeselectAll();
 			curHero->isSelected = true;
 	
-
 			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
 			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
@@ -279,17 +273,10 @@ void CBattleSystem::UseSkill(int _index)
 			case SKILLTARGET::Allies:
 				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
 				break;
-			default:
-				break;
 			}
-
 		}
 	}
-	
-	
 }
-
-
 
 void CBattleSystem::CreateEnemyParty()
 {
@@ -312,7 +299,8 @@ void CBattleSystem::CreateEnemyParty()
 			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, heroPos.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
-		else {
+		else 
+		{
 			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, heroPos.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
@@ -345,13 +333,13 @@ void CBattleSystem::CreateHeroesParty()
 			else {
 				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
 			}
-
 			heroParty[k]->m_animator->SetIndex(2);
 			heroParty[k]->SetTriggerWhenClick(this, &CBattleSystem::SelectHero);
 			heroParty[k]->targetPos = heroParty[k]->m_transform->m_pos;
 			heroParty[k]->movePosMode = true;
 		}
-		else {
+		else 
+		{
 			k--;
 		}
 	}
@@ -381,7 +369,6 @@ CEnemy* CBattleSystem::GetEnemy(int index)
 {
 	return index < enemyParty.size() ? enemyParty[index] : nullptr;
 }
-
 
 void CBattleSystem::SelectEnemy(int index)
 {
