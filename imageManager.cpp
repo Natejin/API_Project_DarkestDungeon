@@ -108,11 +108,21 @@ HRESULT imageManager::init()
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
+	//skeleton_defender
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender_axe.bmp", 710, 580, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Defender, "images/Enemys/skeleton_defender_defend.bmp", 499, 621, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Shield, "images/Enemys/skeleton_defender_shield.bmp", 650, 623, true, RGB(255, 0, 255));
+	//skeleton_courtier
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_attack, "images/Enemys/skeleton_courtier_attack.bmp", 550, 491, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_attack_goblet, "images/Enemys/skeleton_courtier_attack_goblet.bmp", 458, 520, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_defend, "images/Enemys/skeleton_courtier_defend.bmp", 332, 526, true, RGB(255, 0, 255));
+	//skeleton_common
+	MG_IMAGE->addImage(IMAGE::skeleton_common_attack, "images/Enemys/skeleton_common_attack.bmp", 575, 548, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_common_defend, "images/Enemys/skeleton_common_defend.bmp", 342, 508, true, RGB(255, 0, 255));
+	//Monster_dead
 	MG_IMAGE->addImage(IMAGE::skeleton_defender_dead, "images/Enemys/skeleton_defender_dead.bmp", 287, 298, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::skeleton_courtier_dead, "images/Enemys/skeleton_courtier_dead.bmp", 310, 237, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_common_dead, "images/Enemys/skeleton_common_dead.bmp", 295, 210, true, RGB(255, 0, 255));
 	//BOSS
 	MG_IMAGE->addImage(IMAGE::necromancer_attack, "images/Enemys/necromancer_attack.bmp", 1188, 882, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::necromancer_defend, "images/Enemys/necromancer_defend.bmp", 589, 888, true, RGB(255, 0, 255));

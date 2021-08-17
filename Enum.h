@@ -242,17 +242,27 @@ enum class IMAGE
 {
 	NONE,
 
-	//Enemy
+	//Enemy Motion
 	Enemy_SkeletonDefender_Idle,
 	Enemy_SkeletonDefender_Attack,
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
-	skeleton_defender_dead,
-	skeleton_courtier_dead,
+	//skeleton_courtier
+	skeleton_courtier_attack,
+	skeleton_courtier_attack_goblet,
+	skeleton_courtier_defend,
+	//skeleton_common
+	skeleton_common_attack,
+	skeleton_common_defend,
 	//BOSS
 	necromancer_attack,
 	necromancer_defend,
 	necromancer_retreat,
+	//Monster_dead
+	skeleton_defender_dead,
+	skeleton_courtier_dead,
+	skeleton_common_dead,
+	
 
 	//UI
 	panel_monster_Red,
