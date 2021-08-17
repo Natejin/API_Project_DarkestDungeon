@@ -37,7 +37,11 @@ enum class EFFECTTYPE
 {
 	NONE,
 	Stun,
-	PROT
+	PROT,
+	Blind,
+	Poison,
+	Bleed,
+	Heal
 };
 
 enum class TRINKET {
@@ -61,13 +65,14 @@ enum class SKILLIMAGETYPE {
 enum class SKILL
 {
 	//HERO
+	//Crusader
 	Crusader_Combat_Smite,
 	Crusader_Combat_ZealousAccusation,
 	Crusader_Combat_StunningBlow,
 	Crusader_BuffAllie_BulwarkofFaith,
 	Crusader_Heal_BattleHeal,
 	Crusader_Combat_HolyLance,
-
+	//Vestal
 	Vestal_Combat_MaceBash,
 	Vestal_Combat_Judgement,
 	Vestal_Combat_DazzlingLight,
@@ -75,6 +80,17 @@ enum class SKILL
 	Vestal_Heal_DivineComfort,
 	Vestal_Combat_Illumination,
 	Vestal_Combat_HandofLight,
+	//Plague_doctor
+	Plague_doctor_NoxiousBlast,
+	Plague_doctor_PlagueGrenade,
+	Plague_doctor_Incision,
+	Plague_doctor_BattleFiled_Medicine,
+	//Highwayman
+	Highwayman_PointBlankShot,
+	Highwayman_GrapeshotBlast,
+	Highwayman_Duelists_Advance,
+	Highwayman_OpenVein,
+
 
 	//ENEMY
 	BoneDefender_Combat_1,
@@ -119,6 +135,9 @@ enum class SOUND {
 	//BGM
 	Town,
 	Combat,
+	Ruins_dark,
+	Ruins_base,
+
 	//Crusader
 	Cru_Battleheal,
 	Cru_holylance,
@@ -223,14 +242,11 @@ enum class IMAGE
 {
 	NONE,
 
-
 	//Enemy
 	Enemy_SkeletonDefender_Idle,
 	Enemy_SkeletonDefender_Attack,
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
-
-
 
 	//UI
 	panel_monster_Red,
@@ -375,7 +391,6 @@ enum class IMAGE
 	trap,
 	nothing,
 
-
 	//dungeonOBJ
 	obj_crate1,
 	obj_crate2,
@@ -411,11 +426,9 @@ enum class IMAGE
 	food4,
 	bandage,
 
-
 	//portrit
 	Crusader_portrait,
 	Vestal_portrait,
-
 
 	//Skill
 	SelectedSkill,
@@ -440,13 +453,18 @@ enum class IMAGE
 	Vestal_Skill_DivineComfort,
 	Vestal_Skill_Illumination,
 	Vestal_Skill_HandofLight,
+	//Plagued_doctor
+	Plague_doctor_Skill_NoxiousBlast,
+	Plague_doctor_Skill_PlagueGrenade,
+	Plague_doctor_Skill_Incision,
+	Plague_doctor_Skill_BattleFiled_Medicine,
+	//Highwayman
+	Highwayman_Skill_PointBlankShot,
+	Highwayman_Skill_GrapeshotBlast,
+	Highwayman_Skill_Duelists_Advance,
+	Highwayman_Skill_OpenVein,
 
-	//HeroMotion
-	//Crusader
-
-	//Hero
-
-
+	//HeroMotion_Crusader
 	Crusader_Idle,
 	Crusader_Walk,
 	Crusader_Combat,
@@ -467,6 +485,9 @@ enum class IMAGE
 	Highwayman_slice,
 
 	//Plague_doctor
+	Plague_Idle,
+	Plague_Walk,
+	Plague_Combat,
 	Plague_doctor_blast,
 	Plague_doctor_buff,
 	Plague_doctor_dagger,
@@ -537,8 +558,14 @@ enum class IMAGE
 	camp_skill_bless,
 	camp_skill_chant,
 	camp_skill_pray,
-	camp_skill_sanctuary
-
+	camp_skill_sanctuary,
+	//Battle_Scene
+	darkest_dungeon_1,
+	darkest_dungeon_2,
+	darkestdungeon_wall1,
+	darkestdungeon_wall2,
+	town_invasion,
+	trinket_retention
 };
 
 enum class Resistance
