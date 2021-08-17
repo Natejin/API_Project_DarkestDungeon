@@ -7,10 +7,12 @@ class CMinimapButton : public CButton
 public:
 	DungeonData dungeonData;
 
-
+	bool reachable;
+	bool isIncreasing;
+	float speed;
 	CMinimapButton();
 	~CMinimapButton();
-
+	
 	HRESULT Init();
 
 

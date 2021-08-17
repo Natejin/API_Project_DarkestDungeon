@@ -435,13 +435,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 	{
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 5);
 		SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
-		enemyZoomImage->Enable();
-
-		effectBGImage->m_transform->m_pos = Vector2(0, 0);
-		effectBGImage->targetPos = effectBGImage->m_transform->m_pos;
-		effectBGImage->targetPos.x -= 400;
-		effectBGImage->speed = 10;
-		effectBGImage->Enable();
+		SetEffectImage(0, -400, 10);
 
 		enemyParty[index]->reduceHP(tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo()));
 		DelayUntillNextTurn(5);
@@ -517,6 +511,16 @@ void CBattleSystem::SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, floa
 	zoomImage->speed = speed;
 	zoomImage->Enable();
 }
+
+void CBattleSystem::SetEffectImage(float startPos, float targetPos, float speed)
+{
+	effectBGImage->m_transform->m_pos = Vector2(startPos, 0);
+	effectBGImage->targetPos = effectBGImage->m_transform->m_pos;
+	effectBGImage->targetPos.x += targetPos;
+	effectBGImage->speed = speed;
+	effectBGImage->Enable();
+}
+
 
 void CBattleSystem::SelectHeroTarget(SKILL skill)
 {
@@ -628,7 +632,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 
 					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
-					SetEffectImage(-400, 10);
+					SetEffectImage(-400, 400, 10);
 
 
 
@@ -640,34 +644,6 @@ void CBattleSystem::StartEnemyTrun(int index)
 		}
 	}
 }
-void CBattleSystem::SetEffectImage(float startPos, float speed)
-{
-	effectBGImage->m_transform->m_pos = Vector2(startPos, 0);
-	effectBGImage->targetPos = effectBGImage->m_transform->m_pos;
-	effectBGImage->targetPos.x -= startPos;
-	effectBGImage->speed = speed;
-	effectBGImage->Enable();
-}
-//
-//void CBattleSystem::SetEnemyZoomImage(CInfo_Skill* enemySkill, float targetPos, float speed)
-//{
-//	enemyZoomImage->m_spriteRenderer->SetImage(enemySkill->m_skillMotion);
-//	enemyZoomImage->targetPos = enemyZoomImage->originPos;
-//	enemyZoomImage->targetPos.x += targetPos;
-//	enemyZoomImage->speed = speed;
-//	enemyZoomImage->Enable();
-//}
-//
-//void CBattleSystem::SetHeroZoomImage(int orderIndex, float targetPos, float speed)
-//{
-//	heroZoomImage->m_spriteRenderer->SetImage(heroParty[orderIndex]->GetInfo()->imageDefend);
-//	heroZoomImage->targetPos = heroZoomImage->originPos;
-//	heroZoomImage->targetPos.x += targetPos;
-//	heroZoomImage->speed = speed;
-//	heroZoomImage->Enable();
-//}
-//
-
 
 
 void CBattleSystem::ShowTargetBySkill(int index)

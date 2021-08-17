@@ -13,30 +13,62 @@ CMinimapButton::~CMinimapButton()
 
 HRESULT CMinimapButton::Init()
 {
-	
+	reachable = false;
+	isIncreasing = false;
+	speed = 0.05;
 	return S_OK;
 }
 
 void CMinimapButton::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+
+
+	if (reachable)
 	{
-		if (m_transform->m_scale.x < 1.5)
+		if (isIncreasing)
 		{
-			m_transform->m_scale += 0.05;
-		}
-		if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
-		{
-			if (m_pMapSystem)
+			if (m_transform->m_scale.x < 1.5)
 			{
-				m_pMapSystem->UseClickToMoveCurPoint(dungeonData);
+				m_transform->m_scale += speed;
+			}
+			else {
+				isIncreasing = false;
+			}
+		
+		}
+		else {
+			if (m_transform->m_scale.x > 1)
+			{
+				m_transform->m_scale -= speed;
+			}
+			else {
+				isIncreasing = false;
 			}
 		}
+
+
+		
 	}
 	else {
-		if (m_transform->m_scale.x > 1)
+		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 		{
-			m_transform->m_scale -= 0.05;
+			if (m_transform->m_scale.x < 1.5)
+			{
+				m_transform->m_scale += speed;
+			}
+			if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+			{
+				if (m_pMapSystem)
+				{
+					m_pMapSystem->UseClickToMoveCurPoint(dungeonData);
+				}
+			}
+		}
+		else {
+			if (m_transform->m_scale.x > 1)
+			{
+				m_transform->m_scale -= speed;
+			}
 		}
 	}
 }

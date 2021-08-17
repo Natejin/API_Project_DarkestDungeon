@@ -106,14 +106,7 @@ private:
 
 	void StartEnemyTrun(int index);
 
-	void SetEffectImage(float startPos, float speed);
-
-	//void SetEnemyZoomImage(CInfo_Skill* enemySkill, float targetPos, float speed);
-
-	//void SetHeroZoomImage(int orderIndex, float targetPos, float speed);
-
-	void CheckAndDamageHero(bool& isFoundTarget, int orderIndex, CInfo_Skill* enemySkill);
-
+	void SetEffectImage(float startPos, float targetPos, float speed);
 	void ShowTargetBySkill(int index);
 
 	void HeroTeamAreDead();
