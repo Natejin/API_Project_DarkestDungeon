@@ -16,16 +16,20 @@ HRESULT imageManager::init()
 
 	//Hero
 	MG_IMAGE->addFrameImage(IMAGE::Vestal_Idle, "images/Heroes/vestal/Vestal_Idle_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
-	//MG_IMAGE->addFrameImage(IMAGE::Vestal_Walk, "images/Heroes/vestal/Vestal_Walk_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Vestal_Walk, "images/Heroes/vestal/Vestal_Walking_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Vestal_Combat, "images/Heroes/vestal/Vestal_Combat_Frame.bmp", 2400, 270, 12, 1, true, RGB(255, 0, 255));
 	
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Idle, "images/Heroes/crusader/Crusader_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Walk, "images/Heroes/crusader/Crusader_Walk_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::Crusader_Combat, "images/Heroes/crusader/Crusader_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
 	
-	MG_IMAGE->addFrameImage(IMAGE::Plague_Idle, "images/Heroes/plague_doctor/plague_doctor_Idle_Frame.bmp", 2400, 295, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Plague_Walk, "images/Heroes/plague_doctor/plague_doctor_walking_Frame.bmp", 2400, 287, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::Plague_Combat, "images/Heroes/plague_doctor/plague_doctor_Combat_Frame.bmp", 2400, 350, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Plague_Idle, "images/Heroes/plague_doctor/plague_doctor_Idle_Frame2.bmp", 2400, 380, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Plague_Walk, "images/Heroes/plague_doctor/plague_doctor_walking_Frame.bmp", 2400, 280, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Plague_Combat, "images/Heroes/plague_doctor/plague_doctor_Combat_Frame.bmp", 2400, 285, 12, 1, true, RGB(255, 0, 255));
+
+	MG_IMAGE->addFrameImage(IMAGE::Highwayman_Idle, "images/Heroes/highwayman/highwayMan_Idle_Frame.bmp", 2400, 280, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Highwayman_Walk, "images/Heroes/highwayman/highwayMan_Walking_Frame.bmp", 2400, 280, 12, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::Highwayman_Combat, "images/Heroes/highwayman/highwayMan_combat_Frame.bmp", 2400, 285, 12, 1, true, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::Crusader_banner, "images/Heroes/crusader/crusader_banner.bmp", 529, 975, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_charge, "images/Heroes/crusader/crusader_charge.bmp", 838, 465, true, RGB(255, 0, 255));
@@ -104,9 +108,25 @@ HRESULT imageManager::init()
 
 	//Enemy
 	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender.sprite.attack_axe.bmp", 775, 580, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Defender, "images/Enemys/skeleton_defender.sprite.defend.bmp", 503, 622, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Shield, "images/Enemys/skeleton_defender.sprite.attack_shield.bmp", 716, 623, true, RGB(255, 0, 255));
+	//skeleton_defender
+	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender_axe.bmp", 710, 580, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Defender, "images/Enemys/skeleton_defender_defend.bmp", 499, 621, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Shield, "images/Enemys/skeleton_defender_shield.bmp", 650, 623, true, RGB(255, 0, 255));
+	//skeleton_courtier
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_attack, "images/Enemys/skeleton_courtier_attack.bmp", 550, 491, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_attack_goblet, "images/Enemys/skeleton_courtier_attack_goblet.bmp", 458, 520, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_defend, "images/Enemys/skeleton_courtier_defend.bmp", 332, 526, true, RGB(255, 0, 255));
+	//skeleton_common
+	MG_IMAGE->addImage(IMAGE::skeleton_common_attack, "images/Enemys/skeleton_common_attack.bmp", 575, 548, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_common_defend, "images/Enemys/skeleton_common_defend.bmp", 342, 508, true, RGB(255, 0, 255));
+	//Monster_dead
+	MG_IMAGE->addImage(IMAGE::skeleton_defender_dead, "images/Enemys/skeleton_defender_dead.bmp", 287, 298, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_courtier_dead, "images/Enemys/skeleton_courtier_dead.bmp", 310, 237, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::skeleton_common_dead, "images/Enemys/skeleton_common_dead.bmp", 295, 210, true, RGB(255, 0, 255));
+	//BOSS
+	MG_IMAGE->addImage(IMAGE::necromancer_attack, "images/Enemys/necromancer_attack.bmp", 1188, 882, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::necromancer_defend, "images/Enemys/necromancer_defend.bmp", 589, 888, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::necromancer_retreat, "images/Enemys/necromancer_retreat.bmp", 615, 1168, true, RGB(255, 0, 255));
 
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
@@ -405,6 +425,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Vestal_Weapon_0, "images/icons_equip_Vestal/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Armor_0, "images/icons_equip_Crusader/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Crusader_Weapon_0, "images/icons_equip_Crusader/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_Armor_0, "images/icons_equip_Plague_doctor/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Plague_Weapon_0, "images/icons_equip_Plague_doctor/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highway_Armor_0, "images/icons_equip_Highwayman/eqp_armour_0.bmp", 68, 132, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Highway_Weapon_0, "images/icons_equip_Highwayman/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 
 	//UIovelay
 

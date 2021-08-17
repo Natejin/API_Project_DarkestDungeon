@@ -34,6 +34,7 @@ public:
 	float critMod[5] = { 0 };
 	int effectVal[5] = { 0 };
 	int MovePos[5] = {0};	
+	SOUND sound;
 public:
 	CInfo_Skill() {};
 	~CInfo_Skill() {};

@@ -16,8 +16,8 @@ HRESULT CGameManager::Init()
 	heroID = 0;
 	RegisterHeroToOwnList(CreateHero("member1", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
-	RegisterHeroToOwnList(CreateHero("member3", JOB::Crusader));
-	RegisterHeroToOwnList(CreateHero("member4", JOB::Vestal));
+	RegisterHeroToOwnList(CreateHero("member3", JOB::PlagueDoctor));
+	RegisterHeroToOwnList(CreateHero("member4", JOB::Highwayman));
 
 	RegisterHeroToOwnList(CreateHero("member5", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member6", JOB::Vestal));
@@ -190,8 +190,10 @@ CHero* CGameManager::CreateHero(string name, JOB job)
 		hero->Init(DB_UNIT->CallHero(JOB::Vestal));
 		break;
 	case JOB::PlagueDoctor:
+		hero->Init(DB_UNIT->CallHero(JOB::PlagueDoctor));
 		break;
 	case JOB::Highwayman:
+		hero->Init(DB_UNIT->CallHero(JOB::Highwayman));
 		break;
 	default:
 		break;

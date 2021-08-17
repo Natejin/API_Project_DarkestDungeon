@@ -27,6 +27,10 @@ DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
+	MG_SOUND->stop(SOUND::Town);
+	MG_SOUND->play(SOUND::Ruins_base);
+	MG_SOUND->play(SOUND::Ruins_dark);
+
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
 

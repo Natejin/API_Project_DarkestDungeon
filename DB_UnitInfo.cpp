@@ -189,7 +189,7 @@ void DB_UnitInfo::SetHero()
 
 	info->imageIdle = IMAGE::Vestal_Idle;
 	info->imageCombat = IMAGE::Vestal_Combat;
-	info->imageWalk = IMAGE::Vestal_Idle;
+	info->imageWalk = IMAGE::Vestal_Walk;
 	info->imageAttack = IMAGE::Vestal_mace;
 	info->imageCharge = IMAGE::Vestal_miracle;
 	info->imageInvestigate = IMAGE::Vestal_investigate;
@@ -224,60 +224,110 @@ void DB_UnitInfo::SetHero()
 	heroDB.insert(make_pair(info->job, info));
 	MG_INFO->RegisterInfo(info);
 
-	/*Info_Hero* info = new Info_Hero();
+	//plague_doctor
+	info = new Info_Hero();
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 23;
 	info->m_SPD = 4;
 	info->isAffliction = false;
 	info->isAlive = true;
-	info->job = JOB::Crusader;
+	info->job = JOB::PlagueDoctor;
 	info->m_DMG = 1;
-	info->m_ACRY = 9;
+	info->m_ACRY = 8;
 	info->m_CRI = 0;
-	info->m_DEF = 3;
-	info->m_DODGE = 0;
+	info->m_DEF = 4;
+	info->m_DODGE = 2;
 	info->m_LVL = 1;
 	info->m_EXP = 0;
 	info->m_STRS = 0;
 
-	info->imageIdle = IMAGE::Crusader_Idle;
-	info->imageCombat = IMAGE::Crusader_Combat;
-	info->imageWalk = IMAGE::Crusader_Walk;
-	info->imageAttack = IMAGE::Crusader_sword;
-	info->imageCharge = IMAGE::Crusader_charge;
-	info->imageInvestigate = IMAGE::Crusader_investigate;
-	info->imageDefend = IMAGE::Crusader_defend;
-	info->imageBuff = IMAGE::Crusader_banner;
-	info->imageDebuff = IMAGE::Crusader_scroll;
+	info->imageIdle = IMAGE::Plague_Idle;
+	info->imageCombat = IMAGE::Plague_Combat;
+	info->imageWalk = IMAGE::Plague_Walk;
+	info->imageAttack = IMAGE::Plague_doctor_dagger;
+	info->imageCharge = IMAGE::Plague_doctor_grenade;
+	info->imageInvestigate = IMAGE::Plague_doctor_investigate;
+	info->imageDefend = IMAGE::Plague_doctor_defend;
+	info->imageBuff = IMAGE::Plague_doctor_buff;
+	info->imageDebuff = IMAGE::Plague_doctor_defend;
 	info->resist[0] = 40;
 	info->resist[1] = 30;
 	info->resist[2] = 30;
 	info->resist[3] = 30;
 	info->resist[4] = 40;
-	info->ownSkill.push_back(SKILL::Crusader_Combat_Smite);
+	info->ownSkill.push_back(SKILL::Plague_doctor_BattleFiled_Medicine);
 	info->skillLvl.push_back(0);
-	info->ownSkill.push_back(SKILL::Crusader_Combat_ZealousAccusation);
+	info->ownSkill.push_back(SKILL::Plague_doctor_Incision);
 	info->skillLvl.push_back(0);
-	info->ownSkill.push_back(SKILL::Crusader_Combat_StunningBlow);
+	info->ownSkill.push_back(SKILL::Plague_doctor_NoxiousBlast);
 	info->skillLvl.push_back(0);
-	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
+	info->ownSkill.push_back(SKILL::Plague_doctor_PlagueGrenade);
 	info->skillLvl.push_back(0);
 	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
 	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
 	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_stand_tall);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_unshakeable_leader);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_speech);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_vigil);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_experimental_vapours);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_leeches);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_preventative_medicine);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_self_medicate);
 
-	info->portrait = IMAGE::Crusader_portrait;
-	info->weapon.push_back(IMAGE::Crusader_Weapon_0);
-	info->armor.push_back(IMAGE::Crusader_Armor_0);
+	info->portrait = IMAGE::plague_doctor_roster;
+	info->weapon.push_back(IMAGE::Plague_Weapon_0);
+	info->armor.push_back(IMAGE::Plague_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
-	MG_INFO->RegisterInfo(info);*/
+	MG_INFO->RegisterInfo(info);
+	//Highwayman
+	info = new Info_Hero();
+	info->unitType = UNITTYPE::Hero;
+	info->m_maxHP = 24;
+	info->m_SPD = 7;
+	info->isAffliction = false;
+	info->isAlive = true;
+	info->job = JOB::Highwayman;
+	info->m_DMG = 8;
+	info->m_ACRY = 8;
+	info->m_CRI = 2;
+	info->m_DEF = 2;
+	info->m_DODGE = 4;
+	info->m_LVL = 1;
+	info->m_EXP = 0;
+	info->m_STRS = 0;
 
+	info->imageIdle = IMAGE::Highwayman_Idle;
+	info->imageCombat = IMAGE::Highwayman_Combat;
+	info->imageWalk = IMAGE::Highwayman_Walk;
+	info->imageAttack = IMAGE::Highwayman_slice;
+	info->imageCharge = IMAGE::Highwayman_lunge;
+	info->imageInvestigate = IMAGE::Highwayman_investigate;
+	info->imageDefend = IMAGE::Highwayman_defend;
+	info->imageBuff = IMAGE::Highwayman_pistol;
+	info->imageDebuff = IMAGE::Highwayman_defend;
+	info->resist[0] = 40;
+	info->resist[1] = 30;
+	info->resist[2] = 30;
+	info->resist[3] = 30;
+	info->resist[4] = 40;
+	info->ownSkill.push_back(SKILL::Highwayman_Duelists_Advance);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Highwayman_GrapeshotBlast);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Highwayman_OpenVein);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Highwayman_PointBlankShot);
+	info->skillLvl.push_back(0);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_clean_guns);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_gallows_humor);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_perimeter_alarms);
+	info->Camping_Skill.push_back(IMAGE::camp_skill_uncatchable);
 
-
+	info->portrait = IMAGE::highwayman_roster;
+	info->weapon.push_back(IMAGE::Highway_Weapon_0);
+	info->armor.push_back(IMAGE::Highway_Armor_0);
+	heroDB.insert(make_pair(info->job, info));
+	MG_INFO->RegisterInfo(info);
 
 }
 

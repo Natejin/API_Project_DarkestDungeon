@@ -242,11 +242,27 @@ enum class IMAGE
 {
 	NONE,
 
-	//Enemy
+	//Enemy Motion
 	Enemy_SkeletonDefender_Idle,
 	Enemy_SkeletonDefender_Attack,
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
+	//skeleton_courtier
+	skeleton_courtier_attack,
+	skeleton_courtier_attack_goblet,
+	skeleton_courtier_defend,
+	//skeleton_common
+	skeleton_common_attack,
+	skeleton_common_defend,
+	//BOSS
+	necromancer_attack,
+	necromancer_defend,
+	necromancer_retreat,
+	//Monster_dead
+	skeleton_defender_dead,
+	skeleton_courtier_dead,
+	skeleton_common_dead,
+	
 
 	//UI
 	panel_monster_Red,
@@ -270,7 +286,10 @@ enum class IMAGE
 	Vestal_Weapon_0,
 	Crusader_Armor_0 ,
 	Crusader_Weapon_0,
-
+	Plague_Armor_0,
+	Plague_Weapon_0,
+	Highway_Armor_0,
+	Highway_Weapon_0,
 	//IMG_DUNGEON
 	ruins_bg,
 	ruins_wall0,
@@ -477,6 +496,10 @@ enum class IMAGE
 	Crusader_sword,
 	
 	//Highwayman
+	Highwayman_Idle,
+	Highwayman_Walk,
+	Highwayman_Combat,
+
 	Highwayman_defend,
 	Highwayman_hipshot,
 	Highwayman_investigate,
