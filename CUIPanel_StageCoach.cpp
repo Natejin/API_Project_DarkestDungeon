@@ -145,8 +145,6 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 			case JOB::Highwayman:
 				OnCoach_HeroList_Button->AddSpriteRenderer(IMAGE::highwayman_roster);
 				break;
-			default:
-				break;
 			}
 			m_OnCoach_heroListButtonVec.push_back(OnCoach_HeroList_Button);
 			MG_GMOBJ->RegisterObj("OnCoach_Hero_roster", OnCoach_HeroList_Button);

@@ -202,6 +202,8 @@ void CBattleSystem::StartTurn()
 				}
 			}
 			else {
+
+				speedVec.pop_back();
 				StartTurn();
 			}
 
