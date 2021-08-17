@@ -206,6 +206,9 @@ void DB_UnitInfo::SetHero()
 	info->armor.push_back(IMAGE::Vestal_Armor_0);
 	heroDB.insert(make_pair(info->job, info));
 	MG_INFO->RegisterInfo(info);
+
+
+
 }
 
 void DB_UnitInfo::SetEnemy()

@@ -174,9 +174,11 @@ bool soundManager::isPauseSound(SOUND keyName)
 }
 
 void soundManager::SetSound()
-{
+{	//BGM
 	addSound(SOUND::Town, "sound/BGM/Town.wav");
 	addSound(SOUND::Combat, "sound/BGM/Combat.wav");
+	addSound(SOUND::Ruins_dark, "sound/BGM/amb_dun_ruins_dark.wav");
+	addSound(SOUND::Ruins_base, "sound/BGM/amb_dun_ruins_base.wav");
 
 	//Crusader
 	addSound(SOUND::Cru_Battleheal, "sound/SoundEffect/Crusader/Cru_Battleheal.wav");

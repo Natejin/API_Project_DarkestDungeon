@@ -148,7 +148,6 @@ void CDB_Skill::SetHeroSkill()
 	MG_INFO->RegisterInfo(info);
 #pragma endregion
 
-
 #pragma region Vestal
 	info = new CInfo_Skill();
 	info->m_name = "Smite";
@@ -275,6 +274,49 @@ void CDB_Skill::SetHeroSkill()
 	skillDB.insert(make_pair(SKILL::Vestal_Heal_DivineComfort, info));
 	MG_INFO->RegisterInfo(info);
 #pragma endregion
+
+#pragma region Plague_doctor
+	info = new CInfo_Skill();
+	info->m_name = "Noxious Blast";
+	info->m_description = "";
+	info->m_ID = id++;
+	info->skillLevel = 0;
+	info->targetPos = 3;
+	info->allowUseSkillPos = 14;
+	info->m_skillImageType = SKILLIMAGETYPE::Debuff;
+	info->target = SKILLTARGET::Enemy;
+	info->job = JOB::PlagueDoctor;
+	info->m_skill = SKILL::Vestal_Combat_DazzlingLight;
+	info->m_skillIcon = IMAGE::Vestal_Skill_DazzlingLight;
+	info->m_skillMotion = IMAGE::Vestal_lectionary;
+	info->effect = EFFECTTYPE::Stun;
+	info->damage[0] = -75.f;
+	info->damage[1] = -75.f;
+	info->damage[2] = -75.f;
+	info->damage[3] = -75.f;
+	info->damage[4] = -75.f;
+	info->accuracy[0] = 90;
+	info->accuracy[1] = 95;
+	info->accuracy[2] = 100;
+	info->accuracy[3] = 105;
+	info->accuracy[4] = 110;
+	info->critMod[0] = 5;
+	info->critMod[1] = 6;
+	info->critMod[2] = 7;
+	info->critMod[3] = 8;
+	info->critMod[4] = 9;
+	info->effectVal[0] = 100.f;
+	info->effectVal[1] = 110.f;
+	info->effectVal[2] = 120.f;
+	info->effectVal[3] = 130.f;
+	info->effectVal[4] = 140.f;
+	skillDB.insert(make_pair(SKILL::Vestal_Combat_DazzlingLight, info));
+	MG_INFO->RegisterInfo(info);
+
+
+#pragma endregion
+
+
 }
 
 void CDB_Skill::SetEnemySkill()

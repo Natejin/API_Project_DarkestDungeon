@@ -61,13 +61,14 @@ enum class SKILLIMAGETYPE {
 enum class SKILL
 {
 	//HERO
+	//Crusader
 	Crusader_Combat_Smite,
 	Crusader_Combat_ZealousAccusation,
 	Crusader_Combat_StunningBlow,
 	Crusader_BuffAllie_BulwarkofFaith,
 	Crusader_Heal_BattleHeal,
 	Crusader_Combat_HolyLance,
-
+	//Vestal
 	Vestal_Combat_MaceBash,
 	Vestal_Combat_Judgement,
 	Vestal_Combat_DazzlingLight,
@@ -75,6 +76,11 @@ enum class SKILL
 	Vestal_Heal_DivineComfort,
 	Vestal_Combat_Illumination,
 	Vestal_Combat_HandofLight,
+	//Plague_doctor
+	NoxiousBlast,
+	PlagueGrenade,
+
+	//Highwayman
 
 	//ENEMY
 	BoneDefender_Combat_1,
@@ -119,6 +125,9 @@ enum class SOUND {
 	//BGM
 	Town,
 	Combat,
+	Ruins_dark,
+	Ruins_base,
+
 	//Crusader
 	Cru_Battleheal,
 	Cru_holylance,
@@ -534,8 +543,14 @@ enum class IMAGE
 	camp_skill_bless,
 	camp_skill_chant,
 	camp_skill_pray,
-	camp_skill_sanctuary
-
+	camp_skill_sanctuary,
+	//Battle_Scene
+	darkest_dungeon_1,
+	darkest_dungeon_2,
+	darkestdungeon_wall1,
+	darkestdungeon_wall2,
+	town_invasion,
+	trinket_retention
 };
 
 enum class Resistance
