@@ -422,7 +422,7 @@ void CDB_Skill::SetHeroSkill()
 	info->effectVal[3] = 130.f;
 	info->effectVal[4] = 140.f;
 
-	skillDB.insert(make_pair(SKILL::Highwayman_PointBlankShot, info));
+	skillDB.insert(make_pair(SKILL::Plague_doctor_BattleFiled_Medicine, info));
 	MG_INFO->RegisterInfo(info);
 
 #pragma endregion
@@ -454,7 +454,7 @@ void CDB_Skill::SetHeroSkill()
 	info->healMin[4] = 3.f;
 	info->healMax[4] = 3.f;
 
-	skillDB.insert(make_pair(SKILL::Plague_doctor_BattleFiled_Medicine, info));
+	skillDB.insert(make_pair(SKILL::Highwayman_PointBlankShot, info));
 	MG_INFO->RegisterInfo(info);
 
 	info = new CInfo_Skill();
