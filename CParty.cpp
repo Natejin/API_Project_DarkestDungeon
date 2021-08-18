@@ -27,12 +27,32 @@ HRESULT CParty::Init(int food, int bandage, int torch)
 
 	limit = 0;
 
+	m_vSound.push_back(SOUND::party_foot_dirt_01);
+	m_vSound.push_back(SOUND::party_foot_dirt_02);
+	m_vSound.push_back(SOUND::party_foot_dirt_03);
+	m_vSound.push_back(SOUND::party_foot_dirt_04);
+	m_vSound.push_back(SOUND::party_foot_dirt_05);
+	m_vSound.push_back(SOUND::party_foot_dirt_06);
+	
+	curWalkTime = 0;
+	curWalkCoolTime = 0.5;
 	//torch와 brightness는 다름
 	return S_OK;
 }
 
 void CParty::Update(float deltaTime, float worldTime)
 {
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT) || MG_INPUT->isStayKeyDown(VK_LEFT))
+	{
+		if (curWalkTime < worldTime)
+		{
+			curWalkTime = worldTime + curWalkCoolTime;
+			MG_SOUND->play(m_vSound[MG_RND->getInt(m_vSound.size())]);
+		}
+	}
+
+	
+	
 	/*if (MG_INPUT->isStayKeyDown(VK_NUMPAD2))
 	{
 		for (size_t i = 0; i < m_member.size(); i++)

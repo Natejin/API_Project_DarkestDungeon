@@ -45,6 +45,7 @@ void airHockey::release()
 
 void airHockey::update()
 {
+
 	if (MG_INPUT->isStayKeyDown(VK_RIGHT))_racket[0].x += RACKET_SPEED;
 	if (MG_INPUT->isStayKeyDown(VK_LEFT))_racket[0].x -= RACKET_SPEED;
 	if (MG_INPUT->isStayKeyDown(VK_UP))_racket[0].y -= RACKET_SPEED;

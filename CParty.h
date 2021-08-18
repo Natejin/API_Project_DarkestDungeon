@@ -27,6 +27,11 @@ private:
 	int limit;
 	int selectedHeroIndex;
 
+	float curWalkTime;
+	float curWalkCoolTime;
+
+	vector<SOUND> m_vSound;
+
 	DUNGEONSTATE nowScene;
 
 public:
