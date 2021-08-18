@@ -98,8 +98,8 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 	
 	MG_IMAGE->addImage(IMAGE::Vestal_portrait, "images/icons_heroes/vestal_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_MaceBash, "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Vestal_Skill_Judgement, "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_Judgement, "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Vestal_Skill_MaceBash, "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DazzlingLight, "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineGrace, "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort, "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
