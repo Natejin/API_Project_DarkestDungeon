@@ -729,7 +729,8 @@ enum class SCENETYPE
 	Test,
 	Dungeon,
 	Dungeon2,
-	Town
+	Town,
+	MainScene
 };
 
 enum class UNITTYPE

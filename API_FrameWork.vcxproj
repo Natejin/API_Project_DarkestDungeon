@@ -254,6 +254,7 @@
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
     <ClInclude Include="mainGame.h" />
+    <ClInclude Include="mainScene.h" />
     <ClInclude Include="mapTool.h" />
     <ClInclude Include="minimap.h" />
     <ClInclude Include="minion.h" />
@@ -395,6 +396,7 @@
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="mainGame.cpp" />
+    <ClCompile Include="mainScene.cpp" />
     <ClCompile Include="mapTool.cpp" />
     <ClCompile Include="minimap.cpp" />
     <ClCompile Include="minion.cpp" />
