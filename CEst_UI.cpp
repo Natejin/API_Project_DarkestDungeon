@@ -76,5 +76,6 @@ void CEst_UI::Disable()
 {
 	m_quit->isActive = false;
 	isActive = false;
+
 	townScene->ActivateBuildings();
 }
