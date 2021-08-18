@@ -685,7 +685,8 @@ enum class RoadObjType
 	Empty,
 	Trap,
 	Treasure,
-	Enemy
+	Enemy,
+	Boss
 };
 
 enum class ENEMYTYPE {

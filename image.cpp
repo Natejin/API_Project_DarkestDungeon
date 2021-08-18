@@ -1049,7 +1049,10 @@ void Image::alphaRender(HDC hdc, BYTE alpha)
 
 	if (_isTrans)
 	{
-		BitBlt(_blendImage->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height,
+		BitBlt(_blendImage->hMemDC, 
+			0, 
+			0, 
+			_imageInfo->width, _imageInfo->height,
 			hdc, _imageInfo->x, _imageInfo->y, SRCCOPY);
 		
 		GdiTransparentBlt(_blendImage->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height,

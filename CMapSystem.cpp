@@ -9,6 +9,7 @@ CMapSystem::CMapSystem()
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 10;
+	createBossRoomFromHome = 3;
 }
 CMapSystem::~CMapSystem() {}
 
@@ -76,7 +77,7 @@ void CMapSystem::SetRandomCreateValue()
 	randomRoadEnemy = 20;
 	randomRoadCurio = 40;
 	randomRoadTrap = 20;
-
+	randomBossRoom = 30;
 	int _rndRoomEnemy = randRoomEnemy;
 	int _rndRoomCurio = randRoomEnemy + randRoomCurio;
 	rndRoom.push_back(_rndRoomEnemy < 100 ? _rndRoomEnemy : 100);
@@ -110,14 +111,14 @@ void CMapSystem::CreateDungeon()
 
 	while (remainRoom > 0)
 	{
-		CreateMapPart(curPos.x, curPos.y, 0, Vector2Int(0, 0));
+		CreateMapPart(curPos.x, curPos.y, 0, Vector2Int(0, 0), 0);
 	}
 
 	curDungeonMap = dungeonMap[curPos.x][curPos.y];
 	SetMapWitchCreated();
 }
 
-void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
+void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir, int _farFromHome)
 {
 	if (_lastDir != Vector2Int(0, 0))
 	{
@@ -132,7 +133,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 			dungeonMap[i][j].dungeonMapState != DUNGEONMAPSTATE::NONE)
 			return;
 	}
-
+	
 #ifdef _DEBUG
 	//system("CLS");
 	//for (size_t m = 0; m < MAPSIZE; m++)
@@ -173,9 +174,10 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		{
 			dungeonMap[i][j].isHorizontal = true;
 		}
-		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir);
+		CreateMapPart(i + _lastDir.x, j + _lastDir.y, count, _lastDir, _farFromHome);
 	}
 	else {
+		
 		isCreatedEnemyOnRoad = false;
 		isCreatedTrabOnRoad = false;
 		isCreatedTresureOnRoad = false;
@@ -184,24 +186,40 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 		{
 			dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
 			dungeonMap[i][j].m_roadObjType = RoadObjType::Empty;
+			dungeonMap[i][j].farFromHome = 0;
+
 			//dungeonMap[i][j].m_roomObjType = RoomObjType::Empty;
 		}
 		else
 		{
-			if (random < rndRoom[0]) {
-				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Enemy;
-				dungeonMap[i][j].m_roadObjType = RoadObjType::Enemy;
-				//dungeonMap[i][j].m_roomObjType = RoomObjType::Enemy;
+			_farFromHome++;
+			if (dungeonMap[i][j].farFromHome > _farFromHome)
+			{
+				dungeonMap[i][j].farFromHome = _farFromHome;
 			}
-			else if (random < rndRoom[1]) {
-				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Trasure;
-				dungeonMap[i][j].m_roadObjType = RoadObjType::Treasure;
-				//dungeonMap[i][j].m_roomObjType = RoomObjType::Treasure;
+			
+			if (!hasBossRoom && createBossRoomFromHome < _farFromHome - 1 && MG_RND->getInt(randomBossRoom) > random)
+			{
+				hasBossRoom = true;
+				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Boss;
+				dungeonMap[i][j].m_roadObjType = RoadObjType::Boss;
 			}
 			else {
-				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
-				dungeonMap[i][j].m_roadObjType = RoadObjType::Empty;
-				//dungeonMap[i][j].m_roomObjType = RoomObjType::Empty;
+				if (random < rndRoom[0]) {
+					dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Enemy;
+					dungeonMap[i][j].m_roadObjType = RoadObjType::Enemy;
+					//dungeonMap[i][j].m_roomObjType = RoomObjType::Enemy;
+				}
+				else if (random < rndRoom[1]) {
+					dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Trasure;
+					dungeonMap[i][j].m_roadObjType = RoadObjType::Treasure;
+					//dungeonMap[i][j].m_roomObjType = RoomObjType::Treasure;
+				}
+				else {
+					dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Empty;
+					dungeonMap[i][j].m_roadObjType = RoadObjType::Empty;
+					//dungeonMap[i][j].m_roomObjType = RoomObjType::Empty;
+				}
 			}
 		}
 
@@ -213,26 +231,26 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 			noneDir = false;
 			lastDir = Vector2Int(1, 0);
 			dungeonMap[i][j].dirMap[(int)DIR::Right] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir);
+			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir, _farFromHome);
 		}
 		if (!(bool)MG_RND->getInt(2)) {
 			noneDir = false;
 			lastDir = Vector2Int(-1, 0);
 			dungeonMap[i][j].dirMap[(int)DIR::Left] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir);
+			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir, _farFromHome);
 		}
 		if (!(bool)MG_RND->getInt(2)) {
 			noneDir = false;
 			lastDir = Vector2Int(0, 1);
 			dungeonMap[i][j].dirMap[(int)DIR::Down] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir);
+			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir, _farFromHome);
 		}
 
 		if (!(bool)MG_RND->getInt(2)) {
 			noneDir = false;
 			lastDir = Vector2Int(0, -1);
 			dungeonMap[i][j].dirMap[(int)DIR::Up] = true;
-			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir);
+			CreateMapPart(i + lastDir.x, j + lastDir.y, roadCount, lastDir, _farFromHome);
 		}
 
 		if (noneDir)
@@ -244,7 +262,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir)
 				if (_lastDir != newDic)
 				{
 					dungeonMap[i][j].dirMap[k] = true;
-					CreateMapPart(i + newDic.x, j + newDic.y, roadCount, newDic);
+					CreateMapPart(i + newDic.x, j + newDic.y, roadCount, newDic, _farFromHome);
 					return;
 				}
 			}
@@ -293,7 +311,6 @@ void CMapSystem::SetMapWitchCreated()
 				{
 				case DUNGEONMAPSTATE::Road_Empty:
 					minimapButton->AddSpriteRenderer(IMAGE::hall_clear);
-					
 					break;
 				case DUNGEONMAPSTATE::Road_Enemy:
 					minimapButton->AddSpriteRenderer(IMAGE::marker_battle);
@@ -407,13 +424,13 @@ void CMapSystem::UseClickToMoveCurPoint(DungeonData _dungeonData)
 	if (curPosPanel->dungeonData.isRoom && _dungeonData.isRoom && canMoveAnotherRoom)
 	{
 		Vector2Int index = _dungeonData.pos - curPos;
-		
 		if ((index.x == 4 | index.y == 4) || (index.x == -4 | index.y == -4))
 		{
 			bool ableToGo = false;
 			if (index.x == 4 && 
 				dungeonMap[curPos.x + 1][curPos.y].dungeonMapState != DUNGEONMAPSTATE::NONE)
 			{
+
 				ableToGo = true;
 			}
 			else if (index.y == 4 &&

@@ -10,7 +10,7 @@ public:
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
 
 	DungeonData curDungeonMap;
-
+	bool hasBossRoom;
 	vector<class CMinimapButton*> dungeonMapCreate;
 	class CMinimapButton* curPosPanel;
 	class DungeonScene* dungeonScene;
@@ -24,7 +24,7 @@ public:
 	Vector2 customDragPos;
 
 	bool canMoveAnotherRoom;
-
+	int createBossRoomFromHome;
 	int roadCount;
 	int remainRoom;
 
@@ -44,6 +44,7 @@ protected:
 	int randomRoadEnemy;
 	int randomRoadCurio;
 	int randomRoadTrap;
+	int randomBossRoom;
 
 public:
 	CMapSystem();
@@ -71,7 +72,7 @@ public:
 	//virtual void FrontRender(HDC _hdc);
 
 	void CreateDungeon();
-	void CreateMapPart(int i, int j, int count, Vector2Int lastDir);
+	void CreateMapPart(int i, int j, int count, Vector2Int lastDir, int _farFromHome);
 
 	Vector2Int GetDirFromInt(int dir);
 

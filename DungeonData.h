@@ -7,8 +7,9 @@ public:
 	Vector2Int pos;
 	Vector2 posFromCenter;
 	RoadObjType m_roadObjType;
+	int farFromHome;
 	//RoomObjType m_roomObjType;
-
+	bool reachable = false;
 	bool isRoom = false;
 	bool isSearched = false;
 	bool isHorizontal = false;
