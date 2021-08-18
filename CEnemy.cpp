@@ -39,14 +39,11 @@ void CEnemy::Update(float deltaTime, float worldTime)
 	Unit::Update(deltaTime, worldTime);
 	if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 	{
-
 		if (canTriggerStay)
 		{
 			m_triggerWhenStay(m_partyIndex);
 		}
 	}
-
-
 }
 
 void CEnemy::LateUpdate()
@@ -88,8 +85,7 @@ void CEnemy::SetMemberOverlay()
 
 UNITTYPE CEnemy::GetUnitType()
 {
-		return info->unitType;
-	
+	return info->unitType;
 }
 
 Info_Enemy* CEnemy::GetInfo()
@@ -143,7 +139,6 @@ void CEnemy::setSPD(int spd)
 	info->m_SPD = spd;
 }
 
-
 bool CEnemy::GetAlive()
 {
 	return info->isAlive;
@@ -157,27 +152,19 @@ bool CEnemy::SetCorpse(bool _corpse)
 {
 	return	info->isCorpse = _corpse;
 }
-//int CEnemy::GetAcry() const
-//{
-//	return info->m_ACRY;
-//}
-//
-//int CEnemy::GetCri() const
-//{
-//	return info->m_CRI;
-//}
-//
-//int CEnemy::GetDmg() const
-//{
-//	return info->m_DMG;
-//}
-//
-//int CEnemy::GetDodge() const
-//{
-//	return info->m_DODGE;
-//}
-//
-//int CEnemy::GetDef() const
-//{
-//	return info->m_DEF;
-//}
+
+int CEnemy::GetDodge() const
+{
+	return info->m_DODGE;
+}
+
+int CEnemy::GetProt() const
+{
+	return info->m_DEF;
+}
+
+bool CEnemy::GetAttribute(int index) const
+{
+	return info->attribute[index];
+}
+

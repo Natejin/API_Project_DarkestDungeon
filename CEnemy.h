@@ -60,12 +60,8 @@ public:
 	virtual bool GetCorpse();
 	virtual bool SetCorpse(bool _corpse);
 
-	/*virtual int GetAcry()const;
-	virtual int GetCri()const;
-	virtual int GetDmg()const;
 	virtual int GetDodge()const;
-	virtual int GetDef()const;
-
-	virtual void GetProt()const;*/
+	virtual int GetProt()const;
+	virtual bool GetAttribute(int index)const;
 
 };
