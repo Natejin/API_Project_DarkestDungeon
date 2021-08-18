@@ -9,6 +9,7 @@
 #include"CEquipButton.h"
 #include"CPosition_Button.h"
 #include "CBTN_CampSkill.h"
+#include "CUIPanel_StageCoach.h";
 
 CUI_Panel_Hero::CUI_Panel_Hero()
 {
@@ -69,28 +70,35 @@ void CUI_Panel_Hero::Render(HDC _hdc)
 
 void CUI_Panel_Hero::FrontRender(HDC _hdc)
 {
-	if (!isShowCoachHero)
-	{
-		m_windowPanelBG->Render(_hdc);
-		m_windowPanel->Render(_hdc);
-		m_windowPanelChar->Render(_hdc);
-		m_HeroImg->Render(_hdc);
+	m_windowPanelBG->Render(_hdc);
+	m_windowPanel->Render(_hdc);
+	m_windowPanelChar->Render(_hdc);
+	m_HeroImg->Render(_hdc);
 
-		DrawPhrases_Img(_hdc);
-		DrawResistanceInfo(_hdc);
-		ShowHeroInfo(_hdc);
-	}
-	else
-	{
-		m_windowPanelBG->Render(_hdc);
-		m_windowPanel->Render(_hdc);
-		m_windowPanelChar->Render(_hdc);
-		m_HeroImg->Render(_hdc);
+	DrawPhrases_Img(_hdc);
+	DrawResistanceInfo(_hdc);
+	ShowHeroInfo(_hdc);
 
-		DrawPhrases_Img(_hdc);
-		DrawResistanceInfo(_hdc);
-		ShowCoachHeroInfo(_hdc);
-	}
+
+	//if (!isShowCoachHero)
+	//{
+	//	
+
+	//	DrawPhrases_Img(_hdc);
+	//	DrawResistanceInfo(_hdc);
+	//	ShowHeroInfo(_hdc);
+	//}
+	//else
+	//{
+	//	m_windowPanelBG->Render(_hdc);
+	//	m_windowPanel->Render(_hdc);
+	//	m_windowPanelChar->Render(_hdc);
+	//	m_HeroImg->Render(_hdc);
+
+	//	DrawPhrases_Img(_hdc);
+	//	DrawResistanceInfo(_hdc);
+	//	ShowCoachHeroInfo(_hdc);
+	//}
 }
 
 void CUI_Panel_Hero::Release()
@@ -99,12 +107,11 @@ void CUI_Panel_Hero::Release()
 
 void CUI_Panel_Hero::Enable()
 {
-
 	CloseHeroSkill();
 	CloseHeroEquip();
 	CloseCampSkill();
-
-	if (!isShowCoachHero)
+	
+	if (curHeroListType == HeroListBtType::ownHero)
 	{
 		SetHeroPanel();
 		SetHeroSkill();
@@ -164,7 +171,7 @@ void CUI_Panel_Hero::SetHeroPanel()
 
 void CUI_Panel_Hero::setCoachHeroPanel()
 {
-	switch (townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetJob())
+	switch (townScene->m_stage_coach->m_OnCoach_HeroVec[townScene->curDragHeroIndex]->GetJob())
 	{
 	case JOB::Crusader:
 		m_windowPanelChar->SetImage(IMAGE::crusader_header);
@@ -185,186 +192,78 @@ void CUI_Panel_Hero::setCoachHeroPanel()
 
 void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 {
-    char str[256];
-    string strFrame;
-    SetBkMode(_hdc, TRANSPARENT);
-
-    SetTextColor(_hdc, RGB(202, 201, 155));
-    sprintf_s(str, "%s", "Name");
-    TextOut(_hdc, 460, 470, str, strlen(str));
-	if (townScene->curDragHeroIndex > -1)
-	{
-		SetTextColor(_hdc, RGB(255, 0, 0));
-		sprintf_s(str, "HP :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getHP());
-		TextOut(_hdc, 460, 485, str, strlen(str));
-
-		SetTextColor(_hdc, RGB(255, 255, 255));
-
-		sprintf_s(str, "Acc :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetAcry());
-		TextOut(_hdc, 460, 505, str, strlen(str));
-
-		sprintf_s(str, "Crit :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetCri());
-		TextOut(_hdc, 560, 505, str, strlen(str));
-
-		sprintf_s(str, "Dmg :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDmg());
-		TextOut(_hdc, 460, 520, str, strlen(str));
-
-		sprintf_s(str, "Dodge :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDodge());
-		TextOut(_hdc, 560, 520, str, strlen(str));
-
-		sprintf_s(str, "Prot :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDef());
-		TextOut(_hdc, 460, 535, str, strlen(str));
-
-		sprintf_s(str, "Spd :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getSPD());
-		TextOut(_hdc, 560, 535, str, strlen(str));
-
-		//stun, blight, bleed, debuff, move
-		sprintf_s(str, "Stun :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(0));
-		TextOut(_hdc, 1000, 605, str, strlen(str));
-
-		sprintf_s(str, "Blight :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(1));
-		TextOut(_hdc, 1150, 605, str, strlen(str));
-
-		sprintf_s(str, "Bleed :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(2));
-		TextOut(_hdc, 1000, 620, str, strlen(str));
-
-		sprintf_s(str, "Debuff :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(3));
-		TextOut(_hdc, 1150, 620, str, strlen(str));
-
-		sprintf_s(str, "Move :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(4));
-		TextOut(_hdc, 1000, 635, str, strlen(str));
-
-		SetTextColor(_hdc, RGB(255, 0, 0));
-		sprintf_s(str, "HP :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getHP());
-		TextOut(_hdc, 460, 485, str, strlen(str));
-
-		SetTextColor(_hdc, RGB(255, 255, 255));
-
-		sprintf_s(str, "Acc :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetAcry());
-		TextOut(_hdc, 460, 505, str, strlen(str));
-
-		sprintf_s(str, "Crit :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetCri());
-		TextOut(_hdc, 560, 505, str, strlen(str));
-
-		sprintf_s(str, "Dmg :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDmg());
-		TextOut(_hdc, 460, 520, str, strlen(str));
-
-		sprintf_s(str, "Dodge :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDodge());
-		TextOut(_hdc, 560, 520, str, strlen(str));
-
-		sprintf_s(str, "Prot :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->GetDef());
-		TextOut(_hdc, 460, 535, str, strlen(str));
-
-		sprintf_s(str, "Spd :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getSPD());
-		TextOut(_hdc, 560, 535, str, strlen(str));
-
-		//stun, blight, bleed, debuff, move
-		sprintf_s(str, "Stun :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(0));
-		TextOut(_hdc, 1000, 605, str, strlen(str));
-
-		sprintf_s(str, "Blight :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(1));
-		TextOut(_hdc, 1150, 605, str, strlen(str));
-
-		sprintf_s(str, "Bleed :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(2));
-		TextOut(_hdc, 1000, 620, str, strlen(str));
-
-		sprintf_s(str, "Debuff :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(3));
-		TextOut(_hdc, 1150, 620, str, strlen(str));
-
-		sprintf_s(str, "Move :  %d", MG_GAME->GetHero(townScene->curDragHeroIndex)->getResist(4));
-		TextOut(_hdc, 1000, 635, str, strlen(str));
-	}
-
-}
-
-void CUI_Panel_Hero::ShowCoachHeroInfo(HDC _hdc)
-{
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 
 	SetTextColor(_hdc, RGB(202, 201, 155));
 	sprintf_s(str, "%s", "Name");
-	TextOut(_hdc, 460, 470, str, strlen(str));
+	TextOut(_hdc, 460, 460, str, strlen(str));
+	
+	CHero* hero;
+	if (curHeroListType == HeroListBtType::coach)
+	{
+		hero = townScene->m_stage_coach->m_OnCoach_HeroVec[townScene->curDragHeroIndex];
+	}
+	else 
+	{
+		hero = MG_GAME->GetHero(townScene->curDragHeroIndex);
+	}
+
 	if (townScene->curDragHeroIndex > -1)
 	{
-		SetTextColor(_hdc, RGB(255, 0, 0));
-		sprintf_s(str, "HP :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getHP());
-		TextOut(_hdc, 460, 485, str, strlen(str));
-
 		SetTextColor(_hdc, RGB(255, 255, 255));
-		sprintf_s(str, "Acc :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetAcry());
-		TextOut(_hdc, 460, 505, str, strlen(str));
+		sprintf_s(str, "MAX HP :  %d", hero->getHP());
+		TextOut(_hdc, 460, 480, str, strlen(str));
 
-		sprintf_s(str, "Crit :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetCri());
-		TextOut(_hdc, 560, 505, str, strlen(str));
+		sprintf_s(str, "Dodge :  %d", hero->GetDodge());
+		TextOut(_hdc, 460, 510, str, strlen(str));
 
-		sprintf_s(str, "Dmg :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetDmg());
-		TextOut(_hdc, 460, 520, str, strlen(str));
+		sprintf_s(str, "Prot :  %d", hero->GetDef());
+		TextOut(_hdc, 460, 530, str, strlen(str));
 
-		sprintf_s(str, "Dodge :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetDodge());
-		TextOut(_hdc, 560, 520, str, strlen(str));
+		sprintf_s(str, "Spd :  %d", hero->getSPD());
+		TextOut(_hdc, 460, 550, str, strlen(str));
 
-		sprintf_s(str, "Prot :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetDef());
-		TextOut(_hdc, 460, 535, str, strlen(str));
+		sprintf_s(str, "Acc :  %d", hero->GetAcry());
+		TextOut(_hdc, 660, 480, str, strlen(str));
 
-		sprintf_s(str, "Spd :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getSPD());
-		TextOut(_hdc, 560, 535, str, strlen(str));
+		sprintf_s(str, "Crit :  %d", hero->GetCri());
+		TextOut(_hdc, 660, 510, str, strlen(str));
+
+		sprintf_s(str, "Dmg :  %d", hero->GetDmg());
+		TextOut(_hdc, 660, 530, str, strlen(str));
 
 		//stun, blight, bleed, debuff, move
-		sprintf_s(str, "Stun :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(0));
+		sprintf_s(str, "Stun :  %d", hero->getResist(0));
 		TextOut(_hdc, 1000, 605, str, strlen(str));
 
-		sprintf_s(str, "Blight :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(1));
+		sprintf_s(str, "Blight :  %d", hero->getResist(1));
 		TextOut(_hdc, 1150, 605, str, strlen(str));
 
-		sprintf_s(str, "Bleed :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(2));
+		sprintf_s(str, "Bleed :  %d", hero->getResist(2));
 		TextOut(_hdc, 1000, 620, str, strlen(str));
 
-		sprintf_s(str, "Debuff :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(3));
+		sprintf_s(str, "Debuff :  %d", hero->getResist(3));
 		TextOut(_hdc, 1150, 620, str, strlen(str));
 
-		sprintf_s(str, "Move :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(4));
+		sprintf_s(str, "Move :  %d", hero->getResist(4));
 		TextOut(_hdc, 1000, 635, str, strlen(str));
 
-		SetTextColor(_hdc, RGB(255, 0, 0));
-		sprintf_s(str, "HP :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getHP());
-		TextOut(_hdc, 460, 485, str, strlen(str));
-
-		SetTextColor(_hdc, RGB(255, 255, 255));
-
-		sprintf_s(str, "Acc :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetAcry());
-		TextOut(_hdc, 460, 505, str, strlen(str));
-
-		sprintf_s(str, "Crit :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetCri());
-		TextOut(_hdc, 560, 505, str, strlen(str));
-
-		sprintf_s(str, "Dmg :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetDmg());
-		TextOut(_hdc, 460, 520, str, strlen(str));
-
-		sprintf_s(str, "Dodge :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetDodge());
-		TextOut(_hdc, 560, 520, str, strlen(str));
-
-		sprintf_s(str, "Prot :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetDef());
-		TextOut(_hdc, 460, 535, str, strlen(str));
-
-		sprintf_s(str, "Spd :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getSPD());
-		TextOut(_hdc, 560, 535, str, strlen(str));
-
 		//stun, blight, bleed, debuff, move
-		sprintf_s(str, "Stun :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(0));
+		sprintf_s(str, "Stun :  %d", hero->getResist(0));
 		TextOut(_hdc, 1000, 605, str, strlen(str));
 
-		sprintf_s(str, "Blight :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(1));
+		sprintf_s(str, "Blight :  %d", hero->getResist(1));
 		TextOut(_hdc, 1150, 605, str, strlen(str));
 
-		sprintf_s(str, "Bleed :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(2));
+		sprintf_s(str, "Bleed :  %d", hero->getResist(2));
 		TextOut(_hdc, 1000, 620, str, strlen(str));
 
-		sprintf_s(str, "Debuff :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(3));
+		sprintf_s(str, "Debuff :  %d", hero->getResist(3));
 		TextOut(_hdc, 1150, 620, str, strlen(str));
 
-		sprintf_s(str, "Move :  %d", townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->getResist(4));
+		sprintf_s(str, "Move :  %d", hero->getResist(4));
 		TextOut(_hdc, 1000, 635, str, strlen(str));
 	}
 }
@@ -396,10 +295,10 @@ void CUI_Panel_Hero::SetHeroEquip()
 
 void CUI_Panel_Hero::SetCoachHeroEquip()
 {
-	m_weapon->SetEquip(townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetWeapon());
+	m_weapon->SetEquip(townScene->m_stage_coach->m_OnCoach_HeroVec[townScene->curDragHeroIndex]->GetWeapon());
 	m_weapon->Enable();
 
-	m_armor->SetEquip(townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetArmor());
+	m_armor->SetEquip(townScene->m_stage_coach->m_OnCoach_HeroVec[townScene->curDragHeroIndex]->GetArmor());
 	m_armor->Enable();
 }
 
@@ -436,7 +335,7 @@ void CUI_Panel_Hero::SetHeroSkill()
 
 void CUI_Panel_Hero::SetCoachHeroSkill()
 {
-	auto tempVec = townScene->m_coachHero[townScene->curDragHeroIndex]->m_hero->GetOwnSkill();
+	auto tempVec = townScene->m_stage_coach->m_OnCoach_HeroVec[townScene->curDragHeroIndex]->GetOwnSkill();
 	for (size_t i = 0; i < tempVec.size(); i++)
 	{
 		m_skillbuttonVec[i]->SetSkill(tempVec[i]);

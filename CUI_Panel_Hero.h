@@ -10,7 +10,8 @@ public:
 	class CHero* hero;
 	class CEquipButton* m_armor;
 	class CEquipButton* m_weapon;
-
+	class TownScene* scene;
+	HeroListBtType curHeroListType;
 	bool isShowCoachHero; 
 
 	vector<class CBTN_Skill*> m_skillbuttonVec;
@@ -38,7 +39,6 @@ public:
 	void setCoachHeroPanel();
 
 	void ShowHeroInfo(HDC _hdc);
-	void ShowCoachHeroInfo(HDC _hdc);
 
 	void CreateHeroSkill();
 	void SetHeroSkill();

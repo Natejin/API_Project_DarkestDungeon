@@ -10,18 +10,20 @@ protected:
 	class CUIPanel_GraveYard* m_graveyard;
 	class CUIPanel_Guild* m_guild;
 	class CUIPanel_Sanitarium* m_sanitarium ;
-	class CUIPanel_StageCoach* m_stage_coach ;
+
 	class CUIPanel_Statue* m_statue ;
 	class CUIPanel_NomadWagon* m_nomad_wagon;
 	class CUIPanel_Tavern* m_tavern;
 	class CBG_Town* m_town;
 	vector<class CBuilding*> buildingVec;
 	
-	class CUI_Panel_Hero* m_hero_panel;
+
 
 	class COwnHeroListPanel* addMemberCollider;
 
 public:
+	class CUI_Panel_Hero* m_hero_panel;
+	class CUIPanel_StageCoach* m_stage_coach;
 	class Hero_Roster* m_DummyRosterButton;
 	vector<class CHeroList_button*> m_heroListButtonVec;
 

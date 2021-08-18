@@ -129,9 +129,16 @@ void Embark::setPartySlot()
 
 void Embark::enterDungeon()
 {
-	if (MG_GAME->GetHeroPartySize() == 4)
+	int count = 0; 
+	for (int i = 0; i <MG_GAME->GetHeroPartySize(); i++)
+	{
+		if (MG_GAME->GetHeroFromParty(i) != nullptr)
+		{
+			count++;
+		}
+	}
+	if (count > 0)
 	{
 		MG_SCENE->changeScene(SCENETYPE::Dungeon);
 	}
-	
 }
