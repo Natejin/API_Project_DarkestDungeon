@@ -85,6 +85,11 @@ void Unit::SetMemberOverlay()
     }
 }
 
+bool Unit::GeTCorpse()
+{
+    return false;
+}
+
 void Unit::showSelMember(HDC _hdc)
 {
 	selectedMem.m_trans.m_pos = Vector2(

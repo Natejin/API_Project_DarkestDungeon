@@ -542,11 +542,11 @@ void CDB_Skill::SetHeroSkill()
 	info->critMod[3] = 8;
 	info->critMod[4] = 9;
 	//++++++++++++++++++++Check Please++++++++++++++++++++++//
-	info->MovePos[0] +=1;
-	info->MovePos[1] +=1;
-	info->MovePos[2] +=1;
-	info->MovePos[3] +=1;
-	info->MovePos[4] +=1;
+	info->MovePos[0] = 1;
+	info->MovePos[1] = 1;
+	info->MovePos[2] = 1;
+	info->MovePos[3] = 1;
+	info->MovePos[4] = 1;
 
 	skillDB.insert(make_pair(SKILL::Highwayman_Duelists_Advance, info));
 	MG_INFO->RegisterInfo(info);

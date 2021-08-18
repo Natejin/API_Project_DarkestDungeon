@@ -55,7 +55,8 @@ public:
 
 	virtual int getSPD();
 	virtual void setSPD(int spd);
-
+	virtual bool GetAlive();
+	virtual bool GeTCorpse();
 
 
 };

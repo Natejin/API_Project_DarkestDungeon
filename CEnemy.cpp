@@ -112,7 +112,7 @@ bool CEnemy::reduceHP(int hp)
 	else {
 		info->m_HP = 0;
 		info->isAlive = false;
-		info->isCollipse = true;
+		info->isCorpse = true;
 		m_animator->SetIndex(1);
 		return false;
 	}
@@ -141,4 +141,14 @@ int CEnemy::getSPD()
 void CEnemy::setSPD(int spd)
 {
 	info->m_SPD = spd;
+}
+
+bool CEnemy::GetAlive()
+{
+	return info->isAlive;
+}
+
+bool CEnemy::GeTCorpse()
+{
+	return info->isCorpse;
 }
