@@ -77,7 +77,6 @@ void CHeroList_button::Render(HDC _hdc)
 
 void CHeroList_button::FrontRender(HDC _hdc)
 {
-	
 	//for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 	//{
 	//	char str[256];
@@ -85,7 +84,6 @@ void CHeroList_button::FrontRender(HDC _hdc)
 	//	TextOut(_hdc, 500, 500+i*50, str, strlen(str));
 	//	//OutputDebugString(TEXT(str));
 	//}
-	
 }
 
 void CHeroList_button::DragHeroList()

@@ -7,18 +7,6 @@ CEnemy::CEnemy() {
 }
 CEnemy::~CEnemy() {}
 
-//HRESULT CEnemy::Init()
-//{
-//	info = new Info_Enemy();
-//	m_transform->m_pivot = Vector2(0.5, 1);
-//	m_animator = new CAnimator();
-//	m_animator->SetTrans(m_transform);
-//	m_animator->SetAnimeSpeed(5);
-//	SetMemberOverlay();
-//	//mini_rc = RectMakeCenter(100 + m_rockman->getX() / 10 - m_camera / 10, 50 + m_rockman->getY() / 10, 10, 10);
-//	return S_OK;
-//}
-
 HRESULT CEnemy::Init(Info_Enemy* _info)
 {
 	Unit::Init();
@@ -71,7 +59,6 @@ void CEnemy::FrontRender(HDC _hdc)
 	}
 
 	Unit::FrontRender(_hdc);
-
 }
 
 void CEnemy::Release()
@@ -85,6 +72,8 @@ void CEnemy::SetMemberOverlay()
 	Unit::SetMemberOverlay();
 	targetSkillMem.m_img = MG_IMAGE->findImage(IMAGE::Target_Monster1);
 }
+
+#pragma region get/set
 
 UNITTYPE CEnemy::GetUnitType()
 {
@@ -108,7 +97,8 @@ bool CEnemy::reduceHP(int hp)
 		info->m_HP -= hp;
 		return true;
 	}
-	else {
+	else 
+	{
 		info->m_HP = 0;
 		info->isAlive = false;
 		info->isCorpse = true;
@@ -171,3 +161,5 @@ bool CEnemy::GetAttribute(int index) const
 {
 	return info->attribute[index];
 }
+
+#pragma endregion

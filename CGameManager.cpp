@@ -13,7 +13,6 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
-	
 	heroID = 0;
 	RegisterHeroToOwnList(CreateHero("member1", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
@@ -30,18 +29,18 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member10", JOB::Vestal));
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
+
 	setParty();
 
-
-	//��Ƽ�� nullptr ä���
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 
-
-
-
+	RegisterHeroToParty(0);
+	RegisterHeroToParty(1);
+	RegisterHeroToParty(2);
+	RegisterHeroToParty(3);
 
 	m_dungeonScene = MG_SCENE->dungeonScene;
 	m_townScene = MG_SCENE->townScene;
@@ -249,7 +248,6 @@ void CGameManager::SetCurSelHero(int index)
 			else {
 				m_dungeonScene->m_dungeonUI->skillBTNs[j]->Disable();
 			}
-
 		}
 	}
 }

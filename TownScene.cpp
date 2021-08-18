@@ -376,7 +376,7 @@ void TownScene::SetHerolist()
 		CHeroList_button* dragButton = new CHeroList_button();
 		dragButton->Init();
 		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 620, WINSIZEY - 855 + i * 100);
-		dragButton->AddColliderBox(50, 50);
+		dragButton->AddColliderBox(85, 85);
 		//dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
@@ -447,35 +447,4 @@ void TownScene::addOwnHero()
 	m_stage_coach->CreateCoach_Button();
 
 	SetHerolist();
-	//CHeroList_button* dragButton = new CHeroList_button();
-	//dragButton->Init();
-	//dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
-	//dragButton->AddColliderBox(50, 50);
-	////dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
-	//dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);
-	//dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
-	//dragButton->m_index = i;
-	//dragButton->btType = HeroListBtType::ownHero;
-	//dragButton->townScene = this;
-	//MG_GAME->GetHero(i)->SetOwnIndex(i);
-	//dragButton->m_hero = MG_GAME->GetHero(i);
-
-	//switch (dragButton->m_hero->GetJob())
-	//{
-	//case JOB::Crusader:
-	//	dragButton->AddSpriteRenderer(IMAGE::crusader_roster);
-	//	break;
-	//case JOB::Vestal:
-	//	dragButton->AddSpriteRenderer(IMAGE::vestal_roster);
-	//	break;
-	//case JOB::PlagueDoctor:
-	//	dragButton->AddSpriteRenderer(IMAGE::plague_doctor_roster);
-	//	break;
-	//case JOB::Highwayman:
-	//	dragButton->AddSpriteRenderer(IMAGE::highwayman_roster);
-	//	break;
-	//}
-	//m_heroListButtonVec.push_back(dragButton);
-	//MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
 }
-

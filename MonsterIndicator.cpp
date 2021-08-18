@@ -7,18 +7,14 @@ MonsterIndicator::MonsterIndicator()
 	m_layer = LAYER::UIIndicator;
 	enemyPosIndex = 0;
 }
-
-MonsterIndicator::~MonsterIndicator()
-{
-
-}
+MonsterIndicator::~MonsterIndicator() {}
 
 HRESULT MonsterIndicator::Init()
 {
-	targetEnemyPosVec.push_back(Vector2(1160, 700));
-	targetEnemyPosVec.push_back(Vector2(1360, 700));
-	targetEnemyPosVec.push_back(Vector2(1560, 700));
-	targetEnemyPosVec.push_back(Vector2(1760, 700));
+	targetEnemyPosVec.push_back(Vector2(1060, 680));
+	targetEnemyPosVec.push_back(Vector2(1210, 680));
+	targetEnemyPosVec.push_back(Vector2(1360, 680));
+	targetEnemyPosVec.push_back(Vector2(1510, 680));
 
 	AddSpriteRenderer(IMAGE::panel_monster_Black);
 	m_transform->m_pivot = Vector2(0.5, 0);

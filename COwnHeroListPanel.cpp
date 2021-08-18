@@ -8,7 +8,7 @@ HRESULT COwnHeroListPanel::Init()
 {
     m_layer = LAYER::UI;
     m_transform->m_pos = Vector2(0, 0);
-    AddColliderBox(Vector2(0, 0), 1472, 128, 1860, 675);
+    AddColliderBox(Vector2(0, 0), 1520, 130, 1890, 670);
     return S_OK;
 }
 

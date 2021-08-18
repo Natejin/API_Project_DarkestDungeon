@@ -429,7 +429,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Target_Selected1, "images/dungeonUI/selected_1.bmp", 175, 120, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Target_Selected2, "images/dungeonUI/selected_2.bmp", 236, 206, true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage(IMAGE::Target_Heal1, "images/dungeonUI/target_h_1.bmp", 236, 206, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Target_Heal1, "images/dungeonUI/target_h_1.bmp", 175, 206, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Target_Heal2, "images/dungeonUI/target_h_2.bmp", 236, 206, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Target_Heal3, "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
 
