@@ -37,11 +37,13 @@ enum class EFFECTTYPE
 {
 	NONE,
 	Stun,
-	PROT,
-	Blind,
-	Poison,
+	Blight,
 	Bleed,
-	Heal
+	Debuff,
+	Buff,
+	Marked,
+	Death,
+	Poison
 };
 
 enum class TRINKET {

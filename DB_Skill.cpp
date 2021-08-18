@@ -421,7 +421,6 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Plague_doctor_BattleFiled_Medicine;
 	info->m_skillIcon = IMAGE::Plague_doctor_Skill_BattleFiled_Medicine;
 	info->m_skillMotion = IMAGE::Plague_doctor_buff;
-	info->effect = EFFECTTYPE::Heal;
 	info->sound = SOUND::plg_battlemed;
 	info->healMin[0] = 1.f;
 	info->healMax[0] = 1.f;

@@ -18,11 +18,14 @@ public:
 	int m_CRI;
 	int m_DEF;
 	int m_DODGE; //회피율
+	
 
 	//저항
 	int resist[5]; //stun, blight, bleed, debuff, move
 	//상태
-	bool attribute[8] = { false }; //stun, blight, bleed, debuff, buff, move, marked, death
+	bool attribute[9] = { false }; 
+	
+	//none, stun, blight, bleed, debuff, buff, marked, death, Poison
 
 	UNITTYPE unitType;
 

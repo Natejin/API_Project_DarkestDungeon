@@ -47,8 +47,9 @@ HRESULT CBattleSystem::Init()
 	MG_GMOBJ->RegisterObj(effectBGImage);
 
 	m_enemyInfoUI = new CEnemyInfoUI();
+	m_enemyInfoUI->m_battleSys = this;
 	m_enemyInfoUI->Init();
-	m_enemyInfoUI->Enable();
+	m_enemyInfoUI->Disable();
 	MG_GMOBJ->RegisterObj(m_enemyInfoUI);
 
 	SetZoomImage();
@@ -128,6 +129,7 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
+	m_enemyInfoUI->Enable();
 	originPosOfBattle = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	CreateHeroesParty();
 	CreateEnemyParty();
@@ -145,6 +147,7 @@ void CBattleSystem::BattleSystemInitiate()
 
 void CBattleSystem::BattleSystemEnd()
 {
+	m_enemyInfoUI->Disable();
 	monsterIndicator->Disable();
 	scene->m_dungeonMode = DUNGEONMODE::WALK;
 	
@@ -228,7 +231,6 @@ void CBattleSystem::HeroTurn()
 void CBattleSystem::EnemyTurn()
 {
 	StartEnemyTrun(curEnemy->GetPartyIndex());
-
 }
 
 void CBattleSystem::EndTurn()
@@ -416,7 +418,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 3);
 		SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 		SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
-
+		enemyParty[index]->GetInfo()->attribute[(int)tempSkill->effect] = true;
 		if (enemyParty[index]->GetAlive())
 		{
 			int damage = tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo());
@@ -450,6 +452,7 @@ void CBattleSystem::DelayUntillNextTurn(int second)
 
 bool CBattleSystem::CheckAndDamageHero(CInfo_Skill* tempSkill, int index)
 {
+
 	return false;
 }
 
@@ -564,7 +567,6 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 }
 
 void CBattleSystem::SetPosition() {
-
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
 	for (size_t i = 0; i < heroParty.size(); i++)
@@ -661,6 +663,8 @@ void CBattleSystem::StartEnemyTrun(int index)
 				{
 					isFoundTarget = true;
 					MG_SOUND->play(enemySkill->sound, soundEffectVolume);
+					heroParty[orderIndex]->GetInfo()->attribute[(int)enemySkill->effect] = true;
+
 
 					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
