@@ -18,7 +18,4 @@ public :
 
 	virtual void Disable();
 	virtual void Enable();
-
-
-
 };

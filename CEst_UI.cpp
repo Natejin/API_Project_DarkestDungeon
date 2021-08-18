@@ -16,9 +16,11 @@ CEst_UI::~CEst_UI()
 }
 
 HRESULT CEst_UI::Init()
-{	
+{
+	m_windowPanelBG = new CSpriteRenderer(IMAGE::characterpanel_bg, m_transform);
+
 	m_quit = new CButton();
-	m_quit->m_transform->m_pos = Vector2(WINSIZEX - 400, 100);
+	m_quit->m_transform->m_pos = Vector2(WINSIZEX - 470, 130);
 	m_quit->AddSpriteRenderer("quick");
 	m_quit->AddColliderBox();
 	m_quit->isActive = false;
@@ -43,8 +45,8 @@ void CEst_UI::BackRender(HDC _hdc)
 
 void CEst_UI::Render(HDC _hdc)
 {
-	m_windowPanelBG->Render(_hdc);
 	m_windowPanelChar->Render(_hdc);
+	m_windowPanelBG->Render(_hdc);
 }
 
 void CEst_UI::FrontRender(HDC _hdc)

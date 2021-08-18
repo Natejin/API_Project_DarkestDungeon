@@ -64,10 +64,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::vestal_roster, "images/Heroes/vestal_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::plague_doctor_roster, "images/Heroes/plague_doctor_portrait_roster.bmp", 85, 85,true, RGB(255, 0, 255));
 
-	MG_IMAGE->addImage(IMAGE::crusader_header, "images/Heroes/crusader_head.bmp", 715,202,true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::highwayman_header, "images/Heroes/highwayman_head.bmp", 715,202,true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_head.bmp", 715,202,true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_head.bmp", 715,202,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_header, "images/Heroes/crusader_head.bmp", 605,100,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_header, "images/Heroes/highwayman_head.bmp", 605,100,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_header, "images/Heroes/vestal_head.bmp", 605,100,true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_header, "images/Heroes/plague_doctor_head.bmp", 605,100,true, RGB(255, 0, 255));
 
 	//Comabt_Skill
 	MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
@@ -158,7 +158,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 325, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395,776, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel, "images/panel/characterpanel.bmp", 1395,776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_treatment, "images/panel/quirk_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_disease, "images/panel/disease_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
@@ -250,16 +250,16 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("town_ground", "images/Town/town_ground.bmp", 3844 / 3 +700, 1672 / 2+100+100, true, RGB(255, 0, 255));
 
 	// Town_estate
-	MG_IMAGE->addImage("town_abbey", "images/Town/estate/town_abbey_1.bmp", 800 / 2 , 986 / 2 , true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_blacksmith", "images/Town/estate/town_blacksmith_1.bmp", 719 / 2, 795 / 2 , true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_camping_trainer", "images/Town/estate/town_camping_trainer_1.bmp", 281, 424/2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_graveyard", "images/Town/estate/town_graveyard_1.bmp", 578/2, 293/2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_guild", "images/Town/estate/town_guild_1.bmp", 707 / 2, 697 / 2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_nomad_wagon", "images/Town/estate/town_nomad_wagon_1.bmp", 514 / 2-50 , 392 / 2-50 , true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_sanitarium", "images/Town/estate/town_sanitarium_1.bmp", 764 / 2 , 963 / 2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_stage_coach", "images/Town/estate/town_stage_coach_1.bmp", 509/2, 362/2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_statue", "images/Town/estate/town_statue_1.bmp", 449/2, 498/2, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage("town_tavern", "images/Town/estate/town_tavern_1.bmp", 824 /2, 814 /2, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_abbey", "images/Town/estate/town_abbey_1.bmp", 800, 986, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_blacksmith", "images/Town/estate/town_blacksmith_1.bmp", 719, 795, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_camping_trainer", "images/Town/estate/town_camping_trainer_1.bmp", 424, 281, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_graveyard", "images/Town/estate/town_graveyard_1.bmp", 578, 293, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_guild", "images/Town/estate/town_guild_1.bmp", 707, 697, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_nomad_wagon", "images/Town/estate/town_nomad_wagon_1.bmp", 514, 392, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_sanitarium", "images/Town/estate/town_sanitarium_1.bmp", 764, 963, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_stage_coach", "images/Town/estate/town_stage_coach_1.bmp", 509, 362, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_statue", "images/Town/estate/town_statue_1.bmp", 449, 498, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("town_tavern", "images/Town/estate/town_tavern_1.bmp", 824, 814, true, RGB(255, 0, 255));
 	//Abbey
 	MG_IMAGE->addImage(IMAGE::abbey_char, "images/Town/abbey/abbey.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::abbey_bg, "images/Town/abbey/abbey.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
@@ -443,12 +443,13 @@ HRESULT imageManager::init()
 	//MG_IMAGE->addImage(IMAGE::PositionButton_enable_red, "images/position_unable_red.bmp", 64, 64, false, RGB(255, 0, 255));
 	//pont
 	MG_IMAGE->addImage(IMAGE::Quirk, "images/Quirk.bmp", 80, 40, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::OriginStatus, "images/OriginStatus.bmp", 150, 35, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Equip, "images/Equip.bmp", 70, 32, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::CombatSkill, "images/CombatSkill.bmp", 150, 35, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::CampingSkill, "images/CampingSkill.bmp", 150, 35, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Resistance, "images/Resistance.bmp", 120, 35, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::Disease, "images/Disease.bmp", 65, 40, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::OriginStatus, "images/OriginStatus.bmp", 144, 34, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Equip, "images/Equip.bmp", 61, 30, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::CombatSkill, "images/CombatSkill.bmp", 145, 33, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::CampingSkill, "images/CampingSkill.bmp", 145, 33, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Resistance, "images/Resistance.bmp", 105, 30, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Disease, "images/Disease.bmp", 60, 36, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("border_line", "images/Town/border_line.bmp", 1920, 1080, true, RGB(255, 0, 255));
 
 	//embarkBt
 	MG_IMAGE->addImage("embark", "images/Town_UI/embarkBt.bmp", 250, 72, false, RGB(255, 0, 255));

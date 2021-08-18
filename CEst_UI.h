@@ -27,6 +27,8 @@ protected:
 	class CSpriteRenderer* m_blighicon;
 	class CSpriteRenderer* m_debufficon;
 
+	class CSpriteRenderer* m_borderLine;
+
 public:
 
 	class TownScene* townScene;
