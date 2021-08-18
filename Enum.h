@@ -333,6 +333,7 @@ enum class IMAGE
 	Plague_Weapon_0,
 	Highway_Armor_0,
 	Highway_Weapon_0,
+
 	//IMG_DUNGEON
 	ruins_bg,
 	ruins_wall0,

@@ -1,7 +1,8 @@
 #include "framework.h"
 #include "Unit.h"
 
-Unit::Unit() {
+Unit::Unit() 
+{
     m_transform->m_pivot = Vector2(0.5, 1);
 }
 Unit::~Unit() {}
@@ -16,7 +17,6 @@ HRESULT Unit::Init()
 
 void Unit::Update(float deltaTime, float worldTime)
 {
-
     if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
     {
         if (MG_INPUT->IsDownLMB())
@@ -62,14 +62,12 @@ void Unit::FrontRender(HDC _hdc)
             RectangleMake(_hdc, m_collider->rect, m_transform->m_pos - MG_CAMERA->GetPos());
         }
     }
-
 }
 
 void Unit::Release()
 {
     GameObject::Release();
 }
-
 
 void Unit::SetMemberOverlay()
 {
@@ -116,10 +114,12 @@ void Unit::showHpBar(HDC _hdc)
     {
         percent = 0;
     }
-    else if (a == 0.f) {
+    else if (a == 0.f) 
+    {
         percent = 10;
     }
-    else {
+    else 
+    {
         percent = 11 - a * 10;
     }
 
@@ -129,7 +129,7 @@ void Unit::showHpBar(HDC _hdc)
             m_transform->m_pos.x - 50 + 10 * i,
             m_transform->m_pos.y + 15);
 
-            HPbarFront[i].m_img->render(_hdc, &HPbarFront[i].m_trans);
+        HPbarFront[i].m_img->render(_hdc, &HPbarFront[i].m_trans);
     }
 }
 
@@ -142,7 +142,6 @@ int Unit::GetSpeed()
 {
     return 0;
 }
-
 
 int Unit::getHP()
 {
@@ -183,18 +182,6 @@ void Unit::SetPartyPos(int pos)
     m_partyPos = pos;
 }
 
-
-//virtual void SetPartyIndex(int index) { m_partyIndex = index; }
-//inline int Unit::GetPartyPos()
-//{
-//	return m_partyPos;
-//}
-//inline void Unit::SetPartyPos(int pos)
-//{
-//	m_partyPos = pos;
-//}
-//virtual int GetPartyIndex() { return m_partyIndex; }
-
 int Unit::getResist(int index)
 {
     return 0;
@@ -227,7 +214,6 @@ bool Unit::GetAlive()
 void Unit::setSPD(int spd)
 {
 }
-
 
 void Unit::setResist(int index, bool val)
 {

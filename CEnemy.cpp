@@ -62,14 +62,16 @@ void CEnemy::Render(HDC _hdc)
 
 void CEnemy::FrontRender(HDC _hdc)
 {
-	Unit::FrontRender(_hdc);
 	if (isTargetSkill)
 	{
 		targetSkillMem.m_trans.m_pos = Vector2(
 			m_transform->m_pos.x - 87,
-			m_transform->m_pos.y - 100);
+			m_transform->m_pos.y - 163);
 		targetSkillMem.Render(_hdc);
 	}
+
+	Unit::FrontRender(_hdc);
+
 }
 
 void CEnemy::Release()
@@ -169,4 +171,3 @@ bool CEnemy::GetAttribute(int index) const
 {
 	return info->attribute[index];
 }
-
