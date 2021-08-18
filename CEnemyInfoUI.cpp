@@ -54,9 +54,6 @@ void CEnemyInfoUI::FrontRender(HDC _hdc)
 
 	sprintf_s(str, "enemyIndex : %d", enemyIndex);
 	TextOut(_hdc, 0, 200, str, strlen(str));
-
-	
-
 }
 
 void CEnemyInfoUI::Release()
@@ -146,6 +143,19 @@ void CEnemyInfoUI::showEnemyInfo(HDC _hdc)
 	SetTextColor(_hdc, RGB(118, 164, 198));
 	sprintf_s(str, "Move :  %d", temp->getResist(4));
 	TextOut(_hdc, 1020, 980, str, strlen(str));
+
+
+	SetTextColor(_hdc, RGB(118, 21, 9));
+	sprintf_s(str, "HP : %d / %d", temp->getHP(), temp->getMaxHP());
+	TextOut(_hdc, 1440, 755, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(132, 121, 85));
+	sprintf_s(str, "Resistances");
+	TextOut(_hdc, 1080, 870, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(132, 121, 85));
+	sprintf_s(str, "Skills");
+	TextOut(_hdc, 1380, 870, str, strlen(str));
 }
 
 void CEnemyInfoUI::drawResistancesImage(HDC _hdc)
