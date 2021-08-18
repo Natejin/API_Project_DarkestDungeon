@@ -19,7 +19,6 @@ class CHero : public Unit
 	vector<ImageData> STRSbar;
 	vector<ImageData> HPbar;
 
-
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
 	Info_Hero* info;
@@ -27,15 +26,13 @@ class CHero : public Unit
 	int weaponLvl;
 	int armorLvl;
 	bool noInput;
+
 public:
 	bool isTargetHeal;
 
 	CHero();
 	~CHero();
 
-	//HRESULT Init(JOB job,  int resist[],
-	//	int HP, int SPD, int POS, int DMG,
-	//	int ACRY, int CRI, int DEF, int DODGE);
 	HRESULT Init(Info_Hero* _info);
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
@@ -55,10 +52,7 @@ public:
 	//=====================================
 
 	void Move();
-	bool PreventGetOutBg(int startX, int endX);
-
 	void showStrsBar(HDC _hdc);
-	void setHpBar();
 
 	//=====================================
 	//GetStatus:
@@ -75,19 +69,13 @@ public:
 	virtual int getSPD();
 	virtual void setSPD(int spd);
 
-	
-	//virtual int GetPartyIndex();
-	//virtual void SetPartyIndex(int pos);
-
-	//virtual int GetPartyPos();
-	//virtual void SetPartyPos(int pos);
-
 	virtual int getResist(int index);
 	virtual bool getAttribute(int index);
-
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
+	
 	virtual void SetMemberOverlay();
+	
 	Info_Hero* GetInfo();
 
 	virtual int getMoveDis()const;

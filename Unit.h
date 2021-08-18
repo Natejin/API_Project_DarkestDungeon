@@ -17,17 +17,10 @@ public:
 
 	ImageData selectedMem;
 
-
 	Vector2 targetPos;
 	bool movePosMode;
 	float movePosSpeed;
 
-protected:
-	function<void(int i)> m_triggerWhenDown;
-	bool canTriggerDown;
-	UNITTYPE m_unitType;
-
-public:
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))
 	{
@@ -35,6 +28,13 @@ public:
 		//int index = i;
 		m_triggerWhenDown = bind(func, pObj, std::placeholders::_1);
 	}
+
+protected:
+	function<void(int i)> m_triggerWhenDown;
+	bool canTriggerDown;
+	UNITTYPE m_unitType;
+
+	//=====================================
 public:
 	Unit();
 	~Unit();
@@ -50,21 +50,11 @@ public:
 
 	virtual void Release();
 
-	//virtual void SetPartyIndex(int index) { m_partyIndex = index; }
-	//inline int Unit::GetPartyPos()
-	//{
-	//	return m_partyPos;
-	//}
-	//inline void Unit::SetPartyPos(int pos)
-	//{
-	//	m_partyPos = pos;
-	//}
-	//virtual int GetPartyIndex() { return m_partyIndex; }
-
 	void showSelMember(HDC _hdc);
 	void showHpBar(HDC _hdc);
 
-//GetStatus;
+	//=====================================
+	//GetStatus;
 	virtual UNITTYPE GetUnitType();
 
 	virtual int getHP();

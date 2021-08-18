@@ -6,7 +6,8 @@ class CEnemyInfoUI;
 class CBattleSystem : public GameObject
 {
 public:
-	struct TurnSpeedOfUnit {
+	struct TurnSpeedOfUnit 
+	{
 		Unit* unit;
 		int turnSpeed;
 	};
@@ -29,6 +30,7 @@ public:
 
 	//queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
+
 	float delayTriggerEffect = 3;
 
 	int randomDice6 = 6;
@@ -48,11 +50,11 @@ public:
 	class ImageEffectBG* effectBGImage;
 	class MonsterIndicator* monsterIndicator;
 
+	vector< Vector2> targetEnemyPosVec;
 	float startTriggerTime;
 	float soundEffectVolume = 0.5f;
 	bool startNextTurn;
 	bool delayForSwapSetPosition;
-	vector< Vector2> targetEnemyPosVec;
 	bool isBattle;
 	
 public:
@@ -62,6 +64,8 @@ public:
 	bool isBossRoom;
 	
 	CEnemyInfoUI* m_enemyInfoUI;
+
+	//==================================
 
 	CBattleSystem();
 	~CBattleSystem();
@@ -79,6 +83,8 @@ public:
 
 	virtual void Release();
 
+	//==================================
+
 	void BattleSystemInitiate();
 	void BattleSystemEnd();
 
@@ -93,38 +99,34 @@ public:
 
 private:
 	CEnemy* GetEnemy(int i);
-	void SelectEnemy(int index);
+	CHero* GetHero(int i);
 
-	bool CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index);
 	void DelayUntillNextTurn(int second);
+	bool CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index);
 	bool CheckAndDamageHero(CInfo_Skill* tempSkill, int index);
-
-	void SelectHero(int index);
 	void CheckAndHealAlly(CInfo_Skill* tempSkill, int index);
-	void SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed);
-	void SelectHeroTarget(SKILL skill);
+	void CheckAndSwapHeroPos(int index);
 
+	void SelectHeroTarget(SKILL skill);
+	void SelectEnemy(int index);
+	void SelectHero(int index);
 	void DeselectAll();
 
-	void CheckAndSwapHeroPos(int index);
+	void SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed);
 
 	void SetEnemyIndicator(int index);
 	void SelectEnemyTarget(SKILL skill);
 
 	void SetPosition();
 
-	CHero* GetHero(int i);
 	void StartHeroTrun(int index);
-
 	void StartEnemyTrun(int index);
 
 	void SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed);
-	void ShowTargetBySkill(int index);
 
 	void HeroTeamAreDead();
 	void EnemyTeamAreDead();
 
-private:
 	void CreateEnemyParty();
 	void CreateHeroesParty();
 

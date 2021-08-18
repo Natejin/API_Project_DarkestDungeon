@@ -3,8 +3,8 @@
 #include "CParty.h"
 #include "DungeonScene.h"
 
-CHero::CHero() {
-
+CHero::CHero()
+{
 	m_unitType = UNITTYPE::Hero;
 	m_layer = LAYER::Player;
 	speedFront = 8; //8
@@ -17,24 +17,26 @@ CHero::~CHero() {}
 HRESULT CHero::Init(Info_Hero* _info)
 {
 	Unit::Init();
+
 	canTriggerDown = false;
 	m_unitType = _info->unitType;
 	info = _info;
+
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
 	
 	m_animator->AddImageFrame(_info->imageCombat);
+
 	SetMemberOverlay();
 	AddColliderBox(120, 300);
+
 	return S_OK;
 }
 
 void CHero::Update(float deltaTime, float worldTime)
 {
 	Unit::Update(deltaTime, worldTime);
-
-
 }
 
 void CHero::LateUpdate()
@@ -53,7 +55,6 @@ void CHero::Render(HDC _hdc)
 void CHero::FrontRender(HDC _hdc)
 {
 	Unit::FrontRender(_hdc);
-
 	if (isTargetHeal)
 	{
 		targeted_h_Mem.m_trans.m_pos = Vector2(
@@ -62,7 +63,6 @@ void CHero::FrontRender(HDC _hdc)
 
 		targeted_h_Mem.Render(_hdc);
 	}
-
 	showStrsBar(_hdc);
 }
 
@@ -94,7 +94,6 @@ Image* CHero::GetTrinketR()
 
 void CHero::Move()
 {
-
 	int ran;
 	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
@@ -137,14 +136,6 @@ void CHero::Move()
 	}
 }
 
-bool CHero::PreventGetOutBg(int startX, int endX)
-{
-	if (m_transform->m_pos.x < endX - 200 && 0 < m_transform->m_pos.x) 
-		return true;
-	else 
-		return false;
-}
-
 void CHero::showStrsBar(HDC _hdc)
 {
 	for (int i = 0; i < 10; i++)
@@ -168,11 +159,14 @@ void CHero::SetMemberOverlay()
 
 	ImageData temp;
 	temp.m_img = MG_IMAGE->findImage("STRS_empty");
+	
 	for (int i = 0; i < 10; i++)
 	{
 		STRSbar.push_back(temp);
 	}
 }
+
+#pragma region get/set
 
 Info_Hero* CHero::GetInfo()
 {
@@ -322,37 +316,22 @@ int CHero::GetSpeed()
 {
 	return info->m_SPD;
 }
-//void CHero::SetPartyIndex(int pos)
-//{
-//	m_partyIndex = pos;
-//}
-//int CHero::GetPartyIndex()
-//{
-//	return  m_partyIndex;
-//}
-//
-//void CHero::SetPartyPos(int pos)
-//{
-//	m_partyPos = pos;
-//}
-//
-//int CHero::GetPartyPos()
-//{
-//	return  m_partyPos;
-//}
 
 int CHero::getResist(int index)
 {
 	return  info->resist[index];
 }
+
 bool CHero::getAttribute(int index)
 {
 	return  info->attribute[index];
 }
+
 void CHero::setHP(int hp)
 {
 	info->m_HP = hp;
 }
+
 void CHero::setSPD(int spd)
 {
 	info->m_SPD = spd;
@@ -362,14 +341,17 @@ void CHero::setResist(int index, bool val)
 {
 	info->resist[index] = val;
 }
+
 void CHero::setAttribute(int index, bool val)
 {
 	info->attribute[index] = val;
 }
+
 int CHero::getSPD()
 {
 	return  info->m_SPD;
 }
+
 int CHero::getHP()
 {
 	return  info->m_HP;
@@ -395,13 +377,15 @@ void CHero::increaseHP(int hp)
 	{
 
 	}
-	else {
+	else 
+	{
 		info->m_HP = info->m_maxHP;
 	}
-
 }
 
 int CHero::getMaxHP()
 {
 	return  info->m_maxHP;
 }
+
+#pragma endregion
