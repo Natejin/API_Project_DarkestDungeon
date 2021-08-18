@@ -296,7 +296,8 @@ void CBattleSystem::CreateEnemyParty()
 		enemy->SetPartyIndex(i);
 		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
 		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
-
+		enemy->movePosMode = true;
+		posEnemy.push_back(i);
 		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 		{
 			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, originPosOfBattle.y);
@@ -327,6 +328,8 @@ void CBattleSystem::CreateHeroesParty()
 		{
 			heroParty.push_back(hero);
 			heroParty[k]->SetPartyIndex(k);
+			heroParty[k]->SetPartyPos(k);
+			posHero.push_back(k);
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
 				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, originPosOfBattle.y);
@@ -569,6 +572,9 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 void CBattleSystem::SetPosition() {
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+
+
+
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
 		if (heroParty[i] == nullptr) continue;
@@ -601,6 +607,16 @@ void CBattleSystem::SetPosition() {
 		}
 		else {
 			enemyParty[i]->Disable();
+			int curPos = enemyParty[i]->GetPartyPos();
+			for (size_t i = 0; i < enemyParty.size(); i++)
+			{
+				if (curPos + 1 == enemyParty[i]->GetPartyPos())
+				{
+					enemyParty[i]->SetPartyPos(curPos);
+					curPos++;
+					i = 0;
+				}
+			}
 		}
 	}
 }
