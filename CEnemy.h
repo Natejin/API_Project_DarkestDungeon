@@ -55,21 +55,16 @@ public:
 
 	virtual int getSPD();
 	virtual void setSPD(int spd);
+
 	virtual bool GetAlive();
 	virtual bool GeTCorpse();
 
-	virtual void SetHeroID(int id);
-	virtual int GetHeroID();
-	virtual void SetOwnIndex(int _ownindex);
-	virtual int GetOwnIndex();
-	virtual void SetAcry(int _acry);
-	virtual int GetAcry();
-	virtual void SetCri(int _cri);
-	virtual int GetCri();
-	virtual void SetDmg(int _dmg);
-	virtual int GetDmg();
-	virtual void SetDodge(int _dodge);
-	virtual int GetDodge();
-	virtual void SetDef(int _def);
-	virtual int GetDef();
+	virtual int GetAcry()const;
+	virtual int GetCri()const;
+	virtual int GetDmg()const;
+	virtual int GetDodge()const;
+	virtual int GetDef()const;
+
+	virtual void GetProt()const;
+
 };

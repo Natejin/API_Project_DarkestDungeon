@@ -89,7 +89,7 @@ void CEnemyInfoUI::showEnemyInfo(HDC _hdc)
 	sprintf_s(str, "Skeleton");
 	TextOut(_hdc, 1400, 800, str, strlen(str));
 
-	sprintf_s(str, "PROT : %d", temp->);
+	sprintf_s(str, "PROT : %d", temp-> );
 	TextOut(_hdc, 1500, 1000, str, strlen(str));
 
 	sprintf_s(str, "enemyIndex : %d", enemyIndex);

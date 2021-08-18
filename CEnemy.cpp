@@ -145,10 +145,40 @@ void CEnemy::setSPD(int spd)
 
 bool CEnemy::GetAlive()
 {
+	return false;
+}
+
+bool CEnemy::GetAlive()
+{
 	return info->isAlive;
 }
 
 bool CEnemy::GeTCorpse()
 {
 	return info->isCorpse;
+}
+
+int CEnemy::GetAcry() const
+{
+	return info->m_ACRY;
+}
+
+int CEnemy::GetCri() const
+{
+	return info->m_CRI;
+}
+
+int CEnemy::GetDmg() const
+{
+	return info->m_DMG;
+}
+
+int CEnemy::GetDodge() const
+{
+	return info->m_DODGE;
+}
+
+int CEnemy::GetDef() const
+{
+	return info->m_DEF;
 }
