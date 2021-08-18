@@ -17,7 +17,10 @@ CBuilding_PanelButton::~CBuilding_PanelButton()
 HRESULT CBuilding_PanelButton::Init()
 {
 	checkBTN = new CButton();
-	checkBTN->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + buttonID/3 * 135, WINSIZEY / 2 - 240 + 50 + buttonID % 3 * 225);
+	//checkBTN->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + buttonID/3 * 135, WINSIZEY / 2 - 240 + 50 + buttonID % 3 * 225);
+	Vector2 pos = m_transform->m_pos;
+	pos.y += 50;
+	checkBTN->m_transform->m_pos = pos;
 	checkBTN->AddSpriteRenderer(IMAGE::check);
 	checkBTN->AddColliderBox();
 	checkBTN->Disable();
@@ -27,6 +30,7 @@ HRESULT CBuilding_PanelButton::Init()
 	AddSpriteRenderer(IMAGE::hero_slot_bg);
 	AddColliderBox();
 	MG_GMOBJ->RegisterObj("emptyroom", this);
+	Disable();
 	return S_OK;
 }
 
@@ -73,8 +77,11 @@ void CBuilding_PanelButton::Update(float deltaTime, float worldTime)
 				hero = nullptr;
 
 			}
+			
+				
 		}
 	}
+
 }
 
 void CBuilding_PanelButton::LateUpdate()
@@ -118,5 +125,10 @@ void CBuilding_PanelButton::PressCheckButton()
 	default:
 		break;
 	}
+	checkBTN->Disable();
+}
+
+void CBuilding_PanelButton::Disable()
+{
 	checkBTN->Disable();
 }

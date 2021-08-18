@@ -28,8 +28,9 @@ protected:
 	class CSpriteRenderer* m_debufficon;
 
 	class CSpriteRenderer* m_borderLine;
-
+	
 public:
+	class CBuilding_PanelButton* m_building_Panel;
 	class TownScene* townScene;
 
 	CEst_UI();
@@ -49,4 +50,5 @@ public:
 	void FinishUI();
 	virtual void Enable();
 	virtual void Disable();
+
 };

@@ -18,6 +18,7 @@ public:
 	int targetPos;
 	int allowUseSkillPos;
 	
+
 	IMAGE m_skillIcon;
 	IMAGE m_skillMotion;
 	SKILL m_skill;
@@ -33,7 +34,9 @@ public:
 	int healMax[5] = { 0 };
 	float critMod[5] = { 0 };
 	int effectVal[5] = { 0 };
-	int MovePos[5] = {0};	
+	int MovePos[5] = {0};
+	int moveSelfPos[5] = {0};
+	int moveTagetPos[5] = {0};
 	SOUND sound;
 public:
 	CInfo_Skill() {};

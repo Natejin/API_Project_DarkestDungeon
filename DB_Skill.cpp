@@ -300,7 +300,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skill = SKILL::Plague_doctor_NoxiousBlast;
 	info->m_skillIcon = IMAGE::Plague_doctor_Skill_NoxiousBlast;
 	info->m_skillMotion = IMAGE::Plague_doctor_blast;
-	info->effect = EFFECTTYPE::Blind;
+	info->effect = EFFECTTYPE::Stun;
 	info->sound = SOUND::plg_noxiousblast;
 	info->damage[0] = -80.f;
 	info->damage[1] = -80.f;
@@ -322,6 +322,13 @@ void CDB_Skill::SetHeroSkill()
 	info->effectVal[2] = 120.f;
 	info->effectVal[3] = 130.f;
 	info->effectVal[4] = 140.f;
+
+	info->moveTagetPos[0] = -3;
+	info->moveTagetPos[1] = -3;
+	info->moveTagetPos[2] = -3;
+	info->moveTagetPos[3] = -3;
+	info->moveTagetPos[4] = -3;
+
 	skillDB.insert(make_pair(SKILL::Plague_doctor_NoxiousBlast, info));
 	MG_INFO->RegisterInfo(info);
 
@@ -416,27 +423,17 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillMotion = IMAGE::Plague_doctor_buff;
 	info->effect = EFFECTTYPE::Heal;
 	info->sound = SOUND::plg_battlemed;
-	info->damage[0] = +50.f;
-	info->damage[1] = +50.f;
-	info->damage[2] = +50.f;
-	info->damage[3] = +50.f;
-	info->damage[4] = +50.f;
-	info->accuracy[0] = 95;
-	info->accuracy[1] = 100;
-	info->accuracy[2] = 105;
-	info->accuracy[3] = 110;
-	info->accuracy[4] = 115;
-	info->critMod[0] = 5;
-	info->critMod[1] = 6;
-	info->critMod[2] = 7;
-	info->critMod[3] = 8;
-	info->critMod[4] = 9;
-	info->effectVal[0] = 100.f;
-	info->effectVal[1] = 110.f;
-	info->effectVal[2] = 120.f;
-	info->effectVal[3] = 130.f;
-	info->effectVal[4] = 140.f;
-
+	info->healMin[0] = 1.f;
+	info->healMax[0] = 1.f;
+	info->healMin[1] = 1.f;
+	info->healMax[1] = 2.f;
+	info->healMin[2] = 2.f;
+	info->healMax[2] = 2.f;
+	info->healMin[3] = 2.f;
+	info->healMax[3] = 3.f;
+	info->healMin[4] = 3.f;
+	info->healMax[4] = 3.f;
+	
 	skillDB.insert(make_pair(SKILL::Plague_doctor_BattleFiled_Medicine, info));
 	MG_INFO->RegisterInfo(info);
 
@@ -458,16 +455,33 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillMotion = IMAGE::Highwayman_hipshot;
 	info->effect = EFFECTTYPE::NONE;
 	info->sound = SOUND::hwy_backshot;
-	info->healMin[0] = 1.f;
-	info->healMax[0] = 1.f;
-	info->healMin[1] = 1.f;
-	info->healMax[1] = 2.f;
-	info->healMin[2] = 2.f;
-	info->healMax[2] = 2.f;
-	info->healMin[3] = 2.f;
-	info->healMax[3] = 3.f;
-	info->healMin[4] = 3.f;
-	info->healMax[4] = 3.f;
+
+	info->damage[0] = +50.f;
+	info->damage[1] = +50.f;
+	info->damage[2] = +50.f;
+	info->damage[3] = +50.f;
+	info->damage[4] = +50.f;
+	info->accuracy[0] = 95;
+	info->accuracy[1] = 100;
+	info->accuracy[2] = 105;
+	info->accuracy[3] = 110;
+	info->accuracy[4] = 115;
+	info->critMod[0] = 5;
+	info->critMod[1] = 6;
+	info->critMod[2] = 7;
+	info->critMod[3] = 8;
+	info->critMod[4] = 9;
+	info->effectVal[0] = 100.f;
+	info->effectVal[1] = 110.f;
+	info->effectVal[2] = 120.f;
+	info->effectVal[3] = 130.f;
+	info->effectVal[4] = 140.f;
+	info->moveSelfPos[0] = 1;
+	info->moveSelfPos[1] = 1;
+	info->moveSelfPos[2] = 1;
+	info->moveSelfPos[3] = 1;
+	info->moveSelfPos[4] = 1;
+
 
 	skillDB.insert(make_pair(SKILL::Highwayman_PointBlankShot, info));
 	MG_INFO->RegisterInfo(info);
@@ -542,11 +556,11 @@ void CDB_Skill::SetHeroSkill()
 	info->critMod[3] = 8;
 	info->critMod[4] = 9;
 	//++++++++++++++++++++Check Please++++++++++++++++++++++//
-	info->MovePos[0] = 1;
-	info->MovePos[1] = 1;
-	info->MovePos[2] = 1;
-	info->MovePos[3] = 1;
-	info->MovePos[4] = 1;
+	info->moveSelfPos[0] =-1;
+	info->moveSelfPos[1] =-1;
+	info->moveSelfPos[2] =-1;
+	info->moveSelfPos[3] =-1;
+	info->moveSelfPos[4] =-1;
 
 	skillDB.insert(make_pair(SKILL::Highwayman_Duelists_Advance, info));
 	MG_INFO->RegisterInfo(info);
@@ -773,16 +787,26 @@ void CDB_Skill::SetEnemySkill()
 	info->damage[2] = 4.f;
 	info->damage[3] = 4.f;
 	info->damage[4] = 5.f;
+
 	info->accuracy[0] = 102.5;
 	info->accuracy[1] = 102.5;
 	info->accuracy[2] = 102.5;
 	info->accuracy[3] = 102.5;
 	info->accuracy[4] = 102.5;
+
 	info->critMod[0] = 6.f;
 	info->critMod[1] = 6.f;
 	info->critMod[2] = 6.f;
 	info->critMod[3] = 6.f;
 	info->critMod[4] = 6.f;
+
+	info->moveSelfPos[0] = 3;
+	info->moveSelfPos[1] = 3;
+	info->moveSelfPos[2] = 3;
+	info->moveSelfPos[3] = 3;
+	info->moveSelfPos[4] = 3;
+
+
 	skillDB.insert(make_pair(SKILL::Necromancer_Combat_2_back, info));
 	MG_INFO->RegisterInfo(info);
 }
