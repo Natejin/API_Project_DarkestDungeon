@@ -143,10 +143,6 @@ void CEnemy::setSPD(int spd)
 	info->m_SPD = spd;
 }
 
-bool CEnemy::GetAlive()
-{
-	return false;
-}
 
 bool CEnemy::GetAlive()
 {
@@ -159,29 +155,29 @@ bool CEnemy::GetCorpse()
 }
 bool CEnemy::SetCorpse(bool _corpse)
 {
-return	info->isCorpse = _corpse;
-
-int CEnemy::GetAcry() const
-{
-	return info->m_ACRY;
+	return	info->isCorpse = _corpse;
 }
-
-int CEnemy::GetCri() const
-{
-	return info->m_CRI;
-}
-
-int CEnemy::GetDmg() const
-{
-	return info->m_DMG;
-}
-
-int CEnemy::GetDodge() const
-{
-	return info->m_DODGE;
-}
-
-int CEnemy::GetDef() const
-{
-	return info->m_DEF;
-}
+//int CEnemy::GetAcry() const
+//{
+//	return info->m_ACRY;
+//}
+//
+//int CEnemy::GetCri() const
+//{
+//	return info->m_CRI;
+//}
+//
+//int CEnemy::GetDmg() const
+//{
+//	return info->m_DMG;
+//}
+//
+//int CEnemy::GetDodge() const
+//{
+//	return info->m_DODGE;
+//}
+//
+//int CEnemy::GetDef() const
+//{
+//	return info->m_DEF;
+//}
