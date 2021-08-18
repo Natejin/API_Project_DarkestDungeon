@@ -17,6 +17,8 @@ public:
 		Enemy
 	};
 
+
+
 	TURN turn;
 	Vector2 originPosOfBattle;
 	vector<class CHero*> heroParty;
@@ -25,7 +27,7 @@ public:
 	vector<int> posEnemy;
 	vector<int> posHero;
 
-	queue<TurnSpeedOfUnit> speedQueue;
+	//queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 	float delayTriggerEffect = 3;
 
@@ -52,10 +54,12 @@ public:
 	bool delayForSwapSetPosition;
 	vector< Vector2> targetEnemyPosVec;
 	bool isBattle;
+	
 public:
 	class DungeonScene* scene;
 	class dungeonUI* dungeonUI;
 	class CDungeonUI_HeroInfo* dungeonUIHeroinfo;
+	bool isBossRoom;
 	
 	CEnemyInfoUI* m_enemyInfoUI;
 
