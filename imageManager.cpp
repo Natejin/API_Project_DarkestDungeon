@@ -97,7 +97,6 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort, "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight, "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-	
 
 	//Skill_disable
 	//Crusader
@@ -116,7 +115,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_grenade, "images/icons_heroes/disable/plague_doctor_disable_grenade.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_noxious, "images/icons_heroes/disable/plague_doctor_disable_noxious.bmp", 65, 65, false, RGB(255, 0, 255));
 	//Vestal
-	MG_IMAGE->addImage(IMAGE::vestal_disable_dazzlingLight, "images/icons_heroes/disable/vestal_disable_dazzlingLight.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_dazzlingLight, "images/icons_heroes/disable/vestal_disable_dazzling Light.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::vestal_disable_divine, "images/icons_heroes/disable/vestal_disable_divine.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::vestal_disable_judgement, "images/icons_heroes/disable/vestal_disable_judgement.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::vestal_disable_mace, "images/icons_heroes/disable/vestal_disable_mace.bmp", 65, 65, false, RGB(255, 0, 255));
