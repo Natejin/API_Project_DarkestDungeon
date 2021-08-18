@@ -7,15 +7,14 @@ Embark::~Embark() {}
 
 HRESULT Embark::Init()
 {
+	m_layer = LAYER::UI;
+	isTown = true;
+
 	m_transform->m_pivot = Vector2(0, 0);
 	m_transform->m_pos = Vector2(0, 0);
 
 	AddSpriteRenderer();
 	setEmbarkBt();
-
-	m_layer = LAYER::UI;
-
-	isTown = true;
 
 	return S_OK;
 }
@@ -69,7 +68,6 @@ void Embark::setImg()
 	CTransform* temp = new CTransform;
 	temp->m_pos = Vector2(WINSIZEX / 2, WINSIZEY - 300);
 	temp->m_pivot = Vector2(0.5, 0.5);
-
 	class CSpriteRenderer* r_heroSlot = new CSpriteRenderer("partySlot_", temp);
 	m_images.push_back(r_heroSlot);
 }
@@ -112,11 +110,11 @@ void Embark::setEmbark()
 {
 	if (isTown)
 	{
-		setImg();
+		m_townScene->DeactivateBuildings();
 		setPartySlot();
 		bt_selDungeon->Enable();
-		m_townScene->DeactivateBuildings();
 		Enable();
+		setImg();
 		isTown = false;
 	}
 	else
