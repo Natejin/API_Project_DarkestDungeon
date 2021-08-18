@@ -705,41 +705,39 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::StartHeroTrun(int index)
 {
-	//MG_GAME->SetCurSelHero(index);
+	MG_GAME->SetCurSelHero(index);
 	//curHero = m_party->GetHero(index);
 
 
+	//for (int i = 0; i < heroParty.size(); i++)
+	//{
+	//	heroParty[index]->isSelected = false;
+	//}
+	//heroParty[index]->isSelected = true;
+
+	//scene->m_dungeonUIinfo->SetPortrait(curHero->GetInfo()->portrait);
+	//scene->m_dungeonUIinfo->SetWeapon(curHero->GetInfo()->weapon[0]);
+	//scene->m_dungeonUIinfo->SetArmor(curHero->GetInfo()->armor[0]);
+
+	//vector<SKILL> temp = curHero->GetInfo()->ownSkill;
 
 
-	for (int i = 0; i < heroParty.size(); i++)
-	{
-		heroParty[index]->isSelected = false;
-	}
-	heroParty[index]->isSelected = true;
+	//for (int j = 0; j < scene->m_dungeonUI->skillBTNs.size(); j++)
+	//{
+	//	if (temp.size() > j)
+	//	{
+	//		
+	//		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(temp[j]);
+	//		scene->m_dungeonUI->skillBTNs[j]->Enable();
+	//		scene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+	//		//scene->m_dungeonUI->skillBTNs[j]->SetActivateState(tempSkill->CheckUseable(curHero->GetPartyPos()));
 
-	scene->m_dungeonUIinfo->SetPortrait(curHero->GetInfo()->portrait);
-	scene->m_dungeonUIinfo->SetWeapon(curHero->GetInfo()->weapon[0]);
-	scene->m_dungeonUIinfo->SetArmor(curHero->GetInfo()->armor[0]);
+	//	}
+	//	else {
+	//		scene->m_dungeonUI->skillBTNs[j]->Disable();
+	//	}
 
-	vector<SKILL> temp = curHero->GetInfo()->ownSkill;
-
-
-	for (int j = 0; j < scene->m_dungeonUI->skillBTNs.size(); j++)
-	{
-		if (temp.size() > j)
-		{
-			
-			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(temp[j]);
-			scene->m_dungeonUI->skillBTNs[j]->Enable();
-			scene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
-			scene->m_dungeonUI->skillBTNs[j]->SetActivateState(tempSkill->CheckUseable(curHero->GetPartyPos()));
-
-		}
-		else {
-			scene->m_dungeonUI->skillBTNs[j]->Disable();
-		}
-
-	}
+	//}
 }
 
 void CBattleSystem::StartEnemyTrun(int index)

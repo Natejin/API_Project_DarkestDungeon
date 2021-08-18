@@ -80,7 +80,7 @@ void CBTN_Skill::SetSkill(SKILL skill)
 {
 	skillInfo = DB_SKILL->CallSkill(skill);
 	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
-	m_spriteDisactivated->SetImage(DB_SKILL->CallDeactiveSkillImage(skill));
+	//m_spriteDisactivated->SetImage(DB_SKILL->CallDeactiveSkillImage(skill));
 }
 
 void CBTN_Skill::SetActivateState(bool skill)
