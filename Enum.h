@@ -265,9 +265,17 @@ enum class SOUND {
 	party_foot_dirt_03,
 	party_foot_dirt_04,
 	party_foot_dirt_05,
-	party_foot_dirt_06
-
-
+	party_foot_dirt_06,
+	//TownUI
+	town_enter_abbey,
+	town_enter_blacksmith,
+	town_enter_coach,
+	town_enter_graveyard,
+	town_enter_guild,
+	town_enter_sanitarium,
+	town_enter_tavern,
+	//mouse
+	Town_quick
 };
 
 enum class IMAGE

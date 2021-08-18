@@ -32,6 +32,7 @@ protected:
 public:
 	class CBuilding_PanelButton* m_building_Panel;
 	class TownScene* townScene;
+	bool isStart;
 
 	CEst_UI();
 	~CEst_UI();

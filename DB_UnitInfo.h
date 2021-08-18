@@ -18,7 +18,6 @@ public:
 
 	void Init();
 
-
 	Info_Hero* CallHero(JOB item);
 	Info_Enemy* CallEnemy(ENEMYTYPE item);
 

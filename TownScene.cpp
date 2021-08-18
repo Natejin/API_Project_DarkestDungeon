@@ -306,42 +306,58 @@ void TownScene::ActivateBuildings() {
 #pragma region showBilding
 void TownScene::Show_abeey()
 {	
+	MG_SOUND->play(SOUND::town_enter_abbey);
 	m_abbey->Enable();
 }
 void TownScene::Show_blacksmith( )
-{
+{	
+	
+	MG_SOUND->play(SOUND::town_enter_blacksmith);
 	m_blacksmith->Enable();
 }
 void TownScene::Show_campingTrainer( )
 {
+	
 	m_campingTrainer->Enable();
 }
 void TownScene::Show_graveyard()
 {
+	
+	MG_SOUND->play(SOUND::town_enter_graveyard);
 	m_graveyard->Enable();
 }
 void TownScene::Show_guild()
 {
+	
+	MG_SOUND->play(SOUND::town_enter_guild);
 	m_guild->Enable();
 }
 void TownScene::Show_nomad_wagon( )
 {
+	
 	m_nomad_wagon->Enable();
 }
 void TownScene::Show_stage_coach( )
-{	
+{
+	
+	MG_SOUND->play(SOUND::town_enter_coach);
 	m_stage_coach->Enable();
 }
 void TownScene::Show_town_statue()
 {
+	
 	m_statue->Enable();
 }
 void TownScene::Show_sanitarium()
 {
+	
+	MG_SOUND->play(SOUND::town_enter_sanitarium);
 	m_sanitarium->Enable();
 }
 void TownScene::Show_tavern()
 {
+	
+	MG_SOUND->play(SOUND::town_enter_tavern);
 	m_tavern->Enable();
 }
 #pragma endregion
