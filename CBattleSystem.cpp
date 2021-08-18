@@ -715,6 +715,7 @@ void CBattleSystem::StartHeroTrun(int index)
 		{
 			scene->m_dungeonUI->skillBTNs[j]->Enable();
 			scene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+
 		}
 		else {
 			scene->m_dungeonUI->skillBTNs[j]->Disable();
