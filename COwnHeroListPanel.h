@@ -1,18 +1,9 @@
 #pragma once
-#include "GameObject.h"
 
-class DummySlot : public GameObject
+class COwnHeroListPanel : public GameObject
 {
-private:
-	Vector2Int originSlotID;
-	CInfo_Item* itemInfo;
-	bool hasItem;
-
-	HeroListBtType btType;
-
-public:
-	DummySlot();
-	~DummySlot();
+public :
+	class TownScene* m_townScene;
 
 	HRESULT Init();
 
@@ -25,7 +16,9 @@ public:
 
 	virtual void Release();
 
-	void SetDummySlot(Vector2Int originslotID, CInfo_Item* item);
 	virtual void Disable();
+	virtual void Enable();
+
+
 
 };

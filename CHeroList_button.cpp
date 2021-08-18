@@ -5,16 +5,14 @@
 #include "TownScene.h"
 #include"CUI_Panel_Hero.h"
 #include"CUIPanel_StageCoach.h"
+
 CHeroList_button::CHeroList_button()
 {
 	m_layer = LAYER::UIButton;
 	canTriggerDrag = false;
 	m_index = -1;
 }
-
-CHeroList_button::~CHeroList_button()
-{
-}
+CHeroList_button::~CHeroList_button() {}
 
 HRESULT CHeroList_button::Init()
 {
@@ -38,11 +36,11 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 				/*selDragButton = this;
 				selKeyIndex = VK_LBUTTON;*/
 				//originPos = m_transform->m_pos;
-				if (canTriggerDown)
+				if (canTriggerDownForHerolist)
 				{
 					townScene->isDrag = true;
 					townScene->curDragHeroIndex = m_index;
-					m_triggerWhenDown();
+					m_triggerWhenDownForHeroList(btType, m_index);
 				}
 			}
 

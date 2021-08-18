@@ -3,7 +3,9 @@
 
 class Hero_Roster : public CDragButton
 {
+public:
 	int index;
+	HeroListBtType type;
 public:
 	
 	class TownScene* scene;

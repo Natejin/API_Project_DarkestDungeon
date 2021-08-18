@@ -696,6 +696,9 @@
     <ClInclude Include="CBTN_Skill_Swap.h">
       <Filter>Object\UI\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="COwnHeroListPanel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1090,6 +1093,9 @@
     </ClCompile>
     <ClCompile Include="CBTN_Skill_Swap.cpp">
       <Filter>Object\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="COwnHeroListPanel.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -161,6 +161,7 @@
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
+    <ClInclude Include="COwnHeroListPanel.h" />
     <ClInclude Include="CPosition_Button.h" />
     <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Embark.h" />
     <ClInclude Include="EmbarkPartySlot.h" />
     <ClInclude Include="Hero_Roster.h" />
+    <ClInclude Include="ImageEffectBG.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="Info.h" />
     <ClInclude Include="InfomationManager.h" />
@@ -301,6 +303,7 @@
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />
+    <ClCompile Include="COwnHeroListPanel.cpp" />
     <ClCompile Include="CPosition_Button.cpp" />
     <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
@@ -308,6 +311,7 @@
     <ClCompile Include="Embark.cpp" />
     <ClCompile Include="EmbarkPartySlot.cpp" />
     <ClCompile Include="Hero_Roster.cpp" />
+    <ClCompile Include="ImageEffectBG.cpp" />
     <ClCompile Include="ImageObject.cpp" />
     <ClCompile Include="Info.cpp" />
     <ClCompile Include="InfomationManager.cpp" />

@@ -585,12 +585,12 @@ enum class IMAGE
 	camp_skill_pray,
 	camp_skill_sanctuary,
 	//Battle_Scene
-	darkest_dungeon_1,
-	darkest_dungeon_2,
-	darkestdungeon_wall1,
-	darkestdungeon_wall2,
-	town_invasion,
-	trinket_retention
+	BattleBG_darkest_dungeon_1,
+	BattleBG_darkest_dungeon_2,
+	BattleBG_darkestdungeon_wall1,
+	BattleBG_darkestdungeon_wall2,
+	BattleBG_town_invasion,
+	BattleBG_trinket_retention
 };
 
 enum class Resistance
@@ -693,4 +693,10 @@ enum class RoadObjType
 enum class ENEMYTYPE {
 	BoneDefender,
 
+};
+
+enum class  HeroListBtType
+{
+	ownHero,
+	coach
 };

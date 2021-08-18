@@ -490,12 +490,12 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("selQuestBg", "images/selDungeon/quest_select_selected.bmp", 192, 192, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("selDungeonBg", "images/selDungeon/quest_select.background.bmp", 1920, 1080, true, RGB(255, 0, 255));
 	//Battle_Scene
-	MG_IMAGE->addImage(IMAGE::darkest_dungeon_1, "images/BattleScene/darkest_dungeon_1.bmp", 1920, 720, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::darkest_dungeon_2, "images/BattleScene/darkest_dungeon_2.bmp", 1920, 720, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::darkestdungeon_wall1, "images/BattleScene/darkestdungeon_wall1.bmp", 1920, 720, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::darkestdungeon_wall2, "images/BattleScene/darkestdungeon_wall2.bmp", 1920, 720, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::town_invasion, "images/BattleScene/town_invasion.bmp", 1920, 720, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::trinket_retention, "images/BattleScene/trinket_retention.bmp", 1920, 720, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::BattleBG_darkest_dungeon_1, "images/BattleScene/darkest_dungeon_1.bmp", 2320, 720, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::BattleBG_darkest_dungeon_2, "images/BattleScene/darkest_dungeon_2.bmp", 2320, 720, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::BattleBG_darkestdungeon_wall1, "images/BattleScene/darkestdungeon_wall1.bmp", 2320, 720, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::BattleBG_darkestdungeon_wall2, "images/BattleScene/darkestdungeon_wall2.bmp", 2320, 720, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::BattleBG_town_invasion, "images/BattleScene/town_invasion.bmp", 2320, 720, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::BattleBG_trinket_retention, "images/BattleScene/trinket_retention.bmp", 2320, 720, true, RGB(255, 0, 255));
 
 	return S_OK;
 }

@@ -38,6 +38,7 @@ class CBattleSystem : public GameObject
 
 	class ImageObject* heroZoomImage;
 	class ImageObject* enemyZoomImage;
+	class ImageEffectBG* effectBGImage;
 	class MonsterIndicator* monsterIndicator;
 
 
@@ -90,6 +91,7 @@ private:
 
 	void SelectHero(int index);
 	void CheckAndHealAlly(CInfo_Skill* tempSkill, int index);
+	void SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed);
 	void SelectHeroTarget(SKILL skill);
 
 	void DeselectAll();
@@ -104,9 +106,11 @@ private:
 
 	void StartEnemyTrun(int index);
 
-	void CheckAndDamageHero(bool& isFoundTarget, int orderIndex, CInfo_Skill* enemySkill);
-
+	void SetEffectImage(float startPos, float targetPos, float speed);
 	void ShowTargetBySkill(int index);
+
+	void HeroTeamAreDead();
+	void EnemyTeamAreDead();
 
 private:
 	void CreateEnemyParty();
