@@ -577,6 +577,7 @@ void CBattleSystem::SetPosition() {
 
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
+		
 		if (heroParty[i] == nullptr) continue;
 		if (heroParty[i]->GetAlive())
 		{
