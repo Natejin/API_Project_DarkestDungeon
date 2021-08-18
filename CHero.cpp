@@ -25,6 +25,7 @@ HRESULT CHero::Init(Info_Hero* _info)
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
+	
 	m_animator->AddImageFrame(_info->imageCombat);
 
 	SetMemberOverlay();
@@ -96,8 +97,10 @@ void CHero::Move()
 	int ran;
 	bool left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+
 	if (left | right)
 	{
+		
 		if (right)
 		{
 			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)

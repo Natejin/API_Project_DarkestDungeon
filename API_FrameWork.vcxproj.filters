@@ -705,6 +705,9 @@
     <ClInclude Include="CEnemyInfoUI.h">
       <Filter>System\Battle</Filter>
     </ClInclude>
+    <ClInclude Include="mainScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1108,6 +1111,9 @@
     </ClCompile>
     <ClCompile Include="CEnemyInfoUI.cpp">
       <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="mainScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

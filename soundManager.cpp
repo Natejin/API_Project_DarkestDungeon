@@ -180,7 +180,8 @@ void soundManager::SetSound()
 	addSound(SOUND::BOSS_Combat, "sound/BGM/Boss_Combat.wav",true,true);
 	addSound(SOUND::Ruins_dark, "sound/BGM/amb_dun_ruins_dark.wav",true,true);
 	addSound(SOUND::Ruins_base, "sound/BGM/amb_dun_ruins_base.wav",true,true);
-
+	//raid success
+	addSound(SOUND::raid_success, "sound/BGM/raid_success.wav");
 	
 	//Crusader
 	addSound(SOUND::Cru_Battleheal, "sound/SoundEffect/Crusader/Cru_Battleheal.wav");
@@ -247,7 +248,7 @@ void soundManager::SetSound()
 	addSound(SOUND::share_imp_slime, "sound/SoundEffect/Shared/share_imp_slime.wav");
 	
 	//UI
-	addSound(SOUND::raid_success, "sound/SoundEffect/UI/raid_success.wav");
+	
 	addSound(SOUND::ui_dun_buttonroom, "sound/SoundEffect/UI/ui_dun_buttonroom.wav");
 	addSound(SOUND::ui_shr_button_click, "sound/SoundEffect/UI/ui_shr_button_click.wav");
 	addSound(SOUND::ui_shr_button_click_enemy, "sound/SoundEffect/UI/ui_shr_button_click_enemy.wav");
