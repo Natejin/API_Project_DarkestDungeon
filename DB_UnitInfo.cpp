@@ -51,7 +51,7 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	info->imageCharge = _info->imageCharge;
 	info->imageBuff = _info->imageBuff;
 	info->imageDebuff = _info->imageDebuff;
-
+	info->imageCorpse = _info->imageCorpse;
 
 
 	info->m_LVL = 1;
@@ -80,6 +80,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	info->m_maxHP = _info->m_maxHP;
 	info->m_HP = _info->m_maxHP;
 	info->m_SPD = _info->m_SPD;
+	info->isAlive = _info->isAlive;
 	for (size_t i = 0; i < 5; i++)
 	{
 		info->resist[i] = _info->resist[i];
@@ -107,6 +108,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	info->imageCharge = _info->imageCharge;
 	info->imageBuff = _info->imageBuff;
 	info->imageDebuff = _info->imageDebuff;
+	info->imageCorpse = _info->imageCorpse;
 
 
 
@@ -362,6 +364,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::Enemy_SkeletonDefender_Defender;
 	info->imageBuff = IMAGE::Enemy_SkeletonDefender_Shield;
 	info->imageDebuff = IMAGE::Enemy_SkeletonDefender_Shield;
+	info->imageCorpse = IMAGE::skeleton_defender_dead;
 
 	info->resist[0] = 40;
 	info->resist[1] = 30;
@@ -397,6 +400,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::skeleton_common_defend;
 	info->imageBuff = IMAGE::skeleton_common_defend;
 	info->imageDebuff = IMAGE::skeleton_common_defend;
+	info->imageCorpse = IMAGE::skeleton_common_dead;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 25;
 	info->resist[1] = 10;
@@ -432,6 +436,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::skeleton_courtier_defend;
 	info->imageBuff = IMAGE::skeleton_courtier_defend;
 	info->imageDebuff = IMAGE::skeleton_courtier_defend;
+	info->imageCorpse = IMAGE::skeleton_courtier_dead;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 10;
 	info->resist[1] = 10;
@@ -469,6 +474,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::necromancer_defend;
 	info->imageBuff = IMAGE::necromancer_defend;
 	info->imageDebuff = IMAGE::necromancer_defend;
+	info->imageCorpse = IMAGE::NONE;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 75;
 	info->resist[1] = 20;

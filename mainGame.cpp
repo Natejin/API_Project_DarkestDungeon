@@ -69,6 +69,7 @@ void mainGame::render(/*HDC hdc*/)
 	MG_TIME->render(getMemDC());
 	MG_SCENE->Render(getMemDC());
 	MG_CAMERA->Render(getMemDC());
+	MG_GAME->Render(getMemDC());
 
 	//백버퍼의 내용을 HDC그린다.(건드리지 말것.)
 	this->getBackBuffer()->render(getHDC(), 0, 0);

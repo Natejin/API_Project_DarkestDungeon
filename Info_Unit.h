@@ -8,6 +8,7 @@ public:
 	int m_maxHP;
 	int m_SPD;
 	bool isAlive;
+	bool isCorpse;
 	bool isAffliction;
 
 	int m_DMG; //skill에서 값 넣어주기
@@ -34,6 +35,7 @@ public:
 	IMAGE imageCharge;
 	IMAGE imageBuff;
 	IMAGE imageDebuff;
+	IMAGE imageCorpse;
 
 	IMAGE portrait;
 

@@ -34,6 +34,8 @@ HRESULT TownScene::Init()
 {
 	MG_SOUND->play(SOUND::Town, 0.2);
 
+	isTown = true;
+
 	m_town = new CBG_Town();
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);

@@ -459,6 +459,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
 
+
 	sprintf_s(str, "<dungeonInfo>");
 	TextOut(_hdc, 0, 80, str, strlen(str));
 
@@ -468,8 +469,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
 
-	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
-	TextOut(_hdc, 0, 180, str, strlen(str));
+
 
 	switch (curDunheonMap.dungeonMapState)
 	{

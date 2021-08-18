@@ -295,7 +295,13 @@ bool CHero::GetAffliction()
 
 bool CHero::GetAlive()
 {
+
 	return info->isAlive;
+}
+
+bool CHero::GetCorpse()
+{
+	return info->isCorpse;
 }
 
 void CHero::testHpBar()

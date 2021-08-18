@@ -25,10 +25,9 @@ HRESULT CEnemy::Init(Info_Enemy* _info)
 	m_unitType = _info->unitType;
 	info = _info;
 
-	AddAnimator(_info->imageIdle);
+	AddAnimator(_info->imageCombat);
 	m_animator->SetAnimeSpeed(5);
-	m_animator->AddImageFrame(_info->imageWalk);
-	m_animator->AddImageFrame(_info->imageCombat);
+	m_animator->AddImageFrame(_info->imageCorpse);
 
 	SetMemberOverlay();
 	AddColliderBox();
@@ -113,6 +112,8 @@ bool CEnemy::reduceHP(int hp)
 	else {
 		info->m_HP = 0;
 		info->isAlive = false;
+		info->isCorpse = true;
+		m_animator->SetIndex(1);
 		return false;
 	}
 }
@@ -140,4 +141,18 @@ int CEnemy::getSPD()
 void CEnemy::setSPD(int spd)
 {
 	info->m_SPD = spd;
+}
+
+bool CEnemy::GetAlive()
+{
+	return info->isAlive;
+}
+
+bool CEnemy::GetCorpse()
+{
+	return info->isCorpse;
+}
+bool CEnemy::SetCorpse(bool _corpse)
+{
+return	info->isCorpse = _corpse;
 }

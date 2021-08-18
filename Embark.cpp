@@ -7,15 +7,14 @@ Embark::~Embark() {}
 
 HRESULT Embark::Init()
 {
+	m_layer = LAYER::UI;
+	isTown = true;
+
 	m_transform->m_pivot = Vector2(0, 0);
 	m_transform->m_pos = Vector2(0, 0);
-
+	setPartySlot();
 	AddSpriteRenderer();
 	setEmbarkBt();
-
-	m_layer = LAYER::UI;
-
-	isTown = true;
 
 	return S_OK;
 }
@@ -69,7 +68,6 @@ void Embark::setImg()
 	CTransform* temp = new CTransform;
 	temp->m_pos = Vector2(WINSIZEX / 2, WINSIZEY - 300);
 	temp->m_pivot = Vector2(0.5, 0.5);
-
 	class CSpriteRenderer* r_heroSlot = new CSpriteRenderer("partySlot_", temp);
 	m_images.push_back(r_heroSlot);
 }
@@ -110,29 +108,28 @@ void Embark::setDungeonBt()
 
 void Embark::setEmbark()
 {
-	if (isTown)
+	if (m_townScene->isTown)
 	{
-		setImg();
-		setPartySlot();
-		bt_selDungeon->Enable();
 		m_townScene->DeactivateBuildings();
+		bt_selDungeon->Enable();
+		setImg();
+		for (int i = 0; i < 4; i++)
+		{
+			m_slots[i]->Enable();
+		}
+		m_townScene->isTown = false;
 		Enable();
-		isTown = false;
 	}
 	else
 	{
-		m_townScene->ActivateBuildings();
-		bt_selDungeon->Disable();
 		Disable();
-		//for (int i = 0; i < m_images.size(); i++)
-		//{
-		//	SAFE_DELETE(m_images[i]);
-		//}
-		//for (int i = 0; i < m_slots.size(); i++)
-		//{
-		//	MG_GMOBJ->RemoveObj(m_slots[i]);
-		//};
-		isTown = true;
+		for (int i = 0; i < 4; i++)
+		{
+			m_slots[i]->Disable();
+		}
+		bt_selDungeon->Disable();
+		m_townScene-> isTown = true;
+		m_townScene->ActivateBuildings();
 	}
 
 }
@@ -145,6 +142,7 @@ void Embark::setPartySlot()
 		slot->Init();
 		slot->m_transform->m_pos = Vector2(817 + i * 95, 780);
 		slot->m_townScene = this->m_townScene;
+		slot->Disable();
 		m_slots.push_back(slot);
 		MG_GMOBJ->RegisterObj("partySlot", slot);
 	}

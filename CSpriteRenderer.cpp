@@ -79,6 +79,17 @@ void CSpriteRenderer::Render(HDC _hdc)
 	}
 }
 
+void CSpriteRenderer::AlphaRenderUI(HDC _hdc, BYTE alpha)
+{
+	m_image->AlphaRenderUI(_hdc, m_trans, alpha);
+}
+
+void CSpriteRenderer::AlphaRender(HDC _hdc, BYTE alpha)
+{
+	m_image->AlphaRender(_hdc, m_trans, alpha);
+}
+
+
 void CSpriteRenderer::RenderUI(HDC _hdc)
 {
 

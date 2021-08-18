@@ -24,15 +24,19 @@ HRESULT ImageEffectBG::Init()
     return S_OK;
 }
 
+
+
 void ImageEffectBG::Enable()
 {
     m_spriteRenderer->SetImage(rndBGIMG[MG_RND->getInt(rndBGIMG.size())]);
     curTime = MG_TIME->getWorldTime() + coolTime;
+    alpheVal = 255;
     isActive = true;
 }
 
 void ImageEffectBG::Disable()
 {
+    
     isActive = false;
     targetPos = originPos;
 

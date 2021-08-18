@@ -45,6 +45,9 @@ public:
 	void Render(HDC _hdc);
 	void RenderUI(HDC _hdc);
 
+	void AlphaRender(HDC _hdc, BYTE alpha);
+	void AlphaRenderUI(HDC _hdc, BYTE alpha);
+
 	Vector2 GetImageSize();
 	bool HasImage();
 
