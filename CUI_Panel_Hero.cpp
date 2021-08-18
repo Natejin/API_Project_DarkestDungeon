@@ -162,9 +162,12 @@ void CUI_Panel_Hero::SetHeroPanel()
 		break;
 	case JOB::Highwayman:
 		m_windowPanelChar->SetImage(IMAGE::highwayman_header);
+		m_HeroImg->SetImage(IMAGE::Highwayman_pistol);
 		break;
 	case JOB::PlagueDoctor:
 		m_windowPanelChar->SetImage(IMAGE::plague_doctor_header);
+		m_HeroImg->SetImage(IMAGE::Plague_doctor_grenade);
+
 		break;
 	}
 }
@@ -183,9 +186,13 @@ void CUI_Panel_Hero::setCoachHeroPanel()
 		break;
 	case JOB::Highwayman:
 		m_windowPanelChar->SetImage(IMAGE::highwayman_header);
+		m_HeroImg->SetImage(IMAGE::Highwayman_pistol);
+
 		break;
 	case JOB::PlagueDoctor:
 		m_windowPanelChar->SetImage(IMAGE::plague_doctor_header);
+		m_HeroImg->SetImage(IMAGE::Plague_doctor_grenade);
+
 		break;
 	}
 }

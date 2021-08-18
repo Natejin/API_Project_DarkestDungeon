@@ -177,9 +177,11 @@ void soundManager::SetSound()
 {	//BGM
 	addSound(SOUND::Town, "sound/BGM/Town.wav",true,true);
 	addSound(SOUND::Combat, "sound/BGM/Combat.wav",true,true);
+	addSound(SOUND::BOSS_Combat, "sound/BGM/Boss_Combat.wav",true,true);
 	addSound(SOUND::Ruins_dark, "sound/BGM/amb_dun_ruins_dark.wav",true,true);
 	addSound(SOUND::Ruins_base, "sound/BGM/amb_dun_ruins_base.wav",true,true);
 
+	
 	//Crusader
 	addSound(SOUND::Cru_Battleheal, "sound/SoundEffect/Crusader/Cru_Battleheal.wav");
 	addSound(SOUND::Cru_holylance, "sound/SoundEffect/Crusader/Cru_holylance.wav");
@@ -271,20 +273,19 @@ void soundManager::SetSound()
 	addSound(SOUND::status_buff, "sound/SoundEffect/Shared/status_buff.wav");
 	addSound(SOUND::status_guard, "sound/SoundEffect/Shared/status_guard.wav");
 	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/status_marked.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/status_stun_off.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/status_poison.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/status_bleed_dot.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/status_bleed_onset.wav");
-
+	addSound(SOUND::status_stun_off, "sound/SoundEffect/Shared/status_stun_off.wav");
+	addSound(SOUND::status_poison, "sound/SoundEffect/Shared/status_poison.wav");
+	addSound(SOUND::status_bleed_dot, "sound/SoundEffect/Shared/status_bleed_dot.wav");
+	addSound(SOUND::status_bleed_onset, "sound/SoundEffect/Shared/status_bleed_onset.wav");
 	//
-	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/door_open.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Shared/EatFood.wav");
+	addSound(SOUND::door_open, "sound/SoundEffect/Shared/door_open.wav");
+	addSound(SOUND::EatFood, "sound/SoundEffect/Shared/EatFood.wav");
 
 	//Footstep
-	addSound(SOUND::status_marked, "sound/SoundEffect/Footstep/party_foot_dirt_01.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Footstep/party_foot_dirt_02.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Footstep/party_foot_dirt_03.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Footstep/party_foot_dirt_04.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Footstep/party_foot_dirt_05.wav");
-	addSound(SOUND::status_marked, "sound/SoundEffect/Footstep/party_foot_dirt_06.wav");
+	addSound(SOUND::party_foot_dirt_01, "sound/SoundEffect/Footstep/party_foot_dirt_01.wav");
+	addSound(SOUND::party_foot_dirt_02, "sound/SoundEffect/Footstep/party_foot_dirt_02.wav");
+	addSound(SOUND::party_foot_dirt_03, "sound/SoundEffect/Footstep/party_foot_dirt_03.wav");
+	addSound(SOUND::party_foot_dirt_04, "sound/SoundEffect/Footstep/party_foot_dirt_04.wav");
+	addSound(SOUND::party_foot_dirt_05, "sound/SoundEffect/Footstep/party_foot_dirt_05.wav");
+	addSound(SOUND::party_foot_dirt_06, "sound/SoundEffect/Footstep/party_foot_dirt_06.wav");
 }

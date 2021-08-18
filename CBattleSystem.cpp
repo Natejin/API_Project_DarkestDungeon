@@ -316,7 +316,7 @@ void CBattleSystem::CreateEnemyParty()
 	{
 	
 		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)3)); //TODO 추후 적 세팅 변경하기
+		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)1)); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		enemy->SetPartyPos(i);
 		enemy->SetPartyIndex(i);

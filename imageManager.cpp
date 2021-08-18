@@ -358,43 +358,6 @@ HRESULT imageManager::init()
 	//skill
 	MG_IMAGE->addImage(IMAGE::SelectedSkill, "images/character/selected_ability.bmp", 90, 90, true, RGB(255, 0, 255));
 
-	//
-	// MG_IMAGE->addImage(IMAGE::Crusader_portrait, "images/icons_heroes/crusader_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_Smite, "images/icons_heroes/crusader.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_ZealousAccusation, "images/icons_heroes/crusader.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_StunningBlow, "images/icons_heroes/crusader.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_BulwarkofFaith, "images/icons_heroes/crusader.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_BattleHeal, "images/icons_heroes/crusader.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_HolyLance, "images/icons_heroes/crusader.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Crusader_Skill_InspiringCry, "images/icons_heroes/crusader.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
-	// MG_IMAGE->addImage("highwayman_portrait", "images/icons_heroes/highwayman_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill1", "images/icons_heroes/highwayman.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill2", "images/icons_heroes/highwayman.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill3", "images/icons_heroes/highwayman.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill4", "images/icons_heroes/highwayman.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill5", "images/icons_heroes/highwayman.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill6", "images/icons_heroes/highwayman.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("highwayman_skill7", "images/icons_heroes/highwayman.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-	
-	// MG_IMAGE->addImage("plague_doctor_portrait", "images/icons_heroes/plague_doctor_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill1", "images/icons_heroes/plague_doctor.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill2", "images/icons_heroes/plague_doctor.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill3", "images/icons_heroes/plague_doctor.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill4", "images/icons_heroes/plague_doctor.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill5", "images/icons_heroes/plague_doctor.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill6", "images/icons_heroes/plague_doctor.ability.six.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage("plagueDoctor_skill7", "images/icons_heroes/plague_doctor.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
-	// MG_IMAGE->addImage(IMAGE::Vestal_portrait, "images/icons_heroes/vestal_portrait_roster.bmp", 70, 70, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Vestal_Skill_MaceBash, "images/icons_heroes/vestal.ability.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Vestal_Skill_Judgement, "images/icons_heroes/vestal.ability.two.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Vestal_Skill_DazzlingLight , "images/icons_heroes/vestal.ability.three.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineGrace , "images/icons_heroes/vestal.ability.four.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Vestal_Skill_DivineComfort , "images/icons_heroes/vestal.ability.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	// //MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
-	// MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight , "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
-
 	MG_IMAGE->addImage(IMAGE::Ability_Move, "images/icons_heroes/ability_move.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Ability_Pass, "images/icons_heroes/ability_pass.bmp", 20, 65, false, RGB(255, 0, 255));
 	//Camp_Skill
@@ -435,8 +398,6 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Highway_Weapon_0, "images/icons_equip_Highwayman/eqp_weapon_0.bmp", 68, 132, false, RGB(255, 0, 255));
 
 	//UIovelay
-
-
 	MG_IMAGE->addImage("HP_full", "images/dungeonUI/health_pip_full.bmp", 10, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("HP_empty", "images/dungeonUI/health_pip_empty.bmp", 10, 10, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("STRS_full", "images/dungeonUI/stress_pip_full.bmp", 9, 10, true, RGB(255, 0, 255));
@@ -500,8 +461,13 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::BattleBG_darkestdungeon_wall2, "images/BattleScene/darkestdungeon_wall2.bmp", 2320, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::BattleBG_town_invasion, "images/BattleScene/town_invasion.bmp", 2320, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::BattleBG_trinket_retention, "images/BattleScene/trinket_retention.bmp", 2320, 720, true, RGB(255, 0, 255));
+	//Number
+	MG_IMAGE->addFrameImage(IMAGE::NumberBlack, "images/Number/NumberBlack.bmp", 340, 49,10,1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::NumberGreen, "images/Number/NumberGreen.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::NumberRed, "images/Number/NumberRed.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
 
 	return S_OK;
+
 }
 
 void imageManager::release()

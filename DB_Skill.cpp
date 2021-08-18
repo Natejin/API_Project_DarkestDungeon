@@ -151,6 +151,8 @@ void CDB_Skill::SetHeroSkill()
 	info->healMax[4] = 5;
 	skillDB.insert(make_pair(SKILL::Crusader_Heal_BattleHeal, info));
 	MG_INFO->RegisterInfo(info);
+
+
 #pragma endregion
 
 #pragma region Vestal

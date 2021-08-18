@@ -39,8 +39,7 @@ public:
 
 	vector<int> skillLvl;
 	vector<SKILL> ownSkill;
-
-	
+	vector<CAMP_SKILL> ownCamp_Skill;
 	
 	virtual void Release();
 };
