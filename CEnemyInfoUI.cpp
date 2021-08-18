@@ -43,6 +43,7 @@ void CEnemyInfoUI::FrontRender(HDC _hdc)
 		if (m_battleSys->enemyParty[i]->m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 		{
 			m_enemyInfoPanel->Render(_hdc);
+			drawResistancesImage(_hdc);
 			showEnemyInfo(_hdc);
 		}
 	}
@@ -53,6 +54,8 @@ void CEnemyInfoUI::FrontRender(HDC _hdc)
 
 	sprintf_s(str, "enemyIndex : %d", enemyIndex);
 	TextOut(_hdc, 0, 200, str, strlen(str));
+
+	
 
 }
 
@@ -65,6 +68,26 @@ void CEnemyInfoUI::Release()
 void CEnemyInfoUI::setUIIMG()
 {
 	m_enemyInfoPanel = new CSpriteRenderer(IMAGE::monster, m_transform);
+
+	m_stunicon = new CSpriteRenderer(IMAGE::stun, m_transform);
+	m_stunicon->useCustomPos = true;
+	m_stunicon->pos = Vector2(1200, 900);
+
+	m_blighicon = new CSpriteRenderer(IMAGE::poison, m_transform);
+	m_blighicon->useCustomPos = true;
+	m_blighicon->pos = Vector2(1000, 920);
+
+	m_bleedicon = new CSpriteRenderer(IMAGE::bleed, m_transform);
+	m_bleedicon->useCustomPos = true;
+	m_bleedicon->pos = Vector2(1000, 940);
+
+	m_debufficon = new CSpriteRenderer(IMAGE::debuff, m_transform);
+	m_debufficon->useCustomPos = true;
+	m_debufficon->pos = Vector2(1000, 960);
+
+	m_moveicon = new CSpriteRenderer(IMAGE::move, m_transform);
+	m_moveicon->useCustomPos = true;
+	m_moveicon->pos = Vector2(1000, 980);
 }
 
 void CEnemyInfoUI::isMouseOnEnemy()
@@ -83,20 +106,55 @@ void CEnemyInfoUI::showEnemyInfo(HDC _hdc)
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 0, 255));
+	SetTextColor(_hdc, RGB(122, 25, 14));
 	temp = m_battleSys->enemyParty[enemyIndex];
 
+	sprintf_s(str, "Name");
+	TextOut(_hdc, 1010, 755, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(255, 255, 255));
 	sprintf_s(str, "Skeleton");
-	TextOut(_hdc, 1400, 800, str, strlen(str));
+	TextOut(_hdc, 1010, 795, str, strlen(str));
 
-	//sprintf_s(str, "PROT : %d", temp-> );
-	//TextOut(_hdc, 1500, 1000, str, strlen(str));
+	sprintf_s(str, "PROT : %d", temp-> GetProt());
+	TextOut(_hdc, 1150, 795, str, strlen(str));
 
-	sprintf_s(str, "enemyIndex : %d", enemyIndex);
-	TextOut(_hdc, 1400, 1200, str, strlen(str));
+	sprintf_s(str, "DODGE : %d", temp->GetDodge());
+	TextOut(_hdc, 1150, 815, str, strlen(str));
 
-	sprintf_s(str, "enemyIndex : %d", enemyIndex);
-	TextOut(_hdc, 1400, 1400, str, strlen(str));
+	sprintf_s(str, "SPD : %d", temp->getSPD());
+	TextOut(_hdc, 1150, 835, str, strlen(str));
+
+	//stun, blight, bleed, debuff, move
+
+	SetTextColor(_hdc, RGB(212, 187, 120));
+	sprintf_s(str, "Stun :  %d", temp->getResist(0));
+	TextOut(_hdc, 1020, 900, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(162, 175, 70));
+	sprintf_s(str, "Blight :  %d", temp->getResist(1));
+	TextOut(_hdc, 1020, 920, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(126, 8, 4));
+	sprintf_s(str, "Bleed :  %d", temp->getResist(2));
+	TextOut(_hdc, 1020, 940, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(195, 122, 81));
+	sprintf_s(str, "Debuff :  %d", temp->getResist(3));
+	TextOut(_hdc, 1020, 960, str, strlen(str));
+
+	SetTextColor(_hdc, RGB(118, 164, 198));
+	sprintf_s(str, "Move :  %d", temp->getResist(4));
+	TextOut(_hdc, 1020, 980, str, strlen(str));
+}
+
+void CEnemyInfoUI::drawResistancesImage(HDC _hdc)
+{
+	m_stunicon->Render(_hdc);
+	m_bleedicon->Render(_hdc);
+	m_moveicon->Render(_hdc);
+	m_blighicon->Render(_hdc);
+	m_debufficon->Render(_hdc);
 }
 
 void CEnemyInfoUI::Disable()
