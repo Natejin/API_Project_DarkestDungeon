@@ -392,7 +392,7 @@ void CHero::increaseHP(int hp)
 {
 	if (info->m_maxHP > info->m_HP + hp)
 	{
-		info->m_HP += hp;
+			info->m_HP += hp;
 	}
 	else {
 		info->m_HP = info->m_maxHP;

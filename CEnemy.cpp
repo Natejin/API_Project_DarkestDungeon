@@ -21,6 +21,7 @@ CEnemy::~CEnemy() {}
 
 HRESULT CEnemy::Init(Info_Enemy* _info)
 {
+	Unit::Init();
 	canTriggerDown = false;
 	m_unitType = _info->unitType;
 	info = _info;

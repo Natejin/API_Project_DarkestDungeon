@@ -49,6 +49,7 @@ public:
 	float startTriggerTime;
 	float soundEffectVolume = 0.5f;
 	bool startNextTurn;
+	bool delayForSwapSetPosition;
 	vector< Vector2> targetEnemyPosVec;
 	
 public:
