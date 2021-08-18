@@ -17,6 +17,7 @@ CEst_UI::~CEst_UI()
 
 HRESULT CEst_UI::Init()
 {
+	isStart = true;
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::characterpanel_bg, m_transform);
 
 	m_quit = new CButton();
@@ -74,6 +75,12 @@ void CEst_UI::Enable()
 
 void CEst_UI::Disable()
 {
+	if (!isStart)
+	{
+		MG_SOUND->play(SOUND::Town_quick);
+		
+	}
+	isStart = false;
 	m_quit->isActive = false;
 	isActive = false;
 	if (townScene->isTown)
