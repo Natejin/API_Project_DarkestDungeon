@@ -47,8 +47,9 @@ HRESULT CBattleSystem::Init()
 	MG_GMOBJ->RegisterObj(effectBGImage);
 
 	m_enemyInfoUI = new CEnemyInfoUI();
+	m_enemyInfoUI->m_battleSys = this;
 	m_enemyInfoUI->Init();
-	m_enemyInfoUI->Enable();
+	m_enemyInfoUI->Disable();
 	MG_GMOBJ->RegisterObj(m_enemyInfoUI);
 
 	SetZoomImage();
@@ -128,6 +129,7 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
+	m_enemyInfoUI->Enable();
 	originPosOfBattle = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	CreateHeroesParty();
 	CreateEnemyParty();
@@ -145,6 +147,7 @@ void CBattleSystem::BattleSystemInitiate()
 
 void CBattleSystem::BattleSystemEnd()
 {
+	m_enemyInfoUI->Disable();
 	monsterIndicator->Disable();
 	scene->m_dungeonMode = DUNGEONMODE::WALK;
 	
@@ -228,7 +231,6 @@ void CBattleSystem::HeroTurn()
 void CBattleSystem::EnemyTurn()
 {
 	StartEnemyTrun(curEnemy->GetPartyIndex());
-
 }
 
 void CBattleSystem::EndTurn()
