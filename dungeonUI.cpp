@@ -49,16 +49,19 @@ void dungeonUI::Release()
 	{
 		MG_GMOBJ->RemoveObj(skillBTNs[i]);
 	}
+
 	MG_GMOBJ->RemoveObj(swapBTN);
 	MG_GMOBJ->RemoveObj(endTurnBTN);
 	MG_GMOBJ->RemoveObj(bt_inven);
 	MG_GMOBJ->RemoveObj(bt_map);
 	MG_GMOBJ->RemoveObj(bt_passTurn);
 	MG_GMOBJ->RemoveObj(bt_changePos);
+
 	scene = nullptr;
 	m_pMapSystem = nullptr;
 	m_pBattleSystem = nullptr;
 	m_invenSystem = nullptr;
+
 	MG_GMOBJ->RemoveObj(invenPanel);
 	MG_GMOBJ->RemoveObj(mapPanel1);
 	MG_GMOBJ->RemoveObj(mapPanel2);
@@ -75,23 +78,16 @@ void dungeonUI::SetUIIMG()
 	ImageData UIimg;
 	SetTorchUIimg();
 
-	//���ʾƷ� UI
 	panel_bg1 = CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
-	//�����ʾƷ� UI
 	panel_bg2 = CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
-	//���� �ν��� ������ + ��ų������ �޹��
 	banner = CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
-	//���� ������ +��ű� �� ���
 	hero = CreatePanel(IMAGE::hero, Vector2(330, 820), LAYER::UI);
 
-	//�κ��丮 �г�
 	invenPanel = CreatePanel(IMAGE::inventory, Vector2(965, 700), LAYER::UI);
 
-	//���г�
 	mapPanel1 = CreatePanel(IMAGE::map1, Vector2(965, 700), LAYER::UI);
 	mapPanel1->UseFrontRender();
 
-	//�� �� �׸��� ���
 	mapPanel2 = new CDragButtonMinimapBG();
 	mapPanel2->Init();
 	mapPanel2->m_transform->m_pos = Vector2(965, 700);
@@ -103,18 +99,18 @@ void dungeonUI::SetUIIMG()
 
 void dungeonUI::SetButton()
 {	
-	//Ŭ���� �κ��丮 ���̱�
 	bt_inven = new CButton();
-	bt_inven->m_transform->m_pos = Vector2(1570, 1080 - 90);
-	bt_inven->AddColliderBox(50, 65);
+	bt_inven->m_transform->m_pos = Vector2(1550, 920);
+	bt_inven->m_transform->m_pivot = Vector2(0, 0);
+	bt_inven->AddColliderBox(50, 75);
 	bt_inven->AddSpriteRenderer("button");
 	bt_inven->SetTriggerWhenDown(this, &dungeonUI::ShowInven);
 	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", bt_inven);
 
-	//Ŭ���� �� ���̱�
 	bt_map = new CButton();
-	bt_map->m_transform->m_pos = Vector2(1570, 1080 - 170);
-	bt_map->AddColliderBox(50, 65);
+	bt_map->m_transform->m_pos = Vector2(1550, 850);
+	bt_map->m_transform->m_pivot = Vector2(0, 0);
+	bt_map->AddColliderBox(50, 75);
 	bt_map->AddSpriteRenderer("button");
 	bt_map->SetTriggerWhenDown(this, &dungeonUI::ShowMap);
 	MG_GMOBJ->RegisterObj("dungeonUI_mapButton", bt_map);
@@ -147,7 +143,7 @@ void dungeonUI::SetSkillButton()
 		CBTN_Skill* temp = new CBTN_Skill();
 		temp->scene = scene;
 		temp->Init();
-		temp->m_transform->m_pos = Vector2(620 + 70 * i, 764);
+		temp->m_transform->m_pos = Vector2(615 + 70 * i, 764);
 		temp->m_pBattleSystem = m_pBattleSystem;
 		temp->index = i;
 		string tempStr = "SkillBTN";
@@ -160,7 +156,7 @@ void dungeonUI::SetSkillButton()
 	swapBTN = new CBTN_Skill_Swap();
 	swapBTN->scene = scene;
 	swapBTN->Init();
-	swapBTN->m_transform->m_pos = Vector2(900, 764);
+	swapBTN->m_transform->m_pos = Vector2(895, 764);
 	swapBTN->m_pBattleSystem = m_pBattleSystem;
 	swapBTN->SetName("Swap BTN");
 	MG_GMOBJ->RegisterObj(swapBTN);
@@ -168,7 +164,7 @@ void dungeonUI::SetSkillButton()
 	endTurnBTN = new CBTN_Skill_Endturn();
 	endTurnBTN->scene = scene;
 	endTurnBTN->Init();
-	endTurnBTN->m_transform->m_pos = Vector2(935, 764);
+	endTurnBTN->m_transform->m_pos = Vector2(942, 764);
 	endTurnBTN->m_pBattleSystem = m_pBattleSystem;
 	endTurnBTN->SetName("EndTurn BTN");
 	MG_GMOBJ->RegisterObj(endTurnBTN);

@@ -81,7 +81,7 @@ void Embark::setEmbarkBt()
 	bt_embark = new CButton;
 	bt_embark->m_transform->m_pivot = Vector2(0.5, 0.5);
 	bt_embark->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY - 200);
-	bt_embark->AddColliderBox(100, 65);
+	bt_embark->AddColliderBox(200, 65);
 	bt_embark->AddSpriteRenderer("embark");
 	bt_embark->SetTriggerWhenDown(this, &Embark::setEmbark);
 	bt_embark->Enable();

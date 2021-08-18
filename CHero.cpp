@@ -59,7 +59,7 @@ void CHero::FrontRender(HDC _hdc)
 	{
 		targeted_h_Mem.m_trans.m_pos = Vector2(
 			m_transform->m_pos.x - 87,
-			m_transform->m_pos.y - 78);
+			m_transform->m_pos.y - 165);
 
 		targeted_h_Mem.Render(_hdc);
 	}
@@ -70,26 +70,6 @@ void CHero::Release()
 {
 	Unit::Release();
 	MG_INFO->RemoveInfo(info);
-}
-
-IMAGE CHero::GetArmor()
-{
-	return info->GetArmor(armorLvl);
-}
-
-IMAGE CHero::GetWeapon()
-{
-	return info->GetWeapon(weaponLvl);
-}
-
-Image* CHero::GetTrinketL()
-{
-	return nullptr;
-}
-
-Image* CHero::GetTrinketR()
-{
-	return nullptr;
 }
 
 void CHero::Move()
@@ -167,6 +147,26 @@ void CHero::SetMemberOverlay()
 }
 
 #pragma region get/set
+
+IMAGE CHero::GetArmor()
+{
+	return info->GetArmor(armorLvl);
+}
+
+IMAGE CHero::GetWeapon()
+{
+	return info->GetWeapon(weaponLvl);
+}
+
+Image* CHero::GetTrinketL()
+{
+	return nullptr;
+}
+
+Image* CHero::GetTrinketR()
+{
+	return nullptr;
+}
 
 Info_Hero* CHero::GetInfo()
 {

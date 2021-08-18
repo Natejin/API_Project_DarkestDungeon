@@ -96,7 +96,6 @@ void CUIPanel_Abbey::SetcloseRoom()
 			if (i % 3 == 0)
 			{
 				panelVec[i]->m_spriteRenderer->SetImage(IMAGE::abbey_flagellation);
-
 			}
 			if (i % 3 == 1)
 			{
