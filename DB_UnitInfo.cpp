@@ -362,6 +362,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::Enemy_SkeletonDefender_Defender;
 	info->imageBuff = IMAGE::Enemy_SkeletonDefender_Shield;
 	info->imageDebuff = IMAGE::Enemy_SkeletonDefender_Shield;
+	info->imageCorpse = IMAGE::NONE;
 
 	info->resist[0] = 40;
 	info->resist[1] = 30;
@@ -397,6 +398,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::skeleton_common_defend;
 	info->imageBuff = IMAGE::skeleton_common_defend;
 	info->imageDebuff = IMAGE::skeleton_common_defend;
+	info->imageCorpse = IMAGE::NONE;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 25;
 	info->resist[1] = 10;
@@ -432,6 +434,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::skeleton_courtier_defend;
 	info->imageBuff = IMAGE::skeleton_courtier_defend;
 	info->imageDebuff = IMAGE::skeleton_courtier_defend;
+	info->imageCorpse = IMAGE::NONE;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 10;
 	info->resist[1] = 10;
@@ -469,6 +472,7 @@ void DB_UnitInfo::SetEnemy()
 	info->imageDefend = IMAGE::necromancer_defend;
 	info->imageBuff = IMAGE::necromancer_defend;
 	info->imageDebuff = IMAGE::necromancer_defend;
+	info->imageCorpse = IMAGE::NONE;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 75;
 	info->resist[1] = 20;

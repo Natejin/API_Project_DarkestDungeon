@@ -16,7 +16,7 @@ class CBattleSystem : public GameObject
 	};
 
 	TURN turn;
-
+	Vector2 originPosOfBattle;
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
 	queue<TurnSpeedOfUnit> speedQueue;
@@ -101,6 +101,10 @@ private:
 
 	void SetEnemyIndicator(int index);
 	void SelectEnemyTarget(SKILL skill);
+
+	void SetPosition() {
+	
+	}
 
 	CHero* GetHero(int i);
 	void StartHeroTrun(int index);

@@ -51,21 +51,7 @@ HRESULT CBattleSystem::Init()
 	return S_OK;
 }
 
-void CBattleSystem::SetZoomImage()
-{
 
-	enemyZoomImage = new ImageObject();
-	enemyZoomImage->originPos = Vector2(1100, 800);
-	enemyZoomImage->speed =10;
-	enemyZoomImage->Init();
-	MG_GMOBJ->RegisterObj(enemyZoomImage);
-
-	heroZoomImage = new ImageObject();
-	heroZoomImage->originPos = Vector2(600, 800);
-	heroZoomImage->speed = 10;
-	heroZoomImage->Init();
-	MG_GMOBJ->RegisterObj(heroZoomImage);
-}
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
@@ -78,8 +64,6 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 	{
 		StartTurn();
 	}
-
-	
 
 	if (startNextTurn && worldTime > startTriggerTime)
 	{
@@ -308,14 +292,11 @@ void CBattleSystem::CreateEnemyParty()
 	int random = MG_RND->getInt(3) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = heroParty[0]->m_transform->m_pos;
-
-	
-
+	originPosOfBattle = heroParty[0]->m_transform->m_pos;
 	for (size_t i = 0; i < 4; i++)
 	{
 		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(4))); //TODO 추후 적 세팅 변경하기
+		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		enemy->SetPartyPos(i);
 		enemy->SetPartyIndex(i);
@@ -324,11 +305,11 @@ void CBattleSystem::CreateEnemyParty()
 
 		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 		{
-			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, heroPos.y);
+			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, originPosOfBattle.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
 		else {
-			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, heroPos.y);
+			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, originPosOfBattle.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
 
@@ -344,7 +325,7 @@ void CBattleSystem::CreateHeroesParty()
 	int playerPartySize = MG_GAME->GetHeroPartySize();
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
+	//Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	int k = 0;
 	for (int i = 0; i < playerPartySize; i++, k++)
 	{
@@ -355,10 +336,10 @@ void CBattleSystem::CreateHeroesParty()
 			heroParty[k]->SetPartyIndex(k);
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
-				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, heroPos.y);
+				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, originPosOfBattle.y);
 			}
 			else {
-				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
+				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * k, originPosOfBattle.y);
 			}
 
 			heroParty[k]->m_animator->SetIndex(2);
@@ -444,7 +425,25 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 		SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 		SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 
-		enemyParty[index]->reduceHP(tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo()));
+		if (enemyParty[index]->GetAlive())
+		{
+			int damage = tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo());
+			//회피함
+			if (damage <= -1)
+			{
+
+			}
+			else {
+				enemyParty[index]->reduceHP(damage);
+			}
+		}
+		//시체상태임
+		else {
+
+
+		}
+		
+
 		DelayUntillNextTurn(delayTriggerEffect);
 		return true;
 	}
@@ -474,7 +473,6 @@ void CBattleSystem::SelectHero(int index)
 			{
 				CheckAndSwapHeroPos(index);
 			}
-
 		}
 		else {
 			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
@@ -562,7 +560,6 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 {
 	if (curHero->GetPartyPos() != heroParty[index]->GetPartyPos())
 	{
-		
 		int tempPos = curHero->GetPartyPos();
 		curHero->SetPartyPos(heroParty[index]->GetPartyPos());
 		heroParty[index]->SetPartyPos(tempPos);
@@ -572,6 +569,36 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 		heroParty[index]->targetPos = tempTargetPos;
 		DelayUntillNextTurn(delayTriggerEffect);
 	}
+}
+
+void CBattleSystem::SetPosition() {
+
+	int k = 0;
+	Vector2 worldSize = MG_CAMERA->GetWorldSize();
+	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		if (heroParty[i]->GetAlive())
+		{
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, heroPos.y);
+			}
+			else {
+				heroParty[i]->targetPos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
+			}
+			k++;
+		}
+		else {
+			heroParty[i]->Disable();
+		}
+	}
+	
+
+
+
+
 }
 
 
@@ -749,5 +776,19 @@ void CBattleSystem::SwapPosSkill()
 
 
 
+void CBattleSystem::SetZoomImage()
+{
 
+	enemyZoomImage = new ImageObject();
+	enemyZoomImage->originPos = Vector2(1100, 800);
+	enemyZoomImage->speed = 10;
+	enemyZoomImage->Init();
+	MG_GMOBJ->RegisterObj(enemyZoomImage);
+
+	heroZoomImage = new ImageObject();
+	heroZoomImage->originPos = Vector2(600, 800);
+	heroZoomImage->speed = 10;
+	heroZoomImage->Init();
+	MG_GMOBJ->RegisterObj(heroZoomImage);
+}
 
