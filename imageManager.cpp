@@ -106,7 +106,7 @@ HRESULT imageManager::init()
 	//MG_IMAGE->addImage(IMAGE::Vestal_Skill_Illumination , "images/icons_heroes/vestal.ability.six.five.bmp", 65, 65, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Vestal_Skill_HandofLight, "images/icons_heroes/vestal.ability.seven.bmp", 65, 65, false, RGB(255, 0, 255));
 
-	//Enemy
+	//Enemy_frame
 	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::skeleton_courtier_combat, "images/Enemys/Skeleton_courtier_Combat_Frame.bmp", 2400, 250, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::skeleton_common_combat, "images/Enemys/Skeleton_common_combat_Frame.bmp", 2400, 260, 12, 1, true, RGB(255, 0, 255));
@@ -289,6 +289,10 @@ HRESULT imageManager::init()
 	//Sanitarium
 	MG_IMAGE->addImage(IMAGE::sanitarium_char, "images/Town/sanitarium/sanitarium.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::sanitarium_bg, "images/Town/sanitarium/sanitarium.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::sanitarium_disease_quirk_cost, "images/Town/sanitarium/sanitarium_disease_quirk_cost.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::sanitarium_cost, "images/Town/sanitarium/sanitarium_cost.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::sanitarium_room, "images/Town/sanitarium/sanitarium_room.bmp", 72, 72, true, RGB(255, 0, 255));
+	
 	//Stage_coach
 	MG_IMAGE->addImage(IMAGE::stage_coach_char, "images/Town/stage_coach/stage_coach.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::stage_coach_bg, "images/Town/stage_coach/stage_coach.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
@@ -298,7 +302,10 @@ HRESULT imageManager::init()
 	//Tavern
 	MG_IMAGE->addImage(IMAGE::tavern_char, "images/Town/tavern/tavern.character.bmp", 811, 757, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::tavern_bg, "images/Town/tavern/tavern.character.bg.bmp", 1395, 776, true, RGB(255, 0, 255));
-	
+	MG_IMAGE->addImage(IMAGE::tavern_bar, "images/Town/tavern/tavern_bar.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::tavern_brothel, "images/Town/tavern/tavern_brothel.bmp", 72, 72, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::tavern_gambling, "images/Town/tavern/tavern_gambling.bmp", 72, 72, true, RGB(255, 0, 255));
+
 	//TownUI
 	MG_IMAGE->addImage(IMAGE::estate_activity_log, "images/Town_UI/estate_activity_log_button.bmp",103,103 , true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::estate_nameplate, "images/Town_UI/estate_nameplate.bmp",893,281 , true, RGB(255, 0, 255));

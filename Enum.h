@@ -365,14 +365,25 @@ enum class IMAGE
 	guild_char,
 	nomad_wagon_bg,
 	nomad_wagon_char,
+
 	sanitarium_bg,
 	sanitarium_char,
+
+	sanitarium_disease_quirk_cost,
+	sanitarium_cost,
+	sanitarium_room,
+
 	stage_coach_bg,
 	stage_coach_char,
 	statue_bg,
 	statue_char,
+
 	tavern_bg,
 	tavern_char,
+
+	tavern_bar,
+	tavern_brothel,
+	tavern_gambling,
 
 	estate_activity_log,
 	estate_nameplate,
