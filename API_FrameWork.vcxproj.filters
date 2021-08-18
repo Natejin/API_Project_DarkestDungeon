@@ -106,9 +106,6 @@
     <Filter Include="System">
       <UniqueIdentifier>{59958f3c-d674-4f33-b11b-24eabe0563cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Hero">
-      <UniqueIdentifier>{5dba11e2-5aac-44d8-9bbc-e98811163c69}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Background">
       <UniqueIdentifier>{d14af8a6-be29-4065-8d24-89a466631b83}</UniqueIdentifier>
     </Filter>
@@ -124,44 +121,8 @@
     <Filter Include="Scene\Test">
       <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\DungeonUI">
-      <UniqueIdentifier>{efb3261e-002f-4b2f-8fb1-b22095ed1229}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building">
-      <UniqueIdentifier>{db4d9074-c7a3-4160-80d8-1d94258ff23b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Blacksmith">
-      <UniqueIdentifier>{9bccebd8-bd00-43c8-a34a-6ef45639b367}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_CampingTrainer">
-      <UniqueIdentifier>{2b9e8a28-5e17-4ce4-acd9-a10368a473e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_GraveYard">
-      <UniqueIdentifier>{eba194aa-45d7-40a1-be2f-8623270b6cb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Guild">
-      <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Sanitarium">
-      <UniqueIdentifier>{67e1d9bd-c95c-4b96-8cf3-7f086b58672a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Statue">
-      <UniqueIdentifier>{04f9895e-a2db-49a1-a847-fa861319ddd3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_StageCoach">
-      <UniqueIdentifier>{f09d7894-f3b8-448e-a29d-53b61f141232}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_NomadWagon">
-      <UniqueIdentifier>{dffccadc-f583-4c43-b444-b601b6649c21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Tavern">
-      <UniqueIdentifier>{769545c5-0e71-4e96-b6b8-ab7396a34d3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\UI\CUIPanel_Building\CUIPanel_Abbey">
-      <UniqueIdentifier>{86f7c843-c08c-4b20-badc-ebb203b6eff1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager\Camera_M">
       <UniqueIdentifier>{e723bdd1-faa4-44ed-b788-b4a512e971f9}</UniqueIdentifier>
@@ -241,9 +202,6 @@
     <Filter Include="헤더 파일\ect">
       <UniqueIdentifier>{d1d99b89-66e1-4214-8844-a53a4e347ea0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\DungeonUI\Inventory">
-      <UniqueIdentifier>{37cc75ee-1b76-41bf-b1ce-5c22cac40eb4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CommonInfo">
       <UniqueIdentifier>{70a60181-9de3-4a50-aa23-8b59169b6ed8}</UniqueIdentifier>
     </Filter>
@@ -255,9 +213,6 @@
     </Filter>
     <Filter Include="CommonInfo\DB">
       <UniqueIdentifier>{d37d24bb-a20c-40ae-8606-2ff0e4582b9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Battle">
-      <UniqueIdentifier>{02f4dbf9-cc88-4843-9784-99dc709c08a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager\Image_M">
       <UniqueIdentifier>{1152c167-f5d9-454b-b3c1-4d807f26f46a}</UniqueIdentifier>
@@ -276,6 +231,54 @@
     </Filter>
     <Filter Include="CommonInfo\Colletion">
       <UniqueIdentifier>{8c299ed5-0138-4058-9789-8d288a50c2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\DungeonUI">
+      <UniqueIdentifier>{efb3261e-002f-4b2f-8fb1-b22095ed1229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\DungeonUI\Inventory">
+      <UniqueIdentifier>{37cc75ee-1b76-41bf-b1ce-5c22cac40eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_skill">
+      <UniqueIdentifier>{02f4dbf9-cc88-4843-9784-99dc709c08a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Buttons\bt_heroList">
+      <UniqueIdentifier>{2e339a32-0d10-414d-8d42-3194ce528c6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building">
+      <UniqueIdentifier>{db4d9074-c7a3-4160-80d8-1d94258ff23b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_Blacksmith">
+      <UniqueIdentifier>{9bccebd8-bd00-43c8-a34a-6ef45639b367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_CampingTrainer">
+      <UniqueIdentifier>{2b9e8a28-5e17-4ce4-acd9-a10368a473e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_GraveYard">
+      <UniqueIdentifier>{eba194aa-45d7-40a1-be2f-8623270b6cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_Guild">
+      <UniqueIdentifier>{49bdc6be-d800-4094-8aee-a6ede9a71d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_Sanitarium">
+      <UniqueIdentifier>{67e1d9bd-c95c-4b96-8cf3-7f086b58672a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_Statue">
+      <UniqueIdentifier>{04f9895e-a2db-49a1-a847-fa861319ddd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_StageCoach">
+      <UniqueIdentifier>{f09d7894-f3b8-448e-a29d-53b61f141232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_NomadWagon">
+      <UniqueIdentifier>{dffccadc-f583-4c43-b444-b601b6649c21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_Tavern">
+      <UniqueIdentifier>{769545c5-0e71-4e96-b6b8-ab7396a34d3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Building\CUIPanel_Abbey">
+      <UniqueIdentifier>{86f7c843-c08c-4b20-badc-ebb203b6eff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Embark">
+      <UniqueIdentifier>{46f53c01-05d2-4c38-9f8f-a3839a012c09}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -423,14 +426,8 @@
     <ClInclude Include="Rect.h">
       <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
-    <ClInclude Include="CButton.h">
-      <Filter>Object\UI</Filter>
-    </ClInclude>
     <ClInclude Include="CParty.h">
       <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CVestal.h">
-      <Filter>Object\Hero</Filter>
     </ClInclude>
     <ClInclude Include="CBackground.h">
       <Filter>Object\Background</Filter>
@@ -469,43 +466,40 @@
       <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_Abbey.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Abbey</Filter>
-    </ClInclude>
-    <ClInclude Include="CEst_UI.h">
-      <Filter>Object\UI\CUIPanel_Building</Filter>
+      <Filter>Object\Building\CUIPanel_Abbey</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_BlackSmith.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Blacksmith</Filter>
+      <Filter>Object\Building\CUIPanel_Blacksmith</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_CampingTrainer.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_CampingTrainer</Filter>
+      <Filter>Object\Building\CUIPanel_CampingTrainer</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_GraveYard.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_GraveYard</Filter>
+      <Filter>Object\Building\CUIPanel_GraveYard</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_Guild.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Guild</Filter>
+      <Filter>Object\Building\CUIPanel_Guild</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_Sanitarium.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Sanitarium</Filter>
+      <Filter>Object\Building\CUIPanel_Sanitarium</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_Statue.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Statue</Filter>
+      <Filter>Object\Building\CUIPanel_Statue</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_StageCoach.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_StageCoach</Filter>
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_NomadWagon.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_NomadWagon</Filter>
+      <Filter>Object\Building\CUIPanel_NomadWagon</Filter>
     </ClInclude>
     <ClInclude Include="CUIPanel_Tavern.h">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Tavern</Filter>
+      <Filter>Object\Building\CUIPanel_Tavern</Filter>
     </ClInclude>
     <ClInclude Include="dungeonUI_HeroInfo.h">
-      <Filter>Object\DungeonUI</Filter>
+      <Filter>Object\UI\DungeonUI</Filter>
     </ClInclude>
     <ClInclude Include="dungeonUI.h">
-      <Filter>Object\DungeonUI</Filter>
+      <Filter>Object\UI\DungeonUI</Filter>
     </ClInclude>
     <ClInclude Include="Activity_log.h">
       <Filter>헤더 파일</Filter>
@@ -521,12 +515,6 @@
     </ClInclude>
     <ClInclude Include="CBuilding.h">
       <Filter>Object\UI\Buttons\bt_EST</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroList_button.h">
-      <Filter>Object\UI\Buttons\bt_EST</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroList_ui.h">
-      <Filter>Object\UI\CUIPanel_Building</Filter>
     </ClInclude>
     <ClInclude Include="CBuilding.h">
       <Filter>Object\UI\EST_Button</Filter>
@@ -607,7 +595,7 @@
       <Filter>헤더 파일\ect</Filter>
     </ClInclude>
     <ClInclude Include="DummySlot.h">
-      <Filter>Object\DungeonUI\Inventory</Filter>
+      <Filter>Object\UI\DungeonUI\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>CommonInfo</Filter>
@@ -616,7 +604,7 @@
       <Filter>CommonInfo\DB</Filter>
     </ClInclude>
     <ClInclude Include="CBTN_Skill.h">
-      <Filter>Object\Battle</Filter>
+      <Filter>Object\UI\Buttons\bt_skill</Filter>
     </ClInclude>
     <ClInclude Include="DB_Skill.h">
       <Filter>CommonInfo\DB</Filter>
@@ -636,9 +624,6 @@
     <ClInclude Include="CItemEffect.h">
       <Filter>Object\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Hero_Roster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Info_Hero.h">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
@@ -647,12 +632,6 @@
     </ClInclude>
     <ClInclude Include="Info_Unit.h">
       <Filter>CommonInfo\DB\Info</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroOnStage_coach.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CUI_Panel_Hero.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="DB_UnitInfo.h">
       <Filter>CommonInfo\DB</Filter>
@@ -675,28 +654,10 @@
     <ClInclude Include="ImageObject.h">
       <Filter>System\Battle</Filter>
     </ClInclude>
-    <ClInclude Include="Embark.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="EmbarkPartySlot.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="CBTN_CampSkill.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CPosition_Button.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterIndicator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CBTN_Skill_Endturn.h">
-      <Filter>Object\UI\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="CBTN_Skill_Swap.h">
-      <Filter>Object\UI\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="COwnHeroListPanel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ImageEffectBG.h">
@@ -707,6 +668,45 @@
     </ClInclude>
     <ClInclude Include="mainScene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterIndicator.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CEst_UI.h">
+      <Filter>Object\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero_Roster.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CBTN_Skill_Endturn.h">
+      <Filter>Object\UI\Buttons\bt_skill</Filter>
+    </ClInclude>
+    <ClInclude Include="CBTN_Skill_Swap.h">
+      <Filter>Object\UI\Buttons\bt_skill</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_ui.h">
+      <Filter>Object\UI\Buttons\bt_heroList</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroList_button.h">
+      <Filter>Object\UI\Buttons\bt_heroList</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton.h">
+      <Filter>Object\UI\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI_Panel_Hero.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CHeroOnStage_coach.h">
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
+    </ClInclude>
+    <ClInclude Include="COwnHeroListPanel.h">
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
+    </ClInclude>
+    <ClInclude Include="Embark.h">
+      <Filter>Object\Embark</Filter>
+    </ClInclude>
+    <ClInclude Include="EmbarkPartySlot.h">
+      <Filter>Object\Embark</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -854,14 +854,8 @@
     <ClCompile Include="Rect.cpp">
       <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
-    <ClCompile Include="CButton.cpp">
-      <Filter>Object\UI</Filter>
-    </ClCompile>
     <ClCompile Include="CParty.cpp">
       <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CVestal.cpp">
-      <Filter>Object\Hero</Filter>
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>Object\Background</Filter>
@@ -900,43 +894,40 @@
       <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_Abbey.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Abbey</Filter>
-    </ClCompile>
-    <ClCompile Include="CEst_UI.cpp">
-      <Filter>Object\UI\CUIPanel_Building</Filter>
+      <Filter>Object\Building\CUIPanel_Abbey</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_BlackSmith.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Blacksmith</Filter>
+      <Filter>Object\Building\CUIPanel_Blacksmith</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_CampingTrainer.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_CampingTrainer</Filter>
+      <Filter>Object\Building\CUIPanel_CampingTrainer</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_GraveYard.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_GraveYard</Filter>
+      <Filter>Object\Building\CUIPanel_GraveYard</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_Guild.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Guild</Filter>
+      <Filter>Object\Building\CUIPanel_Guild</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_Sanitarium.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Sanitarium</Filter>
+      <Filter>Object\Building\CUIPanel_Sanitarium</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_Statue.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Statue</Filter>
+      <Filter>Object\Building\CUIPanel_Statue</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_StageCoach.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_StageCoach</Filter>
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_NomadWagon.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_NomadWagon</Filter>
+      <Filter>Object\Building\CUIPanel_NomadWagon</Filter>
     </ClCompile>
     <ClCompile Include="CUIPanel_Tavern.cpp">
-      <Filter>Object\UI\CUIPanel_Building\CUIPanel_Tavern</Filter>
+      <Filter>Object\Building\CUIPanel_Tavern</Filter>
     </ClCompile>
     <ClCompile Include="dungeonUI.cpp">
-      <Filter>Object\DungeonUI</Filter>
+      <Filter>Object\UI\DungeonUI</Filter>
     </ClCompile>
     <ClCompile Include="dungeonUI_HeroInfo.cpp">
-      <Filter>Object\DungeonUI</Filter>
+      <Filter>Object\UI\DungeonUI</Filter>
     </ClCompile>
     <ClCompile Include="Activity_log.cpp">
       <Filter>소스 파일</Filter>
@@ -952,12 +943,6 @@
     </ClCompile>
     <ClCompile Include="CBuilding.cpp">
       <Filter>Object\UI\Buttons\bt_EST</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroList_button.cpp">
-      <Filter>Object\UI\Buttons\bt_EST</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroList_ui.cpp">
-      <Filter>Object\UI\CUIPanel_Building</Filter>
     </ClCompile>
     <ClCompile Include="CBuilding.cpp">
       <Filter>Object\UI\EST_Button</Filter>
@@ -1020,13 +1005,13 @@
       <Filter>Object\UI\Buttons\bt_Inventory</Filter>
     </ClCompile>
     <ClCompile Include="DummySlot.cpp">
-      <Filter>Object\DungeonUI\Inventory</Filter>
+      <Filter>Object\UI\DungeonUI\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="DB_Item.cpp">
       <Filter>CommonInfo\DB</Filter>
     </ClCompile>
     <ClCompile Include="CBTN_Skill.cpp">
-      <Filter>Object\Battle</Filter>
+      <Filter>Object\UI\Buttons\bt_skill</Filter>
     </ClCompile>
     <ClCompile Include="DB_Skill.cpp">
       <Filter>CommonInfo\DB</Filter>
@@ -1043,9 +1028,6 @@
     <ClCompile Include="CItemEffect.cpp">
       <Filter>Object\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Hero_Roster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Info_Hero.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
@@ -1054,12 +1036,6 @@
     </ClCompile>
     <ClCompile Include="Info_Unit.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroOnStage_coach.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CUI_Panel_Hero.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DB_UnitInfo.cpp">
       <Filter>CommonInfo\DB</Filter>
@@ -1082,28 +1058,10 @@
     <ClCompile Include="ImageObject.cpp">
       <Filter>System\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="Embark.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="EmbarkPartySlot.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CBTN_CampSkill.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CPosition_Button.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterIndicator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CBTN_Skill_Endturn.cpp">
-      <Filter>Object\UI\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="CBTN_Skill_Swap.cpp">
-      <Filter>Object\UI\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="COwnHeroListPanel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ImageEffectBG.cpp">
@@ -1114,6 +1072,45 @@
     </ClCompile>
     <ClCompile Include="mainScene.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterIndicator.cpp">
+      <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CEst_UI.cpp">
+      <Filter>Object\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero_Roster.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CBTN_Skill_Endturn.cpp">
+      <Filter>Object\UI\Buttons\bt_skill</Filter>
+    </ClCompile>
+    <ClCompile Include="CBTN_Skill_Swap.cpp">
+      <Filter>Object\UI\Buttons\bt_skill</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_ui.cpp">
+      <Filter>Object\UI\Buttons\bt_heroList</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroList_button.cpp">
+      <Filter>Object\UI\Buttons\bt_heroList</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton.cpp">
+      <Filter>Object\UI\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI_Panel_Hero.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CHeroOnStage_coach.cpp">
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
+    </ClCompile>
+    <ClCompile Include="COwnHeroListPanel.cpp">
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
+    </ClCompile>
+    <ClCompile Include="Embark.cpp">
+      <Filter>Object\Embark</Filter>
+    </ClCompile>
+    <ClCompile Include="EmbarkPartySlot.cpp">
+      <Filter>Object\Embark</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
