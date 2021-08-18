@@ -576,6 +576,7 @@ void CDB_Skill::SetHeroSkill()
 	info->job = JOB::Highwayman;
 	info->m_skill = SKILL::Highwayman_OpenVein;
 	info->m_skillIcon = IMAGE::Highwayman_Skill_OpenVein;
+	//info->m_skillIcon = IMAGE::highwayman_skill;
 	info->m_skillMotion = IMAGE::Highwayman_slice;
 	info->effect = EFFECTTYPE::NONE;
 	info->sound = SOUND::hwy_slice;
@@ -653,6 +654,7 @@ void CDB_Skill::SetEnemySkill()
 	info->m_skillIcon = IMAGE::skeleton_common_attack;
 	info->m_skillMotion = IMAGE::skeleton_common_attack;
 	info->sound = SOUND::share_imp_sword;
+	info->effect = EFFECTTYPE::Bleed;
 	info->damage[0] = 3.f;
 	info->damage[1] = 4.f;
 	info->damage[2] = 5.f;
@@ -818,4 +820,8 @@ CInfo_Skill* CDB_Skill::CallSkill(SKILL skill)
 Image* CDB_Skill::CallSkillImage(SKILL skill)
 {
 	return MG_IMAGE->findImage(skillDB[skill]->m_skillIcon);
+}
+Image* CDB_Skill::CallDeactiveSkillImage(SKILL skill)
+{
+	return MG_IMAGE->findImage(skillDB[skill]->m_skillDeactiveIcon);
 }

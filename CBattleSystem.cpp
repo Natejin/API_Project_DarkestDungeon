@@ -451,7 +451,11 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
 
-				enemyParty[index]->reduceHP(damage);
+
+				if (!enemyParty[index]->reduceHP(damage))
+				{
+					CheckEnemyAllDead();
+				}
 			}
 		}
 		else if(enemyParty[index]->GetCorpse())
@@ -469,11 +473,30 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				}
 			}
 		}
-		
 		DelayUntillNextTurn(delayTriggerEffect);
 		return true;
 	}
 	return false;
+}
+
+void CBattleSystem::CheckEnemyAllDead()
+{
+	bool isAllDead = true;
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+
+		if (enemyParty[i]->GetAlive())
+		{
+
+			isAllDead = false;
+			break;
+		}
+
+	}
+	if (isAllDead)
+	{
+		EnemyTeamAreDead();
+	}
 }
 
 void CBattleSystem::DelayUntillNextTurn(int second)
@@ -645,8 +668,12 @@ void CBattleSystem::SetPosition() {
 
 void CBattleSystem::SetEnemyIndicator(int index)
 {
-	monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
-	monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
+	if (enemyParty.size() > 0)
+	{
+		monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
+		monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
+	}
+
 }
 
 void CBattleSystem::SelectEnemyTarget(SKILL skill)
@@ -668,7 +695,31 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::StartHeroTrun(int index)
 {
-	MG_GAME->SetCurSelHero(index);
+	//MG_GAME->SetCurSelHero(index);
+	//for (int i = 0; i < heroParty.size(); i++)
+	//{
+	//	heroParty[i]->isSelected = false;
+	//}
+	//m_party->GetHero(index)->isSelected = true;
+
+	scene->m_dungeonUIinfo->SetPortrait(curHero->GetInfo()->portrait);
+	scene->m_dungeonUIinfo->SetWeapon(curHero->GetInfo()->weapon[0]);
+	scene->m_dungeonUIinfo->SetArmor(curHero->GetInfo()->armor[0]);
+
+	vector<SKILL> temp = curHero->GetInfo()->ownSkill;
+
+
+	for (int j = 0; j < scene->m_dungeonUI->skillBTNs.size(); j++)
+	{
+		if (temp.size() > j)
+		{
+			scene->m_dungeonUI->skillBTNs[j]->Enable();
+			scene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+		}
+		else {
+			scene->m_dungeonUI->skillBTNs[j]->Disable();
+		}
+	}
 }
 
 void CBattleSystem::StartEnemyTrun(int index)

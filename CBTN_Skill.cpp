@@ -72,6 +72,7 @@ void CBTN_Skill::SetSkill(SKILL skill)
 {
 	skillInfo = DB_SKILL->CallSkill(skill);
 	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
+	m_spriteRenderer->SetImage(DB_SKILL->call(skill));
 }
 
 void CBTN_Skill::Release()

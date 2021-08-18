@@ -20,4 +20,5 @@ public:
 
 	CInfo_Skill* CallSkill(SKILL skill);
 	class Image* CallSkillImage(SKILL skill);
+	class Image* CallDeactiveSkillImage(SKILL skill);
 };

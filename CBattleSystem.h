@@ -99,6 +99,7 @@ private:
 
 	void DelayUntillNextTurn(int second);
 	bool CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index);
+	void CheckEnemyAllDead();
 	bool CheckAndDamageHero(CInfo_Skill* tempSkill, int index);
 	void CheckAndHealAlly(CInfo_Skill* tempSkill, int index);
 	void CheckAndSwapHeroPos(int index);

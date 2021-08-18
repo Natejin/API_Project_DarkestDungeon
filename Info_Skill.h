@@ -20,6 +20,7 @@ public:
 	
 
 	IMAGE m_skillIcon;
+	IMAGE m_skillDeactiveIcon;
 	IMAGE m_skillMotion;
 	SKILL m_skill;
 	SKILLIMAGETYPE m_skillImageType;
