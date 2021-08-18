@@ -67,7 +67,7 @@ void CDB_Skill::SetHeroSkill()
 	info->job = JOB::Crusader;
 	info->m_skill = SKILL::Crusader_Combat_ZealousAccusation;
 	info->m_skillIcon = IMAGE::Crusader_Skill_ZealousAccusation;
-	info->m_skillMotion = IMAGE::Crusader_charge;
+	info->m_skillMotion = IMAGE::Crusader_scroll;
 	info->sound = SOUND::Cru_ScrollAttack;
 	info->damage[0] = -40.f;
 	info->damage[1] = -40.f;
@@ -99,7 +99,7 @@ void CDB_Skill::SetHeroSkill()
 	info->job = JOB::Crusader;
 	info->m_skill = SKILL::Crusader_Combat_StunningBlow;
 	info->m_skillIcon = IMAGE::Crusader_Skill_StunningBlow;
-	info->m_skillMotion = IMAGE::Crusader_scroll;
+	info->m_skillMotion = IMAGE::Crusader_sword;
 	info->effect = EFFECTTYPE::Stun;
 	info->sound = SOUND::Cru_stunningblow;
 	info->damage[0] = -50.f;
