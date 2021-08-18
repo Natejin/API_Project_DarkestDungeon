@@ -314,7 +314,6 @@ void CBattleSystem::CreateEnemyParty()
 
 	for (size_t i = 0; i < 4; i++)
 	{
-	
 		CEnemy* enemy = new CEnemy();
 		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(4))); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);

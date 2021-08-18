@@ -64,6 +64,10 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 	{
 		info->ownSkill.push_back(_info->ownSkill[i]);
 	}
+	for (size_t i = 0; i < _info->ownCamp_Skill.size(); i++)
+	{
+		info->ownCamp_Skill.push_back(_info->ownCamp_Skill[i]);
+	}
 	MG_INFO->RegisterInfo(info);
 	return info;
 }
@@ -111,6 +115,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	{
 		info->ownSkill.push_back(_info->ownSkill[i]);
 	}
+	
 	MG_INFO->RegisterInfo(info);
 	return info;
 }
@@ -156,13 +161,13 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
 	info->skillLvl.push_back(0);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_stand_tall);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_unshakeable_leader);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_speech);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_zealous_vigil);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_bandage);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_encourage);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_pep_talk);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_stand_tall);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_unshakeable_leader);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_zealous_speech);
+	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_zealous_vigil);
 
 	info->portrait = IMAGE::Crusader_portrait;
 	info->weapon.push_back( IMAGE::Crusader_Weapon_0);
@@ -207,6 +212,8 @@ void DB_UnitInfo::SetHero()
 	info->ownSkill.push_back(SKILL::Vestal_Combat_Judgement);
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Vestal_Combat_DazzlingLight);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 	info->skillLvl.push_back(0);
 	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
 	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
@@ -432,6 +439,8 @@ void DB_UnitInfo::SetEnemy()
 	info->resist[3] = 15;
 	info->resist[4] = 10;
 	info->ownSkill.push_back(SKILL::BoneCourtier_Combat_1);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::BoneCourtier_Combat_2_goblet);
 	info->skillLvl.push_back(0);
 	info->portrait = IMAGE::Crusader_portrait;
 	enemyDB.insert(make_pair(info->enemyType, info));
