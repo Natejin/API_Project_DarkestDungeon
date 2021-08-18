@@ -95,6 +95,15 @@ void dungeonUI::SetUIIMG()
 	mapPanel2->SetMapSystem(m_pMapSystem);
 	mapPanel2->AddColliderBox();
 	MG_GMOBJ->RegisterObj("minimapBG", mapPanel2);
+
+	ImageData temp;
+	temp.m_img = MG_IMAGE->findImage("skelBg1");
+	temp.m_trans.m_pos = Vector2(85, 700);
+	vUI.push_back(temp);
+
+	temp.m_img = MG_IMAGE->findImage("skelBg2");
+	temp.m_trans.m_pos = Vector2(WINSIZEX - 330, 700);
+	vUI.push_back(temp);
 }
 
 void dungeonUI::SetButton()
@@ -168,11 +177,6 @@ void dungeonUI::SetSkillButton()
 	endTurnBTN->m_pBattleSystem = m_pBattleSystem;
 	endTurnBTN->SetName("EndTurn BTN");
 	MG_GMOBJ->RegisterObj(endTurnBTN);
-}
-
-void dungeonUI::SelectSkillButton()
-{
-
 }
 
 void dungeonUI::TorchLightBarDecrease()

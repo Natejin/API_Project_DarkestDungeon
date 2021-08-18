@@ -19,11 +19,7 @@ CBattleSystem::CBattleSystem()
 {
 	m_layer = LAYER::UIMotion;
 }
-
-CBattleSystem::~CBattleSystem()
-{
-
-}
+CBattleSystem::~CBattleSystem() {}
 
 HRESULT CBattleSystem::Init()
 {
@@ -54,14 +50,12 @@ HRESULT CBattleSystem::Init()
 	return S_OK;
 }
 
-
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
 	if (MG_INPUT->isOnceKeyDown('P'))
 	{
 		BattleSystemEnd();
 	}
-
 	if (MG_INPUT->isOnceKeyDown('N'))
 	{
 		StartTurn();
@@ -129,6 +123,8 @@ void CBattleSystem::Release()
 {
 
 }
+
+//==================================
 
 void CBattleSystem::BattleSystemInitiate()
 {
@@ -255,15 +251,16 @@ void CBattleSystem::UseSkill(int _index)
 	{
 		dungeonUI->skillBTNs[i]->selected = false;
 	}
+
 	dungeonUI->skillBTNs[_index]->selected = true;
 	currentSkill = _index;
+
 	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
 		if (turn == TURN::Player)
 		{
 			DeselectAll();
 			curHero->isSelected = true;
-
 			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
 			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
@@ -348,6 +345,362 @@ void CBattleSystem::CreateEnemyParty()
 			enemyParty.push_back(enemy);
 		}
 	
+	}
+
+}
+
+void CBattleSystem::CreateHeroesParty()
+{
+	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
+	{
+		DeselectAll();
+		curHero->isSelected = true;
+		int curIndex = curHero->GetPartyPos();
+		isSwapModeOn = true;
+		switch (curIndex)
+		{
+		case 0:
+			for (size_t i = 0; i < heroParty.size(); i++)
+			{
+				if (heroParty[i]->GetPartyPos() == 1)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
+			}
+			break;
+
+		case 1:
+			for (size_t i = 0; i < heroParty.size(); i++)
+			{
+				if (heroParty[i]->GetPartyPos() == 0)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
+			}
+			for (size_t i = 0; i < heroParty.size(); i++)
+			{
+				if (heroParty[i]->GetPartyPos() == 2)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
+			}
+			break;
+
+		case 2:
+			for (size_t i = 0; i < heroParty.size(); i++)
+			{
+				if (heroParty[i]->GetPartyPos() == 1)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
+			}
+			for (size_t i = 0; i < heroParty.size(); i++)
+			{
+				if (heroParty[i]->GetPartyPos() == 3)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
+			}
+			break;
+
+		case 3:
+			for (size_t i = 0; i < heroParty.size(); i++)
+			{
+				if (heroParty[i]->GetPartyPos() == 2)
+				{
+					heroParty[i]->isTargetHeal = true;
+					break;
+				}
+			}
+			break;
+		}
+	}
+}
+
+//==================================
+
+void CBattleSystem::DelayUntillNextTurn(int second)
+{
+	startTriggerTime = MG_TIME->getWorldTime() + second;
+	startNextTurn = true;
+	DeselectAll();
+}
+
+bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
+{
+	if (tempSkill->CheckTarget(enemyParty[index]->GetPartyPos()))
+	{
+		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
+
+		enemyParty[index]->GetInfo()->attribute[(int)tempSkill->effect] = true;
+		if (enemyParty[index]->GetAlive())
+		{
+
+			int damage = tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo());
+			//ȸ����
+			if (damage <= -1)
+			{
+				//TODO missAttack
+			}
+			else 
+			{
+				SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 3);
+				SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
+				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
+
+
+				if (!enemyParty[index]->reduceHP(damage))
+				{
+					CheckEnemyAllDead();
+				}
+			}
+		}
+		else if(enemyParty[index]->GetCorpse())
+		{
+			enemyParty[index]->SetCorpse(false);
+			enemyParty[index]->Disable();
+			delayForSwapSetPosition = true;
+			for (size_t i = 0; i < posEnemy.size(); i++)
+			{
+				if (posEnemy[i] == index)
+				{
+
+					posEnemy.erase(posEnemy.begin() + i);
+					break;
+				}
+			}
+		}
+		DelayUntillNextTurn(delayTriggerEffect);
+		return true;
+	}
+	return false;
+}
+
+void CBattleSystem::CheckEnemyAllDead()
+{
+	bool isAllDead = true;
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+
+		if (enemyParty[i]->GetAlive())
+		{
+
+			isAllDead = false;
+			break;
+		}
+
+	}
+	if (isAllDead)
+	{
+		EnemyTeamAreDead();
+	}
+}
+
+void CBattleSystem::DelayUntillNextTurn(int second)
+{
+	if (tempSkill->CheckTarget(heroParty[index]->GetPartyPos()))
+	{
+		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
+		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
+
+		heroParty[index]->increaseHP(tempSkill->GetHeal());
+
+		DelayUntillNextTurn(delayTriggerEffect);
+		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
+	}
+}
+
+void CBattleSystem::CheckAndSwapHeroPos(int index)
+{
+	if (curHero->GetPartyPos() != heroParty[index]->GetPartyPos())
+	{
+		int oldPos1 = curHero->GetPartyPos();
+		int oldPos2 = heroParty[index]->GetPartyPos();
+		int oldIndex1 = curHero->GetPartyIndex();
+		int oldIndex2 = heroParty[index]->GetPartyIndex();
+
+		heroParty[oldIndex1]->SetPartyPos(oldPos2);
+		heroParty[oldIndex2]->SetPartyPos(oldPos1);
+		posHero[oldIndex1] = oldPos2;
+		posHero[oldIndex2] = oldPos1;
+
+		delayForSwapSetPosition = true;
+
+		DelayUntillNextTurn(1);
+	}
+}
+
+//==================================
+
+void CBattleSystem::SelectHero(int index)
+{
+	if (!startNextTurn && scene->m_dungeonMode == DUNGEONMODE::BATTLE && turn == TURN::Player)
+	{
+		if (isSwapModeOn)
+		{
+			if (heroParty[index]->isTargetHeal)
+			{
+				CheckAndSwapHeroPos(index);
+			}
+		}
+		else 
+		{
+			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
+
+			switch (tempSkill->target)
+			{
+			case SKILLTARGET::Ally:
+				CheckAndHealAlly(tempSkill, index);
+				break;
+			case SKILLTARGET::Allies:
+				for (int i = 0; i < enemyParty.size(); i++)
+				{
+					CheckAndHealAlly(tempSkill, index);
+				}
+				break;
+			default:
+				break;
+			}
+		}
+	}
+}
+
+void CBattleSystem::SelectHeroTarget(SKILL skill)
+{
+	if (turn == TURN::Player && !startNextTurn)
+	{
+		auto tempSkill = DB_SKILL->CallSkill(skill);
+		for (int i = 0; i < heroParty.size(); i++)
+		{
+			heroParty[i]->isTargetHeal = tempSkill->CheckTarget(heroParty[i]->GetPartyPos()) ? true : false;
+		}
+	}
+}
+
+void CBattleSystem::SelectEnemyTarget(SKILL skill)
+{
+	if (turn == TURN::Player && !startNextTurn)
+	{
+		auto tempSkill = DB_SKILL->CallSkill(skill);
+		for (int i = 0; i < enemyParty.size(); i++)
+		{
+			enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(enemyParty[i]->GetPartyPos()) ? true : false;
+		}
+	}
+}
+
+void CBattleSystem::DeselectAll()
+{
+	isSwapModeOn = false;
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+		enemyParty[i]->isSelected = false;
+		enemyParty[i]->isTargetSkill = false;
+	}
+
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		heroParty[i]->isSelected = false;
+		heroParty[i]->isTargetHeal = false;
+	}
+}
+
+//==================================
+
+void CBattleSystem::SetZoomImage()
+{
+	enemyZoomImage = new ImageObject();
+	enemyZoomImage->originPos = Vector2(1100, 800);
+	enemyZoomImage->speed = 10;
+	enemyZoomImage->Init();
+	MG_GMOBJ->RegisterObj(enemyZoomImage);
+
+	heroZoomImage = new ImageObject();
+	heroZoomImage->originPos = Vector2(600, 800);
+	heroZoomImage->speed = 10;
+	heroZoomImage->Init();
+	MG_GMOBJ->RegisterObj(heroZoomImage);
+}
+
+void CBattleSystem::SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed)
+{
+	zoomImage->m_spriteRenderer->SetImage(skillMotion);
+	zoomImage->targetPos = zoomImage->originPos;
+	zoomImage->targetPos.x += distance;
+	zoomImage->speed = speed;
+	zoomImage->Enable();
+}
+
+void CBattleSystem::SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed)
+{
+	effectBGImage->m_transform->m_pos = startPos;
+	effectBGImage->targetPos = targetPos;
+	effectBGImage->speed = speed;
+	effectBGImage->Enable();
+}
+
+void CBattleSystem::SetEnemyIndicator(int index)
+{
+	monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
+	monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
+}
+
+void CBattleSystem::SetPosition() 
+{
+	Vector2 worldSize = MG_CAMERA->GetWorldSize();
+	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		if (heroParty[i] == nullptr) continue;
+		if (heroParty[i]->GetAlive())
+		{
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
+			}
+			else 
+			{
+				heroParty[i]->targetPos = Vector2(cameraPos.x - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
+			}
+		}
+		else 
+		{
+			heroParty[i]->Disable();
+		}
+	}
+	
+	for (size_t i = 0; i < posEnemy.size(); i++)
+	{
+		int index = posEnemy[i];
+		if (enemyParty[index]->GetAlive() || enemyParty[index]->GetCorpse())
+		{
+			enemyParty[index]->SetPartyPos(i);
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				enemyParty[index]->targetPos = Vector2(worldSize.x * 0.5 + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
+			}
+			else {
+				enemyParty[index]->targetPos = Vector2(cameraPos.x + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
+			}
+		}
+	}
+}
+
+//==================================
+
+void CBattleSystem::CreateEnemyParty()
+{
+	if (enemyParty.size() > 0)
+	{
+		monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
+		monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
 	}
 
 }
@@ -456,264 +809,7 @@ void CBattleSystem::SelectEnemy(int index)
 	}
 }
 
-bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
-{
-	if (tempSkill->CheckTarget(enemyParty[index]->GetPartyPos()))
-	{
-		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
-
-		enemyParty[index]->GetInfo()->attribute[(int)tempSkill->effect] = true;
-		if (enemyParty[index]->GetAlive())
-		{
-
-			int damage = tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo());
-			//ȸ����
-			if (damage <= -1)
-			{
-				//TODO missAttack
-			}
-			else 
-			{
-				SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 3);
-				SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
-				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
-
-
-				if (!enemyParty[index]->reduceHP(damage))
-				{
-					CheckEnemyAllDead();
-				}
-			}
-		}
-		else if(enemyParty[index]->GetCorpse())
-		{
-			enemyParty[index]->SetCorpse(false);
-			enemyParty[index]->Disable();
-			delayForSwapSetPosition = true;
-			for (size_t i = 0; i < posEnemy.size(); i++)
-			{
-				if (posEnemy[i] == index)
-				{
-
-					posEnemy.erase(posEnemy.begin() + i);
-					break;
-				}
-			}
-		}
-		DelayUntillNextTurn(delayTriggerEffect);
-		return true;
-	}
-	return false;
-}
-
-void CBattleSystem::CheckEnemyAllDead()
-{
-	bool isAllDead = true;
-	for (size_t i = 0; i < enemyParty.size(); i++)
-	{
-
-		if (enemyParty[i]->GetAlive())
-		{
-
-			isAllDead = false;
-			break;
-		}
-
-	}
-	if (isAllDead)
-	{
-		EnemyTeamAreDead();
-	}
-}
-
-void CBattleSystem::DelayUntillNextTurn(int second)
-{
-	startTriggerTime = MG_TIME->getWorldTime() + second;
-	startNextTurn = true;
-	DeselectAll();
-}
-
-bool CBattleSystem::CheckAndDamageHero(CInfo_Skill* tempSkill, int index)
-{
-	return false;
-}
-
-void CBattleSystem::SelectHero(int index)
-{
-	if (!startNextTurn && scene->m_dungeonMode == DUNGEONMODE::BATTLE && turn == TURN::Player)
-	{
-		if (isSwapModeOn)
-		{
-			if (heroParty[index]->isTargetHeal)
-			{
-				CheckAndSwapHeroPos(index);
-			}
-		}
-		else 
-		{
-			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
-			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
-
-			switch (tempSkill->target)
-			{
-			case SKILLTARGET::Ally:
-				CheckAndHealAlly(tempSkill, index);
-				break;
-			case SKILLTARGET::Allies:
-				for (int i = 0; i < enemyParty.size(); i++)
-				{
-					CheckAndHealAlly(tempSkill, index);
-				}
-				break;
-			default:
-				break;
-			}
-		}
-	}
-}
-
-void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
-{
-	if (tempSkill->CheckTarget(heroParty[index]->GetPartyPos()))
-	{
-		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
-		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
-
-		heroParty[index]->increaseHP(tempSkill->GetHeal());
-
-		DelayUntillNextTurn(delayTriggerEffect);
-		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
-
-	}
-}
-
-void CBattleSystem::SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed)
-{
-	zoomImage->m_spriteRenderer->SetImage(skillMotion);
-	zoomImage->targetPos = zoomImage->originPos;
-	zoomImage->targetPos.x += distance;
-	zoomImage->speed = speed;
-	zoomImage->Enable();
-}
-
-void CBattleSystem::SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed)
-{
-	effectBGImage->m_transform->m_pos = startPos;
-	effectBGImage->targetPos = targetPos;
-	effectBGImage->speed = speed;
-	effectBGImage->Enable();
-}
-
-void CBattleSystem::SelectHeroTarget(SKILL skill)
-{
-	if (turn == TURN::Player && !startNextTurn)
-	{
-		auto tempSkill = DB_SKILL->CallSkill(skill);
-		for (int i = 0; i < heroParty.size(); i++)
-		{
-			heroParty[i]->isTargetHeal = tempSkill->CheckTarget(heroParty[i]->GetPartyPos()) ? true : false;
-		}
-	}
-}
-
-void CBattleSystem::DeselectAll()
-{
-	isSwapModeOn = false;
-	for (size_t i = 0; i < enemyParty.size(); i++)
-	{
-		enemyParty[i]->isSelected = false;
-		enemyParty[i]->isTargetSkill = false;
-	}
-
-	for (size_t i = 0; i < heroParty.size(); i++)
-	{
-		heroParty[i]->isSelected = false;
-		heroParty[i]->isTargetHeal = false;
-	}
-}
-
-void CBattleSystem::CheckAndSwapHeroPos(int index)
-{
-	if (curHero->GetPartyPos() != heroParty[index]->GetPartyPos())
-	{
-		int oldPos1 = curHero->GetPartyPos();
-		int oldPos2 = heroParty[index]->GetPartyPos();
-		int oldIndex1 = curHero->GetPartyIndex();
-		int oldIndex2 = heroParty[index]->GetPartyIndex();
-
-		heroParty[oldIndex1]->SetPartyPos(oldPos2);
-		heroParty[oldIndex2]->SetPartyPos(oldPos1);
-		posHero[oldIndex1] = oldPos2;
-		posHero[oldIndex2] = oldPos1;
-
-		delayForSwapSetPosition = true;
-
-		DelayUntillNextTurn(1);
-	}
-}
-
-void CBattleSystem::SetPosition() {
-	Vector2 worldSize = MG_CAMERA->GetWorldSize();
-	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-
-	for (size_t i = 0; i < heroParty.size(); i++)
-	{
-		if (heroParty[i] == nullptr) continue;
-		if (heroParty[i]->GetAlive())
-		{
-			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
-			{
-				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
-			}
-			else 
-			{
-				heroParty[i]->targetPos = Vector2(cameraPos.x - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
-			}
-		}
-		else 
-		{
-			heroParty[i]->Disable();
-		}
-	}
-	
-	for (size_t i = 0; i < posEnemy.size(); i++)
-	{
-		int index = posEnemy[i];
-		if (enemyParty[index]->GetAlive() || enemyParty[index]->GetCorpse())
-		{
-			enemyParty[index]->SetPartyPos(i);
-			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
-			{
-				enemyParty[index]->targetPos = Vector2(worldSize.x * 0.5 + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
-			}
-			else {
-				enemyParty[index]->targetPos = Vector2(cameraPos.x + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
-			}
-		}
-	}
-}
-
-void CBattleSystem::SetEnemyIndicator(int index)
-{
-	if (enemyParty.size() > 0)
-	{
-		monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
-		monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
-	}
-
-}
-
-void CBattleSystem::SelectEnemyTarget(SKILL skill)
-{
-	if (turn == TURN::Player && !startNextTurn)
-	{
-		auto tempSkill = DB_SKILL->CallSkill(skill);
-		for (int i = 0; i < enemyParty.size(); i++)
-		{
-			enemyParty[i]->isTargetSkill = tempSkill->CheckTarget(enemyParty[i]->GetPartyPos()) ? true : false;
-		}
-	}
-}
+//==================================
 
 CHero* CBattleSystem::GetHero(int index)
 {
@@ -800,92 +896,4 @@ void CBattleSystem::HeroTeamAreDead()
 void CBattleSystem::EnemyTeamAreDead()
 {
 	BattleSystemEnd();
-}
-
-void CBattleSystem::SwapPosSkill()
-{
-	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
-	{
-		DeselectAll();
-		curHero->isSelected = true;
-		int curIndex = curHero->GetPartyPos();
-		isSwapModeOn = true;
-		switch (curIndex)
-		{
-		case 0:
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 1)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			break;
-
-		case 1:
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 0)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 2)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			break;
-
-		case 2:
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 1)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 3)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			break;
-
-		case 3:
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 2)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			break;
-		}
-	}
-}
-
-void CBattleSystem::SetZoomImage()
-{
-	enemyZoomImage = new ImageObject();
-	enemyZoomImage->originPos = Vector2(1100, 800);
-	enemyZoomImage->speed = 10;
-	enemyZoomImage->Init();
-	MG_GMOBJ->RegisterObj(enemyZoomImage);
-
-	heroZoomImage = new ImageObject();
-	heroZoomImage->originPos = Vector2(600, 800);
-	heroZoomImage->speed = 10;
-	heroZoomImage->Init();
-	MG_GMOBJ->RegisterObj(heroZoomImage);
 }

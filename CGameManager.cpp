@@ -37,11 +37,6 @@ HRESULT CGameManager::Init()
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 
-	RegisterHeroToParty(0);
-	RegisterHeroToParty(1);
-	RegisterHeroToParty(2);
-	RegisterHeroToParty(3);
-
 	m_dungeonScene = MG_SCENE->dungeonScene;
 	m_townScene = MG_SCENE->townScene;
 

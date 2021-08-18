@@ -69,8 +69,6 @@ public:
 
 	HRESULT Init();
 
-	void SetZoomImage();
-
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
 
@@ -110,17 +108,16 @@ private:
 	void SelectHero(int index);
 	void DeselectAll();
 
+	void SetZoomImage();
 	void SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed);
-
+	void SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed);
 	void SetEnemyIndicator(int index);
-	void SelectEnemyTarget(SKILL skill);
-
 	void SetPosition();
+
+	void SelectEnemyTarget(SKILL skill);
 
 	void StartHeroTrun(int index);
 	void StartEnemyTrun(int index);
-
-	void SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed);
 
 	void HeroTeamAreDead();
 	void EnemyTeamAreDead();

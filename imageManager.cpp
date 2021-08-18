@@ -335,6 +335,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("skelBg1", "images/panel/side_decor1.bmp", 250, 360, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("skelBg2", "images/panel/side_decor2.bmp", 250, 360, false, RGB(255, 0, 255));
+
 	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
@@ -482,6 +485,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::NumberBlack, "images/Number/NumberBlack.bmp", 340, 49,10,1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberGreen, "images/Number/NumberGreen.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberRed, "images/Number/NumberRed.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
+
 
 	return S_OK;
 

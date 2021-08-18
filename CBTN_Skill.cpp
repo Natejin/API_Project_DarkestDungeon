@@ -33,7 +33,6 @@ void CBTN_Skill::Update(float deltaTime, float worldTime)
 		if (MG_INPUT->IsDownLMB())
 		{
 			m_pBattleSystem->UseSkill(index);
-
 		}
 	}
 }
@@ -56,6 +55,7 @@ void CBTN_Skill::Render(HDC _hdc)
 void CBTN_Skill::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
+
 	if (selected)
 	{
 		m_spriteSelected->RenderUI(_hdc);

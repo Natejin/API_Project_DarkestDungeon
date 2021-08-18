@@ -29,7 +29,6 @@ public:
 	CHeroList_button();
 	~CHeroList_button();
 
-
 	HRESULT Init();
 
 	virtual void Update(float deltaTime, float worldTime);

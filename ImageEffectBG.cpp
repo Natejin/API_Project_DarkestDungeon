@@ -24,8 +24,6 @@ HRESULT ImageEffectBG::Init()
     return S_OK;
 }
 
-
-
 void ImageEffectBG::Enable()
 {
     m_spriteRenderer->SetImage(rndBGIMG[MG_RND->getInt(rndBGIMG.size())]);
@@ -36,8 +34,6 @@ void ImageEffectBG::Enable()
 
 void ImageEffectBG::Disable()
 {
-    
     isActive = false;
     targetPos = originPos;
-
 }
