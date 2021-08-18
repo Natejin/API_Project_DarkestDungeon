@@ -51,25 +51,25 @@ void EmbarkPartySlot::Update(float deltaTime, float worldTime)
 				MG_GAME->RegisterHeroToParty(m_hero);
 				MG_GAME->RemoveHeroFromOwnList(m_hero->GetHeroID());
 				m_townScene->SetHerolist();
-				m_spriteRenderer->SetImage(m_hero->GetInfo()->portrait);
+				//m_spriteRenderer->SetImage(m_hero->GetInfo()->portrait);
 
-				//switch (m_hero->GetJob())
-				//{
-				//case JOB::Crusader:
-				//	m_spriteRenderer->SetImage(IMAGE::crusader_roster);
-				//	break;
-				//case JOB::Vestal:
-				//	m_spriteRenderer->SetImage(IMAGE::vestal_roster);
-				//	break;
-				//case JOB::PlagueDoctor:
-				//	m_spriteRenderer->SetImage(IMAGE::plague_doctor_roster);
-				//	break;
-				//case JOB::Highwayman:
-				//	m_spriteRenderer->SetImage(IMAGE::highwayman_roster);
-				//	break;
-				//default:
-				//	break;
-				//}
+				switch (m_hero->GetJob())
+				{
+				case JOB::Crusader:
+					m_spriteRenderer->SetImage(IMAGE::crusader_roster);
+					break;
+				case JOB::Vestal:
+					m_spriteRenderer->SetImage(IMAGE::vestal_roster);
+					break;
+				case JOB::PlagueDoctor:
+					m_spriteRenderer->SetImage(IMAGE::plague_doctor_roster);
+					break;
+				case JOB::Highwayman:
+					m_spriteRenderer->SetImage(IMAGE::highwayman_roster);
+					break;
+				default:
+					break;
+				}
 			}
 		}
 	}

@@ -14,6 +14,9 @@ HRESULT Embark::Init()
 	setEmbarkBt();
 
 	m_layer = LAYER::UI;
+
+	isTown = true;
+
 	return S_OK;
 }
 
@@ -107,11 +110,31 @@ void Embark::setDungeonBt()
 
 void Embark::setEmbark()
 {
-	m_townScene->DeactivateBuildings();
-	bt_selDungeon->Enable();
-	setPartySlot();
-	setImg();
-	Enable();
+	if (isTown)
+	{
+		setImg();
+		setPartySlot();
+		bt_selDungeon->Enable();
+		m_townScene->DeactivateBuildings();
+		Enable();
+		isTown = false;
+	}
+	else
+	{
+		m_townScene->ActivateBuildings();
+		bt_selDungeon->Disable();
+		Disable();
+		//for (int i = 0; i < m_images.size(); i++)
+		//{
+		//	SAFE_DELETE(m_images[i]);
+		//}
+		//for (int i = 0; i < m_slots.size(); i++)
+		//{
+		//	MG_GMOBJ->RemoveObj(m_slots[i]);
+		//};
+		isTown = true;
+	}
+
 }
 
 void Embark::setPartySlot()
@@ -120,7 +143,7 @@ void Embark::setPartySlot()
 	{
 		class EmbarkPartySlot* slot = new EmbarkPartySlot;
 		slot->Init();
-		slot->m_transform->m_pos = Vector2(1000 + i * 100, 780);
+		slot->m_transform->m_pos = Vector2(817 + i * 95, 780);
 		slot->m_townScene = this->m_townScene;
 		m_slots.push_back(slot);
 		MG_GMOBJ->RegisterObj("partySlot", slot);

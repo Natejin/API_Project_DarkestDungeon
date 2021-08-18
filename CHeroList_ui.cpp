@@ -11,27 +11,27 @@ HRESULT CHeroList_ui::Init()
 {	
 	ImageData m_rosterbg;
 	m_rosterbg.m_img = MG_IMAGE->findImage(IMAGE::roster_bggrad);
-	m_rosterbg.m_trans.m_pos = Vector2(WINSIZEX / 2 + 520, WINSIZEY - 950);
+	m_rosterbg.m_trans.m_pos = Vector2(WINSIZEX / 2 + 510, WINSIZEY - 950);
 	most_HeroList_UI.push_back(m_rosterbg);
 
 	ImageData m_unequip_trinkets;
 	m_unequip_trinkets.m_img = MG_IMAGE->findImage(IMAGE::unequip_trinkets);
-	m_unequip_trinkets.m_trans.m_pos = Vector2(WINSIZEX / 2 + 670, WINSIZEY - 970);
+	m_unequip_trinkets.m_trans.m_pos = Vector2(WINSIZEX / 2 + 650, WINSIZEY - 940);
 	most_HeroList_UI.push_back(m_unequip_trinkets);
 
 	ImageData m_sort_rarity;
 	m_sort_rarity.m_img = MG_IMAGE->findImage(IMAGE::sort_rarity);
-	m_sort_rarity.m_trans.m_pos = Vector2(WINSIZEX / 2 + 700, WINSIZEY - 970);
+	m_sort_rarity.m_trans.m_pos = Vector2(WINSIZEX / 2 + 680, WINSIZEY - 940);
 	most_HeroList_UI.push_back(m_sort_rarity);
 
 	ImageData m_sort_stress;
 	m_sort_stress.m_img = MG_IMAGE->findImage(IMAGE::sort_rarity);
-	m_sort_stress.m_trans.m_pos = Vector2(WINSIZEX / 2 + 730, WINSIZEY - 970);
+	m_sort_stress.m_trans.m_pos = Vector2(WINSIZEX / 2 + 710, WINSIZEY - 940);
 	most_HeroList_UI.push_back(m_sort_stress);	
 
 	ImageData m_nameplate;
 	m_nameplate.m_img = MG_IMAGE->findImage(IMAGE::estate_nameplate);
-	m_nameplate.m_trans.m_pos = Vector2(WINSIZEX / 2 - 900, 0);
+	m_nameplate.m_trans.m_pos = Vector2(10, 0);
 	most_HeroList_UI.push_back(m_nameplate);
 
     return S_OK;
