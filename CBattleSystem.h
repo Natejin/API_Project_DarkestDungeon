@@ -21,6 +21,10 @@ public:
 	Vector2 originPosOfBattle;
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
+
+	vector<int> posEnemy;
+	vector<int> posHero;
+
 	queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 	float delayTriggerEffect = 3;
