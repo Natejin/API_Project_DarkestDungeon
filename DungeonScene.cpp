@@ -28,8 +28,7 @@ DungeonScene::~DungeonScene() {}
 HRESULT DungeonScene::Init()
 {
 	MG_SOUND->stop(SOUND::Town);
-	MG_SOUND->play(SOUND::Ruins_base);
-	MG_SOUND->play(SOUND::Ruins_dark);
+	ActivateSound();
 
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
@@ -361,6 +360,18 @@ void DungeonScene::ActivateRoad()
 	{
 		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
 	}
+}
+
+void DungeonScene::ActivateSound()
+{
+	MG_SOUND->play(SOUND::Ruins_base);
+	MG_SOUND->play(SOUND::Ruins_dark);
+}
+
+void DungeonScene::DeactivateSound()
+{
+	MG_SOUND->stop(SOUND::Ruins_base);
+	MG_SOUND->stop(SOUND::Ruins_dark);
 }
 
 void DungeonScene::SetRoadObject(int i)

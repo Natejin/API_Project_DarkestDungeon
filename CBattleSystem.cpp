@@ -150,6 +150,8 @@ void CBattleSystem::BattleSystemInitiate()
 	isActive = true;
 	monsterIndicator->m_transform->m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
+	scene->DeactivateSound();
+	MG_SOUND->play(SOUND::Combat, 0.1f);
 	Enable();
 }
 
@@ -172,6 +174,8 @@ void CBattleSystem::BattleSystemEnd()
 	enemyParty.clear();
 	speedVec.clear();
 	scene->m_dungeonUIinfo->setButton();
+	MG_SOUND->stop(SOUND::Combat);
+	scene->ActivateSound();
 	Disable();
 }
 

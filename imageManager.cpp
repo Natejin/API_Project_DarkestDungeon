@@ -110,7 +110,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::Enemy_SkeletonDefender_Idle, "images/Enemys/Enemy_SkeletonDefender_Combat_Frame.bmp", 2400, 256, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::skeleton_courtier_combat, "images/Enemys/Skeleton_courtier_Combat_Frame.bmp", 2400, 250, 12, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::skeleton_common_combat, "images/Enemys/Skeleton_common_combat_Frame.bmp", 2400, 260, 12, 1, true, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::necromancer_combat, "images/Enemys/Boss_necromenser_Frame.bmp", 4800, 275, 24, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::necromancer_combat, "images/Enemys/Boss_necromenser_Frame.bmp", 4800, 550, 24, 1, true, RGB(255, 0, 255));
 	
 	//skeleton_defender
 	MG_IMAGE->addImage(IMAGE::Enemy_SkeletonDefender_Attack, "images/Enemys/skeleton_defender_axe.bmp", 710, 580, true, RGB(255, 0, 255));

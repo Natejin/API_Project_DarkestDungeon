@@ -109,4 +109,7 @@ public:
 	//room and road changeScene
 	void ActivateRoom();
 	void ActivateRoad();
+
+	void ActivateSound();
+	void DeactivateSound();
 };
