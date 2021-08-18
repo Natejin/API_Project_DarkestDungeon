@@ -366,6 +366,7 @@ void DB_UnitInfo::SetEnemy()
 	info->portrait = IMAGE::Crusader_portrait;
 	enemyDB.insert(make_pair(info->enemyType, info));
 	MG_INFO->RegisterInfo(info);
+
 	//common
 	info = new Info_Enemy();
 	info->unitType = UNITTYPE::Enemy;
@@ -374,16 +375,16 @@ void DB_UnitInfo::SetEnemy()
 	info->isAffliction = false;
 	info->isAlive = true;
 
-	info->enemyType = ENEMYTYPE::BoneDefender;
+	info->enemyType = ENEMYTYPE::BoneCommon;
 	info->m_DMG = 3;
 	info->m_ACRY = 9;
 	info->m_CRI = 0;
 	info->m_DEF = 3;
 	info->m_DODGE = 0;
 
-	info->imageIdle = IMAGE::Enemy_SkeletonDefender_Idle;
-	info->imageCombat = IMAGE::Enemy_SkeletonDefender_Idle;
-	info->imageWalk = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageIdle = IMAGE::skeleton_common_combat;
+	info->imageCombat = IMAGE::skeleton_common_combat;
+	info->imageWalk = IMAGE::skeleton_common_combat;
 	info->imageAttack = IMAGE::skeleton_common_attack;
 	info->imageCharge = IMAGE::skeleton_common_attack;
 	info->imageDefend = IMAGE::skeleton_common_defend;
@@ -409,21 +410,21 @@ void DB_UnitInfo::SetEnemy()
 	info->isAffliction = false;
 	info->isAlive = true;
 
-	info->enemyType = ENEMYTYPE::BoneDefender;
+	info->enemyType = ENEMYTYPE::BoneCourtier;
 	info->m_DMG = 1;
 	info->m_ACRY = 9;
 	info->m_CRI = 0;
 	info->m_DEF = 2;
 	info->m_DODGE = 0;
 
-	info->imageIdle = IMAGE::Enemy_SkeletonDefender_Idle;
-	info->imageCombat = IMAGE::Enemy_SkeletonDefender_Idle;
-	info->imageWalk = IMAGE::Enemy_SkeletonDefender_Idle;
-	info->imageAttack = IMAGE::skeleton_common_attack;
-	info->imageCharge = IMAGE::skeleton_common_attack;
-	info->imageDefend = IMAGE::skeleton_common_defend;
-	info->imageBuff = IMAGE::skeleton_common_defend;
-	info->imageDebuff = IMAGE::skeleton_common_defend;
+	info->imageIdle = IMAGE::skeleton_courtier_combat;
+	info->imageCombat = IMAGE::skeleton_courtier_combat;
+	info->imageWalk = IMAGE::skeleton_courtier_combat;
+	info->imageAttack = IMAGE::skeleton_courtier_attack;
+	info->imageCharge = IMAGE::skeleton_courtier_attack_goblet;
+	info->imageDefend = IMAGE::skeleton_courtier_defend;
+	info->imageBuff = IMAGE::skeleton_courtier_defend;
+	info->imageDebuff = IMAGE::skeleton_courtier_defend;
 	//stun, blight, bleed, debuff, move
 	info->resist[0] = 10;
 	info->resist[1] = 10;
@@ -435,6 +436,44 @@ void DB_UnitInfo::SetEnemy()
 	info->portrait = IMAGE::Crusader_portrait;
 	enemyDB.insert(make_pair(info->enemyType, info));
 	MG_INFO->RegisterInfo(info);
+
+	//Necromancer
+	info = new Info_Enemy();
+	info->unitType = UNITTYPE::Enemy;
+	info->m_maxHP = 105;
+	info->m_SPD = 8;
+	info->isAffliction = false;
+	info->isAlive = true;
+
+	info->enemyType = ENEMYTYPE::Necromancer;
+	info->m_DMG = 5;
+	info->m_ACRY = 9;
+	info->m_CRI = 0;
+	info->m_DEF = 2;
+	info->m_DODGE = 0;
+
+	info->imageIdle = IMAGE::necromancer_combat;
+	info->imageCombat = IMAGE::necromancer_combat;
+	info->imageWalk = IMAGE::necromancer_combat;
+	info->imageAttack = IMAGE::necromancer_attack;
+	info->imageCharge = IMAGE::necromancer_retreat;
+	info->imageDefend = IMAGE::necromancer_defend;
+	info->imageBuff = IMAGE::necromancer_defend;
+	info->imageDebuff = IMAGE::necromancer_defend;
+	//stun, blight, bleed, debuff, move
+	info->resist[0] = 75;
+	info->resist[1] = 20;
+	info->resist[2] = 20;
+	info->resist[3] = 40;
+	info->resist[4] = 25;
+	info->ownSkill.push_back(SKILL::Necromancer_Combat_1);
+	info->skillLvl.push_back(0);
+	info->ownSkill.push_back(SKILL::Necromancer_Combat_2_back);
+	info->skillLvl.push_back(0);
+	info->portrait = IMAGE::Crusader_portrait;
+	enemyDB.insert(make_pair(info->enemyType, info));
+	MG_INFO->RegisterInfo(info);
+
 }
 
 

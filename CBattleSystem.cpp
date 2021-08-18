@@ -54,7 +54,6 @@ HRESULT CBattleSystem::Init()
 void CBattleSystem::SetZoomImage()
 {
 
-
 	enemyZoomImage = new ImageObject();
 	enemyZoomImage->originPos = Vector2(1100, 800);
 	enemyZoomImage->speed =10;

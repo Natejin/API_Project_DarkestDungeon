@@ -242,7 +242,8 @@ void soundManager::SetSound()
 	addSound(SOUND::share_imp_magic_light, "sound/SoundEffect/Shared/share_imp_magic_light.wav");
 	addSound(SOUND::share_imp_shield, "sound/SoundEffect/Shared/share_imp_shield.wav");
 	addSound(SOUND::share_imp_sword, "sound/SoundEffect/Shared/share_imp_sword.wav");
-
+	addSound(SOUND::share_imp_slime, "sound/SoundEffect/Shared/share_imp_slime.wav");
+	
 	//UI
 	addSound(SOUND::raid_success, "sound/SoundEffect/UI/raid_success.wav");
 	addSound(SOUND::ui_dun_buttonroom, "sound/SoundEffect/UI/ui_dun_buttonroom.wav");
