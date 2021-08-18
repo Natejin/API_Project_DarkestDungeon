@@ -51,7 +51,7 @@ HRESULT CGameManager::Init()
 
 void CGameManager::Update(float deltaTime, float worldTime)
 {
-	if (MG_INPUT->isOnceKeyDown('T'))
+	if (MG_INPUT->isOnceKeyDown(VK_F1))
 	{
 		RegisterHeroToParty(0);
 		RegisterHeroToParty(1);
