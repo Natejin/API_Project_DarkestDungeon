@@ -117,6 +117,7 @@ void TownScene::SetEst_Img()
 	CBuilding* abeey = new CBuilding();
 	abeey->Init();
 	abeey->m_transform->m_pos = Vector2(WINSIZEX / 2 , WINSIZEY / 2 -200);
+	abeey->m_transform->m_scale = Vector2(0.5, 0.5);
 	abeey->AddSpriteRenderer("town_abbey");
 	abeey->AddColliderBox(200, 200);
 	abeey->SetTriggerWhenDown(this, &TownScene::Show_abeey);
@@ -126,15 +127,27 @@ void TownScene::SetEst_Img()
 	CBuilding* guild = new CBuilding();
 	guild->Init();
 	guild->m_transform->m_pos = Vector2(WINSIZEX / 2 + 250, WINSIZEY / 2 +0);
+	guild->m_transform->m_scale = Vector2(0.5, 0.5);
 	guild->AddColliderBox(200, 200);
 	guild->AddSpriteRenderer("town_guild");
 	guild->SetTriggerWhenDown(this, &TownScene::Show_guild);
 	buildingVec.push_back(guild);
 	MG_GMOBJ->RegisterObj("Guild", guild);
 
+	CBuilding* graveyard = new CBuilding();
+	graveyard->Init();
+	graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2, WINSIZEY / 2 + 5);
+	graveyard->m_transform->m_scale = Vector2(0.5, 0.5);
+	graveyard->AddColliderBox(150, 150);
+	graveyard->AddSpriteRenderer("town_graveyard");
+	graveyard->SetTriggerWhenDown(this, &TownScene::Show_graveyard);
+	buildingVec.push_back(graveyard);
+	MG_GMOBJ->RegisterObj("Graveyard", graveyard);
+
 	CBuilding* blacksmith = new CBuilding();
 	blacksmith->Init();
 	blacksmith->m_transform->m_pos = Vector2(WINSIZEX - 500, WINSIZEY / 2 + 50);
+	blacksmith->m_transform->m_scale = Vector2(0.5, 0.5);
 	blacksmith->AddColliderBox(200, 200);
 	blacksmith->AddSpriteRenderer("town_blacksmith");
 	blacksmith->SetTriggerWhenDown(this, &TownScene::Show_blacksmith);
@@ -143,25 +156,18 @@ void TownScene::SetEst_Img()
 
 	CBuilding* campingTrainer = new CBuilding();
 	campingTrainer->Init();
-	campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 250);
+	campingTrainer->m_transform->m_pos = Vector2(WINSIZEX / 2 - 750, WINSIZEY / 2 - 185);
+	campingTrainer->m_transform->m_scale = Vector2(0.5, 0.5);
 	campingTrainer->AddColliderBox(150, 150);
 	campingTrainer->AddSpriteRenderer("town_camping_trainer");
 	campingTrainer->SetTriggerWhenDown(this, &TownScene::Show_campingTrainer);
 	buildingVec.push_back(campingTrainer);
 	MG_GMOBJ->RegisterObj("CampingTrainer", campingTrainer);
 
-	CBuilding* graveyard = new CBuilding();
-	graveyard->Init();
-	graveyard->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2+0);
-	graveyard->AddColliderBox(150, 150);
-	graveyard->AddSpriteRenderer("town_graveyard");
-	graveyard->SetTriggerWhenDown(this, &TownScene::Show_graveyard);
-	buildingVec.push_back(graveyard);
-	MG_GMOBJ->RegisterObj("Graveyard", graveyard);
-
 	CBuilding* sanitarium = new CBuilding();
 	sanitarium->Init();
 	sanitarium->m_transform->m_pos = Vector2(WINSIZEX / 2 - 220, WINSIZEY / 2 -100);
+	sanitarium->m_transform->m_scale = Vector2(0.5, 0.5);
 	sanitarium->AddColliderBox(200, 200);
 	sanitarium->AddSpriteRenderer("town_sanitarium");
 	sanitarium->SetTriggerWhenDown(this, &TownScene::Show_sanitarium);
@@ -170,7 +176,8 @@ void TownScene::SetEst_Img()
 
 	CBuilding* statue = new CBuilding();
 	statue->Init();
-	statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 0, WINSIZEY / 2 + 100);
+	statue->m_transform->m_pos = Vector2(WINSIZEX / 2 - 100, WINSIZEY / 2 + 100);
+	statue->m_transform->m_scale = Vector2(0.5, 0.5);
 	statue->AddColliderBox(100, 100);
 	statue->AddSpriteRenderer("town_statue");
 	statue->SetTriggerWhenDown(this, &TownScene::Show_town_statue);
@@ -180,6 +187,7 @@ void TownScene::SetEst_Img()
 	CBuilding* nomad_wagon = new CBuilding();
 	nomad_wagon->Init();
 	nomad_wagon->m_transform->m_pos = Vector2(WINSIZEX / 2 + 100, WINSIZEY / 2 +200);
+	nomad_wagon->m_transform->m_scale = Vector2(0.5, 0.5);
 	nomad_wagon->AddColliderBox(100, 100);
 	nomad_wagon->AddSpriteRenderer("town_nomad_wagon");
 	nomad_wagon->SetTriggerWhenDown(this, &TownScene::Show_nomad_wagon);
@@ -189,6 +197,7 @@ void TownScene::SetEst_Img()
 	CBuilding* tavern = new CBuilding();
 	tavern->Init();
 	tavern->m_transform->m_pos = Vector2(WINSIZEX / 2 - 400, WINSIZEY / 2 + 50);
+	tavern->m_transform->m_scale = Vector2(0.5, 0.5);
 	tavern->AddColliderBox(200, 200);
 	tavern->AddSpriteRenderer("town_tavern");
 	tavern->SetTriggerWhenDown(this, &TownScene::Show_tavern);
@@ -197,7 +206,8 @@ void TownScene::SetEst_Img()
 
 	CBuilding* stage_coach = new CBuilding();
 	stage_coach->Init();
-	stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 650, WINSIZEY / 2 +150);
+	stage_coach->m_transform->m_pos = Vector2(WINSIZEX / 2 - 670, WINSIZEY / 2 + 160);
+	stage_coach->m_transform->m_scale = Vector2(0.5, 0.5);
 	stage_coach->AddColliderBox(150, 150);
 	stage_coach->AddSpriteRenderer("town_stage_coach");
 	stage_coach->SetTriggerWhenDown(this, &TownScene::Show_stage_coach);
@@ -347,7 +357,7 @@ void TownScene::SetHerolist()
 	{
 		CHeroList_button* dragButton = new CHeroList_button();
 		dragButton->Init();
-		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 880 + i * 100);
+		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 855 + i * 100);
 		dragButton->AddColliderBox(50, 50);
 		//dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);

@@ -28,13 +28,13 @@ HRESULT CUI_Panel_Hero::Init()
 
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
 	m_windowPanelChar->useCustomPos = true;
-	m_windowPanelChar->pos = Vector2(100, 50);
+	m_windowPanelChar->pos = Vector2(93, 80);
 	m_windowPanelChar->useCustomScale = true;
-	m_windowPanelChar->scale = Vector2(1,0.5);
+	m_windowPanelChar->scale = Vector2(1, 1);
 
 	m_HeroImg = new CSpriteRenderer(IMAGE::Crusader_sword, m_transform);
 	m_HeroImg->useCustomPos = true;
-	m_HeroImg->pos = Vector2(120, 500);
+	m_HeroImg->pos = Vector2(125, 500);
 	m_HeroImg->useCustomScale = true;
 	m_HeroImg->scale = Vector2(0.5, 0.5);
 
@@ -70,35 +70,14 @@ void CUI_Panel_Hero::Render(HDC _hdc)
 
 void CUI_Panel_Hero::FrontRender(HDC _hdc)
 {
-	m_windowPanelBG->Render(_hdc);
 	m_windowPanel->Render(_hdc);
-	m_windowPanelChar->Render(_hdc);
+	m_windowPanelBG->Render(_hdc);
+	m_windowPanelChar->Render(_hdc); //characterBg Img
 	m_HeroImg->Render(_hdc);
 
 	DrawPhrases_Img(_hdc);
 	DrawResistanceInfo(_hdc);
 	ShowHeroInfo(_hdc);
-
-
-	//if (!isShowCoachHero)
-	//{
-	//	
-
-	//	DrawPhrases_Img(_hdc);
-	//	DrawResistanceInfo(_hdc);
-	//	ShowHeroInfo(_hdc);
-	//}
-	//else
-	//{
-	//	m_windowPanelBG->Render(_hdc);
-	//	m_windowPanel->Render(_hdc);
-	//	m_windowPanelChar->Render(_hdc);
-	//	m_HeroImg->Render(_hdc);
-
-	//	DrawPhrases_Img(_hdc);
-	//	DrawResistanceInfo(_hdc);
-	//	ShowCoachHeroInfo(_hdc);
-	//}
 }
 
 void CUI_Panel_Hero::Release()
@@ -198,7 +177,7 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 
 	SetTextColor(_hdc, RGB(202, 201, 155));
 	sprintf_s(str, "%s", "Name");
-	TextOut(_hdc, 460, 460, str, strlen(str));
+	TextOut(_hdc, 225, 130, str, strlen(str));
 	
 	CHero* hero;
 	if (curHeroListType == HeroListBtType::coach)
@@ -214,70 +193,60 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 	{
 		SetTextColor(_hdc, RGB(255, 255, 255));
 		sprintf_s(str, "MAX HP :  %d", hero->getHP());
-		TextOut(_hdc, 460, 480, str, strlen(str));
+		TextOut(_hdc, 460, 470, str, strlen(str));
 
-		sprintf_s(str, "Dodge :  %d", hero->GetDodge());
+		sprintf_s(str, "DODGE :  %d", hero->GetDodge());
+		TextOut(_hdc, 460, 490, str, strlen(str));
+
+		sprintf_s(str, "PROT :  %d", hero->GetDef());
 		TextOut(_hdc, 460, 510, str, strlen(str));
 
-		sprintf_s(str, "Prot :  %d", hero->GetDef());
+		sprintf_s(str, "SPD :  %d", hero->getSPD());
 		TextOut(_hdc, 460, 530, str, strlen(str));
 
-		sprintf_s(str, "Spd :  %d", hero->getSPD());
-		TextOut(_hdc, 460, 550, str, strlen(str));
+		sprintf_s(str, "ACC :  %d", hero->GetAcry());
+		TextOut(_hdc, 660, 470, str, strlen(str));
 
-		sprintf_s(str, "Acc :  %d", hero->GetAcry());
-		TextOut(_hdc, 660, 480, str, strlen(str));
+		sprintf_s(str, "CRIT :  %d", hero->GetCri());
+		TextOut(_hdc, 660, 490, str, strlen(str));
 
-		sprintf_s(str, "Crit :  %d", hero->GetCri());
+		sprintf_s(str, "DMG :  %d", hero->GetDmg());
 		TextOut(_hdc, 660, 510, str, strlen(str));
 
-		sprintf_s(str, "Dmg :  %d", hero->GetDmg());
-		TextOut(_hdc, 660, 530, str, strlen(str));
-
 		//stun, blight, bleed, debuff, move
+
+		SetTextColor(_hdc, RGB(212, 187, 120));
 		sprintf_s(str, "Stun :  %d", hero->getResist(0));
-		TextOut(_hdc, 1000, 605, str, strlen(str));
+		TextOut(_hdc, 1010, 570, str, strlen(str));
 
+		SetTextColor(_hdc, RGB(162, 175, 70));
 		sprintf_s(str, "Blight :  %d", hero->getResist(1));
-		TextOut(_hdc, 1150, 605, str, strlen(str));
+		TextOut(_hdc, 1230, 570, str, strlen(str));
 
+		SetTextColor(_hdc, RGB(126, 8, 4));
 		sprintf_s(str, "Bleed :  %d", hero->getResist(2));
-		TextOut(_hdc, 1000, 620, str, strlen(str));
+		TextOut(_hdc, 1010, 600, str, strlen(str));
 
+		SetTextColor(_hdc, RGB(195, 122, 81));
 		sprintf_s(str, "Debuff :  %d", hero->getResist(3));
-		TextOut(_hdc, 1150, 620, str, strlen(str));
+		TextOut(_hdc, 1230, 600, str, strlen(str));
 
+		SetTextColor(_hdc, RGB(118, 164, 198));
 		sprintf_s(str, "Move :  %d", hero->getResist(4));
-		TextOut(_hdc, 1000, 635, str, strlen(str));
-
-		//stun, blight, bleed, debuff, move
-		sprintf_s(str, "Stun :  %d", hero->getResist(0));
-		TextOut(_hdc, 1000, 605, str, strlen(str));
-
-		sprintf_s(str, "Blight :  %d", hero->getResist(1));
-		TextOut(_hdc, 1150, 605, str, strlen(str));
-
-		sprintf_s(str, "Bleed :  %d", hero->getResist(2));
-		TextOut(_hdc, 1000, 620, str, strlen(str));
-
-		sprintf_s(str, "Debuff :  %d", hero->getResist(3));
-		TextOut(_hdc, 1150, 620, str, strlen(str));
-
-		sprintf_s(str, "Move :  %d", hero->getResist(4));
-		TextOut(_hdc, 1000, 635, str, strlen(str));
+		TextOut(_hdc, 1010, 630, str, strlen(str));
 	}
 }
 
 void CUI_Panel_Hero::CreateHeroEquip()
 {
 	m_weapon = new CEquipButton();
-	m_weapon->m_transform->m_pos = Vector2(450, 730);
+	m_weapon->m_transform->m_pos = Vector2(440, 735);
 	m_weapon->Init();
 	m_weapon->Disable();
 	MG_GMOBJ->RegisterObj(m_weapon);
 
 	m_armor = new CEquipButton();
-	m_armor->m_transform->m_pos = Vector2(530, 730);
+	m_armor->m_transform->m_pos = Vector2(530, 735);
 	m_armor->Init();
 	m_armor->Disable();
 	MG_GMOBJ->RegisterObj(m_armor);
@@ -290,7 +259,6 @@ void CUI_Panel_Hero::SetHeroEquip()
 
 	m_armor->SetEquip(MG_GAME->GetHero(townScene->curDragHeroIndex)->GetArmor());
 	m_armor->Enable();
-
 }
 
 void CUI_Panel_Hero::SetCoachHeroEquip()
@@ -306,17 +274,15 @@ void CUI_Panel_Hero::CloseHeroEquip()
 {
 	m_weapon->Disable();
 	m_armor->Disable();
-	
 }
 
 void CUI_Panel_Hero::CreateHeroSkill()
 {
-
 	for (size_t i = 0; i < 8; i++)
 	{
 		CBTN_Skill* m_skill = new CBTN_Skill();
 		m_skill->Init();
-		m_skill->m_transform->m_pos = Vector2(1000 + 70 * i, 300);
+		m_skill->m_transform->m_pos = Vector2(980 + 80 * i, 290);
 		m_skill->Disable();
 		MG_GMOBJ->RegisterObj(m_skill);
 		m_skillbuttonVec.push_back(m_skill);
@@ -353,11 +319,11 @@ void CUI_Panel_Hero::CloseHeroSkill()
 
 void CUI_Panel_Hero::CreateCampSkill()
 {
-	for (size_t i = 0; i < 7; i++)
+	for (size_t i = 0; i < 6; i++)
 	{
 		CBTN_CampSkill* m_campskill = new CBTN_CampSkill();
 		m_campskill->Init();
-		m_campskill->m_transform->m_pos = Vector2(1000 + 70 * i, 450);
+		m_campskill->m_transform->m_pos = Vector2(980 + 80 * i, 445);
 		m_campskill->Disable();
 		MG_GMOBJ->RegisterObj(m_campskill);
 		m_campSkillbuttonVec.push_back(m_campskill);
@@ -366,26 +332,22 @@ void CUI_Panel_Hero::CreateCampSkill()
 
 void CUI_Panel_Hero::SetCampSkill()
 {
-	//auto tempVec = MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
 	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
 	{
-		//m_skillbuttonvec[i]->setskill(tempvec[i]);
 		m_campSkillbuttonVec[i]->Enable();
 	}
 }
 
 void CUI_Panel_Hero::SetCoachCampSkill()
 {
-	//auto tempVec = MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
 	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
 	{
-		//m_skillbuttonvec[i]->setskill(tempvec[i]);
 		m_campSkillbuttonVec[i]->Enable();
 	}
 }
 
 void CUI_Panel_Hero::CloseCampSkill()
-{	//얘는 없어도 저기서 꺼줄것같다.
+{	
 	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
 	{
 		m_campSkillbuttonVec[i]->Disable();
@@ -423,32 +385,31 @@ void CUI_Panel_Hero::SetPhrases_Img()
 {
 	Quirk_Img = new CSpriteRenderer(IMAGE::Quirk, m_transform);
 	Quirk_Img->useCustomPos = true;
-	Quirk_Img->pos = Vector2(550, 189);
+	Quirk_Img->pos = Vector2(550, 190);
 
 	OriginStatus_Img = new CSpriteRenderer(IMAGE::OriginStatus, m_transform);
 	OriginStatus_Img->useCustomPos = true;
-	OriginStatus_Img->pos = Vector2(500, 418);
+	OriginStatus_Img->pos = Vector2(510, 422);
 
 	Equip_Img = new CSpriteRenderer(IMAGE::Equip, m_transform);
 	Equip_Img->useCustomPos = true;
-	Equip_Img->pos = Vector2(550, 568);
+	Equip_Img->pos = Vector2(556, 571);
 
 	CombatSkill_Img = new CSpriteRenderer(IMAGE::CombatSkill, m_transform);
 	CombatSkill_Img->useCustomPos = true;
-	CombatSkill_Img->pos = Vector2(1115, 111);
+	CombatSkill_Img->pos = Vector2(1108, 116);
 
 	CampingSkill_Img = new CSpriteRenderer(IMAGE::CampingSkill, m_transform);
 	CampingSkill_Img->useCustomPos = true;
-	CampingSkill_Img->pos = Vector2(1115, 347);
+	CampingSkill_Img->pos = Vector2(1106, 350);
 
 	Resistance_Img = new CSpriteRenderer(IMAGE::Resistance, m_transform);
 	Resistance_Img->useCustomPos = true;
-	Resistance_Img->pos = Vector2(1140, 510);
+	Resistance_Img->pos = Vector2(1123, 513);
 
 	Disease_Img = new CSpriteRenderer(IMAGE::Disease, m_transform);
 	Disease_Img->useCustomPos = true;
-	Disease_Img->pos = Vector2(1160, 673);
-
+	Disease_Img->pos = Vector2(1152, 677);
 }
 
 void CUI_Panel_Hero::DrawPhrases_Img(HDC _hdc)
@@ -466,23 +427,23 @@ void CUI_Panel_Hero::SetResistanceInfo()
 {
 	m_stunicon = new CSpriteRenderer(IMAGE::stun, m_transform);
 	m_stunicon->useCustomPos = true;
-	m_stunicon->pos = Vector2(970, 605);
+	m_stunicon->pos = Vector2(980, 565);
 
 	m_blighicon = new CSpriteRenderer(IMAGE::poison, m_transform);
 	m_blighicon->useCustomPos = true;
-	m_blighicon->pos = Vector2(1120, 605);
+	m_blighicon->pos = Vector2(1200, 562);
 
 	m_bleedicon = new CSpriteRenderer(IMAGE::bleed, m_transform);
 	m_bleedicon->useCustomPos = true;
-	m_bleedicon->pos = Vector2(970, 620);
+	m_bleedicon->pos = Vector2(980, 595);
 
 	m_debufficon = new CSpriteRenderer(IMAGE::debuff, m_transform);
 	m_debufficon->useCustomPos = true;
-	m_debufficon->pos = Vector2(1120, 620);
+	m_debufficon->pos = Vector2(1200, 595);
 
 	m_moveicon = new CSpriteRenderer(IMAGE::move, m_transform);
 	m_moveicon->useCustomPos = true;
-	m_moveicon->pos = Vector2(970, 635);
+	m_moveicon->pos = Vector2(980, 625);
 }
 
 void CUI_Panel_Hero::DrawResistanceInfo(HDC _hdc)
