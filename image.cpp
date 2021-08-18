@@ -509,6 +509,81 @@ void Image::render(HDC hdc, const CTransform* transform, Vector2 _imageScale, Ve
 	}
 }
 
+void Image::AlphaRender(HDC hdc, const CTransform* transform, BYTE alpha)
+{
+	Vector2 _imageScale = Vector2(_imageInfo->width, _imageInfo->height);
+	Vector2 pos = transform->m_pos - _imageScale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+	_blendFunc.SourceConstantAlpha = alpha;
+
+	if (_isTrans)
+	{
+		BitBlt(_blendImage->hMemDC, 
+			0, 
+			0, 
+			_imageInfo->width, 
+			_imageInfo->height,
+			hdc, 
+			pos.x,
+			pos.y,
+			SRCCOPY);
+
+		GdiTransparentBlt(_blendImage->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, _transColor);
+
+		AlphaBlend(hdc, 
+			pos.x,
+			pos.y,
+			_imageInfo->width, _imageInfo->height,
+			_blendImage->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, _blendFunc);
+	}
+	else
+	{
+		AlphaBlend(hdc, 
+			pos.x,
+			pos.y,
+			_imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, _blendFunc);
+
+	}
+}
+
+void Image::AlphaRenderUI(HDC hdc, const CTransform* transform, BYTE alpha)
+{
+	Vector2 _imageScale = Vector2(_imageInfo->width, _imageInfo->height);
+	Vector2 pos = transform->m_pos - _imageScale * transform->m_pivot * transform->m_scale;
+	_blendFunc.SourceConstantAlpha = alpha;
+
+	if (_isTrans)
+	{
+		BitBlt(_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->width,
+			_imageInfo->height,
+			hdc,
+			pos.x,
+			pos.y,
+			SRCCOPY);
+
+		GdiTransparentBlt(_blendImage->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, _transColor);
+
+		AlphaBlend(hdc,
+			pos.x,
+			pos.y,
+			_imageInfo->width, _imageInfo->height,
+			_blendImage->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, _blendFunc);
+	}
+	else
+	{
+		AlphaBlend(hdc,
+			pos.x,
+			pos.y,
+			_imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, _blendFunc);
+
+	}
+}
 
 
 void Image::renderUI(HDC hdc, const CTransform* transform)

@@ -16,12 +16,6 @@ HRESULT ImageObject::Init()
     m_transform->m_pivot = Vector2(0.5, 1);
     coolTime = 3;
     AddSpriteRenderer(IMAGE::NONE);
-
-
-	hp1GUI = new CSpriteRenderer(IMAGE::NONE, m_transform);
-    hp1GUI->useCustomPos = true;
-	hp10GUI = new CSpriteRenderer(IMAGE::NONE, m_transform);
-    hp10GUI->useCustomPos = true;
     return S_OK;
 }
 
@@ -33,11 +27,18 @@ void ImageObject::Update(float deltaTime, float worldTime)
     {
         m_transform->m_pos += Normalize * speed * 3;
     }
-    else if (distance > 10) {
+    else if (distance > 100) {
+
         m_transform->m_pos += Normalize * speed;
     }
     else {
-    
+        if (alpheVal - 2 > 0)
+        {
+            alpheVal -= 2;
+        }
+        else {
+            Disable();
+        }
     }
     if (curTime < worldTime)
     {
@@ -62,7 +63,7 @@ void ImageObject::Render(HDC _hdc)
 
 void ImageObject::FrontRender(HDC _hdc)
 {
-    m_spriteRenderer->RenderUI(_hdc);
+    m_spriteRenderer->AlphaRenderUI(_hdc, alpheVal);
 }
 
 void ImageObject::Release()
@@ -74,6 +75,7 @@ void ImageObject::Enable()
 {
     m_transform->m_pos = originPos;
     curTime = MG_TIME->getWorldTime() + coolTime;
+    alpheVal = 255;
     isActive = true;
 }
 
