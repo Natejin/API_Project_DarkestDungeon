@@ -584,6 +584,28 @@ enum class IMAGE
 	Vestal_lectionary,
 	Vestal_mace,
 	Vestal_miracle,
+	//Skill_disable
+	//Crusader
+	crusader_disable_battleheal,
+	crusader_disable_scroll,
+	crusader_disable_smite,
+	crusader_disable_stunning,
+	//Highwayman
+	highwayman_diable_duelistadvance,
+	highwayman_disable_grapeshot,
+	highwayman_disable_pointshot,
+	highwayman_disable_slice,
+	//Plague_doctor
+	plague_doctor_diable_incision,
+	plague_doctor_disable_battlefiledheal,
+	plague_doctor_disable_grenade,
+	plague_doctor_disable_noxious,
+	//Vestal
+	vestal_disable_dazzlingLight,
+	vestal_disable_divine,
+	vestal_disable_judgement,
+	vestal_disable_mace,
+
 	//Backdrop
 	Backdrop_treatment,
 	Backdrop_disease,
