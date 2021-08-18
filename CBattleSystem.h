@@ -102,9 +102,7 @@ private:
 	void SetEnemyIndicator(int index);
 	void SelectEnemyTarget(SKILL skill);
 
-	void SetPosition() {
-	
-	}
+	void SetPosition();
 
 	CHero* GetHero(int i);
 	void StartHeroTrun(int index);
@@ -120,5 +118,6 @@ private:
 private:
 	void CreateEnemyParty();
 	void CreateHeroesParty();
+
 	void Compare_P_E_Speed_ReArray();
 };

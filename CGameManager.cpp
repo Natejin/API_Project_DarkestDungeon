@@ -13,6 +13,7 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
+	
 	heroID = 0;
 	RegisterHeroToOwnList(CreateHero("member1", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
@@ -70,10 +71,17 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(255, 0, 255));
+	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+	TextOut(_hdc, 0, 180, str, strlen(str));
 }
 
 void CGameManager::FrontRender(HDC _hdc)
 {
+
 }
 
 void CGameManager::Release()
