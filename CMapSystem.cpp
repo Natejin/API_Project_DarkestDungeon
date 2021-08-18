@@ -9,7 +9,7 @@ CMapSystem::CMapSystem()
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 10;
-	createBossRoomFromHome = 3;
+	createBossRoomFromHome = 1;
 }
 CMapSystem::~CMapSystem() {}
 
@@ -72,12 +72,12 @@ void CMapSystem::Release()
 
 void CMapSystem::SetRandomCreateValue()
 {
-	randRoomEnemy = 50;
+	randRoomEnemy = 100;
 	randRoomCurio = 50;
 	randomRoadEnemy = 20;
 	randomRoadCurio = 40;
 	randomRoadTrap = 20;
-	randomBossRoom = 30;
+	randomBossRoom = 100;
 	int _rndRoomEnemy = randRoomEnemy;
 	int _rndRoomCurio = randRoomEnemy + randRoomCurio;
 	rndRoom.push_back(_rndRoomEnemy < 100 ? _rndRoomEnemy : 100);

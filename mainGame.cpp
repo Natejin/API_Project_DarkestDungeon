@@ -53,7 +53,7 @@ void mainGame::update()
 
 	MG_CAMERA->Update(deltaTime, worldTime);
 
-
+	MG_GAME->Update(deltaTime, worldTime);
 }
 
 void mainGame::render(/*HDC hdc*/)

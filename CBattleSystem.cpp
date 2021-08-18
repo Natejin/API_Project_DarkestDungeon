@@ -305,10 +305,14 @@ void CBattleSystem::CreateEnemyParty()
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
 	Vector2 heroPos = heroParty[0]->m_transform->m_pos;
+
+	
+
 	for (size_t i = 0; i < 4; i++)
 	{
+	
 		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::BoneDefender)); //TODO 추후 적 세팅 변경하기
+		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)3)); //TODO 추후 적 세팅 변경하기
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		enemy->SetPartyPos(i);
 		enemy->SetPartyIndex(i);
@@ -432,6 +436,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
+		MG_SOUND->play(tempSkill->sound);
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 5);
 		SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 		SetEffectImage(0, -400, 10);
@@ -495,6 +500,7 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
+		MG_SOUND->play(tempSkill->sound);
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
 		enemyParty[index]->increaseHP(tempSkill->GetHeal());
 		DelayUntillNextTurn(3);
@@ -627,7 +633,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 				if (enemySkill->CheckTarget(heroParty[orderIndex]->GetPartyPos()))
 				{
 					isFoundTarget = true;
-
+					MG_SOUND->play(enemySkill->sound);
 
 					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);

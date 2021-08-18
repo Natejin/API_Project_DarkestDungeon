@@ -39,10 +39,7 @@ HRESULT CGameManager::Init()
 	m_partyOrigin.push_back(nullptr);
 
 
-	//RegisterHeroToParty(0);
-	//RegisterHeroToParty(1);
-	//RegisterHeroToParty(2);
-	//RegisterHeroToParty(3);
+
 
 
 	m_dungeonScene = MG_SCENE->dungeonScene;
@@ -53,6 +50,14 @@ HRESULT CGameManager::Init()
 
 void CGameManager::Update(float deltaTime, float worldTime)
 {
+	if (MG_INPUT->isOnceKeyDown('T'))
+	{
+		RegisterHeroToParty(0);
+		RegisterHeroToParty(1);
+		RegisterHeroToParty(2);
+		RegisterHeroToParty(3);
+		MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	}
 }
 
 void CGameManager::LateUpdate()
