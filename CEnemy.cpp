@@ -148,7 +148,11 @@ bool CEnemy::GetAlive()
 	return info->isAlive;
 }
 
-bool CEnemy::GeTCorpse()
+bool CEnemy::GetCorpse()
 {
 	return info->isCorpse;
+}
+bool CEnemy::SetCorpse(bool _corpse)
+{
+return	info->isCorpse = _corpse;
 }

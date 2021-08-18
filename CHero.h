@@ -115,7 +115,7 @@ public:
 
 	virtual bool GetAffliction();
 	virtual bool GetAlive();
-	virtual bool GeTCorpse();
+	virtual bool GetCorpse();
 
 	void testHpBar();
 

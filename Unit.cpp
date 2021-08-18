@@ -85,7 +85,7 @@ void Unit::SetMemberOverlay()
     }
 }
 
-bool Unit::GeTCorpse()
+bool Unit::GetCorpse()
 {
     return false;
 }

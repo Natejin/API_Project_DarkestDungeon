@@ -170,7 +170,7 @@ void CBattleSystem::BattleSystemEnd()
 void CBattleSystem::StartTurn()
 {
 	DeselectAll();
-	//SetPosition();
+	SetPosition();
 	if (speedVec.size() == 0)
 	{
 		Compare_P_E_Speed_ReArray();
@@ -429,10 +429,9 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				enemyParty[index]->reduceHP(damage);
 			}
 		}
-		//��ü������
-		else {
+		else if(enemyParty[index]->GetCorpse()){
 
-
+			enemyParty[index]->SetCorpse(false);
 		}
 		
 
@@ -494,7 +493,9 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 	{
 		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
-		enemyParty[index]->increaseHP(tempSkill->GetHeal());
+
+		heroParty[index]->increaseHP(tempSkill->GetHeal());
+
 		DelayUntillNextTurn(delayTriggerEffect);
 		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
 
@@ -586,7 +587,7 @@ void CBattleSystem::SetPosition() {
 	
 	for (size_t i = 0; i < enemyParty.size(); i++)
 	{
-		if (enemyParty[i]->GetAlive() || enemyParty[i]->GeTCorpse())
+		if (enemyParty[i]->GetAlive() || enemyParty[i]->GetCorpse())
 		{
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{

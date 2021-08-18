@@ -299,7 +299,7 @@ bool CHero::GetAlive()
 	return info->isAlive;
 }
 
-bool CHero::GeTCorpse()
+bool CHero::GetCorpse()
 {
 	return info->isCorpse;
 }

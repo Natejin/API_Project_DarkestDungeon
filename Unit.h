@@ -92,6 +92,6 @@ public:
 	virtual void setResist(int index, bool val);
 	virtual void setAttribute(int index, bool val);
 	virtual void SetMemberOverlay();
-	virtual bool GeTCorpse();
+	virtual bool GetCorpse();
 
 };
