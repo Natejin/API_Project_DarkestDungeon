@@ -75,14 +75,13 @@ void CSpriteRenderer::Render(HDC _hdc)
 	}
 	else
 	{
-		if (useCustomScale)
-		{
-			m_image->render(_hdc, m_trans, pos, scale);
-		}
-		else {
-			m_image->render(_hdc, m_trans, pos);
-		}
+		m_image->render(_hdc, m_trans, m_imageSize);
 	}
+}
+
+void CSpriteRenderer::AlphaRenderUI(HDC _hdc, BYTE alpha)
+{
+	m_image->AlphaRenderUI(_hdc, m_trans, alpha);
 }
 
 void CSpriteRenderer::AlphaRender(HDC _hdc, BYTE alpha)
@@ -90,10 +89,6 @@ void CSpriteRenderer::AlphaRender(HDC _hdc, BYTE alpha)
 	m_image->AlphaRender(_hdc, m_trans, alpha);
 }
 
-void CSpriteRenderer::AlphaRenderUI(HDC _hdc, BYTE alpha)
-{
-	m_image->AlphaRenderUI(_hdc, m_trans, alpha);
-}
 
 void CSpriteRenderer::RenderUI(HDC _hdc)
 {
@@ -120,9 +115,6 @@ void CSpriteRenderer::RenderUI(HDC _hdc)
 	
 	}
 }
-
-
-
 
 Vector2 CSpriteRenderer::GetImageSize()
 {

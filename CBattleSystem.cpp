@@ -125,6 +125,7 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
+	originPosOfBattle = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	CreateHeroesParty();
 	CreateEnemyParty();
 	Compare_P_E_Speed_ReArray();
@@ -168,6 +169,7 @@ void CBattleSystem::BattleSystemEnd()
 void CBattleSystem::StartTurn()
 {
 	DeselectAll();
+	//SetPosition();
 	if (speedVec.size() == 0)
 	{
 		Compare_P_E_Speed_ReArray();
@@ -292,7 +294,6 @@ void CBattleSystem::CreateEnemyParty()
 	int random = MG_RND->getInt(3) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	originPosOfBattle = heroParty[0]->m_transform->m_pos;
 	for (size_t i = 0; i < 4; i++)
 	{
 		CEnemy* enemy = new CEnemy();
@@ -573,32 +574,42 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 
 void CBattleSystem::SetPosition() {
 
-	int k = 0;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
+		if (heroParty[i] == nullptr) continue;
 		if (heroParty[i]->GetAlive())
 		{
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
-				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, heroPos.y);
+				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 200 - 200 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
 			}
 			else {
-				heroParty[i]->targetPos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
+				heroParty[i]->targetPos = Vector2(cameraPos.x - 200 - 200 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
 			}
-			k++;
 		}
 		else {
 			heroParty[i]->Disable();
 		}
 	}
 	
-
-
-
-
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+		if (enemyParty[i]->GetAlive() || enemyParty[i]->GeTCorpse())
+		{
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				enemyParty[i]->targetPos = Vector2(worldSize.x * 0.5 + 200 + 200 * enemyParty[i]->GetPartyPos(), originPosOfBattle.y);
+			}
+			else {
+				enemyParty[i]->targetPos = Vector2(cameraPos.x + 200 + 200 * enemyParty[i]->GetPartyPos(), originPosOfBattle.y);
+			}
+		}
+		else {
+			enemyParty[i]->Disable();
+		}
+	}
 }
 
 
