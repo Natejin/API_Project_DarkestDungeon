@@ -258,45 +258,53 @@ void CBattleSystem::EndTurn()
 
 void CBattleSystem::UseSkill(int _index)
 {
-	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
+
+
+
+	if (dungeonUI->skillBTNs[_index]->GetActivateState())
 	{
-		dungeonUI->skillBTNs[i]->selected = false;
-	}
-	dungeonUI->skillBTNs[_index]->selected = true;
-	currentSkill = _index;
-	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
-	{
-		if (turn == TURN::Player)
+		for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
 		{
-			DeselectAll();
-			curHero->isSelected = true;
-
-			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
-			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
-
-			switch (tempSkill->target)
+			dungeonUI->skillBTNs[i]->selected = false;
+		}
+		dungeonUI->skillBTNs[_index]->selected = true;
+		currentSkill = _index;
+		SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
+		if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
+		{
+			if (turn == TURN::Player)
 			{
-			case SKILLTARGET::Enemy:
-				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			case SKILLTARGET::Enemies:
-				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			case SKILLTARGET::Self:
-				//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
-				//���� ����.....
-				break;
-			case SKILLTARGET::Ally:
-				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			case SKILLTARGET::Allies:
-				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
-				break;
-			default:
-				break;
+				DeselectAll();
+				curHero->isSelected = true;
+
+
+				switch (tempSkill->target)
+				{
+				case SKILLTARGET::Enemy:
+					SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				case SKILLTARGET::Enemies:
+					SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				case SKILLTARGET::Self:
+					//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
+					//���� ����.....
+					break;
+				case SKILLTARGET::Ally:
+					SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				case SKILLTARGET::Allies:
+					SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+					break;
+				default:
+					break;
+				}
 			}
 		}
 	}
+
+	
 }
 
 void CBattleSystem::CreateEnemyParty()
@@ -697,7 +705,41 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::StartHeroTrun(int index)
 {
-	MG_GAME->SetCurSelHero(index);
+	//MG_GAME->SetCurSelHero(index);
+	//curHero = m_party->GetHero(index);
+
+
+
+
+	for (int i = 0; i < heroParty.size(); i++)
+	{
+		heroParty[index]->isSelected = false;
+	}
+	heroParty[index]->isSelected = true;
+
+	scene->m_dungeonUIinfo->SetPortrait(curHero->GetInfo()->portrait);
+	scene->m_dungeonUIinfo->SetWeapon(curHero->GetInfo()->weapon[0]);
+	scene->m_dungeonUIinfo->SetArmor(curHero->GetInfo()->armor[0]);
+
+	vector<SKILL> temp = curHero->GetInfo()->ownSkill;
+
+
+	for (int j = 0; j < scene->m_dungeonUI->skillBTNs.size(); j++)
+	{
+		if (temp.size() > j)
+		{
+			
+			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(temp[j]);
+			scene->m_dungeonUI->skillBTNs[j]->Enable();
+			scene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
+			scene->m_dungeonUI->skillBTNs[j]->SetActivateState(tempSkill->CheckUseable(curHero->GetPartyPos()));
+
+		}
+		else {
+			scene->m_dungeonUI->skillBTNs[j]->Disable();
+		}
+
+	}
 }
 
 void CBattleSystem::StartEnemyTrun(int index)

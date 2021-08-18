@@ -819,3 +819,7 @@ Image* CDB_Skill::CallSkillImage(SKILL skill)
 {
 	return MG_IMAGE->findImage(skillDB[skill]->m_skillIcon);
 }
+Image* CDB_Skill::CallDeactiveSkillImage(SKILL skill)
+{
+	return MG_IMAGE->findImage(skillDB[skill]->m_skillDeactiveIcon);
+}

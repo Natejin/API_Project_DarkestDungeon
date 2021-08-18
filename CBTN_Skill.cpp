@@ -19,7 +19,7 @@ HRESULT CBTN_Skill::Init()
 	selected = false;
 	m_transform->m_pivot = Vector2(0.5, 0.5);
 	m_spriteSelected = new CSpriteRenderer(IMAGE::SelectedSkill, m_transform);
-
+	m_spriteDisactivated = new CSpriteRenderer(IMAGE::Crusader_Skill_BattleHeal, m_transform);
 	AddSpriteRenderer(IMAGE::Crusader_Skill_BattleHeal);
 	AddColliderBox();
     return S_OK;
@@ -54,11 +54,19 @@ void CBTN_Skill::Render(HDC _hdc)
 
 void CBTN_Skill::FrontRender(HDC _hdc)
 {
-	m_spriteRenderer->RenderUI(_hdc);
-	if (selected)
+	if (!isDisable)
 	{
-		m_spriteSelected->RenderUI(_hdc);
+		m_spriteRenderer->RenderUI(_hdc);
+		if (selected)
+		{
+			m_spriteSelected->RenderUI(_hdc);
+		}
 	}
+	else {
+		m_spriteDisactivated->RenderUI(_hdc);
+	}
+
+	
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
@@ -72,6 +80,18 @@ void CBTN_Skill::SetSkill(SKILL skill)
 {
 	skillInfo = DB_SKILL->CallSkill(skill);
 	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
+	m_spriteDisactivated->SetImage(DB_SKILL->CallDeactiveSkillImage(skill));
+}
+
+void CBTN_Skill::SetActivateState(bool skill)
+{
+	selected = false;
+	isDisable = skill;
+}
+
+bool CBTN_Skill::GetActivateState()
+{
+	return isDisable;
 }
 
 void CBTN_Skill::Release()

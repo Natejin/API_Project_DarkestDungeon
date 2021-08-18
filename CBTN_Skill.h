@@ -6,10 +6,12 @@ class CBTN_Skill :public CDragButton
 protected:
 	class CInfo_Skill* skillInfo;
 	class CSpriteRenderer* m_spriteSelected;
+	class CSpriteRenderer* m_spriteDisactivated;
 	class CHero* hero;
 
 public:
 	bool selected;
+	bool isDisable;
 	int index = -1;
 
 	class DungeonScene* scene;
@@ -27,5 +29,7 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void SetSkill(SKILL skill);
+	virtual void SetActivateState(bool skill);
+	virtual bool GetActivateState();
 	virtual void Release();
 };
