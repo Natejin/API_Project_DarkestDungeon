@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 class Unit;
+class CEnemyInfoUI;
 class CBattleSystem : public GameObject
 {
 	struct TurnSpeedOfUnit {
@@ -51,10 +52,11 @@ public:
 	class DungeonScene* scene;
 	class dungeonUI* dungeonUI;
 	class CDungeonUI_HeroInfo* dungeonUIHeroinfo;
+	
+	CEnemyInfoUI* m_enemyInfoUI;
+
 	CBattleSystem();
 	~CBattleSystem();
-
-
 
 	HRESULT Init();
 
@@ -68,7 +70,6 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	virtual void Release();
-
 
 	void BattleSystemInitiate();
 	void BattleSystemEnd();

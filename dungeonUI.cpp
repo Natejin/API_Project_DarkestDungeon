@@ -51,8 +51,6 @@ void dungeonUI::Release()
 	}
 	MG_GMOBJ->RemoveObj(swapBTN);
 	MG_GMOBJ->RemoveObj(endTurnBTN);
-
-
 	MG_GMOBJ->RemoveObj(bt_inven);
 	MG_GMOBJ->RemoveObj(bt_map);
 	MG_GMOBJ->RemoveObj(bt_passTurn);
@@ -158,6 +156,7 @@ void dungeonUI::SetSkillButton()
 		skillBTNs.push_back(temp);
 		MG_GMOBJ->RegisterObj(temp);
 	}
+
 	swapBTN = new CBTN_Skill_Swap();
 	swapBTN->scene = scene;
 	swapBTN->Init();

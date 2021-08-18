@@ -13,6 +13,7 @@
 #include "ImageObject.h"
 #include "MonsterIndicator.h"
 #include "ImageEffectBG.h"
+#include "CEnemyInfoUI.h"
 
 CBattleSystem::CBattleSystem()
 {
@@ -26,7 +27,6 @@ CBattleSystem::~CBattleSystem()
 
 HRESULT CBattleSystem::Init()
 {
-	
 	////mouseOnEnemy.m_img = MG_IMAGE->findImage(IMAGE::panel_monster_Red);
 
 	targetEnemyPosVec.push_back(Vector2(1160, 700));
@@ -39,7 +39,6 @@ HRESULT CBattleSystem::Init()
 	monsterIndicator->Disable();
 	MG_GMOBJ->RegisterObj(monsterIndicator);
 
-
 	effectBGImage = new ImageEffectBG();
 	effectBGImage->originPos = Vector2(-200, 0);
 	effectBGImage->speed = 10;
@@ -47,10 +46,14 @@ HRESULT CBattleSystem::Init()
 	effectBGImage->Disable();
 	MG_GMOBJ->RegisterObj(effectBGImage);
 
+	m_enemyInfoUI = new CEnemyInfoUI();
+	m_enemyInfoUI->Init();
+	m_enemyInfoUI->Enable();
+	MG_GMOBJ->RegisterObj(m_enemyInfoUI);
+
 	SetZoomImage();
 	return S_OK;
 }
-
 
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
@@ -99,7 +102,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
 		{
-			sprintf_s(str, "¿µ¿õ : À§Ä¡ % d, ¼Óµµ : % d, Ã¼·Â : %d/ %d", 
+			sprintf_s(str, "ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Ä¡ % d, ï¿½Óµï¿½ : % d, Ã¼ï¿½ï¿½ : %d/ %d", 
 				speedVec[i].second->GetPartyIndex(), 
 				speedVec[i].first,
 				speedVec[i].second->getHP(),
@@ -107,7 +110,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
 		}
 		else {
-			sprintf_s(str, "Àû : À§Ä¡ %d, ¼Óµµ : %d Ã¼·Â : %d/ %d", 
+			sprintf_s(str, "ï¿½ï¿½ : ï¿½ï¿½Ä¡ %d, ï¿½Óµï¿½ : %d Ã¼ï¿½ï¿½ : %d/ %d", 
 				speedVec[i].second->GetPartyIndex(), 
 				speedVec[i].first, 
 				speedVec[i].second->getHP(),
@@ -164,8 +167,6 @@ void CBattleSystem::BattleSystemEnd()
 	Disable();
 }
 
-
-
 void CBattleSystem::StartTurn()
 {
 	DeselectAll();
@@ -196,11 +197,13 @@ void CBattleSystem::StartTurn()
 					turn = TURN::Enemy;
 					speedVec.pop_back();
 				}
-				else {
+				else 
+				{
 					assert(true);
 				}
 			}
-			else {
+			else 
+			{
 				speedVec.pop_back();
 				StartTurn();
 			}
@@ -209,16 +212,12 @@ void CBattleSystem::StartTurn()
 			{
 				HeroTurn();
 			}
-			else {
+			else 
+			{
 				EnemyTurn();
 			}
-
 		}
-
-
 	}
-
-
 }
 
 void CBattleSystem::HeroTurn()
@@ -238,8 +237,6 @@ void CBattleSystem::EndTurn()
 	curEnemy = nullptr;
 }
 
-
-
 void CBattleSystem::UseSkill(int _index)
 {
 	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
@@ -254,7 +251,6 @@ void CBattleSystem::UseSkill(int _index)
 		{
 			DeselectAll();
 			curHero->isSelected = true;
-	
 
 			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
 			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
@@ -269,7 +265,7 @@ void CBattleSystem::UseSkill(int _index)
 				break;
 			case SKILLTARGET::Self:
 				//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
-				//Á¹·Á ¤µ¤².....
+				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.....
 				break;
 			case SKILLTARGET::Ally:
 				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
@@ -280,14 +276,9 @@ void CBattleSystem::UseSkill(int _index)
 			default:
 				break;
 			}
-
 		}
 	}
-	
-	
 }
-
-
 
 void CBattleSystem::CreateEnemyParty()
 {
@@ -297,7 +288,7 @@ void CBattleSystem::CreateEnemyParty()
 	for (size_t i = 0; i < 4; i++)
 	{
 		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ÃßÈÄ Àû ¼¼ÆÃ º¯°æÇÏ±â
+		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		enemy->SetPartyPos(i);
 		enemy->SetPartyIndex(i);
@@ -313,7 +304,6 @@ void CBattleSystem::CreateEnemyParty()
 			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, originPosOfBattle.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
-
 		enemy->targetPos = enemy->m_transform->m_pos;
 		enemy->movePosMode = true;
 		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
@@ -348,7 +338,8 @@ void CBattleSystem::CreateHeroesParty()
 			heroParty[k]->targetPos = heroParty[k]->m_transform->m_pos;
 			heroParty[k]->movePosMode = true;
 		}
-		else {
+		else 
+		{
 			k--;
 		}
 	}
@@ -356,7 +347,7 @@ void CBattleSystem::CreateHeroesParty()
 
 void CBattleSystem::Compare_P_E_Speed_ReArray()
 {	
-	//ÇÃ·¹ÀÌ¾î ¿µ¿õµéÀ» speed turn¿¡ 
+	//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ speed turnï¿½ï¿½ 
 	bool isAllDead = true;
 	for (int i = 0; i < heroParty.size(); i++)
 	{
@@ -370,7 +361,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 	}
 	isAllDead = true;
 
-	//ÀûµéÀ» speed turn¿¡ Ãß°¡
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ speed turnï¿½ï¿½ ï¿½ß°ï¿½
 	for (int i = 0; i < enemyParty.size(); i++)
 	{
 		if (enemyParty[i]->getHP() < 1) continue;
@@ -383,7 +374,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 		EnemyTeamAreDead();
 	}
 
-	//¾Ë°í¸®ÁòÀ» ÀÌ¿ëÇÑ Á¤·Ä
+	//ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	sort(speedVec.begin(), speedVec.end());
 }
 
@@ -429,7 +420,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 		if (enemyParty[index]->GetAlive())
 		{
 			int damage = tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo());
-			//È¸ÇÇÇÔ
+			//È¸ï¿½ï¿½ï¿½ï¿½
 			if (damage <= -1)
 			{
 
@@ -438,7 +429,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				enemyParty[index]->reduceHP(damage);
 			}
 		}
-		//½ÃÃ¼»óÅÂÀÓ
+		//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		else {
 
 
@@ -460,7 +451,6 @@ void CBattleSystem::DelayUntillNextTurn(int second)
 
 bool CBattleSystem::CheckAndDamageHero(CInfo_Skill* tempSkill, int index)
 {
-
 	return false;
 }
 
@@ -475,7 +465,8 @@ void CBattleSystem::SelectHero(int index)
 				CheckAndSwapHeroPos(index);
 			}
 		}
-		else {
+		else 
+		{
 			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
 			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
@@ -494,7 +485,6 @@ void CBattleSystem::SelectHero(int index)
 				break;
 			}
 		}
-		
 	}
 }
 
@@ -612,12 +602,8 @@ void CBattleSystem::SetPosition() {
 	}
 }
 
-
-
-
 void CBattleSystem::SetEnemyIndicator(int index)
 {
-
 	monsterIndicator->SetPosIndex(index);
 	monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
 }
@@ -649,10 +635,9 @@ void CBattleSystem::StartEnemyTrun(int index)
 	bool isFoundTarget = false;
 	vector<SKILL> ownSkill = enemyParty[index]->GetInfo()->ownSkill;
 
-	
-	//·£´ýÀ¸·Î °¡Áö°íÀÖ´Â½ºÅ³Áß ÇÏ³ª¸¦ °¡Á®¿Í¼­
-	//Å¸°ÙÆÃ(ÇÃ·¹ÀÌ¾îºí ¿µ¿õ)À» Ã£ÀºÈÄ
-	//Å¸°ÙÀÌ ¾øÀ»°æ¿ì ´Ù¸¥½ºÅ³·Î ¹Ýº¹½ÇÇà
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â½ï¿½Å³ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½
+	//Å¸ï¿½ï¿½ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½
+	//Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½Å³ï¿½ï¿½ ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½
 	while (!isFoundTarget)
 	{
 		int curSkillIndex = MG_RND->getInt(ownSkill.size());
@@ -680,8 +665,6 @@ void CBattleSystem::StartEnemyTrun(int index)
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
 					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 
-
-
 					heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
 					DelayUntillNextTurn(5);
 					return;
@@ -690,7 +673,6 @@ void CBattleSystem::StartEnemyTrun(int index)
 		}
 	}
 }
-
 
 void CBattleSystem::ShowTargetBySkill(int index)
 {
@@ -718,7 +700,6 @@ void CBattleSystem::SwapPosSkill()
 		switch (curIndex)
 		{
 		case 0:
-
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
 				if (heroParty[i]->GetPartyPos() == 1)
@@ -728,8 +709,8 @@ void CBattleSystem::SwapPosSkill()
 				}
 			}
 			break;
-		case 1:
 
+		case 1:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
 				if (heroParty[i]->GetPartyPos() == 0)
@@ -747,10 +728,11 @@ void CBattleSystem::SwapPosSkill()
 				}
 			}
 			break;
+
 		case 2:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				if (heroParty[i]->GetPartyPos() ==1)
+				if (heroParty[i]->GetPartyPos() == 1)
 				{
 					heroParty[i]->isTargetHeal = true;
 					break;
@@ -765,6 +747,7 @@ void CBattleSystem::SwapPosSkill()
 				}
 			}
 			break;
+
 		case 3:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
@@ -775,10 +758,7 @@ void CBattleSystem::SwapPosSkill()
 				}
 			}
 			break;
-		default:
-			break;
 		}
-
 	}
 	
 	

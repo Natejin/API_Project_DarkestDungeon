@@ -102,8 +102,10 @@ void EmbarkPartySlot::Release()
 
 void EmbarkPartySlot::Enable()
 {
+	isActive = true;
 }
 
 void EmbarkPartySlot::Disable()
 {
+	isActive = false;
 }

@@ -156,7 +156,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::map, "images/panel/panel_map.bmp", 630, 325, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::map1, "images/panel/panel_map1.bmp", 630, 325, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 702, 368, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 630, 325, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel, "images/panel/characterpanel.bmp", 1395,776, true, RGB(255, 0, 255));

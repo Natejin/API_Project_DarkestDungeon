@@ -699,6 +699,12 @@
     <ClInclude Include="COwnHeroListPanel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ImageEffectBG.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemyInfoUI.h">
+      <Filter>System\Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1096,6 +1102,12 @@
     </ClCompile>
     <ClCompile Include="COwnHeroListPanel.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageEffectBG.cpp">
+      <Filter>System\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemyInfoUI.cpp">
+      <Filter>System\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

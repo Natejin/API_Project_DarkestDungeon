@@ -159,6 +159,7 @@
     <ClInclude Include="CBTN_Skill_Endturn.h" />
     <ClInclude Include="CBTN_Skill_Swap.h" />
     <ClInclude Include="CBuilding_PanelButton.h" />
+    <ClInclude Include="CEnemyInfoUI.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
     <ClInclude Include="COwnHeroListPanel.h" />
@@ -301,6 +302,7 @@
     <ClCompile Include="CBTN_Skill_Endturn.cpp" />
     <ClCompile Include="CBTN_Skill_Swap.cpp" />
     <ClCompile Include="CBuilding_PanelButton.cpp" />
+    <ClCompile Include="CEnemyInfoUI.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />
     <ClCompile Include="COwnHeroListPanel.cpp" />

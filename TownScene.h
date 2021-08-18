@@ -79,7 +79,7 @@ public:
 	//==================================
 public:
 	class Embark* m_embark;
-	bool isEmbark;
+	bool isTown;
 
 	void setEmbark();
 
