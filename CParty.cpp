@@ -264,9 +264,12 @@ void CParty::FormationMove()
 		substraction[i - 1] = abs(m_member[i - 1]->m_transform->m_pos.x - m_member[i]->m_transform->m_pos.x);
 	}
 
-	m_member[0]->Move();
+
 	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
 	bool vk_Right = MG_INPUT->isStayKeyDown(VK_RIGHT);
+
+
+	m_member[0]->Move();
 	for (size_t i = 1; i < m_member.size(); i++)
 	{
 
@@ -293,6 +296,7 @@ void CParty::FormationMove()
 			m_member[i]->Move();
 		}
 	}
+	
 }
 
 void CParty::setTorch(int torch)

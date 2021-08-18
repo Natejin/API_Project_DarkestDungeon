@@ -26,7 +26,7 @@ class CHero : public Unit
 
 	int weaponLvl;
 	int armorLvl;
-
+	bool noInput;
 public:
 	bool isTargetHeal;
 
