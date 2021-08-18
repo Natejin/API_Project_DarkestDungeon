@@ -94,6 +94,12 @@ enum class SKILL
 
 	//ENEMY
 	BoneDefender_Combat_1,
+	BoneCommon_Combat_1,
+	BoneCourtier_Combat_1,
+	BoneCourtier_Combat_2_goblet,
+	Necromancer_Combat_1,
+	Necromancer_Combat_2_back,
+
 
 };
 enum class Camp_Skill
@@ -195,6 +201,7 @@ enum class SOUND {
 	share_imp_magic_light,
 	share_imp_shield,
 	share_imp_sword,
+	share_imp_slime,
 	//UI
 	raid_success,
 	ui_dun_buttonroom,
@@ -248,13 +255,16 @@ enum class IMAGE
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
 	//skeleton_courtier
+	skeleton_courtier_combat,
 	skeleton_courtier_attack,
 	skeleton_courtier_attack_goblet,
 	skeleton_courtier_defend,
 	//skeleton_common
+	skeleton_common_combat,
 	skeleton_common_attack,
 	skeleton_common_defend,
 	//BOSS
+	necromancer_combat,
 	necromancer_attack,
 	necromancer_defend,
 	necromancer_retreat,
@@ -691,6 +701,9 @@ enum class RoadObjType
 
 enum class ENEMYTYPE {
 	BoneDefender,
+	BoneCommon,
+	BoneCourtier,
+	Necromancer,
 
 };
 
