@@ -30,7 +30,6 @@ protected:
 	class CSpriteRenderer* m_borderLine;
 
 public:
-
 	class TownScene* townScene;
 
 	CEst_UI();

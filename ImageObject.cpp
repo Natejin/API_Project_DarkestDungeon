@@ -17,7 +17,6 @@ HRESULT ImageObject::Init()
     coolTime = 3;
     AddSpriteRenderer(IMAGE::NONE);
 
-
 	hp1GUI = new CSpriteRenderer(IMAGE::NONE, m_transform);
     hp1GUI->useCustomPos = true;
 	hp10GUI = new CSpriteRenderer(IMAGE::NONE, m_transform);
@@ -33,12 +32,11 @@ void ImageObject::Update(float deltaTime, float worldTime)
     {
         m_transform->m_pos += Normalize * speed * 3;
     }
-    else if (distance > 10) {
+    else if (distance > 10) 
+    {
         m_transform->m_pos += Normalize * speed;
     }
-    else {
-    
-    }
+
     if (curTime < worldTime)
     {
         Disable();
