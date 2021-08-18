@@ -26,7 +26,7 @@ HRESULT CEnemy::Init(Info_Enemy* _info)
 	m_unitType = _info->unitType;
 	info = _info;
 
-	AddAnimator(_info->imageCorpse);
+	AddAnimator(_info->imageCombat);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageCorpse);
 

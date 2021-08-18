@@ -10,7 +10,7 @@ HRESULT Unit::Init()
 {
     targetPos = Vector2(0,0);
     movePosMode = false;;
-    movePosSpeed = 5;
+    movePosSpeed = 10;
     return S_OK;
 }
 

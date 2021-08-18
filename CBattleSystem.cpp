@@ -145,11 +145,11 @@ void CBattleSystem::BattleSystemInitiate()
 	monsterIndicator->Enable();
 	scene->m_dungeonMode = DUNGEONMODE::BATTLE;
 	curTurn = 1;
-	isActive = true;
 	monsterIndicator->m_transform->m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
 	scene->DeactivateSound();
 	MG_SOUND->play(SOUND::Combat, 0.1f);
+	isBattle = true;
 	Enable();
 }
 
@@ -175,6 +175,7 @@ void CBattleSystem::BattleSystemEnd()
 	scene->m_dungeonUIinfo->setButton();
 	MG_SOUND->stop(SOUND::Combat);
 	scene->ActivateSound();
+	isBattle = false;
 	Disable();
 }
 
@@ -185,7 +186,11 @@ void CBattleSystem::StartTurn()
 	{
 		Compare_P_E_Speed_ReArray();
 		curTurn++;
-		StartTurn();
+		if (isBattle)
+		{
+			StartTurn();
+		}
+
 	}
 	else {
 		if (speedVec.size() > 0)
@@ -363,20 +368,21 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 	bool isAllDead = true;
 	for (int i = 0; i < heroParty.size(); i++)
 	{
-		if (heroParty[i]->getHP() < 1) continue;
+		if (!heroParty[i]->GetAlive()) continue;
 		isAllDead = false;
 		speedVec.push_back(make_pair(heroParty[i]->GetSpeed() + MG_RND->getInt(randomDice6) , heroParty[i]));
 	}
 	if (isAllDead)
 	{
 		HeroTeamAreDead();
+		return;
 	}
 	isAllDead = true;
 
 	//������ speed turn�� �߰�
 	for (int i = 0; i < enemyParty.size(); i++)
 	{
-		if (enemyParty[i]->getHP() < 1) continue;
+		if (!enemyParty[i]->GetAlive()) continue;
 		isAllDead = false;
 		speedVec.push_back(make_pair(enemyParty[i]->GetSpeed() + MG_RND->getInt(randomDice6), enemyParty[i]));
 	}
@@ -384,6 +390,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 	if (isAllDead)
 	{
 		EnemyTeamAreDead();
+		return;
 	}
 
 	//�˰������� �̿��� ����

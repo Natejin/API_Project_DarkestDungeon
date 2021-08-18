@@ -32,7 +32,7 @@ void CAnimator::FrameRender(HDC _hdc)
 				curFrameX++;
 			}
 
-			m_curAnimeFrame = 1;
+			m_curAnimeFrame = 0;
 		}
 		m_curAnimeFrame++;
 		m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
@@ -44,7 +44,6 @@ void CAnimator::SetIndex(int index)
 {
 	curImageIndex = index;
 	auto a = m_imageVec[curImageIndex];
-	curFrameX = 0;
 }
 
 void CAnimator::AddImageFrame(string imageName)
