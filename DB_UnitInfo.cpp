@@ -366,6 +366,75 @@ void DB_UnitInfo::SetEnemy()
 	info->portrait = IMAGE::Crusader_portrait;
 	enemyDB.insert(make_pair(info->enemyType, info));
 	MG_INFO->RegisterInfo(info);
+	//common
+	info = new Info_Enemy();
+	info->unitType = UNITTYPE::Enemy;
+	info->m_maxHP = 10;
+	info->m_SPD = 2;
+	info->isAffliction = false;
+	info->isAlive = true;
+
+	info->enemyType = ENEMYTYPE::BoneDefender;
+	info->m_DMG = 3;
+	info->m_ACRY = 9;
+	info->m_CRI = 0;
+	info->m_DEF = 3;
+	info->m_DODGE = 0;
+
+	info->imageIdle = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageCombat = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageWalk = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageAttack = IMAGE::skeleton_common_attack;
+	info->imageCharge = IMAGE::skeleton_common_attack;
+	info->imageDefend = IMAGE::skeleton_common_defend;
+	info->imageBuff = IMAGE::skeleton_common_defend;
+	info->imageDebuff = IMAGE::skeleton_common_defend;
+	//stun, blight, bleed, debuff, move
+	info->resist[0] = 25;
+	info->resist[1] = 10;
+	info->resist[2] = 200;
+	info->resist[3] = 15;
+	info->resist[4] = 20;
+	info->ownSkill.push_back(SKILL::BoneCommon_Combat_1);
+	info->skillLvl.push_back(0);
+	info->portrait = IMAGE::Crusader_portrait;
+	enemyDB.insert(make_pair(info->enemyType, info));
+	MG_INFO->RegisterInfo(info);
+
+	//Courtier
+	info = new Info_Enemy();
+	info->unitType = UNITTYPE::Enemy;
+	info->m_maxHP = 10;
+	info->m_SPD = 8;
+	info->isAffliction = false;
+	info->isAlive = true;
+
+	info->enemyType = ENEMYTYPE::BoneDefender;
+	info->m_DMG = 1;
+	info->m_ACRY = 9;
+	info->m_CRI = 0;
+	info->m_DEF = 2;
+	info->m_DODGE = 0;
+
+	info->imageIdle = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageCombat = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageWalk = IMAGE::Enemy_SkeletonDefender_Idle;
+	info->imageAttack = IMAGE::skeleton_common_attack;
+	info->imageCharge = IMAGE::skeleton_common_attack;
+	info->imageDefend = IMAGE::skeleton_common_defend;
+	info->imageBuff = IMAGE::skeleton_common_defend;
+	info->imageDebuff = IMAGE::skeleton_common_defend;
+	//stun, blight, bleed, debuff, move
+	info->resist[0] = 10;
+	info->resist[1] = 10;
+	info->resist[2] = 200;
+	info->resist[3] = 15;
+	info->resist[4] = 10;
+	info->ownSkill.push_back(SKILL::BoneCourtier_Combat_1);
+	info->skillLvl.push_back(0);
+	info->portrait = IMAGE::Crusader_portrait;
+	enemyDB.insert(make_pair(info->enemyType, info));
+	MG_INFO->RegisterInfo(info);
 }
 
 

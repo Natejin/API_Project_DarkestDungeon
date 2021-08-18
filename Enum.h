@@ -94,6 +94,8 @@ enum class SKILL
 
 	//ENEMY
 	BoneDefender_Combat_1,
+	BoneCommon_Combat_1,
+	BoneCourtier_Combat_1,
 
 };
 enum class Camp_Skill
