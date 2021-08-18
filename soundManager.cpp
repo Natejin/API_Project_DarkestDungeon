@@ -288,4 +288,15 @@ void soundManager::SetSound()
 	addSound(SOUND::party_foot_dirt_04, "sound/SoundEffect/Footstep/party_foot_dirt_04.wav");
 	addSound(SOUND::party_foot_dirt_05, "sound/SoundEffect/Footstep/party_foot_dirt_05.wav");
 	addSound(SOUND::party_foot_dirt_06, "sound/SoundEffect/Footstep/party_foot_dirt_06.wav");
+	//TownUI
+	addSound(SOUND::town_enter_abbey, "sound/SoundEffect/Town/town_enter_abbey.wav");
+	addSound(SOUND::town_enter_blacksmith, "sound/SoundEffect/Town/town_enter_blacksmith.wav");
+	addSound(SOUND::town_enter_coach, "sound/SoundEffect/Town/town_enter_coach.wav");
+	addSound(SOUND::town_enter_graveyard, "sound/SoundEffect/Town/town_enter_graveyard.wav");
+	addSound(SOUND::town_enter_guild, "sound/SoundEffect/Town/town_enter_guild.wav");
+	addSound(SOUND::town_enter_sanitarium, "sound/SoundEffect/Town/town_enter_sanitarium.wav");
+	addSound(SOUND::town_enter_tavern, "sound/SoundEffect/Town/town_enter_tavern.wav");
+	//Town_Mouse
+	addSound(SOUND::Town_quick, "sound/SoundEffect/Town/Town_quick.wav");
+
 }

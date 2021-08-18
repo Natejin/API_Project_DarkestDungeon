@@ -200,7 +200,7 @@ void CDB_Skill::SetHeroSkill()
 	info->job = JOB::Vestal;
 	info->m_skill = SKILL::Vestal_Combat_Judgement;
 	info->m_skillIcon = IMAGE::Vestal_Skill_Judgement;
-	info->m_skillMotion = IMAGE::Vestal_miracle;
+	info->m_skillMotion = IMAGE::Vestal_lectionary;
 	info->sound = SOUND::vst_judgement;
 	info->damage[0] = -25.f;
 	info->damage[1] = -25.f;
@@ -234,7 +234,7 @@ void CDB_Skill::SetHeroSkill()
 	info->m_skillIcon = IMAGE::Vestal_Skill_DazzlingLight;
 	info->m_skillMotion = IMAGE::Vestal_lectionary;
 	info->effect = EFFECTTYPE::Stun;
-	info->sound = SOUND::vst_dazzlinglight;
+	info->sound = SOUND::vst_judgement;
 	info->damage[0] = -75.f;
 	info->damage[1] = -75.f;
 	info->damage[2] = -75.f;

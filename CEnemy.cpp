@@ -21,6 +21,7 @@ CEnemy::~CEnemy() {}
 
 HRESULT CEnemy::Init(Info_Enemy* _info)
 {
+	Unit::Init();
 	canTriggerDown = false;
 	m_unitType = _info->unitType;
 	info = _info;
@@ -110,6 +111,7 @@ bool CEnemy::reduceHP(int hp)
 		info->isAlive = false;
 		info->isCorpse = true;
 		m_animator->SetIndex(1);
+		m_animator->ResetAnimation();
 		return false;
 	}
 }
