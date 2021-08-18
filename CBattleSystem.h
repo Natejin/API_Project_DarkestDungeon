@@ -5,6 +5,7 @@ class Unit;
 class CEnemyInfoUI;
 class CBattleSystem : public GameObject
 {
+public:
 	struct TurnSpeedOfUnit {
 		Unit* unit;
 		int turnSpeed;
@@ -34,14 +35,12 @@ class CBattleSystem : public GameObject
 	class CHero* curHero;
 	class CEnemy* curEnemy;
 
-
 	int currentSkill;
 
 	class ImageObject* heroZoomImage;
 	class ImageObject* enemyZoomImage;
 	class ImageEffectBG* effectBGImage;
 	class MonsterIndicator* monsterIndicator;
-
 
 	float startTriggerTime;
 	float soundEffectVolume = 0.5f;

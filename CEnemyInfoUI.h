@@ -1,11 +1,15 @@
 #pragma once
 
 class CEnemy;
+class CBattleSystem;
 class CEnemyInfoUI : public GameObject
 {
 public:
 	CSpriteRenderer* m_enemyInfoPanel;
 	int enemyIndex;
+
+	CBattleSystem* m_battleSys;
+	CEnemy* temp;
 
 public:
 	CEnemyInfoUI();
@@ -25,9 +29,11 @@ public:
 	//==================================
 
 	void setUIIMG();
-	int isMouseOnEnemy();
+	void isMouseOnEnemy();
 
-	void showEnemyInfo();
+	void showEnemyInfo(HDC _hdc);
 
+	virtual void Disable();
+	virtual void Enable();
 
 };
