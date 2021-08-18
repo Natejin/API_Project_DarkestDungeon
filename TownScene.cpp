@@ -357,7 +357,7 @@ void TownScene::SetHerolist()
 	{
 		CHeroList_button* dragButton = new CHeroList_button();
 		dragButton->Init();
-		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 570, WINSIZEY - 855 + i * 100);
+		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 620, WINSIZEY - 855 + i * 100);
 		dragButton->AddColliderBox(50, 50);
 		//dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);

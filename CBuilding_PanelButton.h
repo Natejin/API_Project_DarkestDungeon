@@ -27,4 +27,5 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 	void PressCheckButton();
+	virtual void Disable();
 };
