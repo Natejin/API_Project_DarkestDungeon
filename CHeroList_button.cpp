@@ -49,6 +49,7 @@ void CHeroList_button::Update(float deltaTime, float worldTime)
 				if (canTriggerDownRightButton)
 				{
 					townScene->curDragHeroIndex = m_index;
+					townScene->m_hero_panel->curHeroListType = btType;
 					m_triggerWhenDownRightButton();
 				}
 			}

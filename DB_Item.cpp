@@ -27,7 +27,7 @@ void CDB_Item::Init()
 
 	info = new CInfo_Item();
 	info->m_name = "food";
-	info->m_description = "+20 brightness";
+	info->m_description = "+1~3 Hp";
 	info->m_item = ITEM::Food;
 	info->maxCount = 12;
 	info->isStockable = true;
