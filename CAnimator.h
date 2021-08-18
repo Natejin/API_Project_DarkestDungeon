@@ -51,4 +51,6 @@ public:
 	class Image* GetCurImage();
 	Vector2 GetFrameSize();
 
+	void SetCurFrameX(int x);
+
 };

@@ -75,3 +75,8 @@ Vector2 CAnimator::GetFrameSize()
 {
 	return m_imageSize[curImageIndex];
 }
+
+void CAnimator::SetCurFrameX(int x)
+{
+	curFrameX = x;
+}

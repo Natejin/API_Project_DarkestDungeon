@@ -111,6 +111,7 @@ bool CEnemy::reduceHP(int hp)
 		info->isAlive = false;
 		info->isCorpse = true;
 		m_animator->SetIndex(1);
+		m_animator->ResetAnimation();
 		return false;
 	}
 }
