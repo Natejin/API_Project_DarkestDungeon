@@ -67,7 +67,7 @@ void CDB_Skill::SetHeroSkill()
 	info->job = JOB::Crusader;
 	info->m_skill = SKILL::Crusader_Combat_ZealousAccusation;
 	info->m_skillIcon = IMAGE::Crusader_Skill_ZealousAccusation;
-	info->m_skillMotion = IMAGE::Crusader_charge;
+	info->m_skillMotion = IMAGE::Crusader_scroll;
 	info->sound = SOUND::Cru_ScrollAttack;
 	info->damage[0] = -40.f;
 	info->damage[1] = -40.f;
@@ -99,7 +99,7 @@ void CDB_Skill::SetHeroSkill()
 	info->job = JOB::Crusader;
 	info->m_skill = SKILL::Crusader_Combat_StunningBlow;
 	info->m_skillIcon = IMAGE::Crusader_Skill_StunningBlow;
-	info->m_skillMotion = IMAGE::Crusader_scroll;
+	info->m_skillMotion = IMAGE::Crusader_sword;
 	info->effect = EFFECTTYPE::Stun;
 	info->sound = SOUND::Cru_stunningblow;
 	info->damage[0] = -50.f;
@@ -151,6 +151,8 @@ void CDB_Skill::SetHeroSkill()
 	info->healMax[4] = 5;
 	skillDB.insert(make_pair(SKILL::Crusader_Heal_BattleHeal, info));
 	MG_INFO->RegisterInfo(info);
+
+
 #pragma endregion
 
 #pragma region Vestal
@@ -592,7 +594,6 @@ void CDB_Skill::SetHeroSkill()
 
 void CDB_Skill::SetEnemySkill()
 {
-
 	CInfo_Skill* info = new CInfo_Skill();
 	info->m_name = "BoneDefender Skill 1";
 	info->m_description = "";
@@ -623,6 +624,166 @@ void CDB_Skill::SetEnemySkill()
 	info->critMod[3] = 3.f;
 	info->critMod[4] = 4.f;
 	skillDB.insert(make_pair(SKILL::BoneDefender_Combat_1, info));
+	MG_INFO->RegisterInfo(info);
+	//Common
+	info = new CInfo_Skill();
+	info->m_name = "BoneCommon Skill 1";
+	info->m_description = "";
+	info->m_ID = id++;
+	info->skillLevel = 0;
+	info->targetPos = 7;
+	info->allowUseSkillPos = 7;
+	info->target = SKILLTARGET::Enemy;
+	info->m_skillImageType = SKILLIMAGETYPE::Attack;
+	info->enemyType = ENEMYTYPE::BoneCommon;
+	info->m_skill = SKILL::BoneCommon_Combat_1;
+	info->m_skillIcon = IMAGE::skeleton_common_attack;
+	info->m_skillMotion = IMAGE::skeleton_common_attack;
+	info->sound = SOUND::share_imp_sword;
+	info->damage[0] = 3.f;
+	info->damage[1] = 4.f;
+	info->damage[2] = 5.f;
+	info->damage[3] = 6.f;
+	info->damage[4] = 7.f;
+	info->accuracy[0] = 82.5;
+	info->accuracy[1] = 82.5;
+	info->accuracy[2] = 82.5;
+	info->accuracy[3] = 82.5;
+	info->accuracy[4] = 82.5;
+	info->critMod[0] = 6.f;
+	info->critMod[1] = 6.f;
+	info->critMod[2] = 6.f;
+	info->critMod[3] = 6.f;
+	info->critMod[4] = 6.f;
+	skillDB.insert(make_pair(SKILL::BoneCommon_Combat_1, info));
+	MG_INFO->RegisterInfo(info);
+	//courtier
+	info = new CInfo_Skill();
+	info->m_name = "BoneCourtier Skill 1";
+	info->m_description = "";
+	info->m_ID = id++;
+	info->skillLevel = 0;
+	info->targetPos = 3;
+	info->allowUseSkillPos = 3;
+	info->target = SKILLTARGET::Enemy;
+	info->m_skillImageType = SKILLIMAGETYPE::Attack;
+	info->enemyType = ENEMYTYPE::BoneCourtier;
+	info->m_skill = SKILL::BoneCourtier_Combat_1;
+	info->m_skillIcon = IMAGE::skeleton_courtier_attack;
+	info->m_skillMotion = IMAGE::skeleton_courtier_attack;
+	info->sound = SOUND::share_imp_sword;
+	info->damage[0] = 2.f;
+	info->damage[1] = 2.f;
+	info->damage[2] = 3.f;
+	info->damage[3] = 3.f;
+	info->damage[4] = 4.f;
+	info->accuracy[0] = 62.5;
+	info->accuracy[1] = 62.5;
+	info->accuracy[2] = 62.5;
+	info->accuracy[3] = 62.5;
+	info->accuracy[4] = 62.5;
+	info->critMod[0] = 6.f;
+	info->critMod[1] = 6.f;
+	info->critMod[2] = 6.f;
+	info->critMod[3] = 6.f;
+	info->critMod[4] = 6.f;
+	skillDB.insert(make_pair(SKILL::BoneCourtier_Combat_1, info));
+	MG_INFO->RegisterInfo(info);
+
+	info = new CInfo_Skill();
+	info->m_name = "BoneCourtier Skill 2_goblet";
+	info->m_description = "";
+	info->m_ID = id++;
+	info->skillLevel = 0;
+	info->targetPos = 15;
+	info->allowUseSkillPos = 14;
+	info->target = SKILLTARGET::Enemy;
+	info->m_skillImageType = SKILLIMAGETYPE::Charge;
+	info->enemyType = ENEMYTYPE::BoneCourtier;
+	info->m_skill = SKILL::BoneCourtier_Combat_2_goblet;
+	info->m_skillIcon = IMAGE::skeleton_courtier_attack_goblet;
+	info->m_skillMotion = IMAGE::skeleton_courtier_attack_goblet;
+	info->sound = SOUND::share_imp_slime;
+	info->damage[0] = 2.f;
+	info->damage[1] = 2.f;
+	info->damage[2] = 3.f;
+	info->damage[3] = 3.f;
+	info->damage[4] = 4.f;
+	info->accuracy[0] = 92.5;
+	info->accuracy[1] = 92.5;
+	info->accuracy[2] = 92.5;
+	info->accuracy[3] = 92.5;
+	info->accuracy[4] = 92.5;
+	info->critMod[0] = 0.f;
+	info->critMod[1] = 0.f;
+	info->critMod[2] = 0.f;
+	info->critMod[3] = 0.f;
+	info->critMod[4] = 0.f;
+	skillDB.insert(make_pair(SKILL::BoneCourtier_Combat_2_goblet, info));
+	MG_INFO->RegisterInfo(info);
+	//Necromancer
+	info = new CInfo_Skill();
+	info->m_name = "Necromancer Skill1_";
+	info->m_description = "";
+	info->m_ID = id++;
+	info->skillLevel = 0;
+	info->targetPos = 3;
+	info->allowUseSkillPos = 3;
+	info->target = SKILLTARGET::Enemy;
+	info->m_skillImageType = SKILLIMAGETYPE::Attack;
+	info->enemyType = ENEMYTYPE::Necromancer;
+	info->m_skill = SKILL::Necromancer_Combat_1;
+	info->m_skillIcon = IMAGE::necromancer_attack;
+	info->m_skillMotion = IMAGE::necromancer_attack;
+	info->sound = SOUND::status_bleed_onset;
+	info->damage[0] = 4.f;
+	info->damage[1] = 5.f;
+	info->damage[2] = 6.f;
+	info->damage[3] = 7.f;
+	info->damage[4] = 8.f;
+	info->accuracy[0] = 102.5;
+	info->accuracy[1] = 102.5;
+	info->accuracy[2] = 102.5;
+	info->accuracy[3] = 102.5;
+	info->accuracy[4] = 102.5;
+	info->critMod[0] = 6.f;
+	info->critMod[1] = 6.f;
+	info->critMod[2] = 6.f;
+	info->critMod[3] = 6.f;
+	info->critMod[4] = 6.f;
+	skillDB.insert(make_pair(SKILL::Necromancer_Combat_1, info));
+	MG_INFO->RegisterInfo(info);
+
+	info = new CInfo_Skill();
+	info->m_name = "Necromancer Skill2_back";
+	info->m_description = "";
+	info->m_ID = id++;
+	info->skillLevel = 0;
+	info->targetPos = 15;
+	info->allowUseSkillPos = 6;
+	info->target = SKILLTARGET::Enemy;
+	info->m_skillImageType = SKILLIMAGETYPE::Charge;
+	info->enemyType = ENEMYTYPE::Necromancer;
+	info->m_skill = SKILL::Necromancer_Combat_2_back;
+	info->m_skillIcon = IMAGE::necromancer_retreat;
+	info->m_skillMotion = IMAGE::necromancer_retreat;
+	info->sound = SOUND::status_bleed_onset;
+	info->damage[0] = 3.f;
+	info->damage[1] = 3.f;
+	info->damage[2] = 4.f;
+	info->damage[3] = 4.f;
+	info->damage[4] = 5.f;
+	info->accuracy[0] = 102.5;
+	info->accuracy[1] = 102.5;
+	info->accuracy[2] = 102.5;
+	info->accuracy[3] = 102.5;
+	info->accuracy[4] = 102.5;
+	info->critMod[0] = 6.f;
+	info->critMod[1] = 6.f;
+	info->critMod[2] = 6.f;
+	info->critMod[3] = 6.f;
+	info->critMod[4] = 6.f;
+	skillDB.insert(make_pair(SKILL::Necromancer_Combat_2_back, info));
 	MG_INFO->RegisterInfo(info);
 }
 

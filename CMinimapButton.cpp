@@ -13,7 +13,6 @@ CMinimapButton::~CMinimapButton()
 
 HRESULT CMinimapButton::Init()
 {
-	reachable = false;
 	isIncreasing = false;
 	speed = 0.05;
 	return S_OK;
@@ -21,9 +20,7 @@ HRESULT CMinimapButton::Init()
 
 void CMinimapButton::Update(float deltaTime, float worldTime)
 {
-
-
-	if (reachable)
+	if (dungeonData.reachable)
 	{
 		if (isIncreasing)
 		{
@@ -46,8 +43,16 @@ void CMinimapButton::Update(float deltaTime, float worldTime)
 			}
 		}
 
-
-		
+		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+		{
+			if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+			{
+				if (m_pMapSystem)
+				{
+					m_pMapSystem->UseClickToMoveCurPoint(dungeonData);
+				}
+			}
+		}
 	}
 	else {
 		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))

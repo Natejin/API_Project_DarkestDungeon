@@ -17,12 +17,12 @@ class CBattleSystem : public GameObject
 	};
 
 	TURN turn;
-
+	Vector2 originPosOfBattle;
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
 	queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
-
+	float delayTriggerEffect = 3;
 
 	int randomDice6 = 6;
 	int randomDice100 = 100;
@@ -44,6 +44,7 @@ class CBattleSystem : public GameObject
 
 
 	float startTriggerTime;
+	float soundEffectVolume = 0.5f;
 	bool startNextTurn;
 	vector< Vector2> targetEnemyPosVec;
 	
@@ -102,12 +103,14 @@ private:
 	void SetEnemyIndicator(int index);
 	void SelectEnemyTarget(SKILL skill);
 
+	void SetPosition();
+
 	CHero* GetHero(int i);
 	void StartHeroTrun(int index);
 
 	void StartEnemyTrun(int index);
 
-	void SetEffectImage(float startPos, float targetPos, float speed);
+	void SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed);
 	void ShowTargetBySkill(int index);
 
 	void HeroTeamAreDead();
@@ -116,5 +119,6 @@ private:
 private:
 	void CreateEnemyParty();
 	void CreateHeroesParty();
+
 	void Compare_P_E_Speed_ReArray();
 };

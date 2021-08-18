@@ -94,11 +94,39 @@ enum class SKILL
 
 	//ENEMY
 	BoneDefender_Combat_1,
+	BoneCommon_Combat_1,
+	BoneCourtier_Combat_1,
+	BoneCourtier_Combat_2_goblet,
+	Necromancer_Combat_1,
+	Necromancer_Combat_2_back,
+
 
 };
-enum class Camp_Skill
-{
-	
+enum class CAMP_SKILL
+{	//Common
+	camp_skill_bandage,
+	camp_skill_encourage,
+	camp_skill_pep_talk,
+	//Crusader
+	camp_skill_stand_tall,
+	camp_skill_unshakeable_leader,
+	camp_skill_zealous_speech,
+	camp_skill_zealous_vigil,
+	//Highwayman
+	camp_skill_clean_guns,
+	camp_skill_gallows_humor,
+	camp_skill_perimeter_alarms,
+	camp_skill_uncatchable,
+	//Plague_doctor
+	camp_skill_experimental_vapours,
+	camp_skill_leeches,
+	camp_skill_preventative_medicine,
+	camp_skill_self_medicate,
+	//Vestal
+	camp_skill_bless,
+	camp_skill_chant,
+	camp_skill_pray,
+	camp_skill_sanctuary
 };
 enum class ITEM
 {
@@ -135,6 +163,7 @@ enum class SOUND {
 	//BGM
 	Town,
 	Combat,
+	BOSS_Combat,
 	Ruins_dark,
 	Ruins_base,
 
@@ -195,6 +224,7 @@ enum class SOUND {
 	share_imp_magic_light,
 	share_imp_shield,
 	share_imp_sword,
+	share_imp_slime,
 	//UI
 	raid_success,
 	ui_dun_buttonroom,
@@ -248,13 +278,16 @@ enum class IMAGE
 	Enemy_SkeletonDefender_Defender,
 	Enemy_SkeletonDefender_Shield,
 	//skeleton_courtier
+	skeleton_courtier_combat,
 	skeleton_courtier_attack,
 	skeleton_courtier_attack_goblet,
 	skeleton_courtier_defend,
 	//skeleton_common
+	skeleton_common_combat,
 	skeleton_common_attack,
 	skeleton_common_defend,
 	//BOSS
+	necromancer_combat,
 	necromancer_attack,
 	necromancer_defend,
 	necromancer_retreat,
@@ -588,7 +621,12 @@ enum class IMAGE
 	BattleBG_darkestdungeon_wall1,
 	BattleBG_darkestdungeon_wall2,
 	BattleBG_town_invasion,
-	BattleBG_trinket_retention
+	BattleBG_trinket_retention,
+	//Number
+	NumberBlack,
+	NumberGreen,
+	NumberRed
+
 };
 
 enum class Resistance
@@ -685,11 +723,15 @@ enum class RoadObjType
 	Empty,
 	Trap,
 	Treasure,
-	Enemy
+	Enemy,
+	Boss
 };
 
 enum class ENEMYTYPE {
 	BoneDefender,
+	BoneCommon,
+	BoneCourtier,
+	Necromancer,
 
 };
 

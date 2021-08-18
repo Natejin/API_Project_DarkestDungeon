@@ -8,6 +8,7 @@ public:
 	int m_maxHP;
 	int m_SPD;
 	bool isAlive;
+	bool isCollipse;
 	bool isAffliction;
 
 	int m_DMG; //skill에서 값 넣어주기
@@ -34,13 +35,13 @@ public:
 	IMAGE imageCharge;
 	IMAGE imageBuff;
 	IMAGE imageDebuff;
+	IMAGE imageCorpse;
 
 	IMAGE portrait;
 
 	vector<int> skillLvl;
 	vector<SKILL> ownSkill;
-
-	
+	vector<CAMP_SKILL> ownCamp_Skill;
 	
 	virtual void Release();
 };

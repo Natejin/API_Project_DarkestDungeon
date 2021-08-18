@@ -94,6 +94,12 @@ public:
 	void render(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos);
 	void render(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos, Vector2 customSize);
 
+	void AlphaRender(HDC hdc, const class CTransform* transform, BYTE alpha);
+	void AlphaRenderUI(HDC hdc, const class CTransform* transform, BYTE alpha);
+	/*void AlphaRender(HDC hdc, const CTransform* transform, Vector2 scale, BYTE alpha);
+	void AlphaRender(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos, BYTE alpha);
+	void AlphaRender(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos, Vector2 customSize, BYTE alpha);*/
+
 	void renderUI(HDC hdc, const class CTransform* transform);
 	void renderUI(HDC hdc, const class CTransform* transform, Vector2 customPos);
 	void renderUI(HDC hdc, const class CTransform* transform, Vector2 customPos, Vector2 customSize);

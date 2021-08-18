@@ -28,8 +28,7 @@ DungeonScene::~DungeonScene() {}
 HRESULT DungeonScene::Init()
 {
 	MG_SOUND->stop(SOUND::Town);
-	MG_SOUND->play(SOUND::Ruins_base);
-	MG_SOUND->play(SOUND::Ruins_dark);
+	ActivateSound();
 
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
@@ -363,6 +362,18 @@ void DungeonScene::ActivateRoad()
 	}
 }
 
+void DungeonScene::ActivateSound()
+{
+	MG_SOUND->play(SOUND::Ruins_base);
+	MG_SOUND->play(SOUND::Ruins_dark);
+}
+
+void DungeonScene::DeactivateSound()
+{
+	MG_SOUND->stop(SOUND::Ruins_base);
+	MG_SOUND->stop(SOUND::Ruins_dark);
+}
+
 void DungeonScene::SetRoadObject(int i)
 {
 	DungeonData dungeonData = m_pMapSystem->GetCurDungeonData(i);
@@ -448,6 +459,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
 
+
 	sprintf_s(str, "<dungeonInfo>");
 	TextOut(_hdc, 0, 80, str, strlen(str));
 
@@ -457,8 +469,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
 
-	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
-	TextOut(_hdc, 0, 180, str, strlen(str));
+
 
 	switch (curDunheonMap.dungeonMapState)
 	{

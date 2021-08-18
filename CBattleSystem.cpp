@@ -55,20 +55,6 @@ HRESULT CBattleSystem::Init()
 	return S_OK;
 }
 
-void CBattleSystem::SetZoomImage()
-{
-	enemyZoomImage = new ImageObject();
-	enemyZoomImage->originPos = Vector2(1100, 800);
-	enemyZoomImage->speed =10;
-	enemyZoomImage->Init();
-	MG_GMOBJ->RegisterObj(enemyZoomImage);
-
-	heroZoomImage = new ImageObject();
-	heroZoomImage->originPos = Vector2(600, 800);
-	heroZoomImage->speed = 10;
-	heroZoomImage->Init();
-	MG_GMOBJ->RegisterObj(heroZoomImage);
-}
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
@@ -116,7 +102,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 	{
 		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
 		{
-			sprintf_s(str, "¿µ¿õ : À§Ä¡ % d, ¼Óµµ : % d, Ã¼·Â : %d/ %d", 
+			sprintf_s(str, "ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Ä¡ % d, ï¿½Óµï¿½ : % d, Ã¼ï¿½ï¿½ : %d/ %d", 
 				speedVec[i].second->GetPartyIndex(), 
 				speedVec[i].first,
 				speedVec[i].second->getHP(),
@@ -124,7 +110,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
 		}
 		else {
-			sprintf_s(str, "Àû : À§Ä¡ %d, ¼Óµµ : %d Ã¼·Â : %d/ %d", 
+			sprintf_s(str, "ï¿½ï¿½ : ï¿½ï¿½Ä¡ %d, ï¿½Óµï¿½ : %d Ã¼ï¿½ï¿½ : %d/ %d", 
 				speedVec[i].second->GetPartyIndex(), 
 				speedVec[i].first, 
 				speedVec[i].second->getHP(),
@@ -151,6 +137,8 @@ void CBattleSystem::BattleSystemInitiate()
 	isActive = true;
 	monsterIndicator->m_transform->m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
+	scene->DeactivateSound();
+	MG_SOUND->play(SOUND::Combat, 0.1f);
 	Enable();
 }
 
@@ -173,6 +161,8 @@ void CBattleSystem::BattleSystemEnd()
 	enemyParty.clear();
 	speedVec.clear();
 	scene->m_dungeonUIinfo->setButton();
+	MG_SOUND->stop(SOUND::Combat);
+	scene->ActivateSound();
 	Disable();
 }
 
@@ -273,7 +263,7 @@ void CBattleSystem::UseSkill(int _index)
 				break;
 			case SKILLTARGET::Self:
 				//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
-				//Á¹·Á ¤µ¤².....
+				//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.....
 				break;
 			case SKILLTARGET::Ally:
 				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
@@ -293,11 +283,11 @@ void CBattleSystem::CreateEnemyParty()
 	int random = MG_RND->getInt(3) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = heroParty[0]->m_transform->m_pos;
+	originPosOfBattle = heroParty[0]->m_transform->m_pos;
 	for (size_t i = 0; i < 4; i++)
 	{
 		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::BoneDefender)); //TODO ÃßÈÄ Àû ¼¼ÆÃ º¯°æÇÏ±â
+		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		enemy->m_transform->m_pivot = Vector2(0.5, 1);
 		enemy->SetPartyPos(i);
 		enemy->SetPartyIndex(i);
@@ -306,12 +296,11 @@ void CBattleSystem::CreateEnemyParty()
 
 		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 		{
-			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, heroPos.y);
+			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 200 + 200 * i, originPosOfBattle.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
-		else 
-		{
-			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, heroPos.y);
+		else {
+			enemy->m_transform->m_pos = Vector2(cameraPos.x + 200 + 200 * i, originPosOfBattle.y);
 			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 		}
 		enemy->targetPos = enemy->m_transform->m_pos;
@@ -326,7 +315,7 @@ void CBattleSystem::CreateHeroesParty()
 	int playerPartySize = MG_GAME->GetHeroPartySize();
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
+	//Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	int k = 0;
 	for (int i = 0; i < playerPartySize; i++, k++)
 	{
@@ -337,11 +326,10 @@ void CBattleSystem::CreateHeroesParty()
 			heroParty[k]->SetPartyIndex(k);
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
-				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, heroPos.y);
+				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, originPosOfBattle.y);
 			}
-			else 
-			{
-				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
+			else {
+				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 200 - 200 * k, originPosOfBattle.y);
 			}
 
 			heroParty[k]->m_animator->SetIndex(2);
@@ -358,7 +346,7 @@ void CBattleSystem::CreateHeroesParty()
 
 void CBattleSystem::Compare_P_E_Speed_ReArray()
 {	
-	//ÇÃ·¹ÀÌ¾î ¿µ¿õµéÀ» speed turn¿¡ 
+	//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ speed turnï¿½ï¿½ 
 	bool isAllDead = true;
 	for (int i = 0; i < heroParty.size(); i++)
 	{
@@ -372,7 +360,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 	}
 	isAllDead = true;
 
-	//ÀûµéÀ» speed turn¿¡ Ãß°¡
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ speed turnï¿½ï¿½ ï¿½ß°ï¿½
 	for (int i = 0; i < enemyParty.size(); i++)
 	{
 		if (enemyParty[i]->getHP() < 1) continue;
@@ -385,7 +373,7 @@ void CBattleSystem::Compare_P_E_Speed_ReArray()
 		EnemyTeamAreDead();
 	}
 
-	//¾Ë°í¸®ÁòÀ» ÀÌ¿ëÇÑ Á¤·Ä
+	//ï¿½Ë°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	sort(speedVec.begin(), speedVec.end());
 }
 
@@ -423,12 +411,31 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
-		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 5);
+		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
+		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 3);
 		SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
-		SetEffectImage(0, -400, 10);
+		SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 
-		enemyParty[index]->reduceHP(tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo()));
-		DelayUntillNextTurn(5);
+		if (enemyParty[index]->GetAlive())
+		{
+			int damage = tempSkill->GetDamage(MG_GAME->m_CurSelHero->GetInfo(), enemyParty[index]->GetInfo());
+			//È¸ï¿½ï¿½ï¿½ï¿½
+			if (damage <= -1)
+			{
+
+			}
+			else {
+				enemyParty[index]->reduceHP(damage);
+			}
+		}
+		//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else {
+
+
+		}
+		
+
+		DelayUntillNextTurn(delayTriggerEffect);
 		return true;
 	}
 	return false;
@@ -484,26 +491,28 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(index))
 	{
+		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
 		enemyParty[index]->increaseHP(tempSkill->GetHeal());
-		DelayUntillNextTurn(3);
+		DelayUntillNextTurn(delayTriggerEffect);
+		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
+
 	}
 }
 
 void CBattleSystem::SetZoomImage(ImageObject* zoomImage, IMAGE skillMotion, float distance, float speed)
 {
 	zoomImage->m_spriteRenderer->SetImage(skillMotion);
-	zoomImage->targetPos = heroZoomImage->originPos;
+	zoomImage->targetPos = zoomImage->originPos;
 	zoomImage->targetPos.x += distance;
 	zoomImage->speed = speed;
 	zoomImage->Enable();
 }
 
-void CBattleSystem::SetEffectImage(float startPos, float targetPos, float speed)
+void CBattleSystem::SetEffectImage(Vector2 startPos, Vector2 targetPos, float speed)
 {
-	effectBGImage->m_transform->m_pos = Vector2(startPos, 0);
-	effectBGImage->targetPos = effectBGImage->m_transform->m_pos;
-	effectBGImage->targetPos.x += targetPos;
+	effectBGImage->m_transform->m_pos = startPos;
+	effectBGImage->targetPos = targetPos;
 	effectBGImage->speed = speed;
 	effectBGImage->Enable();
 }
@@ -548,8 +557,38 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 		Vector2 tempTargetPos = curHero->targetPos;
 		curHero->targetPos = heroParty[index]->targetPos;
 		heroParty[index]->targetPos = tempTargetPos;
-		DelayUntillNextTurn(3);
+		DelayUntillNextTurn(delayTriggerEffect);
 	}
+}
+
+void CBattleSystem::SetPosition() {
+
+	int k = 0;
+	Vector2 worldSize = MG_CAMERA->GetWorldSize();
+	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+	Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		if (heroParty[i]->GetAlive())
+		{
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 200 - 200 * k, heroPos.y);
+			}
+			else {
+				heroParty[i]->targetPos = Vector2(cameraPos.x - 200 - 200 * k, heroPos.y);
+			}
+			k++;
+		}
+		else {
+			heroParty[i]->Disable();
+		}
+	}
+	
+
+
+
+
 }
 
 void CBattleSystem::SetEnemyIndicator(int index)
@@ -585,9 +624,9 @@ void CBattleSystem::StartEnemyTrun(int index)
 	bool isFoundTarget = false;
 	vector<SKILL> ownSkill = enemyParty[index]->GetInfo()->ownSkill;
 
-	//·£´ýÀ¸·Î °¡Áö°íÀÖ´Â½ºÅ³Áß ÇÏ³ª¸¦ °¡Á®¿Í¼­
-	//Å¸°ÙÆÃ(ÇÃ·¹ÀÌ¾îºí ¿µ¿õ)À» Ã£ÀºÈÄ
-	//Å¸°ÙÀÌ ¾øÀ»°æ¿ì ´Ù¸¥½ºÅ³·Î ¹Ýº¹½ÇÇà
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â½ï¿½Å³ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½
+	//Å¸ï¿½ï¿½ï¿½ï¿½(ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½ï¿½
+	//Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½Å³ï¿½ï¿½ ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½
 	while (!isFoundTarget)
 	{
 		int curSkillIndex = MG_RND->getInt(ownSkill.size());
@@ -609,10 +648,11 @@ void CBattleSystem::StartEnemyTrun(int index)
 				if (enemySkill->CheckTarget(heroParty[orderIndex]->GetPartyPos()))
 				{
 					isFoundTarget = true;
+					MG_SOUND->play(enemySkill->sound, soundEffectVolume);
 
 					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
-					SetEffectImage(-400, 400, 10);
+					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 
 					heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
 					DelayUntillNextTurn(5);
@@ -709,4 +749,26 @@ void CBattleSystem::SwapPosSkill()
 			break;
 		}
 	}
+	
+	
 }
+
+
+
+
+void CBattleSystem::SetZoomImage()
+{
+
+	enemyZoomImage = new ImageObject();
+	enemyZoomImage->originPos = Vector2(1100, 800);
+	enemyZoomImage->speed = 10;
+	enemyZoomImage->Init();
+	MG_GMOBJ->RegisterObj(enemyZoomImage);
+
+	heroZoomImage = new ImageObject();
+	heroZoomImage->originPos = Vector2(600, 800);
+	heroZoomImage->speed = 10;
+	heroZoomImage->Init();
+	MG_GMOBJ->RegisterObj(heroZoomImage);
+}
+

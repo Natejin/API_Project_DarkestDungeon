@@ -13,6 +13,7 @@ CGameManager::~CGameManager() {}
 
 HRESULT CGameManager::Init()
 {
+	
 	heroID = 0;
 	RegisterHeroToOwnList(CreateHero("member1", JOB::Crusader));
 	RegisterHeroToOwnList(CreateHero("member2", JOB::Vestal));
@@ -39,10 +40,7 @@ HRESULT CGameManager::Init()
 	m_partyOrigin.push_back(nullptr);
 
 
-	//RegisterHeroToParty(0);
-	//RegisterHeroToParty(1);
-	//RegisterHeroToParty(2);
-	//RegisterHeroToParty(3);
+
 
 
 	m_dungeonScene = MG_SCENE->dungeonScene;
@@ -53,6 +51,14 @@ HRESULT CGameManager::Init()
 
 void CGameManager::Update(float deltaTime, float worldTime)
 {
+	if (MG_INPUT->isOnceKeyDown('T'))
+	{
+		RegisterHeroToParty(0);
+		RegisterHeroToParty(1);
+		RegisterHeroToParty(2);
+		RegisterHeroToParty(3);
+		MG_SCENE->changeScene(SCENETYPE::Dungeon);
+	}
 }
 
 void CGameManager::LateUpdate()
@@ -65,10 +71,17 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(255, 0, 255));
+	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+	TextOut(_hdc, 0, 180, str, strlen(str));
 }
 
 void CGameManager::FrontRender(HDC _hdc)
 {
+
 }
 
 void CGameManager::Release()
