@@ -124,9 +124,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::skeleton_common_attack, "images/Enemys/skeleton_common_attack.bmp", 575, 548, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::skeleton_common_defend, "images/Enemys/skeleton_common_defend.bmp", 342, 508, true, RGB(255, 0, 255));
 	//Monster_dead
-	MG_IMAGE->addFrameImage(IMAGE::skeleton_defender_dead, "images/Enemys/skeleton_defender_dead.bmp", 287, 298, true, 1, 1, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::skeleton_courtier_dead, "images/Enemys/skeleton_courtier_dead.bmp", 310, 237, true, 1, 1, RGB(255, 0, 255));
-	MG_IMAGE->addFrameImage(IMAGE::skeleton_common_dead, "images/Enemys/skeleton_common_dead.bmp", 295, 210, true, 1, 1, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::skeleton_defender_dead, "images/Enemys/skeleton_defender_dead.bmp", 130, 100, true, 1, 1, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::skeleton_courtier_dead, "images/Enemys/skeleton_courtier_dead.bmp", 130, 100, true, 1, 1, RGB(255, 0, 255));
+	MG_IMAGE->addFrameImage(IMAGE::skeleton_common_dead, "images/Enemys/skeleton_common_dead.bmp", 130, 100, true, 1, 1, RGB(255, 0, 255));
 	//BOSS
 	MG_IMAGE->addImage(IMAGE::necromancer_attack, "images/Enemys/necromancer_attack.bmp", 1188, 882, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::necromancer_defend, "images/Enemys/necromancer_defend.bmp", 589, 888, true, RGB(255, 0, 255));
