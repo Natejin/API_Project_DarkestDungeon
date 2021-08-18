@@ -19,7 +19,8 @@ HRESULT CBTN_Skill::Init()
 	selected = false;
 	m_transform->m_pivot = Vector2(0.5, 0.5);
 	m_spriteSelected = new CSpriteRenderer(IMAGE::SelectedSkill, m_transform);
-
+	m_spriteDeactiveIcon = new CSpriteRenderer(IMAGE::Crusader_Skill_BattleHeal, m_transform);
+	activateSkill = true;
 	AddSpriteRenderer(IMAGE::Crusader_Skill_BattleHeal);
 	AddColliderBox();
     return S_OK;
@@ -59,6 +60,13 @@ void CBTN_Skill::FrontRender(HDC _hdc)
 	{
 		m_spriteSelected->RenderUI(_hdc);
 	}
+	if (activateSkill)
+	{
+		m_spriteRenderer->RenderUI(_hdc);
+	}
+	else {
+		m_spriteDeactiveIcon->RenderUI(_hdc);
+	}
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
@@ -72,7 +80,12 @@ void CBTN_Skill::SetSkill(SKILL skill)
 {
 	skillInfo = DB_SKILL->CallSkill(skill);
 	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
-	m_spriteRenderer->SetImage(DB_SKILL->CallDeactiveSkillImage(skill));
+	m_spriteDeactiveIcon->SetImage(DB_SKILL->CallDeactiveSkillImage(skill));
+}
+
+void CBTN_Skill::ActiveSkill(bool activate)
+{
+	activateSkill = activate;
 }
 
 void CBTN_Skill::Release()

@@ -166,7 +166,8 @@ void CBattleSystem::BattleSystemEnd()
 		MG_GMOBJ->RemoveObj(enemyParty[i]);
 	}
 	enemyParty.clear();
-
+	posEnemy.clear();
+	posHero.clear();
 	speedVec.clear();
 	scene->m_dungeonUIinfo->setButton();
 	MG_SOUND->stop(SOUND::Combat);
@@ -249,6 +250,7 @@ void CBattleSystem::EndTurn()
 
 void CBattleSystem::UseSkill(int _index)
 {
+	
 	for (int i = 0; i < dungeonUI->skillBTNs.size(); i++)
 	{
 		dungeonUI->skillBTNs[i]->selected = false;
@@ -295,34 +297,59 @@ void CBattleSystem::CreateEnemyParty()
 	int random = MG_RND->getInt(3) + 2;
 	Vector2 worldSize = MG_CAMERA->GetWorldSize();
 	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
-	for (size_t i = 0; i < 4; i++)
+
+	if (isBoss)
 	{
-		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ���� �� ���� �����ϱ�
-		enemy->m_transform->m_pivot = Vector2(0.5, 1);
-		enemy->SetPartyPos(i);
-		enemy->SetPartyIndex(i);
-		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
-		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
-		enemy->movePosMode = true;
-		posEnemy.push_back(i);
 
-		if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
-		{
-			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 100 + 150 * i, originPosOfBattle.y);
-			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
-		}
-		else 
-		{
-			enemy->m_transform->m_pos = Vector2(cameraPos.x + 100 + 150 * i, originPosOfBattle.y);
-			targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
-		}
+			CEnemy* enemy = new CEnemy();
+			enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::Necromancer)); //TODO ���� �� ���� �����ϱ�
+			enemy->m_transform->m_pivot = Vector2(0.5, 1);
+			enemy->SetPartyPos(0);
+			enemy->SetPartyIndex(0);
+			enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
+			enemy->movePosMode = true;
+			posEnemy.push_back(0);
 
-		enemy->targetPos = enemy->m_transform->m_pos;
-		enemy->movePosMode = true;
-		MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
-		enemyParty.push_back(enemy);
+			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 350, originPosOfBattle.y);
+			targetEnemyPosVec[0].x = enemy->m_transform->m_pos.x;
+
+			enemy->targetPos = enemy->m_transform->m_pos;
+			enemy->movePosMode = true;
+			MG_GMOBJ->RegisterObj("boss", enemy);
+			enemyParty.push_back(enemy);
+	}else{
+		for (size_t i = 0; i < 4; i++)
+		{
+			CEnemy* enemy = new CEnemy();
+			enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ���� �� ���� �����ϱ�
+			enemy->m_transform->m_pivot = Vector2(0.5, 1);
+			enemy->SetPartyPos(i);
+			enemy->SetPartyIndex(i);
+			enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
+			enemy->movePosMode = true;
+			posEnemy.push_back(i);
+
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 100 + 150 * i, originPosOfBattle.y);
+				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+			}
+			else
+			{
+				enemy->m_transform->m_pos = Vector2(cameraPos.x + 100 + 150 * i, originPosOfBattle.y);
+				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+			}
+
+			enemy->targetPos = enemy->m_transform->m_pos;
+			enemy->movePosMode = true;
+			MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
+			enemyParty.push_back(enemy);
+		}
+	
 	}
+
 }
 
 void CBattleSystem::CreateHeroesParty()
@@ -695,7 +722,7 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::StartHeroTrun(int index)
 {
-	//MG_GAME->SetCurSelHero(index);
+	MG_GAME->SetCurSelHero(index);
 	//for (int i = 0; i < heroParty.size(); i++)
 	//{
 	//	heroParty[i]->isSelected = false;
@@ -708,14 +735,14 @@ void CBattleSystem::StartHeroTrun(int index)
 
 	vector<SKILL> temp = curHero->GetInfo()->ownSkill;
 
-
 	for (int j = 0; j < scene->m_dungeonUI->skillBTNs.size(); j++)
 	{
 		if (temp.size() > j)
 		{
+			CInfo_Skill* skillInfo = DB_SKILL->CallSkill(temp[j]);
 			scene->m_dungeonUI->skillBTNs[j]->Enable();
 			scene->m_dungeonUI->skillBTNs[j]->SetSkill(temp[j]);
-
+			scene->m_dungeonUI->skillBTNs[j]->ActiveSkill(skillInfo->CheckUseable(curHero->GetPartyPos()));
 		}
 		else {
 			scene->m_dungeonUI->skillBTNs[j]->Disable();

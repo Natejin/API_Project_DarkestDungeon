@@ -54,6 +54,7 @@ public:
 	bool startNextTurn;
 	bool delayForSwapSetPosition;
 	bool isBattle;
+	bool isBoss;
 
 	class DungeonScene* scene;
 	class dungeonUI* dungeonUI;
