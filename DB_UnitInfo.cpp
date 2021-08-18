@@ -81,6 +81,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	info->m_HP = _info->m_maxHP;
 	info->m_SPD = _info->m_SPD;
 	info->isAlive = _info->isAlive;
+	info->isCorpse = _info->isCorpse;
 	for (size_t i = 0; i < 5; i++)
 	{
 		info->resist[i] = _info->resist[i];
