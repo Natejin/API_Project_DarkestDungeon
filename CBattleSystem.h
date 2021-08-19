@@ -123,6 +123,7 @@ private:
 	void EnemyTeamAreDead();
 
 	void CreateEnemyParty();
+	void SetIndicatorPos(CEnemy* enemy);
 	void CreateHeroesParty();
 
 	void Compare_P_E_Speed_ReArray();

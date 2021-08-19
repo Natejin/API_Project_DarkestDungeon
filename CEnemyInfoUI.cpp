@@ -41,7 +41,7 @@ void CEnemyInfoUI::FrontRender(HDC _hdc)
 		{
 			if (m_battleSys->enemyParty[i]->m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 			{
-				m_enemyInfoPanel->Render(_hdc);
+				m_enemyInfoPanel->RenderUI(_hdc);
 				drawResistancesImage(_hdc);
 				showEnemyInfo(_hdc);
 			}

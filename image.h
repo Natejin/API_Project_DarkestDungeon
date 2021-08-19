@@ -114,7 +114,17 @@ public:
 	void frameRender(HDC hdc, const class CTransform* transform);
 	void frameRender(HDC hdc, const class CTransform* transform, const int destX, const int destY);
 	void frameRender(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY);
-	//void frameRender(HDC hdc, const int destX, const int destY);
+	void frameRender(HDC hdc, const class CTransform* transform, Vector2 scale, Vector2 customPos, const int destX, const int destY);
+
+	void frameRenderUI(HDC hdc, const class CTransform* transform);
+	void frameRenderUI(HDC hdc, const class CTransform* transform, const int destX, const int destY);
+	void frameRenderUI(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY);
+	void frameRenderUI(HDC hdc, const class CTransform* transform, Vector2 scale, Vector2 customPos, const int destX, const int destY);
+	
+
+	void AlphaFrameRender(HDC hdc, const class CTransform* transform, Vector2 scale, const int destX, const int destY, BYTE alpha);
+	void AlphaFrameRender(HDC hdc, const class CTransform* transform, Vector2 scale, Vector2 customPos, const int destX, const int destY, BYTE alpha);
+
 	void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 	//void frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY);
 

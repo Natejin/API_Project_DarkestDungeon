@@ -2,7 +2,7 @@
 //#include "CAnimator.h"
 #include "image.h"
 
-CAnimator::CAnimator()
+CAnimator::CAnimator(CTransform* _trans)
 {
 	curImageIndex = 0;
 	curFrameX = 0;
@@ -12,7 +12,7 @@ CAnimator::CAnimator()
 
 	m_optimizeFrame = 0;
 	 m_curAnimeFrame = 1;
-	 trans = nullptr;
+	 trans = _trans;
 }
 CAnimator::~CAnimator() {}
 
@@ -35,8 +35,113 @@ void CAnimator::FrameRender(HDC _hdc)
 			m_curAnimeFrame = 0;
 		}
 		m_curAnimeFrame++;
-		m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
+		if (useCustomPos)
+		{
+
+			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex],customPos,   curFrameX, curFrameY);
+		}
+		else {
+
+			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
+		}
 		//m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
+	}
+}
+
+void CAnimator::FrameRenderUI(HDC _hdc)
+{
+	//assert(m_imageVec.size() > 0);
+	if (m_imageVec.size() > 0)
+	{
+		if (m_curAnimeFrame > m_animeFrame)
+		{
+			if (maxFrameX[curImageIndex] == curFrameX)
+			{
+				curFrameX = 0;
+			}
+			else
+			{
+				curFrameX++;
+			}
+
+			m_curAnimeFrame = 0;
+		}
+		m_curAnimeFrame++;
+		if (useCustomPos)
+		{
+
+			m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], customPos, curFrameX, curFrameY);
+		}
+		else {
+
+			m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
+		}
+		//m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
+	}
+}
+
+void CAnimator::FrameRender(HDC _hdc, int Xindex, int Yindex) {
+	if (useCustomPos)
+	{
+		m_imageVec[curImageIndex]->frameRender(_hdc, trans , m_imageSize[curImageIndex], customPos, Xindex, Yindex);
+	}
+	else {
+		m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], Xindex, Yindex);
+	}
+	
+}
+
+void CAnimator::FrameRenderUI(HDC _hdc, int Xindex, int Yindex)
+{
+	if (useCustomPos)
+	{
+		m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], customPos, Xindex, Yindex);
+	}
+	else {
+		m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], Xindex, Yindex);
+	}
+
+}
+
+void CAnimator::AlphaFrameRender(HDC _hdc, BYTE alpha)
+{
+	if (m_imageVec.size() > 0)
+	{
+		if (m_curAnimeFrame > m_animeFrame)
+		{
+			if (maxFrameX[curImageIndex] == curFrameX)
+			{
+				curFrameX = 0;
+			}
+			else
+			{
+				curFrameX++;
+			}
+
+			m_curAnimeFrame = 0;
+		}
+		m_curAnimeFrame++;
+		if (useCustomPos)
+		{
+
+			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], customPos, curFrameX, curFrameY);
+		}
+		else {
+
+			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
+		}
+		//m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
+	}
+}
+
+void CAnimator::AlphaFrameRender(HDC _hdc, BYTE alpha, int Xindex, int Yindex)
+{
+	if (useCustomPos)
+	{
+		m_imageVec[curImageIndex]->AlphaFrameRender(_hdc, trans, m_imageSize[curImageIndex], customPos, Xindex, Yindex, alpha);
+	}
+	else {
+		m_imageVec[curImageIndex]->AlphaFrameRender(_hdc, trans, m_imageSize[curImageIndex], Xindex, Yindex, alpha);
 	}
 }
 

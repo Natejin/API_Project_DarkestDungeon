@@ -28,13 +28,17 @@ HRESULT CBTN_Skill::Init()
 
 void CBTN_Skill::Update(float deltaTime, float worldTime)
 {
-	if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
+	if (activateSkill)
 	{
-		if (MG_INPUT->IsDownLMB())
+		if (m_collider->UICheckColliderBoxWithPoint(g_ptMouse))
 		{
-			m_pBattleSystem->UseSkill(index);
+			if (MG_INPUT->IsDownLMB())
+			{
+				m_pBattleSystem->UseSkill(index);
+			}
 		}
 	}
+	
 }
 
 void CBTN_Skill::LateUpdate()
@@ -56,13 +60,14 @@ void CBTN_Skill::FrontRender(HDC _hdc)
 {
 	m_spriteRenderer->RenderUI(_hdc);
 
-	if (selected)
-	{
-		m_spriteSelected->RenderUI(_hdc);
-	}
+
 	if (activateSkill)
 	{
 		m_spriteRenderer->RenderUI(_hdc);
+		if (selected)
+		{
+			m_spriteSelected->RenderUI(_hdc);
+		}
 	}
 	else {
 		m_spriteDeactiveIcon->RenderUI(_hdc);

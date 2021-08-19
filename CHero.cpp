@@ -64,6 +64,8 @@ void CHero::FrontRender(HDC _hdc)
 		targeted_h_Mem.Render(_hdc);
 	}
 	showStrsBar(_hdc);
+
+
 }
 
 void CHero::Release()

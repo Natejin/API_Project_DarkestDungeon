@@ -843,6 +843,262 @@ void Image::frameRender(HDC hdc, const CTransform* transform, Vector2 scale, con
 	}
 }
 
+void Image::frameRender(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos, const int destX, const int destY)
+{
+	Vector2 pos = transform->m_pos + customPos - scale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth * transform->m_scale.x,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight * transform->m_scale.y,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			destX * _imageInfo->frameWidth,
+			destY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void Image::frameRenderUI(HDC hdc, const CTransform* transform)
+{
+	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale;
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,		//복사시작 지점 X
+			_imageInfo->currentFrameY * _imageInfo->frameHeight,	//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			_imageInfo->currentFrameX * _imageInfo->frameWidth,
+			_imageInfo->currentFrameY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void Image::frameRenderUI(HDC hdc, const CTransform* transform, const int destX, const int destY)
+{
+	Vector2 pos = transform->m_pos - transform->m_pivot * transform->m_scale;
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			destX * _imageInfo->frameWidth,
+			destY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void Image::frameRenderUI(HDC hdc, const CTransform* transform, Vector2 scale, const int destX, const int destY)
+{
+	Vector2 pos = transform->m_pos - scale * transform->m_pivot * transform->m_scale;
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth * transform->m_scale.x,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight * transform->m_scale.y,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			destX * _imageInfo->frameWidth,
+			destY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void Image::frameRenderUI(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos, const int destX, const int destY)
+{
+	Vector2 pos = transform->m_pos + customPos - scale * transform->m_pivot * transform->m_scale;
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,													//복삳될 장소의 DC
+			pos.x,													//복사될 좌표의 시작점X
+			pos.y,													//복사될 좌표의 시작점Y
+			_imageInfo->frameWidth * transform->m_scale.x,									//복사될 이미지 가로크기
+			_imageInfo->frameHeight * transform->m_scale.y,								//복사될 이미지 세로크기
+			_imageInfo->hMemDC,										//복사될 대상DC
+			destX * _imageInfo->frameWidth,							//복사시작 지점 X
+			destY * _imageInfo->frameHeight,						//복사시작 지점 Y
+			_imageInfo->frameWidth,									//복사영역 가로크기
+			_imageInfo->frameHeight,								//복사영역 세로크기
+			_transColor);
+	}
+	else {
+		//BitBlt : DC영역끼리 고속복사
+		BitBlt(hdc,
+			pos.x,
+			pos.y, _imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC,
+			destX * _imageInfo->frameWidth,
+			destY * _imageInfo->frameHeight, SRCCOPY);
+	}
+}
+
+void Image::AlphaFrameRender(HDC hdc, const CTransform* transform, Vector2 scale, const int destX, const int destY, BYTE alpha)
+{
+	Vector2 pos = transform->m_pos - scale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+
+	_blendFunc.SourceConstantAlpha = alpha;
+
+	if (_isTrans)
+	{
+		BitBlt(_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			hdc,
+			pos.x,
+			pos.y,
+			SRCCOPY);
+
+		GdiTransparentBlt(_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->frameWidth * transform->m_scale.x,
+			_imageInfo->frameHeight * transform->m_scale.y,
+			_imageInfo->hMemDC,
+			_imageInfo->frameWidth * destX,
+			_imageInfo->frameHeight * destY,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			_transColor);
+
+		AlphaBlend(hdc,
+			pos.x,
+			pos.y,
+			_imageInfo->frameWidth * transform->m_scale.x,
+			_imageInfo->frameHeight * transform->m_scale.y,
+			_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			_blendFunc);
+	}
+	else
+	{
+		AlphaBlend(hdc,
+			pos.x,
+			pos.y,
+			_imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->frameWidth * destX, _imageInfo->frameHeight * destY, _blendFunc);
+
+	}
+}
+
+void Image::AlphaFrameRender(HDC hdc, const CTransform* transform, Vector2 scale, Vector2 customPos, const int destX, const int destY, BYTE alpha)
+{
+	Vector2 pos = transform->m_pos + customPos - scale * transform->m_pivot * transform->m_scale - MG_CAMERA->GetPos();
+
+	_blendFunc.SourceConstantAlpha = alpha;
+
+	if (_isTrans)
+	{
+		BitBlt(_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			hdc,
+			pos.x,
+			pos.y,
+			SRCCOPY);
+
+		GdiTransparentBlt(_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->frameWidth * transform->m_scale.x,
+			_imageInfo->frameHeight * transform->m_scale.y,
+			_imageInfo->hMemDC,
+			_imageInfo->frameWidth * destX,
+			_imageInfo->frameHeight * destY,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			_transColor);
+
+		AlphaBlend(hdc,
+			pos.x,
+			pos.y,
+			_imageInfo->frameWidth * transform->m_scale.x,
+			_imageInfo->frameHeight * transform->m_scale.y,
+			_blendImage->hMemDC,
+			0,
+			0,
+			_imageInfo->frameWidth,
+			_imageInfo->frameHeight,
+			_blendFunc);
+	}
+	else
+	{
+		AlphaBlend(hdc,
+			pos.x,
+			pos.y,
+			_imageInfo->frameWidth, _imageInfo->frameHeight,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->frameWidth* destX, _imageInfo->frameHeight * destY, _blendFunc);
+
+	}
+}
+
 void Image::frameRender(HDC hdc, const int destX, const int destY, const int currentFrameX, const int currentFrameY)
 {
 

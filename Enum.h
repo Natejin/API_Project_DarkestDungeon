@@ -1,5 +1,12 @@
 #pragma once
 
+enum class NumCorType {
+	Black,
+	Red,
+	Green
+
+};
+
 enum class LAYER
 {
 	Unknown = -2,

@@ -21,6 +21,24 @@ public:
 	bool movePosMode;
 	float movePosSpeed;
 
+
+	bool showWord;
+	class CAnimator* showDamageCount1;
+	class CAnimator* showDamageCount10;
+	class CAnimator* showWordAnimator;
+
+	class CSpriteRenderer* spTest;
+	int num1Count;
+	int num10Count;
+
+	float transparent;
+
+	float wordSpeed;
+
+	float showWordCoolTime;
+	float showCurWordTime;
+
+
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))
 	{
@@ -40,6 +58,8 @@ public:
 	~Unit();
 
 	HRESULT Init();
+
+	void ShowWordCount(int count, NumCorType color);
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();

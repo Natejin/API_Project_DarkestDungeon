@@ -61,6 +61,18 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 		StartTurn();
 	}
 
+	if (MG_INPUT->isOnceKeyDown('R'))
+	{
+		for (size_t i = 0; i < enemyParty.size(); i++)
+		{
+			enemyParty[i]->ShowWordCount(MG_RND->getInt(100), (NumCorType)MG_RND->getInt(3));
+		}
+		for (size_t i = 0; i < heroParty.size(); i++)
+		{
+			heroParty[i]->ShowWordCount(MG_RND->getInt(100), (NumCorType)MG_RND->getInt(3));
+		}
+	}
+
 	if (startNextTurn && worldTime > startTriggerTime)
 	{
 		if (delayForSwapSetPosition)
@@ -158,7 +170,6 @@ void CBattleSystem::BattleSystemEnd()
 
 	for (size_t i = 0; i < enemyParty.size(); i++)
 	{
-		enemyParty[i]->Disable();
 		MG_GMOBJ->RemoveObj(enemyParty[i]);
 	}
 	enemyParty.clear();
@@ -261,26 +272,26 @@ void CBattleSystem::UseSkill(int _index)
 		{
 			DeselectAll();
 			curHero->isSelected = true;
-			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+			SKILL skill = curHero->GetOwnSkill()[currentSkill];
 			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
 			switch (tempSkill->target)
 			{
 			case SKILLTARGET::Enemy:
-				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				SelectEnemyTarget(curHero->GetOwnSkill()[_index]);
 				break;
 			case SKILLTARGET::Enemies:
-				SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				SelectEnemyTarget(curHero->GetOwnSkill()[_index]);
 				break;
 			case SKILLTARGET::Self:
-				//SelectEnemyTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]); 
+				//SelectEnemyTarget(curHero->GetOwnSkill()[_index]); 
 				//���� ����.....
 				break;
 			case SKILLTARGET::Ally:
-				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				SelectHeroTarget(curHero->GetOwnSkill()[_index]);
 				break;
 			case SKILLTARGET::Allies:
-				SelectHeroTarget(MG_GAME->GetCurSelHero()->GetOwnSkill()[_index]);
+				SelectHeroTarget(curHero->GetOwnSkill()[_index]);
 				break;
 			default:
 				break;
@@ -310,7 +321,7 @@ void CBattleSystem::CreateEnemyParty()
 
 			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 350, originPosOfBattle.y);
 			targetEnemyPosVec[0].x = enemy->m_transform->m_pos.x;
-
+			SetIndicatorPos(enemy);
 			enemy->targetPos = enemy->m_transform->m_pos;
 			enemy->movePosMode = true;
 			MG_GMOBJ->RegisterObj("boss", enemy);
@@ -338,7 +349,7 @@ void CBattleSystem::CreateEnemyParty()
 				enemy->m_transform->m_pos = Vector2(cameraPos.x + 100 + 150 * i, originPosOfBattle.y);
 				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 			}
-
+			SetIndicatorPos(enemy);
 			enemy->targetPos = enemy->m_transform->m_pos;
 			enemy->movePosMode = true;
 			MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
@@ -348,8 +359,14 @@ void CBattleSystem::CreateEnemyParty()
 	}
 
 }
-
-void CBattleSystem::CreateHeroesParty()
+void CBattleSystem::SetIndicatorPos(CEnemy* enemy)
+{
+	Vector2 indicatorPos = enemy->m_transform->m_pos;
+	indicatorPos.y += 50;
+	monsterIndicator->PushEnemyPos(indicatorPos);
+}
+//
+void CBattleSystem::SwapPosSkill()
 {
 	if (scene->m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
@@ -456,6 +473,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 
 				if (!enemyParty[index]->reduceHP(damage))
 				{
+					enemyParty[index]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
 					CheckEnemyAllDead();
 				}
 			}
@@ -500,15 +518,16 @@ void CBattleSystem::CheckEnemyAllDead()
 		EnemyTeamAreDead();
 	}
 }
-
-void CBattleSystem::DelayUntillNextTurn(int second)
+//
+void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 {
 	if (tempSkill->CheckTarget(heroParty[index]->GetPartyPos()))
 	{
 		MG_SOUND->play(tempSkill->sound, soundEffectVolume);
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
-
-		heroParty[index]->increaseHP(tempSkill->GetHeal());
+		int hp = tempSkill->GetHeal();
+		heroParty[index]->increaseHP(hp);
+		heroParty[index]->ShowWordCount(MG_RND->getInt(hp), NumCorType::Green);
 
 		DelayUntillNextTurn(delayTriggerEffect);
 		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
@@ -550,7 +569,7 @@ void CBattleSystem::SelectHero(int index)
 		}
 		else 
 		{
-			SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+			SKILL skill = curHero->GetOwnSkill()[currentSkill];
 			CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
 			switch (tempSkill->target)
@@ -647,8 +666,12 @@ void CBattleSystem::SetEffectImage(Vector2 startPos, Vector2 targetPos, float sp
 
 void CBattleSystem::SetEnemyIndicator(int index)
 {
-	monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
-	monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
+	if (enemyParty.size()>0)
+	{
+		monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
+		monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
+	}
+
 }
 
 void CBattleSystem::SetPosition() 
@@ -695,15 +718,15 @@ void CBattleSystem::SetPosition()
 
 //==================================
 
-void CBattleSystem::CreateEnemyParty()
-{
-	if (enemyParty.size() > 0)
-	{
-		monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
-		monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
-	}
-
-}
+//void CBattleSystem::CreateEnemyParty()
+//{
+//	if (enemyParty.size() > 0)
+//	{
+//		monsterIndicator->SetPosIndex(enemyParty[index]->GetPartyPos());
+//		monsterIndicator->MonsterIsTargetSkill(enemyParty[index]->isTargetSkill ? true : false);
+//	}
+//
+//}
 
 void CBattleSystem::CreateHeroesParty()
 {
@@ -718,6 +741,8 @@ void CBattleSystem::CreateHeroesParty()
 		if (hero != nullptr)
 		{
 			heroParty.push_back(hero);
+
+
 			heroParty[k]->SetPartyIndex(k);
 			heroParty[k]->SetPartyPos(k);
 			posHero.push_back(k);
@@ -725,6 +750,7 @@ void CBattleSystem::CreateHeroesParty()
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
 				heroParty[k]->m_transform->m_pos = Vector2(worldSize.x * 0.5 - 100 - 150 * k, originPosOfBattle.y);
+
 			}
 			else 
 			{
@@ -787,7 +813,7 @@ void CBattleSystem::SelectEnemy(int index)
 {
 	if (!startNextTurn && scene->m_dungeonMode == DUNGEONMODE::BATTLE && turn == TURN::Player)
 	{
-		SKILL skill = MG_GAME->GetCurSelHero()->GetOwnSkill()[currentSkill];
+		SKILL skill = curHero->GetOwnSkill()[currentSkill];
 		CInfo_Skill* tempSkill = DB_SKILL->CallSkill(skill);
 
 		switch (tempSkill->target)
@@ -818,7 +844,7 @@ CHero* CBattleSystem::GetHero(int index)
 
 void CBattleSystem::StartHeroTrun(int index)
 {
-	MG_GAME->SetCurSelHero(index);
+	//MG_GAME->SetCurSelHero(index);
 	//for (int i = 0; i < heroParty.size(); i++)
 	//{
 	//	heroParty[i]->isSelected = false;
@@ -853,6 +879,10 @@ void CBattleSystem::StartEnemyTrun(int index)
 
 	while (!isFoundTarget)
 	{
+		if (ownSkill.size() < 1)
+		{
+			return;
+		}
 		int curSkillIndex = MG_RND->getInt(ownSkill.size());
 		CInfo_Skill* enemySkill = DB_SKILL->CallSkill(ownSkill[curSkillIndex]);
 		ownSkill.erase(ownSkill.begin() + curSkillIndex);
@@ -878,8 +908,13 @@ void CBattleSystem::StartEnemyTrun(int index)
 					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
 					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
-
-					heroParty[orderIndex]->reduceHP(enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo()));
+					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
+					if (heroParty[orderIndex]->reduceHP(damage))
+					{
+						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
+					}
+					
+				
 					DelayUntillNextTurn(5);
 					return;
 				}
