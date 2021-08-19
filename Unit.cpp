@@ -130,10 +130,7 @@ void Unit::FrontRender(HDC _hdc)
     if (showWord)
     {
         showDamageCount1->AlphaFrameRender(_hdc,transparent, num1Count);
-        if (num10Count > 0)
-        {
-            showDamageCount10->AlphaFrameRender(_hdc, transparent, num10Count);
-        }
+        showDamageCount10->AlphaFrameRender(_hdc, transparent, num10Count);
        
     }
 }
