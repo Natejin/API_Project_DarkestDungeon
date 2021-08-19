@@ -912,7 +912,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
 					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
-					if (heroParty[orderIndex]->reduceHP(damage))
+					if (!heroParty[orderIndex]->reduceHP(damage))
 					{
 						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
 					}
