@@ -485,11 +485,11 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 
 				if (!enemyParty[index]->reduceHP(damage))
 				{
-					enemyParty[index]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
+					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
 					CheckEnemyAllDead();
 				}
 				else {
-					enemyParty[index]->ShowWordCount(MG_RND->getInt(99), NumCorType::Black);
+					enemyParty[index]->ShowWordCount(99, NumCorType::Black);
 				}
 			}
 		}
@@ -542,7 +542,7 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
 		int hp = tempSkill->GetHeal();
 		heroParty[index]->increaseHP(hp);
-		heroParty[index]->ShowWordCount(MG_RND->getInt(hp), NumCorType::Green);
+		heroParty[index]->ShowWordCount(hp, NumCorType::Green);
 
 		DelayUntillNextTurn(delayTriggerEffect);
 		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
@@ -926,10 +926,10 @@ void CBattleSystem::StartEnemyTrun(int index)
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
 					if (!heroParty[orderIndex]->reduceHP(damage))
 					{
-						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
+						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
 					}
 					else {
-						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(99), NumCorType::Black);
+						heroParty[orderIndex]->ShowWordCount(99, NumCorType::Black);
 					}
 					
 				
