@@ -140,7 +140,7 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
-	 worldSize = MG_CAMERA->GetWorldSize();
+	worldSize = MG_CAMERA->GetWorldSize();
 	cameraSize = MG_CAMERA->GetCenterPos();
 	m_enemyInfoUI->Enable();
 	originPosOfBattle = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
