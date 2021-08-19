@@ -1,15 +1,14 @@
 #include"framework.h"
 #include "mainGame.h"
 
-mainGame::mainGame() {
+mainGame::mainGame() 
+{
 #ifdef _DEBUG
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //TODO 디버깅 하는곳
 	AllocConsole();
 	//_CrtSetBreakAlloc(3210); 	//디버그용 메모리 누수 체크
 
 #endif // _DEBUG
-
-
 }
 mainGame::~mainGame() {}
 
@@ -20,22 +19,16 @@ HRESULT mainGame::init()
 	DB_SKILL->Init();
 	DB_UNIT->Init();
 
-
 	MG_SCENE->init();
 	MG_GAME->Init();
 	MG_CAMERA->Init();
 	MG_GMOBJ->Init();
-
-
 	return S_OK;
 }
 
 void mainGame::release()
 {
 	gameNode::release();
-
-	//SCENE->release();
-	//SAFE_DELETE(_astar);
 }
 
 void mainGame::update()
@@ -59,6 +52,7 @@ void mainGame::update()
 void mainGame::render(/*HDC hdc*/)
 {
 	PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
+
 	//==============================================
 
 	MG_GMOBJ->BackRender(getMemDC());

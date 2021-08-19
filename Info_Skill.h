@@ -1,8 +1,8 @@
 #pragma once
 #define MAXSKILLLVL 5
+
 class CInfo_Skill : public Info
 {
-	
 public:
 	string m_name;
 	string m_description;
@@ -18,7 +18,6 @@ public:
 	int targetPos;
 	int allowUseSkillPos;
 	
-
 	IMAGE m_skillIcon;
 	IMAGE m_skillDeactiveIcon;
 	IMAGE m_skillMotion;
@@ -28,6 +27,7 @@ public:
 	JOB job;
 	ENEMYTYPE enemyType;
 	EFFECTTYPE effect = EFFECTTYPE::NONE;
+
 public:
 	float damage[5] = {0};
 	int accuracy[5] = { 0 };
@@ -39,6 +39,7 @@ public:
 	int moveSelfPos[5] = {0};
 	int moveTagetPos[5] = {0};
 	SOUND sound;
+
 public:
 	CInfo_Skill() {};
 	~CInfo_Skill() {};
@@ -50,4 +51,3 @@ public:
 	int GetHeal();
 	virtual void Release();
 };
-

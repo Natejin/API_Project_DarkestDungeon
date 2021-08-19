@@ -162,9 +162,9 @@
     <ClInclude Include="CEnemyInfoUI.h" />
     <ClInclude Include="CEquipButton.h" />
     <ClInclude Include="CHeroOnStage_coach.h" />
+    <ClInclude Include="CItemEffect.h" />
     <ClInclude Include="COwnHeroListPanel.h" />
     <ClInclude Include="CPosition_Button.h" />
-    <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="DB_UnitInfo.h" />
     <ClInclude Include="Embark.h" />
@@ -248,7 +248,6 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="DB_Item.h" />
     <ClInclude Include="Info_Item.h" />
-    <ClInclude Include="CItemEffect.h" />
     <ClInclude Include="ItemEffect_Colletion.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
@@ -305,9 +304,9 @@
     <ClCompile Include="CEnemyInfoUI.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
     <ClCompile Include="CHeroOnStage_coach.cpp" />
+    <ClCompile Include="CItemEffect.cpp" />
     <ClCompile Include="COwnHeroListPanel.cpp" />
     <ClCompile Include="CPosition_Button.cpp" />
-    <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="DB_UnitInfo.cpp" />
     <ClCompile Include="Embark.cpp" />
@@ -389,7 +388,6 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="DB_Item.cpp" />
     <ClCompile Include="Info_Item.cpp" />
-    <ClCompile Include="CItemEffect.cpp" />
     <ClCompile Include="ItemEffect_Colletion.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />

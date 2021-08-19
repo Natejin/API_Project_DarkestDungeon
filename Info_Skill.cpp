@@ -45,9 +45,6 @@ int CInfo_Skill::GetHeal()
 	return MG_RND->getFromIntTo(healMin[skillLevel], healMax[skillLevel]);
 }
 
-
-
-
 void CInfo_Skill::Release()
 {
 }

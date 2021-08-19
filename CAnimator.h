@@ -6,7 +6,6 @@ class CAnimator : public CComponent
 private:
 	class CTransform* trans;
 
-
 	vector<class Image*> m_imageVec;
 	vector<int> maxFrameX;
 	vector<Vector2> m_imageSize;
@@ -25,7 +24,6 @@ private:
 	int m_optimizeFrame;
 
 public:
-
 	Vector2 customPos;
 	bool useCustomPos;
 	ANIMATIONTYPE m_animationType;

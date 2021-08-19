@@ -6,13 +6,12 @@ CAnimator::CAnimator(CTransform* _trans)
 {
 	curImageIndex = 0;
 	curFrameX = 0;
-
 	curFrameY = 0;
-	m_animeFrame = 0;
 
+	m_animeFrame = 0;
 	m_optimizeFrame = 0;
-	 m_curAnimeFrame = 1;
-	 trans = _trans;
+	m_curAnimeFrame = 1;
+	trans = _trans;
 }
 CAnimator::~CAnimator() {}
 
@@ -38,7 +37,7 @@ void CAnimator::FrameRender(HDC _hdc)
 		if (useCustomPos)
 		{
 
-			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex],customPos,   curFrameX, curFrameY);
+			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex],customPos, curFrameX, curFrameY);
 		}
 		else {
 
@@ -63,29 +62,29 @@ void CAnimator::FrameRenderUI(HDC _hdc)
 			{
 				curFrameX++;
 			}
-
 			m_curAnimeFrame = 0;
 		}
 		m_curAnimeFrame++;
 		if (useCustomPos)
 		{
-
 			m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], customPos, curFrameX, curFrameY);
 		}
-		else {
-
+		else 
+		{
 			m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
 		}
 		//m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
 	}
 }
 
-void CAnimator::FrameRender(HDC _hdc, int Xindex, int Yindex) {
+void CAnimator::FrameRender(HDC _hdc, int Xindex, int Yindex) 
+{
 	if (useCustomPos)
 	{
 		m_imageVec[curImageIndex]->frameRender(_hdc, trans , m_imageSize[curImageIndex], customPos, Xindex, Yindex);
 	}
-	else {
+	else 
+	{
 		m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], Xindex, Yindex);
 	}
 	
@@ -97,7 +96,8 @@ void CAnimator::FrameRenderUI(HDC _hdc, int Xindex, int Yindex)
 	{
 		m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], customPos, Xindex, Yindex);
 	}
-	else {
+	else 
+	{
 		m_imageVec[curImageIndex]->frameRenderUI(_hdc, trans, m_imageSize[curImageIndex], Xindex, Yindex);
 	}
 
@@ -123,11 +123,10 @@ void CAnimator::AlphaFrameRender(HDC _hdc, BYTE alpha)
 		m_curAnimeFrame++;
 		if (useCustomPos)
 		{
-
 			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], customPos, curFrameX, curFrameY);
 		}
-		else {
-
+		else 
+		{
 			m_imageVec[curImageIndex]->frameRender(_hdc, trans, m_imageSize[curImageIndex], curFrameX, curFrameY);
 		}
 		//m_imageVec[curImageIndex]->RotateFrameRender(_hdc, trans, m_imageSize[curImageIndex], 0, curFrameY);
@@ -140,7 +139,8 @@ void CAnimator::AlphaFrameRender(HDC _hdc, BYTE alpha, int Xindex, int Yindex)
 	{
 		m_imageVec[curImageIndex]->AlphaFrameRender(_hdc, trans, m_imageSize[curImageIndex], customPos, Xindex, Yindex, alpha);
 	}
-	else {
+	else 
+	{
 		m_imageVec[curImageIndex]->AlphaFrameRender(_hdc, trans, m_imageSize[curImageIndex], Xindex, Yindex, alpha);
 	}
 }
