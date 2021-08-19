@@ -421,10 +421,13 @@ void CBattleSystem::SwapPosSkill()
 		case 0:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				if (heroParty[i]->GetPartyPos() == 1)
+				if (heroParty[i]->GetAlive())
 				{
-					heroParty[i]->isTargetHeal = true;
-					break;
+					if (heroParty[i]->GetPartyPos() == 1)
+					{
+						heroParty[i]->isTargetHeal = true;
+						break;
+					}
 				}
 			}
 			break;
@@ -432,37 +435,28 @@ void CBattleSystem::SwapPosSkill()
 		case 1:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				if (heroParty[i]->GetPartyPos() == 0)
+				if (heroParty[i]->GetAlive())
 				{
-					heroParty[i]->isTargetHeal = true;
-					break;
+					if (heroParty[i]->GetPartyPos() == 0 || heroParty[i]->GetPartyPos() == 2)
+					{
+						heroParty[i]->isTargetHeal = true;
+						break;
+					}
 				}
-			}
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 2)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
+				
 			}
 			break;
 
 		case 2:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				if (heroParty[i]->GetPartyPos() == 1)
+				if (heroParty[i]->GetAlive())
 				{
-					heroParty[i]->isTargetHeal = true;
-					break;
-				}
-			}
-			for (size_t i = 0; i < heroParty.size(); i++)
-			{
-				if (heroParty[i]->GetPartyPos() == 3)
-				{
-					heroParty[i]->isTargetHeal = true;
-					break;
+					if (heroParty[i]->GetPartyPos() == 1 || heroParty[i]->GetPartyPos() == 3)
+					{
+						heroParty[i]->isTargetHeal = true;
+						break;
+					}
 				}
 			}
 			break;
@@ -470,10 +464,13 @@ void CBattleSystem::SwapPosSkill()
 		case 3:
 			for (size_t i = 0; i < heroParty.size(); i++)
 			{
-				if (heroParty[i]->GetPartyPos() == 2)
+				if (heroParty[i]->GetAlive())
 				{
-					heroParty[i]->isTargetHeal = true;
-					break;
+					if (heroParty[i]->GetPartyPos() == 2)
+					{
+						heroParty[i]->isTargetHeal = true;
+						break;
+					}
 				}
 			}
 			break;
