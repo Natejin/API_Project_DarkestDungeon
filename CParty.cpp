@@ -130,6 +130,7 @@ void CParty::SetCamera()
 
 void CParty::SetPartyMember(vector<CHero*> party)
 {
+
 	m_member = party;
 }
 
@@ -220,7 +221,11 @@ void CParty::getStress_movement()
 		{
 			if (ran < MG_RND->getInt(3))
 			{
-				m_member[MG_RND->getInt(MG_GAME->GetHeroPartySize())]->addStress(MG_RND->getInt(5));
+				int partySize = MG_GAME->GetHeroPartySize();
+				if (partySize > 0 )
+				{
+					m_member[MG_RND->getInt(partySize)]->addStress(MG_RND->getInt(5));
+				}
 			}
 			limit2 += 300;
 		}

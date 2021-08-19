@@ -140,6 +140,8 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
+	worldSize = MG_CAMERA->GetWorldSize();
+	cameraSize = MG_CAMERA->GetCenterPos();
 	m_enemyInfoUI->Enable();
 	originPosOfBattle = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	CreateHeroesParty();
@@ -153,8 +155,7 @@ void CBattleSystem::BattleSystemInitiate()
 	scene->DeactivateSound();
 	MG_SOUND->play(SOUND::Combat, 0.1f);
 	isBattle = true;
-	 worldSize = MG_CAMERA->GetWorldSize();
-	 cameraSize = MG_CAMERA->GetCenterPos();
+
 	Enable();
 }
 
@@ -190,10 +191,15 @@ void CBattleSystem::BattleSystemEnd()
 
 	auto party = MG_GAME->m_partyOrigin;
 	MG_GAME->m_partyOrigin.clear();
+
+
 	for (size_t i = 0; i < posHero.size(); i++)
 	{
 		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
+
 	}
+
+	scene->m_party->SetPartyMember(MG_GAME->m_partyOrigin);
 	Disable();
 }
 
