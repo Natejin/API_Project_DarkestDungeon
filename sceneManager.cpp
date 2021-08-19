@@ -6,7 +6,7 @@
 #include "DungeonScene.h"
 #include "DungeonScene2.h"
 #include "TownScene.h"
-
+#include "mainScene.h"
 SceneManager::SceneManager() {}
 SceneManager::~SceneManager() {}
 
@@ -27,6 +27,8 @@ HRESULT SceneManager::init()
 	TestScene* test = new TestScene;
 	addScene(SCENETYPE::Test, test);
 
+	_mainScene = new mainScene;
+	addScene(SCENETYPE::MainScene, _mainScene);
 	changeScene(SCENETYPE::Test);
 	return S_OK;
 }

@@ -32,6 +32,10 @@ void CBackground::BackRender(HDC _hdc)
 		//mostFrontBg오류를 해결한 뒤에 이동처리
 		road[i].Render(_hdc);
 	}
+	for (size_t i = 0; i < mostStartBG.size(); i++)
+	{
+		mostStartBG[i].Render(_hdc);
+	}
 }
 
 void CBackground::Render(HDC _hdc)
