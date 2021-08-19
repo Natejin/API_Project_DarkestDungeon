@@ -103,7 +103,7 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
     if (selectedHeroIndex < MG_GAME->m_partyOrigin.size())
     {
         SetTextColor(_hdc, RGB(255, 0, 0));
-        sprintf_s(str, "%d / ", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP(), MG_GAME->GetHeroFromParty(selectedHeroIndex)->getMaxHP());
+        sprintf_s(str, "%d / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP(), MG_GAME->GetHeroFromParty(selectedHeroIndex)->getMaxHP());
         TextOut(_hdc, 400, 835, str, strlen(str));
         SetTextColor(_hdc, RGB(48, 48, 50));
         switch (MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetJob())
