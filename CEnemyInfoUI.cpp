@@ -102,62 +102,67 @@ void CEnemyInfoUI::isMouseOnEnemy()
 
 void CEnemyInfoUI::showEnemyInfo(HDC _hdc)
 {
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(122, 25, 14));
-	temp = m_battleSys->enemyParty[enemyIndex];
+	if (enemyIndex < m_battleSys->enemyParty.size())
+	{
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(122, 25, 14));
 
-	sprintf_s(str, "Name");
-	TextOut(_hdc, 1010, 755, str, strlen(str));
+		temp = m_battleSys->enemyParty[enemyIndex];
 
-	SetTextColor(_hdc, RGB(255, 255, 255));
-	sprintf_s(str, "Skeleton");
-	TextOut(_hdc, 1010, 795, str, strlen(str));
+		sprintf_s(str, "Name");
+		TextOut(_hdc, 1010, 755, str, strlen(str));
 
-	sprintf_s(str, "PROT : %d", temp-> GetProt());
-	TextOut(_hdc, 1150, 795, str, strlen(str));
+		SetTextColor(_hdc, RGB(255, 255, 255));
+		sprintf_s(str, "Skeleton");
+		TextOut(_hdc, 1010, 795, str, strlen(str));
 
-	sprintf_s(str, "DODGE : %d", temp->GetDodge());
-	TextOut(_hdc, 1150, 815, str, strlen(str));
+		sprintf_s(str, "PROT : %d", temp->GetProt());
+		TextOut(_hdc, 1150, 795, str, strlen(str));
 
-	sprintf_s(str, "SPD : %d", temp->getSPD());
-	TextOut(_hdc, 1150, 835, str, strlen(str));
+		sprintf_s(str, "DODGE : %d", temp->GetDodge());
+		TextOut(_hdc, 1150, 815, str, strlen(str));
 
-	//stun, blight, bleed, debuff, move
+		sprintf_s(str, "SPD : %d", temp->getSPD());
+		TextOut(_hdc, 1150, 835, str, strlen(str));
 
-	SetTextColor(_hdc, RGB(212, 187, 120));
-	sprintf_s(str, "Stun :  %d", temp->getResist(0));
-	TextOut(_hdc, 1050, 900, str, strlen(str));
+		//stun, blight, bleed, debuff, move
 
-	SetTextColor(_hdc, RGB(162, 175, 70));
-	sprintf_s(str, "Blight :  %d", temp->getResist(1));
-	TextOut(_hdc, 1050, 920, str, strlen(str));
+		SetTextColor(_hdc, RGB(212, 187, 120));
+		sprintf_s(str, "Stun :  %d", temp->getResist(0));
+		TextOut(_hdc, 1050, 900, str, strlen(str));
 
-	SetTextColor(_hdc, RGB(126, 8, 4));
-	sprintf_s(str, "Bleed :  %d", temp->getResist(2));
-	TextOut(_hdc, 1050, 940, str, strlen(str));
+		SetTextColor(_hdc, RGB(162, 175, 70));
+		sprintf_s(str, "Blight :  %d", temp->getResist(1));
+		TextOut(_hdc, 1050, 920, str, strlen(str));
 
-	SetTextColor(_hdc, RGB(195, 122, 81));
-	sprintf_s(str, "Debuff :  %d", temp->getResist(3));
-	TextOut(_hdc, 1050, 960, str, strlen(str));
+		SetTextColor(_hdc, RGB(126, 8, 4));
+		sprintf_s(str, "Bleed :  %d", temp->getResist(2));
+		TextOut(_hdc, 1050, 940, str, strlen(str));
 
-	SetTextColor(_hdc, RGB(118, 164, 198));
-	sprintf_s(str, "Move :  %d", temp->getResist(4));
-	TextOut(_hdc, 1050, 980, str, strlen(str));
+		SetTextColor(_hdc, RGB(195, 122, 81));
+		sprintf_s(str, "Debuff :  %d", temp->getResist(3));
+		TextOut(_hdc, 1050, 960, str, strlen(str));
+
+		SetTextColor(_hdc, RGB(118, 164, 198));
+		sprintf_s(str, "Move :  %d", temp->getResist(4));
+		TextOut(_hdc, 1050, 980, str, strlen(str));
 
 
-	SetTextColor(_hdc, RGB(118, 21, 9));
-	sprintf_s(str, "HP : %d / %d", temp->getHP(), temp->getMaxHP());
-	TextOut(_hdc, 1440, 755, str, strlen(str));
+		SetTextColor(_hdc, RGB(118, 21, 9));
+		sprintf_s(str, "HP : %d / %d", temp->getHP(), temp->getMaxHP());
+		TextOut(_hdc, 1440, 755, str, strlen(str));
 
-	SetTextColor(_hdc, RGB(132, 121, 85));
-	sprintf_s(str, "Resistances");
-	TextOut(_hdc, 1080, 870, str, strlen(str));
+		SetTextColor(_hdc, RGB(132, 121, 85));
+		sprintf_s(str, "Resistances");
+		TextOut(_hdc, 1080, 870, str, strlen(str));
 
-	SetTextColor(_hdc, RGB(132, 121, 85));
-	sprintf_s(str, "Skills");
-	TextOut(_hdc, 1380, 870, str, strlen(str));
+		SetTextColor(_hdc, RGB(132, 121, 85));
+		sprintf_s(str, "Skills");
+		TextOut(_hdc, 1380, 870, str, strlen(str));
+	}
+	
 }
 
 void CEnemyInfoUI::drawResistancesImage(HDC _hdc)
