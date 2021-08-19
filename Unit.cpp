@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "Unit.h"
-
+#include "CAnimator.h"
 Unit::Unit() 
 {
     m_transform->m_pivot = Vector2(0.5, 1);
@@ -11,8 +11,44 @@ HRESULT Unit::Init()
 {
     targetPos = Vector2(0,0);
     movePosMode = false;;
-    movePosSpeed = 5;
+    movePosSpeed = 10;
+
+    showDamageCount1 = new CAnimator(m_transform);
+    showDamageCount1->AddImageFrame(IMAGE::NumberBlack);
+    showDamageCount1->AddImageFrame(IMAGE::NumberRed);
+    showDamageCount1->AddImageFrame(IMAGE::NumberGreen);
+    showDamageCount1->customPos = Vector2(20, -200);
+    showDamageCount1->useCustomPos = true;
+    showDamageCount1->SetIndex(1);
+
+    showDamageCount10 = new CAnimator(m_transform);
+    showDamageCount10->AddImageFrame(IMAGE::NumberBlack);
+    showDamageCount10->AddImageFrame(IMAGE::NumberRed);
+    showDamageCount10->AddImageFrame(IMAGE::NumberGreen);
+    showDamageCount10->customPos = Vector2(-20, -200);
+    showDamageCount10->useCustomPos = true;
+    showDamageCount10->SetIndex(1);
+    showCurWordTime = 0;
+    showWordCoolTime = 4;
+    wordSpeed = 0.5;
+
+    num1Count = 5;
+    num10Count = 3;
+    spTest = new CSpriteRenderer(IMAGE::NumberBlack, m_transform);
     return S_OK;
+}
+
+void Unit::ShowWordCount(int count, NumCorType color)
+{
+    num1Count = count % 10;
+    num10Count = count / 10;
+    showDamageCount1->SetIndex((int)color);
+    showDamageCount10->SetIndex((int)color);
+    showWord = true;
+    showCurWordTime = MG_TIME->getWorldTime() + showWordCoolTime;
+    showDamageCount10->customPos = Vector2(-18, -250);
+    showDamageCount1->customPos = Vector2(18, -250);
+    transparent = 255;
 }
 
 void Unit::Update(float deltaTime, float worldTime)
@@ -32,6 +68,31 @@ void Unit::Update(float deltaTime, float worldTime)
     {
         m_transform->m_pos += (targetPos - m_transform->m_pos).Normalize() * movePosSpeed;
     }
+
+    if (showWord)
+    {
+
+
+        if (showCurWordTime > worldTime)
+        {
+            showDamageCount10->customPos.x -= sin(worldTime * 10) *wordSpeed ;
+            showDamageCount1->customPos.x -= sin(worldTime * 10) * wordSpeed ;
+            showDamageCount10->customPos.y -= wordSpeed;
+            showDamageCount1->customPos.y -= wordSpeed;
+            if (showCurWordTime < worldTime + 2)
+            {
+                if (transparent > 1)
+                {
+                    transparent -= 2;
+                }
+            }
+           
+        }
+        else {
+            showWord = false;
+        }
+    }
+    
 }
 
 void Unit::LateUpdate()
@@ -52,6 +113,8 @@ void Unit::FrontRender(HDC _hdc)
     {
         showSelMember(_hdc);
     }
+   
+
 
     showHpBar(_hdc);
 
@@ -61,6 +124,17 @@ void Unit::FrontRender(HDC _hdc)
         {
             RectangleMake(_hdc, m_collider->rect, m_transform->m_pos - MG_CAMERA->GetPos());
         }
+    }
+
+    //spTest->Render(_hdc);
+    if (showWord)
+    {
+        showDamageCount1->AlphaFrameRender(_hdc,transparent, num1Count);
+        if (num10Count > 0)
+        {
+            showDamageCount10->AlphaFrameRender(_hdc, transparent, num10Count);
+        }
+       
     }
 }
 

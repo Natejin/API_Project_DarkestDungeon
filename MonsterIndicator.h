@@ -26,6 +26,8 @@ public:
 	virtual void Enable();
 	virtual void Disable();
 
+
+	void PushEnemyPos(Vector2 pos);
 	virtual void SetPosIndex(int _index);
 	virtual void MonsterIsTargetSkill(bool isTarget);
 };

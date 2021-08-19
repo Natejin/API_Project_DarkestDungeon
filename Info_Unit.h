@@ -24,7 +24,7 @@ public:
 	int resist[5]; //stun, blight, bleed, debuff, move
 	//ป๓ลย
 	bool attribute[9] = { false }; 
-	
+	//int attributeDP[9] = { 0 };
 	//none, stun, blight, bleed, debuff, buff, marked, death, Poison
 
 	UNITTYPE unitType;

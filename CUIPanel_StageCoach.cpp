@@ -80,7 +80,7 @@ void CUIPanel_StageCoach::CreateOnCoach_Hero()
 	int random = MG_RND->getFromIntTo(3, 5);
 	for (size_t i = 0; i < random; i++)
 	{
-		m_OnCoach_HeroVec.push_back(MG_GAME->CreateHero("Hero", (JOB)(MG_RND->getInt(2))));
+		m_OnCoach_HeroVec.push_back(MG_GAME->CreateHero("Hero", (JOB)(MG_RND->getInt(4))));
 	}
 }
 
@@ -98,7 +98,6 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 		OnCoach_HeroList_Button->Init();
 		OnCoach_HeroList_Button->m_transform->m_pos = Vector2(900, WINSIZEY - 880 + i * 100);
 		OnCoach_HeroList_Button->AddColliderBox(85, 85);
-		OnCoach_HeroList_Button->SetTriggerWhenDownForHerolist(townScene, &TownScene::ShowDummyHeroList);
 		OnCoach_HeroList_Button->SetTriggerWhenDownForHerolist(townScene, &TownScene::ShowDummyHeroList);
 		OnCoach_HeroList_Button->SetTriggerWhenDownRightButton(townScene, &TownScene::ShowCoachHeroPanel);
 		OnCoach_HeroList_Button->townScene = townScene;
@@ -122,7 +121,6 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 			OnCoach_HeroList_Button->AddSpriteRenderer(IMAGE::highwayman_roster);
 			break;
 		}
-
 		m_OnCoach_heroListButtonVec.push_back(OnCoach_HeroList_Button);
 		MG_GMOBJ->RegisterObj("OnCoach_Hero_roster", OnCoach_HeroList_Button);
 	}

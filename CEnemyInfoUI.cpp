@@ -10,7 +10,6 @@ CEnemyInfoUI::~CEnemyInfoUI() {}
 HRESULT CEnemyInfoUI::Init()
 {
 	m_layer = LAYER::UIButton;
-	m_transform->m_pos = Vector2(1573, 1080 - 58);
 	m_transform->m_pivot = Vector2(1, 1);
 
 	setUIIMG();
@@ -32,19 +31,20 @@ void CEnemyInfoUI::BackRender(HDC _hdc)
 
 void CEnemyInfoUI::Render(HDC _hdc)
 {
-
-	
 }
 
 void CEnemyInfoUI::FrontRender(HDC _hdc)
 {
 	for (int i = 0; i < m_battleSys->enemyParty.size(); i++)
 	{
-		if (m_battleSys->enemyParty[i]->m_collider->CheckColliderBoxWithPoint(g_ptMouse))
+		if (m_battleSys->enemyParty[i]->getHP() > 0)
 		{
-			m_enemyInfoPanel->Render(_hdc);
-			drawResistancesImage(_hdc);
-			showEnemyInfo(_hdc);
+			if (m_battleSys->enemyParty[i]->m_collider->CheckColliderBoxWithPoint(g_ptMouse))
+			{
+				m_enemyInfoPanel->RenderUI(_hdc);
+				drawResistancesImage(_hdc);
+				showEnemyInfo(_hdc);
+			}
 		}
 	}
 	char str[256];
@@ -65,26 +65,28 @@ void CEnemyInfoUI::Release()
 void CEnemyInfoUI::setUIIMG()
 {
 	m_enemyInfoPanel = new CSpriteRenderer(IMAGE::monster, m_transform);
+	m_enemyInfoPanel->useCustomPos = true;
+	m_enemyInfoPanel->pos = Vector2(1573, 1022);
 
 	m_stunicon = new CSpriteRenderer(IMAGE::stun, m_transform);
 	m_stunicon->useCustomPos = true;
-	m_stunicon->pos = Vector2(1200, 900);
+	m_stunicon->pos = Vector2(1040, 920);
 
 	m_blighicon = new CSpriteRenderer(IMAGE::poison, m_transform);
 	m_blighicon->useCustomPos = true;
-	m_blighicon->pos = Vector2(1000, 920);
+	m_blighicon->pos = Vector2(1040, 940);
 
 	m_bleedicon = new CSpriteRenderer(IMAGE::bleed, m_transform);
 	m_bleedicon->useCustomPos = true;
-	m_bleedicon->pos = Vector2(1000, 940);
+	m_bleedicon->pos = Vector2(1040, 960);
 
 	m_debufficon = new CSpriteRenderer(IMAGE::debuff, m_transform);
 	m_debufficon->useCustomPos = true;
-	m_debufficon->pos = Vector2(1000, 960);
+	m_debufficon->pos = Vector2(1040, 980);
 
 	m_moveicon = new CSpriteRenderer(IMAGE::move, m_transform);
 	m_moveicon->useCustomPos = true;
-	m_moveicon->pos = Vector2(1000, 980);
+	m_moveicon->pos = Vector2(1040, 1000);
 }
 
 void CEnemyInfoUI::isMouseOnEnemy()
@@ -126,23 +128,23 @@ void CEnemyInfoUI::showEnemyInfo(HDC _hdc)
 
 	SetTextColor(_hdc, RGB(212, 187, 120));
 	sprintf_s(str, "Stun :  %d", temp->getResist(0));
-	TextOut(_hdc, 1020, 900, str, strlen(str));
+	TextOut(_hdc, 1050, 900, str, strlen(str));
 
 	SetTextColor(_hdc, RGB(162, 175, 70));
 	sprintf_s(str, "Blight :  %d", temp->getResist(1));
-	TextOut(_hdc, 1020, 920, str, strlen(str));
+	TextOut(_hdc, 1050, 920, str, strlen(str));
 
 	SetTextColor(_hdc, RGB(126, 8, 4));
 	sprintf_s(str, "Bleed :  %d", temp->getResist(2));
-	TextOut(_hdc, 1020, 940, str, strlen(str));
+	TextOut(_hdc, 1050, 940, str, strlen(str));
 
 	SetTextColor(_hdc, RGB(195, 122, 81));
 	sprintf_s(str, "Debuff :  %d", temp->getResist(3));
-	TextOut(_hdc, 1020, 960, str, strlen(str));
+	TextOut(_hdc, 1050, 960, str, strlen(str));
 
 	SetTextColor(_hdc, RGB(118, 164, 198));
 	sprintf_s(str, "Move :  %d", temp->getResist(4));
-	TextOut(_hdc, 1020, 980, str, strlen(str));
+	TextOut(_hdc, 1050, 980, str, strlen(str));
 
 
 	SetTextColor(_hdc, RGB(118, 21, 9));
@@ -160,11 +162,11 @@ void CEnemyInfoUI::showEnemyInfo(HDC _hdc)
 
 void CEnemyInfoUI::drawResistancesImage(HDC _hdc)
 {
-	m_stunicon->Render(_hdc);
-	m_bleedicon->Render(_hdc);
-	m_moveicon->Render(_hdc);
-	m_blighicon->Render(_hdc);
-	m_debufficon->Render(_hdc);
+	m_stunicon->RenderUI(_hdc);
+	m_bleedicon->RenderUI(_hdc);
+	m_moveicon->RenderUI(_hdc);
+	m_blighicon->RenderUI(_hdc);
+	m_debufficon->RenderUI(_hdc);
 }
 
 void CEnemyInfoUI::Disable()

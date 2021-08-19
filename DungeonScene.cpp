@@ -415,6 +415,7 @@ void DungeonScene::ActivateRoom()
 		break;
 
 	case DUNGEONMAPSTATE::Room_Enemy:
+		m_pBattleSystem->isBoss = false;
 		m_pBattleSystem->BattleSystemInitiate();
 		break;
 
@@ -426,6 +427,7 @@ void DungeonScene::ActivateRoom()
 		break;
 	
 	case DUNGEONMAPSTATE::Room_Boss:
+		m_pBattleSystem->isBoss = true;
 		m_pBattleSystem->BattleSystemInitiate();
 		break;
 	

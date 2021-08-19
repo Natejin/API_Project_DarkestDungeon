@@ -63,5 +63,6 @@ public:
 	virtual int GetDodge()const;
 	virtual int GetProt()const;
 	virtual bool GetAttribute(int index)const;
+	virtual int getResist(int index);
 
 };

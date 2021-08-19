@@ -87,6 +87,7 @@ void TownScene::Release()
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]);
 	}
+
 	MG_GMOBJ->RemoveObj(m_heroListUI);
 	MG_GMOBJ->RemoveObj(m_DummyRosterButton);
 	MG_GMOBJ->RemoveObj(m_hero_panel);
@@ -370,7 +371,6 @@ void TownScene::SetHerolist()
 	}
 	m_heroListButtonVec.clear();
 
-
 	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
 	{
 		CHeroList_button* dragButton = new CHeroList_button();
@@ -408,9 +408,16 @@ void TownScene::SetHerolist()
 
 void TownScene::ShowDummyHeroList(HeroListBtType type, int index)
 {
+	if (type == HeroListBtType::coach)
+	{
+		m_DummyRosterButton->m_spriteRenderer->SetImage(m_stage_coach->m_OnCoach_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
+	}
+	else
+	{
+		m_DummyRosterButton->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
+	}
 	m_DummyRosterButton->type = type;
 	m_DummyRosterButton->index = index;
-	m_DummyRosterButton->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
 	m_DummyRosterButton->Enable();
 }
 

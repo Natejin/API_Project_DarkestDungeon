@@ -1,5 +1,12 @@
 #pragma once
 
+enum class NumCorType {
+	Black,
+	Red,
+	Green
+
+};
+
 enum class LAYER
 {
 	Unknown = -2,
@@ -518,7 +525,11 @@ enum class IMAGE
 	Crusader_Skill_BattleHeal,
 	Crusader_Skill_HolyLance,
 	Crusader_Skill_InspiringCry,
+		crusader_disable_battleheal,
 
+		crusader_disable_stunning,
+		crusader_disable_scroll,
+		crusader_disable_smite,
 	//vestal
 	Vestal_Skill_MaceBash,
 	Vestal_Skill_Judgement,
@@ -527,16 +538,34 @@ enum class IMAGE
 	Vestal_Skill_DivineComfort,
 	Vestal_Skill_Illumination,
 	Vestal_Skill_HandofLight,
+
+		vestal_disable_divine,
+		vestal_disable_dazzlingLight,
+		vestal_disable_judgement,
+		vestal_disable_mace,
 	//Plagued_doctor
 	Plague_doctor_Skill_NoxiousBlast,
 	Plague_doctor_Skill_PlagueGrenade,
 	Plague_doctor_Skill_Incision,
 	Plague_doctor_Skill_BattleFiled_Medicine,
+
+		plague_doctor_disable_battlefiledheal,
+		plague_doctor_diable_incision,
+		plague_doctor_disable_grenade,
+		plague_doctor_disable_noxious,
+
 	//Highwayman
 	Highwayman_Skill_PointBlankShot,
 	Highwayman_Skill_GrapeshotBlast,
 	Highwayman_Skill_Duelists_Advance,
 	Highwayman_Skill_OpenVein,
+
+		highwayman_disable_slice,
+		highwayman_diable_duelistadvance,
+		highwayman_disable_grapeshot,
+		highwayman_disable_pointshot,
+
+
 
 	//HeroMotion_Crusader
 	Crusader_Idle,
@@ -647,7 +676,7 @@ enum class IMAGE
 	//Number
 	NumberBlack,
 	NumberGreen,
-	NumberRed
+	NumberRed,
 
 };
 

@@ -128,6 +128,27 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::necromancer_defend, "images/Enemys/necromancer_defend.bmp", 589, 888, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::necromancer_retreat, "images/Enemys/necromancer_retreat.bmp", 615, 1168, true, RGB(255, 0, 255));
 
+	//Crusader
+	MG_IMAGE->addImage(IMAGE::crusader_disable_battleheal, "images/icons_heroes/disable/crusader_disable_battleheal.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_disable_scroll, "images/icons_heroes/disable/crusader_disable_scroll.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_disable_smite, "images/icons_heroes/disable/crusader_disable_smite.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_disable_stunning, "images/icons_heroes/disable/crusader_disable_stunning.bmp", 65, 65, false, RGB(255, 0, 255));
+	//Highwayman
+	MG_IMAGE->addImage(IMAGE::highwayman_diable_duelistadvance, "images/icons_heroes/disable/highwayman_diable_duelistadvance.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_disable_grapeshot, "images/icons_heroes/disable/highwayman_disable_grapeshot.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_disable_pointshot, "images/icons_heroes/disable/highwayman_disable_pointshot.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_disable_slice, "images/icons_heroes/disable/highwayman_disable_slice.bmp", 65, 65, false, RGB(255, 0, 255));
+	//Plague_doctor
+	MG_IMAGE->addImage(IMAGE::plague_doctor_diable_incision, "images/icons_heroes/disable/plague_doctor_diable_incision.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_battlefiledheal, "images/icons_heroes/disable/plague_doctor_disable_battlefiledheal.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_grenade, "images/icons_heroes/disable/plague_doctor_disable_grenade.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_noxious, "images/icons_heroes/disable/plague_doctor_disable_noxious.bmp", 65, 65, false, RGB(255, 0, 255));
+	//Vestal
+	MG_IMAGE->addImage(IMAGE::vestal_disable_dazzlingLight, "images/icons_heroes/disable/vestal_disable_dazzling Light.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_divine, "images/icons_heroes/disable/vestal_disable_divine.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_judgement, "images/icons_heroes/disable/vestal_disable_judgement.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_mace, "images/icons_heroes/disable/vestal_disable_mace.bmp", 65, 65, false, RGB(255, 0, 255));
+
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
 
@@ -314,6 +335,9 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("skelBg1", "images/panel/side_decor1.bmp", 250, 360, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("skelBg2", "images/panel/side_decor2.bmp", 250, 360, false, RGB(255, 0, 255));
+
 	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
@@ -461,6 +485,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::NumberBlack, "images/Number/NumberBlack.bmp", 340, 49,10,1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberGreen, "images/Number/NumberGreen.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberRed, "images/Number/NumberRed.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
+
 
 	return S_OK;
 

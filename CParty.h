@@ -25,6 +25,7 @@ private:
 	int WB_btwHeroes = 125;
 
 	int limit;
+	int limit2;
 	int selectedHeroIndex;
 
 	float curWalkTime;

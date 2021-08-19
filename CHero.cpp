@@ -64,6 +64,8 @@ void CHero::FrontRender(HDC _hdc)
 		targeted_h_Mem.Render(_hdc);
 	}
 	showStrsBar(_hdc);
+
+
 }
 
 void CHero::Release()
@@ -80,7 +82,6 @@ void CHero::Move()
 
 	if (left | right)
 	{
-		
 		if (right)
 		{
 			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)
@@ -100,9 +101,9 @@ void CHero::Move()
 				
 				if (m_DIST_retreat > limit && m_DIST_retreat > 300)
 				{
-					if (MG_RND->getInt(4) > 2)
+					if (MG_RND->getInt(50) < 1)
 					{
-						addStress(5);
+						addStress(MG_RND->getInt(3));
 					}
 					limit += 300;
 				}
