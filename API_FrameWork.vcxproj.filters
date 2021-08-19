@@ -280,6 +280,9 @@
     <Filter Include="Object\Embark">
       <UniqueIdentifier>{46f53c01-05d2-4c38-9f8f-a3839a012c09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\UI\Buttons\TIleSceneButton">
+      <UniqueIdentifier>{1a9d9f5a-67d4-47cc-aefa-82fd5272acc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameNode.h">
@@ -708,6 +711,12 @@
     <ClInclude Include="EmbarkPartySlot.h">
       <Filter>Object\Embark</Filter>
     </ClInclude>
+    <ClInclude Include="StartBG.h">
+      <Filter>Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleButton.h">
+      <Filter>Object\UI\Buttons\TIleSceneButton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1111,6 +1120,12 @@
     </ClCompile>
     <ClCompile Include="EmbarkPartySlot.cpp">
       <Filter>Object\Embark</Filter>
+    </ClCompile>
+    <ClCompile Include="StartBG.cpp">
+      <Filter>Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleButton.cpp">
+      <Filter>Object\UI\Buttons\TIleSceneButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

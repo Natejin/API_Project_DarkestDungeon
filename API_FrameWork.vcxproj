@@ -280,6 +280,7 @@
     <ClInclude Include="soundTest.h" />
     <ClInclude Include="CUIPanel_StageCoach.h" />
     <ClInclude Include="CUIPanel_Statue.h" />
+    <ClInclude Include="StartBG.h" />
     <ClInclude Include="tank.h" />
     <ClInclude Include="tankGameScene.h" />
     <ClInclude Include="tankMap.h" />
@@ -289,6 +290,7 @@
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="CTransform.h" />
+    <ClInclude Include="TitleButton.h" />
     <ClInclude Include="TownScene.h" />
     <ClInclude Include="TreasureEventPanel.h" />
     <ClInclude Include="txtData.h" />
@@ -418,6 +420,7 @@
     <ClCompile Include="soundTest.cpp" />
     <ClCompile Include="CUIPanel_StageCoach.cpp" />
     <ClCompile Include="CUIPanel_Statue.cpp" />
+    <ClCompile Include="StartBG.cpp" />
     <ClCompile Include="tank.cpp" />
     <ClCompile Include="tankGameScene.cpp" />
     <ClCompile Include="tankMap.cpp" />
@@ -426,6 +429,7 @@
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="CTransform.cpp" />
+    <ClCompile Include="TitleButton.cpp" />
     <ClCompile Include="TownScene.cpp" />
     <ClCompile Include="TreasureEventPanel.cpp" />
     <ClCompile Include="txtData.cpp" />

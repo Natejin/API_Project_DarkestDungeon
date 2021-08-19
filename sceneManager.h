@@ -23,7 +23,7 @@ private:
 public:
 	class DungeonScene* dungeonScene;
 	class TownScene* townScene;
-
+	class mainScene* _mainScene;
 	SceneManager();
 	~SceneManager();
 

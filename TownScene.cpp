@@ -32,6 +32,7 @@ TownScene::TownScene() {}
 TownScene::~TownScene() {}
 HRESULT TownScene::Init()
 {
+
 	MG_SOUND->play(SOUND::Town, 0.2);
 
 	isTown = true;

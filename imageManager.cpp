@@ -480,7 +480,16 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::BattleBG_darkestdungeon_wall2, "images/BattleScene/darkestdungeon_wall2.bmp", 2320, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::BattleBG_town_invasion, "images/BattleScene/town_invasion.bmp", 2320, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::BattleBG_trinket_retention, "images/BattleScene/trinket_retention.bmp", 2320, 720, true, RGB(255, 0, 255));
-	
+	//StartScene
+	MG_IMAGE->addImage(IMAGE::tutorial_popup, "images/Startbg/tutorial_popup.bmp", 400, 400, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::mailing_list, "images/Startbg/mailing_list.bmp", 1500, 800, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::modeselect_menu_backdrop, "images/Startbg/modeselect_menu_backdrop.bmp", 750, 625, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::saveslot, "images/Startbg/saveslot.bmp", 874, 137, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::start_button, "images/Startbg/start_button.bmp", 372, 92, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::title_bg, "images/Startbg/title_bg.bmp", 1920, 2160, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::title_house, "images/Startbg/title_house.bmp", 1920, 674, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::ugc_slot_selected, "images/Startbg/ugc_slot_selected.bmp", 592, 76, true, RGB(255, 0, 255));
+
 	//Number
 	MG_IMAGE->addFrameImage(IMAGE::NumberBlack, "images/Number/NumberBlack.bmp", 340, 49,10,1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberGreen, "images/Number/NumberGreen.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
