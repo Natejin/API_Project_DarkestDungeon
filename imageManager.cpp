@@ -462,8 +462,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("border_line", "images/Town/border_line.bmp", 1920, 1080, true, RGB(255, 0, 255));
 
 	//embarkBt
-	MG_IMAGE->addImage("embark", "images/Town_UI/embarkBt.bmp", 250, 72, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/dungeonBt.bmp", 100, 100, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("embark", "images/Town_UI/embarkBt.bmp", 250, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("embark", "images/Town_UI/embark_party.bmp", 250, 90, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/dungeonBt.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/tutorial_popup.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("partySlot", "images/Town_UI/partySlot.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("partySlot_", "images/selDungeon/embark_party.background.bmp", 412, 113, true, RGB(255, 0, 255));
