@@ -22,7 +22,7 @@ HRESULT CUIPanel_Abbey::Init()
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::abbey_bg, m_transform);
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095,-0.095);
-	panelbutton = new CBuilding_PanelButton();
+
 
 	CreateRooms();
 	Disable();
@@ -64,6 +64,14 @@ void CUIPanel_Abbey::FrontRender(HDC _hdc)
 
 void CUIPanel_Abbey::Release()
 {	
+	CEst_UI::Release();
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(panelVec[i]);
+	}
+
+	panelVec.clear();
+
 }
 
 void CUIPanel_Abbey::CreateRooms() //panel
@@ -73,7 +81,7 @@ void CUIPanel_Abbey::CreateRooms() //panel
 	{
 		for (size_t j = 0; j < 3; j++)
 		{
-			m_room = new CBuilding_PanelButton();
+			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
 			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i *135 , WINSIZEY / 2 - 280 + j * 225);
 			m_room->buttonID = k;
 			m_room->scene = townScene;
@@ -135,12 +143,6 @@ void CUIPanel_Abbey::CheckStress(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
-	//
-	//for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++) 
-	//{	
-	//	sprintf_s(strCount, "stress : %d", hero->getStress());
-	//	TextOut(_hdc, 100, 100 + i * 20, strCount, strlen(strCount));
-	//};
 
 	for (size_t i = 0; i < panelVec.size(); i++)
 	{

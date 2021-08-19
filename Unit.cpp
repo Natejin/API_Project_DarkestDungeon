@@ -40,6 +40,15 @@ HRESULT Unit::Init()
     missWord = new CSpriteRenderer(IMAGE::Miss, m_transform);
     missWord->pos = Vector2(20, -200);
     missWord->useCustomPos = true;
+
+    for (size_t i = 0; i < 5; i++)
+    {
+        CSpriteRenderer* icon = new CSpriteRenderer(IMAGE::stun, m_transform);
+        icon->useCustomPos = true;
+        icon->pos = Vector2(-60, 50);
+        statusIcon.push_back(icon);
+    }
+    curStatusIconCount = 0;
     return S_OK;
 }
 

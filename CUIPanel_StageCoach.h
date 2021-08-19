@@ -4,7 +4,7 @@
 class CUIPanel_StageCoach : public CEst_UI
 {
 private:
-	class CHeroList_button* m_HeroList_button;
+	//class CHeroList_button* m_HeroList_button;
 
 public:
 	vector<class CHeroList_button*> m_OnCoach_heroListButtonVec;

@@ -38,20 +38,20 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -116,7 +116,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,7 +130,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,7 +144,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,7 +161,6 @@
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEnemyInfoUI.h" />
     <ClInclude Include="CEquipButton.h" />
-    <ClInclude Include="CHeroOnStage_coach.h" />
     <ClInclude Include="COwnHeroListPanel.h" />
     <ClInclude Include="CPosition_Button.h" />
     <ClInclude Include="CSaveable.h" />
@@ -226,7 +225,6 @@
     <ClInclude Include="DummySlot.h" />
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
-    <ClInclude Include="DungeonScene2.h" />
     <ClInclude Include="dungeonUI.h" />
     <ClInclude Include="dungeonUI_HeroInfo.h" />
     <ClInclude Include="effect.h" />
@@ -267,7 +265,6 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="rocket.h" />
-    <ClInclude Include="RoomScene.h" />
     <ClInclude Include="CUIPanel_Sanitarium.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scene1.h" />
@@ -304,7 +301,6 @@
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEnemyInfoUI.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
-    <ClCompile Include="CHeroOnStage_coach.cpp" />
     <ClCompile Include="COwnHeroListPanel.cpp" />
     <ClCompile Include="CPosition_Button.cpp" />
     <ClCompile Include="CSaveable.cpp" />
@@ -370,7 +366,6 @@
     <ClCompile Include="DummySlot.cpp" />
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
-    <ClCompile Include="DungeonScene2.cpp" />
     <ClCompile Include="dungeonUI.cpp" />
     <ClCompile Include="dungeonUI_HeroInfo.cpp" />
     <ClCompile Include="effect.cpp" />
@@ -406,7 +401,6 @@
     <ClCompile Include="progressBar.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rocket.cpp" />
-    <ClCompile Include="RoomScene.cpp" />
     <ClCompile Include="CUIPanel_Sanitarium.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene1.cpp" />

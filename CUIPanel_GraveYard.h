@@ -4,7 +4,7 @@ class CUIPanel_GraveYard :public CEst_UI
 {
 	
 private:
-	class CHeroList_button* m_HeroList_button;
+	//class CHeroList_button* m_HeroList_button;
 public:
 	CUIPanel_GraveYard();
 	~CUIPanel_GraveYard();
@@ -18,7 +18,7 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
-	virtual void Release();
+	//virtual void Release();
 
 };
 

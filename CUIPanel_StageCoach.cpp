@@ -22,7 +22,7 @@ HRESULT CUIPanel_StageCoach::Init()
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::stage_coach_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
 
-	m_HeroList_button = new CHeroList_button();
+	//m_HeroList_button = new CHeroList_button();
 
 	CreateOnCoach_Hero();
 
@@ -55,7 +55,17 @@ void CUIPanel_StageCoach::FrontRender(HDC _hdc)
 
 void CUIPanel_StageCoach::Release()
 {
-
+	CEst_UI::Release();
+	for (size_t i = 0; i < m_OnCoach_HeroVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_OnCoach_HeroVec[i]);
+	}
+	m_OnCoach_HeroVec.clear();
+	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_OnCoach_heroListButtonVec[i]->GetId());
+	}
+	m_OnCoach_heroListButtonVec.clear();
 }
 
 void CUIPanel_StageCoach::Enable()

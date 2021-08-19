@@ -47,8 +47,3 @@ void CUIPanel_BlackSmith::FrontRender(HDC _hdc)
       m_windowPanelChar->Render(_hdc);
       m_quit->isActive = true;
 }
-
-void CUIPanel_BlackSmith::Release()
-{
-  
-}

@@ -18,7 +18,7 @@ HRESULT CUIPanel_Statue::Init()
     m_windowPanelChar = new CSpriteRenderer(IMAGE::statue_char, m_transform);    
     m_transform->m_pivot = Vector2(-0.095, -0.095);
   
-    m_HeroList_button = new CHeroList_button();
+    //m_HeroList_button = new CHeroList_button();
     return S_OK;
 }
 
@@ -47,5 +47,5 @@ void CUIPanel_Statue::FrontRender(HDC _hdc)
 
 void CUIPanel_Statue::Release()
 {
-  
+    CEst_UI::Release();
 }

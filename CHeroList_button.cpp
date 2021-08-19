@@ -86,6 +86,13 @@ void CHeroList_button::FrontRender(HDC _hdc)
 	//}
 }
 
+void CHeroList_button::Release()
+{
+	CDragButton::Release();
+	SAFE_DELETE(m_heroBG);
+	SAFE_DELETE(m_characterBG);
+}
+
 void CHeroList_button::DragHeroList()
 {
 	m_transform->m_pos += CInputManager::getSingleton()->GetptDeltaMouse();

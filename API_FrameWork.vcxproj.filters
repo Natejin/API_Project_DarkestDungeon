@@ -118,9 +118,6 @@
     <Filter Include="Object\RoadObj">
       <UniqueIdentifier>{d4539373-15a4-472d-b7e1-fdf58a2b1e4f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Test">
-      <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
     </Filter>
@@ -459,9 +456,6 @@
     <ClInclude Include="CRoadObject.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
-    <ClInclude Include="DungeonScene2.h">
-      <Filter>Scene\Test</Filter>
-    </ClInclude>
     <ClInclude Include="DungeonData.h">
       <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
@@ -506,9 +500,6 @@
     </ClInclude>
     <ClInclude Include="CUIPanel.h">
       <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomScene.h">
-      <Filter>Scene\Test</Filter>
     </ClInclude>
     <ClInclude Include="CMinimapButton.h">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
@@ -695,9 +686,6 @@
     </ClInclude>
     <ClInclude Include="CUI_Panel_Hero.h">
       <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CHeroOnStage_coach.h">
-      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClInclude>
     <ClInclude Include="COwnHeroListPanel.h">
       <Filter>Object\Building\CUIPanel_StageCoach</Filter>
@@ -887,9 +875,6 @@
     <ClCompile Include="CRoadObject.cpp">
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
-    <ClCompile Include="DungeonScene2.cpp">
-      <Filter>Scene\Test</Filter>
-    </ClCompile>
     <ClCompile Include="DungeonData.cpp">
       <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
@@ -934,9 +919,6 @@
     </ClCompile>
     <ClCompile Include="CUIPanel.cpp">
       <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomScene.cpp">
-      <Filter>Scene\Test</Filter>
     </ClCompile>
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
@@ -1099,9 +1081,6 @@
     </ClCompile>
     <ClCompile Include="CUI_Panel_Hero.cpp">
       <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="CHeroOnStage_coach.cpp">
-      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClCompile>
     <ClCompile Include="COwnHeroListPanel.cpp">
       <Filter>Object\Building\CUIPanel_StageCoach</Filter>

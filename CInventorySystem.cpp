@@ -89,6 +89,12 @@ void CInventorySystem::FrontRender(HDC _hdc)
 
 void CInventorySystem::Release()
 {
+	MG_GMOBJ->RemoveObj(dummySlot);
+	dragSlot = nullptr;
+	for (size_t i = 0; i < m_invenSlots.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_invenSlots[i]);
+	}
 }
 
 void CInventorySystem::Enable()

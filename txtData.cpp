@@ -41,7 +41,7 @@ char* txtData::vectorArrayCombine(vector<string> vArray)
 
 		if ((i + 1) < vArray.size())
 		{
-			strcat(str, ",");
+			//strcat(str, ",");
 		}
 	}
 
@@ -77,14 +77,14 @@ vector<string> txtData::charArraySeperation(char charArray[])
 	vector<string> vArray;
 	char* seperator = ",";
 	char* token;
-	token = strtok(charArray, seperator);
-	vArray.push_back(token);
+	//token = strtok(charArray, seperator);
+	//vArray.push_back(token);
 
 
-	while (NULL!=(token = strtok(NULL,seperator)))
-	{
-		vArray.push_back(token);
-	}
+	//while (NULL!=(token = strtok(NULL,seperator)))
+	//{
+	//	vArray.push_back(token);
+	//}
 
 	return vArray;
 }

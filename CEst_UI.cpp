@@ -57,7 +57,7 @@ void CEst_UI::FrontRender(HDC _hdc)
 void CEst_UI::Release()
 {
 	GameObject::Release();
-	m_quit = nullptr;
+	MG_GMOBJ->RemoveObj(m_quit);
 	SAFE_DELETE(m_windowPanelBG);
 	SAFE_DELETE(m_windowPanelChar);
 }

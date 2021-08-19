@@ -4,7 +4,7 @@ class CUIPanel_Statue : public CEst_UI
 {
 	
 private:
-	class CHeroList_button* m_HeroList_button;
+	//class CHeroList_button* m_HeroList_button;
 public:
 	CUIPanel_Statue();
 	~CUIPanel_Statue();

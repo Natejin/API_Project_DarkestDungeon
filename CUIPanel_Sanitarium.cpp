@@ -18,7 +18,7 @@ HRESULT CUIPanel_Sanitarium::Init()
 	m_windowPanelBG = new CSpriteRenderer(IMAGE::sanitarium_bg, m_transform);
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::sanitarium_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
-	panelbutton = new CBuilding_PanelButton();
+	//panelbutton = new CBuilding_PanelButton();
 
 	CreateRooms();
 	Disable();
@@ -72,7 +72,13 @@ void CUIPanel_Sanitarium::FrontRender(HDC _hdc)
 
 void CUIPanel_Sanitarium::Release()
 {
-    
+	CEst_UI::Release();
+	for (size_t i = 0; i < panelVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(panelVec[i]);
+	}
+
+	panelVec.clear();
 }
 
 void CUIPanel_Sanitarium::CreateRooms() //panel
@@ -82,7 +88,7 @@ void CUIPanel_Sanitarium::CreateRooms() //panel
 	{
 		for (size_t j = 0; j < 2; j++)
 		{
-			m_room = new CBuilding_PanelButton();
+			CBuilding_PanelButton* m_room = new CBuilding_PanelButton();
 			m_room->m_transform->m_pos = Vector2(WINSIZEX / 2 + 180 + i * 135, WINSIZEY / 2 - 280 + j * 225);
 			m_room->buttonID = k;
 			m_room->scene = townScene;

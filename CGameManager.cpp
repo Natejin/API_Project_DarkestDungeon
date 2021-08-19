@@ -159,7 +159,7 @@ bool CGameManager::RemoveHeroFromOwnList(int heroId)
 
 void CGameManager::setParty()
 {
-	m_party = new CParty;
+	m_party = new CParty();
 	m_party->Init(1, 1, 1);
 	m_party->Disable();
 	MG_GMOBJ->RegisterObj("Party", m_party);

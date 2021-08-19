@@ -68,6 +68,13 @@ void CMapSystem::FrontRender(HDC _hdc)
 
 void CMapSystem::Release()
 {
+	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(dungeonMapCreate[i]);
+
+	}
+	curPosPanel = nullptr;
+	dungeonScene = nullptr;
 }
 
 void CMapSystem::SetRandomCreateValue()

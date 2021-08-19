@@ -25,6 +25,7 @@ public:
 	bool showCount;
 	class CAnimator* showDamageCount1;
 	class CAnimator* showDamageCount10;
+	vector<CSpriteRenderer*> statusIcon;
 	//class CAnimator* showWordAnimator;
 
 	
@@ -56,10 +57,19 @@ protected:
 
 	//=====================================
 public:
+	int curStatusIconCount;
 	Unit();
 	~Unit();
 
 	HRESULT Init();
+
+	void AddStatus(EFFECTTYPE type) {
+		//EFFECTTYPE::
+	}
+
+	void RemoveStatus() {
+	
+	}
 
 	void ShowWordCount(int count, NumCorType color);
 	void ShowWordMiss();

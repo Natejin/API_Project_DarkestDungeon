@@ -103,10 +103,10 @@ void rocket::update()
 		char  temp[64];
 		vector<string>vStr;
 
-		vStr.push_back(_itoa(_currentHp, temp, 10));
+	/*	vStr.push_back(_itoa(_currentHp, temp, 10));
 		vStr.push_back(_itoa(_maxHp, temp, 10));
 		vStr.push_back(_itoa(_player->getX(), temp, 10));
-		vStr.push_back(_itoa(_player->getY(), temp, 10));
+		vStr.push_back(_itoa(_player->getY(), temp, 10));*/
 
 		MG_TXT->txtSave("save/rocketData.txt", vStr);
 
