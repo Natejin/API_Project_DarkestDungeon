@@ -175,8 +175,11 @@ void CBattleSystem::BattleSystemEnd()
 	for (size_t i = 0; i < posHero.size(); i++)
 	{
 		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
+		MG_GAME->m_partyOrigin[i]->SetPartyIndex(i);
+		MG_GAME->m_partyOrigin[i]->SetPartyPos(i);
 	}
 	scene->m_party->SetPartyMember(MG_GAME->m_partyOrigin);
+
 
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
@@ -935,7 +938,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
 					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
-					if (!heroParty[orderIndex]->reduceHP(damage))
+					if (heroParty[orderIndex]->reduceHP(damage))
 					{
 						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
 					}
