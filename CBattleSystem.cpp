@@ -504,7 +504,10 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 			//ȸ����
 			if (damage <= -1)
 			{
-				//TODO missAttack
+				SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 100, 3);
+				SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 200, 2);
+				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
+				enemyParty[index]->ShowWordMiss();
 			}
 			else 
 			{
@@ -512,16 +515,10 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
 
-				if (damage == -1)
+				enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
+				if (!enemyParty[index]->reduceHP(damage))
 				{
-					enemyParty[index]->ShowWordMiss();
-				}
-				else {
-					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
-					if (!enemyParty[index]->reduceHP(damage))
-					{
-						CheckEnemyAllDead();
-					}
+					CheckEnemyAllDead();
 				}
 			}
 		}
@@ -956,15 +953,19 @@ void CBattleSystem::StartEnemyTrun(int index)
 					MG_SOUND->play(enemySkill->sound, soundEffectVolume);
 					heroParty[orderIndex]->GetInfo()->attribute[(int)enemySkill->effect] = true;
 
-					SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
-					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
-					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
+	
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
 					if (damage == -1)
 					{
+						SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -200, 2);
+						SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -100, 5);
+						SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
 						heroParty[orderIndex]->ShowWordMiss();
 					}
 					else {
+						SetZoomImage(enemyZoomImage, enemySkill->m_skillMotion, -100, 2);
+						SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
+						SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
 						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
 						if (!heroParty[orderIndex]->reduceHP(damage))
 						{
