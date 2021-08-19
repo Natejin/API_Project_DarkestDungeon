@@ -49,10 +49,18 @@ void Unit::ShowWordCount(int count, NumCorType color)
     num10Count = count / 10;
     showDamageCount1->SetIndex((int)color);
     showDamageCount10->SetIndex((int)color);
-    showWord = true;
+    showCount = true;
     showCurWordTime = MG_TIME->getWorldTime() + showWordCoolTime;
     showDamageCount10->customPos = Vector2(-18, -250);
     showDamageCount1->customPos = Vector2(18, -250);
+    transparent = 255;
+}
+
+void Unit::ShowWordMiss()
+{
+    showWord = true;
+    showCurWordTime = MG_TIME->getWorldTime() + showWordCoolTime;
+    missWord->pos = Vector2(20, -200);
     transparent = 255;
 }
 
@@ -74,7 +82,7 @@ void Unit::Update(float deltaTime, float worldTime)
         m_transform->m_pos += (targetPos - m_transform->m_pos).Normalize() * movePosSpeed;
     }
 
-    if (showWord)
+    if (showCount)
     {
 
 
@@ -94,10 +102,30 @@ void Unit::Update(float deltaTime, float worldTime)
            
         }
         else {
+            showCount = false;
+        }
+    }
+    if (showWord)
+    {
+        if (showCurWordTime > worldTime)
+        {
+            missWord->pos.x -= sin(worldTime * 10) * wordSpeed;
+            missWord->pos.x -= sin(worldTime * 10) * wordSpeed;
+            missWord->pos.y -= wordSpeed;
+            missWord->pos.y -= wordSpeed;
+            if (showCurWordTime < worldTime + 2)
+            {
+                if (transparent > 1)
+                {
+                    transparent -= 2;
+                }
+            }
+
+        }
+        else {
             showWord = false;
         }
     }
-    
 }
 
 void Unit::LateUpdate()
@@ -132,11 +160,16 @@ void Unit::FrontRender(HDC _hdc)
     }
 
     //spTest->Render(_hdc);
-    if (showWord)
+    if (showCount)
     {
         showDamageCount1->AlphaFrameRender(_hdc,transparent, num1Count);
         showDamageCount10->AlphaFrameRender(_hdc, transparent, num10Count);
        
+    }
+
+    if (showWord)
+    {
+        missWord->AlphaRender(_hdc, transparent);
     }
 }
 

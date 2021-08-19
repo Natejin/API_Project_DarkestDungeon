@@ -514,7 +514,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 
 				if (damage == -1)
 				{
-					enemyParty[index]->ShowWordCount(99, NumCorType::Black);
+					enemyParty[index]->ShowWordMiss();
 				}
 				else {
 					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
@@ -959,7 +959,7 @@ void CBattleSystem::StartEnemyTrun(int index)
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
 					if (damage == -1)
 					{
-						heroParty[orderIndex]->ShowWordCount(99, NumCorType::Black);
+						heroParty[orderIndex]->ShowWordMiss();
 					}
 					else {
 						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);

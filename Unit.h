@@ -22,13 +22,13 @@ public:
 	float movePosSpeed;
 
 
-	bool showWord;
+	bool showCount;
 	class CAnimator* showDamageCount1;
 	class CAnimator* showDamageCount10;
 	//class CAnimator* showWordAnimator;
 
 	
-
+	bool showWord;
 	class CSpriteRenderer* missWord;
 	int num1Count;
 	int num10Count;
@@ -62,6 +62,7 @@ public:
 	HRESULT Init();
 
 	void ShowWordCount(int count, NumCorType color);
+	void ShowWordMiss();
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();
