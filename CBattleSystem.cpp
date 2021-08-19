@@ -499,7 +499,7 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
 
 
-				if (!enemyParty[index]->reduceHP(damage))
+				if (enemyParty[index]->reduceHP(damage))
 				{
 					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
 					CheckEnemyAllDead();
@@ -945,8 +945,6 @@ void CBattleSystem::StartEnemyTrun(int index)
 					else {
 						heroParty[orderIndex]->ShowWordCount(99, NumCorType::Black);
 					}
-					
-				
 					DelayUntillNextTurn(5);
 					return;
 				}
