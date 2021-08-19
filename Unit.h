@@ -25,9 +25,11 @@ public:
 	bool showWord;
 	class CAnimator* showDamageCount1;
 	class CAnimator* showDamageCount10;
-	class CAnimator* showWordAnimator;
+	//class CAnimator* showWordAnimator;
 
-	class CSpriteRenderer* spTest;
+	
+
+	class CSpriteRenderer* missWord;
 	int num1Count;
 	int num10Count;
 

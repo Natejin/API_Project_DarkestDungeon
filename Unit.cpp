@@ -13,6 +13,7 @@ HRESULT Unit::Init()
     movePosMode = false;;
     movePosSpeed = 10;
 
+
     showDamageCount1 = new CAnimator(m_transform);
     showDamageCount1->AddImageFrame(IMAGE::NumberBlack);
     showDamageCount1->AddImageFrame(IMAGE::NumberRed);
@@ -34,7 +35,11 @@ HRESULT Unit::Init()
 
     num1Count = 5;
     num10Count = 3;
-    spTest = new CSpriteRenderer(IMAGE::NumberBlack, m_transform);
+
+
+    missWord = new CSpriteRenderer(IMAGE::NumberBlack, m_transform);
+    missWord->pos = Vector2(20, -200);
+    missWord->useCustomPos = true;
     return S_OK;
 }
 

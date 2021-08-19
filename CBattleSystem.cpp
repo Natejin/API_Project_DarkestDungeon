@@ -129,6 +129,20 @@ void CBattleSystem::FrontRender(HDC _hdc)
 			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
 		}
 	}
+
+	for (size_t i = 0; i < heroParty.size(); i++)
+	{
+		if (heroParty[i] != nullptr)
+		{
+			sprintf_s(str, "[Hero] Index/POS :%d/%d, SPEED : % d, HP : %d / %d",
+				heroParty[i]->GetPartyIndex(),
+				heroParty[i]->GetPartyPos(),
+				heroParty[i]->getSPD(),
+				heroParty[i]->getHP(),
+				heroParty[i]->getMaxHP());
+			TextOut(_hdc, 500, 200 + 20 * i, str, strlen(str));
+		}
+	}
 }
 
 void CBattleSystem::Release()
