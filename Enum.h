@@ -1,10 +1,10 @@
 #pragma once
 
-enum class NumCorType {
+enum class NumCorType 
+{
 	Black,
 	Red,
 	Green
-
 };
 
 enum class LAYER
@@ -53,22 +53,22 @@ enum class EFFECTTYPE
 	Poison
 };
 
-enum class TRINKET {
+enum class TRINKET 
+{
 	NONE,
 	Item1,
 	Item2,
 	Item3,
 	Item4,
-
 };
 
-enum class SKILLIMAGETYPE {
+enum class SKILLIMAGETYPE 
+{
 	Attack,
 	Charge,
 	Defend,
 	Buff,
 	Debuff,
-
 };
 
 enum class SKILL
@@ -81,6 +81,7 @@ enum class SKILL
 	Crusader_BuffAllie_BulwarkofFaith,
 	Crusader_Heal_BattleHeal,
 	Crusader_Combat_HolyLance,
+	
 	//Vestal
 	Vestal_Combat_MaceBash,
 	Vestal_Combat_Judgement,
@@ -89,17 +90,18 @@ enum class SKILL
 	Vestal_Heal_DivineComfort,
 	Vestal_Combat_Illumination,
 	Vestal_Combat_HandofLight,
+	
 	//Plague_doctor
 	Plague_doctor_NoxiousBlast,
 	Plague_doctor_PlagueGrenade,
 	Plague_doctor_Incision,
 	Plague_doctor_BattleFiled_Medicine,
+	
 	//Highwayman
 	Highwayman_PointBlankShot,
 	Highwayman_GrapeshotBlast,
 	Highwayman_Duelists_Advance,
 	Highwayman_OpenVein,
-
 
 	//ENEMY
 	BoneDefender_Combat_1,
@@ -108,9 +110,8 @@ enum class SKILL
 	BoneCourtier_Combat_2_goblet,
 	Necromancer_Combat_1,
 	Necromancer_Combat_2_back,
-
-
 };
+
 enum class CAMP_SKILL
 {	//Common
 	camp_skill_bandage,
@@ -137,6 +138,7 @@ enum class CAMP_SKILL
 	camp_skill_pray,
 	camp_skill_sanctuary
 };
+
 enum class ITEM
 {
 	ITEM_CONSUMABLE,
@@ -157,8 +159,6 @@ enum class JOB
 	PlagueDoctor,
 	Highwayman
 };
-
-
 
 enum class DIR
 {
@@ -704,7 +704,6 @@ enum class Combat_Skill
 
 enum class Camping_Skill
 {
-
 	Night_Attack_Prevention,
 
 	Reconnaissance,
@@ -786,12 +785,12 @@ enum class RoadObjType
 	Boss
 };
 
-enum class ENEMYTYPE {
+enum class ENEMYTYPE 
+{
 	BoneDefender,
 	BoneCommon,
 	BoneCourtier,
 	Necromancer,
-
 };
 
 enum class  HeroListBtType

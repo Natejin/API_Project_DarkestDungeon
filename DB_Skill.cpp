@@ -21,6 +21,7 @@ void CDB_Skill::Init()
 void CDB_Skill::SetHeroSkill()
 {
 	CInfo_Skill* info = new CInfo_Skill();
+
 #pragma region Crusader
 	info = new CInfo_Skill();
 	info->m_name = "Smite";

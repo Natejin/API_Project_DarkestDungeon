@@ -43,9 +43,6 @@
     <Filter Include="Reference\tank">
       <UniqueIdentifier>{b27cfa34-3cc2-4095-a356-de016408a082}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Component">
-      <UniqueIdentifier>{73f8c52f-b98d-433e-b6c3-957e7fea7af1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Reference\loading">
       <UniqueIdentifier>{4340957f-7eb6-4d06-a697-1d8d3df4894d}</UniqueIdentifier>
     </Filter>
@@ -100,9 +97,6 @@
     <Filter Include="Reference\progressBar">
       <UniqueIdentifier>{5a2a6f49-9af9-45ce-a35f-aa13aa88d69e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Component\Prototype">
-      <UniqueIdentifier>{4f399900-ea7a-4f18-a91e-f96155febca7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="System">
       <UniqueIdentifier>{59958f3c-d674-4f33-b11b-24eabe0563cd}</UniqueIdentifier>
     </Filter>
@@ -117,6 +111,9 @@
     </Filter>
     <Filter Include="Object\RoadObj">
       <UniqueIdentifier>{d4539373-15a4-472d-b7e1-fdf58a2b1e4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Test">
+      <UniqueIdentifier>{09f15028-8364-474e-aeda-9fee328e6240}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{87a02760-796f-4bc0-a5f0-cee48dbf60ec}</UniqueIdentifier>
@@ -153,18 +150,6 @@
     </Filter>
     <Filter Include="Object\Background\Room">
       <UniqueIdentifier>{229c59a0-ae4b-4711-834c-1175528b3762}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Component\Collider">
-      <UniqueIdentifier>{2e20b540-91a6-4a64-8a9a-3f3a1d08d1fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Component\Animator">
-      <UniqueIdentifier>{d4592c56-8318-4cc6-a445-4ac2a894d9e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Component\Transform">
-      <UniqueIdentifier>{71a4995f-520b-4320-83f4-e47421f5cbdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Component\SpriteRender">
-      <UniqueIdentifier>{fb5b43eb-dcf9-4b80-867a-a1df25b815c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\UI\Buttons">
       <UniqueIdentifier>{d9eaa80b-627a-46e9-bcb2-d93804d67467}</UniqueIdentifier>
@@ -217,17 +202,8 @@
     <Filter Include="CommonInfo\DB\Info">
       <UniqueIdentifier>{3db6b452-e310-47d8-8cef-a87429ae2542}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CommonInfo\DB\Prototype">
-      <UniqueIdentifier>{0fb75e87-519e-49fb-aa63-719841f81c86}</UniqueIdentifier>
-    </Filter>
     <Filter Include="System\Battle">
       <UniqueIdentifier>{c7be98a5-5111-45c9-9dc1-5f52d5f7b7d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Component\ItemEffect">
-      <UniqueIdentifier>{4a9a0865-777d-4787-bb2e-0b27eeea7942}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CommonInfo\Colletion">
-      <UniqueIdentifier>{8c299ed5-0138-4058-9789-8d288a50c2c2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\UI\DungeonUI">
       <UniqueIdentifier>{efb3261e-002f-4b2f-8fb1-b22095ed1229}</UniqueIdentifier>
@@ -277,8 +253,23 @@
     <Filter Include="Object\Embark">
       <UniqueIdentifier>{46f53c01-05d2-4c38-9f8f-a3839a012c09}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\UI\Buttons\TIleSceneButton">
-      <UniqueIdentifier>{1a9d9f5a-67d4-47cc-aefa-82fd5272acc1}</UniqueIdentifier>
+    <Filter Include="Component">
+      <UniqueIdentifier>{73f8c52f-b98d-433e-b6c3-957e7fea7af1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Prototype">
+      <UniqueIdentifier>{4f399900-ea7a-4f18-a91e-f96155febca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider">
+      <UniqueIdentifier>{2e20b540-91a6-4a64-8a9a-3f3a1d08d1fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animator">
+      <UniqueIdentifier>{d4592c56-8318-4cc6-a445-4ac2a894d9e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Transform">
+      <UniqueIdentifier>{71a4995f-520b-4320-83f4-e47421f5cbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\SpriteRender">
+      <UniqueIdentifier>{fb5b43eb-dcf9-4b80-867a-a1df25b815c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -421,7 +412,7 @@
       <Filter>Manager\ect\Scene_M</Filter>
     </ClInclude>
     <ClInclude Include="CComponent.h">
-      <Filter>Object\Component\Prototype</Filter>
+      <Filter>Component\Prototype</Filter>
     </ClInclude>
     <ClInclude Include="Rect.h">
       <Filter>CommonInfo\Struct</Filter>
@@ -458,6 +449,9 @@
     </ClInclude>
     <ClInclude Include="CRoadObject.h">
       <Filter>Object\RoadObj</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonScene2.h">
+      <Filter>Scene\Test</Filter>
     </ClInclude>
     <ClInclude Include="DungeonData.h">
       <Filter>CommonInfo\Struct</Filter>
@@ -504,6 +498,9 @@
     <ClInclude Include="CUIPanel.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="RoomScene.h">
+      <Filter>Scene\Test</Filter>
+    </ClInclude>
     <ClInclude Include="CMinimapButton.h">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
     </ClInclude>
@@ -532,16 +529,16 @@
       <Filter>Object\Background\Room</Filter>
     </ClInclude>
     <ClInclude Include="CCollider.h">
-      <Filter>Object\Component\Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="CAnimator.h">
-      <Filter>Object\Component\Animator</Filter>
+      <Filter>Component\Animator</Filter>
     </ClInclude>
     <ClInclude Include="CTransform.h">
-      <Filter>Object\Component\Transform</Filter>
+      <Filter>Component\Transform</Filter>
     </ClInclude>
     <ClInclude Include="CSpriteRenderer.h">
-      <Filter>Object\Component\SpriteRender</Filter>
+      <Filter>Component\SpriteRender</Filter>
     </ClInclude>
     <ClInclude Include="CButton_buttonPosMove.h">
       <Filter>Object\UI\Buttons\bt_PosMove</Filter>
@@ -609,14 +606,8 @@
     <ClInclude Include="Info_Item.h">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
-    <ClInclude Include="CSaveable.h">
-      <Filter>CommonInfo\DB\Prototype</Filter>
-    </ClInclude>
     <ClInclude Include="DungeonScene.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="CItemEffect.h">
-      <Filter>Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="Info_Hero.h">
       <Filter>CommonInfo\DB\Info</Filter>
@@ -632,9 +623,6 @@
     </ClInclude>
     <ClInclude Include="Info.h">
       <Filter>CommonInfo\DB\Info</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemEffect_Colletion.h">
-      <Filter>CommonInfo\Colletion</Filter>
     </ClInclude>
     <ClInclude Include="InfomationManager.h">
       <Filter>Manager</Filter>
@@ -690,6 +678,9 @@
     <ClInclude Include="CUI_Panel_Hero.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
+    <ClInclude Include="CHeroOnStage_coach.h">
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
+    </ClInclude>
     <ClInclude Include="COwnHeroListPanel.h">
       <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClInclude>
@@ -699,11 +690,11 @@
     <ClInclude Include="EmbarkPartySlot.h">
       <Filter>Object\Embark</Filter>
     </ClInclude>
-    <ClInclude Include="StartBG.h">
-      <Filter>Object\Background</Filter>
+    <ClInclude Include="CItemEffect.h">
+      <Filter>CommonInfo\DB\Info</Filter>
     </ClInclude>
-    <ClInclude Include="TitleButton.h">
-      <Filter>Object\UI\Buttons\TIleSceneButton</Filter>
+    <ClInclude Include="ItemEffect_Colletion.h">
+      <Filter>CommonInfo\DB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -846,7 +837,7 @@
       <Filter>Manager\ect\Scene_M</Filter>
     </ClCompile>
     <ClCompile Include="CComponent.cpp">
-      <Filter>Object\Component\Prototype</Filter>
+      <Filter>Component\Prototype</Filter>
     </ClCompile>
     <ClCompile Include="Rect.cpp">
       <Filter>CommonInfo\Struct</Filter>
@@ -883,6 +874,9 @@
     </ClCompile>
     <ClCompile Include="CRoadObject.cpp">
       <Filter>Object\RoadObj</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonScene2.cpp">
+      <Filter>Scene\Test</Filter>
     </ClCompile>
     <ClCompile Include="DungeonData.cpp">
       <Filter>CommonInfo\Struct</Filter>
@@ -929,6 +923,9 @@
     <ClCompile Include="CUIPanel.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
+    <ClCompile Include="RoomScene.cpp">
+      <Filter>Scene\Test</Filter>
+    </ClCompile>
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
     </ClCompile>
@@ -957,16 +954,16 @@
       <Filter>Object\Background\Room</Filter>
     </ClCompile>
     <ClCompile Include="CCollider.cpp">
-      <Filter>Object\Component\Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="CAnimator.cpp">
-      <Filter>Object\Component\Animator</Filter>
+      <Filter>Component\Animator</Filter>
     </ClCompile>
     <ClCompile Include="CTransform.cpp">
-      <Filter>Object\Component\Transform</Filter>
+      <Filter>Component\Transform</Filter>
     </ClCompile>
     <ClCompile Include="CSpriteRenderer.cpp">
-      <Filter>Object\Component\SpriteRender</Filter>
+      <Filter>Component\SpriteRender</Filter>
     </ClCompile>
     <ClCompile Include="CButton_buttonPosMove.cpp">
       <Filter>Object\UI\Buttons\bt_PosMove</Filter>
@@ -1013,12 +1010,6 @@
     <ClCompile Include="Info_Item.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
-    <ClCompile Include="CSaveable.cpp">
-      <Filter>CommonInfo\DB\Prototype</Filter>
-    </ClCompile>
-    <ClCompile Include="CItemEffect.cpp">
-      <Filter>Object\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Info_Hero.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
@@ -1033,9 +1024,6 @@
     </ClCompile>
     <ClCompile Include="Info.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemEffect_Colletion.cpp">
-      <Filter>CommonInfo\Colletion</Filter>
     </ClCompile>
     <ClCompile Include="InfomationManager.cpp">
       <Filter>Manager</Filter>
@@ -1091,6 +1079,9 @@
     <ClCompile Include="CUI_Panel_Hero.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
+    <ClCompile Include="CHeroOnStage_coach.cpp">
+      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
+    </ClCompile>
     <ClCompile Include="COwnHeroListPanel.cpp">
       <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClCompile>
@@ -1100,11 +1091,11 @@
     <ClCompile Include="EmbarkPartySlot.cpp">
       <Filter>Object\Embark</Filter>
     </ClCompile>
-    <ClCompile Include="StartBG.cpp">
-      <Filter>Object\Background</Filter>
+    <ClCompile Include="ItemEffect_Colletion.cpp">
+      <Filter>CommonInfo\DB</Filter>
     </ClCompile>
-    <ClCompile Include="TitleButton.cpp">
-      <Filter>Object\UI\Buttons\TIleSceneButton</Filter>
+    <ClCompile Include="CItemEffect.cpp">
+      <Filter>CommonInfo\DB\Info</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

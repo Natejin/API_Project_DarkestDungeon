@@ -12,6 +12,7 @@ private:
 
 	void SetHero();
 	void SetEnemy();
+
 public:
 	DB_UnitInfo();
 	~DB_UnitInfo();
