@@ -756,7 +756,7 @@ void CDB_Skill::SetEnemySkill()
 	info->m_description = "";
 	info->m_ID = id++;
 	info->skillLevel = 0;
-	info->targetPos = 3;
+	info->targetPos = 15;
 	info->allowUseSkillPos = 3;
 	info->target = SKILLTARGET::Enemy;
 	info->m_skillImageType = SKILLIMAGETYPE::Attack;
