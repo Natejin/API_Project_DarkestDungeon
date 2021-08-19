@@ -368,6 +368,7 @@ bool CHero::reduceHP(int hp)
 	else {
 		info->m_HP = 0;
 		info->isAlive = false;
+		Disable();
 		return false;
 	}
 }
@@ -376,7 +377,7 @@ void CHero::increaseHP(int hp)
 {
 	if (info->m_maxHP > info->m_HP + hp)
 	{
-
+		info->m_HP += hp;
 	}
 	else 
 	{
