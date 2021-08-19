@@ -714,15 +714,18 @@ void CBattleSystem::SetPosition()
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
 		if (heroParty[i] == nullptr) continue;
-		if (heroParty[i]->GetAlive())
+
+		int index = posEnemy[i];
+		if (heroParty[index]->GetAlive())
 		{
+			heroParty[index]->SetPartyPos(i);
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
-				heroParty[i]->targetPos = Vector2(worldSize.x * 0.5 - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
+				heroParty[index]->targetPos = Vector2(worldSize.x * 0.5 - 100 - 150 * i, originPosOfBattle.y);
 			}
 			else 
 			{
-				heroParty[i]->targetPos = Vector2(cameraSize.x - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
+				heroParty[index]->targetPos = Vector2(cameraSize.x - 100 - 150 * i, originPosOfBattle.y);
 			}
 		}
 		else 
@@ -948,7 +951,15 @@ void CBattleSystem::StartEnemyTrun(int index)
 						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
 						if (!heroParty[orderIndex]->reduceHP(damage))
 						{
+							posHero.erase(posHero.begin() + heroParty[orderIndex]->GetPartyPos());
 							SetPosition();
+						
+						}
+						else {
+							if (heroParty[orderIndex]->GetAffliction())
+							{
+
+							}
 						}
 					}
 					DelayUntillNextTurn(5);

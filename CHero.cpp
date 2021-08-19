@@ -367,9 +367,20 @@ bool CHero::reduceHP(int hp)
 	}
 	else {
 		info->m_HP = 0;
-		info->isAlive = false;
-		Disable();
-		return false;
+		if (info->isAffliction)
+		{
+			info->isAlive = false;
+			info->isAffliction = false;
+			Disable();
+			return false;
+		}
+		else {
+			info->isAffliction = true;
+			return true;
+		}
+		
+
+
 	}
 }
 
