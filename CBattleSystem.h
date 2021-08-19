@@ -29,7 +29,7 @@ public:
 	vector<int> posEnemy;
 	vector<int> posHero;
 
-	queue<TurnSpeedOfUnit> speedQueue;
+	//queue<TurnSpeedOfUnit> speedQueue;
 	vector<pair<int, Unit*>> speedVec;
 
 	float delayTriggerEffect = 3;

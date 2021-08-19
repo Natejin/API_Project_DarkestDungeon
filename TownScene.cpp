@@ -26,7 +26,7 @@
 //===========================
 #include "Embark.h"
 #include "COwnHeroListPanel.h"
-
+#include "CGameManager.h"
 
 TownScene::TownScene() {}
 TownScene::~TownScene() {}
@@ -68,6 +68,7 @@ HRESULT TownScene::Init(bool managerInit)
 
 void TownScene::Release()
 {
+	MG_SOUND->stop(SOUND::Town);
 	MG_GMOBJ->RemoveObj(m_abbey);
 	MG_GMOBJ->RemoveObj(m_blacksmith);
 	MG_GMOBJ->RemoveObj(m_campingTrainer);
@@ -94,7 +95,6 @@ void TownScene::Release()
 	MG_GMOBJ->RemoveObj(m_hero_panel);
 
 	MG_GMOBJ->RemoveObj(m_embark);
-
 }
 
 void TownScene::Update()
@@ -372,13 +372,12 @@ void TownScene::SetHerolist()
 	}
 	m_heroListButtonVec.clear();
 
-	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
+	for (size_t i = 0; i < CGameManager::getSingleton()->m_ownHeroes.size(); i++)
 	{
 		CHeroList_button* dragButton = new CHeroList_button();
 		dragButton->Init();
 		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 620, WINSIZEY - 855 + i * 100);
 		dragButton->AddColliderBox(85, 85);
-		//dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
 		dragButton->m_index = i;

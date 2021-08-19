@@ -30,15 +30,14 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 
-	setParty();
+	//setParty();
 
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 
-	m_dungeonScene = MG_SCENE->dungeonScene;
-	m_townScene = MG_SCENE->townScene;
+
 
 	return S_OK;
 }
@@ -157,18 +156,18 @@ bool CGameManager::RemoveHeroFromOwnList(int heroId)
 	return false;
 }
 
-void CGameManager::setParty()
-{
-	m_party = new CParty();
-	m_party->Init(1, 1, 1);
-	m_party->Disable();
-	MG_GMOBJ->RegisterObj("Party", m_party);
-}
-
-CParty* CGameManager::GetParty()
-{
-	return m_party;
-}
+//void CGameManager::setParty()
+//{
+//	m_party = new CParty();
+//	m_party->Init(1, 1, 1);
+//	m_party->Disable();
+//	MG_GMOBJ->RegisterObj("Party", m_party);
+//}
+//
+//CParty* CGameManager::GetParty()
+//{
+//	return m_party;
+//}
 
 vector<CHero*> CGameManager::GetHeroes()
 {
@@ -183,6 +182,12 @@ CHero* CGameManager::GetHero(int index)
 CHero* CGameManager::GetHeroFromParty(int index)
 {
 	return index < m_partyOrigin.size() ? m_partyOrigin[index]: nullptr;
+}
+
+CParty* CGameManager::GetParty()
+{
+
+	return m_dungeonScene->m_party;
 }
 
 CHero* CGameManager::CreateHero(string name, JOB job)
@@ -218,14 +223,14 @@ CHero* CGameManager::GetCurSelHero()
 
 void CGameManager::SetCurSelHero(int index)
 {
-	m_CurSelHero = m_party->GetHero(index);
+	m_CurSelHero = m_dungeonScene-> m_party->GetHero(index);
 	if (m_CurSelHero)
 	{
-		for (int i = 0; i < m_party->GetPartySize(); i++)
+		for (int i = 0; i < m_dungeonScene->m_party->GetPartySize(); i++)
 		{
-			m_party->GetHero(i)->isSelected = false;
+			m_dungeonScene->m_party->GetHero(i)->isSelected = false;
 		}
-		m_party->GetHero(index)->isSelected = true;
+		m_dungeonScene->m_party->GetHero(index)->isSelected = true;
 
 		m_dungeonScene->m_dungeonUIinfo->SetPortrait(m_CurSelHero->GetInfo()->portrait);
 		m_dungeonScene->m_dungeonUIinfo->SetWeapon(m_CurSelHero->GetInfo()->weapon[0]);

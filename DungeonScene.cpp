@@ -27,8 +27,9 @@ DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
-	MG_SOUND->stop(SOUND::Town);
+
 	ActivateSound();
+	CreateParty();
 
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
@@ -38,7 +39,9 @@ HRESULT DungeonScene::Init()
 	CreateDungeonUI();
 	CreateBattleSystem();
 
-	CreateParty();
+	MG_GAME->SetCurSelHero(0);
+	m_party->Enable();
+	MG_CAMERA->SetTarget(m_party->GetHero(0));
 
 	CreateRoom();
 	CreateRoad();
@@ -56,7 +59,7 @@ HRESULT DungeonScene::Init(bool managerInit)
 
 void DungeonScene::Release()
 {
-
+	DeactivateSound();
 	MG_GMOBJ->RemoveObj(m_roomBG);
 	MG_GMOBJ->RemoveObj(m_roadBG);
 	MG_GMOBJ->RemoveObj(treasurePanel);
@@ -82,7 +85,7 @@ void DungeonScene::Update()
 {
 	if (MG_INPUT->isOnceKeyDown(VK_F5))
 	{
-		MG_SCENE->changeScene(SCENETYPE::Town);
+		MG_SCENE->changeScene(SCENETYPE::Test);
 	}
 
 
@@ -152,7 +155,12 @@ void DungeonScene::CreateDungeonMap()
 
 void DungeonScene::CreateParty()
 {
-	m_party = MG_GAME->GetParty();
+	//m_party = MG_GAME->GetParty();
+
+	m_party = new CParty();
+	m_party->Init(1, 1, 1);
+	m_party->Disable();
+	MG_GMOBJ->RegisterObj("Party", m_party);
 	for (int i = 0; i < MG_GAME->GetHeroPartySize(); i++)
 	{
 		if (MG_GAME->GetHeroFromParty(i) != nullptr)
@@ -161,14 +169,11 @@ void DungeonScene::CreateParty()
 			MG_GAME->GetHeroFromParty(i)->SetPartyIndex(i);
 			MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
 			MG_GAME->GetHeroFromParty(i)->Enable();
-
 			m_party->SetHero(MG_GAME->GetHeroFromParty(i));
 		}
 	}
 
-	MG_GAME->SetCurSelHero(0);
-	m_party->Enable();
-	MG_CAMERA->SetTarget(m_party->GetHero(0));
+
 }
 
 void DungeonScene::CreateRoom()

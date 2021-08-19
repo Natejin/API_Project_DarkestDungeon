@@ -119,8 +119,6 @@ void Unit::Update(float deltaTime, float worldTime)
         if (showCurWordTime > worldTime)
         {
             missWord->pos.x -= sin(worldTime * 10) * wordSpeed;
-            missWord->pos.x -= sin(worldTime * 10) * wordSpeed;
-            missWord->pos.y -= wordSpeed;
             missWord->pos.y -= wordSpeed;
             if (showCurWordTime < worldTime + 2)
             {

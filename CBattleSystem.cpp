@@ -147,7 +147,18 @@ void CBattleSystem::FrontRender(HDC _hdc)
 
 void CBattleSystem::Release()
 {
-
+	GameObject::Release();
+	for (size_t i = 0; i < enemyParty.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(enemyParty[i]);
+	}
+	speedVec.clear();
+	curHero = nullptr;
+	curEnemy = nullptr;
+	MG_GMOBJ->RemoveObj(heroZoomImage);
+	MG_GMOBJ->RemoveObj(enemyZoomImage);
+	MG_GMOBJ->RemoveObj(effectBGImage);
+	MG_GMOBJ->RemoveObj(monsterIndicator);
 }
 
 //==================================
@@ -221,7 +232,6 @@ void CBattleSystem::BattleSystemEnd()
 		MG_SOUND->play(SOUND::raid_success, 0.5f);
 	}
 
-	auto party = MG_GAME->m_partyOrigin;
 
 	Disable();
 }

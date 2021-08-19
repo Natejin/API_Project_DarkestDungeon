@@ -7,10 +7,12 @@ class CGameManager : public Singleton<CGameManager>
 {
 private:
 	//map<int,class GameObject*> objectMap;
-	class DungeonScene* m_dungeonScene;
-	class TownScene* m_townScene;
+
 
 public:
+
+	class DungeonScene* m_dungeonScene;
+	class TownScene* m_townScene;
 	CGameManager();
 	~CGameManager();
 
@@ -31,7 +33,7 @@ public:
 	vector<CHero*> m_partyOrigin;
 	vector<CHero*> m_ownHeroes;
 
-	CParty* m_party;
+	//CParty* m_party;
 	CHero* m_CurSelHero;
 
 	bool RegisterHeroToParty(CHero* hero);
@@ -43,7 +45,7 @@ public:
 	CHero* GetHero(int index);
 	CHero* GetHeroFromParty(int index);
 
-	void setParty();
+	//void setParty();
 	CParty* GetParty();
 
 	class CHero* CreateHero(string name, JOB job);

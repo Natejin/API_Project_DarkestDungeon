@@ -15,7 +15,7 @@ HRESULT TestScene::Init()
 
 HRESULT TestScene::Init(bool managerInit)
 {
-	
+	isFirst = false;
 	return S_OK;
 }
 
@@ -26,10 +26,20 @@ void TestScene::Release()
 
 void TestScene::Update()
 {
-	//MG_SCENE->changeScene(SCENETYPE::Dungeon);
-	//MG_SCENE->changeScene(SCENETYPE::Dungeon2);
-	//MG_SCENE->changeScene(SCENETYPE::Town);
-	MG_SCENE->changeScene(SCENETYPE::MainScene);
+	MG_SCENE->ResetScene();
+
+	if (isFirst)
+	{
+		isFirst = false;
+		MG_SCENE->changeScene(SCENETYPE::MainScene);
+	}
+	else {
+
+		MG_SCENE->changeScene(SCENETYPE::Town);
+
+	}
+
+
 	
 	if (MG_INPUT->isOnceKeyDown('P'))
 	{

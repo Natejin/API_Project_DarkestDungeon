@@ -450,9 +450,6 @@
     <ClInclude Include="CRoadObject.h">
       <Filter>Object\RoadObj</Filter>
     </ClInclude>
-    <ClInclude Include="DungeonScene2.h">
-      <Filter>Scene\Test</Filter>
-    </ClInclude>
     <ClInclude Include="DungeonData.h">
       <Filter>CommonInfo\Struct</Filter>
     </ClInclude>
@@ -497,9 +494,6 @@
     </ClInclude>
     <ClInclude Include="CUIPanel.h">
       <Filter>Object\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomScene.h">
-      <Filter>Scene\Test</Filter>
     </ClInclude>
     <ClInclude Include="CMinimapButton.h">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
@@ -678,9 +672,6 @@
     <ClInclude Include="CUI_Panel_Hero.h">
       <Filter>Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CHeroOnStage_coach.h">
-      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
-    </ClInclude>
     <ClInclude Include="COwnHeroListPanel.h">
       <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClInclude>
@@ -695,6 +686,12 @@
     </ClInclude>
     <ClInclude Include="ItemEffect_Colletion.h">
       <Filter>CommonInfo\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="StartBG.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleButton.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -875,9 +872,6 @@
     <ClCompile Include="CRoadObject.cpp">
       <Filter>Object\RoadObj</Filter>
     </ClCompile>
-    <ClCompile Include="DungeonScene2.cpp">
-      <Filter>Scene\Test</Filter>
-    </ClCompile>
     <ClCompile Include="DungeonData.cpp">
       <Filter>CommonInfo\Struct</Filter>
     </ClCompile>
@@ -922,9 +916,6 @@
     </ClCompile>
     <ClCompile Include="CUIPanel.cpp">
       <Filter>Object\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomScene.cpp">
-      <Filter>Scene\Test</Filter>
     </ClCompile>
     <ClCompile Include="CMinimapButton.cpp">
       <Filter>Object\UI\Buttons\bt_Minimap</Filter>
@@ -1079,9 +1070,6 @@
     <ClCompile Include="CUI_Panel_Hero.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CHeroOnStage_coach.cpp">
-      <Filter>Object\Building\CUIPanel_StageCoach</Filter>
-    </ClCompile>
     <ClCompile Include="COwnHeroListPanel.cpp">
       <Filter>Object\Building\CUIPanel_StageCoach</Filter>
     </ClCompile>
@@ -1096,6 +1084,12 @@
     </ClCompile>
     <ClCompile Include="CItemEffect.cpp">
       <Filter>CommonInfo\DB\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="StartBG.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleButton.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

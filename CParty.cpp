@@ -106,10 +106,15 @@ void CParty::FrontRender(HDC _hdc)
 void CParty::Release()
 {
 	////TODO 추후 영웅들 데이터 저장 추가 예정
-	for (size_t i = 0; i < m_member.size(); i++)
+	for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 	{
-		MG_GAME->RegisterHeroToOwnList(m_member[i]);
-		m_member[i]->Disable();
+
+		if (MG_GAME->m_partyOrigin[i]!=nullptr)
+		{
+			MG_GAME->RegisterHeroToOwnList(MG_GAME->m_partyOrigin[i]);
+			MG_GAME->m_partyOrigin[i]->Disable();
+		}
+
 	}
 	m_member.clear();
 	GameObject::Release();
@@ -228,10 +233,16 @@ void CParty::getStress_movement()
 		{
 			if (ran < MG_RND->getInt(3))
 			{
+				
 				int partySize = MG_GAME->GetHeroPartySize();
 				if (partySize > 0 )
 				{
-					m_member[MG_RND->getInt(partySize)]->addStress(MG_RND->getInt(5));
+					int rnd = MG_RND->getInt(partySize);
+					if (m_member[rnd] != nullptr)
+					{
+						m_member[rnd]->addStress(MG_RND->getInt(5));
+					}
+					
 				}
 			}
 			limit2 += 300;

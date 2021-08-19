@@ -12,7 +12,7 @@ mainScene::~mainScene()
 
 HRESULT mainScene::Init()
 {
-    MG_SOUND->play(SOUND::Title_Theme);
+    MG_SOUND->play(SOUND::Title_Theme,0.1f);
     m_startscene = new StartBG();
     m_startscene->Init();
     MG_GMOBJ->RegisterObj("StartScene", m_startscene);

@@ -42,7 +42,7 @@ void CObjectManager::Update(float deltaTime, float worldTime)
 			}
 		}
 		else {
-			objsToErase.push_back(i);
+			//objsToErase.push_back(i);
 		}
 		i++;
 	}

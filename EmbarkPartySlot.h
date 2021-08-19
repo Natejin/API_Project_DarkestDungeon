@@ -9,8 +9,8 @@ public:
 	class TownScene* m_townScene;
 	class CHero* m_hero;
 
-	class CHeroList_button* m_listButton;
-	class CButton* checkBt;
+	//class CHeroList_button* m_listButton;
+	//class CButton* checkBt;
 
 public:
 	EmbarkPartySlot();

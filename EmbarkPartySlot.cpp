@@ -98,6 +98,8 @@ void EmbarkPartySlot::FrontRender(HDC _hdc)
 
 void EmbarkPartySlot::Release()
 {
+	CEst_UI::Release();
+	m_hero = nullptr;
 }
 
 void EmbarkPartySlot::Enable()

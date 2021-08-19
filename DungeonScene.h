@@ -106,6 +106,7 @@ public:
 	virtual void Update();
 	virtual void Render(HDC _hdc);
 
+
 	//room and road changeScene
 	void ActivateRoom();
 	void ActivateRoad();
