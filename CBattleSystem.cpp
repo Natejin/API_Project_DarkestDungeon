@@ -180,6 +180,7 @@ void CBattleSystem::BattleSystemEnd()
 	MG_SOUND->stop(SOUND::Combat);
 	scene->ActivateSound();
 	isBattle = false;
+	isBoss = false;
 	Disable();
 }
 
