@@ -440,7 +440,7 @@ void CBattleSystem::SwapPosSkill()
 					if (heroParty[i]->GetPartyPos() == 0 || heroParty[i]->GetPartyPos() == 2)
 					{
 						heroParty[i]->isTargetHeal = true;
-						break;
+						
 					}
 				}
 				
@@ -455,7 +455,7 @@ void CBattleSystem::SwapPosSkill()
 					if (heroParty[i]->GetPartyPos() == 1 || heroParty[i]->GetPartyPos() == 3)
 					{
 						heroParty[i]->isTargetHeal = true;
-						break;
+						
 					}
 				}
 			}
@@ -584,10 +584,15 @@ void CBattleSystem::CheckAndSwapHeroPos(int index)
 		int oldIndex1 = curHero->GetPartyIndex();
 		int oldIndex2 = heroParty[index]->GetPartyIndex();
 
+
+		//auto oldIndex2 = heroParty[index];
+		//heroParty[index] = curHero;
+		//curHero = oldIndex2;
+
 		heroParty[oldIndex1]->SetPartyPos(oldPos2);
 		heroParty[oldIndex2]->SetPartyPos(oldPos1);
-		posHero[oldIndex1] = oldPos2;
-		posHero[oldIndex2] = oldPos1;
+		posHero[oldPos2] = oldIndex1;
+		posHero[oldPos1] = oldIndex2;
 
 		delayForSwapSetPosition = true;
 
