@@ -498,14 +498,16 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				SetZoomImage(enemyZoomImage, enemyParty[index]->GetInfo()->imageDefend, 100, 2);
 				SetEffectImage(Vector2(-400, 0), Vector2(0, 0), 10);
 
-
-				if (!enemyParty[index]->reduceHP(damage))
+				if (damage == -1)
 				{
-					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
-					CheckEnemyAllDead();
+					enemyParty[index]->ShowWordCount(99, NumCorType::Black);
 				}
 				else {
-					enemyParty[index]->ShowWordCount(99, NumCorType::Black);
+					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
+					if (!enemyParty[index]->reduceHP(damage))
+					{
+						CheckEnemyAllDead();
+					}
 				}
 			}
 		}
@@ -938,15 +940,17 @@ void CBattleSystem::StartEnemyTrun(int index)
 					SetZoomImage(heroZoomImage, heroParty[orderIndex]->GetInfo()->imageDefend, -200, 5);
 					SetEffectImage(Vector2(-400,0), Vector2(0, 0), 10);
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
-					if (heroParty[orderIndex]->reduceHP(damage))
+					if (damage == -1)
 					{
-						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
-					}
-					else {
 						heroParty[orderIndex]->ShowWordCount(99, NumCorType::Black);
 					}
-					
-				
+					else {
+						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
+						if (!heroParty[orderIndex]->reduceHP(damage))
+						{
+							SetPosition();
+						}
+					}
 					DelayUntillNextTurn(5);
 					return;
 				}
