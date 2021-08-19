@@ -103,6 +103,12 @@ void DungeonScene::Update()
 		{
 			m_pBattleSystem->BattleSystemInitiate();
 		}
+
+		if (MG_INPUT->isOnceKeyDown(VK_F6))
+		{
+			m_pBattleSystem->isBoss = true;
+			m_pBattleSystem->BattleSystemInitiate();
+		}
 	}
 	else if (m_dungeonMode == DUNGEONMODE::BATTLE)
 	{
