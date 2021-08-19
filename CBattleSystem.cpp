@@ -180,7 +180,18 @@ void CBattleSystem::BattleSystemEnd()
 	MG_SOUND->stop(SOUND::Combat);
 	scene->ActivateSound();
 	isBattle = false;
-	isBoss = false;
+	if (isBoss)
+	{
+		isBoss = false;
+		MG_SOUND->play(SOUND::raid_success, 0.5f);
+	}
+
+	auto party = MG_GAME->m_partyOrigin;
+	MG_GAME->m_partyOrigin.clear();
+	for (size_t i = 0; i < posHero.size(); i++)
+	{
+		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
+	}
 	Disable();
 }
 
