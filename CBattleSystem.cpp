@@ -140,6 +140,8 @@ void CBattleSystem::Release()
 
 void CBattleSystem::BattleSystemInitiate()
 {
+	 worldSize = MG_CAMERA->GetWorldSize();
+	cameraSize = MG_CAMERA->GetCenterPos();
 	m_enemyInfoUI->Enable();
 	originPosOfBattle = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	CreateHeroesParty();
@@ -153,8 +155,7 @@ void CBattleSystem::BattleSystemInitiate()
 	scene->DeactivateSound();
 	MG_SOUND->play(SOUND::Combat, 0.1f);
 	isBattle = true;
-	 worldSize = MG_CAMERA->GetWorldSize();
-	 cameraSize = MG_CAMERA->GetCenterPos();
+
 	Enable();
 }
 
@@ -359,7 +360,7 @@ void CBattleSystem::CreateEnemyParty()
 			}
 			else
 			{
-				enemy->m_transform->m_pos = Vector2(cameraSize.x + 100 + 150 * i, originPosOfBattle.y);
+				enemy->m_transform->m_pos = Vector2(cameraPos.x + 100 + 150 * i, originPosOfBattle.y);
 				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 			}
 			SetIndicatorPos(enemy);
