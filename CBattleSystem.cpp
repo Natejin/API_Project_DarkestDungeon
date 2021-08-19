@@ -52,11 +52,11 @@ HRESULT CBattleSystem::Init()
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
-	if (MG_INPUT->isOnceKeyDown('P'))
+	if (MG_INPUT->isOnceKeyDown(VK_F3))
 	{
 		BattleSystemEnd();
 	}
-	if (MG_INPUT->isOnceKeyDown('N'))
+	if (MG_INPUT->isOnceKeyDown(VK_F4))
 	{
 		StartTurn();
 	}
@@ -176,6 +176,13 @@ void CBattleSystem::BattleSystemEnd()
 		MG_GMOBJ->RemoveObj(enemyParty[i]);
 	}
 	enemyParty.clear();
+
+	MG_GAME->m_partyOrigin.clear();
+	for (size_t i = 0; i < posHero.size(); i++)
+	{
+		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
+	}
+	scene->m_party->SetPartyMember(MG_GAME->m_partyOrigin);
 	posEnemy.clear();
 	posHero.clear();
 	speedVec.clear();
@@ -190,16 +197,7 @@ void CBattleSystem::BattleSystemEnd()
 	}
 
 	auto party = MG_GAME->m_partyOrigin;
-	MG_GAME->m_partyOrigin.clear();
 
-
-	for (size_t i = 0; i < posHero.size(); i++)
-	{
-		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
-
-	}
-
-	scene->m_party->SetPartyMember(MG_GAME->m_partyOrigin);
 	Disable();
 }
 
