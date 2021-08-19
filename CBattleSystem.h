@@ -23,6 +23,9 @@ public:
 	vector<class CHero*> heroParty;
 	vector<class CEnemy*> enemyParty;
 
+	Vector2 worldSize;
+	Vector2 cameraSize;
+
 	vector<int> posEnemy;
 	vector<int> posHero;
 

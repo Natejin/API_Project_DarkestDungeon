@@ -153,6 +153,8 @@ void CBattleSystem::BattleSystemInitiate()
 	scene->DeactivateSound();
 	MG_SOUND->play(SOUND::Combat, 0.1f);
 	isBattle = true;
+	 worldSize = MG_CAMERA->GetWorldSize();
+	 cameraSize = MG_CAMERA->GetCenterPos();
 	Enable();
 }
 
@@ -315,8 +317,7 @@ void CBattleSystem::UseSkill(int _index)
 void CBattleSystem::CreateEnemyParty()
 {
 	int random = MG_RND->getInt(3) + 2;
-	Vector2 worldSize = MG_CAMERA->GetWorldSize();
-	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+
 
 	if (isBoss)
 	{
@@ -358,7 +359,7 @@ void CBattleSystem::CreateEnemyParty()
 			}
 			else
 			{
-				enemy->m_transform->m_pos = Vector2(cameraPos.x + 100 + 150 * i, originPosOfBattle.y);
+				enemy->m_transform->m_pos = Vector2(cameraSize.x + 100 + 150 * i, originPosOfBattle.y);
 				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 			}
 			SetIndicatorPos(enemy);
@@ -485,11 +486,11 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 
 				if (!enemyParty[index]->reduceHP(damage))
 				{
-					enemyParty[index]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
+					enemyParty[index]->ShowWordCount(damage, NumCorType::Red);
 					CheckEnemyAllDead();
 				}
 				else {
-					enemyParty[index]->ShowWordCount(MG_RND->getInt(99), NumCorType::Black);
+					enemyParty[index]->ShowWordCount(99, NumCorType::Black);
 				}
 			}
 		}
@@ -542,7 +543,7 @@ void CBattleSystem::CheckAndHealAlly(CInfo_Skill* tempSkill, int index)
 		SetZoomImage(heroZoomImage, tempSkill->m_skillMotion, 200, 10);
 		int hp = tempSkill->GetHeal();
 		heroParty[index]->increaseHP(hp);
-		heroParty[index]->ShowWordCount(MG_RND->getInt(hp), NumCorType::Green);
+		heroParty[index]->ShowWordCount(hp, NumCorType::Green);
 
 		DelayUntillNextTurn(delayTriggerEffect);
 		SetEffectImage(Vector2(-200, 0), Vector2(0, 0), 2);
@@ -691,8 +692,7 @@ void CBattleSystem::SetEnemyIndicator(int index)
 
 void CBattleSystem::SetPosition() 
 {
-	Vector2 worldSize = MG_CAMERA->GetWorldSize();
-	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+
 
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
@@ -705,7 +705,7 @@ void CBattleSystem::SetPosition()
 			}
 			else 
 			{
-				heroParty[i]->targetPos = Vector2(cameraPos.x - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
+				heroParty[i]->targetPos = Vector2(cameraSize.x - 100 - 150 * heroParty[i]->GetPartyPos(), originPosOfBattle.y);
 			}
 		}
 		else 
@@ -725,7 +725,7 @@ void CBattleSystem::SetPosition()
 				enemyParty[index]->targetPos = Vector2(worldSize.x * 0.5 + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
 			}
 			else {
-				enemyParty[index]->targetPos = Vector2(cameraPos.x + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
+				enemyParty[index]->targetPos = Vector2(cameraSize.x + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
 			}
 		}
 	}
@@ -746,8 +746,7 @@ void CBattleSystem::SetPosition()
 void CBattleSystem::CreateHeroesParty()
 {
 	int playerPartySize = MG_GAME->GetHeroPartySize();
-	Vector2 worldSize = MG_CAMERA->GetWorldSize();
-	Vector2 cameraPos = MG_CAMERA->GetCenterPos();
+
 	//Vector2 heroPos = MG_GAME->GetHeroFromParty(0)->m_transform->m_pos;
 	int k = 0;
 	for (int i = 0; i < playerPartySize; i++, k++)
@@ -769,7 +768,7 @@ void CBattleSystem::CreateHeroesParty()
 			}
 			else 
 			{
-				heroParty[k]->m_transform->m_pos = Vector2(cameraPos.x - 100 - 150 * k, originPosOfBattle.y);
+				heroParty[k]->m_transform->m_pos = Vector2(cameraSize.x - 100 - 150 * k, originPosOfBattle.y);
 			}
 
 			heroParty[k]->m_animator->SetIndex(2);
@@ -926,10 +925,10 @@ void CBattleSystem::StartEnemyTrun(int index)
 					int damage = enemySkill->GetDamage(curEnemy->GetInfo(), heroParty[orderIndex]->GetInfo());
 					if (!heroParty[orderIndex]->reduceHP(damage))
 					{
-						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
+						heroParty[orderIndex]->ShowWordCount(damage, NumCorType::Red);
 					}
 					else {
-						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(99), NumCorType::Black);
+						heroParty[orderIndex]->ShowWordCount(99, NumCorType::Black);
 					}
 					
 				
