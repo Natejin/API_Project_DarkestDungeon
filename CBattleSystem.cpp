@@ -747,22 +747,25 @@ void CBattleSystem::SetPosition()
 			heroParty[i]->Disable();
 		}
 	}
-	
-	for (size_t i = 0; i < posEnemy.size(); i++)
+	if (!isBoss)
 	{
-		int index = posEnemy[i];
-		if (enemyParty[index]->GetAlive() || enemyParty[index]->GetCorpse())
+		for (size_t i = 0; i < posEnemy.size(); i++)
 		{
-			enemyParty[index]->SetPartyPos(i);
-			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			int index = posEnemy[i];
+			if (enemyParty[index]->GetAlive() || enemyParty[index]->GetCorpse())
 			{
-				enemyParty[index]->targetPos = Vector2(worldSize.x * 0.5 + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
-			}
-			else {
-				enemyParty[index]->targetPos = Vector2(cameraSize.x + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
+				enemyParty[index]->SetPartyPos(i);
+				if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+				{
+					enemyParty[index]->targetPos = Vector2(worldSize.x * 0.5 + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
+				}
+				else {
+					enemyParty[index]->targetPos = Vector2(cameraSize.x + 100 + 150 * enemyParty[index]->GetPartyPos(), originPosOfBattle.y);
+				}
 			}
 		}
 	}
+
 }
 
 //==================================
