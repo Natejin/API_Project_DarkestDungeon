@@ -318,7 +318,7 @@ void CBattleSystem::CreateEnemyParty()
 			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
 			enemy->movePosMode = true;
 			posEnemy.push_back(0);
-
+			monsterIndicator->enemyPosIndex = 0;
 			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 350, originPosOfBattle.y);
 			targetEnemyPosVec[0].x = enemy->m_transform->m_pos.x;
 			SetIndicatorPos(enemy);
@@ -475,6 +475,9 @@ bool CBattleSystem::CheckAndDamageEnemy(CInfo_Skill* tempSkill, int index)
 				{
 					enemyParty[index]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
 					CheckEnemyAllDead();
+				}
+				else {
+					enemyParty[index]->ShowWordCount(MG_RND->getInt(99), NumCorType::Black);
 				}
 			}
 		}
@@ -912,6 +915,9 @@ void CBattleSystem::StartEnemyTrun(int index)
 					if (heroParty[orderIndex]->reduceHP(damage))
 					{
 						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(damage), NumCorType::Red);
+					}
+					else {
+						heroParty[orderIndex]->ShowWordCount(MG_RND->getInt(99), NumCorType::Black);
 					}
 					
 				

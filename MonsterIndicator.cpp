@@ -70,7 +70,11 @@ void MonsterIndicator::PushEnemyPos(Vector2 pos) {
 
 void MonsterIndicator::Enable()
 {
-	m_transform->m_pos = targetEnemyPosVec[enemyPosIndex];
+	if (enemyPosIndex < targetEnemyPosVec.size())
+	{
+		m_transform->m_pos = targetEnemyPosVec[enemyPosIndex];
+	}
+	
 	isActive = true;
 }
 
