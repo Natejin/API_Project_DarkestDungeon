@@ -677,7 +677,7 @@ enum class IMAGE
 	NumberBlack,
 	NumberGreen,
 	NumberRed,
-
+	Miss
 };
 
 enum class Resistance

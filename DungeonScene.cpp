@@ -364,7 +364,11 @@ void DungeonScene::ActivateRoad()
 
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		if (party[i] != nullptr)
+		{
+			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+
+		}
 	}
 }
 

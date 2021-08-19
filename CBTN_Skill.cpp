@@ -34,7 +34,11 @@ void CBTN_Skill::Update(float deltaTime, float worldTime)
 		{
 			if (MG_INPUT->IsDownLMB())
 			{
-				m_pBattleSystem->UseSkill(index);
+				if (m_pBattleSystem != nullptr)
+				{
+					m_pBattleSystem->UseSkill(index);
+				}
+				
 			}
 		}
 	}

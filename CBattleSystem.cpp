@@ -140,7 +140,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 				heroParty[i]->getSPD(),
 				heroParty[i]->getHP(),
 				heroParty[i]->getMaxHP());
-			TextOut(_hdc, 500, 200 + 20 * i, str, strlen(str));
+			TextOut(_hdc, 1000, 200 + 20 * i, str, strlen(str));
 		}
 	}
 }
@@ -719,11 +719,11 @@ void CBattleSystem::SetPosition()
 {
 
 
-	for (size_t i = 0; i < heroParty.size(); i++)
+	for (size_t i = 0; i < posHero.size(); i++)
 	{
 		if (heroParty[i] == nullptr) continue;
 
-		int index = posEnemy[i];
+		int index = posHero[i];
 		if (heroParty[index]->GetAlive())
 		{
 			heroParty[index]->SetPartyPos(i);

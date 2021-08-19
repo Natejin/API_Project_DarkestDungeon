@@ -465,7 +465,7 @@ void DB_UnitInfo::SetEnemy()
 	info->m_ACRY = 9;
 	info->m_CRI = 0;
 	info->m_DEF = 2;
-	info->m_DODGE = 0;
+	info->m_DODGE = 1000;
 
 	info->imageIdle = IMAGE::necromancer_combat;
 	info->imageCombat = IMAGE::necromancer_combat;
