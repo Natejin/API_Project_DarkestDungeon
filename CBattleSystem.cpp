@@ -165,6 +165,14 @@ void CBattleSystem::BattleSystemEnd()
 	monsterIndicator->Disable();
 	scene->m_dungeonMode = DUNGEONMODE::WALK;
 	
+
+	MG_GAME->m_partyOrigin.clear();
+	for (size_t i = 0; i < posHero.size(); i++)
+	{
+		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
+	}
+	scene->m_party->SetPartyMember(MG_GAME->m_partyOrigin);
+
 	for (size_t i = 0; i < heroParty.size(); i++)
 	{
 		heroParty[i]->movePosMode = false;
@@ -177,12 +185,7 @@ void CBattleSystem::BattleSystemEnd()
 	}
 	enemyParty.clear();
 
-	MG_GAME->m_partyOrigin.clear();
-	for (size_t i = 0; i < posHero.size(); i++)
-	{
-		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
-	}
-	scene->m_party->SetPartyMember(MG_GAME->m_partyOrigin);
+
 	posEnemy.clear();
 	posHero.clear();
 	speedVec.clear();
