@@ -711,11 +711,11 @@ void CBattleSystem::SetPosition()
 {
 
 
-	for (size_t i = 0; i < heroParty.size(); i++)
+	for (size_t i = 0; i < posHero.size(); i++)
 	{
 		if (heroParty[i] == nullptr) continue;
 
-		int index = posEnemy[i];
+		int index = posHero[i];
 		if (heroParty[index]->GetAlive())
 		{
 			heroParty[index]->SetPartyPos(i);

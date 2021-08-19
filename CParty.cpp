@@ -144,7 +144,11 @@ void CParty::FormationMove()
 	int substraction[3];
 	for (size_t i = 1; i < m_member.size(); i++)
 	{
-		substraction[i - 1] = abs(m_member[i - 1]->m_transform->m_pos.x - m_member[i]->m_transform->m_pos.x);
+		if (m_member[i] != nullptr)
+		{
+			substraction[i - 1] = abs(m_member[i - 1]->m_transform->m_pos.x - m_member[i]->m_transform->m_pos.x);
+		}
+
 	}
 
 	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);
@@ -153,27 +157,30 @@ void CParty::FormationMove()
 	m_member[0]->Move();
 	for (size_t i = 1; i < m_member.size(); i++)
 	{
-		if (vk_Right | vk_Left)
+		if (m_member[i] != nullptr)
 		{
-			if (vk_Left)
+			if (vk_Right | vk_Left)
 			{
-				if (WB_btwHeroes > substraction[i - 1])
+				if (vk_Left)
 				{
-					m_member[i]->Move();
-					continue;
+					if (WB_btwHeroes > substraction[i - 1])
+					{
+						m_member[i]->Move();
+						continue;
+					}
+				}
+				if (vk_Right)
+				{
+					if (substraction[i - 1] > WF_btwHeroes)
+					{
+						m_member[i]->Move();
+					}
 				}
 			}
-			if (vk_Right)
+			else
 			{
-				if (substraction[i - 1] > WF_btwHeroes)
-				{
-					m_member[i]->Move();
-				}
+				m_member[i]->Move();
 			}
-		}
-		else 
-		{
-			m_member[i]->Move();
 		}
 	}
 }
@@ -251,8 +258,12 @@ void CParty::showMemberInfo(HDC _hdc)
 
 	for (int i = 0; i < m_member.size(); i++)
 	{
-		sprintf_s(str, "selectedHero: %d", m_member[i]->isSelected);
-		TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
+		if (m_member[i] != nullptr)
+		{
+			sprintf_s(str, "selectedHero: %d", m_member[i]->isSelected);
+			TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
+
+		}
 	}
 }
 

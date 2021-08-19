@@ -485,6 +485,7 @@ HRESULT imageManager::init()
 	MG_IMAGE->addFrameImage(IMAGE::NumberBlack, "images/Number/NumberBlack.bmp", 340, 49,10,1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberGreen, "images/Number/NumberGreen.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberRed, "images/Number/NumberRed.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Miss, "images/Number/miss.bmp", 200, 100, true, RGB(255, 0, 255));
 
 
 	return S_OK;
