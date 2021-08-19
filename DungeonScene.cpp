@@ -80,7 +80,7 @@ void DungeonScene::Release()
 
 void DungeonScene::Update()
 {
-	if (MG_INPUT->isOnceKeyDown('G'))
+	if (MG_INPUT->isOnceKeyDown(VK_F5))
 	{
 		MG_SCENE->changeScene(SCENETYPE::Town);
 	}
@@ -99,7 +99,7 @@ void DungeonScene::Update()
 		CheckDoor(); //TODO
 		setRoadNum();
 
-		if (MG_INPUT->isOnceKeyDown('L'))
+		if (MG_INPUT->isOnceKeyDown(VK_F2))
 		{
 			m_pBattleSystem->BattleSystemInitiate();
 		}

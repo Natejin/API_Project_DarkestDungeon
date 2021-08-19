@@ -52,11 +52,11 @@ HRESULT CBattleSystem::Init()
 
 void CBattleSystem::Update(float deltaTime, float worldTime)
 {
-	if (MG_INPUT->isOnceKeyDown('P'))
+	if (MG_INPUT->isOnceKeyDown(VK_F3))
 	{
 		BattleSystemEnd();
 	}
-	if (MG_INPUT->isOnceKeyDown('N'))
+	if (MG_INPUT->isOnceKeyDown(VK_F4))
 	{
 		StartTurn();
 	}
