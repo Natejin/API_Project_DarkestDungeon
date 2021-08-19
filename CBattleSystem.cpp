@@ -103,46 +103,52 @@ void CBattleSystem::Render(HDC _hdc)
 
 void CBattleSystem::FrontRender(HDC _hdc)
 {
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(0, 255, 255));
+#ifdef _DEBUG
 
-	for (size_t i = 0; i < speedVec.size(); i++)
+	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(0, 255, 255));
+
+		for (size_t i = 0; i < speedVec.size(); i++)
 		{
-			sprintf_s(str, "[Hero's Turn] POS : % d, SPEED : % d, HP : %d / %d", 
-				speedVec[i].second->GetPartyIndex(), 
-				speedVec[i].first,
-				speedVec[i].second->getHP(),
-				speedVec[i].second->getMaxHP());
-			TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
+			if (speedVec[i].second->GetUnitType() == UNITTYPE::Hero)
+			{
+				sprintf_s(str, "[Hero's Turn] POS : % d, SPEED : % d, HP : %d / %d",
+					speedVec[i].second->GetPartyIndex(),
+					speedVec[i].first,
+					speedVec[i].second->getHP(),
+					speedVec[i].second->getMaxHP());
+				TextOut(_hdc, 200, 100 + 20 * i, str, strlen(str));
+			}
+			else
+			{
+				sprintf_s(str, "[Enemy's Turn] POS : %d, SPEED : %d HP : %d / %d",
+					speedVec[i].second->GetPartyIndex(),
+					speedVec[i].first,
+					speedVec[i].second->getHP(),
+					speedVec[i].second->getMaxHP());
+				TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
+			}
 		}
-		else 
+
+		for (size_t i = 0; i < heroParty.size(); i++)
 		{
-			sprintf_s(str, "[Enemy's Turn] POS : %d, SPEED : %d HP : %d / %d", 
-				speedVec[i].second->GetPartyIndex(), 
-				speedVec[i].first, 
-				speedVec[i].second->getHP(),
-				speedVec[i].second->getMaxHP());
-			TextOut(_hdc, 500, 100 + 20 * i, str, strlen(str));
+			if (heroParty[i] != nullptr)
+			{
+				sprintf_s(str, "[Hero] Index/POS :%d/%d, SPEED : % d, HP : %d / %d",
+					heroParty[i]->GetPartyIndex(),
+					heroParty[i]->GetPartyPos(),
+					heroParty[i]->getSPD(),
+					heroParty[i]->getHP(),
+					heroParty[i]->getMaxHP());
+				TextOut(_hdc, 1000, 200 + 20 * i, str, strlen(str));
+			}
 		}
 	}
-
-	for (size_t i = 0; i < heroParty.size(); i++)
-	{
-		if (heroParty[i] != nullptr)
-		{
-			sprintf_s(str, "[Hero] Index/POS :%d/%d, SPEED : % d, HP : %d / %d",
-				heroParty[i]->GetPartyIndex(),
-				heroParty[i]->GetPartyPos(),
-				heroParty[i]->getSPD(),
-				heroParty[i]->getHP(),
-				heroParty[i]->getMaxHP());
-			TextOut(_hdc, 1000, 200 + 20 * i, str, strlen(str));
-		}
-	}
+#endif
 }
 
 void CBattleSystem::Release()
@@ -155,6 +161,8 @@ void CBattleSystem::Release()
 	speedVec.clear();
 	curHero = nullptr;
 	curEnemy = nullptr;
+	MG_SOUND->stop(SOUND::Combat);
+	MG_SOUND->stop(SOUND::BOSS_Combat);
 	MG_GMOBJ->RemoveObj(heroZoomImage);
 	MG_GMOBJ->RemoveObj(enemyZoomImage);
 	MG_GMOBJ->RemoveObj(effectBGImage);
@@ -178,7 +186,14 @@ void CBattleSystem::BattleSystemInitiate()
 	monsterIndicator->m_transform->m_pos.x = enemyParty[0]->m_transform->m_pos.x;
 	StartTurn();
 	scene->DeactivateSound();
-	MG_SOUND->play(SOUND::Combat, 0.1f);
+	if (isBoss)
+	{
+		MG_SOUND->play(SOUND::Combat, 0.1f);
+	}
+	else {
+		MG_SOUND->play(SOUND::BOSS_Combat, 0.1f);
+	}
+	
 	isBattle = true;
 
 	Enable();
@@ -224,14 +239,12 @@ void CBattleSystem::BattleSystemEnd()
 	speedVec.clear();
 	scene->m_dungeonUIinfo->setButton();
 	MG_SOUND->stop(SOUND::Combat);
+	MG_SOUND->stop(SOUND::BOSS_Combat);
+	MG_SOUND->play(SOUND::raid_success, 0.5f);
 	scene->ActivateSound();
 	isBattle = false;
-	if (isBoss)
-	{
-		isBoss = false;
-		MG_SOUND->play(SOUND::raid_success, 0.5f);
-	}
 
+	
 
 	Disable();
 }
@@ -1003,9 +1016,15 @@ void CBattleSystem::StartEnemyTrun(int index)
 void CBattleSystem::HeroTeamAreDead()
 {
 	BattleSystemEnd();
+	MG_SCENE->changeScene(SCENETYPE::Test);
 }
 
 void CBattleSystem::EnemyTeamAreDead()
 {
 	BattleSystemEnd();
+	if (isBoss)
+	{
+		isBoss = false;
+		MG_SCENE->changeScene(SCENETYPE::Test);
+	}
 }

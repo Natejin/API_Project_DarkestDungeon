@@ -116,6 +116,11 @@ void CParty::Release()
 		}
 
 	}
+	MG_GAME->m_partyOrigin.clear();
+	MG_GAME->m_partyOrigin.push_back(nullptr);
+	MG_GAME->m_partyOrigin.push_back(nullptr);
+	MG_GAME->m_partyOrigin.push_back(nullptr);
+	MG_GAME->m_partyOrigin.push_back(nullptr);
 	m_member.clear();
 	GameObject::Release();
 }
@@ -238,9 +243,12 @@ void CParty::getStress_movement()
 				if (partySize > 0 )
 				{
 					int rnd = MG_RND->getInt(partySize);
-					if (m_member[rnd] != nullptr)
+					if (m_member.size() > rnd)
 					{
-						m_member[rnd]->addStress(MG_RND->getInt(5));
+						if (m_member[rnd] != nullptr)
+						{
+							m_member[rnd]->addStress(MG_RND->getInt(5));
+						}
 					}
 					
 				}
@@ -252,58 +260,75 @@ void CParty::getStress_movement()
 
 void CParty::showMemberInfo(HDC _hdc)
 {
-	//나중에 스테이더스를 확인하는 용도로 사용할 것
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 255, 255));
+#ifdef _DEBUG
 
-	for (size_t i = 0; i < 4; i++)
+	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
-		if (GetHero(i) != nullptr)
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(255, 255, 255));
+
+		for (size_t i = 0; i < 4; i++)
 		{
-			sprintf_s(str, "Hero POS: %d Stress : %d", GetHero(i)->GetPartyIndex(), GetHero(i)->getStress());
-			TextOut(_hdc, WINSIZEX - 200, 10 + i * 20, str, strlen(str));
+			if (GetHero(i) != nullptr)
+			{
+				sprintf_s(str, "Hero POS: %d Stress : %d", GetHero(i)->GetPartyIndex(), GetHero(i)->getStress());
+				TextOut(_hdc, WINSIZEX - 200, 10 + i * 20, str, strlen(str));
+			}
+		}
+
+		for (int i = 0; i < m_member.size(); i++)
+		{
+			if (m_member[i] != nullptr)
+			{
+				sprintf_s(str, "selectedHero: %d", m_member[i]->isSelected);
+				TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
+
+			}
 		}
 	}
-
-	for (int i = 0; i < m_member.size(); i++)
-	{
-		if (m_member[i] != nullptr)
-		{
-			sprintf_s(str, "selectedHero: %d", m_member[i]->isSelected);
-			TextOut(_hdc, WINSIZEX - 200, 300 + 20 * i, str, strlen(str));
-
-		}
-	}
+#endif
 }
 
 void CParty::showItem(HDC _hdc)
 {
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 255, 255));
+#ifdef _DEBUG
 
-	sprintf_s(str, "Brightness : %d", m_brightness);
-	TextOut(_hdc, WINSIZEX - 200, 180, str, strlen(str));
-	sprintf_s(str, "Torch : %d", m_Item_Torch);
-	TextOut(_hdc, WINSIZEX - 200, 200, str, strlen(str));
-	sprintf_s(str, "Food : %d", m_Item_food);
-	TextOut(_hdc, WINSIZEX - 200, 220, str, strlen(str));
-	sprintf_s(str, "Bandage : %d", m_Item_bandage);
-	TextOut(_hdc, WINSIZEX - 200, 240, str, strlen(str));
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(255, 255, 255));
+
+		sprintf_s(str, "Brightness : %d", m_brightness);
+		TextOut(_hdc, WINSIZEX - 200, 180, str, strlen(str));
+		sprintf_s(str, "Torch : %d", m_Item_Torch);
+		TextOut(_hdc, WINSIZEX - 200, 200, str, strlen(str));
+		sprintf_s(str, "Food : %d", m_Item_food);
+		TextOut(_hdc, WINSIZEX - 200, 220, str, strlen(str));
+		sprintf_s(str, "Bandage : %d", m_Item_bandage);
+		TextOut(_hdc, WINSIZEX - 200, 240, str, strlen(str));
+	}
+#endif
 }
 
 void CParty::showDis(HDC _hdc)
 {
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 0, 255));
+#ifdef _DEBUG
 
-	sprintf_s(str, "distance : %d", GetHero(0)->getMoveDis());
-	TextOut(_hdc, WINSIZEX - 200, 90, str, strlen(str));
-	sprintf_s(str, "distance (retreat) : %d", GetHero(0)->getMoveDis_reteat());
-	TextOut(_hdc, WINSIZEX - 200, 110, str, strlen(str));
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(255, 0, 255));
+
+		sprintf_s(str, "distance : %d", GetHero(0)->getMoveDis());
+		TextOut(_hdc, WINSIZEX - 200, 90, str, strlen(str));
+		sprintf_s(str, "distance (retreat) : %d", GetHero(0)->getMoveDis_reteat());
+		TextOut(_hdc, WINSIZEX - 200, 110, str, strlen(str));
+	}
+#endif
 }

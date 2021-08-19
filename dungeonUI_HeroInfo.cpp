@@ -80,9 +80,6 @@ void CDungeonUI_HeroInfo::setButton()
 
 void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
 {
-    char str[256];
-    string strFrame;
-    SetBkMode(_hdc, TRANSPARENT);
 
     for (int i = 0; i < 4; i++)
     {
@@ -95,6 +92,11 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
         }
 
     }
+
+
+    char str[256];
+    string strFrame;
+    SetBkMode(_hdc, TRANSPARENT);
 
     SetTextColor(_hdc, RGB(202, 201, 155));
     sprintf_s(str, "%s", "Name");

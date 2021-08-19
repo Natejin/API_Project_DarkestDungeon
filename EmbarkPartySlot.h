@@ -8,7 +8,7 @@ class EmbarkPartySlot : public CEst_UI
 public:
 	class TownScene* m_townScene;
 	class CHero* m_hero;
-
+	int index;
 	//class CHeroList_button* m_listButton;
 	//class CButton* checkBt;
 

@@ -38,8 +38,9 @@ public:
 
 	bool RegisterHeroToParty(CHero* hero);
 	bool RegisterHeroToParty(int ownIndex);
+
 	void RegisterHeroToOwnList(CHero* hero);
-	bool RemoveHeroFromParty(int id);
+	bool RemoveHeroFromParty(CHero* hero);
 	bool RemoveHeroFromOwnList(int heroId);
 	vector<CHero*> GetHeroes();
 	CHero* GetHero(int index);

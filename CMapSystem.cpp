@@ -73,7 +73,7 @@ void CMapSystem::Release()
 		MG_GMOBJ->RemoveObj(dungeonMapCreate[i]);
 
 	}
-	curPosPanel = nullptr;
+	MG_GMOBJ->RemoveObj(curPosPanel);
 	dungeonScene = nullptr;
 }
 
@@ -387,7 +387,6 @@ void CMapSystem::SetMapWitchCreated()
 					curPosPanel->m_transform->m_pos = minimapButton->m_transform->m_pos;
 					curPosPanel->m_transform->m_pivot = Vector2(0.5, 0.5);
 					curPosPanel->m_layer = LAYER::UIMinimapTouch;
-					//curPosPanel->UseFrontRender();
 					MG_GMOBJ->RegisterObj("panel", curPosPanel);
 				}
 			}

@@ -71,6 +71,7 @@ void DungeonScene::Release()
 
 
 	MG_GMOBJ->RemoveObj(m_pBattleSystem);
+	MG_GMOBJ->RemoveObj(m_pMapSystem);
 	MG_GMOBJ->RemoveObj(m_pInvenSystem);
 	MG_GMOBJ->RemoveObj(m_treasurePanel);
 	MG_GMOBJ->RemoveObj(m_dungeonUI);
@@ -471,7 +472,14 @@ void DungeonScene::SetRoomObject()
 #pragma region DebugLog
 void DungeonScene::ShowDungeonInfo(HDC _hdc)
 {
-	char str[256];
+
+
+
+#ifdef _DEBUG
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+			char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
@@ -485,8 +493,6 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
-
-
 
 	switch (curDunheonMap.dungeonMapState)
 	{
@@ -513,9 +519,9 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 		sprintf_s(str, "near Door");
 		TextOut(_hdc, 0, 160, str, strlen(str));
 	}
-	if (MG_INPUT->isToggleKey(VK_TAB))
-	{
-	
 	}
+#endif
+
+	
 }
 #pragma endregion

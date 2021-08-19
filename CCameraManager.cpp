@@ -84,16 +84,19 @@ void CCameraManager::Render(HDC _hdc)
 {
 	if (m_pTarget != nullptr)
 	{
-		char str[256];
-		string strFrame;
-		SetBkMode(_hdc, TRANSPARENT);
-		SetTextColor(_hdc, RGB(0, 0, 255));
+
 		//디버그 모드라면
 
 #ifdef _DEBUG
-
-		sprintf_s(str, "CameraPos : %f, %f", pos.x, pos.y);
-		TextOut(_hdc, 0, 500, str, strlen(str));
+		if (MG_INPUT->isToggleKey(VK_TAB))
+		{
+			char str[256];
+			string strFrame;
+			SetBkMode(_hdc, TRANSPARENT);
+			SetTextColor(_hdc, RGB(0, 0, 255));
+			sprintf_s(str, "CameraPos : %f, %f", pos.x, pos.y);
+			TextOut(_hdc, 0, 500, str, strlen(str));
+		}
 
 #else
 		//if (_timer != nullptr)

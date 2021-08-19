@@ -98,7 +98,7 @@ void CUIPanel_StageCoach::CreateCoach_Button()
 {
 	for (size_t i = 0; i < m_OnCoach_heroListButtonVec.size(); i++)
 	{
-		MG_GMOBJ->RemoveObj(m_OnCoach_heroListButtonVec[i]->GetId());
+		MG_GMOBJ->RemoveObj(m_OnCoach_heroListButtonVec[i]);
 	}
 	m_OnCoach_heroListButtonVec.clear();
 

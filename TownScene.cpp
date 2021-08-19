@@ -94,6 +94,7 @@ void TownScene::Release()
 	MG_GMOBJ->RemoveObj(m_DummyRosterButton);
 	MG_GMOBJ->RemoveObj(m_hero_panel);
 
+	MG_GMOBJ->RemoveObj(addMemberCollider);
 	MG_GMOBJ->RemoveObj(m_embark);
 }
 
@@ -107,12 +108,18 @@ void TownScene::Render()
 
 void TownScene::Render(HDC _hdc)
 {
+#ifdef _DEBUG
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
 	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
 	TextOut(_hdc, 0, 180, str, strlen(str));
+	}
+#endif
 }
 
 //Building.
@@ -271,7 +278,7 @@ void TownScene::SetEst_ui()
 	m_stage_coach = new CUIPanel_StageCoach();
 	m_stage_coach->townScene = this;
 	m_stage_coach->Init();
-	m_coachHero = m_stage_coach->m_OnCoach_heroListButtonVec;
+	//m_coachHero = m_stage_coach->m_OnCoach_heroListButtonVec;
 	MG_GMOBJ->RegisterObj("StageCoachUI", m_stage_coach);
 
 	m_statue = new CUIPanel_Statue();

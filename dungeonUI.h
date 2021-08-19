@@ -24,7 +24,7 @@ public:
 
 	class CBTN_Skill_Swap* swapBTN;
 	class CBTN_Skill_Endturn* endTurnBTN;
-
+	CUIPanel* panel_bg;
 	CUIPanel* panel_bg1;
 	CUIPanel* panel_bg2;
 	CUIPanel* banner;

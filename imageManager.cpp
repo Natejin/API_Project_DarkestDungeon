@@ -169,16 +169,19 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::banner, "images/panel/panel_banner.bmp", 685, 123, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::controller, "images/panel/panel_banner_controller.bmp", 754, 136, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::hero, "images/panel/panel_hero.bmp", 655, 203, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::inventory, "images/panel/panel_inventory.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::map, "images/panel/panel_map.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::map1, "images/panel/panel_map1.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 630, 325, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::inventory, "images/panel/panel_inventory.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map, "images/panel/panel_map.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map1, "images/panel/panel_map1.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 630, 350, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel, "images/panel/characterpanel.bmp", 1395,776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_treatment, "images/panel/quirk_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_disease, "images/panel/disease_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
+
+
+	MG_IMAGE->addImage("BlackBackground", "images/panel/BlackBackground.bmp", 2000, 2000, true, RGB(255, 0, 255));
 	
 	//Icon_Map
 	MG_IMAGE->addImage(IMAGE::hall_clear, "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
@@ -340,7 +343,8 @@ HRESULT imageManager::init()
 
 	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::NONE, "images/panel/MagentaBackground.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::nothing, "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::obj_crate1, "images/dungeonOBJ/Crate1.bmp", 248, 140, true, RGB(255, 0, 255));
@@ -436,12 +440,12 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Target_Heal3, "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
 
 	//item
-	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food1	, "images/item/inv_provision+_0.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food2	, "images/item/inv_provision+_1.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food3	, "images/item/inv_provision+_2.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food4	, "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::bandage, "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food1	, "images/item/inv_provision+_0.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food2	, "images/item/inv_provision+_1.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food3	, "images/item/inv_provision+_2.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food4	, "images/item/inv_provision+_3.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::bandage, "images/item/inv_supply+bandage.bmp", 70, 145, false, RGB(255, 0, 255));
 
 	//check
 	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));

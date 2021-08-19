@@ -27,7 +27,7 @@ public:
 	class Hero_Roster* m_DummyRosterButton;
 	vector<class CHeroList_button*> m_heroListButtonVec;
 
-	vector<class CHeroList_button*> m_coachHero;
+	//vector<class CHeroList_button*> m_coachHero;
 
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.

@@ -65,12 +65,18 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 0, 255));
-	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
-	TextOut(_hdc, 0, 180, str, strlen(str));
+#ifdef _DEBUG
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(255, 0, 255));
+		sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+		TextOut(_hdc, 0, 180, str, strlen(str));
+	}
+#endif
 }
 
 void CGameManager::FrontRender(HDC _hdc)
@@ -124,21 +130,18 @@ void CGameManager::RegisterHeroToOwnList(CHero* hero)
 
 }
 
-bool CGameManager::RemoveHeroFromParty(int id)
+bool CGameManager::RemoveHeroFromParty(CHero* hero)
 {
-	//if (m_partyOrigin[id] != nullptr)
-	//{
-	//	m_partyOrigin[id] = nullptr;
-	//	return true;
-
-	//}
-	//return false;
-	if (id < m_partyOrigin.size())
+	for (size_t i = 0; i < m_partyOrigin.size(); i++)
 	{
-
-		m_partyOrigin.erase(m_partyOrigin.begin() + id);
-		return true;
+		if (m_partyOrigin[i] != nullptr && hero == m_partyOrigin[i])
+		{
+			RegisterHeroToOwnList(m_partyOrigin[i]);
+			m_partyOrigin[i] = nullptr;
+			break;
+		}
 	}
+	
 	return false;
 }
 
@@ -228,7 +231,11 @@ void CGameManager::SetCurSelHero(int index)
 	{
 		for (int i = 0; i < m_dungeonScene->m_party->GetPartySize(); i++)
 		{
-			m_dungeonScene->m_party->GetHero(i)->isSelected = false;
+			if (m_dungeonScene->m_party->GetHero(i) != nullptr)
+			{
+				m_dungeonScene->m_party->GetHero(i)->isSelected = false;
+			}
+			
 		}
 		m_dungeonScene->m_party->GetHero(index)->isSelected = true;
 
