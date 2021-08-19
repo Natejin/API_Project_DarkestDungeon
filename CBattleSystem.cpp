@@ -140,7 +140,7 @@ void CBattleSystem::FrontRender(HDC _hdc)
 				heroParty[i]->getSPD(),
 				heroParty[i]->getHP(),
 				heroParty[i]->getMaxHP());
-			TextOut(_hdc, 500, 200 + 20 * i, str, strlen(str));
+			TextOut(_hdc, 1000, 200 + 20 * i, str, strlen(str));
 		}
 	}
 }

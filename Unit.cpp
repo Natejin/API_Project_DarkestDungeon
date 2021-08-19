@@ -37,7 +37,7 @@ HRESULT Unit::Init()
     num10Count = 3;
 
 
-    missWord = new CSpriteRenderer(IMAGE::NumberBlack, m_transform);
+    missWord = new CSpriteRenderer(IMAGE::Miss, m_transform);
     missWord->pos = Vector2(20, -200);
     missWord->useCustomPos = true;
     return S_OK;
