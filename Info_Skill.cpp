@@ -14,8 +14,8 @@ bool CInfo_Skill::CheckTarget(int pos)
 
 int CInfo_Skill::GetDamage(Info_Hero* info, Info_Enemy* info2)
 {
-	int acc = (accuracy[skillLevel] * MG_RND->getFromIntTo(1, 3));
-	int doudge = info2->m_DODGE * MG_RND->getFromIntTo(1, 3);
+	int acc = (accuracy[skillLevel] * MG_RND->getFromIntTo(0, 3));
+	int doudge = info2->m_DODGE * MG_RND->getFromIntTo(0, 3);
 	if (acc - doudge < 0)
 	{
 		return -1;
