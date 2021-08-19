@@ -61,17 +61,17 @@ void CBattleSystem::Update(float deltaTime, float worldTime)
 		StartTurn();
 	}
 
-	if (MG_INPUT->isOnceKeyDown('R'))
-	{
-		for (size_t i = 0; i < enemyParty.size(); i++)
-		{
-			enemyParty[i]->ShowWordCount(MG_RND->getInt(100), (NumCorType)MG_RND->getInt(3));
-		}
-		for (size_t i = 0; i < heroParty.size(); i++)
-		{
-			heroParty[i]->ShowWordCount(MG_RND->getInt(100), (NumCorType)MG_RND->getInt(3));
-		}
-	}
+	//if (MG_INPUT->isOnceKeyDown('R'))
+	//{
+	//	for (size_t i = 0; i < enemyParty.size(); i++)
+	//	{
+	//		enemyParty[i]->ShowWordCount(MG_RND->getInt(100), (NumCorType)MG_RND->getInt(3));
+	//	}
+	//	for (size_t i = 0; i < heroParty.size(); i++)
+	//	{
+	//		heroParty[i]->ShowWordCount(MG_RND->getInt(100), (NumCorType)MG_RND->getInt(3));
+	//	}
+	//}
 
 	if (startNextTurn && worldTime > startTriggerTime)
 	{

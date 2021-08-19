@@ -100,42 +100,37 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
     sprintf_s(str, "%s", "Name");
     TextOut(_hdc, 450, 740, str, strlen(str));
 
-    SetTextColor(_hdc, RGB(255, 0, 0));
-    switch (MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetJob())
+    if (selectedHeroIndex < MG_GAME->m_partyOrigin.size())
     {
-    case JOB::Crusader:
-        
-        sprintf_s(str, "33 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
+        SetTextColor(_hdc, RGB(255, 0, 0));
+        sprintf_s(str, "%d / ", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP(), MG_GAME->GetHeroFromParty(selectedHeroIndex)->getMaxHP());
         TextOut(_hdc, 400, 835, str, strlen(str));
         SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "Crusader");
-        break;
+        switch (MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetJob())
+        {
+        case JOB::Crusader:
 
-    case JOB::Highwayman:
-        sprintf_s(str, "23 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
-        TextOut(_hdc, 400, 835, str, strlen(str));
-        SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "Highwayman");
-        break;
+            sprintf_s(str, "Crusader");
+            break;
 
-    case JOB::PlagueDoctor:
-        sprintf_s(str, "22 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
-        TextOut(_hdc, 400, 835, str, strlen(str));
-        SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "PlagueDoctor");
-        break;
+        case JOB::Highwayman:
+            sprintf_s(str, "Highwayman");
+            break;
 
-    case JOB::Vestal:
-        sprintf_s(str, "24 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
-        TextOut(_hdc, 400, 835, str, strlen(str));
-        SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "Vestal");
-        break;
+        case JOB::PlagueDoctor:
+            sprintf_s(str, "PlagueDoctor");
+            break;
+
+        case JOB::Vestal:
+            sprintf_s(str, "Vestal");
+            break;
+        }
+        TextOut(_hdc, 450, 780, str, strlen(str));
     }
-    TextOut(_hdc, 450, 780, str, strlen(str));
+  
 
     SetTextColor(_hdc, RGB(255, 255, 255));
-    sprintf_s(str, "200 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getStress());
+    sprintf_s(str, " %d / 200", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getStress());
     TextOut(_hdc, 400, 860, str, strlen(str));
 
     sprintf_s(str, "ACC         %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetAcry());

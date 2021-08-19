@@ -19,7 +19,7 @@ HRESULT CEnemy::Init(Info_Enemy* _info)
 	m_animator->AddImageFrame(_info->imageCorpse);
 
 	SetMemberOverlay();
-	AddColliderBox();
+	AddColliderBox(120,300);
 	return S_OK;
 }
 
