@@ -360,7 +360,7 @@ void CBattleSystem::CreateEnemyParty()
 			}
 			else
 			{
-				enemy->m_transform->m_pos = Vector2(cameraPos.x + 100 + 150 * i, originPosOfBattle.y);
+				enemy->m_transform->m_pos = Vector2(cameraSize.x + 100 + 150 * i, originPosOfBattle.y);
 				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
 			}
 			SetIndicatorPos(enemy);
