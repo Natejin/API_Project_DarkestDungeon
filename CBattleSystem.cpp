@@ -167,6 +167,11 @@ void CBattleSystem::BattleSystemEnd()
 	
 
 	MG_GAME->m_partyOrigin.clear();
+
+	MG_GAME->m_partyOrigin.push_back(nullptr);
+	MG_GAME->m_partyOrigin.push_back(nullptr);
+	MG_GAME->m_partyOrigin.push_back(nullptr);
+	MG_GAME->m_partyOrigin.push_back(nullptr);
 	for (size_t i = 0; i < posHero.size(); i++)
 	{
 		MG_GAME->RegisterHeroToParty(heroParty[posHero[i]]);
