@@ -15,7 +15,7 @@ HRESULT TestScene::Init()
 
 HRESULT TestScene::Init(bool managerInit)
 {
-	isFirst = false;
+	isFirst = true;
 	return S_OK;
 }
 

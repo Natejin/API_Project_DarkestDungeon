@@ -34,6 +34,8 @@ public:
 		float t,
 		float r,
 		float b);
+
+
 	void AddColliderBox(float width, float height);
 	void AddColliderBox();
 	
@@ -43,9 +45,9 @@ public:
 	void AddAnimator(string imageName);
 	void AddAnimator(IMAGE imageName);
 
-	virtual void AddSpriteRenderer();
-	virtual void AddSpriteRenderer(IMAGE imageName);
-	virtual void AddSpriteRenderer(string imageName);
+	void AddSpriteRenderer();
+	void AddSpriteRenderer(IMAGE imageName);
+	void AddSpriteRenderer(string imageName);
 
 	virtual void Enable();
 	virtual void Disable();

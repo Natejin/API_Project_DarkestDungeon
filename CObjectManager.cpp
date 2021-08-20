@@ -31,20 +31,13 @@ HRESULT CObjectManager::Init()
 
 void CObjectManager::Update(float deltaTime, float worldTime)
 {
-	int i = 0;
+
 	for (auto g : objectVec)
 	{
-		if (g != nullptr)
+		if (g->isActive)
 		{
-			if (g->isActive)
-			{
-				g->Update(deltaTime, worldTime);
-			}
+			g->Update(deltaTime, worldTime);
 		}
-		else {
-			//objsToErase.push_back(i);
-		}
-		i++;
 	}
 }
 

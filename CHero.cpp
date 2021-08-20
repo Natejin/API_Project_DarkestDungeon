@@ -25,12 +25,11 @@ HRESULT CHero::Init(Info_Hero* _info)
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
-	
 	m_animator->AddImageFrame(_info->imageCombat);
 
-	SetMemberOverlay();
-	AddColliderBox(120, 300);
 
+	AddColliderBox(120, 300);
+	SetMemberOverlay();
 	return S_OK;
 }
 

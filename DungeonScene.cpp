@@ -421,12 +421,18 @@ void DungeonScene::ActivateRoom()
 
 	vector<CHero*> party = m_party->GetParty();
 	m_pMapSystem->UseKeyBoardToMoveCurPoint();
+	int k = 0;
 	switch (m_pMapSystem->GetCurDungeonData().dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Room_Empty:
 		for (int i = 0; i < party.size(); i++)
 		{
-			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+			if (party[i] !=nullptr)
+			{
+				party[i]->m_transform->m_pos = Vector2(500 - 120 * k, 640);
+				k++;
+			}
+		
 		}
 		break;
 
@@ -438,7 +444,11 @@ void DungeonScene::ActivateRoom()
 	case DUNGEONMAPSTATE::Room_Trasure:
 		for (int i = 0; i < party.size(); i++)
 		{
-			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+			if (party[i] != nullptr)
+			{
+				party[i]->m_transform->m_pos = Vector2(500 - 120 * k, 640);
+				k++;
+			}
 		}
 		break;
 	

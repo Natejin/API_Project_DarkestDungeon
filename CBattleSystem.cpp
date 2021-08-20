@@ -1016,15 +1016,10 @@ void CBattleSystem::StartEnemyTrun(int index)
 void CBattleSystem::HeroTeamAreDead()
 {
 	BattleSystemEnd();
-	MG_SCENE->changeScene(SCENETYPE::Test);
 }
 
 void CBattleSystem::EnemyTeamAreDead()
 {
 	BattleSystemEnd();
-	if (isBoss)
-	{
-		isBoss = false;
-		MG_SCENE->changeScene(SCENETYPE::Test);
-	}
+
 }
