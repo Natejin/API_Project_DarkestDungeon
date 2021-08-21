@@ -22,8 +22,6 @@ HRESULT CUIPanel_StageCoach::Init()
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::stage_coach_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095, -0.095);
 
-	//m_HeroList_button = new CHeroList_button();
-
 	CreateOnCoach_Hero();
 
 	return S_OK;
@@ -50,7 +48,25 @@ void CUIPanel_StageCoach::Render(HDC _hdc)
 
 void CUIPanel_StageCoach::FrontRender(HDC _hdc)
 {
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(255, 255, 255));
 
+	sprintf_s(str, "StageCoach");
+	TextOut(_hdc, 300, 150, str, strlen(str));
+
+	if (townScene->isDrag)
+	{
+		if (townScene->m_DummyRosterButton->type == HeroListBtType::coach)
+		{
+			sprintf_s(str, "Drag to hero list to hire!");
+			TextOut(_hdc, g_ptMouse.x - 40, g_ptMouse.y + 50, str, strlen(str));
+
+			sprintf_s(str, "your own hero list");
+			TextOut(_hdc, WINSIZEX - 390, 146, str, strlen(str));
+		}
+	}
 }
 
 void CUIPanel_StageCoach::Release()

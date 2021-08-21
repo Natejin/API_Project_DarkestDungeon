@@ -3,13 +3,8 @@
 #include "image.h"
 #include "Info_Skill.h"
 
-CDB_Skill::CDB_Skill()
-{
-}
-
-CDB_Skill::~CDB_Skill()
-{
-}
+CDB_Skill::CDB_Skill() {}
+CDB_Skill::~CDB_Skill() {}
 
 void CDB_Skill::Init()
 {

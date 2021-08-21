@@ -137,6 +137,7 @@ bool CGameManager::RemoveHeroFromParty(CHero* hero)
 		if (m_partyOrigin[i] != nullptr && hero == m_partyOrigin[i])
 		{
 			RegisterHeroToOwnList(m_partyOrigin[i]);
+			m_partyOrigin[i]->isActive =false;
 			m_partyOrigin[i] = nullptr;
 			break;
 		}

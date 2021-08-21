@@ -113,4 +113,6 @@ public:
 
 	void ActivateSound();
 	void DeactivateSound();
+
+	void backToTown();
 };

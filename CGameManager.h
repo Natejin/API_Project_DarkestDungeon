@@ -8,9 +8,7 @@ class CGameManager : public Singleton<CGameManager>
 private:
 	//map<int,class GameObject*> objectMap;
 
-
 public:
-
 	class DungeonScene* m_dungeonScene;
 	class TownScene* m_townScene;
 	CGameManager();
@@ -33,18 +31,24 @@ public:
 	vector<CHero*> m_partyOrigin;
 	vector<CHero*> m_ownHeroes;
 
+	vector<CHero*> m_deadHeroes; 
+
 	//CParty* m_party;
 	CHero* m_CurSelHero;
 
 	bool RegisterHeroToParty(CHero* hero);
 	bool RegisterHeroToParty(int ownIndex);
-
 	void RegisterHeroToOwnList(CHero* hero);
+
 	bool RemoveHeroFromParty(CHero* hero);
 	bool RemoveHeroFromOwnList(int heroId);
+
 	vector<CHero*> GetHeroes();
 	CHero* GetHero(int index);
+
 	CHero* GetHeroFromParty(int index);
+
+	void RegisterHeroToDeadList(CHero* hero);
 
 	//void setParty();
 	CParty* GetParty();

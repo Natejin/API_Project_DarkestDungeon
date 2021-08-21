@@ -3,7 +3,8 @@
 #include "CHero.h"
 #include "CVestal.h"
 
-CParty::CParty() {
+CParty::CParty() 
+{
 	maxPartyMember = 4;
 }
 CParty::~CParty() {}
@@ -105,22 +106,15 @@ void CParty::FrontRender(HDC _hdc)
 
 void CParty::Release()
 {
-	////TODO 추후 영웅들 데이터 저장 추가 예정
 	for (size_t i = 0; i < MG_GAME->m_partyOrigin.size(); i++)
 	{
-
 		if (MG_GAME->m_partyOrigin[i]!=nullptr)
 		{
-			MG_GAME->RegisterHeroToOwnList(MG_GAME->m_partyOrigin[i]);
-			MG_GAME->m_partyOrigin[i]->Disable();
+			MG_GAME->RemoveHeroFromParty(MG_GAME->m_partyOrigin[i]);
 		}
-
 	}
 	MG_GAME->m_partyOrigin.clear();
-	MG_GAME->m_partyOrigin.push_back(nullptr);
-	MG_GAME->m_partyOrigin.push_back(nullptr);
-	MG_GAME->m_partyOrigin.push_back(nullptr);
-	MG_GAME->m_partyOrigin.push_back(nullptr);
+
 	m_member.clear();
 	GameObject::Release();
 }

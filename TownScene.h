@@ -17,8 +17,6 @@ protected:
 	class CBG_Town* m_town;
 	vector<class CBuilding*> buildingVec;
 	
-
-
 	class COwnHeroListPanel* addMemberCollider;
 
 public:
@@ -81,7 +79,7 @@ public:
 	class Embark* m_embark;
 	bool isTown;
 
-	void setEmbark();
+	void SetEmbark();
 
 	void addOwnHero();
 	void addMember(HeroListBtType type, int index);

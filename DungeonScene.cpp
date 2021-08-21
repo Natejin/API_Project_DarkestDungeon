@@ -21,13 +21,11 @@ DungeonScene::DungeonScene()
 	m_party = nullptr;
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
-
 }
 DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
-
 	ActivateSound();
 	CreateParty();
 
@@ -69,7 +67,6 @@ void DungeonScene::Release()
 		MG_GMOBJ->RemoveObj(m_roadObjs[i]);
 	}
 
-
 	MG_GMOBJ->RemoveObj(m_pBattleSystem);
 	MG_GMOBJ->RemoveObj(m_pMapSystem);
 	MG_GMOBJ->RemoveObj(m_pInvenSystem);
@@ -77,9 +74,7 @@ void DungeonScene::Release()
 	MG_GMOBJ->RemoveObj(m_dungeonUI);
 	MG_GMOBJ->RemoveObj(m_dungeonUIinfo);
 
-
 	MG_GMOBJ->RemoveObj(m_party);
-
 }
 
 void DungeonScene::Update()
@@ -88,7 +83,6 @@ void DungeonScene::Update()
 	{
 		MG_SCENE->changeScene(SCENETYPE::Test);
 	}
-
 
 	if (m_dungeonMode == DUNGEONMODE::WALK)
 	{
@@ -173,8 +167,6 @@ void DungeonScene::CreateParty()
 			m_party->SetHero(MG_GAME->GetHeroFromParty(i));
 		}
 	}
-
-
 }
 
 void DungeonScene::CreateRoom()
@@ -271,7 +263,6 @@ void DungeonScene::CreateDungeonUI()
 }
 
 #pragma endregion
-
 
 #pragma region Road
 void DungeonScene::setRoadNum()
@@ -399,7 +390,6 @@ void DungeonScene::SetRoadObject(int i)
 
 #pragma endregion
 
-
 #pragma region Room
 void DungeonScene::ActivateRoom()
 {
@@ -478,13 +468,9 @@ void DungeonScene::SetRoomObject()
 
 #pragma endregion
 
-
 #pragma region DebugLog
 void DungeonScene::ShowDungeonInfo(HDC _hdc)
 {
-
-
-
 #ifdef _DEBUG
 
 	if (MG_INPUT->isToggleKey(VK_TAB))
@@ -535,3 +521,7 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	
 }
 #pragma endregion
+
+void DungeonScene::backToTown()
+{
+}

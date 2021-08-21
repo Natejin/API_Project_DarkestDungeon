@@ -42,7 +42,6 @@ void CBTN_Skill::Update(float deltaTime, float worldTime)
 			}
 		}
 	}
-	
 }
 
 void CBTN_Skill::LateUpdate()
