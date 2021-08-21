@@ -9,7 +9,7 @@ TestScene::~TestScene() {}
 
 HRESULT TestScene::Init()
 {
-	
+	isFirst = true;
 	return S_OK;
 }
 

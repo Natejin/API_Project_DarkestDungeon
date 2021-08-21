@@ -403,6 +403,8 @@ void CBattleSystem::CreateEnemyParty()
 			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
 			enemy->movePosMode = true;
 			posEnemy.push_back(i);
+			MG_GMOBJ->RegisterObj(enemy);
+
 
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
 			{
