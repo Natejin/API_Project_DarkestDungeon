@@ -248,7 +248,6 @@ void CBattleSystem::BattleSystemEnd()
 	MG_SOUND->stop(SOUND::BOSS_Combat);
 	MG_SOUND->play(SOUND::raid_success, 0.5f);
 	scene->ActivateSound();
-
 	isBattle = false;
 	Disable();
 }
@@ -1071,4 +1070,12 @@ void CBattleSystem::HeroTeamAreDead()
 void CBattleSystem::EnemyTeamAreDead()
 {
 	BattleSystemEnd();
+	if (isBoss)
+	{
+		scene->ShowFinishPanel();
+		isBoss = false;
+	}
+	else {
+	
+	}
 }

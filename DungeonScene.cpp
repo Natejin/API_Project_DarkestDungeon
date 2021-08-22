@@ -12,6 +12,7 @@
 #include "CBattleSystem.h"
 #include "CInventorySystem.h"
 #include "TreasureEventPanel.h"
+#include "FinishPanelUI.h"
 
 
 DungeonScene::DungeonScene()
@@ -46,6 +47,10 @@ HRESULT DungeonScene::Init()
 
 	ActivateRoom();
 
+	endPanel = new FinishPanelUI();
+	endPanel->m_dungeonScene = this;
+	endPanel->Init();
+	MG_GMOBJ->RegisterObj(endPanel);
 	return S_OK;
 }
 
@@ -53,6 +58,8 @@ HRESULT DungeonScene::Init(bool managerInit)
 {
 	return S_OK;
 }
+
+
 
 void DungeonScene::Release()
 {
@@ -72,6 +79,8 @@ void DungeonScene::Release()
 	MG_GMOBJ->RemoveObj(m_treasurePanel);
 	MG_GMOBJ->RemoveObj(m_dungeonUI);
 	MG_GMOBJ->RemoveObj(m_dungeonUIinfo);
+	MG_GMOBJ->RemoveObj(m_roomObj);
+	MG_GMOBJ->RemoveObj(endPanel);
 
 	MG_GMOBJ->RemoveObj(m_party);
 }
@@ -254,6 +263,11 @@ void DungeonScene::CreateDungeonUI()
 	m_dungeonUIinfo->scene = this;
 	m_dungeonUIinfo->Init();
 	MG_GMOBJ->RegisterObj("scene1_dungeonUIinfo", m_dungeonUIinfo);
+}
+
+void DungeonScene::ShowFinishPanel()
+{
+	endPanel->Enable();
 }
 
 #pragma endregion

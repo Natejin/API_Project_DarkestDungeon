@@ -12,7 +12,7 @@ public:
 	DUNGEONMODE m_dungeonMode;
 	DungeonData dungeonMap[MAPSIZE][MAPSIZE];
 	DungeonData curDunheonMap;
-
+	class FinishPanelUI* endPanel;
 	class CParty* m_party;
 
 
@@ -95,6 +95,8 @@ public:
 	void CreateInvenSystem();
 	void CreateBattleSystem();
 	void CreateDungeonUI();
+
+	void ShowFinishPanel();
 
 public:
 	virtual HRESULT Init();
