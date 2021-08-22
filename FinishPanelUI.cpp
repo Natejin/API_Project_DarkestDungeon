@@ -22,7 +22,7 @@ HRESULT FinishPanelUI::Init()
     buttonEnd->m_transform->m_pos = m_transform->m_pos + Vector2(-100, 300);
     buttonEnd->AddSpriteRenderer(IMAGE::start_button);
     buttonEnd->AddColliderBox();
-    buttonContinue->SetTriggerWhenDown(this, &FinishPanelUI::GoBackToHome);
+    buttonEnd->SetTriggerWhenDown(this, &FinishPanelUI::GoBackToHome);
     MG_GMOBJ->RegisterObj(buttonEnd);
 
 
