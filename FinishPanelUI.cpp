@@ -14,9 +14,9 @@ FinishPanelUI::~FinishPanelUI()
 HRESULT FinishPanelUI::Init()
 {
     m_transform->m_pivot = Vector2(0.5, 0.5);
-    m_transform->m_pos = Vector2(WINSIZEX/ 2, WINSIZEY / 2);
+    m_transform->m_pos = Vector2(WINSIZEX/ 2 + 200, WINSIZEY / 2 - 200);
 
-    AddSpriteRenderer("backToTown");
+    AddSpriteRenderer("clear");
 
     buttonEnd = new CButton();
     buttonEnd->m_layer = LAYER::UIMotion;
@@ -29,7 +29,7 @@ HRESULT FinishPanelUI::Init()
 
     buttonContinue = new CButton();
     buttonContinue->m_layer = LAYER::UIMotion;
-    buttonContinue->m_transform->m_pos = m_transform->m_pos + Vector2(-100, 300);
+    buttonContinue->m_transform->m_pos = m_transform->m_pos + Vector2(+100, 300);
     buttonContinue->AddSpriteRenderer("keepgoing");
     buttonContinue->AddColliderBox();
     buttonContinue->SetTriggerWhenDown(this, &FinishPanelUI::Disable);
@@ -45,6 +45,7 @@ void FinishPanelUI::Update(float deltaTime, float worldTime)
 
 void FinishPanelUI::FrontRender(HDC _hdc)
 {
+    m_spriteRenderer->RenderUI(_hdc);
 }
 
 void FinishPanelUI::Release()

@@ -139,7 +139,7 @@ void CObjectManager::Render(HDC _hdc)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
-
+			int k = 0;
 			if (go != nullptr && !((int)go->isActive > 1))
 			{
 				if (go->isActive)
@@ -162,7 +162,7 @@ void CObjectManager::FrontRender(HDC _hdc)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
-
+			int k = 0;
 			if (go != nullptr && !((int)go->isActive > 1))
 			{
 				if (go->isActive)
