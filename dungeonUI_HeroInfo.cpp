@@ -96,8 +96,7 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
     SetBkMode(_hdc, TRANSPARENT);
 
     SetTextColor(_hdc, RGB(202, 201, 155));
-
-    sprintf_s(str, "%s", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetName());
+    sprintf_s(str, "%s", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetName().c_str());
     TextOut(_hdc, 450, 740, str, strlen(str));
 
     if (selectedHeroIndex < MG_GAME->m_partyOrigin.size())

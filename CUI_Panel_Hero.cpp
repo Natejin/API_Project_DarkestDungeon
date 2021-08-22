@@ -198,10 +198,12 @@ void CUI_Panel_Hero::setCoachHeroPanel()
 		m_windowPanelChar->SetImage(IMAGE::crusader_header);
 		m_HeroImg->SetImage(IMAGE::Crusader_sword);
 		break;
+
 	case JOB::Vestal:
 		m_windowPanelChar->SetImage(IMAGE::vestal_header);
 		m_HeroImg->SetImage(IMAGE::Vestal_mace);
 		break;
+
 	case JOB::Highwayman:
 		m_windowPanelChar->SetImage(IMAGE::highwayman_header);
 		m_HeroImg->SetImage(IMAGE::Highwayman_pistol);
@@ -232,12 +234,7 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 	}
 
 	SetTextColor(_hdc, RGB(202, 201, 155));
-
-
-
-	//std::vector<char> writable(hero->GetName().begin(), hero->GetName().end());
-	//writable.push_back('\0');
-	sprintf_s(str, "%s", hero->GetName());
+	sprintf_s(str, "%s", hero->GetName().c_str());
 	TextOut(_hdc, 225, 130, str, strlen(str));
 	
 	if (townScene->curDragHeroIndex > -1)
