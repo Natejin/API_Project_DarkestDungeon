@@ -134,7 +134,6 @@ void CParty::SetCamera()
 
 void CParty::SetPartyMember(vector<CHero*> party)
 {
-
 	m_member = party;
 }
 
@@ -152,7 +151,6 @@ void CParty::FormationMove()
 		{
 			substraction[i - 1] = abs(m_member[i - 1]->m_transform->m_pos.x - m_member[i]->m_transform->m_pos.x);
 		}
-
 	}
 
 	bool vk_Left = MG_INPUT->isStayKeyDown(VK_LEFT);

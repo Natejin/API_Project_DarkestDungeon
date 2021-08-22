@@ -6,11 +6,9 @@ class CInfo_Item;
 class CSlotItemButton : public CDragButton
 {
 public:
-	CInfo_Item* m_itemInfo;
 	class CInventorySystem* m_invenSys;
-
+	CInfo_Item* m_itemInfo;
 	Vector2Int slotID; 
-
 	CDragButton* bt_slot;
 
 public:

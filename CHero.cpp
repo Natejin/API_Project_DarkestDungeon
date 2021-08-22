@@ -27,7 +27,6 @@ HRESULT CHero::Init(Info_Hero* _info)
 	m_animator->AddImageFrame(_info->imageWalk);
 	m_animator->AddImageFrame(_info->imageCombat);
 
-
 	AddColliderBox(120, 300);
 	SetMemberOverlay();
 	return S_OK;
@@ -63,8 +62,6 @@ void CHero::FrontRender(HDC _hdc)
 		targeted_h_Mem.Render(_hdc);
 	}
 	showStrsBar(_hdc);
-
-
 }
 
 void CHero::Release()

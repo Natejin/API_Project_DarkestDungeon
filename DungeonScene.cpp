@@ -43,7 +43,6 @@ HRESULT DungeonScene::Init()
 
 	CreateRoom();
 	CreateRoad();
-	CreateDoor();
 
 	ActivateRoom();
 
@@ -60,7 +59,7 @@ void DungeonScene::Release()
 	DeactivateSound();
 	MG_GMOBJ->RemoveObj(m_roomBG);
 	MG_GMOBJ->RemoveObj(m_roadBG);
-	MG_GMOBJ->RemoveObj(treasurePanel);
+	MG_GMOBJ->RemoveObj(m_treasurePanel);
 
 	for (size_t i = 0; i < m_roadObjs.size(); i++)
 	{
@@ -222,11 +221,6 @@ void DungeonScene::CreateRoad()
 	}
 }
 
-void DungeonScene::CreateDoor()
-{
-	//Road, Room�� ���� door��ġ ������ Ȯ��
-}
-
 void DungeonScene::CreateInvenSystem()
 {
 	m_pInvenSystem = new CInventorySystem();
@@ -364,7 +358,6 @@ void DungeonScene::ActivateRoad()
 		if (party[i] != nullptr)
 		{
 			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
-
 		}
 	}
 }
@@ -524,4 +517,5 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 void DungeonScene::backToTown()
 {
+
 }
