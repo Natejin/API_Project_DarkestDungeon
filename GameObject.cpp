@@ -163,8 +163,7 @@ void GameObject::AddAnimator(string imageName)
 {
 	if (!m_animator)
 	{
-		m_animator = new CAnimator();
-		m_animator->SetTrans(m_transform);
+		m_animator = new CAnimator(m_transform);
 		m_animator->AddImageFrame(imageName);
 	}
 	else {
@@ -177,8 +176,7 @@ void GameObject::AddAnimator(IMAGE imageName)
 {
 	if (!m_animator)
 	{
-		m_animator = new CAnimator();
-		m_animator->SetTrans(m_transform);
+		m_animator = new CAnimator(m_transform);
 		m_animator->AddImageFrame(imageName);
 	}
 	else {

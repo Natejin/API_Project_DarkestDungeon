@@ -9,7 +9,7 @@ CMapSystem::CMapSystem()
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 10;
-	createBossRoomFromHome = 1;
+	createBossRoomFromHome = 4;
 }
 CMapSystem::~CMapSystem() {}
 
@@ -68,27 +68,37 @@ void CMapSystem::FrontRender(HDC _hdc)
 
 void CMapSystem::Release()
 {
+	for (size_t i = 0; i < dungeonMapCreate.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(dungeonMapCreate[i]);
+
+	}
+	MG_GMOBJ->RemoveObj(curPosPanel);
+	dungeonScene = nullptr;
 }
 
 void CMapSystem::SetRandomCreateValue()
 {
-	randRoomEnemy = 100;
-	randRoomCurio = 50;
+	randRoomEnemy = 30;
+	randRoomCurio = 30;
 	randomRoadEnemy = 20;
 	randomRoadCurio = 40;
 	randomRoadTrap = 20;
-	randomBossRoom = 100;
+
 	int _rndRoomEnemy = randRoomEnemy;
-	int _rndRoomCurio = randRoomEnemy + randRoomCurio;
 	rndRoom.push_back(_rndRoomEnemy < 100 ? _rndRoomEnemy : 100);
+	int _rndRoomCurio = rndRoom[0] + randRoomCurio;
 	rndRoom.push_back(_rndRoomCurio < 100 ? _rndRoomCurio : 100);
 
 	int _rndRoadEnemy = randomRoadEnemy;
-	int _rndRoadCurio = randomRoadEnemy + randomRoadCurio;
-	int _rndRoadTrap = randomRoadEnemy + randomRoadCurio + randomRoadTrap;
 	rndRoad.push_back(_rndRoadEnemy < 100 ? _rndRoadEnemy : 100);
+	int _rndRoadCurio = rndRoad[0] + randomRoadCurio;
 	rndRoad.push_back(_rndRoadCurio < 100 ? _rndRoadCurio : 100);
+	int _rndRoadTrap = rndRoad[1] + randomRoadTrap;
 	rndRoad.push_back(_rndRoadTrap < 100 ? _rndRoadTrap : 100);
+
+
+	randomBossRoom = 100;
 }
 
 
@@ -120,6 +130,16 @@ void CMapSystem::CreateDungeon()
 
 void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir, int _farFromHome)
 {
+	//system("CLS");
+	//for (size_t m = 0; m < MAPSIZE; m++)
+	//{
+	//	for (size_t n = 0; n < MAPSIZE; n++)
+	//	{
+	//		_cprintf("%d ", (int)dungeonMap[n][m].dungeonMapState);
+	//	}
+	//	_cprintf("\n");
+	//}
+
 	if (_lastDir != Vector2Int(0, 0))
 	{
 		if (remainRoom < 0)
@@ -135,15 +155,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir, int
 	}
 	
 #ifdef _DEBUG
-	//system("CLS");
-	//for (size_t m = 0; m < MAPSIZE; m++)
-	//{
-	//	for (size_t n = 0; n < MAPSIZE; n++)
-	//	{
-	//		_cprintf("%d ", (int)dungeonMap[m][n].dungeonMapState);
-	//	}
-	//	_cprintf("\n");
-	//}
+
 
 #endif // _DEBUG
 	dungeonMap[i][j].pos = Vector2Int(i, j);
@@ -198,7 +210,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir, int
 				dungeonMap[i][j].farFromHome = _farFromHome;
 			}
 			
-			if (!hasBossRoom && createBossRoomFromHome < _farFromHome - 1 && MG_RND->getInt(randomBossRoom) > random)
+			if (!hasBossRoom && createBossRoomFromHome <= _farFromHome)
 			{
 				hasBossRoom = true;
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Boss;
@@ -380,7 +392,6 @@ void CMapSystem::SetMapWitchCreated()
 					curPosPanel->m_transform->m_pos = minimapButton->m_transform->m_pos;
 					curPosPanel->m_transform->m_pivot = Vector2(0.5, 0.5);
 					curPosPanel->m_layer = LAYER::UIMinimapTouch;
-					//curPosPanel->UseFrontRender();
 					MG_GMOBJ->RegisterObj("panel", curPosPanel);
 				}
 			}

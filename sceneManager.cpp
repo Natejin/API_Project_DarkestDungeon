@@ -4,9 +4,8 @@
 #include "Astar.h"
 #include "TestScene.h"
 #include "DungeonScene.h"
-#include "DungeonScene2.h"
 #include "TownScene.h"
-
+#include "mainScene.h"
 SceneManager::SceneManager() {}
 SceneManager::~SceneManager() {}
 
@@ -15,18 +14,22 @@ Scene* SceneManager::_currentScene = nullptr;
 
 HRESULT SceneManager::init()
 {
-	dungeonScene = new DungeonScene;
-	addScene(SCENETYPE::Dungeon, dungeonScene);
-
-	//DungeonScene2* dungeon2 = new DungeonScene2;
-	//addScene(SCENETYPE::Dungeon2, dungeon2);
-
-	townScene= new TownScene;
-	addScene(SCENETYPE::Town, townScene);
+	
 
 	TestScene* test = new TestScene;
+	test->Init();
 	addScene(SCENETYPE::Test, test);
 
+	dungeonScene = new DungeonScene;
+addScene(SCENETYPE::Dungeon, dungeonScene);
+
+//DungeonScene2* dungeon2 = new DungeonScene2;
+
+townScene = new TownScene;
+addScene(SCENETYPE::Town, townScene);
+
+	_mainScene = new mainScene;
+	addScene(SCENETYPE::MainScene, _mainScene);
 	changeScene(SCENETYPE::Test);
 	return S_OK;
 }
@@ -135,6 +138,28 @@ HRESULT SceneManager::changeScene(SCENETYPE sceneName)
 	}
 
 	return E_FAIL;
+}
+
+void SceneManager::ResetScene()
+{
+	SAFE_DELETE(m_sceneMap[SCENETYPE::Dungeon]);
+	m_sceneMap.erase(SCENETYPE::Dungeon);
+
+	SAFE_DELETE(m_sceneMap[SCENETYPE::Town]);
+	m_sceneMap.erase(SCENETYPE::Town);
+
+
+	dungeonScene = new DungeonScene;
+	addScene(SCENETYPE::Dungeon, dungeonScene);
+
+	//DungeonScene2* dungeon2 = new DungeonScene2;
+
+	townScene = new TownScene;
+	addScene(SCENETYPE::Town, townScene);
+
+	MG_GAME->m_dungeonScene = dungeonScene;
+	MG_GAME->m_townScene = townScene;
+
 }
 
 SCENETYPE SceneManager::CurScene()

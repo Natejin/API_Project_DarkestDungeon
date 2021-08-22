@@ -17,8 +17,6 @@ protected:
 	class CBG_Town* m_town;
 	vector<class CBuilding*> buildingVec;
 	
-
-
 	class COwnHeroListPanel* addMemberCollider;
 
 public:
@@ -27,7 +25,7 @@ public:
 	class Hero_Roster* m_DummyRosterButton;
 	vector<class CHeroList_button*> m_heroListButtonVec;
 
-	vector<class CHeroList_button*> m_coachHero;
+	//vector<class CHeroList_button*> m_coachHero;
 
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
@@ -81,7 +79,7 @@ public:
 	class Embark* m_embark;
 	bool isTown;
 
-	void setEmbark();
+	void SetEmbark();
 
 	void addOwnHero();
 	void addMember(HeroListBtType type, int index);

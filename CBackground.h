@@ -9,7 +9,8 @@ protected:
 	vector<ImageData> mostBG;
 	vector<ImageData> mostFG_Top;
 	vector<ImageData> mostFG_Bottom;
-	
+	vector<ImageData> mostStartBG;
+
 	vector<ImageData> most_HeroList_UI; //°Ç¹°UI
 	vector<ImageData> most_TOWN_UI; //UI
 	vector<ImageData> most_EST; //UI

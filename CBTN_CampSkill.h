@@ -28,4 +28,3 @@ public:
 	virtual void SetSkill(SKILL skill);
 	virtual void Release();
 };
-

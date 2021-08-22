@@ -25,12 +25,10 @@ HRESULT CHero::Init(Info_Hero* _info)
 	AddAnimator(_info->imageIdle);
 	m_animator->SetAnimeSpeed(5);
 	m_animator->AddImageFrame(_info->imageWalk);
-	
 	m_animator->AddImageFrame(_info->imageCombat);
 
-	SetMemberOverlay();
 	AddColliderBox(120, 300);
-
+	SetMemberOverlay();
 	return S_OK;
 }
 
@@ -80,7 +78,6 @@ void CHero::Move()
 
 	if (left | right)
 	{
-		
 		if (right)
 		{
 			if (m_transform->m_pos.x < MG_CAMERA->GetWorldSize().x - 200)
@@ -100,9 +97,9 @@ void CHero::Move()
 				
 				if (m_DIST_retreat > limit && m_DIST_retreat > 300)
 				{
-					if (MG_RND->getInt(4) > 2)
+					if (MG_RND->getInt(50) < 1)
 					{
-						addStress(5);
+						addStress(MG_RND->getInt(3));
 					}
 					limit += 300;
 				}
@@ -366,8 +363,20 @@ bool CHero::reduceHP(int hp)
 	}
 	else {
 		info->m_HP = 0;
-		info->isAlive = false;
-		return false;
+		if (info->isAffliction)
+		{
+			info->isAlive = false;
+			info->isAffliction = false;
+			Disable();
+			return false;
+		}
+		else {
+			info->isAffliction = true;
+			return true;
+		}
+		
+
+
 	}
 }
 
@@ -375,7 +384,7 @@ void CHero::increaseHP(int hp)
 {
 	if (info->m_maxHP > info->m_HP + hp)
 	{
-
+		info->m_HP += hp;
 	}
 	else 
 	{

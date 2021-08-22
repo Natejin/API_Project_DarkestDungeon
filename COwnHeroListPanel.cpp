@@ -49,12 +49,15 @@ void COwnHeroListPanel::FrontRender(HDC _hdc)
 
 void COwnHeroListPanel::Release()
 {
+    GameObject::Release();
 }
 
 void COwnHeroListPanel::Disable()
 {
+    isActive = false;
 }
 
 void COwnHeroListPanel::Enable()
 {
+    isActive = true;
 }

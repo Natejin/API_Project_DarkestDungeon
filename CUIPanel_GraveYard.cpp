@@ -20,7 +20,7 @@ HRESULT CUIPanel_GraveYard::Init()
     m_windowPanelChar = new CSpriteRenderer(IMAGE::graveyard_char, m_transform);
     m_transform->m_pivot = Vector2(-0.095, -0.095);
    
-    m_HeroList_button = new CHeroList_button();
+    //m_HeroList_button = new CHeroList_button();
     return S_OK;
 }
 
@@ -45,9 +45,4 @@ void CUIPanel_GraveYard::FrontRender(HDC _hdc)
        m_windowPanelBG->Render(_hdc);
        m_windowPanelChar->Render(_hdc);
        m_quit->isActive = true;
-}
-
-void CUIPanel_GraveYard::Release()
-{
-   
 }

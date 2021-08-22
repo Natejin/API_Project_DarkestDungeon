@@ -26,7 +26,7 @@
 //===========================
 #include "Embark.h"
 #include "COwnHeroListPanel.h"
-
+#include "CGameManager.h"
 
 TownScene::TownScene() {}
 TownScene::~TownScene() {}
@@ -39,14 +39,13 @@ HRESULT TownScene::Init()
 	m_town = new CBG_Town();
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
+
 	SetEst_Img();
 	SetEst_ui();  
-
 	SetHerolist(); 
 	SetRoster();
 	SetHeroPanel();
-
-	setEmbark();
+	SetEmbark();
 
 	addMemberCollider = new COwnHeroListPanel;
 	addMemberCollider->Init();
@@ -61,12 +60,12 @@ HRESULT TownScene::Init()
 
 HRESULT TownScene::Init(bool managerInit)
 {
-
 	return S_OK;
 }
 
 void TownScene::Release()
 {
+	MG_SOUND->stop(SOUND::Town);
 	MG_GMOBJ->RemoveObj(m_abbey);
 	MG_GMOBJ->RemoveObj(m_blacksmith);
 	MG_GMOBJ->RemoveObj(m_campingTrainer);
@@ -87,12 +86,13 @@ void TownScene::Release()
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]);
 	}
+
 	MG_GMOBJ->RemoveObj(m_heroListUI);
 	MG_GMOBJ->RemoveObj(m_DummyRosterButton);
 	MG_GMOBJ->RemoveObj(m_hero_panel);
 
+	MG_GMOBJ->RemoveObj(addMemberCollider);
 	MG_GMOBJ->RemoveObj(m_embark);
-
 }
 
 void TownScene::Update()
@@ -105,12 +105,21 @@ void TownScene::Render()
 
 void TownScene::Render(HDC _hdc)
 {
+#ifdef _DEBUG
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 0, 255));
-	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
-	TextOut(_hdc, 0, 180, str, strlen(str));
+	SetTextColor(_hdc, RGB(255, 255, 255));
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+		TextOut(_hdc, 0, 180, str, strlen(str));
+	}
+	sprintf_s(str, "Click Right Mouse Button to show hero Infomation.");
+	TextOut(_hdc, WINSIZEX - 390, 100, str, strlen(str));
+
+#endif
 }
 
 //Building.
@@ -269,7 +278,7 @@ void TownScene::SetEst_ui()
 	m_stage_coach = new CUIPanel_StageCoach();
 	m_stage_coach->townScene = this;
 	m_stage_coach->Init();
-	m_coachHero = m_stage_coach->m_OnCoach_heroListButtonVec;
+	//m_coachHero = m_stage_coach->m_OnCoach_heroListButtonVec;
 	MG_GMOBJ->RegisterObj("StageCoachUI", m_stage_coach);
 
 	m_statue = new CUIPanel_Statue();
@@ -339,7 +348,6 @@ void TownScene::Show_nomad_wagon( )
 }
 void TownScene::Show_stage_coach( )
 {
-	
 	MG_SOUND->play(SOUND::town_enter_coach);
 	m_stage_coach->Enable();
 }
@@ -370,14 +378,12 @@ void TownScene::SetHerolist()
 	}
 	m_heroListButtonVec.clear();
 
-
-	for (size_t i = 0; i < MG_GAME->m_ownHeroes.size(); i++)
+	for (size_t i = 0; i < CGameManager::getSingleton()->m_ownHeroes.size(); i++)
 	{
 		CHeroList_button* dragButton = new CHeroList_button();
 		dragButton->Init();
 		dragButton->m_transform->m_pos = Vector2(WINSIZEX / 2 + 620, WINSIZEY - 855 + i * 100);
 		dragButton->AddColliderBox(85, 85);
-		//dragButton->SetTriggerWhenDown(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownForHerolist(this, &TownScene::ShowDummyHeroList);
 		dragButton->SetTriggerWhenDownRightButton(this, &TownScene::ShowHeroPanel);
 		dragButton->m_index = i;
@@ -408,9 +414,16 @@ void TownScene::SetHerolist()
 
 void TownScene::ShowDummyHeroList(HeroListBtType type, int index)
 {
+	if (type == HeroListBtType::coach)
+	{
+		m_DummyRosterButton->m_spriteRenderer->SetImage(m_stage_coach->m_OnCoach_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
+	}
+	else
+	{
+		m_DummyRosterButton->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
+	}
 	m_DummyRosterButton->type = type;
 	m_DummyRosterButton->index = index;
-	m_DummyRosterButton->m_spriteRenderer->SetImage(m_heroListButtonVec[curDragHeroIndex]->m_spriteRenderer->GetImage());
 	m_DummyRosterButton->Enable();
 }
 
@@ -431,7 +444,7 @@ CUI_Panel_Hero* TownScene::GetHeroPanel()
 	return m_hero_panel;
 }
 
-void TownScene::setEmbark()
+void TownScene::SetEmbark()
 {
 	m_embark = new Embark;
 	m_embark->m_townScene = this;
@@ -442,8 +455,10 @@ void TownScene::setEmbark()
 
 void TownScene::addOwnHero()
 {
-	MG_GAME->RegisterHeroToOwnList(m_stage_coach->m_OnCoach_HeroVec[m_DummyRosterButton->index]);
-	m_stage_coach->m_OnCoach_HeroVec.erase(m_stage_coach->m_OnCoach_HeroVec.begin() + m_DummyRosterButton->index);
+	MG_GAME->RegisterHeroToOwnList(
+		m_stage_coach->m_OnCoach_HeroVec[m_DummyRosterButton->index]);
+	m_stage_coach->m_OnCoach_HeroVec.erase(
+		m_stage_coach->m_OnCoach_HeroVec.begin() + m_DummyRosterButton->index);
 	m_stage_coach->CreateCoach_Button();
 
 	SetHerolist();

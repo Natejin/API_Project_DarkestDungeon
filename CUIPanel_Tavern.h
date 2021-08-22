@@ -4,19 +4,19 @@ class CUIPanel_Tavern : public CEst_UI
 {
 	
 private:
-	class CHeroList_button* m_HeroList_button;
+	//class CHeroList_button* m_HeroList_button;
 	
 public:
-	class CButton* m_roomcheck;
-	class CButton* m_closedroom;
-	class CBuilding_PanelButton* panelbutton;
-	class CBuilding_PanelButton* m_room;
+	//class CButton* m_roomcheck;
+	//class CButton* m_closedroom;
+	//class CBuilding_PanelButton* panelbutton;
+	//class CBuilding_PanelButton* m_room;
 	//class CHero* hero;
 
 	vector<class CBuilding_PanelButton*> panelVec;
-	vector<class CButton*>checkVec;
-	vector<class CButton*>closedVec;
-	vector<class CHero*> stressVec;
+	//vector<class CButton*>checkVec;
+	//vector<class CButton*>closedVec;
+	//vector<class CHero*> stressVec;
 
 	CUIPanel_Tavern();
 	~CUIPanel_Tavern();

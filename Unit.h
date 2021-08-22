@@ -21,6 +21,27 @@ public:
 	bool movePosMode;
 	float movePosSpeed;
 
+
+	bool showCount;
+	class CAnimator* showDamageCount1;
+	class CAnimator* showDamageCount10;
+	vector<CSpriteRenderer*> statusIcon;
+	//class CAnimator* showWordAnimator;
+
+	
+	bool showWord;
+	class CSpriteRenderer* missWord;
+	int num1Count;
+	int num10Count;
+
+	float transparent;
+
+	float wordSpeed;
+
+	float showWordCoolTime;
+	float showCurWordTime;
+
+
 	template <typename T>
 	void SetTriggerWhenClick(T* pObj, void(T::* func)(int i))
 	{
@@ -36,10 +57,22 @@ protected:
 
 	//=====================================
 public:
+	int curStatusIconCount;
 	Unit();
 	~Unit();
 
 	HRESULT Init();
+
+	void AddStatus(EFFECTTYPE type) {
+		//EFFECTTYPE::
+	}
+
+	void RemoveStatus() {
+	
+	}
+
+	void ShowWordCount(int count, NumCorType color);
+	void ShowWordMiss();
 
 	virtual void Update(float deltaTime, float worldTime);
 	virtual void LateUpdate();

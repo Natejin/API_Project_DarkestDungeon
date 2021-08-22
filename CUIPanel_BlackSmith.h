@@ -5,7 +5,7 @@ class CUIPanel_BlackSmith :public CEst_UI
 	
 
 private:
-	class CButton* m_quick2;
+	//class CButton* m_quick2;
 
 public:
 	Rect m_rect;
@@ -22,7 +22,7 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
-	virtual void Release();
+	//virtual void Release();
 
 	bool isUi;
 	bool isUI;

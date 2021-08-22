@@ -6,8 +6,8 @@ class Hero_Roster : public CDragButton
 public:
 	int index;
 	HeroListBtType type;
+
 public:
-	
 	class TownScene* scene;
 
 	Hero_Roster();
@@ -23,4 +23,3 @@ public:
 	virtual void FrontRender(HDC _hdc);
 
 };
-

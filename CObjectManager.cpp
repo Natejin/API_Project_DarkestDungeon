@@ -31,6 +31,7 @@ HRESULT CObjectManager::Init()
 
 void CObjectManager::Update(float deltaTime, float worldTime)
 {
+
 	for (auto g : objectVec)
 	{
 		if (g->isActive)
@@ -44,9 +45,13 @@ void CObjectManager::LateUpdate()
 {
 	for (auto g : objectVec)
 	{
-		if (g->isActive)
+
+		if (g != nullptr)
 		{
-			g->LateUpdate();
+			if (g->isActive)
+			{
+				g->LateUpdate();
+			}
 		}
 	}
 
@@ -55,6 +60,10 @@ void CObjectManager::LateUpdate()
 		int eraseID = objsToErase[i];
 		for (size_t j = 0; j < objectVec.size(); ++j)
 		{
+			if (objectVec[j] == nullptr)
+			{
+				objectVec.erase(objectVec.begin() + j);
+			}
 			if (objectVec[j]->GetId() == eraseID) {
 				//colliderGroup���� �ش簴ü�� ����
 				LAYER layer = objectVec[j]->m_layer;
@@ -102,7 +111,6 @@ void CObjectManager::BackRender(HDC _hdc)
 			{
 				go->BackRender(_hdc);
 			}
-		
 		}
 	}
 }

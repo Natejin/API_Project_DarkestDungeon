@@ -20,7 +20,7 @@ HRESULT CUIPanel_CampingTrainer::Init()
     m_windowPanelChar = new CSpriteRenderer(IMAGE::camping_trainer_char, m_transform);
     m_transform->m_pivot = Vector2(-0.095, -0.095);
   
-    m_HeroList_button = new CHeroList_button();
+    //m_HeroList_button = new CHeroList_button();
 
     return S_OK;
 }
@@ -48,7 +48,3 @@ void CUIPanel_CampingTrainer::FrontRender(HDC _hdc)
        m_quit->isActive = true;
 }
 
-void CUIPanel_CampingTrainer::Release()
-{
-   
-}

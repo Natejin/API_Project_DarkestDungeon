@@ -149,6 +149,27 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::necromancer_defend, "images/Enemys/necromancer_defend.bmp", 589, 888, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::necromancer_retreat, "images/Enemys/necromancer_retreat.bmp", 615, 1168, true, RGB(255, 0, 255));
 
+	//Crusader
+	MG_IMAGE->addImage(IMAGE::crusader_disable_battleheal, "images/icons_heroes/disable/crusader_disable_battleheal.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_disable_scroll, "images/icons_heroes/disable/crusader_disable_scroll.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_disable_smite, "images/icons_heroes/disable/crusader_disable_smite.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::crusader_disable_stunning, "images/icons_heroes/disable/crusader_disable_stunning.bmp", 65, 65, false, RGB(255, 0, 255));
+	//Highwayman
+	MG_IMAGE->addImage(IMAGE::highwayman_diable_duelistadvance, "images/icons_heroes/disable/highwayman_diable_duelistadvance.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_disable_grapeshot, "images/icons_heroes/disable/highwayman_disable_grapeshot.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_disable_pointshot, "images/icons_heroes/disable/highwayman_disable_pointshot.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::highwayman_disable_slice, "images/icons_heroes/disable/highwayman_disable_slice.bmp", 65, 65, false, RGB(255, 0, 255));
+	//Plague_doctor
+	MG_IMAGE->addImage(IMAGE::plague_doctor_diable_incision, "images/icons_heroes/disable/plague_doctor_diable_incision.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_battlefiledheal, "images/icons_heroes/disable/plague_doctor_disable_battlefiledheal.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_grenade, "images/icons_heroes/disable/plague_doctor_disable_grenade.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::plague_doctor_disable_noxious, "images/icons_heroes/disable/plague_doctor_disable_noxious.bmp", 65, 65, false, RGB(255, 0, 255));
+	//Vestal
+	MG_IMAGE->addImage(IMAGE::vestal_disable_dazzlingLight, "images/icons_heroes/disable/vestal_disable_dazzling Light.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_divine, "images/icons_heroes/disable/vestal_disable_divine.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_judgement, "images/icons_heroes/disable/vestal_disable_judgement.bmp", 65, 65, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::vestal_disable_mace, "images/icons_heroes/disable/vestal_disable_mace.bmp", 65, 65, false, RGB(255, 0, 255));
+
 	//quit
 	MG_IMAGE->addImage("quick", "images/quick.bmp", 32, 32, true, RGB(255, 0, 255));
 
@@ -169,16 +190,19 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::banner, "images/panel/panel_banner.bmp", 685, 123, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::controller, "images/panel/panel_banner_controller.bmp", 754, 136, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::hero, "images/panel/panel_hero.bmp", 655, 203, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::inventory, "images/panel/panel_inventory.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::map, "images/panel/panel_map.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::map1, "images/panel/panel_map1.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 325, true, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 630, 325, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::inventory, "images/panel/panel_inventory.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map, "images/panel/panel_map.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map1, "images/panel/panel_map1.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::map2, "images/panel/panel_map2.bmp", 630, 350, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::monster, "images/panel/panel_monster.bmp", 630, 350, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::scouting, "images/panel/scoutingbanner.bmp", 366, 63, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel_bg, "images/panel/characterpanel_bg.bmp", 1395, 776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::characterpanel, "images/panel/characterpanel.bmp", 1395,776, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_treatment, "images/panel/quirk_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::Backdrop_disease, "images/panel/disease_treatment_backdrop.bmp", 420,250, true, RGB(255, 0, 255));
+
+
+	MG_IMAGE->addImage("BlackBackground", "images/panel/BlackBackground.bmp", 2000, 2000, true, RGB(255, 0, 255));
 	
 	//Icon_Map
 	MG_IMAGE->addImage(IMAGE::hall_clear, "images/icons_map/hall_clear.bmp", 24, 24, true, RGB(255, 0, 255));
@@ -335,9 +359,13 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("button", "images/dungeonUI/button_.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("button2", "images/dungeonUI/button_.bmp", 100, 100, false, RGB(255, 0, 255));
 
+	MG_IMAGE->addImage("skelBg1", "images/panel/side_decor1.bmp", 250, 360, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("skelBg2", "images/panel/side_decor2.bmp", 250, 360, false, RGB(255, 0, 255));
+
 	MG_IMAGE->addImage(IMAGE::treasure, "images/test/treasure.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::trap, "images/test/trap.bmp", 100, 100, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage(IMAGE::NONE, "images/test/enemyPoint.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::NONE, "images/panel/MagentaBackground.bmp", 100, 100, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::nothing, "images/test/nothing.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage(IMAGE::obj_crate1, "images/dungeonOBJ/Crate1.bmp", 248, 140, true, RGB(255, 0, 255));
@@ -433,12 +461,12 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Target_Heal3, "images/dungeonUI/target_h_3.bmp", 331, 206, true, RGB(255, 0, 255));
 
 	//item
-	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food1	, "images/item/inv_provision+_0.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food2	, "images/item/inv_provision+_1.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food3	, "images/item/inv_provision+_2.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::food4	, "images/item/inv_provision+_3.bmp", 70, 135, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage(IMAGE::bandage, "images/item/inv_supply+bandage.bmp", 70, 135, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::torch	, "images/item/inv_supply+torch.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food1	, "images/item/inv_provision+_0.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food2	, "images/item/inv_provision+_1.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food3	, "images/item/inv_provision+_2.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::food4	, "images/item/inv_provision+_3.bmp", 70, 148, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::bandage, "images/item/inv_supply+bandage.bmp", 70, 145, false, RGB(255, 0, 255));
 
 	//check
 	MG_IMAGE->addImage(IMAGE::check, "images/menucheck.bmp", 32, 32, false, RGB(255, 0, 255));
@@ -459,8 +487,10 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage("border_line", "images/Town/border_line.bmp", 1920, 1080, true, RGB(255, 0, 255));
 
 	//embarkBt
-	MG_IMAGE->addImage("embark", "images/Town_UI/embarkBt.bmp", 250, 72, false, RGB(255, 0, 255));
-	MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/dungeonBt.bmp", 100, 100, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("embark", "images/Town_UI/embarkBt.bmp", 250, 72, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("embark", "images/Town_UI/embark_party.bmp", 250, 90, false, RGB(255, 0, 255));
+	//MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/dungeonBt.bmp", 100, 100, false, RGB(255, 0, 255));
+	MG_IMAGE->addImage("embark_dungeon", "images/Town_UI/tutorial_popup.bmp", 100, 100, false, RGB(255, 0, 255));
 	MG_IMAGE->addImage("partySlot", "images/Town_UI/partySlot.bmp", 100, 100, false, RGB(255, 0, 255));
 
 	MG_IMAGE->addImage("partySlot_", "images/selDungeon/embark_party.background.bmp", 412, 113, true, RGB(255, 0, 255));
@@ -477,11 +507,24 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::BattleBG_darkestdungeon_wall2, "images/BattleScene/darkestdungeon_wall2.bmp", 2320, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::BattleBG_town_invasion, "images/BattleScene/town_invasion.bmp", 2320, 720, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage(IMAGE::BattleBG_trinket_retention, "images/BattleScene/trinket_retention.bmp", 2320, 720, true, RGB(255, 0, 255));
-	
+	//StartScene
+	MG_IMAGE->addImage(IMAGE::tutorial_popup, "images/Startbg/tutorial_popup.bmp", 400, 400, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::mailing_list, "images/Startbg/mailing_list.bmp", 1500, 800, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::modeselect_menu_backdrop, "images/Startbg/modeselect_menu_backdrop.bmp", 750, 625, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::saveslot, "images/Startbg/saveslot.bmp", 874, 137, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::start_button, "images/Startbg/start_button.bmp", 372, 92, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::title_bg, "images/Startbg/title_bg.bmp", 1920, 2160, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::title_house, "images/Startbg/title_house.bmp", 1920, 674, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::ugc_slot_selected, "images/Startbg/ugc_slot_selected.bmp", 592, 76, true, RGB(255, 0, 255));
+
 	//Number
 	MG_IMAGE->addFrameImage(IMAGE::NumberBlack, "images/Number/NumberBlack.bmp", 340, 49,10,1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberGreen, "images/Number/NumberGreen.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
 	MG_IMAGE->addFrameImage(IMAGE::NumberRed, "images/Number/NumberRed.bmp", 340, 49, 10, 1, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage(IMAGE::Miss, "images/Number/miss.bmp", 200, 100, true, RGB(255, 0, 255));
+
+
+	MG_IMAGE->addImage("logo", "images/supplement/Logo.bmp", 640, 242, true, RGB(255, 0, 255));
 
 	return S_OK;
 

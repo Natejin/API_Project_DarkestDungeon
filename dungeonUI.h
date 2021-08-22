@@ -9,8 +9,6 @@ public:
 	vector<ImageData> vUI;
 	vector<class CBTN_Skill*> skillBTNs;
 
-	
-
 	int m_sceneSize;
 
 	CButton* bt_inven;
@@ -26,12 +24,11 @@ public:
 
 	class CBTN_Skill_Swap* swapBTN;
 	class CBTN_Skill_Endturn* endTurnBTN;
-
+	CUIPanel* panel_bg;
 	CUIPanel* panel_bg1;
 	CUIPanel* panel_bg2;
 	CUIPanel* banner;
 	CUIPanel* hero;
-
 
 	CUIPanel* invenPanel;
 	CUIPanel* mapPanel1;
@@ -60,7 +57,6 @@ public:
 	void SetTorchUIimg();
 
 	void SetSkillButton();
-	void SelectSkillButton();
 
 	void TorchLightBarDecrease();
 

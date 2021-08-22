@@ -43,14 +43,12 @@ public:
 	virtual  void Enable();
 	virtual void Disable();
 
-	void setInvenSlot(); //set dungeonInventory according to party info
+	void setInvenSlot(); 
 	void setConsumableSlot(); 
 	void showSlotMouseOn(HDC _hdc);
 
 	bool AddItem(ITEM itemInfo, int& count);
 	void RemoveItem(Vector2Int pos);
-	//void SwapItem(Vector2Int originPos, Vector2Int swapPos);
-
 	void StartDragItem(class CSlotItemButton* slot);
 	void EndDragItem(class CSlotItemButton* slot);
 

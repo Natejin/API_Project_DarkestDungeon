@@ -24,14 +24,22 @@ private:
 	int m_optimizeFrame;
 
 public:
+	Vector2 customPos;
+	bool useCustomPos;
 	ANIMATIONTYPE m_animationType;
 	//Vector2 m_pos;
 	//Rect rect;
 
-	CAnimator();
+	CAnimator(class CTransform* _trans);
 	~CAnimator();
 
 	void FrameRender(HDC _hdc);
+	void FrameRenderUI(HDC _hdc);
+	void FrameRender(HDC _hdc, int Xindex, int Yindex = 0);
+	void FrameRenderUI(HDC _hdc, int Xindex, int Yindex = 0);
+
+	void AlphaFrameRender(HDC _hdc, BYTE alpha);
+	void AlphaFrameRender(HDC _hdc, BYTE alpha, int Xindex, int Yindex = 0);
 
 	void SetIndex(int index);
 	void SetTrans(class CTransform* _trans) { trans = _trans; }

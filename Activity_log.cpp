@@ -1,13 +1,8 @@
 #include "framework.h"
 #include "Activity_log.h"
 
-Activity_log::Activity_log()
-{
-}
-
-Activity_log::~Activity_log()
-{
-}
+Activity_log::Activity_log() {}
+Activity_log::~Activity_log() {}
 
 HRESULT Activity_log::Init()
 {

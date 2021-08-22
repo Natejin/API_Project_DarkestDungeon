@@ -38,20 +38,20 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -116,7 +116,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,7 +130,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,7 +144,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,10 +161,9 @@
     <ClInclude Include="CBuilding_PanelButton.h" />
     <ClInclude Include="CEnemyInfoUI.h" />
     <ClInclude Include="CEquipButton.h" />
-    <ClInclude Include="CHeroOnStage_coach.h" />
+    <ClInclude Include="CItemEffect.h" />
     <ClInclude Include="COwnHeroListPanel.h" />
     <ClInclude Include="CPosition_Button.h" />
-    <ClInclude Include="CSaveable.h" />
     <ClInclude Include="CUI_Panel_Hero.h" />
     <ClInclude Include="DB_UnitInfo.h" />
     <ClInclude Include="Embark.h" />
@@ -220,14 +219,11 @@
     <ClInclude Include="CObjOnRoad.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="CParty.h" />
-    <ClInclude Include="CRoadObject.h" />
     <ClInclude Include="CSpriteRenderer.h" />
     <ClInclude Include="CUIPanel.h" />
-    <ClInclude Include="CVestal.h" />
     <ClInclude Include="DummySlot.h" />
     <ClInclude Include="DungeonData.h" />
     <ClInclude Include="DungeonScene.h" />
-    <ClInclude Include="DungeonScene2.h" />
     <ClInclude Include="dungeonUI.h" />
     <ClInclude Include="dungeonUI_HeroInfo.h" />
     <ClInclude Include="effect.h" />
@@ -249,7 +245,6 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="DB_Item.h" />
     <ClInclude Include="Info_Item.h" />
-    <ClInclude Include="CItemEffect.h" />
     <ClInclude Include="ItemEffect_Colletion.h" />
     <ClInclude Include="loadiingTest.h" />
     <ClInclude Include="loading.h" />
@@ -268,7 +263,6 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="rocket.h" />
-    <ClInclude Include="RoomScene.h" />
     <ClInclude Include="CUIPanel_Sanitarium.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scene1.h" />
@@ -281,6 +275,7 @@
     <ClInclude Include="soundTest.h" />
     <ClInclude Include="CUIPanel_StageCoach.h" />
     <ClInclude Include="CUIPanel_Statue.h" />
+    <ClInclude Include="StartBG.h" />
     <ClInclude Include="tank.h" />
     <ClInclude Include="tankGameScene.h" />
     <ClInclude Include="tankMap.h" />
@@ -290,6 +285,7 @@
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="CTransform.h" />
+    <ClInclude Include="TitleButton.h" />
     <ClInclude Include="TownScene.h" />
     <ClInclude Include="TreasureEventPanel.h" />
     <ClInclude Include="txtData.h" />
@@ -305,10 +301,9 @@
     <ClCompile Include="CBuilding_PanelButton.cpp" />
     <ClCompile Include="CEnemyInfoUI.cpp" />
     <ClCompile Include="CEquipButton.cpp" />
-    <ClCompile Include="CHeroOnStage_coach.cpp" />
+    <ClCompile Include="CItemEffect.cpp" />
     <ClCompile Include="COwnHeroListPanel.cpp" />
     <ClCompile Include="CPosition_Button.cpp" />
-    <ClCompile Include="CSaveable.cpp" />
     <ClCompile Include="CUI_Panel_Hero.cpp" />
     <ClCompile Include="DB_UnitInfo.cpp" />
     <ClCompile Include="Embark.cpp" />
@@ -365,14 +360,11 @@
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CObjOnRoad.cpp" />
     <ClCompile Include="CParty.cpp" />
-    <ClCompile Include="CRoadObject.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />
     <ClCompile Include="CUIPanel.cpp" />
-    <ClCompile Include="CVestal.cpp" />
     <ClCompile Include="DummySlot.cpp" />
     <ClCompile Include="DungeonData.cpp" />
     <ClCompile Include="DungeonScene.cpp" />
-    <ClCompile Include="DungeonScene2.cpp" />
     <ClCompile Include="dungeonUI.cpp" />
     <ClCompile Include="dungeonUI_HeroInfo.cpp" />
     <ClCompile Include="effect.cpp" />
@@ -391,7 +383,6 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="DB_Item.cpp" />
     <ClCompile Include="Info_Item.cpp" />
-    <ClCompile Include="CItemEffect.cpp" />
     <ClCompile Include="ItemEffect_Colletion.cpp" />
     <ClCompile Include="loadiingTest.cpp" />
     <ClCompile Include="loading.cpp" />
@@ -408,7 +399,6 @@
     <ClCompile Include="progressBar.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="rocket.cpp" />
-    <ClCompile Include="RoomScene.cpp" />
     <ClCompile Include="CUIPanel_Sanitarium.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scene1.cpp" />
@@ -420,6 +410,7 @@
     <ClCompile Include="soundTest.cpp" />
     <ClCompile Include="CUIPanel_StageCoach.cpp" />
     <ClCompile Include="CUIPanel_Statue.cpp" />
+    <ClCompile Include="StartBG.cpp" />
     <ClCompile Include="tank.cpp" />
     <ClCompile Include="tankGameScene.cpp" />
     <ClCompile Include="tankMap.cpp" />
@@ -428,6 +419,7 @@
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="CTransform.cpp" />
+    <ClCompile Include="TitleButton.cpp" />
     <ClCompile Include="TownScene.cpp" />
     <ClCompile Include="TreasureEventPanel.cpp" />
     <ClCompile Include="txtData.cpp" />

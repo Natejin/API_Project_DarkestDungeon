@@ -32,7 +32,7 @@ void EmbarkPartySlot::Update(float deltaTime, float worldTime)
 		{
 			if (MG_INPUT->IsDownRMB())
 			{
-				MG_GAME->RegisterHeroToOwnList(m_hero);
+				MG_GAME->RemoveHeroFromParty(m_hero);
 				m_townScene->SetHerolist();
 				m_hero = nullptr;
 				m_spriteRenderer->SetImage("heroSlot2");
@@ -98,6 +98,8 @@ void EmbarkPartySlot::FrontRender(HDC _hdc)
 
 void EmbarkPartySlot::Release()
 {
+	CEst_UI::Release();
+	m_hero = nullptr;
 }
 
 void EmbarkPartySlot::Enable()

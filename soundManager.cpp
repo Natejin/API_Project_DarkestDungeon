@@ -180,6 +180,9 @@ void soundManager::SetSound()
 	addSound(SOUND::BOSS_Combat, "sound/BGM/Boss_Combat.wav",true,true);
 	addSound(SOUND::Ruins_dark, "sound/BGM/amb_dun_ruins_dark.wav",true,true);
 	addSound(SOUND::Ruins_base, "sound/BGM/amb_dun_ruins_base.wav",true,true);
+	addSound(SOUND::Title_Theme, "sound/BGM/title_theme.wav",true,true);
+	
+	
 	//raid success
 	addSound(SOUND::raid_success, "sound/BGM/raid_success.wav");
 	

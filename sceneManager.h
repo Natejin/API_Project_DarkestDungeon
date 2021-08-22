@@ -23,13 +23,14 @@ private:
 public:
 	class DungeonScene* dungeonScene;
 	class TownScene* townScene;
-
+	class mainScene* _mainScene;
 	SceneManager();
 	~SceneManager();
 
 	HRESULT init();
 	void release();
 	void update();
+	
 	void Render(HDC _hdc);
 
 	//Scene* addScene(string sceneName, Scene* scene);
@@ -37,5 +38,6 @@ public:
 
 	Scene* addScene(SCENETYPE sceneName, Scene* scene);
 	HRESULT changeScene(SCENETYPE sceneName);
+	void ResetScene();
 	SCENETYPE CurScene();
 };

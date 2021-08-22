@@ -1,9 +1,11 @@
 #pragma once
 #include"CEst_UI.h"
+
 class CPosition_Button : public CEst_UI
 {
 	class CSpriteRenderer* m_potionButton;
 	bool enable;
+
 public:
 	CPosition_Button();
 	~CPosition_Button();
@@ -21,4 +23,3 @@ public:
 
 	void Click(bool _enable);
 };
-

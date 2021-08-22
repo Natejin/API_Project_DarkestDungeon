@@ -4,7 +4,7 @@
 class TestScene : public Scene
 {
 public:
-	
+	bool isFirst = true;
 public:
 	TestScene();
 	virtual~TestScene();

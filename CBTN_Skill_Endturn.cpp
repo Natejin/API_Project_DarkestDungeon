@@ -15,7 +15,8 @@ HRESULT CBTN_Skill_Endturn::Init()
     selected = false;
     m_transform->m_pivot = Vector2(0.5, 0.5);
     m_spriteSelected = new CSpriteRenderer(IMAGE::SelectedSkill, m_transform);
-
+    m_spriteDeactiveIcon = new CSpriteRenderer(IMAGE::Crusader_Skill_BattleHeal, m_transform);
+    activateSkill = true;
     AddSpriteRenderer(IMAGE::Ability_Pass);
     AddColliderBox();
     return S_OK;

@@ -30,20 +30,14 @@ HRESULT CGameManager::Init()
 	RegisterHeroToOwnList(CreateHero("member11", JOB::Highwayman));
 	RegisterHeroToOwnList(CreateHero("member12", JOB::PlagueDoctor));*/
 
-	setParty();
+	//setParty();
 
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 	m_partyOrigin.push_back(nullptr);
 
-	RegisterHeroToParty(0);
-	RegisterHeroToParty(1);
-	RegisterHeroToParty(2);
-	RegisterHeroToParty(3);
 
-	m_dungeonScene = MG_SCENE->dungeonScene;
-	m_townScene = MG_SCENE->townScene;
 
 	return S_OK;
 }
@@ -70,12 +64,18 @@ void CGameManager::BackRender(HDC _hdc)
 
 void CGameManager::Render(HDC _hdc)
 {
-	char str[256];
-	string strFrame;
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 0, 255));
-	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
-	TextOut(_hdc, 0, 180, str, strlen(str));
+#ifdef _DEBUG
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		char str[256];
+		string strFrame;
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(255, 0, 255));
+		sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+		TextOut(_hdc, 0, 180, str, strlen(str));
+	}
+#endif
 }
 
 void CGameManager::FrontRender(HDC _hdc)
@@ -100,8 +100,17 @@ void CGameManager::Release()
 
 bool CGameManager::RegisterHeroToParty(CHero* hero)
 {
+	if (m_partyOrigin.size() == 0)
+	{
+		m_partyOrigin.clear();
+		m_partyOrigin.push_back(nullptr);
+		m_partyOrigin.push_back(nullptr);
+		m_partyOrigin.push_back(nullptr);
+		m_partyOrigin.push_back(nullptr);
+	}
 	for (size_t i = 0; i < 4; i++)
 	{
+
 		if (m_partyOrigin[i] == nullptr)
 		{
 			m_partyOrigin[i] = hero;
@@ -129,21 +138,19 @@ void CGameManager::RegisterHeroToOwnList(CHero* hero)
 
 }
 
-bool CGameManager::RemoveHeroFromParty(int id)
+bool CGameManager::RemoveHeroFromParty(CHero* hero)
 {
-	//if (m_partyOrigin[id] != nullptr)
-	//{
-	//	m_partyOrigin[id] = nullptr;
-	//	return true;
-
-	//}
-	//return false;
-	if (id < m_partyOrigin.size())
+	for (size_t i = 0; i < m_partyOrigin.size(); i++)
 	{
-
-		m_partyOrigin.erase(m_partyOrigin.begin() + id);
-		return true;
+		if (m_partyOrigin[i] != nullptr && hero == m_partyOrigin[i])
+		{
+			RegisterHeroToOwnList(m_partyOrigin[i]);
+			m_partyOrigin[i]->isActive =false;
+			m_partyOrigin[i] = nullptr;
+			break;
+		}
 	}
+	
 	return false;
 }
 
@@ -161,18 +168,18 @@ bool CGameManager::RemoveHeroFromOwnList(int heroId)
 	return false;
 }
 
-void CGameManager::setParty()
-{
-	m_party = new CParty;
-	m_party->Init(1, 1, 1);
-	m_party->Disable();
-	MG_GMOBJ->RegisterObj("Party", m_party);
-}
-
-CParty* CGameManager::GetParty()
-{
-	return m_party;
-}
+//void CGameManager::setParty()
+//{
+//	m_party = new CParty();
+//	m_party->Init(1, 1, 1);
+//	m_party->Disable();
+//	MG_GMOBJ->RegisterObj("Party", m_party);
+//}
+//
+//CParty* CGameManager::GetParty()
+//{
+//	return m_party;
+//}
 
 vector<CHero*> CGameManager::GetHeroes()
 {
@@ -187,6 +194,12 @@ CHero* CGameManager::GetHero(int index)
 CHero* CGameManager::GetHeroFromParty(int index)
 {
 	return index < m_partyOrigin.size() ? m_partyOrigin[index]: nullptr;
+}
+
+CParty* CGameManager::GetParty()
+{
+
+	return m_dungeonScene->m_party;
 }
 
 CHero* CGameManager::CreateHero(string name, JOB job)
@@ -222,14 +235,18 @@ CHero* CGameManager::GetCurSelHero()
 
 void CGameManager::SetCurSelHero(int index)
 {
-	m_CurSelHero = m_party->GetHero(index);
+	m_CurSelHero = m_dungeonScene-> m_party->GetHero(index);
 	if (m_CurSelHero)
 	{
-		for (int i = 0; i < m_party->GetPartySize(); i++)
+		for (int i = 0; i < m_dungeonScene->m_party->GetPartySize(); i++)
 		{
-			m_party->GetHero(i)->isSelected = false;
+			if (m_dungeonScene->m_party->GetHero(i) != nullptr)
+			{
+				m_dungeonScene->m_party->GetHero(i)->isSelected = false;
+			}
+			
 		}
-		m_party->GetHero(index)->isSelected = true;
+		m_dungeonScene->m_party->GetHero(index)->isSelected = true;
 
 		m_dungeonScene->m_dungeonUIinfo->SetPortrait(m_CurSelHero->GetInfo()->portrait);
 		m_dungeonScene->m_dungeonUIinfo->SetWeapon(m_CurSelHero->GetInfo()->weapon[0]);

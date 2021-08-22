@@ -20,7 +20,7 @@ HRESULT CUIPanel_Guild::Init()
     m_windowPanelChar = new CSpriteRenderer(IMAGE::guild_char, m_transform);
     m_transform->m_pivot = Vector2(-0.095, -0.095);
    
-    m_HeroList_button = new CHeroList_button();
+    //m_HeroList_button = new CHeroList_button();
     return S_OK;
 }
 
@@ -46,9 +46,4 @@ void CUIPanel_Guild::FrontRender(HDC _hdc)
        m_windowPanelBG->Render(_hdc);
        m_windowPanelChar->Render(_hdc);
        m_quit->isActive = true;
-}
-
-void CUIPanel_Guild::Release()
-{
-  
 }

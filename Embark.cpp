@@ -142,6 +142,7 @@ void Embark::setPartySlot()
 		slot->Init();
 		slot->m_transform->m_pos = Vector2(817 + i * 95, 780);
 		slot->m_townScene = this->m_townScene;
+		slot->index = i;
 		slot->Disable();
 		m_slots.push_back(slot);
 		MG_GMOBJ->RegisterObj("partySlot", slot);

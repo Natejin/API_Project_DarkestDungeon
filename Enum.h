@@ -1,5 +1,12 @@
 #pragma once
 
+enum class NumCorType 
+{
+	Black,
+	Red,
+	Green
+};
+
 enum class LAYER
 {
 	Unknown = -2,
@@ -46,22 +53,22 @@ enum class EFFECTTYPE
 	Poison
 };
 
-enum class TRINKET {
+enum class TRINKET 
+{
 	NONE,
 	Item1,
 	Item2,
 	Item3,
 	Item4,
-
 };
 
-enum class SKILLIMAGETYPE {
+enum class SKILLIMAGETYPE 
+{
 	Attack,
 	Charge,
 	Defend,
 	Buff,
 	Debuff,
-
 };
 
 enum class SKILL
@@ -74,6 +81,7 @@ enum class SKILL
 	Crusader_BuffAllie_BulwarkofFaith,
 	Crusader_Heal_BattleHeal,
 	Crusader_Combat_HolyLance,
+	
 	//Vestal
 	Vestal_Combat_MaceBash,
 	Vestal_Combat_Judgement,
@@ -82,17 +90,18 @@ enum class SKILL
 	Vestal_Heal_DivineComfort,
 	Vestal_Combat_Illumination,
 	Vestal_Combat_HandofLight,
+	
 	//Plague_doctor
 	Plague_doctor_NoxiousBlast,
 	Plague_doctor_PlagueGrenade,
 	Plague_doctor_Incision,
 	Plague_doctor_BattleFiled_Medicine,
+	
 	//Highwayman
 	Highwayman_PointBlankShot,
 	Highwayman_GrapeshotBlast,
 	Highwayman_Duelists_Advance,
 	Highwayman_OpenVein,
-
 
 	//ENEMY
 	BoneDefender_Combat_1,
@@ -101,9 +110,8 @@ enum class SKILL
 	BoneCourtier_Combat_2_goblet,
 	Necromancer_Combat_1,
 	Necromancer_Combat_2_back,
-
-
 };
+
 enum class CAMP_SKILL
 {	//Common
 	camp_skill_bandage,
@@ -130,6 +138,7 @@ enum class CAMP_SKILL
 	camp_skill_pray,
 	camp_skill_sanctuary
 };
+
 enum class ITEM
 {
 	ITEM_CONSUMABLE,
@@ -151,8 +160,6 @@ enum class JOB
 	Highwayman
 };
 
-
-
 enum class DIR
 {
 	Left,
@@ -168,7 +175,7 @@ enum class SOUND {
 	BOSS_Combat,
 	Ruins_dark,
 	Ruins_base,
-
+	Title_Theme,
 	//Crusader
 	Cru_Battleheal,
 	Cru_holylance,
@@ -519,6 +526,10 @@ enum class IMAGE
 	Crusader_Skill_HolyLance,
 	Crusader_Skill_InspiringCry,
 
+	crusader_disable_battleheal,
+	crusader_disable_stunning,
+	crusader_disable_scroll,
+	crusader_disable_smite,
 	//vestal
 	Vestal_Skill_MaceBash,
 	Vestal_Skill_Judgement,
@@ -527,16 +538,32 @@ enum class IMAGE
 	Vestal_Skill_DivineComfort,
 	Vestal_Skill_Illumination,
 	Vestal_Skill_HandofLight,
+
+	vestal_disable_divine,
+	vestal_disable_dazzlingLight,
+	vestal_disable_judgement,
+	vestal_disable_mace,
 	//Plagued_doctor
 	Plague_doctor_Skill_NoxiousBlast,
 	Plague_doctor_Skill_PlagueGrenade,
 	Plague_doctor_Skill_Incision,
 	Plague_doctor_Skill_BattleFiled_Medicine,
+
+	plague_doctor_disable_battlefiledheal,
+	plague_doctor_diable_incision,
+	plague_doctor_disable_grenade,
+	plague_doctor_disable_noxious,
+
 	//Highwayman
 	Highwayman_Skill_PointBlankShot,
 	Highwayman_Skill_GrapeshotBlast,
 	Highwayman_Skill_Duelists_Advance,
 	Highwayman_Skill_OpenVein,
+
+	highwayman_disable_slice,
+	highwayman_diable_duelistadvance,
+	highwayman_disable_grapeshot,
+	highwayman_disable_pointshot,
 
 	//HeroMotion_Crusader
 	Crusader_Idle,
@@ -666,11 +693,20 @@ enum class IMAGE
 	BattleBG_darkestdungeon_wall2,
 	BattleBG_town_invasion,
 	BattleBG_trinket_retention,
+	//StartScene
+	tutorial_popup,
+	mailing_list,
+	modeselect_menu_backdrop,
+	saveslot,
+	start_button,
+	title_bg,
+	title_house,
+	ugc_slot_selected,
 	//Number
 	NumberBlack,
 	NumberGreen,
-	NumberRed
-
+	NumberRed,
+	Miss
 };
 
 enum class Resistance
@@ -690,7 +726,6 @@ enum class Combat_Skill
 
 enum class Camping_Skill
 {
-
 	Night_Attack_Prevention,
 
 	Reconnaissance,
@@ -772,12 +807,12 @@ enum class RoadObjType
 	Boss
 };
 
-enum class ENEMYTYPE {
+enum class ENEMYTYPE 
+{
 	BoneDefender,
 	BoneCommon,
 	BoneCourtier,
 	Necromancer,
-
 };
 
 enum class  HeroListBtType

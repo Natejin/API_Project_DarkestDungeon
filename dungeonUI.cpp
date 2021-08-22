@@ -65,6 +65,7 @@ void dungeonUI::Release()
 	MG_GMOBJ->RemoveObj(invenPanel);
 	MG_GMOBJ->RemoveObj(mapPanel1);
 	MG_GMOBJ->RemoveObj(mapPanel2);
+	MG_GMOBJ->RemoveObj(panel_bg);
 	MG_GMOBJ->RemoveObj(panel_bg1);
 	MG_GMOBJ->RemoveObj(panel_bg2);
 	MG_GMOBJ->RemoveObj(banner);
@@ -78,6 +79,14 @@ void dungeonUI::SetUIIMG()
 	ImageData UIimg;
 	SetTorchUIimg();
 
+	panel_bg = new CUIPanel();
+	panel_bg->Init();
+	panel_bg->AddSpriteRenderer("BlackBackground");
+	panel_bg->m_transform->m_pos = Vector2(0, 0);
+	panel_bg->m_layer = LAYER::MinimapBackground;
+	panel_bg->UseBackRender();
+	MG_GMOBJ->RegisterObj(panel_bg);
+	//panel_bg = CreatePanel("BlackBackground", Vector2(0, 0), LAYER::MinimapBackground);
 	panel_bg1 = CreatePanel("panel_bg2", Vector2(0, 700), LAYER::MinimapBackground);
 	panel_bg2 = CreatePanel("panel_bg2", Vector2(1580, 700), LAYER::MinimapBackground);
 	banner = CreatePanel(IMAGE::banner, Vector2(300, 700), LAYER::UI);
@@ -89,12 +98,22 @@ void dungeonUI::SetUIIMG()
 	mapPanel1->UseFrontRender();
 
 	mapPanel2 = new CDragButtonMinimapBG();
+
 	mapPanel2->Init();
 	mapPanel2->m_transform->m_pos = Vector2(965, 700);
 	mapPanel2->AddSpriteRenderer(IMAGE::map2);
 	mapPanel2->SetMapSystem(m_pMapSystem);
 	mapPanel2->AddColliderBox();
 	MG_GMOBJ->RegisterObj("minimapBG", mapPanel2);
+
+	ImageData temp;
+	temp.m_img = MG_IMAGE->findImage("skelBg1");
+	temp.m_trans.m_pos = Vector2(85, 700);
+	vUI.push_back(temp);
+
+	temp.m_img = MG_IMAGE->findImage("skelBg2");
+	temp.m_trans.m_pos = Vector2(WINSIZEX - 330, 700);
+	vUI.push_back(temp);
 }
 
 void dungeonUI::SetButton()
@@ -168,11 +187,6 @@ void dungeonUI::SetSkillButton()
 	endTurnBTN->m_pBattleSystem = m_pBattleSystem;
 	endTurnBTN->SetName("EndTurn BTN");
 	MG_GMOBJ->RegisterObj(endTurnBTN);
-}
-
-void dungeonUI::SelectSkillButton()
-{
-
 }
 
 void dungeonUI::TorchLightBarDecrease()

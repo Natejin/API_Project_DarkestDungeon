@@ -25,6 +25,7 @@ private:
 	int WB_btwHeroes = 125;
 
 	int limit;
+	int limit2;
 	int selectedHeroIndex;
 
 	float curWalkTime;
@@ -52,7 +53,6 @@ public:
 
 	//==================================
 	void SelectHero(int index) { selectedHeroIndex = index; };
-
 
 	void SetPartyMember(vector<CHero*> member);
 	void SetHero(CHero* member);
@@ -82,5 +82,4 @@ public:
 	void showMemberInfo(HDC _hdc);
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
-
 };

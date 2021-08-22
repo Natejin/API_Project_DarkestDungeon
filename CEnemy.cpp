@@ -19,7 +19,7 @@ HRESULT CEnemy::Init(Info_Enemy* _info)
 	m_animator->AddImageFrame(_info->imageCorpse);
 
 	SetMemberOverlay();
-	AddColliderBox();
+	AddColliderBox(120,300);
 	return S_OK;
 }
 
@@ -57,7 +57,6 @@ void CEnemy::FrontRender(HDC _hdc)
 			m_transform->m_pos.y - 163);
 		targetSkillMem.Render(_hdc);
 	}
-
 	Unit::FrontRender(_hdc);
 }
 
@@ -160,6 +159,11 @@ int CEnemy::GetProt() const
 bool CEnemy::GetAttribute(int index) const
 {
 	return info->attribute[index];
+}
+
+int CEnemy::getResist(int index)
+{
+	return info->resist[index];
 }
 
 #pragma endregion

@@ -21,14 +21,13 @@ DungeonScene::DungeonScene()
 	m_party = nullptr;
 	m_roomBG = nullptr;
 	m_roadBG = nullptr;
-
 }
 DungeonScene::~DungeonScene() {}
 
 HRESULT DungeonScene::Init()
 {
-	MG_SOUND->stop(SOUND::Town);
 	ActivateSound();
+	CreateParty();
 
 	m_dungeonState = DUNGEONSTATE::ROAD;
 	m_dungeonMode = DUNGEONMODE::WALK;
@@ -38,11 +37,12 @@ HRESULT DungeonScene::Init()
 	CreateDungeonUI();
 	CreateBattleSystem();
 
-	CreateParty();
+	MG_GAME->SetCurSelHero(0);
+	m_party->Enable();
+	MG_CAMERA->SetTarget(m_party->GetHero(0));
 
 	CreateRoom();
 	CreateRoad();
-	CreateDoor();
 
 	ActivateRoom();
 
@@ -56,35 +56,32 @@ HRESULT DungeonScene::Init(bool managerInit)
 
 void DungeonScene::Release()
 {
-
+	DeactivateSound();
 	MG_GMOBJ->RemoveObj(m_roomBG);
 	MG_GMOBJ->RemoveObj(m_roadBG);
-	MG_GMOBJ->RemoveObj(treasurePanel);
+	MG_GMOBJ->RemoveObj(m_treasurePanel);
 
 	for (size_t i = 0; i < m_roadObjs.size(); i++)
 	{
 		MG_GMOBJ->RemoveObj(m_roadObjs[i]);
 	}
 
-
 	MG_GMOBJ->RemoveObj(m_pBattleSystem);
+	MG_GMOBJ->RemoveObj(m_pMapSystem);
 	MG_GMOBJ->RemoveObj(m_pInvenSystem);
 	MG_GMOBJ->RemoveObj(m_treasurePanel);
 	MG_GMOBJ->RemoveObj(m_dungeonUI);
 	MG_GMOBJ->RemoveObj(m_dungeonUIinfo);
 
-
 	MG_GMOBJ->RemoveObj(m_party);
-
 }
 
 void DungeonScene::Update()
 {
-	if (MG_INPUT->isOnceKeyDown('G'))
+	if (MG_INPUT->isOnceKeyDown(VK_F5))
 	{
-		MG_SCENE->changeScene(SCENETYPE::Town);
+		MG_SCENE->changeScene(SCENETYPE::Test);
 	}
-
 
 	if (m_dungeonMode == DUNGEONMODE::WALK)
 	{
@@ -99,8 +96,14 @@ void DungeonScene::Update()
 		CheckDoor(); //TODO
 		setRoadNum();
 
-		if (MG_INPUT->isOnceKeyDown('L'))
+		if (MG_INPUT->isOnceKeyDown(VK_F2))
 		{
+			m_pBattleSystem->BattleSystemInitiate();
+		}
+
+		if (MG_INPUT->isOnceKeyDown(VK_F6))
+		{
+			m_pBattleSystem->isBoss = true;
 			m_pBattleSystem->BattleSystemInitiate();
 		}
 	}
@@ -146,7 +149,12 @@ void DungeonScene::CreateDungeonMap()
 
 void DungeonScene::CreateParty()
 {
-	m_party = MG_GAME->GetParty();
+	//m_party = MG_GAME->GetParty();
+
+	m_party = new CParty();
+	m_party->Init(1, 1, 1);
+	m_party->Disable();
+	MG_GMOBJ->RegisterObj("Party", m_party);
 	for (int i = 0; i < MG_GAME->GetHeroPartySize(); i++)
 	{
 		if (MG_GAME->GetHeroFromParty(i) != nullptr)
@@ -155,14 +163,9 @@ void DungeonScene::CreateParty()
 			MG_GAME->GetHeroFromParty(i)->SetPartyIndex(i);
 			MG_GAME->GetHeroFromParty(i)->SetPartyPos(i);
 			MG_GAME->GetHeroFromParty(i)->Enable();
-
 			m_party->SetHero(MG_GAME->GetHeroFromParty(i));
 		}
 	}
-
-	MG_GAME->SetCurSelHero(0);
-	m_party->Enable();
-	MG_CAMERA->SetTarget(m_party->GetHero(0));
 }
 
 void DungeonScene::CreateRoom()
@@ -218,11 +221,6 @@ void DungeonScene::CreateRoad()
 	}
 }
 
-void DungeonScene::CreateDoor()
-{
-	//Road, Room�� ���� door��ġ ������ Ȯ��
-}
-
 void DungeonScene::CreateInvenSystem()
 {
 	m_pInvenSystem = new CInventorySystem();
@@ -259,7 +257,6 @@ void DungeonScene::CreateDungeonUI()
 }
 
 #pragma endregion
-
 
 #pragma region Road
 void DungeonScene::setRoadNum()
@@ -358,7 +355,10 @@ void DungeonScene::ActivateRoad()
 
 	for (int i = 0; i < party.size(); i++)
 	{
-		party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		if (party[i] != nullptr)
+		{
+			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+		}
 	}
 }
 
@@ -383,7 +383,6 @@ void DungeonScene::SetRoadObject(int i)
 
 #pragma endregion
 
-
 #pragma region Room
 void DungeonScene::ActivateRoom()
 {
@@ -405,12 +404,18 @@ void DungeonScene::ActivateRoom()
 
 	vector<CHero*> party = m_party->GetParty();
 	m_pMapSystem->UseKeyBoardToMoveCurPoint();
+	int k = 0;
 	switch (m_pMapSystem->GetCurDungeonData().dungeonMapState)
 	{
 	case DUNGEONMAPSTATE::Room_Empty:
 		for (int i = 0; i < party.size(); i++)
 		{
-			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+			if (party[i] !=nullptr)
+			{
+				party[i]->m_transform->m_pos = Vector2(500 - 120 * k, 640);
+				k++;
+			}
+		
 		}
 		break;
 
@@ -422,7 +427,11 @@ void DungeonScene::ActivateRoom()
 	case DUNGEONMAPSTATE::Room_Trasure:
 		for (int i = 0; i < party.size(); i++)
 		{
-			party[i]->m_transform->m_pos = Vector2(500 - 120 * i, 640);
+			if (party[i] != nullptr)
+			{
+				party[i]->m_transform->m_pos = Vector2(500 - 120 * k, 640);
+				k++;
+			}
 		}
 		break;
 	
@@ -452,11 +461,14 @@ void DungeonScene::SetRoomObject()
 
 #pragma endregion
 
-
 #pragma region DebugLog
 void DungeonScene::ShowDungeonInfo(HDC _hdc)
 {
-	char str[256];
+#ifdef _DEBUG
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+			char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(255, 0, 255));
@@ -470,8 +482,6 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 
 	sprintf_s(str, "nowScene : %d", (int)m_dungeonState);
 	TextOut(_hdc, 0, 140, str, strlen(str));
-
-
 
 	switch (curDunheonMap.dungeonMapState)
 	{
@@ -498,9 +508,14 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 		sprintf_s(str, "near Door");
 		TextOut(_hdc, 0, 160, str, strlen(str));
 	}
-	if (MG_INPUT->isToggleKey(VK_TAB))
-	{
-	
 	}
+#endif
+
+	
 }
 #pragma endregion
+
+void DungeonScene::backToTown()
+{
+
+}

@@ -45,11 +45,15 @@ public:
 		{
 			if (MG_GAME->GetHeroFromParty(i)->isSelected)
 			{
-				if (MG_GAME->GetHeroFromParty(i)->getAttribute(2))
+				for (int j = 0; j < 9; j++)
 				{
-					MG_GAME->GetHeroFromParty(i)->setAttribute(2, 0);
-					return true;
+					if (MG_GAME->GetHeroFromParty(i)->getAttribute(j))
+					{
+						MG_GAME->GetHeroFromParty(i)->setAttribute(j, 0);
+						return true;
+					}
 				}
+
 			}
 		}
 		return false;
@@ -66,6 +70,8 @@ public:
 class FoodEffect : public CItemEffect
 {
 public:
+	int ran = MG_RND->getFromIntTo(1, 4);
+
 	//unable to use food if heroes on battleState
 	virtual bool ItemEffect()
 	{
@@ -73,9 +79,12 @@ public:
 		{
 			if (MG_GAME->GetHeroFromParty(i)->isSelected)
 			{
-				MG_GAME->GetHeroFromParty(i)->setHP(MG_GAME->GetHeroFromParty(i)->getHP() + MG_RND->getFromIntTo(1, 4));
-				MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() - 1);
-				return true;
+				if (MG_GAME->GetHeroFromParty(i)->getHP() + ran <= MG_GAME->GetHeroFromParty(i)->getMaxHP())
+				{
+					MG_GAME->GetHeroFromParty(i)->setHP(MG_GAME->GetHeroFromParty(i)->getHP() + ran);
+					MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() - 1);
+					return true;
+				}
 			}
 		}
 		return false;

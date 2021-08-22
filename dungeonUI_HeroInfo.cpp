@@ -80,10 +80,6 @@ void CDungeonUI_HeroInfo::setButton()
 
 void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
 {
-    char str[256];
-    string strFrame;
-    SetBkMode(_hdc, TRANSPARENT);
-
     for (int i = 0; i < 4; i++)
     {
         if (MG_GAME->GetHeroFromParty(i) != nullptr)
@@ -93,63 +89,59 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
                 selectedHeroIndex = i;
             }
         }
-
     }
+
+    char str[256];
+    string strFrame;
+    SetBkMode(_hdc, TRANSPARENT);
 
     SetTextColor(_hdc, RGB(202, 201, 155));
     sprintf_s(str, "%s", "Name");
     TextOut(_hdc, 450, 740, str, strlen(str));
 
-    SetTextColor(_hdc, RGB(255, 0, 0));
-    switch (MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetJob())
+    if (selectedHeroIndex < MG_GAME->m_partyOrigin.size())
     {
-    case JOB::Crusader:
-        
-        sprintf_s(str, "33 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
+        SetTextColor(_hdc, RGB(255, 0, 0));
+        sprintf_s(str, "%d / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP(), MG_GAME->GetHeroFromParty(selectedHeroIndex)->getMaxHP());
         TextOut(_hdc, 400, 835, str, strlen(str));
         SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "Crusader");
-        break;
+        switch (MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetJob())
+        {
+        case JOB::Crusader:
 
-    case JOB::Highwayman:
-        sprintf_s(str, "23 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
-        TextOut(_hdc, 400, 835, str, strlen(str));
-        SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "Highwayman");
-        break;
+            sprintf_s(str, "Crusader");
+            break;
 
-    case JOB::PlagueDoctor:
-        sprintf_s(str, "22 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
-        TextOut(_hdc, 400, 835, str, strlen(str));
-        SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "PlagueDoctor");
-        break;
+        case JOB::Highwayman:
+            sprintf_s(str, "Highwayman");
+            break;
 
-    case JOB::Vestal:
-        sprintf_s(str, "24 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getHP());
-        TextOut(_hdc, 400, 835, str, strlen(str));
-        SetTextColor(_hdc, RGB(48, 48, 50));
-        sprintf_s(str, "Vestal");
-        break;
+        case JOB::PlagueDoctor:
+            sprintf_s(str, "PlagueDoctor");
+            break;
+
+        case JOB::Vestal:
+            sprintf_s(str, "Vestal");
+            break;
+        }
+        TextOut(_hdc, 450, 780, str, strlen(str));
+        SetTextColor(_hdc, RGB(255, 255, 255));
+        sprintf_s(str, " %d / 200", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getStress());
+        TextOut(_hdc, 400, 860, str, strlen(str));
+
+        sprintf_s(str, "ACC         %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetAcry());
+        TextOut(_hdc, 380, 885, str, strlen(str));
+        sprintf_s(str, "CRIT        %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetCri());
+        TextOut(_hdc, 380, 905, str, strlen(str));
+        sprintf_s(str, "DMG       %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetDmg());
+        TextOut(_hdc, 380, 925, str, strlen(str));
+        sprintf_s(str, "DODGE   %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetDodge());
+        TextOut(_hdc, 380, 945, str, strlen(str));
+        sprintf_s(str, "PROT      %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetDef());
+        TextOut(_hdc, 380, 965, str, strlen(str));
+        sprintf_s(str, "SPD        %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getSPD());
+        TextOut(_hdc, 380, 985, str, strlen(str));
     }
-    TextOut(_hdc, 450, 780, str, strlen(str));
-
-    SetTextColor(_hdc, RGB(255, 255, 255));
-    sprintf_s(str, "200 / %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getStress());
-    TextOut(_hdc, 400, 860, str, strlen(str));
-
-    sprintf_s(str, "ACC         %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetAcry());
-    TextOut(_hdc, 380, 885, str, strlen(str));
-    sprintf_s(str, "CRIT        %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetCri());
-    TextOut(_hdc, 380, 905, str, strlen(str));
-    sprintf_s(str, "DMG       %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetDmg());
-    TextOut(_hdc, 380, 925, str, strlen(str));
-    sprintf_s(str, "DODGE   %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetDodge());
-    TextOut(_hdc, 380, 945, str, strlen(str));
-    sprintf_s(str, "PROT      %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->GetDef());
-    TextOut(_hdc, 380, 965, str, strlen(str));
-    sprintf_s(str, "SPD        %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getSPD());
-    TextOut(_hdc, 380, 985, str, strlen(str));
 }
 
 void CDungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
@@ -169,7 +161,6 @@ void CDungeonUI_HeroInfo::SelectHero(int index)
     {
         MG_GAME->SetCurSelHero(index);
     }
-   
 }
 
 void CDungeonUI_HeroInfo::SetPortrait(IMAGE _image)
@@ -180,7 +171,6 @@ void CDungeonUI_HeroInfo::SetPortrait(IMAGE _image)
 void CDungeonUI_HeroInfo::SetWeapon(IMAGE _image)
 {
     m_weapon.m_img = MG_IMAGE->findImage(_image);
-
 }
 
 void CDungeonUI_HeroInfo::SetArmor(IMAGE _image)

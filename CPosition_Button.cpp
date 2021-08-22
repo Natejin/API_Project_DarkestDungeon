@@ -5,10 +5,7 @@ CPosition_Button::CPosition_Button()
 {
 	m_layer = LAYER::UIButton;
 }
-
-CPosition_Button::~CPosition_Button()
-{
-}
+CPosition_Button::~CPosition_Button() {}
 
 HRESULT CPosition_Button::Init()
 {
@@ -35,12 +32,10 @@ void CPosition_Button::BackRender(HDC _hdc)
 
 void CPosition_Button::Render(HDC _hdc)
 {
-
 }
 
 void CPosition_Button::FrontRender(HDC _hdc)
 {
-
 	if (enable)
 	{
 		m_potionButton->RenderUI(_hdc);
