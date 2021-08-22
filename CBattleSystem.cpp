@@ -398,7 +398,7 @@ void CBattleSystem::CreateEnemyParty()
 			MG_GMOBJ->RegisterObj("boss", enemy);
 			enemyParty.push_back(enemy);
 	}else{
-		for (size_t i = 0; i < 4; i++)
+		for (size_t i = 0; i < random; i++)
 		{
 			CEnemy* enemy = new CEnemy();
 			enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ���� �� ���� �����ϱ�
@@ -409,7 +409,6 @@ void CBattleSystem::CreateEnemyParty()
 			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
 			enemy->movePosMode = true;
 			posEnemy.push_back(i);
-			MG_GMOBJ->RegisterObj(enemy);
 
 
 			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
