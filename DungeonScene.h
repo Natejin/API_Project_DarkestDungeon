@@ -80,7 +80,9 @@ public:
 public:
 	dungeonUI* m_dungeonUI;
 	CDungeonUI_HeroInfo* m_dungeonUIinfo;
-	
+
+
+
 //==================================
 public:
 	DungeonScene();
@@ -113,5 +115,10 @@ public:
 	void ActivateSound();
 	void DeactivateSound();
 
-	void backToTown();
+	class CButton* m_retreat;
+	class DungeonRetreatPanel* m_retreatePanel;
+
+	void setRetreatButton();
+	void EnableRetreatPanel();
+
 };

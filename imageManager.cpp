@@ -505,7 +505,13 @@ HRESULT imageManager::init()
 
 	MG_IMAGE->addImage("logo", "images/supplement/Logo.bmp", 640, 242, true, RGB(255, 0, 255));
 	MG_IMAGE->addImage("level", "images/supplement/lvl.bmp", 100, 23, true, RGB(255, 0, 255));
-
+	MG_IMAGE->addImage("retreat", "images/supplement/retreat_button.bmp", 64, 64, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("raidResult_clear", "images/supplement/raid_results.quest_completed_background.bmp", 866, 1080, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("raidResult_fail", "images/supplement/raid_results.quest_not_completed_escape_background.bmp", 866, 1080, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("retreatPanel", "images/supplement/retreat_panel.bmp", 400, 260, true, RGB(255, 0, 255));
+	
+	MG_IMAGE->addImage("keepgoing", "images/supplement/quest_continue_raid.bmp", 124, 69, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("backToTown", "images/supplement/quest_return_to_hamlet.bmp", 124, 69, true, RGB(255, 0, 255));
 
 	return S_OK;
 

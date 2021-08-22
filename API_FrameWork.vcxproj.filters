@@ -693,7 +693,7 @@
     <ClInclude Include="strsBar.h">
       <Filter>Object\STRS bar</Filter>
     </ClInclude>
-    <ClInclude Include="FinishPanelUI.h">
+    <ClInclude Include="DungeonRetreatPanel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1094,7 +1094,7 @@
     <ClCompile Include="strsBar.cpp">
       <Filter>Object\STRS bar</Filter>
     </ClCompile>
-    <ClCompile Include="FinishPanelUI.cpp">
+    <ClCompile Include="DungeonRetreatPanel.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

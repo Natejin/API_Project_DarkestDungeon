@@ -13,6 +13,7 @@
 #include "CInventorySystem.h"
 #include "TreasureEventPanel.h"
 #include "FinishPanelUI.h"
+#include "DungeonRetreatPanel.h"
 
 
 DungeonScene::DungeonScene()
@@ -51,6 +52,8 @@ HRESULT DungeonScene::Init()
 	endPanel->m_dungeonScene = this;
 	endPanel->Init();
 	MG_GMOBJ->RegisterObj(endPanel);
+	setRetreatButton();
+
 	return S_OK;
 }
 
@@ -83,6 +86,8 @@ void DungeonScene::Release()
 	MG_GMOBJ->RemoveObj(endPanel);
 
 	MG_GMOBJ->RemoveObj(m_party);
+	MG_GMOBJ->RemoveObj(m_retreat);
+	MG_GMOBJ->RemoveObj(m_retreatePanel);
 }
 
 void DungeonScene::Update()
@@ -388,6 +393,27 @@ void DungeonScene::DeactivateSound()
 	MG_SOUND->stop(SOUND::Ruins_dark);
 }
 
+void DungeonScene::setRetreatButton()
+{
+	m_retreat = new CButton();
+	m_retreat->m_transform->m_pos = Vector2(10, 60);
+	m_retreat->m_transform->m_pivot = Vector2(0, 0);
+	m_retreat->AddColliderBox(50, 75);
+	m_retreat->AddSpriteRenderer("retreat");
+	m_retreat->SetTriggerWhenDown(this, &DungeonScene::EnableRetreatPanel);
+	MG_GMOBJ->RegisterObj("dungeonUI_invenButton", m_retreat);
+
+	m_retreatePanel = new DungeonRetreatPanel;
+	m_retreatePanel->Init();
+	m_retreatePanel->Disable();
+	MG_GMOBJ->RegisterObj("retreatButton", m_retreatePanel);
+}
+
+void DungeonScene::EnableRetreatPanel()
+{
+	m_retreatePanel->Enable();
+}
+
 void DungeonScene::SetRoadObject(int i)
 {
 	DungeonData dungeonData = m_pMapSystem->GetCurDungeonData(i);
@@ -528,8 +554,3 @@ void DungeonScene::ShowDungeonInfo(HDC _hdc)
 	
 }
 #pragma endregion
-
-void DungeonScene::backToTown()
-{
-
-}
