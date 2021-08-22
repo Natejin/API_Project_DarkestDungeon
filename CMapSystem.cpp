@@ -9,7 +9,7 @@ CMapSystem::CMapSystem()
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 10;
-	createBossRoomFromHome = 1;
+	createBossRoomFromHome = 2;
 }
 CMapSystem::~CMapSystem() {}
 

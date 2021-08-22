@@ -70,14 +70,15 @@ void CUI_Panel_Hero::Render(HDC _hdc)
 
 void CUI_Panel_Hero::FrontRender(HDC _hdc)
 {
-	m_windowPanel->Render(_hdc);
-	m_windowPanelBG->Render(_hdc);
-	m_windowPanelChar->Render(_hdc); //characterBg Img
-	m_HeroImg->Render(_hdc);
+	m_windowPanel->RenderUI(_hdc);
+	m_windowPanelBG->RenderUI(_hdc);
+	m_windowPanelChar->RenderUI(_hdc); //characterBg Img
+	m_HeroImg->RenderUI(_hdc);
 
 	DrawPhrases_Img(_hdc);
 	DrawResistanceInfo(_hdc);
 	ShowHeroInfo(_hdc);
+	
 }
 
 void CUI_Panel_Hero::Release()
@@ -115,6 +116,9 @@ void CUI_Panel_Hero::Release()
 	SAFE_DELETE(m_bleedicon);
 	SAFE_DELETE(m_debufficon);
 	SAFE_DELETE(m_moveicon);
+	SAFE_DELETE(m_windowPanelBG);
+	SAFE_DELETE(m_windowPanelChar);
+	SAFE_DELETE(m_HeroImg);
 
 
 }
@@ -231,9 +235,9 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 
 
 
-	std::vector<char> writable(hero->GetName().begin(), hero->GetName().end());
-	writable.push_back('\0');
-	sprintf_s(str, "%s", &writable[0]);
+	//std::vector<char> writable(hero->GetName().begin(), hero->GetName().end());
+	//writable.push_back('\0');
+	sprintf_s(str, "%s", hero->GetName());
 	TextOut(_hdc, 225, 130, str, strlen(str));
 	
 	if (townScene->curDragHeroIndex > -1)
@@ -465,13 +469,13 @@ void CUI_Panel_Hero::SetPhrases_Img()
 
 void CUI_Panel_Hero::DrawPhrases_Img(HDC _hdc)
 {
-	Quirk_Img->Render(_hdc);
-	OriginStatus_Img->Render(_hdc);
-	Equip_Img->Render(_hdc);
-	CombatSkill_Img->Render(_hdc);
-	CampingSkill_Img->Render(_hdc);
-	Resistance_Img->Render(_hdc);
-	Disease_Img->Render(_hdc);
+	Quirk_Img->RenderUI(_hdc);
+	OriginStatus_Img->RenderUI(_hdc);
+	Equip_Img->RenderUI(_hdc);
+	CombatSkill_Img->RenderUI(_hdc);
+	CampingSkill_Img->RenderUI(_hdc);
+	Resistance_Img->RenderUI(_hdc);
+	Disease_Img->RenderUI(_hdc);
 }
 
 void CUI_Panel_Hero::SetResistanceInfo()
@@ -499,9 +503,9 @@ void CUI_Panel_Hero::SetResistanceInfo()
 
 void CUI_Panel_Hero::DrawResistanceInfo(HDC _hdc)
 {
-	m_stunicon->Render(_hdc);
-	m_bleedicon->Render(_hdc);
-	m_moveicon->Render(_hdc);
-	m_blighicon->Render(_hdc);
-	m_debufficon->Render(_hdc);
+	m_stunicon->RenderUI(_hdc);
+	m_bleedicon->RenderUI(_hdc);
+	m_moveicon->RenderUI(_hdc);
+	m_blighicon->RenderUI(_hdc);
+	m_debufficon->RenderUI(_hdc);
 }

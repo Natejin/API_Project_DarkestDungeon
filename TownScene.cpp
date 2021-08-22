@@ -66,6 +66,7 @@ HRESULT TownScene::Init()
 
 HRESULT TownScene::Init(bool managerInit)
 {
+	MG_CAMERA->SetPos(Vector2(0, 0));
 	return S_OK;
 }
 
@@ -132,6 +133,7 @@ void TownScene::Render(HDC _hdc)
 
 	for (int i = 0; i < m_heroListButtonVec.size(); i++)
 	{
+
 		sprintf_s(str, "%s", m_heroListButtonVec[i]->m_hero->GetName());
 		TextOut(_hdc, WINSIZEX - 280, 190 + i* 100, str, strlen(str));
 
