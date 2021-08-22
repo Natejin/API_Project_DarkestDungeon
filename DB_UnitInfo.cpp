@@ -174,12 +174,12 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
 	info->skillLvl.push_back(0);
-	info->ownCamp_Skill.push_back(IMAGE::camp_skill_bandage);
-	info->ownCamp_Skill.push_back(IMAGE::camp_skill_encourage);
 	info->ownCamp_Skill.push_back(IMAGE::camp_skill_pep_talk);
 	info->ownCamp_Skill.push_back(IMAGE::camp_skill_stand_tall);
 	info->ownCamp_Skill.push_back(IMAGE::camp_skill_unshakeable_leader);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_encourage);
 	info->ownCamp_Skill.push_back(IMAGE::camp_skill_zealous_speech);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_bandage);
 	info->ownCamp_Skill.push_back(IMAGE::camp_skill_zealous_vigil);
 
 	info->portrait = IMAGE::Crusader_portrait;
@@ -229,13 +229,11 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 	info->skillLvl.push_back(0);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_bless);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_chant);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_pray);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_sanctuary);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_bless);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_chant);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_pray);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_sanctuary);
 
 //	info->ownSkill.push_back(SKILL::Vestal_Heal_DivineComfort);
 
@@ -285,13 +283,11 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Plague_doctor_PlagueGrenade);
 	info->skillLvl.push_back(0);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_experimental_vapours);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_leeches);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_preventative_medicine);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_self_medicate);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_experimental_vapours);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_leeches);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_preventative_medicine);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_self_medicate);
 
 	info->portrait = IMAGE::plague_doctor_roster;
 	info->weapon.push_back(IMAGE::Plague_Weapon_0);
@@ -338,13 +334,11 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Highwayman_PointBlankShot);
 	info->skillLvl.push_back(0);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_bandage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_encourage);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_pep_talk);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_clean_guns);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_gallows_humor);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_perimeter_alarms);
-	info->Camping_Skill.push_back(IMAGE::camp_skill_uncatchable);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_bandage);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_clean_guns);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_gallows_humor);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_perimeter_alarms);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_uncatchable);
 
 	info->portrait = IMAGE::highwayman_roster;
 	info->weapon.push_back(IMAGE::Highway_Weapon_0);

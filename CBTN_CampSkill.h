@@ -25,6 +25,7 @@ public:
 	virtual void Render(HDC _hdc);
 	virtual void FrontRender(HDC _hdc);
 
-	virtual void SetSkill(SKILL skill);
+	//virtual void SetSkill(SKILL skill);
+	virtual void SetCampSkill(IMAGE skill);
 	virtual void Release();
 };

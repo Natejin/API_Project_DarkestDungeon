@@ -326,7 +326,7 @@ void CUI_Panel_Hero::CloseHeroSkill()
 
 void CUI_Panel_Hero::CreateCampSkill()
 {
-	for (size_t i = 0; i < 6; i++)
+	for (size_t i = 0; i < 8; i++)
 	{
 		CBTN_CampSkill* m_campskill = new CBTN_CampSkill();
 		m_campskill->Init();
@@ -339,18 +339,21 @@ void CUI_Panel_Hero::CreateCampSkill()
 
 void CUI_Panel_Hero::SetCampSkill()
 {
-	auto tempVec = MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
-	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
+	auto tempVec = MG_GAME->GetHero(townScene->curDragHeroIndex)->GetCampSkill();
+	for (size_t i = 0; i < tempVec.size(); i++)
 	{
 		m_campSkillbuttonVec[i]->Enable();
+		m_campSkillbuttonVec[i]->SetCampSkill(tempVec[i]);
 	}
 }
 
 void CUI_Panel_Hero::SetCoachCampSkill()
 {
-	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
+	auto tempVec = townScene->m_stage_coach->m_OnCoach_HeroVec[townScene->curDragHeroIndex]->GetCampSkill();
+	for (size_t i = 0; i < tempVec.size(); i++)
 	{
 		m_campSkillbuttonVec[i]->Enable();
+		m_campSkillbuttonVec[i]->SetCampSkill(tempVec[i]);
 	}
 }
 

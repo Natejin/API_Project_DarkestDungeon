@@ -56,10 +56,15 @@ void CBTN_CampSkill::FrontRender(HDC _hdc)
 #endif // _DEBUG
 }
 
-void CBTN_CampSkill::SetSkill(SKILL skill)
+//void CBTN_CampSkill::SetSkill(SKILL skill)
+//{
+//	skillInfo = DB_SKILL->CallSkill(skill);
+//	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
+//}
+
+void CBTN_CampSkill::SetCampSkill(IMAGE skill)
 {
-	skillInfo = DB_SKILL->CallSkill(skill);
-	m_spriteRenderer->SetImage(DB_SKILL->CallSkillImage(skill));
+	m_spriteRenderer->SetImage(skill);
 }
 
 void CBTN_CampSkill::Release()
