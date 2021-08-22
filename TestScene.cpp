@@ -15,7 +15,7 @@ HRESULT TestScene::Init()
 
 HRESULT TestScene::Init(bool managerInit)
 {
-	isFirst = true;
+	//isFirst = true;
 	return S_OK;
 }
 
@@ -26,17 +26,17 @@ void TestScene::Release()
 
 void TestScene::Update()
 {
-	MG_SCENE->ResetScene();
+	//MG_SCENE->ResetScene();
+	MG_SCENE->changeScene(SCENETYPE::MainScene);
 
-	if (isFirst)
-	{
-		isFirst = false;
-		MG_SCENE->changeScene(SCENETYPE::MainScene);
-	}
-	else {
 
-		MG_SCENE->changeScene(SCENETYPE::Town);
-	}
+	//if (isFirst)
+	//{
+	//	isFirst = false;
+	//}
+	//else {
+	//	MG_SCENE->changeScene(SCENETYPE::Town);
+	//}
 
 	//MG_SCENE->changeScene(SCENETYPE::Town);
 
