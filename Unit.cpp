@@ -259,6 +259,11 @@ int Unit::GetSpeed()
     return 0;
 }
 
+string Unit::GetName()
+{
+    return string();
+}
+
 int Unit::getHP()
 {
     return 0;

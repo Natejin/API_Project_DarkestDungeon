@@ -90,6 +90,8 @@ public:
 	//GetStatus;
 	virtual UNITTYPE GetUnitType();
 
+
+	virtual string GetName();
 	virtual int getHP();
 	virtual bool reduceHP(int hp);
 	virtual void increaseHP(int hp);

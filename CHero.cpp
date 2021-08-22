@@ -200,6 +200,11 @@ vector<SKILL> CHero::GetOwnSkill()
 	return info->ownSkill;
 }
 
+vector<IMAGE> CHero::GetCampSkill()
+{
+	return info->ownCamp_Skill;
+}
+
 void CHero::SetHeroID(int id)
 {
 	heroID = id;
@@ -312,6 +317,11 @@ UNITTYPE CHero::GetUnitType()
 int CHero::GetSpeed()
 {
 	return info->m_SPD;
+}
+
+string CHero::GetName()
+{
+	return info->name;
 }
 
 int CHero::getResist(int index)
