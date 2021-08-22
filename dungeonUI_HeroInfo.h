@@ -11,7 +11,6 @@ private:
 	vector<ImageData> m_invenOrMapImage; 
 
 	ImageData portrait;
-
 	ImageData m_weapon;
 	ImageData m_armor;
 
@@ -37,7 +36,6 @@ public:
 	//==================================
 
 	void setInfoImage(); //모든 job의 이미지 세팅
-	void setSkillIcon(); //버튼과 스킬함수를 연결
 
 	void setButton(); 
 	void ShowHeroState(HDC _hdc);
@@ -50,6 +48,5 @@ public:
 	void SetPortrait(IMAGE _image);
 	void SetWeapon(IMAGE _image);
 	void SetArmor(IMAGE _image);
-
 
 };

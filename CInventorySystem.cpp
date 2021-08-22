@@ -253,7 +253,6 @@ void CInventorySystem::EndDragItem(CSlotItemButton* _slot)
 	{
 		dragSlot->SwapItem(_slot);
 	}
-
 	isDragging = false;
 	dragSlot = nullptr;
 	dummySlot->Disable();

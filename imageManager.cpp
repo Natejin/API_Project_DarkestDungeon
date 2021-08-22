@@ -503,6 +503,8 @@ HRESULT imageManager::init()
 	MG_IMAGE->addImage(IMAGE::Miss, "images/Number/miss.bmp", 200, 100, true, RGB(255, 0, 255));
 
 
+	MG_IMAGE->addImage("logo", "images/supplement/Logo.bmp", 640, 242, true, RGB(255, 0, 255));
+
 	return S_OK;
 
 }

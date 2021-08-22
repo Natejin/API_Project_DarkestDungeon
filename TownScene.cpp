@@ -455,8 +455,10 @@ void TownScene::SetEmbark()
 
 void TownScene::addOwnHero()
 {
-	MG_GAME->RegisterHeroToOwnList(m_stage_coach->m_OnCoach_HeroVec[m_DummyRosterButton->index]);
-	m_stage_coach->m_OnCoach_HeroVec.erase(m_stage_coach->m_OnCoach_HeroVec.begin() + m_DummyRosterButton->index);
+	MG_GAME->RegisterHeroToOwnList(
+		m_stage_coach->m_OnCoach_HeroVec[m_DummyRosterButton->index]);
+	m_stage_coach->m_OnCoach_HeroVec.erase(
+		m_stage_coach->m_OnCoach_HeroVec.begin() + m_DummyRosterButton->index);
 	m_stage_coach->CreateCoach_Button();
 
 	SetHerolist();

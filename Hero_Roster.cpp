@@ -2,15 +2,13 @@
 #include "Hero_Roster.h"
 #include"CHero.h"
 #include "TownScene.h"
+
 Hero_Roster::Hero_Roster()
 {
 	m_layer = LAYER::UIButton;
 	//hasHero = false;
 }
-
-Hero_Roster::~Hero_Roster()
-{
-}
+Hero_Roster::~Hero_Roster() {}
 
 HRESULT Hero_Roster::Init()
 {

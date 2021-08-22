@@ -15,7 +15,6 @@ public:
 
 	class CParty* m_party;
 
-	class TreasureEventPanel* treasurePanel;
 
 //==================================
 //Room
@@ -75,6 +74,7 @@ public:
 	class CInventorySystem* m_pInvenSystem;
 	class TreasureEventPanel* m_treasurePanel;
 	bool isOpenedPanel;
+
 //==================================
 //UI
 public:
@@ -87,12 +87,10 @@ public:
 	virtual ~DungeonScene();
 
 	void CreateDungeonMap();
-
 	void CreateParty();
 
 	void CreateRoom();
 	void CreateRoad();
-	void CreateDoor();
 
 	void CreateInvenSystem();
 	void CreateBattleSystem();
@@ -105,7 +103,6 @@ public:
 	virtual void Release();
 	virtual void Update();
 	virtual void Render(HDC _hdc);
-
 
 	//room and road changeScene
 	void ActivateRoom();

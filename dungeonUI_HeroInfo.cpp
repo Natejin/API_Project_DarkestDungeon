@@ -80,7 +80,6 @@ void CDungeonUI_HeroInfo::setButton()
 
 void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
 {
-
     for (int i = 0; i < 4; i++)
     {
         if (MG_GAME->GetHeroFromParty(i) != nullptr)
@@ -90,9 +89,7 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
                 selectedHeroIndex = i;
             }
         }
-
     }
-
 
     char str[256];
     string strFrame;
@@ -145,9 +142,6 @@ void CDungeonUI_HeroInfo::ShowHeroState(HDC _hdc)
         sprintf_s(str, "SPD        %d", MG_GAME->GetHeroFromParty(selectedHeroIndex)->getSPD());
         TextOut(_hdc, 380, 985, str, strlen(str));
     }
-  
-
-
 }
 
 void CDungeonUI_HeroInfo::showHeroSkill(HDC _hdc)
@@ -167,7 +161,6 @@ void CDungeonUI_HeroInfo::SelectHero(int index)
     {
         MG_GAME->SetCurSelHero(index);
     }
-   
 }
 
 void CDungeonUI_HeroInfo::SetPortrait(IMAGE _image)
@@ -178,7 +171,6 @@ void CDungeonUI_HeroInfo::SetPortrait(IMAGE _image)
 void CDungeonUI_HeroInfo::SetWeapon(IMAGE _image)
 {
     m_weapon.m_img = MG_IMAGE->findImage(_image);
-
 }
 
 void CDungeonUI_HeroInfo::SetArmor(IMAGE _image)

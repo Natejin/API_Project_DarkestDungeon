@@ -83,8 +83,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	{
 		TranslateMessage(&message);
 		DispatchMessage(&message);
-	}
-*/
+	}*/
 
 	//메시지 루프를 다돌면 해제하자.
 	mg.release();

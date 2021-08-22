@@ -9,10 +9,8 @@ CBTN_CampSkill::CBTN_CampSkill()
 {
 	m_spriteSelected = nullptr;
 }
+CBTN_CampSkill::~CBTN_CampSkill() {}
 
-CBTN_CampSkill::~CBTN_CampSkill()
-{
-}
 
 HRESULT CBTN_CampSkill::Init()
 {
@@ -27,22 +25,18 @@ HRESULT CBTN_CampSkill::Init()
 
 void CBTN_CampSkill::Update(float deltaTime, float worldTime)
 {
-	
 }
 
 void CBTN_CampSkill::LateUpdate()
 {
-
 }
 
 void CBTN_CampSkill::BackRender(HDC _hdc)
 {
-
 }
 
 void CBTN_CampSkill::Render(HDC _hdc)
 {
-
 }
 
 void CBTN_CampSkill::FrontRender(HDC _hdc)
@@ -52,6 +46,7 @@ void CBTN_CampSkill::FrontRender(HDC _hdc)
 	{
 		m_spriteSelected->RenderUI(_hdc);
 	}
+
 #ifdef _DEBUG
 	if (MG_INPUT->isToggleKey(VK_TAB))
 	{
@@ -71,5 +66,4 @@ void CBTN_CampSkill::Release()
 {
 	CDragButton::Release();
 	SAFE_DELETE(m_spriteSelected);
-
 }

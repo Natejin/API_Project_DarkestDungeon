@@ -54,7 +54,6 @@ public:
 	//==================================
 	void SelectHero(int index) { selectedHeroIndex = index; };
 
-
 	void SetPartyMember(vector<CHero*> member);
 	void SetHero(CHero* member);
 	void SetCamera();
@@ -83,5 +82,4 @@ public:
 	void showMemberInfo(HDC _hdc);
 	void showItem(HDC _hdc);
 	void showDis(HDC _hdc);
-
 };
