@@ -59,11 +59,14 @@ HRESULT TownScene::Init()
 	m_heroListUI->Init();
 	MG_GMOBJ->RegisterObj(m_heroListUI);
 
+
+	MG_CAMERA->SetPos(Vector2(0, 0));
 	return S_OK;
 }
 
 HRESULT TownScene::Init(bool managerInit)
 {
+	MG_CAMERA->SetPos(Vector2(0, 0));
 	return S_OK;
 }
 

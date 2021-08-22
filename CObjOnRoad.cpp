@@ -235,19 +235,23 @@ void CObjOnRoad::Interaction_treassure()
 {
 	//treasure
 	//touchable when it's collision with Hero(0)
-	if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHeroFromParty(0)->m_transform->m_pos + 100))
+	if (MG_GAME->GetHeroFromParty(0) != nullptr)
 	{
-		if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
+		if (m_collider->UICheckColliderBoxWithPoint(MG_GAME->GetHeroFromParty(0)->m_transform->m_pos + 100))
 		{
-			if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+			if (m_collider->CheckColliderBoxWithPoint(g_ptMouse))
 			{
-				m_spriteRenderer->SetImage(IMAGE::obj_treasure2);
-				m_dungeonScene->m_treasurePanel->Enable();
-				m_dungeonScene->m_pMapSystem->SetIsOpened();
-				isOpened = true;
+				if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
+				{
+					m_spriteRenderer->SetImage(IMAGE::obj_treasure2);
+					m_dungeonScene->m_treasurePanel->Enable();
+					m_dungeonScene->m_pMapSystem->SetIsOpened();
+					isOpened = true;
+				}
 			}
 		}
 	}
+	
 }
 
 void CObjOnRoad::Interaction_trap()

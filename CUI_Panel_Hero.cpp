@@ -70,18 +70,57 @@ void CUI_Panel_Hero::Render(HDC _hdc)
 
 void CUI_Panel_Hero::FrontRender(HDC _hdc)
 {
-	m_windowPanel->Render(_hdc);
-	m_windowPanelBG->Render(_hdc);
-	m_windowPanelChar->Render(_hdc); //characterBg Img
-	m_HeroImg->Render(_hdc);
+	m_windowPanel->RenderUI(_hdc);
+	m_windowPanelBG->RenderUI(_hdc);
+	m_windowPanelChar->RenderUI(_hdc); //characterBg Img
+	m_HeroImg->RenderUI(_hdc);
 
 	DrawPhrases_Img(_hdc);
 	DrawResistanceInfo(_hdc);
 	ShowHeroInfo(_hdc);
+	
 }
 
 void CUI_Panel_Hero::Release()
 {
+	for (size_t i = 0; i < m_skillbuttonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_skillbuttonVec[i]);
+	}
+
+	m_skillbuttonVec.clear();
+
+
+	MG_GMOBJ->RemoveObj(m_weapon);
+	MG_GMOBJ->RemoveObj(m_armor);
+
+	for (size_t i = 0; i < m_postion_buttonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_postion_buttonVec[i]);
+	}
+
+	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_campSkillbuttonVec[i]);
+	}
+
+	SAFE_DELETE(Quirk_Img);
+	SAFE_DELETE(OriginStatus_Img);
+	SAFE_DELETE(Equip_Img);
+	SAFE_DELETE(CombatSkill_Img);
+	SAFE_DELETE(CampingSkill_Img);
+	SAFE_DELETE(Resistance_Img);
+	SAFE_DELETE(Disease_Img);
+	SAFE_DELETE(m_stunicon);
+	SAFE_DELETE(m_blighicon);
+	SAFE_DELETE(m_bleedicon);
+	SAFE_DELETE(m_debufficon);
+	SAFE_DELETE(m_moveicon);
+	SAFE_DELETE(m_windowPanelBG);
+	SAFE_DELETE(m_windowPanelChar);
+	SAFE_DELETE(m_HeroImg);
+
+
 }
 
 void CUI_Panel_Hero::Enable()
@@ -427,13 +466,13 @@ void CUI_Panel_Hero::SetPhrases_Img()
 
 void CUI_Panel_Hero::DrawPhrases_Img(HDC _hdc)
 {
-	Quirk_Img->Render(_hdc);
-	OriginStatus_Img->Render(_hdc);
-	Equip_Img->Render(_hdc);
-	CombatSkill_Img->Render(_hdc);
-	CampingSkill_Img->Render(_hdc);
-	Resistance_Img->Render(_hdc);
-	Disease_Img->Render(_hdc);
+	Quirk_Img->RenderUI(_hdc);
+	OriginStatus_Img->RenderUI(_hdc);
+	Equip_Img->RenderUI(_hdc);
+	CombatSkill_Img->RenderUI(_hdc);
+	CampingSkill_Img->RenderUI(_hdc);
+	Resistance_Img->RenderUI(_hdc);
+	Disease_Img->RenderUI(_hdc);
 }
 
 void CUI_Panel_Hero::SetResistanceInfo()
@@ -461,9 +500,9 @@ void CUI_Panel_Hero::SetResistanceInfo()
 
 void CUI_Panel_Hero::DrawResistanceInfo(HDC _hdc)
 {
-	m_stunicon->Render(_hdc);
-	m_bleedicon->Render(_hdc);
-	m_moveicon->Render(_hdc);
-	m_blighicon->Render(_hdc);
-	m_debufficon->Render(_hdc);
+	m_stunicon->RenderUI(_hdc);
+	m_bleedicon->RenderUI(_hdc);
+	m_moveicon->RenderUI(_hdc);
+	m_blighicon->RenderUI(_hdc);
+	m_debufficon->RenderUI(_hdc);
 }
