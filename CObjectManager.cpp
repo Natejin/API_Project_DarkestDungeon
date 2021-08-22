@@ -54,7 +54,14 @@ void CObjectManager::LateUpdate()
 			}
 		}
 	}
+	int size = objectRender[LAYER::Enemy].size();
+	if (size > 0)
+	{
 
+	}
+	else if (size > 3) {
+	
+	}
 	for (size_t i = 0; i < objsToErase.size(); i++)
 	{
 		int eraseID = objsToErase[i];
@@ -70,6 +77,7 @@ void CObjectManager::LateUpdate()
 				int size = objectRender[layer].size();
 				for (size_t k = 0; k < size; k++)
 				{
+					
 					if (objectRender[layer][k]->GetId() == eraseID)
 					{
 						objectRender[layer].erase(objectRender[layer].begin() + k);

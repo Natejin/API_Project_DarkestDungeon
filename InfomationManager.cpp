@@ -22,7 +22,6 @@ void CInfomationManager::Release()
 
 	for (it = objectVec.begin(); it != objectVec.end(); it++)
 	{
-		it->second->Release();
 		SAFE_DELETE(it->second);
 	}
 	objectVec.clear();

@@ -60,7 +60,7 @@ void gameNode::release()
 		MG_SOUND->release();
 		MG_ANIMATION->release();
 		MG_EFFECT->release();
-		MG_INFO->Release();
+		//MG_INFO->Release();
 
 		MG_INPUT->releaseSingleton();
 		MG_IMAGE->releaseSingleton();
