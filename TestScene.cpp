@@ -28,8 +28,6 @@ void TestScene::Update()
 {
 	MG_SCENE->ResetScene();
 
-
-
 	if (isFirst)
 	{
 		isFirst = false;
@@ -39,7 +37,7 @@ void TestScene::Update()
 		MG_SCENE->changeScene(SCENETYPE::Town);
 	}
 
-	MG_SCENE->changeScene(SCENETYPE::Town);
+	//MG_SCENE->changeScene(SCENETYPE::Town);
 
 	if (MG_INPUT->isOnceKeyDown('P'))
 	{

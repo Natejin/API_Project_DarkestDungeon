@@ -130,8 +130,8 @@ void TownScene::Render(HDC _hdc)
 
 	for (int i = 0; i < m_heroListButtonVec.size(); i++)
 	{
-		sprintf_s(str, "%s", m_heroListButtonVec[i]->m_hero->GetName());
-		TextOut(_hdc, WINSIZEX - 280, 190 + i* 100, str, strlen(str));
+		sprintf_s(str, "%s", m_heroListButtonVec[i]->m_hero->GetName().c_str());
+		TextOut(_hdc, WINSIZEX - 280, 200 + i* 100, str, strlen(str));
 
 		sprintf_s(str, "%d", m_heroListButtonVec[i]->m_hero->weaponLvl);
 		TextOut(_hdc, WINSIZEX - 250, 247 + i * 100, str, strlen(str));

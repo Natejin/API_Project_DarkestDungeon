@@ -77,13 +77,16 @@ public:
 	{
 		for (int i = 0; i < MG_GAME->GetHeroes().size(); i++)
 		{
-			if (MG_GAME->GetHeroFromParty(i)->isSelected)
+			if (MG_GAME->GetHeroFromParty(i) != nullptr)
 			{
-				if (MG_GAME->GetHeroFromParty(i)->getHP() + ran <= MG_GAME->GetHeroFromParty(i)->getMaxHP())
+				if (MG_GAME->GetHeroFromParty(i)->isSelected)
 				{
-					MG_GAME->GetHeroFromParty(i)->setHP(MG_GAME->GetHeroFromParty(i)->getHP() + ran);
-					MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() - 1);
-					return true;
+					if (MG_GAME->GetHeroFromParty(i)->getHP() + ran <= MG_GAME->GetHeroFromParty(i)->getMaxHP())
+					{
+						MG_GAME->GetHeroFromParty(i)->setHP(MG_GAME->GetHeroFromParty(i)->getHP() + ran);
+						MG_GAME->GetParty()->setFood(MG_GAME->GetParty()->getFood() - 1);
+						return true;
+					}
 				}
 			}
 		}
