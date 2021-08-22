@@ -268,6 +268,9 @@
     <Filter Include="Component\SpriteRender">
       <UniqueIdentifier>{fb5b43eb-dcf9-4b80-867a-a1df25b815c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\STRS bar">
+      <UniqueIdentifier>{1f512cb2-c8b6-4d16-a00f-38bf991a2d0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameNode.h">
@@ -687,6 +690,9 @@
     <ClInclude Include="TitleButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="strsBar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -1080,6 +1086,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="TitleButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="strsBar.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

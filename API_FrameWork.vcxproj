@@ -276,6 +276,7 @@
     <ClInclude Include="CUIPanel_StageCoach.h" />
     <ClInclude Include="CUIPanel_Statue.h" />
     <ClInclude Include="StartBG.h" />
+    <ClInclude Include="strsBar.h" />
     <ClInclude Include="tank.h" />
     <ClInclude Include="tankGameScene.h" />
     <ClInclude Include="tankMap.h" />
@@ -411,6 +412,7 @@
     <ClCompile Include="CUIPanel_StageCoach.cpp" />
     <ClCompile Include="CUIPanel_Statue.cpp" />
     <ClCompile Include="StartBG.cpp" />
+    <ClCompile Include="strsBar.cpp" />
     <ClCompile Include="tank.cpp" />
     <ClCompile Include="tankGameScene.cpp" />
     <ClCompile Include="tankMap.cpp" />

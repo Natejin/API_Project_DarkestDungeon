@@ -27,6 +27,8 @@ public:
 
 	//vector<class CHeroList_button*> m_coachHero;
 
+	vector <class strsBar*> m_strsBarVec;
+
 	int curDragHeroIndex;
 	bool isDrag; // 드래그중이냐.
 	bool isHold; // 들고있냐.

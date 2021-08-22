@@ -28,6 +28,9 @@
 #include "COwnHeroListPanel.h"
 #include "CGameManager.h"
 
+#include "strsBar.h"
+
+
 TownScene::TownScene() {}
 TownScene::~TownScene() {}
 HRESULT TownScene::Init()
@@ -39,7 +42,7 @@ HRESULT TownScene::Init()
 	m_town = new CBG_Town();
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
-
+	
 	SetEst_Img();
 	SetEst_ui();  
 	SetHerolist(); 
@@ -55,6 +58,7 @@ HRESULT TownScene::Init()
 	m_heroListUI = new CHeroList_ui;
 	m_heroListUI->Init();
 	MG_GMOBJ->RegisterObj(m_heroListUI);
+
 	return S_OK;
 }
 
@@ -93,6 +97,11 @@ void TownScene::Release()
 
 	MG_GMOBJ->RemoveObj(addMemberCollider);
 	MG_GMOBJ->RemoveObj(m_embark);
+
+	for (int i = 0; i < m_strsBarVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_strsBarVec[i]);
+	}
 }
 
 void TownScene::Update()
@@ -118,6 +127,12 @@ void TownScene::Render(HDC _hdc)
 	}
 	sprintf_s(str, "Click Right Mouse Button to show hero Infomation.");
 	TextOut(_hdc, WINSIZEX - 390, 100, str, strlen(str));
+
+	for (int i = 0; i < m_heroListButtonVec.size(); i++)
+	{
+		sprintf_s(str, "name");
+		TextOut(_hdc, WINSIZEX - 280, 190 + i* 100, str, strlen(str));
+	}
 
 #endif
 }
@@ -376,7 +391,12 @@ void TownScene::SetHerolist()
 	{
 		MG_GMOBJ->RemoveObj(m_heroListButtonVec[i]->GetId());
 	}
+	for (int i = 0; i < m_strsBarVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_strsBarVec[i]);
+	}
 	m_heroListButtonVec.clear();
+	m_strsBarVec.clear();
 
 	for (size_t i = 0; i < CGameManager::getSingleton()->m_ownHeroes.size(); i++)
 	{
@@ -409,6 +429,13 @@ void TownScene::SetHerolist()
 		}
 		m_heroListButtonVec.push_back(dragButton);
 		MG_GMOBJ->RegisterObj("Hero_roster", dragButton);
+
+		strsBar* m_strsBar = new strsBar;
+		m_strsBar->m_transform->m_pos = Vector2(dragButton->m_transform->m_pos.x + 110, dragButton->m_transform->m_pos. y);
+		m_strsBar->Init();
+		m_strsBar->info = MG_GAME->GetHero(i)->GetInfo();
+		m_strsBarVec.push_back(m_strsBar);
+		MG_GMOBJ->RegisterObj("townStrsBar", m_strsBarVec[i]);
 	}
 }
 
