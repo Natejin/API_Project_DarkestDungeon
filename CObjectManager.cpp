@@ -113,12 +113,22 @@ void CObjectManager::BackRender(HDC _hdc)
 {
 	for (LAYER layer : renderOrder)
 	{
+		int k = 0;
 		for (GameObject* go : objectRender[layer])
 		{
-			if (go->isActive)
+			
+			if (go != nullptr && !((int)go->isActive > 1))
 			{
-				go->BackRender(_hdc);
+				if (go->isActive)
+				{
+					go->BackRender(_hdc);
+				}
+				k++;
 			}
+			else {
+				objectRender[layer].erase(objectRender[layer].begin() + k);
+			}
+	
 		}
 	}
 }
@@ -129,10 +139,14 @@ void CObjectManager::Render(HDC _hdc)
 	{
 		for (GameObject* go : objectRender[layer])
 		{
-			if (go->isActive)
+			if (go != nullptr)
 			{
-				go->Render(_hdc);
+				if (go->isActive)
+				{
+					go->Render(_hdc);
+				}
 			}
+
 		}
 	}
 }

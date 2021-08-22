@@ -82,6 +82,41 @@ void CUI_Panel_Hero::FrontRender(HDC _hdc)
 
 void CUI_Panel_Hero::Release()
 {
+	for (size_t i = 0; i < m_skillbuttonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_skillbuttonVec[i]);
+	}
+
+	m_skillbuttonVec.clear();
+
+
+	MG_GMOBJ->RemoveObj(m_weapon);
+	MG_GMOBJ->RemoveObj(m_armor);
+
+	for (size_t i = 0; i < m_postion_buttonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_postion_buttonVec[i]);
+	}
+
+	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
+	{
+		MG_GMOBJ->RemoveObj(m_campSkillbuttonVec[i]);
+	}
+
+	SAFE_DELETE(Quirk_Img);
+	SAFE_DELETE(OriginStatus_Img);
+	SAFE_DELETE(Equip_Img);
+	SAFE_DELETE(CombatSkill_Img);
+	SAFE_DELETE(CampingSkill_Img);
+	SAFE_DELETE(Resistance_Img);
+	SAFE_DELETE(Disease_Img);
+	SAFE_DELETE(m_stunicon);
+	SAFE_DELETE(m_blighicon);
+	SAFE_DELETE(m_bleedicon);
+	SAFE_DELETE(m_debufficon);
+	SAFE_DELETE(m_moveicon);
+
+
 }
 
 void CUI_Panel_Hero::Enable()
@@ -193,7 +228,12 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 	}
 
 	SetTextColor(_hdc, RGB(202, 201, 155));
-	sprintf_s(str, "%s", hero->GetName());
+
+
+
+	std::vector<char> writable(hero->GetName().begin(), hero->GetName().end());
+	writable.push_back('\0');
+	sprintf_s(str, "%s", &writable[0]);
 	TextOut(_hdc, 225, 130, str, strlen(str));
 	
 	if (townScene->curDragHeroIndex > -1)
