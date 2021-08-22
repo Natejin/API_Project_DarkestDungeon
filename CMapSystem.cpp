@@ -9,7 +9,7 @@ CMapSystem::CMapSystem()
 	curPos = Vector2Int(0, 0);
 	roadCount = 3;
 	remainRoom = 10;
-	createBossRoomFromHome = 1;
+	createBossRoomFromHome = 4;
 }
 CMapSystem::~CMapSystem() {}
 
@@ -210,7 +210,7 @@ void CMapSystem::CreateMapPart(int i, int j, int count, Vector2Int _lastDir, int
 				dungeonMap[i][j].farFromHome = _farFromHome;
 			}
 			
-			if (!hasBossRoom && createBossRoomFromHome < _farFromHome - 1 && MG_RND->getInt(randomBossRoom) > random)
+			if (!hasBossRoom && createBossRoomFromHome <= _farFromHome)
 			{
 				hasBossRoom = true;
 				dungeonMap[i][j].dungeonMapState = DUNGEONMAPSTATE::Room_Boss;

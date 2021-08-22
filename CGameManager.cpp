@@ -101,8 +101,17 @@ void CGameManager::Release()
 
 bool CGameManager::RegisterHeroToParty(CHero* hero)
 {
+	if (m_partyOrigin.size() == 0)
+	{
+		m_partyOrigin.clear();
+		m_partyOrigin.push_back(nullptr);
+		m_partyOrigin.push_back(nullptr);
+		m_partyOrigin.push_back(nullptr);
+		m_partyOrigin.push_back(nullptr);
+	}
 	for (size_t i = 0; i < 4; i++)
 	{
+
 		if (m_partyOrigin[i] == nullptr)
 		{
 			m_partyOrigin[i] = hero;

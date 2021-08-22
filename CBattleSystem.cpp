@@ -372,6 +372,66 @@ void CBattleSystem::UseSkill(int _index)
 	}
 }
 
+void CBattleSystem::CreateEnemyParty()
+{
+	int random = MG_RND->getInt(3) + 2;
+
+
+	if (isBoss)
+	{
+
+			CEnemy* enemy = new CEnemy();
+			enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::Necromancer)); //TODO ���� �� ���� �����ϱ�
+			enemy->m_transform->m_pivot = Vector2(0.5, 1);
+			enemy->SetPartyPos(0);
+			enemy->SetPartyIndex(0);
+			enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
+			enemy->movePosMode = true;
+			posEnemy.push_back(0);
+			monsterIndicator->enemyPosIndex = 0;
+			enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 350, originPosOfBattle.y);
+			targetEnemyPosVec[0].x = enemy->m_transform->m_pos.x;
+			SetIndicatorPos(enemy);
+			enemy->targetPos = enemy->m_transform->m_pos;
+			enemy->movePosMode = true;
+			MG_GMOBJ->RegisterObj("boss", enemy);
+			enemyParty.push_back(enemy);
+	}else{
+		for (size_t i = 0; i < 4; i++)
+		{
+			CEnemy* enemy = new CEnemy();
+			enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3))); //TODO ���� �� ���� �����ϱ�
+			enemy->m_transform->m_pivot = Vector2(0.5, 1);
+			enemy->SetPartyPos(i);
+			enemy->SetPartyIndex(i);
+			enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
+			enemy->movePosMode = true;
+			posEnemy.push_back(i);
+			MG_GMOBJ->RegisterObj(enemy);
+
+
+			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+			{
+				enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 100 + 150 * i, originPosOfBattle.y);
+				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+			}
+			else
+			{
+				enemy->m_transform->m_pos = Vector2(cameraSize.x + 100 + 150 * i, originPosOfBattle.y);
+				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+			}
+			SetIndicatorPos(enemy);
+			enemy->targetPos = enemy->m_transform->m_pos;
+			enemy->movePosMode = true;
+			MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
+			enemyParty.push_back(enemy);
+		}
+	
+	}
+
+}
 void CBattleSystem::SetIndicatorPos(CEnemy* enemy)
 {
 	Vector2 indicatorPos = enemy->m_transform->m_pos;
@@ -757,65 +817,65 @@ void CBattleSystem::SetPosition()
 
 //==================================
 
-void CBattleSystem::CreateEnemyParty()
-{
-	int random = MG_RND->getInt(3) + 2;
-
-	if (isBoss)
-	{
-		CEnemy* enemy = new CEnemy();
-		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::Necromancer));
-		enemy->m_transform->m_pivot = Vector2(0.5, 1);
-
-		enemy->SetPartyPos(0);
-		enemy->SetPartyIndex(0);
-		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
-		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
-
-		//about pos move??
-		enemy->movePosMode = true;
-		posEnemy.push_back(0);
-		monsterIndicator->enemyPosIndex = 0;
-		enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 350, originPosOfBattle.y);
-		targetEnemyPosVec[0].x = enemy->m_transform->m_pos.x;
-		SetIndicatorPos(enemy);
-		enemy->targetPos = enemy->m_transform->m_pos;
-		MG_GMOBJ->RegisterObj("boss", enemy);
-		enemyParty.push_back(enemy);
-	}
-	else
-	{
-		for (size_t i = 0; i < 4; i++)
-		{
-			CEnemy* enemy = new CEnemy();
-			enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3)));
-			enemy->m_transform->m_pivot = Vector2(0.5, 1);
-
-			enemy->SetPartyPos(i);
-			enemy->SetPartyIndex(i);
-			enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
-			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
-
-			enemy->movePosMode = true;
-			posEnemy.push_back(i);
-
-			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
-			{
-				enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 100 + 150 * i, originPosOfBattle.y);
-				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
-			}
-			else
-			{
-				enemy->m_transform->m_pos = Vector2(cameraSize.x + 100 + 150 * i, originPosOfBattle.y);
-				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
-			}
-			SetIndicatorPos(enemy);
-			enemy->targetPos = enemy->m_transform->m_pos;
-			MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
-			enemyParty.push_back(enemy);
-		}
-	}
-}
+//void CBattleSystem::CreateEnemyParty()
+//{
+//	int random = MG_RND->getInt(3) + 2;
+//
+//	if (isBoss)
+//	{
+//		CEnemy* enemy = new CEnemy();
+//		enemy->Init(DB_UNIT->CallEnemy(ENEMYTYPE::Necromancer));
+//		enemy->m_transform->m_pivot = Vector2(0.5, 1);
+//
+//		enemy->SetPartyPos(0);
+//		enemy->SetPartyIndex(0);
+//		enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+//		enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
+//
+//		//about pos move??
+//		enemy->movePosMode = true;
+//		posEnemy.push_back(0);
+//		monsterIndicator->enemyPosIndex = 0;
+//		enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 350, originPosOfBattle.y);
+//		targetEnemyPosVec[0].x = enemy->m_transform->m_pos.x;
+//		SetIndicatorPos(enemy);
+//		enemy->targetPos = enemy->m_transform->m_pos;
+//		MG_GMOBJ->RegisterObj("boss", enemy);
+//		enemyParty.push_back(enemy);
+//	}
+//	else
+//	{
+//		for (size_t i = 0; i < 4; i++)
+//		{
+//			CEnemy* enemy = new CEnemy();
+//			enemy->Init(DB_UNIT->CallEnemy((ENEMYTYPE)MG_RND->getInt(3)));
+//			enemy->m_transform->m_pivot = Vector2(0.5, 1);
+//
+//			enemy->SetPartyPos(i);
+//			enemy->SetPartyIndex(i);
+//			enemy->SetTriggerWhenClick(this, &CBattleSystem::SelectEnemy);
+//			enemy->SetTriggerWhenStay(this, &CBattleSystem::SetEnemyIndicator);
+//
+//			enemy->movePosMode = true;
+//			posEnemy.push_back(i);
+//
+//			if (scene->m_dungeonState == DUNGEONSTATE::ROOM)
+//			{
+//				enemy->m_transform->m_pos = Vector2(worldSize.x * 0.5 + 100 + 150 * i, originPosOfBattle.y);
+//				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+//			}
+//			else
+//			{
+//				enemy->m_transform->m_pos = Vector2(cameraSize.x + 100 + 150 * i, originPosOfBattle.y);
+//				targetEnemyPosVec[i].x = enemy->m_transform->m_pos.x;
+//			}
+//			SetIndicatorPos(enemy);
+//			enemy->targetPos = enemy->m_transform->m_pos;
+//			MG_GMOBJ->RegisterObj("enemy_" + i, enemy);
+//			enemyParty.push_back(enemy);
+//		}
+//	}
+//}
 
 void CBattleSystem::CreateHeroesParty()
 {

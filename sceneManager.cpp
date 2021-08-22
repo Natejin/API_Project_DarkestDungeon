@@ -20,6 +20,14 @@ HRESULT SceneManager::init()
 	test->Init();
 	addScene(SCENETYPE::Test, test);
 
+	dungeonScene = new DungeonScene;
+addScene(SCENETYPE::Dungeon, dungeonScene);
+
+//DungeonScene2* dungeon2 = new DungeonScene2;
+
+townScene = new TownScene;
+addScene(SCENETYPE::Town, townScene);
+
 	_mainScene = new mainScene;
 	addScene(SCENETYPE::MainScene, _mainScene);
 	changeScene(SCENETYPE::Test);
