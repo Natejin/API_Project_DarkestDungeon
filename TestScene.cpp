@@ -9,7 +9,7 @@ TestScene::~TestScene() {}
 
 HRESULT TestScene::Init()
 {
-	isFirst = true;
+	//isFirst = true;
 	return S_OK;
 }
 
@@ -26,17 +26,18 @@ void TestScene::Release()
 
 void TestScene::Update()
 {
-	//MG_SCENE->ResetScene();
-	MG_SCENE->changeScene(SCENETYPE::MainScene);
+	MG_SCENE->ResetScene();
 
 
-	//if (isFirst)
-	//{
-	//	isFirst = false;
-	//}
-	//else {
-	//	MG_SCENE->changeScene(SCENETYPE::Town);
-	//}
+
+	if (isFirst)
+	{
+		isFirst = false;
+		MG_SCENE->changeScene(SCENETYPE::MainScene);
+	}
+	else {
+		MG_SCENE->changeScene(SCENETYPE::Town);
+	}
 
 	//MG_SCENE->changeScene(SCENETYPE::Town);
 

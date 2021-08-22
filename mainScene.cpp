@@ -51,5 +51,5 @@ void mainScene::Render(HDC _hdc)
 
 void mainScene::ChangeTown()
 {
-    MG_SCENE->changeScene(SCENETYPE::MainScene);
+    MG_SCENE->changeScene(SCENETYPE::Town);
 }

@@ -142,20 +142,20 @@ HRESULT SceneManager::changeScene(SCENETYPE sceneName)
 
 void SceneManager::ResetScene()
 {
-	//SAFE_DELETE(m_sceneMap[SCENETYPE::Dungeon]);
-	//m_sceneMap.erase(SCENETYPE::Dungeon);
+	SAFE_DELETE(m_sceneMap[SCENETYPE::Dungeon]);
+	m_sceneMap.erase(SCENETYPE::Dungeon);
 
-	//SAFE_DELETE(m_sceneMap[SCENETYPE::Town]);
-	//m_sceneMap.erase(SCENETYPE::Town);
+	SAFE_DELETE(m_sceneMap[SCENETYPE::Town]);
+	m_sceneMap.erase(SCENETYPE::Town);
 
 
-	//dungeonScene = new DungeonScene;
-	//addScene(SCENETYPE::Dungeon, dungeonScene);
+	dungeonScene = new DungeonScene;
+	addScene(SCENETYPE::Dungeon, dungeonScene);
 
-	////DungeonScene2* dungeon2 = new DungeonScene2;
+	//DungeonScene2* dungeon2 = new DungeonScene2;
 
-	//townScene = new TownScene;
-	//addScene(SCENETYPE::Town, townScene);
+	townScene = new TownScene;
+	addScene(SCENETYPE::Town, townScene);
 
 	MG_GAME->m_dungeonScene = dungeonScene;
 	MG_GAME->m_townScene = townScene;
