@@ -339,6 +339,7 @@ void CUI_Panel_Hero::CreateCampSkill()
 
 void CUI_Panel_Hero::SetCampSkill()
 {
+	auto tempVec = MG_GAME->GetHero(townScene->curDragHeroIndex)->GetOwnSkill();
 	for (size_t i = 0; i < m_campSkillbuttonVec.size(); i++)
 	{
 		m_campSkillbuttonVec[i]->Enable();

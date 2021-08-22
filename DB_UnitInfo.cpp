@@ -19,6 +19,7 @@ Info_Hero* DB_UnitInfo::CallHero(JOB job)
 {
 	auto _info = heroDB[job];
 	auto info = new Info_Hero();
+	info->name = _info->name;
 	info->unitType = _info->unitType;
 	info->m_maxHP = _info->m_maxHP;
 	info->m_HP = _info->m_maxHP;
@@ -76,6 +77,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 {
 	auto _info = enemyDB[enemyType];
 	auto info = new Info_Enemy();
+	info->name = _info->name;
 	info->unitType = _info->unitType;
 	info->m_maxHP = _info->m_maxHP;
 	info->m_HP = _info->m_maxHP;
@@ -133,6 +135,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 void DB_UnitInfo::SetHero()
 {
 	Info_Hero* info = new Info_Hero();
+	info->name = "(감)성전사";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 33;
 	info->m_SPD = 1;
@@ -171,13 +174,13 @@ void DB_UnitInfo::SetHero()
 	info->skillLvl.push_back(0);
 	info->ownSkill.push_back(SKILL::Crusader_Heal_BattleHeal);
 	info->skillLvl.push_back(0);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_bandage);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_encourage);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_pep_talk);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_stand_tall);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_unshakeable_leader);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_zealous_speech);
-	info->ownCamp_Skill.push_back(CAMP_SKILL::camp_skill_zealous_vigil);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_bandage);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_encourage);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_pep_talk);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_stand_tall);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_unshakeable_leader);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_zealous_speech);
+	info->ownCamp_Skill.push_back(IMAGE::camp_skill_zealous_vigil);
 
 	info->portrait = IMAGE::Crusader_portrait;
 	info->weapon.push_back( IMAGE::Crusader_Weapon_0);
@@ -186,6 +189,7 @@ void DB_UnitInfo::SetHero()
 	MG_INFO->RegisterInfo(info);
 
 	info = new Info_Hero();
+	info->name = "다키한 성녀";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 22;
 	info->m_SPD = 4;
@@ -243,6 +247,7 @@ void DB_UnitInfo::SetHero()
 
 	//plague_doctor
 	info = new Info_Hero();
+	info->name = "킹갓 역병 술사";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 23;
 	info->m_SPD = 4;
@@ -295,6 +300,7 @@ void DB_UnitInfo::SetHero()
 	MG_INFO->RegisterInfo(info);
 	//Highwayman
 	info = new Info_Hero();
+	info->name = "모래반지 빵야";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 24;
 	info->m_SPD = 7;

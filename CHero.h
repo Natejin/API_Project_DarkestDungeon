@@ -60,6 +60,8 @@ public:
 	virtual UNITTYPE GetUnitType();
 	virtual int GetSpeed();
 
+	virtual string GetName();
+
 	virtual int getHP();
 	virtual bool reduceHP(int hp);
 	virtual void increaseHP(int hp);
@@ -84,6 +86,7 @@ public:
 	virtual void setStress(int strs); 
 	virtual void addStress(int strs);
 	virtual vector<SKILL>GetOwnSkill();
+	virtual vector<IMAGE>GetCampSkill();
 	virtual void SetHeroID(int id);
 	virtual int GetHeroID();
 	virtual void SetHeroJob(JOB job);

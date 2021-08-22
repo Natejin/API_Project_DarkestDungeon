@@ -4,6 +4,7 @@
 class Info_Unit : public Info
 {
 public:
+	string name;
 	int m_HP;
 	int m_maxHP;
 	int m_SPD;
@@ -44,7 +45,7 @@ public:
 
 	vector<int> skillLvl;
 	vector<SKILL> ownSkill;
-	vector<CAMP_SKILL> ownCamp_Skill;
+	vector<IMAGE> ownCamp_Skill;
 	
 	virtual void Release();
 };
