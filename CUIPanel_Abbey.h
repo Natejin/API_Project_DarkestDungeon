@@ -11,7 +11,6 @@ public:
 	//class CButton* m_closedroom;
 	//class CBuilding_PanelButton* panelbutton;
 
-
 	vector<class CBuilding_PanelButton*> panelVec;
 	//vector<class CButton*>checkVec;
 	//vector<class CButton*>closedVec;

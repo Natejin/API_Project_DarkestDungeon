@@ -35,6 +35,4 @@ void StartBG::SetIMG()
 	mostStartBG[1].m_trans.m_pivot = 0;
 	mostStartBG[1].m_trans.m_scale = Vector2(720, 720);
 	mostStartBG[1].m_trans.m_pos = Vector2(0, 500);
-
-	
 }

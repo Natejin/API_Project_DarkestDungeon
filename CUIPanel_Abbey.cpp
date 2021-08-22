@@ -23,7 +23,6 @@ HRESULT CUIPanel_Abbey::Init()
 	m_windowPanelChar = new CSpriteRenderer(IMAGE::abbey_char, m_transform);
 	m_transform->m_pivot = Vector2(-0.095,-0.095);
 
-
 	CreateRooms();
 	Disable();
 
@@ -60,6 +59,17 @@ void CUIPanel_Abbey::FrontRender(HDC _hdc)
 	m_windowPanelChar->Render(_hdc);
 	m_quit->isActive = true;
 	CheckStress(_hdc);
+
+	char str[256];
+	string strFrame;
+	SetBkMode(_hdc, TRANSPARENT);
+	SetTextColor(_hdc, RGB(255, 255, 255));
+
+	sprintf_s(str, "Abbey");
+	TextOut(_hdc, 300, 150, str, strlen(str));
+
+	sprintf_s(str, "Drag your hero to empty room to reduce stress!");
+	TextOut(_hdc, 810, 100, str, strlen(str));
 }
 
 void CUIPanel_Abbey::Release()

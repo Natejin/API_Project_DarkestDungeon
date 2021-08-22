@@ -28,19 +28,18 @@ void TestScene::Update()
 {
 	MG_SCENE->ResetScene();
 
-	if (isFirst)
-	{
-		isFirst = false;
-		MG_SCENE->changeScene(SCENETYPE::MainScene);
-	}
-	else {
+	//if (isFirst)
+	//{
+	//	isFirst = false;
+	//	MG_SCENE->changeScene(SCENETYPE::MainScene);
+	//}
+	//else {
 
-		MG_SCENE->changeScene(SCENETYPE::Town);
+	//	MG_SCENE->changeScene(SCENETYPE::Town);
+	//}
 
-	}
+	MG_SCENE->changeScene(SCENETYPE::Town);
 
-
-	
 	if (MG_INPUT->isOnceKeyDown('P'))
 	{
 		//MG_SOUND->play(SOUND::Town,0.2);
@@ -49,5 +48,4 @@ void TestScene::Update()
 
 void TestScene::Render(HDC _hdc)
 {
-
 }

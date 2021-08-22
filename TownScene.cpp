@@ -32,7 +32,6 @@ TownScene::TownScene() {}
 TownScene::~TownScene() {}
 HRESULT TownScene::Init()
 {
-
 	MG_SOUND->play(SOUND::Town, 0.2);
 
 	isTown = true;
@@ -40,14 +39,13 @@ HRESULT TownScene::Init()
 	m_town = new CBG_Town();
 	m_town->Init();
 	MG_GMOBJ->RegisterObj("Town", m_town);
+
 	SetEst_Img();
 	SetEst_ui();  
-
 	SetHerolist(); 
 	SetRoster();
 	SetHeroPanel();
-
-	setEmbark();
+	SetEmbark();
 
 	addMemberCollider = new COwnHeroListPanel;
 	addMemberCollider->Init();
@@ -62,7 +60,6 @@ HRESULT TownScene::Init()
 
 HRESULT TownScene::Init(bool managerInit)
 {
-
 	return S_OK;
 }
 
@@ -109,16 +106,19 @@ void TownScene::Render()
 void TownScene::Render(HDC _hdc)
 {
 #ifdef _DEBUG
-
-	if (MG_INPUT->isToggleKey(VK_TAB))
-	{
 	char str[256];
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(255, 0, 255));
-	sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
-	TextOut(_hdc, 0, 180, str, strlen(str));
+	SetTextColor(_hdc, RGB(255, 255, 255));
+
+	if (MG_INPUT->isToggleKey(VK_TAB))
+	{
+		sprintf_s(str, "mousePos : %d, %d", (int)g_ptMouse.x, (int)g_ptMouse.y);
+		TextOut(_hdc, 0, 180, str, strlen(str));
 	}
+	sprintf_s(str, "Click Right Mouse Button to show hero Infomation.");
+	TextOut(_hdc, WINSIZEX - 390, 100, str, strlen(str));
+
 #endif
 }
 
@@ -348,7 +348,6 @@ void TownScene::Show_nomad_wagon( )
 }
 void TownScene::Show_stage_coach( )
 {
-	
 	MG_SOUND->play(SOUND::town_enter_coach);
 	m_stage_coach->Enable();
 }
@@ -445,7 +444,7 @@ CUI_Panel_Hero* TownScene::GetHeroPanel()
 	return m_hero_panel;
 }
 
-void TownScene::setEmbark()
+void TownScene::SetEmbark()
 {
 	m_embark = new Embark;
 	m_embark->m_townScene = this;
