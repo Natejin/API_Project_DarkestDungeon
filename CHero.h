@@ -22,12 +22,11 @@ class CHero : public Unit
 	ImageData targeted_h_Mem; //appear when some member using healSkill
 	
 	Info_Hero* info;
-
-	int weaponLvl;
-	int armorLvl;
 	bool noInput;
 
 public:
+	int weaponLvl;
+	int armorLvl;
 	bool isTargetHeal;
 
 	CHero();

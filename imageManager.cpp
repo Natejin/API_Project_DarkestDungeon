@@ -504,6 +504,8 @@ HRESULT imageManager::init()
 
 
 	MG_IMAGE->addImage("logo", "images/supplement/Logo.bmp", 640, 242, true, RGB(255, 0, 255));
+	MG_IMAGE->addImage("level", "images/supplement/lvl.bmp", 100, 23, true, RGB(255, 0, 255));
+
 
 	return S_OK;
 

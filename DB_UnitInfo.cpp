@@ -86,12 +86,6 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	info->isCorpse = _info->isCorpse;
 	MG_INFO->RegisterInfo(info);
 
-
-
-
-
-
-
 	for (size_t i = 0; i < 5; i++)
 	{
 		info->resist[i] = _info->resist[i];
@@ -121,8 +115,6 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 	info->imageDebuff = _info->imageDebuff;
 	info->imageCorpse = _info->imageCorpse;
 
-
-
 	info->portrait = _info->portrait;
 	for (size_t i = 0; i < _info->ownSkill.size(); i++)
 	{
@@ -135,7 +127,7 @@ Info_Enemy* DB_UnitInfo::CallEnemy(ENEMYTYPE enemyType)
 void DB_UnitInfo::SetHero()
 {
 	Info_Hero* info = new Info_Hero();
-	info->name = "(감)성전사";
+	info->name = "Reynauld";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 33;
 	info->m_SPD = 1;
@@ -189,7 +181,7 @@ void DB_UnitInfo::SetHero()
 	MG_INFO->RegisterInfo(info);
 
 	info = new Info_Hero();
-	info->name = "다키한 성녀";
+	info->name = "Emily";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 22;
 	info->m_SPD = 4;
@@ -245,7 +237,7 @@ void DB_UnitInfo::SetHero()
 
 	//plague_doctor
 	info = new Info_Hero();
-	info->name = "킹갓 역병 술사";
+	info->name = "Rucy";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 23;
 	info->m_SPD = 4;
@@ -296,7 +288,7 @@ void DB_UnitInfo::SetHero()
 	MG_INFO->RegisterInfo(info);
 	//Highwayman
 	info = new Info_Hero();
-	info->name = "모래반지 빵야";
+	info->name = "Dismas";
 	info->unitType = UNITTYPE::Hero;
 	info->m_maxHP = 24;
 	info->m_SPD = 7;
@@ -498,8 +490,6 @@ void DB_UnitInfo::SetEnemy()
 	MG_INFO->RegisterInfo(info);
 
 }
-
-
 
 void DB_UnitInfo::Save()
 {

@@ -182,10 +182,6 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 	string strFrame;
 	SetBkMode(_hdc, TRANSPARENT);
 
-	SetTextColor(_hdc, RGB(202, 201, 155));
-	sprintf_s(str, "%s", "Name");
-	TextOut(_hdc, 225, 130, str, strlen(str));
-	
 	CHero* hero;
 	if (curHeroListType == HeroListBtType::coach)
 	{
@@ -196,6 +192,10 @@ void CUI_Panel_Hero::ShowHeroInfo(HDC _hdc)
 		hero = MG_GAME->GetHero(townScene->curDragHeroIndex);
 	}
 
+	SetTextColor(_hdc, RGB(202, 201, 155));
+	sprintf_s(str, "%s", hero->GetName());
+	TextOut(_hdc, 225, 130, str, strlen(str));
+	
 	if (townScene->curDragHeroIndex > -1)
 	{
 		SetTextColor(_hdc, RGB(255, 255, 255));

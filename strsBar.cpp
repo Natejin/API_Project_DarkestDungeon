@@ -22,6 +22,8 @@ void strsBar::setImage()
 	{
 		STRSbar.push_back(temp);
 	}
+
+	lvl.m_img = MG_IMAGE->findImage("level");
 }
 
 void strsBar::showSTRSbar(HDC _hdc)
@@ -35,7 +37,10 @@ void strsBar::showSTRSbar(HDC _hdc)
 		}
 		STRSbar[i].m_trans.m_pos = Vector2(
 			m_transform->m_pos.x - 50 + 10 * i,
-			m_transform->m_pos.y + 30);
+			m_transform->m_pos.y);
 		STRSbar[i].m_img->render(_hdc, &STRSbar[i].m_trans);
 	}
-}
+
+	lvl.m_trans.m_pos = Vector2(m_transform->m_pos.x -  58, m_transform->m_pos.y + 20);
+	lvl.m_img->render(_hdc, &lvl.m_trans);
+}								

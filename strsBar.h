@@ -5,6 +5,7 @@ class strsBar : public GameObject
 {
 public:
 	vector<ImageData> STRSbar;
+	ImageData lvl;
 	Info_Hero* info;
 
 public:
